@@ -107,7 +107,7 @@ const S = {};
   `
 
   S.AgreeWapper = styled.ul`
-    margin: 0 40px ;
+    margin: 0 40px;
   `
 
   
