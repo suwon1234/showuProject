@@ -1,11 +1,16 @@
+// 커뮤니티 컨테이너
+
 import React from 'react';
+import Community from './Community';
 
 const CommunityContainer = () => {
+
   return (
-    <div>
-      
-    </div>
+    <Community />
   );
 };
 
 export default CommunityContainer;
+
+
+
