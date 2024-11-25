@@ -51,7 +51,7 @@ const Layout = () => {
     <NavLink to={"/community"} className="menuitem">
       커뮤니티
     </NavLink>
-    <NavLink to={"/mypage"} className="menuitem">
+    <NavLink to={"/mypage/myInfo"} className="menuitem">
       마이페이지
     </NavLink>
   </S.menubar>
