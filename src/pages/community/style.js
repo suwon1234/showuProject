@@ -9,7 +9,7 @@ const S = {};
     `
 
     S.TopTitle = styled.div` // 상단 News title
-        font-size: ${({ theme }) => theme.FONT_SIZE.h3};
+        font-size: 30px;
         font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
         color: #ffd400;
         justify-content: center;

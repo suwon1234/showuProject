@@ -11,9 +11,7 @@ const S = {};
         ${backgroundBlack}
     `
 
-    S.ImageWrapper = styled.div`
-        display: flex;
-    `
+   
 
 export default S;
 
