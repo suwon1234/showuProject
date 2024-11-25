@@ -13,6 +13,16 @@ import VodContainer from '../pages/vod/VodContainer';
 import Reports from '../pages/community/news/Reports';
 import Report from '../pages/community/news/Report';
 import News1 from '../pages/community/news/News1';
+import JoinContainer from '../pages/join/JoinContainer';
+import MyActiveContainer from '../pages/mypage/myActive/MyActiveContainer';
+import MyClassContainer from '../pages/mypage/myClass/MyClassContainer';
+import MyGradeContainer from '../pages/mypage/myGrade/MyGradeContainer';
+import MyInfoContainer from '../pages/mypage/myInfo/MyInfoContainer';
+import MyPayContainer from '../pages/mypage/myPay/MyPayContainer';
+import MyResContainer from '../pages/mypage/myRes/MyResContainer';
+import MyTeamContainer from '../pages/mypage/myTeam/MyTeamContainer';
+import MyVodConatainer from '../pages/mypage/myVod/MyVodConatainer';
+import FindIdContainer from '../pages/findId/FindIdContainer';
 
 const router = createBrowserRouter([
   {
@@ -48,12 +58,40 @@ const router = createBrowserRouter([
         element : <IndexContainer />
       },
       {
-        path : '/login',
-        element : <LoginContainer />
-      },
-      {
         path : '/mypage',
         element : <MypageContainer />
+      },
+      {
+        path : '/mypage/myActive',
+        element : <MyActiveContainer /> //활동 정보
+      },
+      {
+        path : '/mypage/myClass',
+        element : <MyClassContainer /> //레슨 정보
+      },
+      {
+        path : '/mypage/myGrade',
+        element : <MyGradeContainer /> //등급 정보
+      },
+      {
+        path : '/mypage/myInfo',
+        element : <MyInfoContainer /> //회원 정보
+      },
+      {
+        path : '/mypage/myPay',
+        element : <MyPayContainer /> //결제 정보
+      },
+      {
+        path : '/mypage/myRes',
+        element : <MyResContainer /> //예약 정보
+      },
+      {
+        path : '/mypage/myTeam',
+        element : <MyTeamContainer /> //팀매칭 정보
+      },
+      {
+        path : '/mypage/myVod',
+        element : <MyVodConatainer /> //VOD 정보
       },
       {
         path : '/reservation',
@@ -73,6 +111,18 @@ const router = createBrowserRouter([
       },
 
     ]
+  },
+  {
+    path : '/login',
+    element : <LoginContainer />,
+  },
+  {
+    path : '/join',
+    element : <JoinContainer />
+  },
+  {
+    path : '/findId',
+    element : <FindIdContainer />
   }
 ])
 
