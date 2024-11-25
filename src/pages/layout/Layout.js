@@ -1,12 +1,8 @@
 import React from 'react';
-<<<<<<< HEAD
-import { NavLink, Outlet } from 'react-router-dom';
-import S from './style';
-=======
+
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import S from './style';
 
->>>>>>> 306f954ef95c14b6cc6e841d95954f65920e4985
 
 const Layout = () => {
   return (
