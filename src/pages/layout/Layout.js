@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import S from './style';
 
+
 const Layout = () => {
   return (
     <S.Background className='Background'>
