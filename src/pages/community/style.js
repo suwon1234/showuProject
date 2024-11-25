@@ -34,7 +34,7 @@ const S = {};
         }
 
         button { // 버튼 스타일
-            border-radius: 30px;
+            border-radius: 50px;
             padding: 10px 15px;
             background-color: black;
             color: ${({ theme }) => theme.PALLETE.white};

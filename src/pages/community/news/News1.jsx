@@ -3,10 +3,12 @@
 import React from 'react';
 import S from '../style';
 
-
 const News1 = () => {
+
+
   return (
     <S.Wrapper>
+      {/* <h1>`제목: ${news.title} `</h1> */}
       <img 
       src="https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=1678248215" 
       alt=" 물랑루즈 포스터" />

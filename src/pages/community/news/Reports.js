@@ -1,12 +1,13 @@
 // 제보내역 페이지
 
 import React from 'react';
+import S from './styleReport';
 
 const Reports = () => {
   return (
-    <backgroundBlack> 
-      <h1>제보내역 페이지</h1>
-    </backgroundBlack>
+    <S.Wrapper> 
+      <p>클릭 시 비밀번호 확인</p>
+    </S.Wrapper>
   );
 };
 

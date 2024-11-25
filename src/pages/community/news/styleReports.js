@@ -1,4 +1,4 @@
-// 제보하기 스타일
+// 제보내역 스타일4
 
 import styled  from "styled-components";
 import { backgroundBlack } from "../../../global/common";
@@ -8,9 +8,4 @@ const S = {};
         ${backgroundBlack}     
     `;
 
-    
-
 export default S;
-
-
-   
