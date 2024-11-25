@@ -23,6 +23,8 @@ import MyResContainer from '../pages/mypage/myRes/MyResContainer';
 import MyTeamContainer from '../pages/mypage/myTeam/MyTeamContainer';
 import FindIdContainer from '../pages/findId/FindIdContainer';
 import MyVodContainer from '../pages/mypage/myVod/MyVodContainer';
+import MdMain from '../pages/shop/md/MdMain';
+import DetailContainer from '../pages/shop/DetailContainer';
 
 const router = createBrowserRouter([
   {
@@ -100,6 +102,10 @@ const router = createBrowserRouter([
       {
         path : '/shop',
         element : <ShopContainer />
+      },
+      {
+        path : '/shop/mdDetail',
+        element : <DetailContainer />
       },
       {
         path : '/showu',
