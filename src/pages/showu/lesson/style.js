@@ -10,7 +10,7 @@ S.title = styled.h1 `
     color : #ffd400;
     text-align: center;
     font-size: 30px;
-    font-weight: 600;
+    font-weight: ${(theme)=>{theme.FONT_WEIGTH["semibold"]}};
     line-height: 40px;
     padding: 50px 0;
     height: 140px;
