@@ -10,7 +10,7 @@ S.title = styled.h1 `
     color : #ffd400;
     text-align: center;
     font-size: 30px;
-    font-weight: ${(theme)=>{theme.FONT_WEIGTH["semibold"]}};
+    font-weight: 600;
     line-height: 40px;
     padding: 50px 0;
     height: 140px;
@@ -25,6 +25,8 @@ S.lessonCategoryWrapper = styled.div`
     width: 220px;
     display: flex;
     justify-content: space-between;
+    padding-bottom: 25px;
+    border-bottom:  1px solid #fff;
 & .lessonCategory {
     background-color: #000;
     width: 100px;
