@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import Layout from '../pages/layout/Layout';
+import Layout, {} from '../pages/layout/Layout';
 import Main from '../pages/main/Main';
 import AdminContainer from '../pages/admin/AdminContainer';
 import CommunityContainer from '../pages/community/CommunityContainer';
@@ -21,8 +21,8 @@ import MyInfoContainer from '../pages/mypage/myInfo/MyInfoContainer';
 import MyPayContainer from '../pages/mypage/myPay/MyPayContainer';
 import MyResContainer from '../pages/mypage/myRes/MyResContainer';
 import MyTeamContainer from '../pages/mypage/myTeam/MyTeamContainer';
-import MyVodConatainer from '../pages/mypage/myVod/MyVodConatainer';
 import FindIdContainer from '../pages/findId/FindIdContainer';
+import MyVodContainer from '../pages/mypage/myVod/MyVodContainer';
 
 const router = createBrowserRouter([
   {
@@ -91,7 +91,7 @@ const router = createBrowserRouter([
       },
       {
         path : '/mypage/myVod',
-        element : <MyVodConatainer /> //VOD 정보
+        element : <MyVodContainer /> //VOD 정보
       },
       {
         path : '/reservation',
