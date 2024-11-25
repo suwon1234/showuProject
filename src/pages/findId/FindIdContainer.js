@@ -10,7 +10,7 @@ const FindIdContainer = () => {
         <li className='u'>U</li>
       </S.LoginHeader>
       <S.Wapper>
-        <S.title>showU ID 로그인</S.title>
+        <S.title>showU ID 찾기</S.title>
 
           <S.inputWapper>
             <S.idLabel>
@@ -21,13 +21,6 @@ const FindIdContainer = () => {
             </S.passwordLabel>
               <S.LockImage src={process.env.PUBLIC_URL + "/images/login/lock.png"} alt="비밀번호 잠금" />
           </S.inputWapper>
-
-          <S.CheckBoxWapper>
-            <img src={process.env.PUBLIC_URL + "/images/login/before-check.png"} alt="before-check" />
-            <span>아이디 저장</span>
-            <img src={process.env.PUBLIC_URL + "/images/login/before-check.png"} alt="before-check" />
-            <span>자동 로그인</span>
-          </S.CheckBoxWapper>
 
           <S.LoginButton>아이디 찾기</S.LoginButton>
 
