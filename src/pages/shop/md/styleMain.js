@@ -18,11 +18,11 @@ const S = {};
     }
   `
 
-  S.Best = styled.div`
+  S.Best = styled.h2`
     font-size: 30px;
     color : #fff;
 
-   h2 {
+   & h2 {
     font-weight: ${({theme}) => theme.FONT_WEIGHT["bold"]};
   }
     `
