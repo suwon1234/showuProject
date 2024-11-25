@@ -28,20 +28,30 @@ const S = {};
     }
   `
 
+  S.JoinBox = styled.div`
+    width: 560px;
+    height: 900px;
+    margin: auto;
+    padding: 40px 0;
+    background-color: #252525;
+
+    flex-direction: column;
+  `
+
   S.Container = styled.div`
     background-color: #000;
     height: 100%;
   `
 
   S.Wapper = styled.div`
-    width: 560px;
-    height: 764.16px;
+    /* width: 560px;
+    height: 100%;
     margin: auto;
-    padding: 40px 0 40px 0;
-    background-color: #252525;
+    padding: 40px 0;
+    background-color: #252525; */
 
     display: flex;
-    flex-direction: column;
+    
   `
 
   S.title = styled.p`
@@ -94,6 +104,10 @@ const S = {};
     border: none;
     border-radius: 50px;
     font-size: 17px;
+  `
+
+  S.AgreeWapper = styled.ul`
+    margin: 0 40px ;
   `
 
   
