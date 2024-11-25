@@ -110,6 +110,14 @@ const S = {};
     margin: 0 40px;
   `
 
+  S.AgreeBox = styled.div`
+    display: flex;
+    align-items: center;
+  `
+
+  S.CheckImg = styled.img`
+    margin-right: 10px;
+  `
   
 
 

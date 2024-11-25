@@ -33,28 +33,28 @@ const JoinContainer = () => {
               </S.idLabel>
             </S.inputWapper>
           
-            <ul>
-              <div>
-                <img src={process.env.PUBLIC_URL + "/images/login/before-check.png"} alt="before-check" />
-                <li>필수 및 선택 항목을 모두 포함하여 동의합니다.</li>
-              </div>
-              <div>
-                <img src={process.env.PUBLIC_URL + "/images/login/before-check.png"} alt="before-check" />
-                <li>만 14세 이상입니다.</li>
-              </div>
-              <div>
-                <img src={process.env.PUBLIC_URL + "/images/login/before-check.png"} alt="before-check" />
-                <li>[필수] 서비스 약관 동의</li>
-              </div>
-              <div>
-                <img src={process.env.PUBLIC_URL + "/images/login/before-check.png"} alt="before-check" />
-                <li>[필수] 개인정보 수집 및 이용 동의</li>
-              </div>
-              <div>
-                <img src={process.env.PUBLIC_URL + "/images/login/before-check.png"} alt="before-check" />
-                <li>[선택] 개인정보 수집 및 이용 동의</li>
-              </div>
-            </ul>
+            <S.AgreeWapper>
+              <S.AgreeBox>
+                <S.CheckImg src={process.env.PUBLIC_URL + "/images/login/before-check.png"} alt="before-check" />
+                <span>필수 및 선택 항목을 모두 포함하여 동의합니다.</span>
+              </S.AgreeBox>
+              <S.AgreeBox>
+                <S.CheckImg src={process.env.PUBLIC_URL + "/images/login/before-check.png"} alt="before-check" />
+                <span>만 14세 이상입니다.</span>
+              </S.AgreeBox>
+              <S.AgreeBox>
+                <S.CheckImg src={process.env.PUBLIC_URL + "/images/login/before-check.png"} alt="before-check" />
+                <span>[필수] 서비스 약관 동의</span>
+              </S.AgreeBox>
+              <S.AgreeBox>
+                <S.CheckImg src={process.env.PUBLIC_URL + "/images/login/before-check.png"} alt="before-check" />
+                <span>[필수] 개인정보 수집 및 이용 동의</span>
+              </S.AgreeBox>
+              <S.AgreeBox>
+                <S.CheckImg src={process.env.PUBLIC_URL + "/images/login/before-check.png"} alt="before-check" />
+                <span>[선택] 개인정보 수집 및 이용 동의</span>
+              </S.AgreeBox>
+            </S.AgreeWapper>
             <S.LoginButton>가입하기</S.LoginButton>
         </S.JoinBox>
 
