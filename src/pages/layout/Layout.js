@@ -1,5 +1,6 @@
 import React from 'react';
-import { Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
+import S from '../join/style';
 
 const Layout = () => {
   return (
