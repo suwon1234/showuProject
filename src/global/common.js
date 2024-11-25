@@ -23,4 +23,6 @@ export const boxStyle = css`
 
 export const backgroundBlack = css`
   background-color: #000;
+
+  
 `
