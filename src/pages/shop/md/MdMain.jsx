@@ -39,9 +39,7 @@ const MdMain = () => {
         <S.BestList>{mdBest.map((best) => (
           <S.Best key={best.id}>
             <S.BestImage>
-              <Link to={"/mdDetail"}>
-              <img src={best.image} />
-              </Link>
+              <Link to={"/shop/mdDetail"}><img src={best.image} /></Link>
             </S.BestImage>
             <S.BestTitle>{best.name}</S.BestTitle>
             <S.BestPrice>{best.price}원</S.BestPrice>
@@ -66,7 +64,7 @@ const MdMain = () => {
         <S.MdList>{mds.map((md) => (
           <S.Md2 key={md.id}>
             <S.MdImage>
-              <img src={md.image} />
+              <Link to={"/shop/mdDetail"}><img src={md.image} /></Link>   
             </S.MdImage>
             <S.MdTitle>{md.name}</S.MdTitle>
             <S.MdPrice>{md.price}원</S.MdPrice>
