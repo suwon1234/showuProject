@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { flexCenterRow } from '../../global/common';
 
 const S = {};
 
@@ -113,6 +112,17 @@ const S = {};
   S.AgreeBox = styled.div`
     display: flex;
     align-items: center;
+    margin-bottom: 5px;
+
+    & .AllAgree {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    & span {
+      font-size: 12px;
+      font-weight: 300;
+    }
   `
 
   S.CheckImg = styled.img`

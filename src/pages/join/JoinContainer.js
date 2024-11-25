@@ -7,8 +7,10 @@ const JoinContainer = () => {
     <S.Container>
       <S.YellowBar></S.YellowBar>
       <S.LoginHeader>
-        <li className='show'>Show</li>
-        <li className='u'>U</li>
+        <Link to={"/"}>
+          <span className='show'>Show</span>
+          <span className='u'>U</span>
+        </Link>
       </S.LoginHeader>
       <S.Wapper>
         <S.JoinBox>
@@ -36,7 +38,7 @@ const JoinContainer = () => {
             <S.AgreeWapper>
               <S.AgreeBox>
                 <S.CheckImg src={process.env.PUBLIC_URL + "/images/login/before-check.png"} alt="before-check" />
-                <span>필수 및 선택 항목을 모두 포함하여 동의합니다.</span>
+                <span className='AllAgree'>필수 및 선택 항목을 모두 포함하여 동의합니다.</span>
               </S.AgreeBox>
               <S.AgreeBox>
                 <S.CheckImg src={process.env.PUBLIC_URL + "/images/login/before-check.png"} alt="before-check" />
