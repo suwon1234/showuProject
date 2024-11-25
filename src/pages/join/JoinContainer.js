@@ -21,9 +21,9 @@ const JoinContainer = () => {
               <S.input type="password" id='password' placeholder='비밀번호'/>
             </S.passwordLabel>
               <S.LockImage src={process.env.PUBLIC_URL + "/images/login/lock.png"} alt="비밀번호 잠금" />
-            <S.passwordLabel>
+            <S.idLabel>
               <S.input type="password" id='passwordConfirm' placeholder='비밀번호 확인'/>
-            </S.passwordLabel>
+            </S.idLabel>
               <S.LockImage src={process.env.PUBLIC_URL + "/images/login/lock.png"} alt="비밀번호 잠금" />
             <S.idLabel>
               <S.input type="text" id='email' placeholder='이메일'/>

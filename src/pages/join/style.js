@@ -96,7 +96,7 @@ const S = {};
     font-size: 17px;
   `
 
-
+  
 
 
 export default S;
