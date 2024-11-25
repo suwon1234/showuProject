@@ -8,10 +8,15 @@ const S = {};
   `
 
   S.Md = styled.h1`
-    color: #ffd400;
+
+    
     font-weight: bold;
     font-size: 30px;
     text-align: center;
+
+    & h1 {
+      color: #ffd400 !important
+    }
   `
 
   S.Best = styled.h2`
