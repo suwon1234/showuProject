@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { flexCenterRow } from '../../global/common';
 
 const S = {};
 
@@ -83,20 +82,6 @@ const S = {};
     border-radius: 5px;
   `
 
-  S.CheckBoxWapper = styled.div`
-    margin: 0 40px 0 40px;
-    display: flex;
-
-    & img {
-      margin: 0 5px 0 0;
-      cursor: pointer;
-    }
-
-    & span {
-      margin: 0 20px 0 0;
-    }
-  `
-
   S.LoginButton = styled.button`
     width: 480px;
     height: 55px;
@@ -109,53 +94,5 @@ const S = {};
     font-size: 17px;
 
   `
-
-  S.JoinFind = styled.ul`
-    ${flexCenterRow}
-
-    & li {
-      margin: 15px 5px 20px 0;
-      padding: 0 10px 0 5px;
-
-      border-right: 1px solid #fff;
-      font-size: 13px;
-      font-weight: 400;
-
-      cursor: pointer;
-    }
-
-    & .lastLi{
-      border: none;
-    }
-  ` 
-
-  S.JoinSns = styled.div`
-    margin: 0 40px 0 40px;
-
-    & .joinP {
-      text-align: center;
-      font-size: 18px;
-      font-weight: 400;
-      margin: 5px 0 30px 0;
-
-      cursor: pointer;
-    }
-  `
-
-
-  S.LoginSns = styled.ul`
-    ${flexCenterRow}
-    
-    & li {
-      margin: 0 20px 0 0;
-      cursor: pointer;
-    }
-
-  `
-
-
-
-
-  
 
 export default S;
