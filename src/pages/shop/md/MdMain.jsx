@@ -39,9 +39,9 @@ const MdMain = () => {
         <S.BestList>{mdBest.map((best) => (
           <S.Best key={best.id}>
             <S.BestImage>
-              {/* <Link to={"/mdDetail"}> */}
+              <Link to={"/mdDetail"}>
               <img src={best.image} />
-              {/* </Link> */}
+              </Link>
             </S.BestImage>
             <S.BestTitle>{best.name}</S.BestTitle>
             <S.BestPrice>{best.price}원</S.BestPrice>

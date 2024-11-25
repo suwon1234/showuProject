@@ -8,22 +8,25 @@ const S = {};
   `
 
   S.Md = styled.h1`
-
-    
     font-weight: bold;
     font-size: 30px;
     text-align: center;
 
     & h1 {
+      margin-top : 50px;
       color: #ffd400 !important
     }
   `
 
-  S.Best = styled.h2`
-    color : #fff;
-    font-weight: bold;
+  S.Best = styled.div`
     font-size: 30px;
-  `
+    color : #fff;
+
+   h2 {
+    font-weight: ${({theme}) => theme.FONT_WEIGHT["bold"]};
+  }
+    `
+
 
   S.BestWrapper = styled.div`
     margin-top : 50px;
