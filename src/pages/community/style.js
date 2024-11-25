@@ -47,9 +47,7 @@ const S = {};
             }
         }
     `
-    S.button5 = styled.div`
-        
-    `
+
 
     S.Titles = styled.div` // 페이지 메인 타이틀 All
         display: flex;
