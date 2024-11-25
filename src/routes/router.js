@@ -21,7 +21,7 @@ import MyInfoContainer from '../pages/mypage/myInfo/MyInfoContainer';
 import MyPayContainer from '../pages/mypage/myPay/MyPayContainer';
 import MyResContainer from '../pages/mypage/myRes/MyResContainer';
 import MyTeamContainer from '../pages/mypage/myTeam/MyTeamContainer';
-import MyVodConatainer from '../pages/mypage/myVod/MyVodConatainer';
+import MyVodConatainer from '../pages/mypage/myVod/MyVodContainer'
 import FindIdContainer from '../pages/findId/FindIdContainer';
 
 const router = createBrowserRouter([
