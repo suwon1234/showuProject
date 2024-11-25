@@ -17,10 +17,10 @@ export const flexCenterRow = css`
 `
 
 export const boxStyle = css`
-  background-color: "#000";
-  border: 0.5px solid "#ffd400";
+  background-color: #000;
+  border: 0.5px solid #ffd400;
 `
 
 export const backgroundBlack = css`
-  background-color: "#000";
+  background-color: #000;
 `

@@ -10,6 +10,9 @@ import ReservationContainer from '../pages/reservation/ReservationContainer';
 import ShopContainer from '../pages/shop/ShopContainer';
 import ShowuContainer from '../pages/showu/ShowuContainer';
 import VodContainer from '../pages/vod/VodContainer';
+import Reports from '../pages/community/news/Reports';
+import Report from '../pages/community/news/Report';
+import News1 from '../pages/community/news/News1';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +30,18 @@ const router = createBrowserRouter([
       {
         path : '/community',
         element : <CommunityContainer />
+      },
+      {
+        path : '/community/report',
+        element : <Report />  // 제보하기 페이지
+      },
+      {
+        path : '/community/reports',
+        element : <Reports />  // 제보내역 페이지
+      },
+      {
+        path : '/community/news/news1',
+        element : <News1 />  // 뉴스 세부 페이지
       },
       {
         path : '/index',
