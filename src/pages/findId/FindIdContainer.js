@@ -1,13 +1,16 @@
 import React from 'react';
 import S from './style';
+import { Link } from 'react-router-dom';
 
 const FindIdContainer = () => {
   return (
     <S.Container>
       <S.YellowBar></S.YellowBar>
       <S.LoginHeader>
-        <li className='show'>Show</li>
-        <li className='u'>U</li>
+      <Link to={"/"}>
+          <span className='show'>Show</span>
+          <span className='u'>U</span>
+        </Link>
       </S.LoginHeader>
       <S.Wapper>
         <S.title>showU ID 찾기</S.title>
