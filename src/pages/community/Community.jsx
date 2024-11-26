@@ -1,95 +1,88 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import S from './style';
 
-const newsData = [
-  {
-    id: 1,
-    title: "뉴스 타이틀1",
-    description: "뉴스 설명1",
-    imageUrl: "https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=1678248215",
-  },
-  {
-    id: 2,
-    title: "뉴스 타이틀2",
-    description: "뉴스 설명2",
-    imageUrl: "https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/contentsdetailposterkinkybootsthemusical.jpg?v=1721176871",
-  },
-  {
-    id: 3,
-    title: "뉴스 타이틀3",
-    category: "영화",
-    description: "뉴스 설명3",
-    imageUrl: "https://img.sbs.co.kr/newimg/news/20241121/202009760_1280.jpg",
-  },
-  {
-    id: 4,
-    title: "뉴스 타이틀4",
-    category: "밴드",
-    description: "뉴스 설명4",
-    imageUrl: "https://cdn.mhns.co.kr/news/photo/202411/703781_806904_2732.jpg"
-  },
-  {
-    id: 5,
-    title: "뉴스 타이틀5",
-    category: "뮤지컬",
-    description: "뉴스 설명4",
-    imageUrl: "https://web-cf-image.cjenm.com/crop/204x294/public/share/metamng/programs/02_FeaturedContents_detail_poster_660x950_1663231642146.jpg?v=1676454555"
-  },
-];
-
-
 const Community = () => {
+  const commuData = [
+    {
+      id: 1,
+      title: "타이틀1",
+      description: "설명1",
+      imageUrl: "https://web-cf-image.cjenm.com/resize/1344x756/public/share/metamng/programs/kingkyboots-musical-ko-008-06.jpg?v=1732526131",
+    },
+    {
+      id: 2,
+      title: "타이틀2",
+      description: "설명2",
+      imageUrl: "https://www.sac.or.kr//site/main/file/thumbnail/uu/d5eb6904359c4b5d8eae72d44160e40d",
+    },
+    {
+      id: 3,
+      title: "타이틀3",
+      description: "설명3",
+      imageUrl: "https://lv2-cdn.azureedge.net/day6/42990251ca404e40bb4fcf81f7be9680-[%ED%81%B4%EB%A6%B0]%200830_%20Concept%20Photo_%20Group%201-2.jpg",
+    },
+    {
+      id: 4,
+      title: "타이틀4",
+      description: "설명4",
+      imageUrl: "https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20241015_196%2F1728982918695jsvLp_JPEG%2Fmovie_image.jpg"
+    },
+    {
+      id: 5,
+      title: "타이틀5",
+      description: "설명5",
+      imageUrl: "https://web-cf-image.cjenm.com/resize/1344x756/public/share/metamng/programs/42ndstreetonbroadway-musical-ko-003-07.jpg?v=1676454555"
+    },
+    {
+      id: 6,
+      title: "타이틀6",
+      description: "설명6",
+      imageUrl: "https://www.sejongpac.or.kr/cmmn/file/imageSrc.do?fileStreCours=faec0c25744c22e99776405c0fa72802b034c11453522f543494e84872ada102&streFileNm=4be0a06b6afe2f47cbcd2948ad228dbf52e2f1440befb29c34155b70a7ef77fe"
+    },
+    {
+      id: 7,
+      title: "타이틀7",
+      description: "설명7",
+      imageUrl: "https://web-cf-image.cjenm.com/resize/1344x756/public/share/metamng/programs/gwangwhamunlovesong-musical-ko-004-03.jpg?v=1727398714"
+    },
+    {
+      id: 8,
+      title: "타이틀8",
+      description: "설명8",
+      imageUrl: "https://web-cf-image.cjenm.com/resize/1344x756/public/share/metamng/programs/maybe-a-happy-ending-musical-ko-007-05.jpg?v=1728331267"
+    },
+    {
+      id: 9,
+      title: "타이틀9",
+      description: "설명",
+      imageUrl: "https://web-cf-image.cjenm.com/resize/1344x756/public/share/metamng/programs/contents-detail-image-moulin-rouge-the-musical-10.jpg?v=1678248215"
+    },
+  ];
+
   return (
     <S.Wrapper>
-      <S.TopTitle>
-        News
-      </S.TopTitle>
+        <S.TopTitle>커뮤니티</S.TopTitle>
 
-      <S.SubWrapper> 
-        <S.Titles>
-          <S.MainTitle>News</S.MainTitle>
-          <S.SubTitle>가장 먼저 접하는 showU 소식</S.SubTitle>
-        </S.Titles>    
-  
-        <S.ButtonsAll>
-          <div>
-            <button>전체</button>
-            <button>공연</button>
-            <button>뮤지컬</button>
-            <button>영화</button>
-            <button>연극</button>
-            <button>밴드</button>
-          </div>
-  
-          <div>
-            <Link to="/community/report">
-              <button>제보하기</button>
-            </Link>
-            <Link to="/community/reports">
-              <button>제보내역</button>
-            </Link>
-          </div>
-        </S.ButtonsAll>
-  
-        <S.NewsList>
-          {newsData.map((news) => (
-            <S.NewsItem key={news.id}>
-              <S.ImageWrapper>
-                <Link to="/community/news/news1">
-                  <img src={news.imageUrl} alt={news.title} />   
-                </Link>      
-              </S.ImageWrapper>
-              <S.NewsContent>
-                <S.NewsTitle>{news.title}</S.NewsTitle>
-                <S.NewsDescription>{news.description}</S.NewsDescription>
-              </S.NewsContent>
-            </S.NewsItem>
+      <S.SubWrapper>
+          <S.Buttons>
+            <button>둘러보기</button>
+            <button>글쓰기</button>
+          </S.Buttons>
+
+        <S.Info>
+          {commuData.map((item) => (
+            <S.Img key={item.id}>
+              <img src={item.imageUrl} alt={item.title} />
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            </S.Img>
           ))}
-        </S.NewsList>
+        </S.Info>
       </S.SubWrapper>
     </S.Wrapper>
-    );
-  };
+  );
+};
 
 export default Community;
