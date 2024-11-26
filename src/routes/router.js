@@ -52,6 +52,10 @@ const router = createBrowserRouter([
         element : <Reports />  // 제보내역 페이지
       },
       {
+        path : '/community/newsMain',
+        element : <NewsMainContainer />  // 뉴스 메인 페이지
+      },
+      {
         path : '/community/news/news1',
         element : <News1 />  // 뉴스 세부 페이지
       },
