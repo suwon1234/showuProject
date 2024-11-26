@@ -3,7 +3,6 @@ import React from 'react';
 import S from './styleDetail';
 import Dropdown from './Dropdown' 
 
-
 const MdDetail = () => {
   const options = ['옵션 1', '옵션 2', '옵션 3']; 
 
