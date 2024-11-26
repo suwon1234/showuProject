@@ -25,6 +25,7 @@ import FindIdContainer from '../pages/findId/FindIdContainer';
 import Audition from '../pages/community/audition/Audition';
 import MyVodContainer from '../pages/mypage/myVod/MyVodContainer';
 import DetailContainer from '../pages/shop/md/DetailContainer';
+import NewsMainContainer from '../pages/community/news/NewsMainContainer';
 
 const router = createBrowserRouter([
   {
