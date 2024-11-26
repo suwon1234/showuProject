@@ -22,6 +22,23 @@ const S = {};
         padding: 30px;
     `
 
+    S.Titles = styled.div` // 페이지 메인 타이틀 All
+        display: flex;
+        margin: 20px;
+
+    `   
+
+    S.MainTitle = styled.div` // 페이지 메인 타이틀
+        font-size: ${({ theme }) => theme.FONT_SIZE.h3};
+        font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
+        margin-top: 10px;
+    `
+    S.SubTitle = styled.div` // 페이지 서브 타이틀
+        font-size: ${({ theme }) => theme.FONT_SIZE.h7};
+        margin-top: 23px;
+        margin-left: 8px;
+    `
+
     S.ButtonsAll = styled.div` // 상단 버튼들
         display: flex;
         justify-content: space-between;

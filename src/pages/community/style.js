@@ -4,12 +4,9 @@ import styled  from "styled-components";
 import { backgroundBlack } from "../../global/common";
 
 const S = {};
-    S.Wrapper = styled.div` // 전체 배경 gray
-        background-color: #444444;      
-    `
 
     S.TopTitle = styled.div` // 상단 News title
-        font-size: ${({ theme }) => theme.FONT_SIZE.h3};
+        font-size: 30px;
         font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
         color: #ffd400;
         justify-content: center;
@@ -17,23 +14,25 @@ const S = {};
         padding: 30px;
     `
 
-    S.SubWrapper = styled.div` // 내용 black 배경
+    S.Wrapper = styled.div` // 전체 배경 gray
+        background-color: #444444;      
+    `
+
+    S.SubWrapper = styled.div`
         ${backgroundBlack}
         margin-left: 140px;
         margin-right: 140px;
     `
 
-    S.ButtonsAll = styled.div` // 상단 버튼들
+    S.Buttons = styled.div`
+        padding-top: 80px;
         display: flex;
-        justify-content: space-between;
-        padding: 10px 20px;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 40px;
+        margin-bottom: 60px;
 
-        div { // 버튼 간격
-            display: flex;
-            gap: 8px; 
-        }
-
-        button { // 버튼 스타일
+        button {
             border-radius: 50px;
             padding: 10px 15px;
             background-color: black;
@@ -46,72 +45,45 @@ const S = {};
                 color: ${({ theme }) => theme.PALLETE.black};
             }
         }
-    `
+    `;
 
+    S.Info = styled.div`
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        justify-items: center;
+        margin-top: 20px;
+        padding-left: 250px;
+        padding-right: 250px;
+    `;
 
-    S.Titles = styled.div` // 페이지 메인 타이틀 All
-        display: flex;
-        margin: 20px;
-        
-    `
-    S.MainTitle = styled.div` // 페이지 메인 타이틀
-        font-size: ${({ theme }) => theme.FONT_SIZE.h3};
-        font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
-        margin-top: 10px;
-        
-    `
-    S.SubTitle = styled.div` // 페이지 서브 타이틀
-        font-size: ${({ theme }) => theme.FONT_SIZE.h7};
-        margin-top: 23px;
-        margin-left: 8px;
-        
-    `
-    S.ImageWrapper = styled.div` 
-    width: 200px;
-    height: 150px; 
-    margin-right: 20px;
-    flex-shrink: 0;
-  
+    S.Img = styled.div`
+        width: 300px;
+        height: 250px; 
+        margin-bottom: 100px;
+        flex-shrink: 0; 
+        text-align: left;
+        justify-content: center;
+
         img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        /* border-radius: 8px;  */
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        h3 {
+            margin-top: 5px;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        p {
+            font-size: 15px;
+            color: #fff;
         }
     `;
 
-    S.NewsList = styled.div`
-        display: flex;
-        flex-direction: column;
-    `;
 
-    S.NewsContent = styled.div`
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    `;
-
-    S.NewsItem = styled.div`
-        padding: 20px;
-        border-bottom: 1px solid ${({ theme }) => theme.PALLETE.gray["200"]};
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        color: ${({ theme }) => theme.PALLETE.white};
-    `;
-
-    S.NewsTitle = styled.div`
-        font-size: ${({ theme }) => theme.FONT_SIZE.h5};
-        font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
-    `;
-
-    S.NewsDescription = styled.div`
-        margin-top: 8px;
-        margin-bottom: 8px;
-        font-size: ${({ theme }) => theme.FONT_SIZE.h7};
-        color: ${({ theme }) => theme.PALLETE.gray["300"]};
-    `;
 
 export default S;
 

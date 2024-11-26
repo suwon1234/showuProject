@@ -1,13 +1,12 @@
 // 뉴스 메인 화면
 
 import React from 'react';
-import S from '../style';
 
 const News1 = () => {
 
 
   return (
-    <S.Wrapper>
+    <div>
       {/* <h1>`제목: ${news.title} `</h1> */}
       <img 
       src="https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=1678248215" 
@@ -23,7 +22,7 @@ const News1 = () => {
         <br></br>
         1899년 파리, ‘물랑루즈’에서 벌어지는 거부할 수 없는 운명과 위대한 사랑 이야기
       </p>
-    </S.Wrapper>
+    </div>
   );
 };
 
