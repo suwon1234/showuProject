@@ -7,7 +7,7 @@ import IndexContainer from '../pages/index/IndexContainer';
 import LoginContainer from '../pages/login/LoginContainer';
 import MypageContainer from '../pages/mypage/MypageContainer';
 import ReservationContainer from '../pages/reservation/ReservationContainer';
-import ShopContainer from '../pages/shop/ShopContainer';
+import ShopContainer from '../pages/shop/md/ShopContainer';
 import ShowuContainer from '../pages/showu/ShowuContainer';
 import VodContainer from '../pages/vod/VOD/VodContainer';
 import Reports from '../pages/community/news/Reports';
@@ -24,8 +24,7 @@ import MyTeamContainer from '../pages/mypage/myTeam/MyTeamContainer';
 import FindIdContainer from '../pages/findId/FindIdContainer';
 import Audition from '../pages/community/audition/Audition';
 import MyVodContainer from '../pages/mypage/myVod/MyVodContainer';
-import MdMain from '../pages/shop/md/MdMain';
-import DetailContainer from '../pages/shop/DetailContainer';
+import DetailContainer from '../pages/shop/md/DetailContainer';
 
 const router = createBrowserRouter([
   {
