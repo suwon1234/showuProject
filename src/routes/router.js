@@ -25,6 +25,7 @@ import FindIdContainer from '../pages/findId/FindIdContainer';
 import Audition from '../pages/community/audition/Audition';
 import MyVodContainer from '../pages/mypage/myVod/MyVodContainer';
 import DetailContainer from '../pages/shop/md/DetailContainer';
+import NewsMainContainer from '../pages/community/news/NewsMainContainer';
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       {
         path : '/community/reports',
         element : <Reports />  // 제보내역 페이지
+      },
+      {
+        path : '/community/newsMain',
+        element : <NewsMainContainer />  // 뉴스 메인 페이지
       },
       {
         path : '/community/news/news1',
