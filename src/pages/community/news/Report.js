@@ -49,7 +49,7 @@ const Report = () => {
 
         <div>
           <input placeholder='첨부 파일'></input>
-          <button>찾아보기</button>
+          <input type='file' placeholder='찾아보기'></input>
           <p>첨부 파일은 최대 5M까지 등록할 수 있습니다.</p>
         </div>
       </div>
@@ -57,13 +57,25 @@ const Report = () => {
       <div>
         <p>개인정보 수집 및 이용 동의 안내</p>
         <div>
-        <p>개인정보를 제공받는 업체</p>
-        <p>(주) 문화방송</p>
+          <p>개인정보를 제공받는 업체</p>
+          <p>(주) 문화방송</p>
         </div>
         <div>
-        <p>개인정보를 이용 목적</p>
-        <p>제보내용에 관한 확인 및 처리등의 업무 진행</p>
+          <p>개인정보를 이용 목적</p>
+          <p>제보내용에 관한 확인 및 처리등의 업무 진행</p>
         </div>
+        <div>
+          <p>수집하는 개인 정보 항목</p>
+          <p>이름, 휴대폰번호 , 이메일</p>
+        </div>
+        <div>
+          <p>개인정보의 보유 및 이용 기간</p>
+          <p>이용 목적 달성 후 즉시 파기하나, 보유할 필요가 있는 경우에 한하여 3년간 보유 및 이용</p>
+        </div>
+      </div>
+      <div>
+        <button>이전 화면으로</button>
+        <button>참여하기</button>
       </div>
     </S.Wrapper>
   );
