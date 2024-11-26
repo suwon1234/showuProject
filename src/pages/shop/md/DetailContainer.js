@@ -1,5 +1,5 @@
 import React from 'react';
-import MdDetail from './md/MdDetail';
+import MdDetail from './MdDetail';
 
 const DetailContainer = () => {
   return (

@@ -11,22 +11,37 @@ const S = {};
     font-weight: bold;
     font-size: 30px;
     text-align: center;
-
+    
     & h1 {
       margin-top : 50px;
-      color: #ffd400 !important
+      color: #ffd400 
     }
   `
 
-  S.Best = styled.h2`
+  S.Best = styled.p`
     font-size: 30px;
+    font-weight: bold;
     color : #fff;
+    /* & h2 {
+    font-weight: ${({theme}) => theme.FONT_WEIGHT.bold};
+    } */
+  `
 
-   & h2 {
-    font-weight: ${({theme}) => theme.FONT_WEIGHT["bold"]};
-  }
-    `
+  S.IconWrapper = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    height: 100%;
 
+    .icon{
+      font-size: 20px;
+
+      path {
+        color : #ffd400;
+      }
+    }
+  `
 
   S.BestWrapper = styled.div`
     margin-top : 50px;
@@ -44,15 +59,9 @@ const S = {};
   `
 
   S.BestList = styled.div`
-    /* display: flex;
-    flex-direction: row;
-    justify-content: space-between ;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto; */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
+    grid-gap: 40px;
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
@@ -66,7 +75,6 @@ const S = {};
 
   S.BestPrice = styled.p`
     font-weight: bold;
-
   `
 
   S.MdWrapper = styled.div`
@@ -76,7 +84,7 @@ const S = {};
   S.MdList = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
+    grid-gap: 40px;
     width: 100%;
     max-width: 1000px;
     margin: 0 auto;
@@ -94,7 +102,6 @@ const S = {};
   `
 
   S.MdTitle = styled.p`
-
   `
 
   S.MdPrice = styled.p`
@@ -102,30 +109,33 @@ const S = {};
   `
 
   S.CategoryButton = styled.div` // 상단 버튼들
-    margin-left: 320px;
-    margin-top: 80px;
+    /* margin-left: 320px; */
+    /* margin-top: 80px; */
     display: flex;
     justify-content: space-between;
     padding: 10px 20px;
+    width: 100%;
+    max-width: 1050px;
+    margin: 50px auto 0;
+    
+    div { // 버튼 간격
+      display: flex;
+      gap: 8px; 
+    }
 
-      div { // 버튼 간격
-          display: flex;
-          gap: 8px; 
-        }
-
-      button { // 버튼 스타일
-          border-radius: 30px;
-          padding: 10px 15px;
-          background-color: black;
-          color: ${({ theme }) => theme.PALLETE.white};
-          border: 1px solid #ffd400;
-          cursor: pointer;
-          
-          &:hover { // 버튼 호버
-              background-color: #ffd400;
-              color: ${({ theme }) => theme.PALLETE.black};
-            }
-        }
+    button { // 버튼 스타일
+      border-radius: 30px;
+      padding: 10px 15px;
+      background-color: black;
+      color: ${({ theme }) => theme.PALLETE.white};
+      border: 1px solid #ffd400;
+      cursor: pointer;
+      
+      &:hover { // 버튼 호버
+        background-color: #ffd400;
+        color: ${({ theme }) => theme.PALLETE.black};
+      }
+    }
   `
 export default S;
 

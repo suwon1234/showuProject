@@ -11,6 +11,3 @@ const CommunityContainer = () => {
 };
 
 export default CommunityContainer;
-
-
-
