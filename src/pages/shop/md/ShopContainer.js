@@ -1,5 +1,5 @@
 import React from 'react';
-import MdMain from './md/MdMain';
+import MdMain from './MdMain';
 
 const ShopContainer = () => {
   return (

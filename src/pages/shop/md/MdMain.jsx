@@ -1,6 +1,10 @@
+// MD 메인페이지
 import React from 'react';
 import S from './styleMain'
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+
 
 const mdBest = [
   { id: 1, name: "BEST상품 1", price: "65,000", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510"},
@@ -30,9 +34,12 @@ const MdMain = () => {
       <S.Md>
         <h1>MD</h1>
       </S.Md>
+      <S.IconWrapper>
+        <FontAwesomeIcon icon={faChevronDown} className='icon' />
+      </S.IconWrapper>
       
       <S.Best>
-        <h2>BEST</h2>
+        <p>BEST</p>
       </S.Best>
       
       <S.BestWrapper>
