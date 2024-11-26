@@ -1,7 +1,8 @@
 // News main style
 
 import styled  from "styled-components";
-import { backgroundBlack } from "../../global/common";
+import { backgroundBlack } from "../../../global/common";
+
 
 const S = {};
     S.Wrapper = styled.div` // 전체 배경 gray
