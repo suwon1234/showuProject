@@ -22,6 +22,7 @@ import MyPayContainer from '../pages/mypage/myPay/MyPayContainer';
 import MyResContainer from '../pages/mypage/myRes/MyResContainer';
 import MyTeamContainer from '../pages/mypage/myTeam/MyTeamContainer';
 import FindIdContainer from '../pages/findId/FindIdContainer';
+import Audition from '../pages/community/audition/Audition';
 import MyVodContainer from '../pages/mypage/myVod/MyVodContainer';
 import MdMain from '../pages/shop/md/MdMain';
 import DetailContainer from '../pages/shop/DetailContainer';
@@ -55,6 +56,10 @@ const router = createBrowserRouter([
         path : '/community/news/news1',
         element : <News1 />  // 뉴스 세부 페이지
       },
+      {
+        path : '/community/audition',
+        element : <Audition />  // 오디션 페이지
+      },     
       {
         path : '/index',
         element : <IndexContainer />
