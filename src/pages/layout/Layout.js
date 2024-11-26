@@ -60,7 +60,7 @@ const Layout = () => {
   <Outlet/>
 </S.main>
 
-
+      
     </S.Background>
     
   );
