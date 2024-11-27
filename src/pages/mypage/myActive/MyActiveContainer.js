@@ -1,10 +1,14 @@
 import React from 'react';
+import Layout from '../_component/Layout';
+import MypageContainer from '../MypageContainer';
+import MyActive from './MyActive';
 
 const MyActiveContainer = () => {
+
   return (
-    <div>
-      
-    </div>
+    <Layout 
+      leftContent={<MypageContainer />}
+      rightContent={<MyActive />}/>
   );
 };
 
