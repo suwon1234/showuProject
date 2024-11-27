@@ -4,7 +4,7 @@ const S = {};
 
 S.LessonMainWrapper = styled.div`
  background-color: #000;
- width: 50%;
+ width: 1200px;
  margin: 0 auto;
 `
 
