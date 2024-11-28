@@ -1,7 +1,8 @@
 // 제보하기 페이지
 
 import React from 'react';
-import S from './styleReport';
+import S from '../reports/styleReports';
+
 
 const Report = () => {
   return (   

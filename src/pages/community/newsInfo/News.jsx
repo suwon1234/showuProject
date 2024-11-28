@@ -1,8 +1,8 @@
-// 뉴스 메인 화면
+// 뉴스 세부 화면
 
 import React from 'react';
 
-const News1 = () => {
+const News = () => {
 
 
   return (
@@ -26,4 +26,4 @@ const News1 = () => {
   );
 };
 
-export default News1;
+export default News;
