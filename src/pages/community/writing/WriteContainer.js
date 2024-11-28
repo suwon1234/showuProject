@@ -1,14 +1,14 @@
 // 커뮤니티 글쓰기 페이지 컨테이너
 
 import React from 'react';
-import Writing from './Writing';
+import Write from './Write';
 
-const WritingContainer = () => {
+const WriteContainer = () => {
     return (
         <div>
-            <Writing />
+            <Write />
         </div>
     );
 };
 
-export default WritingContainer;
+export default WriteContainer;

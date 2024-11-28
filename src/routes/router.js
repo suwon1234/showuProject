@@ -2,7 +2,6 @@ import { createBrowserRouter } from 'react-router-dom'
 import Layout from '../pages/layout/Layout';
 import Main from '../pages/main/Main';
 import AdminContainer from '../pages/admin/AdminContainer';
-import CommunityContainer from '../pages/community/CommunityContainer';
 import IndexContainer from '../pages/index/IndexContainer';
 import LoginContainer from '../pages/login/LoginContainer';
 import MypageContainer from '../pages/mypage/MypageContainer';
@@ -10,9 +9,6 @@ import ReservationContainer from '../pages/reservation/ReservationContainer';
 import ShopContainer from '../pages/shop/md/ShopContainer';
 import ShowuContainer from '../pages/showu/ShowuContainer';
 import VodContainer from '../pages/vod/VOD/VodContainer';
-import Reports from '../pages/community/news/Reports';
-import Report from '../pages/community/news/Report';
-import News1 from '../pages/community/news/News1';
 import JoinContainer from '../pages/join/JoinContainer';
 import MyActiveContainer from '../pages/mypage/myActive/MyActiveContainer';
 import MyClassContainer from '../pages/mypage/myClass/MyClassContainer';
@@ -22,11 +18,25 @@ import MyPayContainer from '../pages/mypage/myPay/MyPayContainer';
 import MyResContainer from '../pages/mypage/myRes/MyResContainer';
 import MyTeamContainer from '../pages/mypage/myTeam/MyTeamContainer';
 import FindIdContainer from '../pages/findId/FindIdContainer';
-import Audition from '../pages/community/audition/Audition';
 import MyVodContainer from '../pages/mypage/myVod/MyVodContainer';
 import DetailContainer from '../pages/shop/md/DetailContainer';
 import NewsMainContainer from '../pages/community/news/NewsMainContainer';
 import FindPasswordContainer from '../pages/findPassword/FindPasswordContainer';
+import CommunityInfoContainer from '../pages/community/main_info/CommunityInfoContainer';
+import EditCommentsMainContainer from '../pages/community/editComment/EditCommentsMainContainer';
+import EditCommentsContainer from '../pages/community/editComment/EditCommentsContainer';
+import NotifyContainer from '../pages/community/comment/NotifyContainer';
+import HistoryContainer from '../pages/community/writing/HistoryContainer';
+import HistoryCheckContainer from '../pages/community/writing/HistoryCheckContainer';
+import HistoryEditContainer from '../pages/community/writingEdit/HistoryEditContainer';
+import HistoryEditActiveContainer from '../pages/community/writingEdit/HistoryEditActiveContainer';
+import NewsContainer from '../pages/community/newsInfo/NewsContainer';
+import ReportContainer from '../pages/community/report/ReportContainer';
+import ReportsContainer from '../pages/community/reports/ReportsContainer';
+import PopularityContainer from '../pages/community/newspopularity/PopularityContainer';
+import AuditionContainer from '../pages/community/audition/AuditionContainer';
+import AuditionInfoContainer from '../pages/community/audition/AuditionInfoContainer';
+import WriteContainer from '../pages/community/writing/WriteContainer';
 
 const router = createBrowserRouter([
   {
@@ -46,29 +56,69 @@ const router = createBrowserRouter([
         element : <AdminContainer />
       },
       {
-        path : '/community',
-        element : <CommunityContainer />
+        path : '/community/communityInfo',
+        element : <CommunityInfoContainer /> // 커뮤니티 세부 페이지 
       },
       {
-        path : '/community/report',
-        element : <Report />  // 제보하기 페이지
+        path : '/community/communityInfo/editCommentsMain',
+        element : <EditCommentsMainContainer /> // 커뮤니티 댓글 수정 메인 페이지
       },
       {
-        path : '/community/reports',
-        element : <Reports />  // 제보내역 페이지
+        path : '/community/communityInfo/editComments',
+        element : <EditCommentsContainer /> // 커뮤니티 댓글 수정 세부 페이지
+      },
+      {
+        path : '/community/communityInfo/Notify',
+        element : <NotifyContainer /> // 커뮤니티 댓글 신고 페이지
+      },
+      {
+        path : '/community/write',
+        element : <WriteContainer /> // 커뮤니티 글쓰기 페이지
+      },
+      {
+        path : '/community/writing/history',
+        element : <HistoryContainer /> // 커뮤니티 글쓰기 내역 페이지
+      },
+      {
+        path : '/community/write/history/check',
+        element : <HistoryCheckContainer /> // 커뮤니티 글쓰기 내역 확인 페이지
+      },
+      {
+        path : '/community/write/history/edit',
+        element : <HistoryEditContainer /> // 커뮤니티 글쓰기 내역 수정/삭제 메인 페이지
+      },
+      {
+        path : '/community/write/history/edit/active',
+        element : <HistoryEditActiveContainer /> // 커뮤니티 글쓰기 내역 수정/삭제 페이지
       },
       {
         path : '/community/newsMain',
         element : <NewsMainContainer />  // 뉴스 메인 페이지
       },
       {
-        path : '/community/news/news1',
-        element : <News1 />  // 뉴스 세부 페이지
+        path : '/community/newsMain/news',
+        element : <NewsContainer />  // 뉴스 세부 페이지
+      },
+      {
+        path : '/community/report',
+        element : <ReportContainer />  // 제보하기 페이지
+      },
+      {
+        path : '/community/reports',
+        element : <ReportsContainer />  // 제보내역 페이지
+      },
+      {
+        path : '/community/newsMain/popularity',
+        element : <PopularityContainer />  // 뉴스 인기순 세부 페이지
       },
       {
         path : '/community/audition',
-        element : <Audition />  // 오디션 페이지
-      },     
+        element : <AuditionContainer />  // 오디션 메인 페이지
+      },
+      {
+        path : '/community/audition/auditionInfo',
+        element : <AuditionInfoContainer />  // 오디션 세부 페이지
+      },    
       {
         path : '/mypage',
         element : <MypageContainer />
