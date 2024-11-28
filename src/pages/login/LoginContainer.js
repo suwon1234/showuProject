@@ -7,7 +7,7 @@ const LoginContainer = () => {
     <S.Container>
       <S.YellowBar></S.YellowBar>
       <S.LoginHeader>
-      <Link to={"/"}>
+      <Link to={"/main"}>
           <span className='show'>Show</span>
           <span className='u'>U</span>
         </Link>
@@ -38,7 +38,7 @@ const LoginContainer = () => {
             <Link to={"/findId"}>
               <li>아이디 찾기</li>
             </Link>
-            <Link to={"/mypage/myInfo"}>
+            <Link to={"/findPassword"}>
               <li>비밀번호 변경</li>
             </Link>
             <Link to={"/join"}>
