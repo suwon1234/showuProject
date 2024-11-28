@@ -26,6 +26,7 @@ import Audition from '../pages/community/audition/Audition';
 import MyVodContainer from '../pages/mypage/myVod/MyVodContainer';
 import DetailContainer from '../pages/shop/md/DetailContainer';
 import NewsMainContainer from '../pages/community/news/NewsMainContainer';
+import FindPasswordContainer from '../pages/findPassword/FindPasswordContainer';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
     children : [
       {
         index : true,
+        element : <IndexContainer />
+      },
+      {
+        path : '/main',
         element : <Main />
       },
       {
@@ -64,10 +69,6 @@ const router = createBrowserRouter([
         path : '/community/audition',
         element : <Audition />  // 오디션 페이지
       },     
-      {
-        path : '/index',
-        element : <IndexContainer />
-      },
       {
         path : '/mypage',
         element : <MypageContainer />
@@ -138,6 +139,10 @@ const router = createBrowserRouter([
   {
     path : '/findId',
     element : <FindIdContainer />
+  },
+  {
+    path : '/findPassword',
+    element : <FindPasswordContainer />
   }
 ])
 

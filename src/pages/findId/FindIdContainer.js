@@ -7,7 +7,7 @@ const FindIdContainer = () => {
     <S.Container>
       <S.YellowBar></S.YellowBar>
       <S.LoginHeader>
-      <Link to={"/"}>
+      <Link to={"/main"}>
           <span className='show'>Show</span>
           <span className='u'>U</span>
         </Link>
