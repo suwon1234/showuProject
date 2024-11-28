@@ -7,7 +7,7 @@ import IndexContainer from '../pages/index/IndexContainer';
 import LoginContainer from '../pages/login/LoginContainer';
 import MypageContainer from '../pages/mypage/MypageContainer';
 import ReservationContainer from '../pages/reservation/ReservationContainer';
-import ShopContainer from '../pages/shop/ShopContainer';
+import ShopContainer from '../pages/shop/md/ShopContainer';
 import ShowuContainer from '../pages/showu/ShowuContainer';
 import VodContainer from '../pages/vod/VOD/VodContainer';
 import Reports from '../pages/community/news/Reports';
@@ -22,10 +22,11 @@ import MyPayContainer from '../pages/mypage/myPay/MyPayContainer';
 import MyResContainer from '../pages/mypage/myRes/MyResContainer';
 import MyTeamContainer from '../pages/mypage/myTeam/MyTeamContainer';
 import FindIdContainer from '../pages/findId/FindIdContainer';
+import Audition from '../pages/community/audition/Audition';
 import MyVodContainer from '../pages/mypage/myVod/MyVodContainer';
-import MdMain from '../pages/shop/md/MdMain';
-import DetailContainer from '../pages/shop/DetailContainer';
-import PlayContainer from '../pages/vod/video/mainpage/PlayContainer'
+import DetailContainer from '../pages/shop/md/DetailContainer';
+import NewsMainContainer from '../pages/community/news/NewsMainContainer';
+import FindPasswordContainer from '../pages/findPassword/FindPasswordContainer';
 
 const router = createBrowserRouter([
   {
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
     children : [
       {
         index : true,
+        element : <IndexContainer />
+      },
+      {
+        path : '/main',
         element : <Main />
       },
       {
@@ -53,13 +58,17 @@ const router = createBrowserRouter([
         element : <Reports />  // 제보내역 페이지
       },
       {
+        path : '/community/newsMain',
+        element : <NewsMainContainer />  // 뉴스 메인 페이지
+      },
+      {
         path : '/community/news/news1',
         element : <News1 />  // 뉴스 세부 페이지
       },
       {
-        path : '/index',
-        element : <IndexContainer />
-      },
+        path : '/community/audition',
+        element : <Audition />  // 오디션 페이지
+      },     
       {
         path : '/mypage',
         element : <MypageContainer />
@@ -116,10 +125,6 @@ const router = createBrowserRouter([
         path : '/vod',
         element : <VodContainer />
       },
-      {
-        path : '/vod/play',
-        element: <PlayContainer/>
-      },
 
     ]
   },
@@ -135,6 +140,10 @@ const router = createBrowserRouter([
     path : '/findId',
     element : <FindIdContainer />
   },
+  {
+    path : '/findPassword',
+    element : <FindPasswordContainer />
+  }
 ])
 
 export default router;
