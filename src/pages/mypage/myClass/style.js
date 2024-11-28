@@ -4,15 +4,45 @@ const S = {};
 
   S.Container = styled.div`
     width: 100%;
-    height: 100%;
+    height: 800px;
     margin: 130px 0;
 
-    background-color: #444444;
+    background-color: #797979;
   `
 
   S.Wapper = styled.div`
     width: 100%;
-    height: 100%;
+    height: 800px;
+  `
+
+  S.Title = styled.div`
+    
+    & p {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 50px;
+    }
+  `
+
+  S.SubTitle = styled.div`
+    margin: 20px 0;
+    
+    & ul {
+      display: flex;
+      gap: 25px;
+
+      & li {
+        font-size: 17px;
+        font-weight: 400;
+        color: #444444;
+      }
+
+      & li:first-child {
+        padding-bottom: 3px;
+        border-bottom: 3px solid #ffd400;
+        color: #fff;
+      }
+    }
   `
 
  
