@@ -1,21 +1,20 @@
 // Audition 스타일
 
 import styled  from "styled-components";
-import { backgroundBlack } from "../../../global/common";
 
-const S = {};
+    const S = {};
     S.Wrapper = styled.div` // 전체 배경 gray
     background-color: #444444;      
     ` 
     S.SubWrapper = styled.div` // 내용 black 배경
-    ${backgroundBlack}
+    background-color: #000;
     margin-left: 140px;
     margin-right: 140px;
 `
 
     S.TopTitle = styled.div` // 상단 Audition title
-        font-size: ${({ theme }) => theme.FONT_SIZE.h3};
-        font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
+        font-size: 30px;
+        font-weight: bold;
         color: #ffd400;
         justify-content: center;
         display: flex;
@@ -29,12 +28,12 @@ const S = {};
     `   
 
     S.MainTitle = styled.div` // 페이지 메인 타이틀
-        font-size: ${({ theme }) => theme.FONT_SIZE.h3};
-        font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
+        font-size: 30px;
+        font-weight: bold;
         margin-top: 10px;
     `
     S.SubTitle = styled.div` // 페이지 서브 타이틀
-        font-size: ${({ theme }) => theme.FONT_SIZE.h7};
+        font-size: 20px;
         margin-top: 23px;
         margin-left: 8px;
     `
@@ -54,28 +53,77 @@ const S = {};
             border-radius: 50px;
             padding: 10px 15px;
             background-color: black;
-            color: ${({ theme }) => theme.PALLETE.white};
+            color: #fff;
             border: 1px solid #ffd400;
             cursor: pointer;
 
             &:hover { // 버튼 호버
                 background-color: #ffd400;
-                color: ${({ theme }) => theme.PALLETE.black};
+                color: #000;
         }
     }`
 
     S.ImageWrapper = styled.div` 
-        width: 300px;
-        height: 500px; 
-        margin-right: 20px;
-        flex-shrink: 0;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+        justify-items: center;
+        margin-top: 20px;
+        padding-left: 200px;
+        padding-right: 200px;
+    `;
 
+    S.Images= styled.div` 
+        position: relative;
+        overflow: hidden;
+        width: 250px;
+        height: 300px; 
+        object-fit: cover;
+
+        border-radius: 10px;
+        cursor: pointer;
+  
         img {
             width: 100%;
-            height: 100%;
+            height: 300px;
             object-fit: cover;
-            /* border-radius: 8px;  */
+            transition: transform 0.3s ease;
         }
+  
+            &:hover img {
+                transform: scale(1.1); 
+            }
+    `;
+
+    S.Info= styled.div` // 호버 정보 표시
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6); // 어두운 배경
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+  
+        h3 {
+            margin: 0;
+            font-size: 20px;
+        }
+  
+        p {
+            font-size: 15px;
+            text-align: center;
+             margin-top: 10px;
+        }
+  
+            &:hover {
+                opacity: 1; // 호버 시 정보 표시
+            }
     `;
 
 export default S;
