@@ -1,3 +1,5 @@
+// 뉴스 메인 화면
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import S from './style';

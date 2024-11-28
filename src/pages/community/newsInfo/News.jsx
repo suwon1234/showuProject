@@ -1,4 +1,4 @@
-// 뉴스 메인 화면
+// 뉴스 세부 화면
 
 import React from 'react';
 

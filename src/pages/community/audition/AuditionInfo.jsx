@@ -1,12 +1,13 @@
 // 오디션 세부 페이지
 
 import React from 'react';
+import S from './styleAuditionInfo';
 
 const AuditionInfo = () => {
     return (
-        <div>
+        <S.Wrapper>
             오디션 세부 페이지
-        </div>
+        </S.Wrapper>
     );
 };
 
