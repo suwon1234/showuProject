@@ -5,19 +5,19 @@ import S from './style';
 const MyClass = () => {
   return (
     <S.Container className='container'>
-      <div className='wapper'>
-        <div className='title'>
+      <S.Wapper className='wapper'>
+        <S.Title className='title'>
           <p>MY CLASS</p>
-          <div className='subTitle'>
+          <S.SubTitle className='subTitle'>
             <ul>
               <li>수강중인 레슨</li>
               <li>개설한 레슨</li>
               <li>상담 신청 내역</li>
             </ul>
-          </div>
-        </div>
-      </div>
-      <Lesson />
+          </S.SubTitle>
+        </S.Title>
+        <Lesson />
+      </S.Wapper>
     </S.Container>
   );
 };
