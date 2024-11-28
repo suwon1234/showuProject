@@ -1,0 +1,24 @@
+{
+  "play" : [
+    { "id": 1, 
+    "title": "영상 1", 
+    "thumbnail": "/thumbnails/video1.jpg", 
+    "videoUrl": "testplay.mp4" },
+
+    { "id": 2, 
+    "title": "영상 2", 
+    "thumbnail": "/thumbnails/video2.jpg", 
+    "videoUrl": "testplay.mp4" },
+
+    { "id": 3, 
+    "title": "영상 3", 
+    "thumbnail": "/thumbnails/video3.jpg", 
+    "videoUrl": "testplay.mp4" }
+  ]
+
+
+
+
+
+
+}
