@@ -9,7 +9,7 @@ const Layout = () => {
   <S.topbar className="topbar"></S.topbar>
   <S.navbar className="navbar">
     <S.logo className="logo">
-      <Link to="/showU" className="logolink">
+      <Link to="/main" className="logolink">
         Show <span className="highlight">U</span>
       </Link>
     </S.logo>
@@ -19,14 +19,14 @@ const Layout = () => {
       className="searchinput"
     />
     <S.authlinks className="authlinks">
-      <Link to="/upgrade" className="highlight">
+      <Link to="/mypage/myGrade" className="highlight">
         등급업 신청
       </Link>
       <span className="divider">|</span>
       <Link to="/login" className="highlight">
         로그인
       </Link>
-      <Link to="/signup" className="showUlink">
+      <Link to="/join" className="showUlink">
         회원가입
       </Link>
     </S.authlinks>
