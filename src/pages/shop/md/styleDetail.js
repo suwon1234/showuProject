@@ -25,13 +25,7 @@ const S = {};
     flex-direction: column; 
     border-bottom: 0.5px solid white;
     margin-top: -200px;
-    /* margin-bottom : 100px; */
     width: 505px;
-    /* padding-bottom: 10px;  */
-    
-    /* & p {
-      margin: 0 !important;
-    } */
     
     & p:first-child {
         padding-bottom: 30px; 
@@ -57,59 +51,7 @@ const S = {};
     width: 505px;
     height: 55px;
     gap: 5px;
-    /* display: grid;
-    grid-template-columns: repeat(10, 1fr);
-    grid-gap: 5px; */
   `
-
-  // S.Button1 = styled.button`
-  //   background-color: #797979;
-  //   border-radius: 50px;
-  //   height: 55px;
-  //   width: 250px;
-  //   cursor: pointer;
-
-  //   & p {
-  //     font-size: 20px;
-  //   }
-
-  //   &:hover {
-  //     background-color: #ffd400;
-  //   }
-  // `
-
-  // S.Button2 = styled.button`
-  //   background-color: #444444;
-  //   border-radius: 50px;
-  //   height: 55px;
-  //   width: 250px;
-  //   cursor: pointer;
-
-  //   & p {
-  //     font-size: 20px;
-  //   }
-
-  //   &:hover {
-  //     background-color: #ffd400;
-  //   }
-  // `
-
-  // S.Button3 = styled.button`
-  //   background-color: #797979;
-  //   border-radius: 50px;
-  //   height: 55px;
-  //   width: 505px;
-  //   margin-top: 15px;
-  //   cursor: pointer;
-
-  //   & p {
-  //     font-size: 20px;
-  //   }
-
-  //   &:hover {
-  //     background-color: #ffd400;
-  //   }
-  // `
 
   S.ButtonWrapper2 = styled.div`
     display: flex;
@@ -127,7 +69,11 @@ const S = {};
     
     .button {
       border-radius: 50px; 
+      width: 250px;
       height: 55px;
+      font-size: 20px;
+      border-radius: 50px;
+      border: none;
       cursor: pointer;
       
       &:hover {
@@ -137,28 +83,16 @@ const S = {};
     
     .cart {
       background-color: #797979;
-      width: 250px;
-      border-radius: 50px;
-      font-size: 20px;
-      border: none;
     }
     
     .buy {
       background-color: #444444;
-      width: 250px;
-      border-radius: 50px;
-      font-size: 20px;
-      border: none;
     }
 
     .inquiry {
       background-color: #797979;
       width: 505px;
-      height: 55px;
       margin-top: 15px;
-      border-radius: 50px;
-      font-size: 20px;
-      border: none;
     }
   `
 
@@ -181,7 +115,6 @@ const S = {};
     display: flex;
     justify-content: center;
     margin : 0 0 200px 200px;
-  
 
     & img {
       width: 500px;
@@ -218,34 +151,20 @@ const S = {};
     /* align-items: center; */
     margin: -120px auto 0;
 
-    & .description {
-      margin-top: 40px;
+    & .description, & .notice, & .return {
+      margin-top: 50px;
       font-size: 19px;
       font-weight: bold;
       color: #ffd400;
-    }
-
-    & .notice {
-      margin-top: 40px;
-      font-size: 19px;
-      font-weight: bold;
-      color: #ffd400;
-    }
-
-    & .return{
-      margin-top: 40px;
-      font-size: 19px;
-      font-weight: bold;
-      color: #ffd400;
+      margin-bottom: 20px;
     }
   `
     
-
     S.ImageWrapper2 = styled.div`
     flex: 1;
     display: flex;
     justify-content: center;
-    margin-top: 50px;
+    margin-top: 60px;
   
 
     & img {
@@ -262,13 +181,13 @@ const S = {};
     & button {
       display: flex;
       align-items: center;
-      color: #000;
-      font-size: 20px;
       width: 250px;
-      background-color: #fff;
       height: 55px;
       border-radius: 50px;
+      background-color: #fff;
       border: none;
+      font-size: 20px;
+      color: #000;
       text-align: center;
       padding-left: 55px;
       position: relative;
@@ -293,6 +212,46 @@ const S = {};
     }
   `
 
+  S.Notice = styled.table`
+    width: 1070px;
+    border-collapse: collapse;
+    background-color: #000;
+    color: #fff;
+    font-size: 16px;
+    margin-bottom: 70px;
+    
+    & th, & td {
+      border: 0.5px solid #fff;
+      padding: 10px;
+      text-align: left;
+    }
+    
+    & th {
+      background-color: #fff;
+      color: #000;
+      width: 180px;
+      border: 0.5px solid #000;
+    }
+  `
+  S.Return = styled.div`
 
+    & .return2 {
+      font-size: 19px;
+      font-weight: bold;
+      margin-top: 40px;
+    }
+
+    & .content {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      
+    }
+  `
+
+  S.Content = styled.div`
+    & p {
+      margin-top: 20px;
+    }
+  `
 
 export default S;
