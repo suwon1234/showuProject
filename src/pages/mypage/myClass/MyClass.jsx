@@ -1,8 +1,10 @@
 import React from 'react';
+import Lesson from './Lesson';
+import S from './style';
 
 const MyClass = () => {
   return (
-    <div className='container'>
+    <S.Container className='container'>
       <div className='wapper'>
         <div className='title'>
           <p>MY CLASS</p>
@@ -16,7 +18,7 @@ const MyClass = () => {
         </div>
       </div>
       <Lesson />
-    </div>
+    </S.Container>
   );
 };
 
