@@ -1,4 +1,4 @@
-// 제보내역 스타일4
+// 제보내역 스타일
 
 import styled  from "styled-components";
 import { backgroundBlack } from "../../../global/common";
