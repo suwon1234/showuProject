@@ -26,7 +26,7 @@ import Audition from '../pages/community/audition/Audition';
 import MyVodContainer from '../pages/mypage/myVod/MyVodContainer';
 import DetailContainer from '../pages/shop/md/DetailContainer';
 import NewsMainContainer from '../pages/community/news/NewsMainContainer';
-// import FindPasswordContainer from '../pages/findPassword/FindPasswordContainer';
+import FindPasswordContainer from '../pages/findPassword/FindPasswordContainer';
 
 const router = createBrowserRouter([
   {
@@ -140,10 +140,10 @@ const router = createBrowserRouter([
     path : '/findId',
     element : <FindIdContainer />
   },
-  // {
-  //   path : '/findPassword',
-  //   element : <FindPasswordContainer />
-  // }
+  {
+    path : '/findPassword',
+    element : <FindPasswordContainer />
+  }
 ])
 
 export default router;
