@@ -29,11 +29,13 @@ const MypageContainer = () => {
             <hr />
         </S.Ul>
         <S.Ul>
-          <Link to={"/mypage/myRes"}>
             <li>예약 정보</li>
-          </Link>
+          <Link to={"/mypage/MyPay"}>
             <li>공간 대여 내역</li>
-            <li>티켓 예매 내역</li>
+          </Link> 
+            <Link to={"/mypage/myRes"}>
+              <li>티켓 예매 내역</li>
+            </Link>
             <hr />
         </S.Ul>
         <S.Ul>

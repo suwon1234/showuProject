@@ -6,8 +6,6 @@ const S = {};
     width: 100%;
     height: 800px;
     margin: 130px 0;
-
-    background-color: #797979;
   `
 
   S.Wapper = styled.div`
@@ -20,7 +18,7 @@ const S = {};
     & p {
       font-size: 30px;
       font-weight: 700;
-      margin-bottom: 50px;
+      margin-bottom: 93px;
     }
   `
 
@@ -35,6 +33,13 @@ const S = {};
         font-size: 17px;
         font-weight: 400;
         color: #444444;
+        cursor: pointer;
+
+        &:hover{
+          padding-bottom: 3px;
+          border-bottom: 3px solid #ffd400;
+          color: #fff;
+        }
       }
 
       & li:first-child {
