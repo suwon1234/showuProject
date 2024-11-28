@@ -25,6 +25,7 @@ import FindIdContainer from '../pages/findId/FindIdContainer';
 import MyVodContainer from '../pages/mypage/myVod/MyVodContainer';
 import MdMain from '../pages/shop/md/MdMain';
 import DetailContainer from '../pages/shop/DetailContainer';
+import PlayContainer from '../pages/vod/video/mainpage/PlayContainer'
 
 const router = createBrowserRouter([
   {
@@ -115,6 +116,10 @@ const router = createBrowserRouter([
         path : '/vod',
         element : <VodContainer />
       },
+      {
+        path : '/vod/play',
+        element: <PlayContainer/>
+      },
 
     ]
   },
@@ -129,7 +134,7 @@ const router = createBrowserRouter([
   {
     path : '/findId',
     element : <FindIdContainer />
-  }
+  },
 ])
 
 export default router;

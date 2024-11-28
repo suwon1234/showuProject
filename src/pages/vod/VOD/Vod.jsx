@@ -1,16 +1,15 @@
 import React, { useState } from 'react';
 import S from '../VOD/style';
 import { Link, NavLink } from 'react-router-dom';
-import BasicButton from '../../../components/button/BasicButton';
 
 const Vod = () => {
   //메인 이미지
   const mainimages = [
-    { src: 'https://via.placeholder.com/200x300?text=Image1', badge: '' },
-    { src: 'https://via.placeholder.com/200x300?text=Image2', badge: '' },
-    { src: 'https://via.placeholder.com/200x300?text=Image3', badge: '' },
-    { src: 'https://via.placeholder.com/200x300?text=Image4', badge: '' },
-    { src: 'https://via.placeholder.com/200x300?text=Image5', badge: '' },
+    { src: 'https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=167824821/200x300?', badge: '' },
+    { src: 'https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=167824821/200x300?', badge: '' },
+    { src: 'https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=167824821/200x300?', badge: '' },
+    { src: 'https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=167824821/200x300?', badge: '' },
+    { src: 'https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=167824821/200x300?', badge: '' },
   ];
 
 
@@ -66,10 +65,12 @@ const Vod = () => {
         <S.showuRecommendationPage className='showuRecommendationPage'>
         {mainimages.map((image, index) => (
           <S.Card key={index}>
-            <a>
+              <Link to={"/vod/play"}>
+            <a href="javascript:void(0)" role="button">
                 {image.badge && <div className="badge">{image.badge}</div>}
                 <img src={image.src} alt={`Image ${index + 1}`} />
-              </a>
+                </a>
+              </Link>
           </S.Card>
         ))}
         </S.showuRecommendationPage>
@@ -81,10 +82,12 @@ const Vod = () => {
         <S.showuRecommendationPage className='showuRecommendationPage'>
         {mainimages.map((image, index) => (
           <S.Card key={index}>
-            <a>
+            <Link to={"/vod/play"}>
+            <a href="javascript:void(0)" role="button">
                 {image.badge && <div className="badge">{image.badge}</div>}
                 <img src={image.src} alt={`Image ${index + 1}`} />
-              </a>
+                </a>
+              </Link>
           </S.Card>
         ))}
         </S.showuRecommendationPage>
@@ -104,10 +107,12 @@ const Vod = () => {
         <S.showuRecommendationPage className='showuRecommendationPage'>
         {mainimages.map((image, index) => (
           <S.Card key={index}>
-            <a>
+            <Link to={"/vod/play"}>
+            <a href="javascript:void(0)" role="button">
                 {image.badge && <div className="badge">{image.badge}</div>}
                 <img src={image.src} alt={`Image ${index + 1}`} />
-              </a>
+                </a>
+              </Link>
           </S.Card>
         ))}
         </S.showuRecommendationPage>
