@@ -1,10 +1,14 @@
 import React from 'react';
+import Layout from '../_component/Layout';
+import MypageContainer from '../MypageContainer';
+import MyPay from './MyPay';
 
 const MyPayContainer = () => {
   return (
-    <div>
-      
-    </div>
+    <Layout 
+      leftContent={<MypageContainer/>}
+      rightContent={<MyPay />}
+    />
   );
 };
 
