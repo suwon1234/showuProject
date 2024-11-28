@@ -1,10 +1,14 @@
 import React from 'react';
+import Layout from '../_component/Layout';
+import MypageContainer from '../MypageContainer';
+import MyClass from './MyClass';
 
 const MyClassContainer = () => {
   return (
-    <div>
-      
-    </div>
+    <Layout 
+      leftContent={<MypageContainer />}
+      rightContent={<MyClass />}
+    />
   );
 };
 
