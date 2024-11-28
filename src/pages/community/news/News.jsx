@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const News1 = () => {
+const News = () => {
 
 
   return (
@@ -26,4 +26,4 @@ const News1 = () => {
   );
 };
 
-export default News1;
+export default News;

@@ -1,5 +1,7 @@
 import React from 'react';
 import S from './style';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const Community = () => {
   const commuData = [
@@ -61,7 +63,10 @@ const Community = () => {
 
   return (
     <S.Wrapper>
-        <S.TopTitle>커뮤니티</S.TopTitle>
+      <S.TopTitle>커뮤니티</S.TopTitle>
+      <S.IconWrapper>
+        <FontAwesomeIcon icon={faChevronDown} className='icon' />
+      </S.IconWrapper>
 
       <S.SubWrapper>
           <S.Buttons>

@@ -11,7 +11,7 @@ const S = {};
         color: #ffd400;
         justify-content: center;
         display: flex;
-        padding: 30px;
+        padding-top: 30px;
     `
 
     S.Wrapper = styled.div` // 전체 배경 gray
@@ -24,13 +24,29 @@ const S = {};
         margin-right: 140px;
     `
 
+S.IconWrapper = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 5px;
+height: 100%;
+
+.icon{
+  font-size: 20px;
+
+  path {
+    color : #ffd400;
+  }
+}
+`
+
     S.Buttons = styled.div`
-        padding-top: 80px;
+        padding-top: 50px;
         display: flex;
         justify-content: center;
         gap: 10px;
         margin-top: 40px;
-        margin-bottom: 60px;
+        margin-bottom: 80px;
 
         button {
             border-radius: 50px;
@@ -61,6 +77,7 @@ const S = {};
         width: 300px;
         height: 250px; 
         margin-bottom: 100px;
+        padding: auto;
         flex-shrink: 0; 
         text-align: left;
         justify-content: center;
