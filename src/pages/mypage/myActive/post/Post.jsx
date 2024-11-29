@@ -1,11 +1,11 @@
 import React from 'react';
 
-const MyClass = () => {
+const Post = () => {
   return (
     <div>
-      <p>레슨</p>
+      작성한 글 목록
     </div>
   );
 };
 
-export default MyClass;
+export default Post;
