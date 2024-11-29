@@ -19,7 +19,7 @@ const Layout = () => {
       className="searchinput"
     />
     <S.authlinks className="authlinks">
-      <Link to="/mypage/myGrade" className="highlight">
+      <Link to="/up-grade" className="highlight">
         등급업 신청
       </Link>
       <span className="divider">|</span>
@@ -51,7 +51,7 @@ const Layout = () => {
     <NavLink to={"/community"} className="menuitem">
       커뮤니티
     </NavLink>
-    <NavLink to={"/mypage/myInfo"} className="menuitem">
+    <NavLink to={"/mypage"} className="menuitem">
       마이페이지
     </NavLink>
   </S.menubar>
