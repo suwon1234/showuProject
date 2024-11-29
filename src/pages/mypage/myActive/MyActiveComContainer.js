@@ -1,15 +1,16 @@
 import React from 'react';
 import Layout from '../_component/Layout';
 import MypageContainer from '../MypageContainer';
-import MyClass from './MyClass';
+import CommmentContainer from './post/CommmentContainer';
 
-const MyClassContainer = () => {
+
+const MyActiveComContainer = () => {
+  
   return (
     <Layout 
       leftContent={<MypageContainer />}
-      rightContent={<MyClass />}
-    />
+      rightContent={<CommmentContainer />} />
   );
 };
 
-export default MyClassContainer;
+export default MyActiveComContainer;
