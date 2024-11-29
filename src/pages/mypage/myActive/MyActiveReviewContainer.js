@@ -1,16 +1,16 @@
 import React from 'react';
 import Layout from '../_component/Layout';
 import MypageContainer from '../MypageContainer';
-import MyActiveTeam from './likeTeam/MyActiveTeam';
+import ReviewContainer from './review/ReviewContainer';
 
 
-const MyActiveContainer = () => {
+const MyActiveReviewContainer = () => {
   
   return (
     <Layout 
       leftContent={<MypageContainer />}
-      rightContent={<MyActiveTeam />} />
+      rightContent={<ReviewContainer />} />
   );
 };
 
-export default MyActiveContainer;
+export default MyActiveReviewContainer;

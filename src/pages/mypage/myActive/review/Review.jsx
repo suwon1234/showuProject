@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Rivew = () => {
+const Review = () => {
   return (
     <div>
       후기 목록
@@ -8,4 +8,4 @@ const Rivew = () => {
   );
 };
 
-export default Rivew;
+export default Review;

@@ -13,12 +13,14 @@ const MyClass = () => {
             <S.SubTitle className='subTitle'>
               <ul>
                 <li>수강중인 레슨</li>
-                <li onClick={() => {}}>개설한 레슨</li>
+                <li>개설한 레슨</li>
                 <li>상담 신청 내역</li>
               </ul>
             </S.SubTitle>
           </S.Title>
+
           <Lesson />
+          
         </S.Wapper>
       </S.Container>
 

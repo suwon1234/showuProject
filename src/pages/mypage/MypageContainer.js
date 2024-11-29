@@ -53,16 +53,16 @@ const MypageContainer = () => {
         </S.Ul>
         <S.Ul>
             <li>활동 정보</li>
-            <Link to={"/mypage/myActive"}>
+            <Link to={"/my-active/like/my-team"}>
               <li>찜</li>
             </Link>
-            <Link to={"/mypage/myActive"}>
+            <Link to={"/my-active/reviews"}>
               <li>후기 관리</li>
             </Link>
-            <Link to={"/mypage/myActive"}>
+            <Link to={"/my-active/posts"}>
               <li>작성한 글ㆍ댓글 관리</li>
             </Link>
-            <Link to={"/mypage/myActive"}>
+            <Link to={"/my-active/reports"}>
               <li>제보 관리</li>
             </Link>
             <hr />

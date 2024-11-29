@@ -37,6 +37,15 @@ import PopularityContainer from '../pages/community/newspopularity/PopularityCon
 import AuditionContainer from '../pages/community/audition/AuditionContainer';
 import AuditionInfoContainer from '../pages/community/audition/AuditionInfoContainer';
 import WriteContainer from '../pages/community/writing/WriteContainer';
+import LikeLessonContainer from '../pages/mypage/myActive/likeLesson/LikeLessonContainer';
+import LikeAuctionContainer from '../pages/mypage/myActive/likeAction/LikeAuctionContainer';
+import LikeMdContainer from '../pages/mypage/myActive/likeMd/LikeMdContainer';
+import LikePropContainer from '../pages/mypage/myActive/likeProp/LikePropContainer';
+import LikeTicketContainer from '../pages/mypage/myActive/likeTicket/LikeTicketContainer';
+import LikeSpaceContainer from '../pages/mypage/myActive/likeSpace/LikeSpaceContainer';
+import MyActiveReviewContainer from '../pages/mypage/myActive/MyActiveReviewContainer';
+import MyActivePostContainer from '../pages/mypage/myActive/MyActivePostContainer';
+import MyActiveComContainer from '../pages/mypage/myActive/post/CommentContainer';
 
 const router = createBrowserRouter([
   {
@@ -124,8 +133,48 @@ const router = createBrowserRouter([
         element : <MypageContainer />
       },
       {
-        path : '/mypage/myActive',
-        element : <MyActiveContainer /> //활동 정보
+        path : '/my-active/like/my-team',
+        element : <MyActiveContainer /> //찜 - 팀 매칭 페이지
+      },
+      {
+        path : '/my-active/like/my-class',
+        element : <LikeLessonContainer /> //찜 - 레슨 페이지
+      },
+      {
+        path : '/my-active/like/space',
+        element : <LikeSpaceContainer /> //찜 - 공간 페이지
+      },
+      {
+        path : '/my-active/like/prop',
+        element : <LikePropContainer /> //찜 - 소품 페이지
+      },
+      {
+        path : '/my-active/like/tickets',
+        element : <LikeTicketContainer /> //찜 - 티켓 페이지
+      },
+      {
+        path : '/my-active/like/md',
+        element : <LikeMdContainer /> //찜 - md 페이지
+      },
+      {
+        path : '/my-active/like/auction',
+        element : <LikeAuctionContainer /> //찜 - 경매 페이지
+      },
+      {
+        path : '/my-active/reviews',
+        element : <MyActiveReviewContainer /> //후기관리 페이지
+      },
+      {
+        path : '/my-active/posts',
+        element : <MyActivePostContainer /> //작성한 글 관리 페이지
+      },
+      {
+        path : '/my-active/comments',
+        element : <MyActiveComContainer /> //작성한 댓글 관리 페이지
+      },
+      {
+        path : '/my-active/like/auction',
+        element : <LikeAuctionContainer /> //찜 - 경매 페이지
       },
       {
         path : '/mypage/myClass',

@@ -1,9 +1,10 @@
 import React from 'react';
 import Paging from '../../_component/Paging';
-import S from './MyActiveTeamStyle';
-import Rivew from './list/Rivew';
+import S from './ReviewContainerStyle';
+import Review from './Review';
 
-const RivewContainer = () => {
+
+const ReviewContainer = () => {
 
   return (
     <>
@@ -20,7 +21,7 @@ const RivewContainer = () => {
           </S.Title> 
           
           {/* 후기 목록 */}
-          <Rivew />
+          <Review />
 
         </S.Wapper>
       </S.Container>
@@ -30,4 +31,4 @@ const RivewContainer = () => {
   );
 };
 
-export default RivewContainer;
+export default ReviewContainer;

@@ -7,9 +7,9 @@ import S from './MyActiveMdStyle';
 const MyActiveMd = () => {
   const navigate = useNavigate();
 
-  const handleNavigate = () => {
-    navigate('/')
-  }
+  const handleNavigate = (path) => {
+    navigate(path)
+  };
 
   return (
     <>
@@ -20,13 +20,13 @@ const MyActiveMd = () => {
             <p className='like'>찜</p>
             <S.SubTitle className='subTitle'>
               <ul>
-                <li>팀 매칭</li>
-                <li>레슨</li>
-                <li>공간</li>
-                <li>소품</li>
-                <li>티켓</li>
-                <li>MD</li>
-                <li>경매</li>
+              <li onClick={() => handleNavigate('/my-active/like/my-team')}>팀 매칭</li>
+                <li onClick={() => handleNavigate('/my-active/like/my-class')}>레슨</li>
+                <li onClick={() => handleNavigate('/my-active/like/space')}>공간</li>
+                <li onClick={() => handleNavigate('/my-active/like/prop')}>소품</li>
+                <li onClick={() => handleNavigate('/my-active/like/tickets')}>티켓</li>
+                <li onClick={() => handleNavigate('/my-active/like/md')}>MD</li>
+                <li onClick={() => handleNavigate('/my-active/like/auction')}>경매</li>
               </ul>
             </S.SubTitle>
           </S.Title>

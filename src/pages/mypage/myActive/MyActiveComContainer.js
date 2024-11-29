@@ -1,16 +1,16 @@
 import React from 'react';
 import Layout from '../_component/Layout';
 import MypageContainer from '../MypageContainer';
-import MyActiveTeam from './likeTeam/MyActiveTeam';
+import ComContainer from './post/ComContainer';
 
 
-const MyActiveContainer = () => {
+const MyActiveComContainer = () => {
   
   return (
     <Layout 
       leftContent={<MypageContainer />}
-      rightContent={<MyActiveTeam />} />
+      rightContent={<ComContainer />} />
   );
 };
 
-export default MyActiveContainer;
+export default MyActiveComContainer;
