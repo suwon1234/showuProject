@@ -3,7 +3,7 @@ import React from 'react';
 import S from './styleMain'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 
 const mdBest = [
@@ -31,28 +31,26 @@ const MdMain = () => {
   
   return (
     <S.MainWrapper>
-      <S.Md>
-        <h1>MD</h1>
-      </S.Md>
-      <S.IconWrapper>
-        <FontAwesomeIcon icon={faChevronDown} className='icon' />
-      </S.IconWrapper>
-      
-      <S.Best>
-        <p>BEST</p>
-      </S.Best>
+      <S.MdTitle>
+        <h1 className='md-title'>MD</h1>
+        <FontAwesomeIcon icon={faChevronDown} className='icon1' />
+      </S.MdTitle>
+
+      <S.BestTitle>
+        <h1 className='best-title'>BEST</h1>
+      </S.BestTitle>
       
       <S.BestWrapper>
-        <S.BestList>{mdBest.map((best) => (
+        <div className='best-list'>{mdBest.map((best) => (
           <S.Best key={best.id}>
-            <S.BestImage>
+            <S.ImageWrapper>
               <Link to={"/shop/mdDetail"}><img src={best.image} /></Link>
-            </S.BestImage>
-            <S.BestTitle>{best.name}</S.BestTitle>
-            <S.BestPrice>{best.price}원</S.BestPrice>
+            </S.ImageWrapper>
+            <div className='best-name'>{best.name}</div>
+            <div className='best-price'>{best.price}원</div>
           </S.Best>
         ))}
-        </S.BestList>
+        </div>
       </S.BestWrapper>
 
       <S.CategoryButton>
@@ -69,14 +67,21 @@ const MdMain = () => {
 
       <S.MdWrapper>
         <S.MdList>{mds.map((md) => (
-          <S.Md2 key={md.id}>
-            <S.MdImage>
+          <S.Md key={md.id}>
+            <S.ImageWrapper2>
               <Link to={"/shop/mdDetail"}><img src={md.image} /></Link>   
-            </S.MdImage>
-            <S.MdTitle>{md.name}</S.MdTitle>
-            <S.MdPrice>{md.price}원</S.MdPrice>
-          </S.Md2>
+            </S.ImageWrapper2>
+            <div className='md-name'>{md.name}</div>
+            <div className='md-price'>{md.price}원</div>
+          </S.Md>
         ))}
+
+        <S.ButtonWrapper>
+          <button>
+            <FontAwesomeIcon icon={faChevronRight} className='icon2'/>
+            MD 더보기
+          </button>
+        </S.ButtonWrapper>
           </S.MdList>
       </S.MdWrapper>
     </S.MainWrapper>

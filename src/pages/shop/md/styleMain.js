@@ -1,40 +1,95 @@
+// styleMain.js
 import styled from "styled-components";
 
 const S = {};
 
-
   S.MainWrapper = styled.div`
     background-color: #000;
-  `
+    `
 
-  S.Md = styled.h1`
-    font-weight: bold;
-    font-size: 30px;
-    text-align: center;
-    
-    & h1 {
+  S.MdTitle = styled.div`
+  
+    .md-title {
+      font-weight: bold;
+      font-size: 30px;
+      text-align: center;
       margin-top : 50px;
-      color: #ffd400 
+      color: #ffd400; 
+    }
+
+    .icon1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 5px;
+      height: 100%;
     }
   `
 
-  S.Best = styled.p`
-    font-size: 30px;
-    font-weight: bold;
-    color : #fff;
-    /* & h2 {
-    font-weight: ${({theme}) => theme.FONT_WEIGHT.bold};
-    } */
+  S.BestTitle = styled.div`
+
+    .best-title {
+      font-size: 30px;
+      font-weight: bold;
+      color : #fff;
+      margin: 10px 0 50px 350px; 
+    }
   `
 
-  S.IconWrapper = styled.div`
+
+
+    // .best-title {
+    //   font-size: 30px;
+    //   font-weight: bold;
+    //   color : #fff;
+    //   margin: 10px 0 50px 350px;
+    // }
+
+    // .best-name{
+    //   font-weight: bold;
+    // }
+
+    // .best-price{
+    //   font-weight: bold;
+
+    // }
+
+    // .md-name{
+    //   font-weight: bold;
+
+    // }
+
+    // .md-price{
+    //   font-weight: bold;
+
+    // }
+  
+  
+
+  // S.IconWrapper = styled.div`
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: center;
+  //   margin-top: 5px;
+  //   height: 100%;
+
+  //   .icon1 {
+  //     font-size: 20px;
+
+  //     path {
+  //       color : #ffd400;
+  //     }
+  //   }
+  // `
+
+  S.IconWrapper2 = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 5px;
     height: 100%;
 
-    .icon{
+    .icon1 {
       font-size: 20px;
 
       path {
@@ -48,6 +103,15 @@ const S = {};
   /* align-items: center; */
     /* display: flex;
     flex-direction: row; */
+    .best-title {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 40px;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+
+    }
   `
 
   S.BestImage = styled.image`
@@ -58,24 +122,6 @@ const S = {};
   }
   `
 
-  S.BestList = styled.div`
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 40px;
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-  `
-
-  S.Best = styled.div`
-  `
-
-  S.BestTitle = styled.p`
-  `
-
-  S.BestPrice = styled.p`
-    font-weight: bold;
-  `
 
   S.MdWrapper = styled.div`
   margin-top: 30px;
@@ -90,8 +136,6 @@ const S = {};
     margin: 0 auto;
   `
 
-  S.Md2 = styled.div`
-  `
 
   S.MdImage = styled.image`
 
@@ -101,12 +145,6 @@ const S = {};
   }
   `
 
-  S.MdTitle = styled.p`
-  `
-
-  S.MdPrice = styled.p`
-    font-weight: bold;
-  `
 
   S.CategoryButton = styled.div` // 상단 버튼들
     /* margin-left: 320px; */
@@ -137,5 +175,50 @@ const S = {};
       }
     }
   `
+
+
+S.ButtonWrapper = styled.div `
+display: flex;
+justify-content: center;
+margin-top: 100px;
+
+& button {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  height: 55px;
+  border: none;
+  border-radius: 50px;
+  background-color: #fff;
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  padding-left: 70px;
+  position: relative;
+  
+  &:hover {
+    background-color: #ffd400;
+  }
+}
+
+& .icon2 {
+  position: absolute;
+  right: 60px;
+}
+
+path {
+  color : #000;
+}
+
+svg {
+  width: 16px;
+  height: 16px;
+}
+`
+  
+S.Best = styled.div`
+`
+
 export default S;
 

@@ -62,8 +62,6 @@ const S = {};
     
     .button-wrapper1 {
       display: flex;
-      width: 505px; 
-      height: 55px;
       gap: 5px;
     }
     
@@ -75,9 +73,10 @@ const S = {};
       border-radius: 50px;
       border: none;
       cursor: pointer;
-      
+
       &:hover {
         background-color: #ffd400;
+        color: #000
       }
     }
     
@@ -183,11 +182,12 @@ const S = {};
       align-items: center;
       width: 250px;
       height: 55px;
+      border: none;
       border-radius: 50px;
       background-color: #fff;
-      border: none;
-      font-size: 20px;
       color: #000;
+      font-size: 20px;
+      font-weight: bold;
       text-align: center;
       padding-left: 55px;
       position: relative;
