@@ -1,14 +1,14 @@
 import React from 'react';
 import Layout from '../_component/Layout';
 import MypageContainer from '../MypageContainer';
-import MyActive from './MyActive';
+import MyActiveTeam from './MyActiveTeam';
 
 const MyActiveContainer = () => {
 
   return (
     <Layout 
       leftContent={<MypageContainer />}
-      rightContent={<MyActive />}/>
+      rightContent={<MyActiveTeam />}/>
   );
 };
 

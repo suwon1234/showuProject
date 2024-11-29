@@ -15,10 +15,15 @@ const S = {};
 
   S.Title = styled.div`
     
-    & p {
+    & .activeTitle {
       font-size: 30px;
       font-weight: 700;
-      margin-bottom: 93px;
+      margin-bottom: 5px;
+    }
+    
+    & .like {
+      font-size: 25px;
+      margin-bottom: 59px;      
     }
   `
 
@@ -42,7 +47,7 @@ const S = {};
         }
       }
 
-      & li:first-child {
+      & li:nth-child(2) {
         padding-bottom: 3px;
         border-bottom: 3px solid #ffd400;
         color: #fff;
