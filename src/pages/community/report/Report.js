@@ -1,18 +1,27 @@
 // 제보하기 페이지
 
 import React from 'react';
-import S from '../reports/styleReports';
+import S from './styleReport';
 
+const handleFile = (event) => {
+    alert("파일 크기는 5MB 이하로 업로드해주세요.");
+};
+
+const handleSubmit = () => {
+  alert("참여가 완료되었습니다!");  
+};
 
 const Report = () => {
   return (   
-    <div>
+    <S.Wrapper>
       <S.TopTitle>News</S.TopTitle>
-      <S.SubWrapper>
-        <S.Titles>
-          <S.MainTitle>News</S.MainTitle>
-          <S.SubTitle>가장 먼저 접하는 showU 소식</S.SubTitle>
-        </S.Titles>   
+      <S.SubWrapper>  
+      <S.Titles>
+        <S.MainTitle>News</S.MainTitle>
+        <S.SubTitle>가장 먼저 접하는 showU 소식</S.SubTitle>
+      </S.Titles>  
+      <S.box></S.box>
+        <S.border>    
         <S.TitleContainer>
           <div className='textDiv'>
             <S.TitleBig>showU에서는 여러분의 제보를 기다립니다.</S.TitleBig>
@@ -57,8 +66,8 @@ const Report = () => {
           </div>
 
           <div>
-            <input placeholder='첨부 파일'></input>
-            <input type='file' placeholder='찾아보기'></input>
+          <label>첨부 파일</label>
+            <S.FileInput  type='file' placeholder='찾아보기' onChange={handleFile}></S.FileInput>
             <p>첨부 파일은 최대 5M까지 등록할 수 있습니다.</p>
           </div>
         </S.Input>
@@ -84,10 +93,11 @@ const Report = () => {
         </S.section>
         <S.buttonWrapper>
           <button>이전 화면으로</button>
-          <button>참여하기</button>
+          <button onClick={handleSubmit}>참여하기</button>
         </S.buttonWrapper>
+        </S.border>
       </S.SubWrapper>
-    </div>
+    </S.Wrapper>
   );
 };
 

@@ -40,6 +40,38 @@ const newsData = [
   },
 ];
 
+const popularData = [
+  {
+    id: 1,
+    title: "인기 타이틀1",
+    imageUrl: "https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/42ndstreetonbroadway-musical-ko-003-07.jpg?v=1676454555",
+  },
+  {
+    id: 2,
+    title: "인기 타이틀2",
+    imageUrl: "https://www.sac.or.kr/site/main/file/thumbnail/uu/d5eb6904359c4b5d8eae72d44160e40d",
+  },
+  {
+    id: 3,
+    title: "인기 타이틀3",
+    imageUrl: "https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=1678248215",
+  },
+  {
+    id: 4,
+    title: "인기 타이틀4",
+    imageUrl: "https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/42ndstreetonbroadway-musical-ko-003-07.jpg?v=1676454555",
+  },
+  {
+    id:5,
+    title: "인기 타이틀5",
+    imageUrl: "https://www.sac.or.kr/site/main/file/thumbnail/uu/d5eb6904359c4b5d8eae72d44160e40d",
+  },
+  {
+    id: 6,
+    title: "인기 타이틀6",
+    imageUrl: "https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=1678248215",
+  },
+];
 
 const Community = () => {
   return (
@@ -49,6 +81,8 @@ const Community = () => {
       </S.TopTitle>
 
       <S.SubWrapper> 
+        {/* 뉴스 콘텐츠 화면 */}
+      <S.MainContents>
         <S.Titles>
           <S.MainTitle>News</S.MainTitle>
           <S.SubTitle>가장 먼저 접하는 showU 소식</S.SubTitle>
@@ -89,6 +123,18 @@ const Community = () => {
             </S.NewsItem>
           ))}
         </S.NewsList>
+      </S.MainContents>
+
+      {/* 인기순 사이드 */}
+      <S.side>
+        <S.SideTitle>인기순</S.SideTitle>
+        {popularData.map((data)=>(
+          <S.SideItem>
+            <img src={data.imageUrl} alt={data.title} />
+            <p>{data.title}</p>
+          </S.SideItem>
+        ))}
+      </S.side>
       </S.SubWrapper>
     </S.Wrapper>
     );

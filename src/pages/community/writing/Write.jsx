@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-const Writing = () => {
+const Write = () => {
     return (
         <div>
             커뮤니티 글쓰기 페이지
@@ -10,4 +10,4 @@ const Writing = () => {
     );
 };
 
-export default Writing;
+export default Write;
