@@ -35,10 +35,10 @@ const LoginContainer = () => {
           <S.LoginButton>로그인하기</S.LoginButton>
 
           <S.JoinFind>
-            <Link to={"/findId"}>
+            <Link to={"/find-id"}>
               <li>아이디 찾기</li>
             </Link>
-            <Link to={"/findPassword"}>
+            <Link to={"/reset-password"}>
               <li>비밀번호 변경</li>
             </Link>
             <Link to={"/join"}>

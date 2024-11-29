@@ -1,16 +1,15 @@
 import React from 'react';
 import Layout from '../_component/Layout';
 import MypageContainer from '../MypageContainer';
-import CommmentContainer from './post/CommmentContainer';
+import WatchContainer from './watch/WatchContainer';
 
-
-const MyActiveComContainer = () => {
-  
+const MyVodWatchContainer = () => {
   return (
     <Layout 
       leftContent={<MypageContainer />}
-      rightContent={<CommmentContainer />} />
+      rightContent={<WatchContainer />}
+    />
   );
 };
 
-export default MyActiveComContainer;
+export default MyVodWatchContainer;

@@ -1,16 +1,16 @@
 import React from 'react';
 import Layout from '../_component/Layout';
 import MypageContainer from '../MypageContainer';
-import CommmentContainer from './post/CommmentContainer';
+import TicketContainer from './ticket/TicketContainer';
 
 
-const MyActiveComContainer = () => {
+const MyResTicketContainer = () => {
   
   return (
     <Layout 
       leftContent={<MypageContainer />}
-      rightContent={<CommmentContainer />} />
+      rightContent={<TicketContainer />} />
   );
 };
 
-export default MyActiveComContainer;
+export default MyResTicketContainer;

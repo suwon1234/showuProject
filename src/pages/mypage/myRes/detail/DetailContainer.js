@@ -1,11 +1,10 @@
 import React from 'react';
 import Paging from '../../_component/Paging';
-import Post from './Post';
-import S from './PostContainerStyle';
 import { useNavigate } from 'react-router-dom';
+import Detail from './Detail';
+import S from './DetailContainerStyle';
 
-
-const PostContainer = () => {
+const CanceleContainer = () => {
   const navigate = useNavigate();
 
   const handleNavigate = (path) => {
@@ -18,17 +17,16 @@ const PostContainer = () => {
         <S.Wapper className='wapper'>
         <S.Title className='title'>
             <p className='activeTitle'>활동 정보</p>
-            <p className='like'>작성한 글ㆍ댓글 관리</p>
+            <p className='like'>제보 관리</p>
             <S.SubTitle className='subTitle'>
               <ul>
-              <li onClick={() => handleNavigate('/my-active/posts')}>작성한 글</li>
-                <li onClick={() => handleNavigate('/my-active/comments')}>작성한 댓글</li>
+                <li>예매 정보</li>
               </ul>
             </S.SubTitle>
           </S.Title> 
           
-          {/* 작성한 글 목록 */}
-          <Post />
+          {/* 티켓 상세 */}
+          <Detail />
 
         </S.Wapper>
       </S.Container>
@@ -38,4 +36,4 @@ const PostContainer = () => {
   );
 };
 
-export default PostContainer;
+export default CanceleContainer;

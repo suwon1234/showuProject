@@ -1,10 +1,10 @@
 import React from 'react';
-import S from './style';
-import Paging from '../_component/Paging';
 import { useNavigate } from 'react-router-dom';
-import Vod from './Vod';
+import Paging from '../../_component/Paging';
+import Watch from './Watch';
+import S from './WatchContainerStyle';
 
-const MyVod = () => {
+const WatchContainer = () => {
   const navigate = useNavigate();
 
   const handleNavigate = (path) => {
@@ -26,7 +26,7 @@ const MyVod = () => {
             </S.SubTitle>
           </S.Title>
 
-          <Vod />
+          <Watch />
 
         </S.Wapper>
       </S.Container>
@@ -36,4 +36,4 @@ const MyVod = () => {
   );
 };
 
-export default MyVod;
+export default WatchContainer;

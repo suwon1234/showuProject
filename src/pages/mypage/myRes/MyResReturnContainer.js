@@ -1,15 +1,16 @@
 import React from 'react';
 import Layout from '../_component/Layout';
 import MypageContainer from '../MypageContainer';
-import MyClass from './MyClass';
+import ReturnContainer from './return/ReturnContainer';
 
-const MyClassContainer = () => {
+
+const MyResReturnContainer = () => {
+  
   return (
     <Layout 
       leftContent={<MypageContainer />}
-      rightContent={<MyClass />}
-    />
+      rightContent={<ReturnContainer />} />
   );
 };
 
-export default MyClassContainer;
+export default MyResReturnContainer;

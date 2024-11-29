@@ -1,10 +1,10 @@
 import React from 'react';
-import S from './style';
-import Paging from '../_component/Paging';
 import { useNavigate } from 'react-router-dom';
-import Vod from './Vod';
+import S from './SubscriptContainerStyle';
+import Subscription from './Subscription';
+import Paging from '../../_component/Paging';
 
-const MyVod = () => {
+const SubscriptContainer = () => {
   const navigate = useNavigate();
 
   const handleNavigate = (path) => {
@@ -26,7 +26,7 @@ const MyVod = () => {
             </S.SubTitle>
           </S.Title>
 
-          <Vod />
+          <Subscription />
 
         </S.Wapper>
       </S.Container>
@@ -36,4 +36,4 @@ const MyVod = () => {
   );
 };
 
-export default MyVod;
+export default SubscriptContainer;

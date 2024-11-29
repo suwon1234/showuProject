@@ -1,16 +1,16 @@
 import React from 'react';
 import Layout from '../_component/Layout';
 import MypageContainer from '../MypageContainer';
-import CommmentContainer from './post/CommmentContainer';
+import CanceleContainer from './cancele/CanceleContainer';
 
 
-const MyActiveComContainer = () => {
+const MyResDetailContainer = () => {
   
   return (
     <Layout 
       leftContent={<MypageContainer />}
-      rightContent={<CommmentContainer />} />
+      rightContent={<CanceleContainer />} />
   );
 };
 
-export default MyActiveComContainer;
+export default MyResDetailContainer;

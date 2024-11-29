@@ -1,7 +1,7 @@
 import React from 'react';
 import Paging from '../../_component/Paging';
-import S from './MyActiveTeamStyle';
-import Report from './list/Report';
+import S from './ReportContainerStyle';
+import Report from './Report';
 
 const ReportContainer = () => {
 

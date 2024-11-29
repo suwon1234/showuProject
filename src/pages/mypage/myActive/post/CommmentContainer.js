@@ -2,9 +2,15 @@ import React from 'react';
 import Paging from '../../_component/Paging';
 import Comment from './Comment';
 import S from './ComContainerStyle';
+import { useNavigate } from 'react-router-dom';
 
 
-const ComContainer = () => {
+const CommmentContainer = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path)
+  }
 
   return (
     <>
@@ -15,8 +21,8 @@ const ComContainer = () => {
             <p className='like'>작성한 글ㆍ댓글 관리</p>
             <S.SubTitle className='subTitle'>
               <ul>
-                <li>작성한 글</li>
-                <li>작성한 댓글</li>
+                <li onClick={() => handleNavigate('/my-active/posts')}>작성한 글</li>
+                <li onClick={() => handleNavigate('/my-active/comments')}>작성한 댓글</li>
               </ul>
             </S.SubTitle>
           </S.Title> 
@@ -32,4 +38,4 @@ const ComContainer = () => {
   );
 };
 
-export default ComContainer;
+export default CommmentContainer;

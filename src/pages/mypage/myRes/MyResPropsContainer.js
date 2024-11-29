@@ -1,16 +1,16 @@
 import React from 'react';
 import Layout from '../_component/Layout';
 import MypageContainer from '../MypageContainer';
-import CommmentContainer from './post/CommmentContainer';
+import PropsContainer from './props/PropsContainer';
 
 
-const MyActiveComContainer = () => {
+const MyResPropsContainer = () => {
   
   return (
     <Layout 
       leftContent={<MypageContainer />}
-      rightContent={<CommmentContainer />} />
+      rightContent={<PropsContainer />} />
   );
 };
 
-export default MyActiveComContainer;
+export default MyResPropsContainer;
