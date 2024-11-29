@@ -1,10 +1,10 @@
 import React from 'react';
-import Paging from '../_component/Paging';
 import { useNavigate } from 'react-router-dom';
-import LikeLesson from './LikeLesson';
-import S from './MyActiveLessonStyle';
+import LikeMd from './LikeMd';
+import Paging from '../../_component/Paging';
+import S from './MyActiveMdStyle';
 
-const MyActiveLesson = () => {
+const MyActiveMd = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -21,8 +21,9 @@ const MyActiveLesson = () => {
             <S.SubTitle className='subTitle'>
               <ul>
                 <li>팀 매칭</li>
-                <li onClick={handleNavigate}>레슨</li>
-                <li>공간ㆍ소품</li>
+                <li>레슨</li>
+                <li>공간</li>
+                <li>소품</li>
                 <li>티켓</li>
                 <li>MD</li>
                 <li>경매</li>
@@ -30,8 +31,8 @@ const MyActiveLesson = () => {
             </S.SubTitle>
           </S.Title>
           
-          {/* 레슨 찜 목록 */}
-          <LikeLesson />
+          {/* md 찜 목록 */}
+          <LikeMd />
 
         </S.Wapper>
       </S.Container>
@@ -41,4 +42,4 @@ const MyActiveLesson = () => {
   );
 };
 
-export default MyActiveLesson;
+export default MyActiveMd;

@@ -1,10 +1,10 @@
 import React from 'react';
-import Paging from '../_component/Paging';
-import S from './MyActiveTeamStyle';
-import LikeMyTeam from './like/LikeMyTeam';
 import { useNavigate } from 'react-router-dom';
+import LikeAction from './LikeAction';
+import Paging from '../../_component/Paging';
+import S from './MyActiveActionStyle';
 
-const MyActiveTeam = () => {
+const MyActiveAction = () => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
@@ -15,23 +15,24 @@ const MyActiveTeam = () => {
     <>
       <S.Container className='container'>
         <S.Wapper className='wapper'>
-        <S.Title className='title'>
+          <S.Title className='title'>
             <p className='activeTitle'>활동 정보</p>
             <p className='like'>찜</p>
             <S.SubTitle className='subTitle'>
               <ul>
                 <li>팀 매칭</li>
-                <li onClick={handleNavigate}>레슨</li>
+                <li>레슨</li>
                 <li>공간</li>
+                <li>소품</li>
                 <li>티켓</li>
                 <li>MD</li>
                 <li>경매</li>
               </ul>
             </S.SubTitle>
-          </S.Title> 
+          </S.Title>
           
-          {/* 팀매칭 찜 목록 */}
-          <LikeMyTeam />
+          {/* 경매 찜 목록 */}
+          <LikeAction />
 
         </S.Wapper>
       </S.Container>
@@ -41,4 +42,4 @@ const MyActiveTeam = () => {
   );
 };
 
-export default MyActiveTeam;
+export default MyActiveAction;
