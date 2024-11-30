@@ -178,9 +178,7 @@ const S = {};
     margin-top: 100px;
 
     & button {
-      display: flex;
-      align-items: center;
-      width: 250px;
+      width: 280px;
       height: 55px;
       border: none;
       border-radius: 50px;
@@ -188,8 +186,7 @@ const S = {};
       color: #000;
       font-size: 20px;
       font-weight: bold;
-      text-align: center;
-      padding-left: 55px;
+      padding-right: 30px;
       position: relative;
       
       &:hover {
@@ -199,7 +196,8 @@ const S = {};
 
     & .icon2 {
       position: absolute;
-      right: 55px;
+      bottom: 20px;
+      right: 70px;
     }
 
     path {

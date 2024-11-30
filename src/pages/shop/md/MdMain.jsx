@@ -3,7 +3,7 @@ import React from 'react';
 import S from './styleMain'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronRight, faCircleChevronLeft,faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 
 const mdBest = [
@@ -41,16 +41,26 @@ const MdMain = () => {
       </S.BestTitle>
       
       <S.BestWrapper>
-        <div className='best-list'>{mdBest.map((best) => (
+        <S.LeftIconWrapper>
+        <FontAwesomeIcon icon={faCircleChevronLeft} className='left-icon'/>
+        </S.LeftIconWrapper>
+
+
+        <S.BestListWrapper>
+          {mdBest.map((best) => (
           <S.Best key={best.id}>
-            <S.ImageWrapper>
-              <Link to={"/shop/mdDetail"}><img src={best.image} /></Link>
-            </S.ImageWrapper>
+              <Link to={"/shop/mdDetail"}>
+              <img src={best.image} alt={best.image} className='image' />
+              </Link>
             <div className='best-name'>{best.name}</div>
             <div className='best-price'>{best.price}원</div>
           </S.Best>
         ))}
-        </div>
+        </S.BestListWrapper>
+
+        <S.RightIconWrapper>
+        <FontAwesomeIcon icon={faCircleChevronRight} className='right-icon'/>
+        </S.RightIconWrapper>
       </S.BestWrapper>
 
       <S.CategoryButton>
@@ -66,11 +76,12 @@ const MdMain = () => {
       </S.CategoryButton>
 
       <S.MdWrapper>
-        <S.MdList>{mds.map((md) => (
+        <div className='md-list'>{mds.map((md) => (
           <S.Md key={md.id}>
-            <S.ImageWrapper2>
-              <Link to={"/shop/mdDetail"}><img src={md.image} /></Link>   
-            </S.ImageWrapper2>
+            <Link to={"/shop/mdDetail"}>
+            <img src={md.image} alt={md.image} className='image'/>
+            </Link>   
+
             <div className='md-name'>{md.name}</div>
             <div className='md-price'>{md.price}원</div>
           </S.Md>
@@ -82,7 +93,7 @@ const MdMain = () => {
             MD 더보기
           </button>
         </S.ButtonWrapper>
-          </S.MdList>
+        </div>
       </S.MdWrapper>
     </S.MainWrapper>
   );
