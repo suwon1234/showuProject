@@ -17,6 +17,7 @@ const S = {};
 
     display: flex;
     position: relative;
+    cursor: pointer;
   `
 
   S.LeftLamp = styled.div`
@@ -93,6 +94,7 @@ const S = {};
 
     display: flex;
     position: relative;
+    cursor: pointer;
   `
 
   S.RightLamp = styled.div`

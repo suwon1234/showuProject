@@ -1,10 +1,17 @@
 import React from 'react';
 import S from './style';
+import { useNavigate } from 'react-router-dom';
 
 const IndexContainer = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path)
+  }
+
   return (
     <S.Container>
-      <S.Left>
+      <S.Left onClick={() => handleNavigate('/main')}>
         <S.LeftLamp>
           <img className='lamp' src={process.env.PUBLIC_URL + "/images/index/lamp.png"} alt='램프' />
           <img className='light' src={process.env.PUBLIC_URL + "/images/index/yellowLight.png"} alt='노란색빛' />
@@ -19,14 +26,14 @@ const IndexContainer = () => {
         </S.leftChat>
       </S.Left>
 
-      <S.Right className='right'>
-        <S.RightLamp className='rightLamp'>
+      <S.Right onClick={() => handleNavigate('/main')}>
+        <S.RightLamp>
           <img className='lamp' src={process.env.PUBLIC_URL + "/images/index/lamp.png"} alt='램프' />
           <img className='light' src={process.env.PUBLIC_URL + "/images/index/whiteLight.png"} alt='하얀색빛' />
         </S.RightLamp>
-        <S.RightChat className='rightChat'>
+        <S.RightChat>
           <span>18:00 PM</span>
-          <S.MemberChat className='memberChat'>
+          <S.MemberChat>
             <p>새로운 팀원을 만나고 성장하세요!</p>
           </S.MemberChat>
           <p className='gt'>&gt;</p>
