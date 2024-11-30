@@ -24,21 +24,21 @@ const S = {};
         margin-right: 140px;
     `
 
-S.IconWrapper = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-margin-top: 5px;
-height: 100%;
+    S.IconWrapper = styled.div`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+        height: 100%;
 
-.icon{
-  font-size: 20px;
+        .icon{
+            font-size: 20px;
 
-  path {
-    color : #ffd400;
-  }
-}
-`
+        path {
+            color : #ffd400;
+        }
+    }
+    `
 
     S.Buttons = styled.div`
         padding-top: 50px;
@@ -74,7 +74,8 @@ height: 100%;
     `;
 
     S.Img = styled.div`
-        width: 300px;
+        max-width: 300px;
+        width: 100%;
         height: 250px; 
         margin-bottom: 100px;
         padding: auto;

@@ -1,4 +1,4 @@
-// 제보하기 페이지
+// 제보하기 페이지  /community/report
 
 import React from 'react';
 import S from './styleReport';

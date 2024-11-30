@@ -1,4 +1,4 @@
-// 뉴스 메인 화면
+// 뉴스 메인 화면  /community/newsMain
 
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -112,7 +112,8 @@ const Community = () => {
           {newsData.map((news) => (
             <S.NewsItem key={news.id}>
               <S.ImageWrapper>
-                <Link to="/community/news/news1">
+                {/* <Link to={`/community/news/${news.id}`}> */}
+                <Link to={`/community/newsMain/news${news.id}`}>
                   <img src={news.imageUrl} alt={news.title} />   
                 </Link>      
               </S.ImageWrapper>
