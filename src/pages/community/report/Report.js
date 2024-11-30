@@ -2,6 +2,7 @@
 
 import React from 'react';
 import S from './styleReport';
+import { useNavigate } from 'react-router-dom';
 
 const handleFile = (event) => {
     alert("파일 크기는 5MB 이하로 업로드해주세요.");
@@ -11,7 +12,19 @@ const handleSubmit = () => {
   alert("참여가 완료되었습니다!");  
 };
 
+
+
 const Report = () => {
+
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    const userCheck =alert("News 홈 화면으로 이동합니다. 이동하시겠습니까?");
+    if (userCheck) {
+      navigate('/community/newsMain');
+    }
+  };
+
   return (   
     <S.Wrapper>
       <S.TopTitle>News</S.TopTitle>
@@ -92,7 +105,9 @@ const Report = () => {
           </div>
         </S.section>
         <S.buttonWrapper>
-          <button>이전 화면으로</button>
+        {/* <NavLink to="/community/newsMain"> */}
+          <button onClick={handleBack}>이전 화면으로</button>
+        {/* </NavLink>  */}
           <button onClick={handleSubmit}>참여하기</button>
         </S.buttonWrapper>
         </S.border>

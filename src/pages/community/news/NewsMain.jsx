@@ -3,6 +3,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import S from './style';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const newsData = [
   {
@@ -79,6 +81,9 @@ const Community = () => {
       <S.TopTitle>
         News
       </S.TopTitle>
+      <S.IconWrapper>
+        <FontAwesomeIcon icon={faChevronDown} className='icon' />
+      </S.IconWrapper>
 
       <S.SubWrapper> 
         {/* 뉴스 콘텐츠 화면 */}

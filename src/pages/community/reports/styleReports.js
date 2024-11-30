@@ -19,6 +19,32 @@ const S = {};
         margin-right: 140px;
     `;
 
+S.TopTitle = styled.div` // 상단 News title
+font-size: 30px;
+font-weight: bold;
+color: #ffd400;
+justify-content: center;
+display: flex;
+padding-top: 30px;
+`
+
+S.IconWrapper = styled.div`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+        height: 100%;
+
+        .icon{
+            font-size: 20px;
+            padding-bottom: 50px;
+
+            path {
+                color : #ffd400;
+    }
+}
+`
+
     S.Title = styled.div`
         display: flex;
         
@@ -63,8 +89,8 @@ const S = {};
         display: flex;
         justify-content: center;
         width: 100%;
-        height: 400px;
-        margin-top: 200px;
+        height: 300px;
+        margin-top: 30px;
 
         table {
             width: 1000px;
@@ -74,22 +100,18 @@ const S = {};
                 background-color: #ffd400;
 
             th {
-                padding: 10px;
+                padding: 15px;
                 text-align: left;
-                font-size: 16px;
+                font-size: 18px;
+                color: #000;
+                font-weight: bold;
             }
         }
 
-            tbody {
-                background-color: #222;
+            tbody {         
 
             tr {
                 border-bottom: 1px solid #444;
-
-                &:hover {
-                    background-color: #333;
-                    color: #ffd400;
-                }
             }
 
             td {
@@ -97,28 +119,37 @@ const S = {};
                 font-size: 14px;
                 overflow: hidden;
                 text-overflow: ellipsis;
+
+                .linkStyle {
+                    &:hover {
+                        color: #ffd400;
+                        }
+                    }
                 }
             }
         }
     `;
 
-S.Pagination = styled.div`
-  display: flex;
-  justify-content: center;
-  gap: 10px;
+    S.PageNumber = styled.div`
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 10px;
+        margin-bottom: 50px;
 
-  span {
-    cursor: pointer;
-    padding: 5px 10px;
-    border-radius: 5px;
-    background-color: #444;
-    color: white;
+        span {
+            cursor: pointer;
+            color : #444;  
 
-    &:hover {
-      background-color: #ffd400;
-      color: black;
-    }
-  }
-`;
+            &:hover {
+                color: #ffd400;; 
+                }
+        }
+
+        p {
+            cursor: pointer;
+            color : #ffd400;  
+        }
+    `;
 
 export default S;

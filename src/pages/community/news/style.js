@@ -13,13 +13,30 @@ const S = {};
         background-color: #444444;      
     `
 
+    S.IconWrapper = styled.div`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+        height: 100%;
+
+        .icon{
+            font-size: 20px;
+            padding-bottom: 50px;
+
+            path {
+                color : #ffd400;
+    }
+}
+`
+
     S.TopTitle = styled.div` // 상단 News title
         font-size: 30px;
         font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
         color: #ffd400;
         justify-content: center;
         display: flex;
-        padding: 30px;
+        padding-top: 30px;
     `
 
     S.SubWrapper = styled.div` // 내용 black 배경
