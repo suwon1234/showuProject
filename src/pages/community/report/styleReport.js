@@ -4,6 +4,32 @@ import styled  from "styled-components";
 import { backgroundBlack } from "../../../global/common";
 
 const S = {};
+
+    S.Wrapper = styled.div`
+        background-color: #444444; 
+    `
+
+    S.box = styled.div`
+        background-color: #ffd400;
+        height: 40px;
+        margin-bottom: 100px;
+    `
+
+    S.SubWrapper = styled.div` // 전체 배경 black
+        ${backgroundBlack}  
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-left: 140px;
+        margin-right: 140px;
+`;
+
+    S.border = styled.div`
+        border: 1px solid ${({ theme }) => theme.PALLETE.gray["600"]};
+        max-width: 900px;
+        margin: 0 auto;
+    `
+
     S.TopTitle = styled.div` // 상단 News title
         font-size: 30px;
         font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
@@ -31,17 +57,6 @@ const S = {};
     margin-left: 8px;
     `
 
-    S.SubWrapper = styled.div` // 전체 배경 black
-        ${backgroundBlack}     
-        color: ${({ theme }) => theme.PALLETE.white};
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        border: 1px solid ${({ theme }) => theme.PALLETE.gray["600"]};
-        max-width: 900px;
-        margin: 0 auto;
-        background-color: ${({ theme }) => theme.PALLETE.gray["900"]};
-    `;
 
     S.TitleContainer = styled.div`
         display: flex;
@@ -71,6 +86,7 @@ const S = {};
         flex-direction: column;
         gap: 20px;
         margin-bottom: 40px;
+        
 
         label {
             font-size: ${({ theme }) => theme.FONT_SIZE.h7};
@@ -80,10 +96,11 @@ const S = {};
         input {
             padding: 10px;
             font-size: ${({ theme }) => theme.FONT_SIZE.h7};
-            border: 1px solid ${({ theme }) => theme.PALLETE.gray["600"]};
+            border: 1px solid #ffd400;
             border-radius: 4px;
-            background-color: ${({ theme }) => theme.PALLETE.gray["800"]};
-            color: ${({ theme }) => theme.PALLETE.white};
+            color: #ffd400;
+            background-color: #000;
+            
         }
 
         div {
@@ -109,6 +126,13 @@ const S = {};
         }
     `;
 
+    S.FileInput = styled.input`
+        &:hover {
+        background-color: #ffd400; 
+        color: black; 
+    }
+    `
+
     S.buttonWrapper = styled.div`
         display: flex;
         justify-content: center;
@@ -125,10 +149,10 @@ const S = {};
             cursor: pointer;
 
             &:hover {
-                background-color: ${({ theme }) => theme.PALLETE.gray["600"]};
-            }
+            background-color: #ffd400; 
+            color: black; 
         }
-    `
+    }`
 
     
 

@@ -1,7 +1,8 @@
 import React from 'react';
-import S from './style';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import S from './styleCommunity';
 
 const Community = () => {
   const commuData = [

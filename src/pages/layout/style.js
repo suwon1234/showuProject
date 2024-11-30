@@ -103,7 +103,7 @@ S.menubar=styled.div`
   }
   & .menudivider{
     color: white;
-  }
+  } 
 
 `
 S.main=styled.main`
@@ -123,10 +123,33 @@ background-color: black;
 `
 
 
+/* 커뮤니티 메뉴 스타일 */
 
+S.dropdown = styled.div`
+  position: absolute;
+  background-color: black;
+  border: 1px solid #ccc;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  display: block;
+`;
 
+S.dropdownItem = styled.div`
+padding: 10px 20px;
 
+  a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+  }
 
+  a:hover {
+    color: #FDDE39;
+    font-weight: bold;
+    text-decoration: underline;
+    }
+  `;
 
 
 
