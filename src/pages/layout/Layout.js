@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import S from './style';
 
 const Layout = () => {
+
+    const [hover, setHover] = useState(false);  // 커뮤니티 호버 상태
+    const handleMouseEnter = () => {
+      setHover(true);
+  } 
+    const handleMouseLeave = () => {
+      setHover(false);
+  };
+
   return (
     <S.Background className='Background'>
       <header className="header">
@@ -48,9 +57,27 @@ const Layout = () => {
     <NavLink to={"/hot"} className="menuitemhot">
       HOT
     </NavLink>
+
+{/* 커뮤니티 */}
+    <div 
+      onMouseEnter={handleMouseEnter} 
+      onMouseLeave={handleMouseLeave}
+      >
     <NavLink to={"/community"} className="menuitem">
       커뮤니티
     </NavLink>
+    {hover && (
+      <S.dropdown>
+        <S.dropdownItem>
+          <Link to="/community/newsMain">News</Link>
+        </S.dropdownItem>
+        <S.dropdownItem>
+            <Link to="/community/audition">Audition</Link>
+        </S.dropdownItem>
+      </S.dropdown>
+      )}
+    </div>
+
     <NavLink to={"/mypage"} className="menuitem">
       마이페이지
     </NavLink>

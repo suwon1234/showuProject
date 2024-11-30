@@ -4,7 +4,6 @@ import Main from '../pages/main/Main';
 import AdminContainer from '../pages/admin/AdminContainer';
 import IndexContainer from '../pages/index/IndexContainer';
 import LoginContainer from '../pages/login/LoginContainer';
-import MypageContainer from '../pages/mypage/MypageContainer';
 import ReservationContainer from '../pages/reservation/ReservationContainer';
 import ShopContainer from '../pages/shop/md/ShopContainer';
 import ShowuContainer from '../pages/showu/ShowuContainer';
@@ -58,6 +57,8 @@ import MyVodSubscriptContainer from '../pages/mypage/myVod/MyVodSubscriptContain
 import MyVodWatchContainer from '../pages/mypage/myVod/MyVodWatchContainer';
 import CompleteIdContainer from '../pages/completeId/CompleteIdContainer';
 import PlayContainer from '../pages/vod/video/mainpage/PlayContainer';
+import CommunityContainer from '../pages/community/main/CommunityContainer';
+import ReportsInfoContainer from '../pages/community/reports/ReportsInfoContainer';
 const router = createBrowserRouter([
   {
     path : '/',
@@ -74,6 +75,10 @@ const router = createBrowserRouter([
       {
         path : '/admin',
         element : <AdminContainer />
+      },
+      {
+        path : '/community',
+        element : <CommunityContainer />  // 커뮤니티 메인 페이지
       },
       {
         path : '/community/communityInfo',
@@ -116,7 +121,7 @@ const router = createBrowserRouter([
         element : <NewsMainContainer />  // 뉴스 메인 페이지
       },
       {
-        path : '/community/newsMain/news',
+        path : '/community/newsMain/news:id',
         element : <NewsContainer />  // 뉴스 세부 페이지
       },
       {
@@ -126,6 +131,10 @@ const router = createBrowserRouter([
       {
         path : '/community/reports',
         element : <ReportsContainer />  // 제보내역 페이지
+      },
+      {
+        path: '/community/reports/:id',
+        element: <ReportsInfoContainer />, // 제보내역 상세 페이지
       },
       {
         path : '/community/newsMain/popularity',
@@ -295,6 +304,11 @@ const router = createBrowserRouter([
     path : '/reset-password',
     element : <FindPasswordContainer /> //비밀번호 변경 페이지
   }
-])
+
+  
+]
+)
+
+
 
 export default router;

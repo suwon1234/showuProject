@@ -5,9 +5,30 @@ import { backgroundBlack } from "../../../global/common";
 
 
 const S = {};
+
+    S.MainContents = styled.div`
+        flex: 3;
+    `
     S.Wrapper = styled.div` // 전체 배경 gray
         background-color: #444444;      
     `
+
+    S.IconWrapper = styled.div`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+        height: 100%;
+
+        .icon{
+            font-size: 20px;
+            padding-bottom: 50px;
+
+            path {
+                color : #ffd400;
+    }
+}
+`
 
     S.TopTitle = styled.div` // 상단 News title
         font-size: 30px;
@@ -15,11 +36,14 @@ const S = {};
         color: #ffd400;
         justify-content: center;
         display: flex;
-        padding: 30px;
+        padding-top: 30px;
     `
 
     S.SubWrapper = styled.div` // 내용 black 배경
         ${backgroundBlack}
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
         margin-left: 140px;
         margin-right: 140px;
     `
@@ -112,6 +136,44 @@ const S = {};
         margin-bottom: 8px;
         font-size: ${({ theme }) => theme.FONT_SIZE.h7};
         color: ${({ theme }) => theme.PALLETE.gray["300"]};
+    `;
+
+    S.side = styled.div`
+        width: 260px;
+        position: fixed; 
+        top: 170px; 
+        right: 170px; 
+        background-color: #222;
+        border-radius: 8px;
+        z-index: 100; 
+     `;
+
+    S.SideTitle = styled.h1`
+    font-size: ${({ theme }) => theme.FONT_SIZE.h5};
+    font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
+    color: #000;
+    background-color: #ffd400;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 20px;
+    `;
+
+    S.SideItem = styled.div`
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+        margin-left: 10px;
+
+        img {
+        width: 120px;
+        height: 100px;
+        object-fit: cover;
+        margin-right: 12px;
+    }
+        span {
+        font-size: ${({ theme }) => theme.FONT_SIZE.h7};
+         color: ${({ theme }) => theme.PALLETE.white};
+        }
     `;
 
 export default S;
