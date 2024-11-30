@@ -1,24 +1,46 @@
 {
-  "play" : [
-    { "id": 1, 
-    "title": "영상 1", 
-    "thumbnail": "/thumbnails/video1.jpg", 
-    "videoUrl": "testplay.mp4" },
-
-    { "id": 2, 
-    "title": "영상 2", 
-    "thumbnail": "/thumbnails/video2.jpg", 
-    "videoUrl": "testplay.mp4" },
-
-    { "id": 3, 
-    "title": "영상 3", 
-    "thumbnail": "/thumbnails/video3.jpg", 
-    "videoUrl": "testplay.mp4" }
+  "play" :[
+    {
+      "id": "1",
+      "title": "영상 1",
+      "thumbnail": "/thumbnails/video1.jpg",
+      "videoUrl": "/video/testplay.mp4",
+      "mainImage": "https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=167824821/200x300?"
+    },
+    {
+      "id": "2",
+      "title": "영상 2",
+      "thumbnail": "../videos/video1.mp4",
+      "videoUrl": "../videos/video1.mp4",
+      "mainImage": "https://web-cf-image.cjenm.com/resize/1344x756/public/share/metamng/programs/42ndstreetonbroadway-musical-ko-003-07.jpg?v=1676454555/200x300?"
+     
+    },
+    {
+      "id": "3",
+      "title": "영상 3",
+      "thumbnail": "../videos/video1.mp4",
+      "videoUrl": "testplay.mp4",
+      "mainImage": "https://web-cf-image.cjenm.com/resize/1344x756/public/share/metamng/programs/gwangwhamunlovesong-musical-ko-004-03.jpg?v=1727398714/200x300?"
+     
+    },
+    {
+      "id": "4",
+      "title": "영상 4",
+      "thumbnail": "../videos/video1.mp4",
+      "videoUrl": "testplay.mp4",
+      "mainImage": "https://web-cf-image.cjenm.com/resize/1344x756/public/share/metamng/programs/contents-detail-image-moulin-rouge-the-musical-10.jpg?v=1678248215/200x300?"
+    
+    },
+    {
+      "id": "5",
+      "title": "영상 5",
+      "thumbnail": "../videos/video1.mp4",
+      "videoUrl": "testplay.mp4",
+      "mainImage": "https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20241015_196%2F1728982918695jsvLp_JPEG%2Fmovie_image.jpg/200x300?"
+   
+    }
   ]
-
-
-
-
+  
 
 
 }
