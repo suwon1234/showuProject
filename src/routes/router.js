@@ -4,14 +4,12 @@ import Main from '../pages/main/Main';
 import AdminContainer from '../pages/admin/AdminContainer';
 import IndexContainer from '../pages/index/IndexContainer';
 import LoginContainer from '../pages/login/LoginContainer';
-import MypageContainer from '../pages/mypage/MypageContainer';
 import ReservationContainer from '../pages/reservation/ReservationContainer';
 import ShopContainer from '../pages/shop/md/ShopContainer';
 import ShowuContainer from '../pages/showu/ShowuContainer';
 import VodContainer from '../pages/vod/VOD/VodContainer';
 import JoinContainer from '../pages/join/JoinContainer';
 import MyActiveContainer from '../pages/mypage/myActive/MyActiveContainer';
-import MyClassContainer from '../pages/mypage/myClass/MyClassContainer';
 import MyGradeContainer from '../pages/mypage/myGrade/MyGradeContainer';
 import MyInfoContainer from '../pages/mypage/myInfo/MyInfoContainer';
 import MyPayContainer from '../pages/mypage/myPay/MyPayContainer';
@@ -37,7 +35,30 @@ import PopularityContainer from '../pages/community/newspopularity/PopularityCon
 import AuditionContainer from '../pages/community/audition/AuditionContainer';
 import AuditionInfoContainer from '../pages/community/audition/AuditionInfoContainer';
 import WriteContainer from '../pages/community/writing/WriteContainer';
-
+import LikeLessonContainer from '../pages/mypage/myActive/likeLesson/LikeLessonContainer';
+import LikeAuctionContainer from '../pages/mypage/myActive/likeAction/LikeAuctionContainer';
+import LikeMdContainer from '../pages/mypage/myActive/likeMd/LikeMdContainer';
+import LikePropContainer from '../pages/mypage/myActive/likeProp/LikePropContainer';
+import LikeTicketContainer from '../pages/mypage/myActive/likeTicket/LikeTicketContainer';
+import LikeSpaceContainer from '../pages/mypage/myActive/likeSpace/LikeSpaceContainer';
+import MyActiveReviewContainer from '../pages/mypage/myActive/MyActiveReviewContainer';
+import MyActivePostContainer from '../pages/mypage/myActive/MyActivePostContainer';
+import MyActiveComContainer from '../pages/mypage/myActive/MyActiveComContainer';
+import MyActiveReportContainer from '../pages/mypage/myActive/MyActiveReportContainer';
+import MyResPropsContainer from '../pages/mypage/myRes/MyResPropsContainer';
+import MyResReturnContainer from '../pages/mypage/myRes/MyResReturnContainer';
+import MyResTicketContainer from '../pages/mypage/myRes/MyResTicketContainer';
+import MyResCanceleContainer from '../pages/mypage/myRes/MyResCanceleContainer';
+import MyResDetailContainer from '../pages/mypage/myRes/MyResDetailContainer';
+import MyClassWatchContainer from '../pages/mypage/myClass/MyClassWatchContainer';
+import MyClassCreateContainer from '../pages/mypage/myClass/MyClassCreateContainer';
+import MyClassAdviceContainer from '../pages/mypage/myClass/MyClassAdviceContainer';
+import MyVodSubscriptContainer from '../pages/mypage/myVod/MyVodSubscriptContainer';
+import MyVodWatchContainer from '../pages/mypage/myVod/MyVodWatchContainer';
+import CompleteIdContainer from '../pages/completeId/CompleteIdContainer';
+import PlayContainer from '../pages/vod/video/mainpage/PlayContainer';
+import CommunityContainer from '../pages/community/main/CommunityContainer';
+import ReportsInfoContainer from '../pages/community/reports/ReportsInfoContainer';
 const router = createBrowserRouter([
   {
     path : '/',
@@ -54,6 +75,10 @@ const router = createBrowserRouter([
       {
         path : '/admin',
         element : <AdminContainer />
+      },
+      {
+        path : '/community',
+        element : <CommunityContainer />  // 커뮤니티 메인 페이지
       },
       {
         path : '/community/communityInfo',
@@ -96,7 +121,7 @@ const router = createBrowserRouter([
         element : <NewsMainContainer />  // 뉴스 메인 페이지
       },
       {
-        path : '/community/newsMain/news',
+        path : '/community/newsMain/news:id',
         element : <NewsContainer />  // 뉴스 세부 페이지
       },
       {
@@ -106,6 +131,10 @@ const router = createBrowserRouter([
       {
         path : '/community/reports',
         element : <ReportsContainer />  // 제보내역 페이지
+      },
+      {
+        path: '/community/reports/:id',
+        element: <ReportsInfoContainer />, // 제보내역 상세 페이지
       },
       {
         path : '/community/newsMain/popularity',
@@ -120,39 +149,111 @@ const router = createBrowserRouter([
         element : <AuditionInfoContainer />  // 오디션 세부 페이지
       },    
       {
-        path : '/mypage',
-        element : <MypageContainer />
+        path : '/my-active/like/my-team',
+        element : <MyActiveContainer /> //찜 - 팀 매칭 페이지
       },
       {
-        path : '/mypage/myActive',
-        element : <MyActiveContainer /> //활동 정보
+        path : '/my-active/like/my-class',
+        element : <LikeLessonContainer /> //찜 - 레슨 페이지
       },
       {
-        path : '/mypage/myClass',
-        element : <MyClassContainer /> //레슨 정보
+        path : '/my-active/like/space',
+        element : <LikeSpaceContainer /> //찜 - 공간 페이지
       },
       {
-        path : '/mypage/myGrade',
+        path : '/my-active/like/prop',
+        element : <LikePropContainer /> //찜 - 소품 페이지
+      },
+      {
+        path : '/my-active/like/tickets',
+        element : <LikeTicketContainer /> //찜 - 티켓 페이지
+      },
+      {
+        path : '/my-active/like/md',
+        element : <LikeMdContainer /> //찜 - md 페이지
+      },
+      {
+        path : '/my-active/like/auction',
+        element : <LikeAuctionContainer /> //찜 - 경매 페이지
+      },
+      {
+        path : '/my-active/reviews',
+        element : <MyActiveReviewContainer /> //후기관리 페이지
+      },
+      {
+        path : '/my-active/posts',
+        element : <MyActivePostContainer /> //작성한 글 관리 페이지
+      },
+      {
+        path : '/my-active/comments',
+        element : <MyActiveComContainer /> //작성한 댓글 관리 페이지
+      },
+      {
+        path : '/my-active/reports',
+        element : <MyActiveReportContainer /> //제보 관리 페이지
+      },
+      {
+        path : '/my-res/props',
+        element : <MyResPropsContainer /> //소품 대여 페이지
+      },
+      {
+        path : '/my-res/space',
+        element : <MyResContainer /> //공간 대여 페이지
+      },
+      {
+        path : '/my-res/returns',
+        element : <MyResReturnContainer /> //반납 내역 페이지
+      },
+      {
+        path : '/my-res/ticket',
+        element : <MyResTicketContainer /> //티켓 내역 페이지
+      },
+      {
+        path : '/my-res/ticket/cancele',
+        element : <MyResCanceleContainer /> //티켓 내역 페이지
+      },
+      {
+        path : '/my-res/ticket/detail',
+        element : <MyResDetailContainer /> //티켓 상세 페이지 페이지
+      },
+      {
+        path : '/my-class/watching',
+        element : <MyClassWatchContainer /> //수강중인 레슨 정보
+      },
+      {
+        path : '/my-class/created',
+        element : <MyClassCreateContainer /> //개설한 레슨 정보
+      },
+      {
+        path : '/my-class/advice',
+        element : <MyClassAdviceContainer /> //상담 신청 내역 페이지
+      },
+      {
+        path : '/my-vod/subscriptions',
+        element : <MyVodSubscriptContainer /> //구독한 vod 페이지
+      },
+      {
+        path : '/my-vod/watching',
+        element : <MyVodWatchContainer /> //시청중인 컨텐츠 페이지
+      },
+      {
+        path : '/up-grade',
         element : <MyGradeContainer /> //등급 정보
       },
       {
-        path : '/mypage/myInfo',
+        path : '/mypage',
         element : <MyInfoContainer /> //회원 정보
       },
       {
-        path : '/mypage/myPay',
+        path : '/my-pay',
         element : <MyPayContainer /> //결제 정보
       },
       {
-        path : '/mypage/myRes',
-        element : <MyResContainer /> //예약 정보
-      },
-      {
-        path : '/mypage/myTeam',
+        path : '/my-team',
         element : <MyTeamContainer /> //팀매칭 정보
       },
       {
-        path : '/mypage/myVod',
+        path : '/my-vod',
         element : <MyVodContainer /> //VOD 정보
       },
       {
@@ -175,6 +276,11 @@ const router = createBrowserRouter([
         path : '/vod',
         element : <VodContainer />
       },
+      {
+        path : '/vod/play',
+        element : <PlayContainer/>
+
+      },
 
     ]
   },
@@ -187,13 +293,22 @@ const router = createBrowserRouter([
     element : <JoinContainer />
   },
   {
-    path : '/findId',
+    path : '/find-id',
     element : <FindIdContainer />
   },
   {
-    path : '/findPassword',
-    element : <FindPasswordContainer />
+    path : '/complete',
+    element : <CompleteIdContainer /> //아이디 찾기 완료 페이지
+  },
+  {
+    path : '/reset-password',
+    element : <FindPasswordContainer /> //비밀번호 변경 페이지
   }
-])
+
+  
+]
+)
+
+
 
 export default router;
