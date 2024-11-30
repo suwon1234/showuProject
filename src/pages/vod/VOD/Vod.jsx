@@ -1,17 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import S from '../VOD/style';
 import { Link, NavLink } from 'react-router-dom';
 
-const Vod = () => {
-  //메인 이미지
-  const mainimages = [
-    { src: 'https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=167824821/200x300?', badge: '' },
-    { src: 'https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=167824821/200x300?', badge: '' },
-    { src: 'https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=167824821/200x300?', badge: '' },
-    { src: 'https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=167824821/200x300?', badge: '' },
-    { src: 'https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=167824821/200x300?', badge: '' },
-  ];
+const Vod = ({plays}) => {
 
+ 
 
   // 슬라이드 이미지 배열
   const images = [
@@ -63,15 +56,17 @@ const Vod = () => {
         <div className='title'>ShowU의 추천</div>
         <a className="more" href='/vod/more'>더보기</a>
         <S.showuRecommendationPage className='showuRecommendationPage'>
-        {mainimages.map((image, index) => (
-          <S.Card key={index}>
-              <Link to={"/vod/play"}>
-            <a href="javascript:void(0)" role="button">
-                {image.badge && <div className="badge">{image.badge}</div>}
-                <img src={image.src} alt={`Image ${index + 1}`} />
+        {plays && plays.map((play) => (
+            <S.Card key={play.id}>
+              {/* 클릭 시 /vod/play 경로로 이동 */}
+              <Link to={`/vod/play?programid=${play.id}`} >
+                <a href="javascript:void(0)" role="button" >
+                  {play.mainImage && (
+                    <img src={play.mainImage} alt={`Video ${play.id}`} />
+                  )}
                 </a>
               </Link>
-          </S.Card>
+            </S.Card>
         ))}
         </S.showuRecommendationPage>
 
@@ -80,15 +75,17 @@ const Vod = () => {
         <div className='title'>실시간 인기 컨텐츠</div>
         <a className="more" href='/vod/more'>더보기</a>
         <S.showuRecommendationPage className='showuRecommendationPage'>
-        {mainimages.map((image, index) => (
-          <S.Card key={index}>
-            <Link to={"/vod/play"}>
-            <a href="javascript:void(0)" role="button">
-                {image.badge && <div className="badge">{image.badge}</div>}
-                <img src={image.src} alt={`Image ${index + 1}`} />
+        {plays && plays.map((play) => (
+            <S.Card key={play.id}>
+              {/* 클릭 시 /vod/play 경로로 이동 */}
+              <Link to={`/vod/play?programid=${play.id}`} >
+                <a href="javascript:void(0)" role="button" >
+                  {play.mainImage && (
+                    <img src={play.mainImage} alt={`Video ${play.id}`} />
+                  )}
                 </a>
               </Link>
-          </S.Card>
+            </S.Card>
         ))}
         </S.showuRecommendationPage>
 
@@ -105,15 +102,17 @@ const Vod = () => {
         <div className='title'>ShowU의 추천</div>
         <a className="more" href='/vod/more'>더보기</a>
         <S.showuRecommendationPage className='showuRecommendationPage'>
-        {mainimages.map((image, index) => (
-          <S.Card key={index}>
-            <Link to={"/vod/play"}>
-            <a href="javascript:void(0)" role="button">
-                {image.badge && <div className="badge">{image.badge}</div>}
-                <img src={image.src} alt={`Image ${index + 1}`} />
+        {plays && plays.map((play) => (
+            <S.Card key={play.id}>
+              {/* 클릭 시 /vod/play 경로로 이동 */}
+              <Link to={`/vod/play?programid=${play.id}`} >
+                <a href="javascript:void(0)" role="button" >
+                  {play.mainImage && (
+                    <img src={play.mainImage} alt={`Video ${play.id}`} />
+                  )}
                 </a>
               </Link>
-          </S.Card>
+            </S.Card>
         ))}
         </S.showuRecommendationPage>
 
