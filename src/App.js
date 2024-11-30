@@ -3,6 +3,7 @@ import GlobalStyle from "./global/global";
 import theme from "./global/theme";
 import { RouterProvider } from "react-router-dom";
 import router from "./routes/router";
+import MdCartContainer from "./pages/shop/md/MdCart/MdCartContainer";
 
 
 function App() {
@@ -10,7 +11,8 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <RouterProvider router={router} />
+        <MdCartContainer />
+        {/* <RouterProvider router={router} /> */}
       </ThemeProvider>
     </>
   );
