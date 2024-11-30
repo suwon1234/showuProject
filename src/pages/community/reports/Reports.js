@@ -2,9 +2,9 @@
 
 import React from "react";
 import S from "./styleReports";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 
 const Reports = () => {
   const reportsData = [

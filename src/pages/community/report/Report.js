@@ -4,7 +4,7 @@ import React from 'react';
 import S from './styleReport';
 import { useNavigate } from 'react-router-dom';
 
-const handleFile = (event) => {
+const handleFile = () => {
     alert("파일 크기는 5MB 이하로 업로드해주세요.");
 };
 
