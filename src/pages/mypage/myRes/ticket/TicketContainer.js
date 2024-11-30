@@ -16,8 +16,7 @@ const TicketContainer = () => {
       <S.Container className='container'>
         <S.Wapper className='wapper'>
         <S.Title className='title'>
-            <p className='activeTitle'>활동 정보</p>
-            <p className='like'>제보 관리</p>
+            <p className='activeTitle'>티켓 예매 내역</p>
             <S.SubTitle className='subTitle'>
               <ul>
                 <li onClick={() => handleNavigate('/my-res/ticket')}>예매 확인</li>
