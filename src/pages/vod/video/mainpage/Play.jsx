@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-const Play = () => {
+const Play = ({ play }) => {
+  const {id,title,thumbnail,videoUrl,mainImage}=play;
+
+
   return (
-    <div className='play'>
-      <div className='wrapper'> 
-        <video controls width={"200px"}>
-          
-        </video>
-
-      </div>
-      
+    <div>
+      <video src={videoUrl} controls width="600px">
+      </video>
+      <h1>{title}</h1>
     </div>
   );
 };

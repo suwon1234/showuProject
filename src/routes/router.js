@@ -57,7 +57,7 @@ import MyClassAdviceContainer from '../pages/mypage/myClass/MyClassAdviceContain
 import MyVodSubscriptContainer from '../pages/mypage/myVod/MyVodSubscriptContainer';
 import MyVodWatchContainer from '../pages/mypage/myVod/MyVodWatchContainer';
 import CompleteIdContainer from '../pages/completeId/CompleteIdContainer';
-
+import PlayContainer from '../pages/vod/video/mainpage/PlayContainer';
 const router = createBrowserRouter([
   {
     path : '/',
@@ -266,6 +266,11 @@ const router = createBrowserRouter([
       {
         path : '/vod',
         element : <VodContainer />
+      },
+      {
+        path : '/vod/play',
+        element : <PlayContainer/>
+
       },
 
     ]
