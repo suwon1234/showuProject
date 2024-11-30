@@ -1,6 +1,7 @@
 import React from 'react';
 import S from './style';
 import Paging from '../_component/Paging';
+import MyTeamDetail from './MyTeamDetail';
 
 const MyTeam = () => {
   return (
@@ -16,6 +17,7 @@ const MyTeam = () => {
             </S.SubTitle>
           </S.Title>
 
+          <MyTeamDetail />
 
         </S.Wapper>
       </S.Container>
