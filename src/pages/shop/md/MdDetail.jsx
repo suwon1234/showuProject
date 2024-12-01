@@ -1,4 +1,3 @@
-// MdDetail.js
 import React from 'react'; 
 import S from './styleDetail';
 import { Link } from 'react-router-dom';

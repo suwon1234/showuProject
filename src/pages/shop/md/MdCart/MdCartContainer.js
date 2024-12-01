@@ -4,8 +4,9 @@ import MdCart from './_component/MdCart';
 const MdCartContainer = () => {
   
   const cartItems = [
-    { id: 1, name: "상품 1", price: "65,000" },
-    { id: 2, name: "상품 2", price: "65,000" },
+    { id: 1, name: "2024 베르사유의 장미 프로그램북 스페셜 에디션", price: 65000 },
+    { id: 2, name: "2024 베르사유의 장미 프로그램북 스페셜 에디션", price: 65000 },
+    { id: 3, name: "2024 베르사유의 장미 프로그램북 스페셜 에디션", price: 65000 },
   ];
 
   return (

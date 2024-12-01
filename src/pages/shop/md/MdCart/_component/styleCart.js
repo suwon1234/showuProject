@@ -8,7 +8,7 @@ const S = {};
     flex-direction: column;
     background-color: #000;
     /* height: 100vh; */
-    width: 100%;
+    /* width: 100%; */
   `
 
   S.CartTitle = styled.div`
@@ -21,6 +21,7 @@ const S = {};
     background-color: #ffd400;
     color: #000;
     margin: 50px auto 30px;
+    justify-content: space-between;
 
       & h1 {
         font-size: 20px;
@@ -32,10 +33,11 @@ const S = {};
 
   S.Delete = styled.div`
     display: flex;
-    margin-left : auto;
-    margin-right: 300px;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 280px;
     
-    .icon {
+    .icon1 {
       font-size: 16px;
       
       path {
@@ -48,6 +50,55 @@ const S = {};
       font-size: 14px;
       color: #ffd400;
     }
+  `
+
+  S.SelectAll = styled.div`
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    width: 1165px;
+    margin: 30px auto 10px;
+  `
+
+  S.CheckIcon1 = styled.div`
+    color: ${(props) => (props.checked ? '#ffd400' : '#fff')}; 
+    margin-right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+
+      &:hover {
+        path {
+          color: #ffd400;
+        }
+      }
+  `
+
+  S.BarWrapper = styled.div`
+    display: flex; 
+    justify-content: flex-end; 
+    align-items: center; 
+    width: 1165px;
+    height: 45px;
+    background-color: rgba(255, 212, 0, 0.8);
+    margin: 10px auto;
+  `
+
+  S.BarName = styled.div`
+    width: 280px;
+    color: #000;
+    font-weight: bold;
+  `
+
+  S.BarQuantity = styled.div`
+    width: 170px;
+    color: #000;
+    font-weight: bold;
+  `
+
+  S.BarPrice = styled.div`
+    width: 180px;
+    color: #000;
+    font-weight: bold;
   `
 
   S.ProductList = styled.div`
@@ -66,24 +117,28 @@ const S = {};
     padding: 20px 0;
     /* width: 100%; */
     width: 1165px;
+    margin-top: 30px;
   `
 
-  S.CheckIcon = styled.div`
-    cursor: pointer;
+  S.CheckIcon2 = styled.div`
     color: ${(props) => (props.checked ? '#ffd400' : '#fff')}; 
     margin-right: 50px;
     font-size: 20px;
-    
-    /* &:hover {
-      color: #ffd400 !important;
-    }
-   */
+    cursor: pointer;
+
+      &:hover {
+        path {
+          color: #ffd400;
+        }
+      }
   `
+
 
   S.ProductImage = styled.img`
     width: 300px;
     height: 250px;
     margin-right: 50px;
+    margin-bottom: 30px;
   `
 
   S.ProductInfo = styled.div`
@@ -91,9 +146,9 @@ const S = {};
     justify-content: space-between; 
     align-items: center; 
     width: 1165px;
-    margin: 20px 0;
+    /* margin: 20px 0; */
 
-    .icon2 {
+    .icon3 {
       font-size: 20px;
     }
   `
