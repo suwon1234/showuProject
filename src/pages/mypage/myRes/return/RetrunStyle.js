@@ -7,9 +7,7 @@ const S = {};
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;
-
-    
+    gap: 50px;    
   `
 
   S.Warpper = styled.div`
@@ -25,8 +23,31 @@ const S = {};
       height: 250px;
       border-radius: 20px;
     }
+  `
+
+  S.GrayImg = styled.div`
+    background-color: #444444;
+    border-radius: 20px;
+    position: relative;
+
+    & img {
+      width: 400px;
+      height: 250px;
+      border-radius: 20px;
+      opacity: 0.6;
+    }
+
+    & p {
+      position: absolute;
+      top: 45%;
+      left: 36%;
+
+      font-size: 30px;
+      font-weight: 700;
+    }
     
   `
+
   S.Content = styled.div`
     margin: 10px 0 0 20px;
 

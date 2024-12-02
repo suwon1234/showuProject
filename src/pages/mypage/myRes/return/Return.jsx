@@ -40,9 +40,10 @@ const Return = () => {
         </S.Content>
       </S.Warpper>
       <S.Warpper>
-        <S.Image>
-          <img src={process.env.PUBLIC_URL + "/images/Mypage/myRes/props.png"} alt="소품대여" />
-        </S.Image>
+        <S.GrayImg>
+          <img className='grayImg' src={process.env.PUBLIC_URL + "/images/Mypage/myRes/props.png"} alt="소품대여" />
+          <p>반납 완료</p>
+        </S.GrayImg>
         <S.Content>
           <S.Title>
             <p>레트로 캐리어 가죽 여행가방 촬영소품</p>
@@ -55,9 +56,10 @@ const Return = () => {
         </S.Content>
       </S.Warpper>
       <S.Warpper>
-        <S.Image>
-          <img src={process.env.PUBLIC_URL + "/images/Mypage/myRes/props.png"} alt="소품대여" />
-        </S.Image>
+        <S.GrayImg>
+          <img className='grayImg' src={process.env.PUBLIC_URL + "/images/Mypage/myRes/props.png"} alt="소품대여" />
+          <p>반납 완료</p>
+        </S.GrayImg>
         <S.Content>
           <S.Title>
             <p>레트로 캐리어 가죽 여행가방 촬영소품</p>
