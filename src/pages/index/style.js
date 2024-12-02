@@ -4,14 +4,14 @@ import { flexCenter } from '../../global/common';
 const S = {};
 
   S.Container = styled.div`
-    width: 1920px;
-    height: 1080px;
+    width: 100vw;
+    height: 100vh;
 
     display: flex;
   `
 
   S.Left = styled.div`
-    width: 960px;
+    flex: 1;
     height: 1080px;
     background-color: #fff;
 
@@ -21,30 +21,32 @@ const S = {};
   `
 
   S.LeftLamp = styled.div`
-    
-    & .lamp {
-      width: 156px;
-      height: 300px;
+    position: absolute;
+    width: 8vw; 
+    height: auto; 
+    top: 0; 
+    left: 50%; 
+    transform: translateX(-50%);
 
-      position: absolute;
-      top: 0;
-      left: 380px;
+    & .lamp {
+      width: 100%;
+      height: auto;
     }
 
     & .light {
-      width: 568px;
-      height: 340px;
-
       position: absolute;
-      top: 300px;
-      left: 167px;
+      width: 30vw; 
+      height: auto; 
+      top: 98%;
+      left: 45%;
+      transform: translateX(-50%);
     }
   `
 
   S.leftChat = styled.div`
     ${flexCenter}
     gap: 55px;
-    margin: 700px auto;
+    margin: 75vh auto;
 
     position: relative;
 
@@ -89,7 +91,7 @@ const S = {};
   `
 
   S.Right = styled.div`
-    width: 960px;
+    flex: 1;
     height: 1080px;
 
     display: flex;
@@ -98,29 +100,32 @@ const S = {};
   `
 
   S.RightLamp = styled.div`
-    & .lamp {
-      width: 156px;
-      height: 300px;
+    position: absolute;
+    width: 8vw; 
+    height: auto; 
+    top: 0; 
+    left: 50%; 
+    transform: translateX(-50%);
 
-      position: absolute;
-      top: 0;
-      left: 380px;
+    & .lamp {
+      width: 100%;
+      height: auto; 
     }
 
     & .light {
-      width: 568px;
-      height: 340px;
-
       position: absolute;
-      top: 300px;
-      left: 167px;
+      width: 30vw; 
+      height: auto; 
+      top: 97%;
+      left: 45%;
+      transform: translateX(-50%);
     }
   `
 
   S.RightChat = styled.div`
     ${flexCenter}
     gap: 55px;
-    margin: 700px auto;
+    margin: 75vh auto;
 
     position: relative;
 
