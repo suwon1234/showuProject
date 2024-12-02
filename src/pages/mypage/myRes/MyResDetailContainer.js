@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../_component/Layout';
 import MypageContainer from '../MypageContainer';
-import CanceleContainer from './cancele/CanceleContainer';
+import DetailContainer from './detail/DetailContainer';
 
 
 const MyResDetailContainer = () => {
@@ -9,7 +9,7 @@ const MyResDetailContainer = () => {
   return (
     <Layout 
       leftContent={<MypageContainer />}
-      rightContent={<CanceleContainer />} />
+      rightContent={<DetailContainer />} />
   );
 };
 

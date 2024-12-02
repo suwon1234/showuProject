@@ -1,7 +1,15 @@
 import React from 'react';
 import S from './CanceleStyle';
+import { useNavigate } from 'react-router-dom';
 
 const Cancele = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    console.log(path);
+    navigate(path);
+  }
+
   return (
     <div>
       <S.Table>
@@ -18,7 +26,7 @@ const Cancele = () => {
           <S.Tbody>
 
             <S.Tr>
-              <th scope='row'>1</th>
+              <th scope='row' onClick={() => handleNavigate('/my-res/ticket/detail')}>1</th>
               <td>뮤지컬&lt;클로버&gt;</td>
               <td>2024.11.30(화) 15:00</td>
               <td>2</td>
@@ -30,7 +38,7 @@ const Cancele = () => {
             </S.Tr>
 
             <S.Tr>
-              <th scope='row'>2</th>
+              <th scope='row' onClick={() => handleNavigate('/my-res/ticket/detail')}>2</th>
               <td>뮤지컬&lt;광화문연가&gt;</td>
               <td>2024.11.30(화) 15:00</td>
               <td>2</td>

@@ -28,6 +28,14 @@ const S = {};
   `
 
   S.Tr = styled.tr`
+
+    & th {
+      cursor: pointer;
+      
+      &:hover {
+        color: #ffd400;
+      }
+    }
     
     & td:nth-of-type(4),
     td:last-of-type {
