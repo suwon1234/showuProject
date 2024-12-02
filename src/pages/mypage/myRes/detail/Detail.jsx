@@ -1,5 +1,6 @@
 import React from 'react';
 import S from './DetailStyle';
+import BasicButton from '../../../../components/button/BasicButton';
 
 const Detail = () => {
   return (
@@ -41,31 +42,40 @@ const Detail = () => {
         <S.DetailTable>
           <S.DetailThead>
             <S.DetailTrTitle>
+            <S.Checkbox>
+                <input type="checkbox" id='check' />
+                <label for="check"></label>
+              </S.Checkbox>
               <th scope='col'>예매 번호</th>
-              <th scope='col'>티켓명</th>
-              <th scope='col'>관람 일시</th>
-              <th scope='col'>매수</th>
-              <th scope='col'>취소 가능일</th>
-              <th scope='col'>상태</th>
+              <th scope='col'>좌석 등급</th>
+              <th scope='col'>권종</th>
+              <th scope='col'>가격</th>
+              <th scope='col'>취소 여부</th>
+              <th scope='col'>취소(가능)일</th>
             </S.DetailTrTitle>
           </S.DetailThead>
 
           <S.DetailTbody>
 
             <S.DetailTr>
+              <S.Checkbox>
+                <input type="checkbox" id='check' />
+                <label for="check"></label>
+              </S.Checkbox>
               <th scope='row'>1</th>
-              <td>뮤지컬&lt;클로버&gt;</td>
-              <td>2024.11.30(화) 15:00</td>
-              <td>2</td>
-              <td>2024.11.29 17:00</td>
-              <td>전체 취소
+              <td>S석</td>
+              <td>L열 20번</td>
+              <td>55,000원</td>
+              <td>취소 가능</td>
+              <td>2024.11.29
                   <br />
-                  2024.11.02
+                  17:00
               </td>
             </S.DetailTr>
       
           </S.DetailTbody>
         </S.DetailTable>
+        <S.Button>취소하기</S.Button>
       </div>
     </div>
   );
