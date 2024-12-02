@@ -1,6 +1,7 @@
 import React from 'react';
 import S from './style';
 import Paging from '../_component/Paging';
+import Pay from './Pay';
 
 const MyPay = () => {
   return (
@@ -16,6 +17,7 @@ const MyPay = () => {
             </S.SubTitle>
           </S.Title>
 
+          <Pay />
 
         </S.Wapper>
       </S.Container>
