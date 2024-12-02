@@ -1,7 +1,7 @@
 import React from 'react';
 import MdInquiry from './_component/MdInquiry';
 
-const MdInquiryContainer = () => {
+const InquiryContainer = () => {
   return (
     <div>
       <MdInquiry />
@@ -9,4 +9,4 @@ const MdInquiryContainer = () => {
   );
 };
 
-export default MdInquiryContainer;
+export default InquiryContainer;

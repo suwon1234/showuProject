@@ -1,7 +1,7 @@
 import React from 'react';
 import MdCart from './_component/MdCart';
 
-const MdCartContainer = () => {
+const CartContainer = () => {
   
   const cartItems = [
     { id: 1, name: "2024 베르사유의 장미 프로그램북 스페셜 에디션", price: 65000 },
@@ -14,4 +14,4 @@ const MdCartContainer = () => {
   );
 };
 
-export default MdCartContainer;
+export default CartContainer;

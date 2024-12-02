@@ -49,7 +49,7 @@ const MdMain = () => {
         <S.BestListWrapper>
           {mdBest.map((best) => (
           <S.Best key={best.id}>
-              <Link to={"/shop/mdDetail"}>
+              <Link to={'/shop/mddetail'}>
               <img src={best.image} alt={best.image} className='image' />
               </Link>
             <div className='best-name'>{best.name}</div>

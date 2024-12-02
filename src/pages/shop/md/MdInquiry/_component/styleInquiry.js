@@ -104,17 +104,22 @@ const S = {};
     display: flex;
     align-items: center;
     margin-right: 20px;
+    cursor: pointer;
 
-    .icon {
-      padding-right: 5px;
-      padding-left: 5px;
+    color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
+  `
+
+  S.Icon = styled(FontAwesomeIcon)`
+    padding-right: 5px;
+    padding-left: 5px;
+    color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
 
       &:hover {
-        path {
+
+        path{
           color: #ffd400;
         }
       }
-    }
   `
 
   S.InputTitle = styled.input`
@@ -171,8 +176,5 @@ const S = {};
     color: #000;
   `;
 
-  // S.Icon = styled(FontAwesomeIcon)`
-  //   color: ${(props) => (props.selected ? '#ffd400' : '#fff')}; 
-  // `;
 
 export default S;

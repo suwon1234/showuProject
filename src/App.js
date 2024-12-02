@@ -3,8 +3,9 @@ import GlobalStyle from "./global/global";
 import theme from "./global/theme";
 import { RouterProvider } from "react-router-dom";
 import router from "./routes/router";
-import MdCartContainer from "./pages/shop/md/MdCart/MdCartContainer";
-import MdInquiryContainer from "./pages/shop/md/MdInquiry/MdInquiryContainer";
+
+
+import InquiryListContainer from "./pages/shop/md/MdInquiryList/InquiryListContainer";
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <MdInquiryContainer />
+        <InquiryListContainer/>
         {/* <RouterProvider router={router} /> */}
       </ThemeProvider>
     </>
