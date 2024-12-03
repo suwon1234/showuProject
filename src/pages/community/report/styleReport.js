@@ -12,7 +12,14 @@ const S = {};
     S.box = styled.div`
         background-color: #ffd400;
         height: 40px;
-        margin-bottom: 100px;
+        margin-bottom: 50px;
+        color: #000;
+        font-weight: bold;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
     `
 
     S.SubWrapper = styled.div` // 전체 배경 black
@@ -28,6 +35,7 @@ const S = {};
         border: 1px solid ${({ theme }) => theme.PALLETE.gray["600"]};
         max-width: 900px;
         margin: 0 auto;
+        padding: 10px 70px 20px 70px;
     `
 
     S.TopTitle = styled.div` // 상단 News title

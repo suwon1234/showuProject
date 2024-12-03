@@ -5,7 +5,6 @@ import AdminContainer from '../pages/admin/AdminContainer';
 import IndexContainer from '../pages/index/IndexContainer';
 import LoginContainer from '../pages/login/LoginContainer';
 import ReservationContainer from '../pages/reservation/ReservationContainer';
-import ShopContainer from '../pages/shop/md/ShopContainer';
 import ShowuContainer from '../pages/showu/ShowuContainer';
 import VodContainer from '../pages/vod/VOD/VodContainer';
 import JoinContainer from '../pages/join/JoinContainer';
@@ -17,7 +16,7 @@ import MyResContainer from '../pages/mypage/myRes/MyResContainer';
 import MyTeamContainer from '../pages/mypage/myTeam/MyTeamContainer';
 import FindIdContainer from '../pages/findId/FindIdContainer';
 import MyVodContainer from '../pages/mypage/myVod/MyVodContainer';
-import DetailContainer from '../pages/shop/md/DetailContainer';
+import DetailContainer from '../pages/shop/md/MdDetail/DetailContainer';
 import NewsMainContainer from '../pages/community/news/NewsMainContainer';
 import FindPasswordContainer from '../pages/findPassword/FindPasswordContainer';
 import CommunityInfoContainer from '../pages/community/main_info/CommunityInfoContainer';
@@ -59,6 +58,11 @@ import CompleteIdContainer from '../pages/completeId/CompleteIdContainer';
 import PlayContainer from '../pages/vod/video/mainpage/PlayContainer';
 import CommunityContainer from '../pages/community/main/CommunityContainer';
 import ReportsInfoContainer from '../pages/community/reports/ReportsInfoContainer';
+import MainContainer from '../pages/shop/md/MdMain/MainContainer';
+import CartContainer from '../pages/shop/md/MdCart/CartContainer';
+import PaymentContainer from '../pages/shop/md/MdPayment/PaymentContainer';
+import InquiryContainer from '../pages/shop/md/MdInquiry/InquiryContainer';
+import InquiryListContainer from '../pages/shop/md/MdInquiryList/InquiryListContainer';
 const router = createBrowserRouter([
   {
     path : '/',
@@ -82,7 +86,7 @@ const router = createBrowserRouter([
       },
       {
         path : '/community/communityInfo',
-        element : <CommunityInfoContainer /> // 커뮤니티 세부 페이지 
+        element : <CommunityInfoContainer /> // 커뮤니티 상세 페이지 
       },
       {
         path : '/community/communityInfo/editCommentsMain',
@@ -262,11 +266,27 @@ const router = createBrowserRouter([
       },
       {
         path : '/shop',
-        element : <ShopContainer />
+        element : <MainContainer /> // MD 메인
       },
       {
-        path : '/shop/mdDetail',
-        element : <DetailContainer />
+        path : '/shop/mddetail',
+        element : <DetailContainer /> // MD 상세
+      },
+      {
+        path : '/shop/mddetail/cart/',
+        element : <CartContainer /> // MD 장바구니
+      },
+      {
+        path : '/shop/mddetail/payment',
+        element : <PaymentContainer /> // MD 주문/결제
+      },
+      {
+        path : '/shop/mddetail/inquiry',
+        element : <InquiryContainer /> // MD 문의
+      },
+      {
+        path : '/shop/mddetail/inquiry/list',
+        element : <InquiryListContainer /> // MD 문의목록
       },
       {
         path : '/showu',
