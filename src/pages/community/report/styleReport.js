@@ -116,6 +116,10 @@ const S = {};
             display: flex;
             flex-direction: column;
         }
+
+        .textArea{
+            
+        }
     `;
 
     S.section = styled.div`

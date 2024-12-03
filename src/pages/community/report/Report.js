@@ -75,7 +75,7 @@ const Report = () => {
           </div>
           <div>
             <label>내용</label>
-            <input type="text" id="content" placeholder="내용을 입력하세요" />
+            <textarea className='textArea' type="text" id="content" placeholder="내용을 입력하세요" />
           </div>
 
           <div>
