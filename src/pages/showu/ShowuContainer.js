@@ -4,7 +4,7 @@ import LessonMain from './lesson/LessonMain/LessonMain';
 const ShowuContainer = () => {
   return (
     <div>
-      <LessonMain />
+      <LessonMain /> 
     </div>
   );
 };
