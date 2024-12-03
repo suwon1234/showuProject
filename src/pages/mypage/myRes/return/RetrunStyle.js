@@ -29,7 +29,8 @@ const S = {};
     background-color: #444444;
     border-radius: 20px;
     position: relative;
-
+    height: 250px;
+    
     & img {
       width: 400px;
       height: 250px;
