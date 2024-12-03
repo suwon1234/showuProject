@@ -163,108 +163,40 @@ const router = createBrowserRouter([
         element : <LikeLessonContainer /> //찜 - 레슨 페이지
       },
       {
-        path : '/my-active/like/space',
-        element : <LikeSpaceContainer /> //찜 - 공간 페이지
+        index: true,
+        element: <Main />,
       },
       {
-        path : '/my-active/like/prop',
-        element : <LikePropContainer /> //찜 - 소품 페이지
+        path: "/admin",
+        element: <AdminContainer />,
       },
       {
-        path : '/my-active/like/tickets',
-        element : <LikeTicketContainer /> //찜 - 티켓 페이지
+        index : true,
+        element : <Main />
       },
       {
-        path : '/my-active/like/md',
-        element : <LikeMdContainer /> //찜 - md 페이지
+        path: "/index",
+        element: <IndexContainer />,
       },
       {
-        path : '/my-active/like/auction',
-        element : <LikeAuctionContainer /> //찜 - 경매 페이지
+        path : '/community',
+        element : <CommunityContainer />
       },
       {
-        path : '/my-active/reviews',
-        element : <MyActiveReviewContainer /> //후기관리 페이지
+        path : '/index',
+        element : <IndexContainer />
       },
       {
-        path : '/my-active/posts',
-        element : <MyActivePostContainer /> //작성한 글 관리 페이지
-      },
-      {
-        path : '/my-active/comments',
-        element : <MyActiveComContainer /> //작성한 댓글 관리 페이지
-      },
-      {
-        path : '/my-active/reports',
-        element : <MyActiveReportContainer /> //제보 관리 페이지
-      },
-      {
-        path : '/my-res/props',
-        element : <MyResPropsContainer /> //소품 대여 페이지
-      },
-      {
-        path : '/my-res/space',
-        element : <MyResContainer /> //공간 대여 페이지
-      },
-      {
-        path : '/my-res/returns',
-        element : <MyResReturnContainer /> //반납 내역 페이지
-      },
-      {
-        path : '/my-res/ticket',
-        element : <MyResTicketContainer /> //티켓 내역 페이지
-      },
-      {
-        path : '/my-res/ticket/cancele',
-        element : <MyResCanceleContainer /> //티켓 내역 페이지
-      },
-      {
-        path : '/my-res/ticket/detail',
-        element : <MyResDetailContainer /> //티켓 상세 페이지 페이지
-      },
-      {
-        path : '/my-class/watching',
-        element : <MyClassWatchContainer /> //수강중인 레슨 정보
-      },
-      {
-        path : '/my-class/created',
-        element : <MyClassCreateContainer /> //개설한 레슨 정보
-      },
-      {
-        path : '/my-class/advice',
-        element : <MyClassAdviceContainer /> //상담 신청 내역 페이지
-      },
-      {
-        path : '/my-vod/subscriptions',
-        element : <MyVodSubscriptContainer /> //구독한 vod 페이지
-      },
-      {
-        path : '/my-vod/watching',
-        element : <MyVodWatchContainer /> //시청중인 컨텐츠 페이지
-      },
-      {
-        path : '/up-grade',
-        element : <MyGradeContainer /> //등급 정보
+        path : '/login',
+        element : <LoginContainer />
       },
       {
         path : '/mypage',
-        element : <MyInfoContainer /> //회원 정보
+        element : <MypageContainer />
       },
       {
-        path : '/my-pay',
-        element : <MyPayContainer /> //결제 정보
-      },
-      {
-        path : '/my-team',
-        element : <MyTeamContainer /> //팀매칭 정보
-      },
-      {
-        path : '/my-vod',
-        element : <MyVodContainer /> //VOD 정보
-      },
-      {
-        path : '/reservation',
-        element : <ReservationContainer />
+        path: "/reservation/ticket-open",
+        element: <TicketOpen />,
       },
       {
         path : '/shop',
@@ -310,36 +242,10 @@ const router = createBrowserRouter([
       {
         path : '/vod/play/start',
         element : <PlayContainer/>
-
       },
 
     ]
-  },
-  {
-    path : '/login',
-    element : <LoginContainer />,
-  },
-  {
-    path : '/join',
-    element : <JoinContainer />
-  },
-  {
-    path : '/find-id',
-    element : <FindIdContainer />
-  },
-  {
-    path : '/complete',
-    element : <CompleteIdContainer /> //아이디 찾기 완료 페이지
-  },
-  {
-    path : '/reset-password',
-    element : <FindPasswordContainer /> //비밀번호 변경 페이지
   }
-
-  
-]
-)
-
-
+])
 
 export default router;
