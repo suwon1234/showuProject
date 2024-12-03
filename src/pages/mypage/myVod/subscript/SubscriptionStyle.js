@@ -4,16 +4,19 @@ const S = {};
 
   S.Container = styled.div`
     width: 900px;
-    height: 100vh;
+    height: 90vh;
 
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    row-gap: -20px;
+    column-gap: 10px;
   `
 
   S.Wrapper = styled.div`
     width: 250px;
-    height: 430px;
+    height: 365px;
+
+    margin: 0;
   `
 
   S.Image = styled.div`
@@ -22,6 +25,14 @@ const S = {};
       height: 333px;
       border-radius: 8px;
     }
+
+    position: relative;
+
+    & .heart {
+        position: absolute;
+        top: 4.5%;
+        right: 7%;
+      }
   `
 
   S.Content = styled.div`
