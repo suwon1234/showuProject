@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import S from './styleCommunity';
+import { Link } from 'react-router-dom';
 
 const Community = () => {
+
+  const [filterDrop, setFilterDrop] = useState(false);
+
   const commuData = [
     {
       id: 1,
       title: "타이틀1",
       description: "설명1",
-      imageUrl: "https://web-cf-image.cjenm.com/resize/1344x756/public/share/metamng/programs/kingkyboots-musical-ko-008-06.jpg?v=1732526131",
+      imageUrl: "https://web-cf-image.cjenm.com/resize/1344x756/public/share/metamng/programs/kingkyboots-musical-ko-001-06.jpg?v=1732606423",
     },
     {
       id: 2,
@@ -65,20 +69,42 @@ const Community = () => {
   return (
     <S.Wrapper>
       <S.TopTitle>커뮤니티</S.TopTitle>
+
+
       <S.IconWrapper>
         <FontAwesomeIcon icon={faChevronDown} className='icon' />
       </S.IconWrapper>
 
+      
       <S.SubWrapper>
+      <S.FilterButton onClick={() => setFilterDrop(!filterDrop)}>
+        <span>Filter</span> 
+        <FontAwesomeIcon icon={faChevronDown} className='icon' />
+      </S.FilterButton>
+
+      {filterDrop && (
+      <S.FilterDropdown>
+          <div>최신순</div>
+          <div>인기순</div>
+          <div>공연</div>
+          <div>뮤지컬</div>
+          <div>영화</div>
+          <div>연극</div>
+        </S.FilterDropdown>
+        )}
           <S.Buttons>
-            <button>둘러보기</button>
+            <S.hoverButton>둘러보기</S.hoverButton>
+            <Link to={`/community/write`}>
             <button>글쓰기</button>
+            </Link>
           </S.Buttons>
 
         <S.Info>
           {commuData.map((item) => (
             <S.Img key={item.id}>
+              <Link to={`/community/communityInfo${item.id}`}>
               <img src={item.imageUrl} alt={item.title} />
+              </Link>
               <div>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>

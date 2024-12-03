@@ -1,6 +1,6 @@
-import React from "react";
-import { Link, NavLink, Outlet } from "react-router-dom";
-import S from "./style";
+import React, { useState } from 'react';
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
+import S from './style';
 
 const Layout = () => {
 
@@ -11,6 +11,11 @@ const Layout = () => {
     const handleMouseLeave = () => {
       setHover(false);
   };
+
+  const location = useLocation();
+
+  //index 페이지에서 헤더 숨김
+  const hideHeaderPage = ['/']
 
   return (
     <S.Background className='Background'>

@@ -5,10 +5,10 @@ import S from '../style';
 
 const LessonMain = () => {
     return (
-        <S.lessonMainWrapper>
-            <S.title>레슨 받기</S.title>
-            <S.lessonMainTop>
-                <S.lessonCategoryWrapper>
+        <S.LessonMainWrapper>
+            <S.LessonTitle>레슨 받기</S.LessonTitle>
+            <S.LessonMainTop>
+                <S.LessonCategoryWrapper>
                     <select className='lessonCategory' name='lessonClass'>
                         <option disabled selected>
                             과목
@@ -19,16 +19,16 @@ const LessonMain = () => {
                             지역
                         </option>
                     </select>
-                </S.lessonCategoryWrapper>
+                </S.LessonCategoryWrapper>
 
-                <div className='lessonButtonWraper'>
-                    <button className='lessonCreate'>레슨 개설</button>
-                </div>
-            </S.lessonMainTop>
-            <ul className='lessonListWrapper'> 
+                <S.LessonButtonWrapper>
+                    <button className='lessonCreate'>레슨 개설하기</button>
+                </S.LessonButtonWrapper>
+            </S.LessonMainTop>
+            <S.LessonListWrapper> 
                 <LessonList />
-            </ul>
-        </S.lessonMainWrapper>
+            </S.LessonListWrapper>
+        </S.LessonMainWrapper>
     );
 };
 
