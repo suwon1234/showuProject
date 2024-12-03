@@ -7,4 +7,9 @@ const S = {};
     height: 100vh;
   `
 
+  S.Wrapper = styled.div`
+    width: 360px;
+    height: 340px;
+  `
+
 export default S;
