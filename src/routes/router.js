@@ -63,6 +63,7 @@ import CartContainer from '../pages/shop/md/MdCart/CartContainer';
 import PaymentContainer from '../pages/shop/md/MdPayment/PaymentContainer';
 import InquiryContainer from '../pages/shop/md/MdInquiry/InquiryContainer';
 import InquiryListContainer from '../pages/shop/md/MdInquiryList/InquiryListContainer';
+import NonLoginContainer from '../pages/vod/video/nonloginpage/NonLoginContainer';
 const router = createBrowserRouter([
   {
     path : '/',
@@ -298,6 +299,11 @@ const router = createBrowserRouter([
       },
       {
         path : '/vod/play',
+        element : <NonLoginContainer/>
+
+      },
+      {
+        path : '/vod/play/start',
         element : <PlayContainer/>
 
       },
