@@ -9,13 +9,13 @@ const MdCart = ({ items }) => {
   const [number, setNumber] = useState(Array(items.length).fill(1));
 
   // 전체 상품 선택
-  const toggleSelectAll = () => {
+  const SelectAll = () => {
     const allChecked = checkedItems.every(item => item);
     setCheckedItems(Array(items.length).fill(!allChecked));
   };
 
   // 각 상품 선택
-  const toggleCheck = (index) => {
+  const SelectEach = (index) => {
     const newCheckedItems = [...checkedItems];
     newCheckedItems[index] = !newCheckedItems[index];
     setCheckedItems(newCheckedItems);
@@ -51,7 +51,7 @@ const MdCart = ({ items }) => {
       </S.Delete>
 
       <S.SelectAll>
-        <S.CheckIcon1 onClick={toggleSelectAll} checked={checkedItems.every(item => item)}>
+        <S.CheckIcon1 onClick={SelectAll} checked={checkedItems.every(item => item)}>
           <FontAwesomeIcon className='icon2' icon={faCheckCircle}  />
         </S.CheckIcon1>
         <span>해당 상품 전체 선택</span>
@@ -66,7 +66,7 @@ const MdCart = ({ items }) => {
       <S.ProductList>
         {items.map((item, index) => (
           <S.ProductItem key={item.id}>
-            <S.CheckIcon2 onClick={() => toggleCheck(index)} checked={checkedItems[index]}>
+            <S.CheckIcon2 onClick={() => SelectEach(index)} checked={checkedItems[index]}>
               <FontAwesomeIcon className='icon2' icon={faCheckCircle} style={{ color: checkedItems[index] ? '#ffd400' : '#fff' }} />
             </S.CheckIcon2>
             <S.ProductImage src={process.env.PUBLIC_URL + "/images/md/md-1.jpg"} alt="장바구니 상품" />
@@ -78,7 +78,7 @@ const MdCart = ({ items }) => {
                 <span>{number[index]}</span>
                 <S.QuantityButton onClick={() => increase(index)}>+</S.QuantityButton>
               </S.QuantityControl>
-              <S.ProductPrice>{item.price}원</S.ProductPrice>
+              <S.ProductPrice>{item.price.toLocaleString()}원</S.ProductPrice>
               <FontAwesomeIcon className='icon3' icon={faXmark} />
             </S.ProductInfo>
           </S.ProductItem>

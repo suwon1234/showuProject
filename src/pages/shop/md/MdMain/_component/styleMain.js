@@ -151,9 +151,9 @@ const S = {};
 
   S.ButtonWrapper = styled.div `
     display: flex;  
+    align-items: center;
     justify-content: center;
     margin-top: 100px;
-    width: 100%;
 
     & button {
       width: 280px;

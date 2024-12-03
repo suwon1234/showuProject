@@ -34,10 +34,10 @@ const MdDetail = () => {
       
           <S.ButtonWrapper2>
             <div className='button-wrapper1'>
-              <Link to={'/shop/cart'}>
+              <Link to={'/shop/mddetail/cart'}>
                 <button className='button cart'><p>카트 추가</p></button>
               </Link>
-              <Link to={'/shop/buy'}>
+              <Link to={'/shop/mddetail/payment'}>
                 <button className='button buy'><p>바로 구매</p></button>
               </Link>
             </div>
