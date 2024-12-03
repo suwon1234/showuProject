@@ -63,6 +63,7 @@ import CartContainer from '../pages/shop/md/MdCart/CartContainer';
 import PaymentContainer from '../pages/shop/md/MdPayment/PaymentContainer';
 import InquiryContainer from '../pages/shop/md/MdInquiry/InquiryContainer';
 import InquiryListContainer from '../pages/shop/md/MdInquiryList/InquiryListContainer';
+import LessonDetails from '../pages/showu/lesson/LessonMain/lessonDetails/LessonDetails';
 import NonLoginContainer from '../pages/vod/video/nonloginpage/NonLoginContainer';
 const router = createBrowserRouter([
   {
@@ -292,6 +293,10 @@ const router = createBrowserRouter([
       {
         path : '/showu',
         element : <ShowuContainer />
+      },
+      {
+        path : '/showu/details',
+        element : <LessonDetails />
       },
       {
         path : '/vod',
