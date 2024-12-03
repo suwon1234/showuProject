@@ -2,10 +2,11 @@ import React from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import { faStar } from'@fortawesome/free-solid-svg-icons';
 import S from './style';
+import { Link } from 'react-router-dom';
 
 const LessonList = () => {
     return (
-        <>
+        <Link to={'/showu/details'}>
                 <S.LessonList>
                     <S.LessonWrapper>
                         <div>
@@ -79,7 +80,7 @@ const LessonList = () => {
                 </S.LessonWrapper>
             </S.LessonList> 
             
-        </>
+        </Link>
     );
 };
 
