@@ -14,6 +14,50 @@ const S = {};
         padding-top: 30px;
     `
 
+    S.FilterButton = styled.div`
+        display: flex;
+        align-items: center;
+        background-color: #000;
+        padding: 10px 15px;
+        color: #ffd400;
+        cursor: pointer;
+        font-size: 16px;
+        border: 0.5px solid #fff;
+        border-radius: 5px;
+        width: 140px;
+
+        .icon {
+            margin-left: 10px;
+            font-size: 16px;   
+            :hover {
+            color: #ffd400;
+        } 
+        }
+        :hover {
+            color: #ffd400;
+        }
+
+    `;
+
+    S.FilterDropdown = styled.div`
+        position: absolute;
+        background-color: #000;
+        color: #797979;
+        border: 0.5px solid #fff;
+        border-radius: 5px;
+        width: 140px;
+        padding: 10px 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+        div {
+            padding: 8px 15px;
+            cursor: pointer;
+        &:hover {
+            color: #ffd400;
+        }
+    }
+`;
+
     S.Wrapper = styled.div` // 전체 배경 gray
         background-color: #444444;      
     `
@@ -30,6 +74,7 @@ const S = {};
         align-items: center;
         margin-top: 5px;
         height: 100%;
+        padding-bottom: 50px;
 
         .icon{
             font-size: 20px;
@@ -48,6 +93,8 @@ const S = {};
         margin-top: 40px;
         margin-bottom: 80px;
 
+        
+
         button {
             border-radius: 50px;
             padding: 10px 15px;
@@ -60,7 +107,13 @@ const S = {};
                 background-color: #ffd400;
                 color: ${({ theme }) => theme.PALLETE.black};
             }
+            
         }
+    `;
+
+    S.hoverButton = styled.button`
+        background-color: #ffd400;
+        color: #000;
     `;
 
     S.Info = styled.div`
@@ -81,13 +134,20 @@ const S = {};
         padding: auto;
         flex-shrink: 0; 
         text-align: left;
+        cursor: pointer;
         justify-content: center;
+        
 
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
+
+            &:hover img {
+                transform: scale(1.1); 
+            }
 
         h3 {
             margin-top: 5px;
@@ -98,7 +158,7 @@ const S = {};
         p {
             font-size: 15px;
             color: #fff;
-        }
+        } 
     `;
 
 
