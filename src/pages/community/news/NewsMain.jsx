@@ -78,9 +78,7 @@ const popularData = [
 const Community = () => {
   return (
     <S.Wrapper>
-      <S.TopTitle>
-        News
-      </S.TopTitle>
+      <S.TopTitle>News</S.TopTitle>
       <S.IconWrapper>
         <FontAwesomeIcon icon={faChevronDown} className='icon' />
       </S.IconWrapper>
@@ -118,7 +116,7 @@ const Community = () => {
             <S.NewsItem key={news.id}>
               <S.ImageWrapper>
                 {/* <Link to={`/community/news/${news.id}`}> */}
-                <Link to={`/community/newsMain/news${news.id}`}>
+                <Link to={`/community/newsMain/news/${news.id}`}>
                   <img src={news.imageUrl} alt={news.title} />   
                 </Link>      
               </S.ImageWrapper>
@@ -135,9 +133,12 @@ const Community = () => {
       <S.side>
         <S.SideTitle>인기순</S.SideTitle>
         {popularData.map((data)=>(
-          <S.SideItem>
+          <S.SideItem key={data.id}>
+            <Link to={`/community/newsMain/popularity`}>
+            {/* <Link to={`/community/newsMain/popularity${data.id}`}> */}
             <img src={data.imageUrl} alt={data.title} />
             <p>{data.title}</p>
+            </Link>
           </S.SideItem>
         ))}
       </S.side>
