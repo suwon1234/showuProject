@@ -1,8 +1,8 @@
 import React from 'react';
 import Paging from '../../_component/Paging';
 import { useNavigate } from 'react-router-dom';
-import Detail from './Detail';
 import S from './DetailContainerStyle';
+import Detail from './Detail';
 
 const CanceleContainer = () => {
   const navigate = useNavigate();
@@ -16,8 +16,7 @@ const CanceleContainer = () => {
       <S.Container className='container'>
         <S.Wapper className='wapper'>
         <S.Title className='title'>
-            <p className='activeTitle'>활동 정보</p>
-            <p className='like'>제보 관리</p>
+            <p className='activeTitle'>티켓 예매 내역</p>
             <S.SubTitle className='subTitle'>
               <ul>
                 <li>예매 정보</li>

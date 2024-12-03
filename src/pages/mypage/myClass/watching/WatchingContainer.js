@@ -13,9 +13,9 @@ const WatchingContainer = () => {
 
   return (
     <>
-      <S.Container className='container'>
-        <S.Wapper className='wapper'>
-        <S.Title className='title'>
+      <S.Container>
+        <S.Wapper>
+        <S.Title>
             <p className='activeTitle'>MY CLASS</p>
             <S.SubTitle className='subTitle'>
               <ul>
