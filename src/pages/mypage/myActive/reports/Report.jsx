@@ -1,6 +1,7 @@
 import React from 'react';
 import S from './ReportStyle';
 
+
 const Report = () => {
   return (
     <div>
