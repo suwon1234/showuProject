@@ -19,7 +19,7 @@ const Layout = () => {
 
   return (
     <S.Background className='Background'>
-      <header className="header">
+      { !hideHeaderPage.includes(location.pathname) && <header className="header">
         <S.topbar className="topbar"></S.topbar>
         <S.navbar className="navbar">
           <S.logo className="logo">
@@ -69,7 +69,7 @@ const Layout = () => {
             마이페이지
           </NavLink>
         </S.menubar>
-      </header>
+      </header>}
       <S.main className="main">
         <Outlet />
       </S.main>
