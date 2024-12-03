@@ -1,8 +1,14 @@
 import React, { useState,useEffect } from 'react';
 import S from '../VOD/style';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 const Vod = ({plays}) => {
+
+  const location=useLocation();
+  useEffect(() => {
+    // 경로가 변경될 때마다 스크롤을 맨 위로 이동
+    window.scrollTo(0, 0);
+  }, [location]);
 
  
 
@@ -58,13 +64,12 @@ const Vod = ({plays}) => {
         <S.showuRecommendationPage className='showuRecommendationPage'>
         {plays && plays.map((play) => (
             <S.Card key={play.id}>
-              {/* 클릭 시 /vod/play 경로로 이동 */}
-              <Link to={`/vod/play?programid=${play.id}`} >
-                <a href="javascript:void(0)" role="button" >
+              <Link to={`/vod/play?programid=${play.id}`} role='button' onClick={() => window.scrollTo(0, 0)} >
+               
                   {play.mainImage && (
                     <img src={play.mainImage} alt={`Video ${play.id}`} />
                   )}
-                </a>
+             
               </Link>
             </S.Card>
         ))}
@@ -79,7 +84,7 @@ const Vod = ({plays}) => {
             <S.Card key={play.id}>
               {/* 클릭 시 /vod/play 경로로 이동 */}
               <Link to={`/vod/play?programid=${play.id}`} >
-                <a href="javascript:void(0)" role="button" >
+                <a  role="button" >
                   {play.mainImage && (
                     <img src={play.mainImage} alt={`Video ${play.id}`} />
                   )}
@@ -106,7 +111,7 @@ const Vod = ({plays}) => {
             <S.Card key={play.id}>
               {/* 클릭 시 /vod/play 경로로 이동 */}
               <Link to={`/vod/play?programid=${play.id}`} >
-                <a href="javascript:void(0)" role="button" >
+                <a  role="button" >
                   {play.mainImage && (
                     <img src={play.mainImage} alt={`Video ${play.id}`} />
                   )}
