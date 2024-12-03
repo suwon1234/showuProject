@@ -2,6 +2,9 @@
 
 import React from 'react';
 import S from './style';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 
 
@@ -67,14 +70,16 @@ const auditionData = [
 const Audition = () => {
   return (
     <S.Wrapper>
-        <S.TopTitle>
-          Audition
-        </S.TopTitle>
+        <S.TopTitle>Audition</S.TopTitle>
+        <S.IconWrapper>
+        <FontAwesomeIcon icon={faChevronDown} className='icon' />
+      </S.IconWrapper>
+
       <S.SubWrapper>
       <S.Titles>
           <S.MainTitle>Audition</S.MainTitle>
           <S.SubTitle>ShowU에서 전해드리는 다양한 오디션 소식</S.SubTitle>
-        </S.Titles>    
+      </S.Titles>    
   
         <S.ButtonsAll>
           <div>
@@ -89,6 +94,7 @@ const Audition = () => {
 
         <S.ImageWrapper>
           {auditionData.map((audition) => (
+            <Link to={`/community/audition/auditionInfo/${audition.id}`}>
             <S.Images key={audition.id}>
               <img src={audition.image} alt={audition.title} />
               <S.Info>
@@ -96,9 +102,11 @@ const Audition = () => {
                 <p>{audition.description}</p>
               </S.Info>
             </S.Images>
+            </Link>
           ))}
         </S.ImageWrapper>
-      </S.SubWrapper>     
+      </S.SubWrapper>   
+        
     </S.Wrapper>
   );
 };

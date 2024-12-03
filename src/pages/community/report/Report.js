@@ -1,25 +1,35 @@
 // 제보하기 페이지  /community/report
 
-import React from 'react';
+import React, { useRef } from 'react';
 import S from './styleReport';
 import { useNavigate } from 'react-router-dom';
 
-const handleFile = (event) => {
-    alert("파일 크기는 5MB 이하로 업로드해주세요.");
-};
-
-const handleSubmit = () => {
-  alert("참여가 완료되었습니다!");  
-};
-
-
 
 const Report = () => {
-
+  
   const navigate = useNavigate();
+  const inputRefs = useRef([]);
+  const formRef = useRef(); 
+  
+  const handleFile = () => {
+      alert("파일 크기는 5MB 이하로 업로드해주세요.");
+  };
+
+  const handleSubmit = () => {
+    for (let input of inputRefs.current) {
+      if (!input.value) {
+          alert(`${input.placeholder}`);
+          input.focus();
+          return;
+      }
+    }
+    alert("참여가 완료되었습니다!");  
+    formRef.current.submit();
+  };
+  
 
   const handleBack = () => {
-    const userCheck =alert("News 홈 화면으로 이동합니다. 이동하시겠습니까?");
+    const userCheck = window.confirm("News 홈 화면으로 이동합니다. 이동하시겠습니까?");
     if (userCheck) {
       navigate('/community/newsMain');
     }
@@ -33,7 +43,7 @@ const Report = () => {
         <S.MainTitle>News</S.MainTitle>
         <S.SubTitle>가장 먼저 접하는 showU 소식</S.SubTitle>
       </S.Titles>  
-      <S.box></S.box>
+      <S.box>제보하기</S.box>
         <S.border>    
         <S.TitleContainer>
           <div className='textDiv'>
@@ -63,29 +73,30 @@ const Report = () => {
         <S.Input>
           <div>
             <label>이름</label>
-            <input type="text" id="name" placeholder="이름을 입력하세요" />
+            <input type="text" id="name" placeholder="이름을 입력하세요." ref={(data) => (inputRefs.current[0] = data)}/>
           </div>
           <div>
             <label>이메일</label>
-            <input type="email" id="email" placeholder="이메일을 입력하세요" />
+            <input type="email" id="email" placeholder="이메일을 입력하세요." ref={(data) => (inputRefs.current[1] = data)}/>
           </div>
           <div>
             <label>제목</label>
-            <input type="text" id="title" placeholder="제목을 입력하세요" />
+            <input type="text" id="title" placeholder="제목을 입력하세요." ref={(data) => (inputRefs.current[2] = data)}/>
           </div>
           <div>
             <label>내용</label>
-            <input type="text" id="content" placeholder="내용을 입력하세요" />
+            <input type="text" id="content" placeholder="내용을 입력하세요." ref={(data) => (inputRefs.current[3] = data)}/>
           </div>
 
           <div>
           <label>첨부 파일</label>
-            <S.FileInput  type='file' placeholder='찾아보기' onChange={handleFile}></S.FileInput>
+            <S.FileInput  type='file' placeholder='파일을 선택해주세요' onChange={handleFile} ref={(el) => (inputRefs.current[4] = el)}></S.FileInput>
             <p>첨부 파일은 최대 5M까지 등록할 수 있습니다.</p>
           </div>
         </S.Input>
 
         <S.section>
+        
           <p>개인정보 수집 및 이용 동의 안내</p>
           <div>
             <p>개인정보를 제공받는 업체</p>

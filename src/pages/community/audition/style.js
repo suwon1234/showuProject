@@ -18,7 +18,7 @@ import styled  from "styled-components";
         color: #ffd400;
         justify-content: center;
         display: flex;
-        padding: 30px;
+        padding-top: 30px;
     `
 
     S.Titles = styled.div` // 페이지 메인 타이틀 All
@@ -27,15 +27,32 @@ import styled  from "styled-components";
 
     `   
 
+    S.IconWrapper = styled.div`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+        height: 100%;
+
+        .icon{
+            font-size: 20px;
+            padding-bottom: 30px;
+
+        path {
+            color : #ffd400;
+        }
+    }
+    `
+
     S.MainTitle = styled.div` // 페이지 메인 타이틀
-        font-size: 30px;
-        font-weight: bold;
-        margin-top: 10px;
+        font-size: ${({ theme }) => theme.FONT_SIZE.h3};
+        font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
+        margin-top: 20px;
     `
     S.SubTitle = styled.div` // 페이지 서브 타이틀
-        font-size: 20px;
-        margin-top: 23px;
-        margin-left: 8px;
+        font-size: ${({ theme }) => theme.FONT_SIZE.h7};
+        margin-top: 34px;
+        margin-left: 8px; 
     `
 
     S.ButtonsAll = styled.div` // 상단 버튼들
@@ -79,7 +96,6 @@ import styled  from "styled-components";
         width: 250px;
         height: 300px; 
         object-fit: cover;
-
         border-radius: 10px;
         cursor: pointer;
   
@@ -87,7 +103,7 @@ import styled  from "styled-components";
             width: 100%;
             height: 300px;
             object-fit: cover;
-            transition: transform 0.3s ease;
+            transition: transform 0.5s ease;
         }
   
             &:hover img {
