@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import S from './style';
 
 const Layout = () => {
@@ -12,9 +12,14 @@ const Layout = () => {
       setHover(false);
   };
 
+  const location = useLocation();
+
+  //index 페이지에서 헤더 숨김
+  const hideHeaderPage = ['/']
+
   return (
     <S.Background className='Background'>
-      <header className="header">
+      { !hideHeaderPage.includes(location.pathname) && <header className="header">
   <S.topbar className="topbar"></S.topbar>
   <S.navbar className="navbar">
     <S.logo className="logo">
@@ -82,7 +87,7 @@ const Layout = () => {
       마이페이지
     </NavLink>
   </S.menubar>
-</header>
+</header>}
 <S.main className='main'>
   <Outlet/>
 </S.main>
