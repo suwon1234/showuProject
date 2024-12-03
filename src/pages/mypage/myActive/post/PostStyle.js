@@ -13,6 +13,8 @@ const S = {};
   `
 
   S.Image = styled.div`
+    width: 360px;
+    height: 340px;
   `
 
 export default S;
