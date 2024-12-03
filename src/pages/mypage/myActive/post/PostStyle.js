@@ -13,7 +13,6 @@ const S = {};
   `
 
   S.Image = styled.div`
-    
   `
 
 export default S;
