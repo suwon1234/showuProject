@@ -93,7 +93,7 @@ const Community = () => {
         </S.FilterDropdown>
         )}
           <S.Buttons>
-            <button className='hoverButton'>둘러보기</button>
+            <S.hoverButton>둘러보기</S.hoverButton>
             <Link to={`/community/write`}>
             <button>글쓰기</button>
             </Link>

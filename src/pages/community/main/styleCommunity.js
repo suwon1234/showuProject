@@ -93,6 +93,8 @@ const S = {};
         margin-top: 40px;
         margin-bottom: 80px;
 
+        
+
         button {
             border-radius: 50px;
             padding: 10px 15px;
@@ -105,7 +107,13 @@ const S = {};
                 background-color: #ffd400;
                 color: ${({ theme }) => theme.PALLETE.black};
             }
+            
         }
+    `;
+
+    S.hoverButton = styled.button`
+        background-color: #ffd400;
+        color: #000;
     `;
 
     S.Info = styled.div`
