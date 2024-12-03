@@ -86,7 +86,7 @@ const router = createBrowserRouter([
       },
       {
         path : '/community/communityInfo',
-        element : <CommunityInfoContainer /> // 커뮤니티 세부 페이지 
+        element : <CommunityInfoContainer /> // 커뮤니티 상세 페이지 
       },
       {
         path : '/community/communityInfo/editCommentsMain',

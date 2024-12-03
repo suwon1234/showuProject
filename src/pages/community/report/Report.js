@@ -19,7 +19,7 @@ const Report = () => {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    const userCheck =alert("News 홈 화면으로 이동합니다. 이동하시겠습니까?");
+    const userCheck =window.confirm("News 홈 화면으로 이동합니다. 이동하시겠습니까?");
     if (userCheck) {
       navigate('/community/newsMain');
     }
@@ -33,7 +33,7 @@ const Report = () => {
         <S.MainTitle>News</S.MainTitle>
         <S.SubTitle>가장 먼저 접하는 showU 소식</S.SubTitle>
       </S.Titles>  
-      <S.box></S.box>
+      <S.box>제보하기</S.box>
         <S.border>    
         <S.TitleContainer>
           <div className='textDiv'>
