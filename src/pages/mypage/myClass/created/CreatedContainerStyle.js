@@ -18,13 +18,9 @@ const S = {};
     & .activeTitle {
       font-size: 30px;
       font-weight: 700;
-      margin-bottom: 5px;
+      margin-bottom: 98px;
     }
     
-    & .like {
-      font-size: 25px;
-      margin-bottom: 59px;      
-    }
   `
 
   S.SubTitle = styled.div`

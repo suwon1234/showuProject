@@ -32,7 +32,7 @@ const SpaceContainer = () => {
         </S.Wapper>
       </S.Container>
 
-      <Paging />
+      {/* <Paging /> */}
     </>
   );
 };
