@@ -3,7 +3,7 @@ import React from 'react';
 import S from './styleMain'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronRight, faCircleChevronLeft,faCircleChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 
 const mdBest = [
@@ -31,28 +31,36 @@ const MdMain = () => {
   
   return (
     <S.MainWrapper>
-      <S.Md>
-        <h1>MD</h1>
-      </S.Md>
-      <S.IconWrapper>
-        <FontAwesomeIcon icon={faChevronDown} className='icon' />
-      </S.IconWrapper>
-      
-      <S.Best>
-        <p>BEST</p>
-      </S.Best>
+      <S.MdTitle>
+        <h1 className='md-title'>MD</h1>
+        <FontAwesomeIcon icon={faChevronDown} className='icon1' />
+      </S.MdTitle>
+
+      <S.BestTitle>
+        <h1 className='best-title'>BEST</h1>
+      </S.BestTitle>
       
       <S.BestWrapper>
-        <S.BestList>{mdBest.map((best) => (
+        <S.LeftIconWrapper>
+        <FontAwesomeIcon icon={faCircleChevronLeft} className='left-icon'/>
+        </S.LeftIconWrapper>
+
+
+        <S.BestListWrapper>
+          {mdBest.map((best) => (
           <S.Best key={best.id}>
-            <S.BestImage>
-              <Link to={"/shop/mdDetail"}><img src={best.image} /></Link>
-            </S.BestImage>
-            <S.BestTitle>{best.name}</S.BestTitle>
-            <S.BestPrice>{best.price}원</S.BestPrice>
+              <Link to={'/shop/mddetail'}>
+              <img src={best.image} alt={best.image} className='image' />
+              </Link>
+            <div className='best-name'>{best.name}</div>
+            <div className='best-price'>{best.price}원</div>
           </S.Best>
         ))}
-        </S.BestList>
+        </S.BestListWrapper>
+
+        <S.RightIconWrapper>
+        <FontAwesomeIcon icon={faCircleChevronRight} className='right-icon'/>
+        </S.RightIconWrapper>
       </S.BestWrapper>
 
       <S.CategoryButton>
@@ -68,16 +76,24 @@ const MdMain = () => {
       </S.CategoryButton>
 
       <S.MdWrapper>
-        <S.MdList>{mds.map((md) => (
-          <S.Md2 key={md.id}>
-            <S.MdImage>
-              <Link to={"/shop/mdDetail"}><img src={md.image} /></Link>   
-            </S.MdImage>
-            <S.MdTitle>{md.name}</S.MdTitle>
-            <S.MdPrice>{md.price}원</S.MdPrice>
-          </S.Md2>
+        <div className='md-list'>{mds.map((md) => (
+          <S.Md key={md.id}>
+            <Link to={"/shop/mdDetail"}>
+            <img src={md.image} alt={md.image} className='image'/>
+            </Link>   
+
+            <div className='md-name'>{md.name}</div>
+            <div className='md-price'>{md.price}원</div>
+          </S.Md>
         ))}
-          </S.MdList>
+
+        <S.ButtonWrapper>
+          <button>
+            <FontAwesomeIcon icon={faChevronRight} className='icon2'/>
+            MD 더보기
+          </button>
+        </S.ButtonWrapper>
+        </div>
       </S.MdWrapper>
     </S.MainWrapper>
   );
