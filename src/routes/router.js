@@ -35,26 +35,6 @@ import AuditionContainer from '../pages/community/audition/AuditionContainer';
 import AuditionInfoContainer from '../pages/community/audition/AuditionInfoContainer';
 import WriteContainer from '../pages/community/writing/WriteContainer';
 import LikeLessonContainer from '../pages/mypage/myActive/likeLesson/LikeLessonContainer';
-import LikeAuctionContainer from '../pages/mypage/myActive/likeAction/LikeAuctionContainer';
-import LikeMdContainer from '../pages/mypage/myActive/likeMd/LikeMdContainer';
-import LikePropContainer from '../pages/mypage/myActive/likeProp/LikePropContainer';
-import LikeTicketContainer from '../pages/mypage/myActive/likeTicket/LikeTicketContainer';
-import LikeSpaceContainer from '../pages/mypage/myActive/likeSpace/LikeSpaceContainer';
-import MyActiveReviewContainer from '../pages/mypage/myActive/MyActiveReviewContainer';
-import MyActivePostContainer from '../pages/mypage/myActive/MyActivePostContainer';
-import MyActiveComContainer from '../pages/mypage/myActive/MyActiveComContainer';
-import MyActiveReportContainer from '../pages/mypage/myActive/MyActiveReportContainer';
-import MyResPropsContainer from '../pages/mypage/myRes/MyResPropsContainer';
-import MyResReturnContainer from '../pages/mypage/myRes/MyResReturnContainer';
-import MyResTicketContainer from '../pages/mypage/myRes/MyResTicketContainer';
-import MyResCanceleContainer from '../pages/mypage/myRes/MyResCanceleContainer';
-import MyResDetailContainer from '../pages/mypage/myRes/MyResDetailContainer';
-import MyClassWatchContainer from '../pages/mypage/myClass/MyClassWatchContainer';
-import MyClassCreateContainer from '../pages/mypage/myClass/MyClassCreateContainer';
-import MyClassAdviceContainer from '../pages/mypage/myClass/MyClassAdviceContainer';
-import MyVodSubscriptContainer from '../pages/mypage/myVod/MyVodSubscriptContainer';
-import MyVodWatchContainer from '../pages/mypage/myVod/MyVodWatchContainer';
-import CompleteIdContainer from '../pages/completeId/CompleteIdContainer';
 import PlayContainer from '../pages/vod/video/mainpage/PlayContainer';
 import CommunityContainer from '../pages/community/main/CommunityContainer';
 import ReportsInfoContainer from '../pages/community/reports/ReportsInfoContainer';
@@ -65,6 +45,8 @@ import InquiryContainer from '../pages/shop/md/MdInquiry/InquiryContainer';
 import InquiryListContainer from '../pages/shop/md/MdInquiryList/InquiryListContainer';
 import LessonDetails from '../pages/showu/lesson/LessonMain/lessonDetails/LessonDetails';
 import NonLoginContainer from '../pages/vod/video/nonloginpage/NonLoginContainer';
+import MypageContainer from '../pages/mypage/MypageContainer';
+import TicketOpen from '../pages/reservation/ticket/TicketOpen';
 const router = createBrowserRouter([
   {
     path : '/',
