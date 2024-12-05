@@ -4,4 +4,8 @@ import styled  from "styled-components"
 
     const S = {};
 
+    S.Wrapper = styled.div`
+        background-color: #444444; 
+    `;
+
 export default S;

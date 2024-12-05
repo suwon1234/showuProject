@@ -1,6 +1,6 @@
 // 오디션 메인 화면
 
-import React from 'react';
+import React, { useState } from 'react';
 import S from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
@@ -9,65 +9,98 @@ import { Link } from 'react-router-dom';
 
 
 
+const Audition = () => {
+
+const [filter, setFilter] = useState("전체"); 
 
 const auditionData = [
   {
     id: 1,
-    image: 'https://i.namu.wiki/i/fqnNQjQbmB_m_s7CzSyzXSvUVH3s_Z0HW-_H3dgc5P3QD2B0TtpkRaVAeR3bWX0qOvrEtIopFW5fTIoQboTsNg.webp',
-    title: 'Mata Hari',
-    description: '2024 Audition - 뮤지컬 오디션',
+    category: "뮤지컬",
+    image: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEwMDNfMjI3%2FMDAxNzI3OTI1NjE4MDk3.wJMdo4KwESnxJkeiHjH7fsy_xNSikNjVRAV6HoQGRVIg.ua_xRjCOR-vJfRk4uhkDBvJ46laHp7TtMSCkZ3nrJP4g.JPEG%2F2025_%25B6%25F3%25C0%25CE%25BE%25F7_%25BF%25C0%25B5%25F0%25BC%25C7_%25B0%25F8%25B0%25ED_%25BD%25E6%25B3%25D7%25C0%25CF-03.jpg&type=a340',
+    title: '브로드웨이 42번가',
+    description: '2025 CJ ENM MUSICAL AUDITION',
   },
   {
     id: 2,
-    image: 'https://i.namu.wiki/i/fqnNQjQbmB_m_s7CzSyzXSvUVH3s_Z0HW-_H3dgc5P3QD2B0TtpkRaVAeR3bWX0qOvrEtIopFW5fTIoQboTsNg.webp',
+    category: "뮤지컬",
+    image: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEwMjFfMTMz%2FMDAxNzI5NDk1OTk1MDQw.9fH3RyIqD9YCMMM59QwBRYCEhdr9JQuRAr2_rRydmj0g.HQk8bunSa_na6JavgvSdjVeHjCis0V1BtZFdUp-P0jog.PNG%2F1.png&type=a340',
     title: 'Moulin Rouge',
-    description: '뮤지컬 오디션 정보',
+    description: '2025 CJ ENM MUSICAL AUDITION',
   },
   {
     id: 3,
-    image: 'https://i.namu.wiki/i/fqnNQjQbmB_m_s7CzSyzXSvUVH3s_Z0HW-_H3dgc5P3QD2B0TtpkRaVAeR3bWX0qOvrEtIopFW5fTIoQboTsNg.webp',
-    title: '2025 CJ ENM Musical',
-    description: '2025 오디션 준비 중',
+    image: '연극',
+    title: '',
+    description: '',
   },
   {
     id: 4,
-    image: 'https://i.namu.wiki/i/fqnNQjQbmB_m_s7CzSyzXSvUVH3s_Z0HW-_H3dgc5P3QD2B0TtpkRaVAeR3bWX0qOvrEtIopFW5fTIoQboTsNg.webp',
-    title: '2025 CJ ENM Musical',
-    description: '2025 오디션 준비 중',
+    category: "연극",
+    image: '',
+    title: '',
+    description: '',
   },
   {
     id: 5,
-    image: 'https://i.namu.wiki/i/fqnNQjQbmB_m_s7CzSyzXSvUVH3s_Z0HW-_H3dgc5P3QD2B0TtpkRaVAeR3bWX0qOvrEtIopFW5fTIoQboTsNg.webp',
+    category: "뮤지컬",
+    image: '',
     title: '2025 CJ ENM Musical',
     description: '2025 오디션 준비 중',
   },
   {
     id: 6,
-    image: 'https://i.namu.wiki/i/fqnNQjQbmB_m_s7CzSyzXSvUVH3s_Z0HW-_H3dgc5P3QD2B0TtpkRaVAeR3bWX0qOvrEtIopFW5fTIoQboTsNg.webp',
-    title: '2025 CJ ENM Musical',
-    description: '2025 오디션 준비 중',
+    category: "연극",
+    image: '',
+    title: '',
+    description: '',
   },
   {
     id: 7,
-    image: 'https://i.namu.wiki/i/fqnNQjQbmB_m_s7CzSyzXSvUVH3s_Z0HW-_H3dgc5P3QD2B0TtpkRaVAeR3bWX0qOvrEtIopFW5fTIoQboTsNg.webp',
-    title: '2025 CJ ENM Musical',
-    description: '2025 오디션 준비 중',
+    category: "뮤지컬",
+    image: '',
+    title: '',
+    description: '',
   },
   {
     id: 8,
-    image: 'https://i.namu.wiki/i/fqnNQjQbmB_m_s7CzSyzXSvUVH3s_Z0HW-_H3dgc5P3QD2B0TtpkRaVAeR3bWX0qOvrEtIopFW5fTIoQboTsNg.webp',
-    title: '2025 CJ ENM Musical',
-    description: '2025 오디션 준비 중',
+    category: "뮤지컬",
+    image: '',
+    title: '',
+    description: '',
   },
   {
     id: 9,
-    image: 'https://i.namu.wiki/i/fqnNQjQbmB_m_s7CzSyzXSvUVH3s_Z0HW-_H3dgc5P3QD2B0TtpkRaVAeR3bWX0qOvrEtIopFW5fTIoQboTsNg.webp',
-    title: '2025 CJ ENM Musical',
-    description: '2025 오디션 준비 중',
+    category: "연극",
+    image: '',
+    title: '',
+    description: '',
+  },
+  {
+    id: 10,
+    category: "연극",
+    image: '',
+    title: '',
+    description: '',
+  },
+  {
+    id: 11,
+    category: "뮤지컬",
+    image: '',
+    title: '',
+    description: '',
+  },
+  {
+    id: 12,
+    category: "연극",
+    image: '',
+    title: '',
+    description: '',
   },
 ];
 
-const Audition = () => {
+const filterData = filter === "전체" ? (auditionData) : (auditionData.filter((items) => items.category === filter));
+
   return (
     <S.Wrapper>
         <S.TopTitle>Audition</S.TopTitle>
@@ -83,17 +116,14 @@ const Audition = () => {
   
         <S.ButtonsAll>
           <div>
-            <button>전체</button>
-            <button>공연</button>
-            <button>뮤지컬</button>
-            <button>영화</button>
-            <button>연극</button>
-            <button>밴드</button>
+          <button onClick={() => setFilter("전체")}>전체</button>
+          <button onClick={() => setFilter("뮤지컬")}>뮤지컬</button>
+          <button onClick={() => setFilter("연극")}>연극</button>
           </div>
         </S.ButtonsAll>
 
         <S.ImageWrapper>
-          {auditionData.map((audition) => (
+          {filterData.map((audition) => (
             <Link to={`/community/audition/auditionInfo/${audition.id}`}>
             <S.Images key={audition.id}>
               <img src={audition.image} alt={audition.title} />

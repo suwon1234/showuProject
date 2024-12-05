@@ -8,7 +8,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const Reports = () => {
   const reportsData = [
-    { id: 1, title: "제보합니다.", content: "2025 상반기 예정 극은 무엇...", date: "2024.12.01 18:30" },
+    { id: 1, title: "제보합니다.", content: "2025 웃는남자 캐스팅 제보...", date: "2024.12.01 18:30" },
     { id: 2, title: "제보합니다.", content: "지킬앤하이드 캐스팅 변경 정...", date: "2024.11.13 12:59" },
     { id: 3, title: "제보합니다.", content: "알라딘 팝업스토어 정보 제보...", date: "2024.10.29 20:01" },
     { id: 4, title: "제보합니다.", content: "현재 뮤지컬 시장은 어떠한지...", date: "2024.10.29 20:01" },

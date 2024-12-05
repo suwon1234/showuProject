@@ -2,6 +2,9 @@
 
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import S from './commuInfoStyle';
+
+
 
 const CommunityInfo = () => {
     const { id } = useParams();
@@ -63,19 +66,29 @@ const CommunityInfo = () => {
         },
       ];
 
-      let datas = null;
-      for(let item of commuData){
-        if(item.id === Number(id)){
-            datas = item;
-        }
-      };
+      // let datas = "";
+      // for(let item of commuData){
+      //   if(item.id === Number(id)){
+      //       datas = item;
+      //   }
+      // };
+
+      const datas = commuData.find((item) => item.id === Number(id));
+
+      if (!datas) {
+        return (
+            <p>데이터를 찾을 수 없습니다.</p>
+        );
+      }
 
     return (
-        <div>
-            <p>{datas.title}</p>
+        <S.Wrapper>
+            <S.TopTitle>{datas.title}</S.TopTitle>
+            <S.Img>
             <img src={datas.imageUrl} alt={datas.title} />
             <p>{datas.description}</p>
-        </div>
+            </S.Img>
+        </S.Wrapper>
     );
 };
 
