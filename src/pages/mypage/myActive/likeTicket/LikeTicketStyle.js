@@ -17,5 +17,5 @@ const S = {};
     height: 154px;
   `
 
-
+  
 export default S;

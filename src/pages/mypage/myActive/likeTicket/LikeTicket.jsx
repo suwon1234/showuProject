@@ -1,10 +1,12 @@
 import React from 'react';
+import S from './LikeTicketStyle';
 
 const LikeTicket = () => {
   return (
-    <div className='Container'>
-      <div className='Wrapper'>
-        <div className='ticketBox'>
+    <S.Conatiner className='Container'>
+      <S.Wrapper className='Wrapper'>
+
+        <S.TicketBox className='ticketBox'>
           <p>뮤지컬 &lt;클로버&gt;</p>
           <table className='table'>
             <thead>
@@ -28,9 +30,10 @@ const LikeTicket = () => {
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
-    </div>
+        </S.TicketBox>
+      </S.Wrapper>
+      
+    </S.Conatiner>
   );
 };
 
