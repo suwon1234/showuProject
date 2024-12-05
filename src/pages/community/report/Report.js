@@ -53,10 +53,10 @@ const Report = () => {
             <S.TitleSmall>
               제보 내용은 신뢰성의 이유로 수정 및 삭제가 불가하므로 신중하게 작성해 주시기 바랍니다.
             </S.TitleSmall>
-            <div>
-              <h2>전화 제보 | 02)123-4567</h2>
+            <S.call>
+              <h2>전화 제보 | 02)123-4567</h2> 
               <h2>관련 문의 | 02)123-4568</h2>
-            </div>
+            </S.call>
           </div>
         </S.TitleContainer>
 

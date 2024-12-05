@@ -139,7 +139,7 @@ const S = {};
         S.side = styled.div`
             width: 260px;
             position: fixed; 
-            top: 170px; 
+            top: 500px; 
             right: 170px; 
             background-color: #222;
             border-radius: 8px;
@@ -154,6 +154,8 @@ const S = {};
             justify-content: center;
             display: flex;
             margin-bottom: 20px;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
         `;
 
         S.SideItem = styled.div`
