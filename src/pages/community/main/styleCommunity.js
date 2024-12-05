@@ -112,7 +112,7 @@ const S = {};
     `;
 
     S.hoverButton = styled.button`
-        background-color: #ffd400;
+        background-color: #ffd400 !important; 
         color: #000;
     `;
 

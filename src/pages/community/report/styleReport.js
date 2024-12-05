@@ -87,6 +87,12 @@ const S = {};
         font-size: ${({ theme }) => theme.FONT_SIZE.h6};
         color: white;
     `;
+
+    S.call = styled.div`
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+    `;
   
 
     S.Input = styled.div`
@@ -115,6 +121,10 @@ const S = {};
             text-align: left;
             display: flex;
             flex-direction: column;
+        }
+
+        .textArea{
+            
         }
     `;
 
