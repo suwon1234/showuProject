@@ -25,19 +25,28 @@ const newsDatas = [
 const News = () => {
   const { id } = useParams();  
   
-  let newsItems = null;
-  for(let news of newsDatas){
-    if(news.if === Number(id)){
-      newsItems = news;
-    }
+  // let newsItems = null;
+  // for (let i = 0; i < newsDatas.length; i++) {
+  //   if (newsDatas[i].id === Number(id)) {
+  //     newsItems = newsDatas[i];
+  //     break;
+  //   }
+  // }
+
+  const newsItems = newsDatas.find(news => news.id === Number(id));
+  if (!newsItems) {
+    return <div>존재하지 않는 화면입니다.</div>; 
   }
+
+  const { title, description, imageUrl, content } = newsItems;
+
 
   return (
     <div>
-      <h1>{newsItems.title}</h1>
-      <img src={newsItems.imageUrl} alt={newsItems.title} />
-      <p>{newsItems.description}</p>
-      <p>{newsItems.content}</p>
+      <h1>{title}</h1>
+      <img src={imageUrl} alt={title} />
+      <p>{description}</p>
+      <p>{content}</p>
     </div>
   );
 };

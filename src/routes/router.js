@@ -85,7 +85,7 @@ const router = createBrowserRouter([
         element : <CommunityContainer />  // 커뮤니티 메인 페이지
       },
       {
-        path : '/community/communityInfo',
+        path : '/community/communityInfo/:id',
         element : <CommunityInfoContainer /> // 커뮤니티 세부 페이지 
       },
       {
@@ -125,8 +125,8 @@ const router = createBrowserRouter([
         element : <NewsMainContainer />  // 뉴스 메인 페이지
       },
       {
-        path : '/community/newsMain/news:id',
-        element : <NewsContainer />  // 뉴스 세부 페이지
+        path: '/community/newsMain/news/:id',  // 뉴스 세부 페이지
+        element: <NewsContainer /> 
       },
       {
         path : '/community/report',
@@ -141,16 +141,12 @@ const router = createBrowserRouter([
         element: <ReportsInfoContainer />, // 제보내역 상세 페이지
       },
       {
-        path : '/community/newsMain/popularity',
-        element : <PopularityContainer />  // 뉴스 인기순 세부 페이지
-      },
-      {
         path : '/community/audition',
         element : <AuditionContainer />  // 오디션 메인 페이지
       },
       {
-        path : '/community/audition/auditionInfo',
-        element : <AuditionInfoContainer />  // 오디션 세부 페이지
+        path: '/community/audition/auditionInfo/:id',
+        element: <AuditionInfoContainer /> // 오디션 세부 페이지
       },    
       {
         path : '/my-active/like/my-team',
