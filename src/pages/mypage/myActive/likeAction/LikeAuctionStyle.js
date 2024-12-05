@@ -27,23 +27,9 @@ const S = {};
 
   S.Content = styled.div`
 
-    /* & p:first-child {
-      font-size: 12px;
-      font-weight: 700;
-      color: #ffd400;
-      margin-top: 10px;
-    } */
-
-    & p:nth-child(1) {
+    & p .title {
       font-size: 17px;
-      font-weight: 400;
-      margin-top: 10px;
-    }
-
-    & p:nth-child(2) {
-      font-size: 18px;
       font-weight: 700;
-      margin-top: 10px;
     }
 
     & svg.heart {
@@ -54,6 +40,26 @@ const S = {};
     }
   `
 
+  S.AuctionBox = styled.div`
+    display: flex;
+    gap: 5px;
+  `
+
+  S.AuctionWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    & p .auction {
+      border-right: 1px solid #fff;
+      padding-right: 5px;
+    }
+
+    & img {
+      width: 15px;
+      height: 15px;
+    }
+  `
 
 
 export default S;

@@ -1,11 +1,20 @@
 import React from 'react';
 import S from './PostStyle';
+import { useNavigate } from 'react-router-dom';
 
 const Post = () => {
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path)
+  }
+
+  
+
   return (
     <div>
       <S.Container className='Container'>
-        <S.Wrapper className='Wrapper'>
+        <S.Wrapper className='Wrapper' onClick={() => handleNavigate(`/community/communityInfo/:id`)}>
           <S.Image className='image'>
             <img src={process.env.PUBLIC_URL + "/images/mypage/myActive/post.png"} alt="글 목록 이미지" />
           </S.Image>
