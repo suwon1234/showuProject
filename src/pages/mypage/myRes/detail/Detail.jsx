@@ -1,6 +1,5 @@
 import React from 'react';
 import S from './DetailStyle';
-import BasicButton from '../../../../components/button/BasicButton';
 
 const Detail = () => {
   return (
