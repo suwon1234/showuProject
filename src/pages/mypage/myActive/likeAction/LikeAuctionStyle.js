@@ -27,9 +27,10 @@ const S = {};
 
   S.Content = styled.div`
 
-    & p .title {
+    & p {
       font-size: 17px;
       font-weight: 700;
+      margin-top: 10px;
     }
 
     & svg.heart {
@@ -58,6 +59,7 @@ const S = {};
     & img {
       width: 15px;
       height: 15px;
+      margin-top: 7px;
     }
   `
 
