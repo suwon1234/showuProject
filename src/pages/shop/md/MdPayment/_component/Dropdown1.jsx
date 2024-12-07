@@ -1,6 +1,6 @@
 // Dropdown.js
 import React, { useState } from 'react';
-import S from './styleDropdown';
+import S from './styleDropdown2';
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,13 +17,15 @@ const Dropdown = () => {
     return (
     <S.DropdownContainer>
       <S.DropdownButton onClick={toggleDropdown}>
-        <p>--메시지 선택(선택 사항)--</p>
+        <p>-이메일 선택-</p>
         </S.DropdownButton>
         {isOpen && (
           <S.DropdownContent>
-            <S.DropdownItem onClick={() => handleOptionClick('옵션 1')}>옵션 1</S.DropdownItem>
-            <S.DropdownItem onClick={() => handleOptionClick('옵션 2')}>옵션 2</S.DropdownItem>
-            <S.DropdownItem onClick={() => handleOptionClick('옵션 3')}>옵션 3</S.DropdownItem>
+            <S.DropdownItem onClick={() => handleOptionClick('옵션 1')}>naver.com</S.DropdownItem>
+            <S.DropdownItem onClick={() => handleOptionClick('옵션 2')}>gmail.com</S.DropdownItem>
+            <S.DropdownItem onClick={() => handleOptionClick('옵션 3')}>daum.net</S.DropdownItem>
+            <S.DropdownItem onClick={() => handleOptionClick('옵션 4')}>yahoo.com</S.DropdownItem>
+            <S.DropdownItem onClick={() => handleOptionClick('옵션 5')}>icloud.com</S.DropdownItem>
             </S.DropdownContent>
           )}
           </S.DropdownContainer>
