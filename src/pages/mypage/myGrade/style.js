@@ -4,13 +4,13 @@ const S = {};
 
   S.Container = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 150vh;
     margin: 130px 0;
   `
 
   S.Wapper = styled.div`
     width: 100%;
-    height: 100%;
+    height: 150vh;
   `
 
   S.Title = styled.div`

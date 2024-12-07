@@ -1,22 +1,23 @@
 import React from 'react';
-import S from './GradeStyle';
+import S from './UpdateStyle';
 
-const Grade = () => {
+const Update = () => {
   return (
-    <S.Container className='Container'>
+    <div>
+      <S.Container className='Container'>
       <S.Fieldset>
         <S.Form>
-          <S.Label for="name">
+          <S.Label htmlFor="name">
             <p>전문가 성함</p>
-            <input type="text" name='name' placeholder='이름을 입력하세요' required/>
+            <input type="text" name='name' id='name' placeholder='이름을 입력하세요' required/>
           </S.Label>
-            <S.LabelTextAarea for="intro">
+            <S.LabelTextAarea htmlFor="intro">
               <p>자기소개</p>
-              <textarea name="intro" id="" cols="30" rows="10" placeholder='자기소개를 입력하세요' required></textarea>
+              <textarea name="intro" id="intro" cols="30" rows="10" placeholder='자기소개를 입력하세요' required></textarea>
             </S.LabelTextAarea>
-            <S.LabelSelect for="area" className='area'>
+            <S.LabelSelect htmlFor="area" className='area'>
               <p>지역</p>
-              <select name="area" id="" >
+              <select name="area" id='area' >
                 <option value="">선택해주세요</option>
                 <option value="서울">서울</option>
                 <option value="경기">경기</option>
@@ -31,9 +32,9 @@ const Grade = () => {
                 <option value="제주">제주</option>
               </select>
             </S.LabelSelect>
-            <S.LabelSelectField for="field">
+            <S.LabelSelectField htmlFor="field">
               <p>전문분야</p>
-              <select name="field" id="">
+              <select name="field" id="field">
                 <option value="">선택해주세요</option>
                 <option value="연기">연기</option>
                 <option value="마술">마술</option>
@@ -41,9 +42,9 @@ const Grade = () => {
               </select>
             </S.LabelSelectField>
           <S.hr />
-            <S.LabelSelectTotal for="total">
+            <S.LabelSelectTotal htmlFor="total">
               <p>총 경력기간</p>
-              <select name="total" id="">
+              <select name="total" id="total">
                 <option value="">선택해주세요</option>
                 <option value="신입">신입</option>
                 <option value="1년">1년</option>
@@ -58,9 +59,9 @@ const Grade = () => {
                 <option value="10년 이상">10년 이상</option>
               </select>
             </S.LabelSelectTotal>
-          <S.LabelSelectcareer for="career">
+          <S.LabelSelectcareer htmlFor="career">
             <p>경력사항</p>
-            <input type="text" name='career' placeholder='회사명ㆍ지역ㆍ부서ㆍ근무지'/>
+            <input type="text" name='career' id='career' placeholder='회사명ㆍ지역ㆍ부서ㆍ근무지'/>
           </S.LabelSelectcareer>
           <S.Portfolio className='portfolio'>
             <S.Label htmlFor="file">
@@ -68,11 +69,12 @@ const Grade = () => {
               <input type="file" id='file' className='file'/>
             </S.Label>
           </S.Portfolio>
-          <S.Button>작성 완료</S.Button>
+          <S.Button>수정 완료</S.Button>
         </S.Form>
       </S.Fieldset>
     </S.Container>
+    </div>
   );
 };
 
-export default Grade;
+export default Update;
