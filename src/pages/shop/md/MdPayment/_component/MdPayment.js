@@ -103,7 +103,6 @@ const MdPayment = ({ items }) => {
       <input type="text" maxlength="4" class="phone-input" />
       </S.InputPhone>
       </S.OrderInfo>
-      </S.InfoWrapper>
 
       <S.Dropdown2>
       <Dropdown2 options={options} /> 
@@ -115,6 +114,7 @@ const MdPayment = ({ items }) => {
       <p>기본 배송지로 저장</p>
       </S.BasicAddress>
 
+      </S.InfoWrapper>
 
       <S.PayWrapper>
       <S.Info>결제 금액</S.Info>

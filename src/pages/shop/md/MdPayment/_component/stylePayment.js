@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const inputHover = `
   &:hover {
@@ -224,7 +225,7 @@ const S = {};
   S.InfoWrapper= styled.div`
     width: 1165px;
     margin: auto;
-  
+    border-bottom: 0.5px solid #fff;
   `
 
   S.TotalAmount = styled.div`
@@ -242,10 +243,10 @@ const S = {};
 
   S.PayWrapper = styled.div`
     width: 1165px;
-    margin: 20px auto;
-    border-top: 0.5px solid #fff;
+    margin: 0 auto;
+    /* border-top: 0.5px solid #fff; */
     /* border-bottom: 0.5px solid #fff; */
-    /* margin-bottom: 20px; */
+    margin-bottom: 30px;
   `
 
   S.TotalAmount2 = styled.div`
@@ -270,15 +271,34 @@ const S = {};
 
   S.MethodWrapper = styled.div`
     width: 1165px;
-    margin: 20px auto;
+    margin: 0 auto;
     border-top: 0.5px solid #fff;
   `
 
-  S.Icon = styled.icon`
+  S.Icon = styled(FontAwesomeIcon)`
+  padding-right: 5px;
+  padding-left: 5px;
+  color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
+  cursor: pointer;
+
+    &:hover {
   
-  `
+      path{
+        color: #ffd400;
+      }
+    }
+`
 
   S.BasicAddress = styled.div`
-  
+    display: flex;
+    align-items: center;
+    width: 1165px;
+    margin: auto;
+    margin-bottom: 30px;
+
+  & p {
+    font-size: 15px;
+  }
+
   `
 export default S;

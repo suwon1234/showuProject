@@ -20,7 +20,7 @@ const S = {};
 
   S.DropdownButton = styled.button` // 배송메시지 선택 박스
     /* min-width: 160px; */
-    width: 1157px;
+    width: 1165px;
     height: 35px;
     border-radius: 5px;
     background-color: #000;
@@ -43,7 +43,7 @@ const S = {};
     /* min-width: 160px; */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    width: 1157px;
+    width: 1165px;
     height: 200px;
     border-radius: 5px;
   `
