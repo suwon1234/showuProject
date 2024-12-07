@@ -26,12 +26,6 @@ const S = {};
       font-weight: 700;
       margin-top: 10px;
     }
-  `
-
-  S.Table = styled.table`
-    width: 400px;
-    height: auto;
-    margin-top: 10px;
 
     & svg.heart {
       position: absolute;
@@ -42,6 +36,12 @@ const S = {};
         color: #ffd400;
       }
     }
+  `
+
+  S.Table = styled.table`
+    width: 400px;
+    height: auto;
+    margin-top: 10px;
   `
 
   S.Tr = styled.tr`

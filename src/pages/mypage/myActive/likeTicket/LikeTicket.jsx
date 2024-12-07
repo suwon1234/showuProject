@@ -8,9 +8,9 @@ const LikeTicket = () => {
     <div>
       <S.Conatiner className='Container'>
         <S.Wrapper className='Wrapper'>
+          <FontAwesomeIcon icon={faHeart} className='heart'/>
           <p>뮤지컬 &lt;클로버&gt;</p>
           <S.Table>
-          <FontAwesomeIcon icon={faHeart} className='heart'/>
             <tbody>
               <S.Tr>
                 <th scope='row'>티켓명</th>
@@ -34,9 +34,9 @@ const LikeTicket = () => {
           </S.Table>
         </S.Wrapper>
         <S.Wrapper className='Wrapper'>
+          <FontAwesomeIcon icon={faHeart} className='heart'/>
           <p>뮤지컬 &lt;클로버&gt;</p>
           <S.Table>
-          <FontAwesomeIcon icon={faHeart} className='heart'/>
             <tbody>
               <S.Tr>
                 <th scope='row'>티켓명</th>
@@ -60,9 +60,9 @@ const LikeTicket = () => {
           </S.Table>
         </S.Wrapper>
         <S.Wrapper className='Wrapper'>
+          <FontAwesomeIcon icon={faHeart} className='heart'/>
           <p>뮤지컬 &lt;클로버&gt;</p>
           <S.Table>
-          <FontAwesomeIcon icon={faHeart} className='heart'/>
             <tbody>
               <S.Tr>
                 <th scope='row'>티켓명</th>
@@ -86,9 +86,9 @@ const LikeTicket = () => {
           </S.Table>
         </S.Wrapper>
         <S.Wrapper className='Wrapper'>
+          <FontAwesomeIcon icon={faHeart} className='heart'/>
           <p>뮤지컬 &lt;클로버&gt;</p>
           <S.Table>
-          <FontAwesomeIcon icon={faHeart} className='heart'/>
             <tbody>
               <S.Tr>
                 <th scope='row'>티켓명</th>
@@ -112,9 +112,9 @@ const LikeTicket = () => {
           </S.Table>
         </S.Wrapper>
         <S.Wrapper className='Wrapper'>
+          <FontAwesomeIcon icon={faHeart} className='heart'/>
           <p>뮤지컬 &lt;클로버&gt;</p>
           <S.Table>
-          <FontAwesomeIcon icon={faHeart} className='heart'/>
             <tbody>
               <S.Tr>
                 <th scope='row'>티켓명</th>
@@ -138,9 +138,9 @@ const LikeTicket = () => {
           </S.Table>
         </S.Wrapper>
         <S.Wrapper className='Wrapper'>
+          <FontAwesomeIcon icon={faHeart} className='heart'/>
           <p>뮤지컬 &lt;클로버&gt;</p>
           <S.Table>
-          <FontAwesomeIcon icon={faHeart} className='heart'/>
             <tbody>
               <S.Tr>
                 <th scope='row'>티켓명</th>

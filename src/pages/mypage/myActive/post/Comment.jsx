@@ -8,19 +8,19 @@ const Comment = () => {
         <S.Table>
           <S.Thead>
             <S.Tr>
-              <th scope='col'></th>
+              <th scope='col'>No</th>
               <th scope='col'>댓글 내용</th>
               <th scope='col'>카테고리</th>
               <th scope='col'>작성일</th>
             </S.Tr>
           </S.Thead>
           <S.Tbody>
-            <S.ContentTr>
-              <th scope='row'>1</th>
-              <td>커뮤니티의 댓글의 내용이 들어가요</td>
-              <td>MD</td>
-              <td>2024.11.29 17:00</td>
-            </S.ContentTr>
+              <S.ContentTr>
+                  <th scope='row'>1</th>
+                  <td>커뮤니티의 댓글의 내용이 들어가요</td>
+                  <td>MD</td>
+                  <td>2024.11.29 17:00</td>
+              </S.ContentTr>
             <S.ContentTr>
               <th scope='row'>2</th>
               <td>커뮤니티의 댓글의 내용이 들어가요</td>

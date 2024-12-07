@@ -12,13 +12,13 @@ const S = {};
     font-size: 15px;
 
     & th {
-      color: #333;
-      background-color: #ffd400;
+      color: white;
+      background-color: black;
       text-align: left;
       font-weight: 700;
 
       padding: 10px;
-      border-bottom: 0.5px solid #fff;
+      /* border-bottom: 1px solid #fff; */
     }
 
     & td {
@@ -33,15 +33,16 @@ S.DetailTable = styled.table`
 `
 
 S.DetailThead = styled.thead`
-  font-size: 17px;
-  background-color: #ffd400;
+  font-size: 16px;
+  background-color: black;
   font-weight: 700;
 `
 
 S.DetailTrTitle = styled.tr`
   & th {
-    color: #333;
+    color: white;
     padding: 10px;
+    text-align: left;
   }
 `
 
@@ -54,16 +55,21 @@ S.DetailTbody = styled.tbody`
 S.DetailTr = styled.tr`
   & th {
     cursor: pointer;
-    
+    text-align: left;
+
     &:hover {
       color: #ffd400;
+    }
+
+    &.num {
+      padding-left: 10px;
     }
   }
 
   & td:nth-of-type(4),
   td:last-of-type {
     color: #ffd400;
-    text-align: center;
+    text-align: left;
   }
 `
 

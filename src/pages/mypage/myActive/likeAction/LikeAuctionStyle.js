@@ -4,16 +4,17 @@ const S = {};
 
   S.Container = styled.div`
     width: 900px;
-    height: 100vh;
+    height: 90vh;
 
     display: flex;
     flex-wrap: wrap;
     column-gap: 30px;
+    row-gap: 30px;
   `
 
   S.Wrapper = styled.div`
     width: 373px;
-    height: 390px;
+    height: 360px;
 
     position: relative;
   `

@@ -61,7 +61,7 @@ const Detail = () => {
                 <input type="checkbox" id='check' />
                 <label for="check"></label>
               </S.Checkbox>
-              <th scope='row'>1</th>
+              <th scope='row' className='num'>1</th>
               <td>S석</td>
               <td>L열 20번</td>
               <td>55,000원</td>
