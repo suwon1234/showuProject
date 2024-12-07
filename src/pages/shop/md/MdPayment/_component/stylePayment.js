@@ -1,5 +1,11 @@
 import styled from 'styled-components'
 
+const inputHover = `
+  &:hover {
+    border-color: #ffd400;
+  }
+`
+
 const S = {};
 
   S.PaymentWrapper = styled.div`
@@ -100,11 +106,19 @@ const S = {};
     `
 
   S.InputName = styled.div`
-    width: 1165px;
+    /* width: 1165px; */
+    
+
+  & input {
+    width: 1055px;
     height: 35px;
     background-color: #000;
     border: 0.5px solid #fff;
     border-radius: 5px;
+    padding-left: 10px;
+    font-size: 15px;
+    ${inputHover}
+  }
   `
 
   S.InputEmail = styled.div`
@@ -112,6 +126,7 @@ const S = {};
       align-items: center;
       justify-content: space-between; 
       width: 1165px;
+      
 
     .email-input{
       width: 500px; 
@@ -120,6 +135,8 @@ const S = {};
       border: 0.5px solid #fff;
       border-radius: 5px; 
       padding-left: 10px;
+      font-size: 15px;
+      ${inputHover}
     }
 
     & span {
@@ -142,6 +159,7 @@ const S = {};
       background-color: #000;
       border: 0.5px solid #fff;
       border-radius: 5px; 
+      ${inputHover}
     }
 
     & span {
@@ -152,6 +170,36 @@ const S = {};
   `;
 
   S.InputAddress = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & input {
+    width: 1055px;
+    height: 35px;
+    background-color: #000;
+    border: 0.5px solid #fff;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 15px;
+    margin-top: 10px;
+    ${inputHover}
+  }
+  `
+
+  S.Code = styled.div`
+    display: flex;
+    width: 200px;
+    height: 35px;
+    background-color: #000;
+    border: 0.5px solid #fff;
+    border-radius: 5px;
+
+    .code {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 15px;
+  }
   
   `
   S.Info = styled.div`
@@ -185,7 +233,10 @@ const S = {};
   font-size: 20px;
   `
 
-  S.Dropdown = styled.div`
+  S.Dropdown1 = styled.div`
+    /* margin: 30px auto; */
+  `
+  S.Dropdown2 = styled.div`
     margin: 30px auto;
   `
 
@@ -221,5 +272,13 @@ const S = {};
     width: 1165px;
     margin: 20px auto;
     border-top: 0.5px solid #fff;
+  `
+
+  S.Icon = styled.icon`
+  
+  `
+
+  S.BasicAddress = styled.div`
+  
   `
 export default S;

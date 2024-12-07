@@ -2,6 +2,7 @@ import React from 'react';
 import S from './stylePayment';
 import Dropdown2 from './Dropdown2';
 import Dropdown1 from './Dropdown1';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
 const MdPayment = ({ items }) => {
   const options = ['옵션 1', '옵션 2', '옵션 3']; 
@@ -43,22 +44,25 @@ const MdPayment = ({ items }) => {
 
       <S.InfoWrapper>
       <S.Info>주문 정보</S.Info>
+
       <S.OrderInfo>
       <p>주문자</p>
-      <S.InputName type='text' id='name' placeholder='이름' />
+      <S.InputName>
+      <input type='text' id='name' placeholder='이름' />
+      </S.InputName>
       </S.OrderInfo>
+
       <S.OrderInfo>
       <p>이메일</p>
       <S.InputEmail>
       <input type="text" className="email-input" id='email' placeholder='이메일 입력' />
       <span>@</span>
-
-      <S.Dropdown>
+      <S.Dropdown1>
       <Dropdown1 options={options} /> 
-      </S.Dropdown>
-      
+      </S.Dropdown1>
       </S.InputEmail>
       </S.OrderInfo>
+  
       <S.OrderInfo>
       <p>휴대전화</p>
       <S.InputPhone>
@@ -68,27 +72,49 @@ const MdPayment = ({ items }) => {
       <span>-</span>
       <input type="text" maxlength="4" class="phone-input" />
       </S.InputPhone>
-      {/* <S.InputPhone type='text' id='phone' placeholder='+00' /> */}
       </S.OrderInfo>
 
       <S.Info>배송지</S.Info>
       <S.OrderInfo>
       <p>받는 사람</p>
-      <S.InputName type='text' id='name' placeholder='이름' />
+      <S.InputName>
+      <input type='text' id='name' placeholder='이름' />
+      </S.InputName>
       </S.OrderInfo>
+
       <S.OrderInfo>
       <p>주소</p>
-      <S.InputAddress type='text' id='name' placeholder='이름' />
+      <S.InputAddress>
+      <S.Code>
+        <p className='code'>우편번호</p>
+      </S.Code>
+      <input type='text' placeholder='기본 주소' />
+      <input type='text' placeholder='나머지 주소(선택)' />
+      </S.InputAddress>
       </S.OrderInfo>
+
       <S.OrderInfo>
       <p>휴대전화</p>
-      <S.InputPhone type='text' id='name' placeholder='이름' />
+      <S.InputPhone>
+      <input type="text" maxlength="3" class="phone-input" />
+      <span>-</span>
+      <input type="text" maxlength="4" class="phone-input" />
+      <span>-</span>
+      <input type="text" maxlength="4" class="phone-input" />
+      </S.InputPhone>
       </S.OrderInfo>
       </S.InfoWrapper>
 
-      <S.Dropdown>
+      <S.Dropdown2>
       <Dropdown2 options={options} /> 
-      </S.Dropdown>
+      </S.Dropdown2>
+
+      
+      <S.BasicAddress>
+      <S.Icon icon={faCheckCircle} />
+      <p>기본 배송지로 저장</p>
+      </S.BasicAddress>
+
 
       <S.PayWrapper>
       <S.Info>결제 금액</S.Info>

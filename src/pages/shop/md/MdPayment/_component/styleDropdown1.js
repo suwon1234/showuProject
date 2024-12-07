@@ -13,14 +13,14 @@ const S = {};
   // `
   
   S.DropdownContainer = styled.div`
-    margin-top: 10px; ///
+    /* margin-top: 10px; */
     position: relative;
     display: inline-block;
   `
 
   S.DropdownButton = styled.button` // 이메일 선택 박스
     /* min-width: 160px; */
-    width: 250px;
+    width: 520px;
     height: 35px;
     border-radius: 5px;
     background-color: #000;
@@ -30,7 +30,7 @@ const S = {};
     
     & p {
       text-align: left;
-      font-size: 17px;
+      font-size: 15px;
       padding-left: 10px;
     }
   `
@@ -43,8 +43,8 @@ const S = {};
     /* min-width: 160px; */
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    width: 1157px;
-    height: 200px;
+    width: 520px;
+    height: 165px;
     border-radius: 5px;
   `
 

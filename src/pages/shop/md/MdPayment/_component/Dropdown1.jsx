@@ -1,6 +1,6 @@
 // Dropdown.js
 import React, { useState } from 'react';
-import S from './styleDropdown2';
+import S from './styleDropdown1';
 
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
