@@ -28,6 +28,7 @@ const S = {};
 
     & input::placeholder{
       color: #fff;
+      font-size: 17px;
     }
 
     & textarea {
@@ -43,6 +44,7 @@ const S = {};
 
     & textarea::placeholder{
       color: #fff;
+      font-size: 17px;
     }
 
   `
@@ -55,12 +57,13 @@ const S = {};
 
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 27px;
 
     margin-bottom: 20px;
+    border-radius: 5px;
 
     & p {
-      font-size: 15px;
+      font-size: 17px;
       margin-left: 10px;
     }
   `
@@ -75,9 +78,10 @@ const S = {};
     gap: 46px;
     
     margin-bottom: 20px;
+    border-radius: 5px;
 
     & p {
-      font-size: 15px;
+      font-size: 17px;
       margin: 10px 0 0 10px;
     }
   `
@@ -87,16 +91,18 @@ const S = {};
     height: 47px;
 
     border: 0.5px solid #444444;
+    border-radius: 5px;
 
     margin-bottom: 20px;
 
     position: relative;
     display: flex; 
     align-items: center; 
-    justify-content: space-between; 
+    gap: 72px;
+    
 
     & p {
-      font-size: 15px;
+      font-size: 17px;
       margin-left: 10px;
     }
 
@@ -115,14 +121,17 @@ const S = {};
 
     border: 0.5px solid #444444;
 
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 43px;
 
     margin-bottom: 20px;
 
+    border-radius: 5px;
+
     & p {
-      font-size: 15px;
+      font-size: 17px;
       margin-left: 10px;
     }
 
@@ -140,15 +149,17 @@ const S = {};
     height: 47px;
 
     border: 0.5px solid #444444;
+    border-radius: 5px;
 
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 26px;
 
     margin-bottom: 20px;
 
     & p {
-      font-size: 15px;
+      font-size: 17px;
       margin-left: 10px;
     }
 
@@ -166,15 +177,16 @@ const S = {};
     height: 47px;
 
     border: 0.5px solid #444444;
+    border-radius: 5px;
 
     display: flex;
     align-items: center;
-    gap: 46px;
+    gap: 50px;
 
     margin-bottom: 20px;
 
     & p {
-      font-size: 15px;
+      font-size: 17px;
       margin-left: 10px;
     }
   `
@@ -192,8 +204,9 @@ const S = {};
     & label::after {
       content: '+자료첨부';
       cursor: pointer;
-      font-size: 15px;
-        }
+      font-size: 17px;
+      margin-left: 8px;
+    }
 
     & input {
       display: none;
@@ -224,13 +237,19 @@ const S = {};
     `
 
     S.DropdownButton = styled.button`
-      width: 600px;
+      width: 698px;
       height: 40px;
       background-color: black;
       color: white;
       text-align: left;
       border: none;
-      cursor: pointer;      
+      cursor: pointer;  
+      
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      font-size: 17px;
 
       &:focus {
         outline: none;
@@ -240,12 +259,25 @@ const S = {};
     S.DropdownMenu = styled.div`
       position: absolute;
       top: 100%; 
-      left: 100px;  
-      width: 500px;
-      background-color: #000;
+      left: 115px;  
+      width: 698px;
+      height: auto;
+      background-color: black;
+      border-radius: 5px;
+      font-size: 17px;
       z-index: 1000;
       overflow: hidden;
       margin-top: 10px; 
+
+      & li {
+        padding: 10px;
+        cursor: pointer;
+      }
+
+      & li:hover {
+        background-color: #ffd400;
+        color: black;
+      }
     `;
 
 export default S;

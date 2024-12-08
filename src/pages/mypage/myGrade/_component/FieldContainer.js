@@ -23,18 +23,21 @@ const FieldContainer = () => {
           value={fieldlValue}
         >
           {fieldlValue}
-        </S.DropdownButton>
-
         <span>
           <FontAwesomeIcon icon={faAngleDown} className='down'/>
         </span>
-        { isOpen &&
-          <ul>
-            {fieldList.map((field, i) => (
-              <Field key={i} value={field} isOpen={isOpen} setFieldValue={setFieldValue} setIsOpen={setIsOpen} />
-            ))}
-          </ul>
-        }
+        </S.DropdownButton>
+
+
+        <S.DropdownMenu className='dropdownMenu'>
+          { isOpen &&
+            <ul>
+              {fieldList.map((field, i) => (
+                <Field key={i} value={field} isOpen={isOpen} setFieldValue={setFieldValue} setIsOpen={setIsOpen} />
+              ))}
+            </ul>
+          }
+        </S.DropdownMenu>
         
       </S.LabelSelectField> 
     </>

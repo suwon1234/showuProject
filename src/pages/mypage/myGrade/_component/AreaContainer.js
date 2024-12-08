@@ -24,10 +24,10 @@ const AreaContainer = () => {
         value={areaValue}
         >
           {areaValue}
-        </S.DropdownButton>
         <span>
           <FontAwesomeIcon icon={faAngleDown} className='down'/>
         </span>
+        </S.DropdownButton>
 
         <S.DropdownMenu className='dropdownMenu'>
           { isOpen &&

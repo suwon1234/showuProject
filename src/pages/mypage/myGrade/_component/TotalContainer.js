@@ -23,19 +23,21 @@ const TotalContainer = () => {
           value={totalValue}
         >
           {totalValue}
-        </S.DropdownButton>
-
         <span>
           <FontAwesomeIcon icon={faAngleDown} className='down'/>
         </span>
+        </S.DropdownButton>
 
-        { isOpen &&
-          <ul>
-            { totalList.map((total, i) => (
-              <Total key={i} value={total} setIsOpen={setIsOpen} setTotalValue={setTotalValue} isOpen={isOpen} />
-            ))}
-          </ul>
-        }
+
+        <S.DropdownMenu className='dropdownMenu'>
+          { isOpen &&
+            <ul>
+              { totalList.map((total, i) => (
+                <Total key={i} value={total} setIsOpen={setIsOpen} setTotalValue={setTotalValue} isOpen={isOpen} />
+              ))}
+            </ul>
+          }
+        </S.DropdownMenu>
 
         
       </S.LabelSelectTotal>

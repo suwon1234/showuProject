@@ -23,7 +23,7 @@ const Grade = () => {
 
           <S.LabelSelectcareer htmlFor="career">
             <p>경력사항</p>
-            <input type="text" name='career' id='career' placeholder='회사명ㆍ지역ㆍ부서ㆍ근무지'/>
+            <input type="text" name='career' id='career' placeholder='회사명ㆍ부서'/>
           </S.LabelSelectcareer>
 
           <S.Portfolio className='portfolio'>
