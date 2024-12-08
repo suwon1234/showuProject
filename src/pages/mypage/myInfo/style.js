@@ -106,13 +106,14 @@ const S = {};
     display: flex;
     flex-direction: column;
 
-    border-bottom: 0.5px solid #ffd400;
+    border-bottom: 0.5px solid #444444;
 
     & li {
       display: grid;
       grid-template-columns: 270px 400px 29px 100px;
-      border-top: 0.5px solid #ffd400;
-      padding: 25px 0;
+      align-items: center;
+      border-top: 0.5px solid #444444;
+      padding: 15px 0;
 
       & span{
         font-size: 17px;
@@ -152,6 +153,8 @@ const S = {};
     border: none;
     border-radius: 50px;
     cursor: pointer;
+    height: 55px;
+
   `
   S.DelteButton = styled.div`
     display: flex;

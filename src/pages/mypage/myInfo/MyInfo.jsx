@@ -70,7 +70,7 @@ const MyInfo = () => {
                 <span>전화 번호</span>
                 <S.Input type="text" name='phoneNumber' placeholder='010-1234-5678'/>
                 <div></div>
-                <S.Button type='button'>전화 번호 변경</S.Button>
+                <S.Button type='button'>전화번호 변경</S.Button>
               </li>
           </S.UserChangeWapper>
         </div>

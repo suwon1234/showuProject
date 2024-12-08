@@ -45,22 +45,6 @@ const S = {};
       color: #fff;
     }
 
-    & select {
-      background-color: black;
-
-      border: none;
-
-      width: 690px;
-      height: 40px;
-
-      & option {
-        background-color: black;
-      }
-
-      & option:hover {
-        background-color: #ffd400;
-      }
-    }
   `
 
   S.Label = styled.label`
@@ -104,17 +88,27 @@ const S = {};
 
     border: 0.5px solid #444444;
 
-    display: flex;
-    align-items: center;
-    gap: 70px;
-
     margin-bottom: 20px;
+
+    position: relative;
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
 
     & p {
       font-size: 15px;
       margin-left: 10px;
     }
+
+    & span  {
+      margin-left: 10px;
+    }
+
+    & svg.down {
+      margin-right: 10px;
+    }
   `
+
   S.LabelSelectField = styled.label`
     width: 820px;
     height: 47px;
@@ -123,7 +117,7 @@ const S = {};
 
     display: flex;
     align-items: center;
-    gap: 45px;
+    justify-content: space-between;
 
     margin-bottom: 20px;
 
@@ -131,7 +125,16 @@ const S = {};
       font-size: 15px;
       margin-left: 10px;
     }
+
+    & span  {
+      margin-left: 33px;
+    }
+
+    & svg.down {
+      margin-right: 10px;
+    }
   `
+
   S.LabelSelectTotal = styled.label`
     width: 820px;
     height: 47px;
@@ -140,7 +143,7 @@ const S = {};
 
     display: flex;
     align-items: center;
-    gap: 30px;
+    justify-content: space-between;
 
     margin-bottom: 20px;
 
@@ -148,7 +151,16 @@ const S = {};
       font-size: 15px;
       margin-left: 10px;
     }
+
+    & span  {
+      margin-left: 45px;
+    }
+
+    & svg.down {
+      margin-right: 10px;
+    }
   `
+
   S.LabelSelectcareer = styled.label`
     width: 820px;
     height: 47px;
@@ -210,5 +222,30 @@ const S = {};
       margin-top: 0;
       border: 0.5px solid #444444;
     `
+
+    S.DropdownButton = styled.button`
+      width: 600px;
+      height: 40px;
+      background-color: black;
+      color: white;
+      text-align: left;
+      border: none;
+      cursor: pointer;      
+
+      &:focus {
+        outline: none;
+      }
+    `;
+
+    S.DropdownMenu = styled.div`
+      position: absolute;
+      top: 100%; 
+      left: 100px;  
+      width: 500px;
+      background-color: #000;
+      z-index: 1000;
+      overflow: hidden;
+      margin-top: 10px; 
+    `;
 
 export default S;
