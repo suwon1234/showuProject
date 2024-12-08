@@ -34,11 +34,13 @@ const S = {};
   S.Delete = styled.div`
     display: flex;
     align-items: center;
-    margin-left: auto;
-    margin-right: 280px;
+    width: 1165px;
+    margin: 5px auto;
+    justify-content: flex-end;
     
     .icon1 {
       font-size: 16px;
+      
       
       path {
         color: #ffd400;

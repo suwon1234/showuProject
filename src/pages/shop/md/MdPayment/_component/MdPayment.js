@@ -164,6 +164,14 @@ const MdPayment = ({ items }) => {
           </S.OrderInfo>
         ))}
       </S.MethodWrapper>
+
+      <S.PaymentButton>
+        <S.BackButton>이전 페이지로</S.BackButton>
+        {/* <Link to={'/shop/mddetail/inquiry/list'}> */}
+          <S.NextButton>결제 진행</S.NextButton>
+        {/* </Link> */}
+      </S.PaymentButton>
+
     </S.PaymentWrapper>
   );
 };

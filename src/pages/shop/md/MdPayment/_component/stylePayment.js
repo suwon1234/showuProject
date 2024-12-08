@@ -279,6 +279,7 @@ const S = {};
   padding-right: 5px;
   padding-left: 5px;
   color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
+
     &:hover {
   
       path{
@@ -332,5 +333,42 @@ color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
     }
   }
 `
+
+const buttonStyles = `
+display: flex;
+align-items: center;
+justify-content: center;
+width: 250px;
+height: 55px;
+border-radius: 50px;
+border: none;
+font-weight: bold;
+font-size: 17px;
+cursor: pointer;
+margin-top: 50px;
+`;
+
+S.PaymentButton = styled.div`
+display: flex;
+justify-content: center;
+align-items: center; 
+margin: 50px auto 100px;
+gap: 20px;
+width: 1165px;
+border-top: 0.5px solid #fff;
+`
+
+
+S.BackButton = styled.button`
+${buttonStyles}
+background-color: #797979;
+color: #fff;
+`;
+
+S.NextButton = styled.button`
+${buttonStyles}
+background-color: #ffd400;
+color: #000;
+`;
 
 export default S;

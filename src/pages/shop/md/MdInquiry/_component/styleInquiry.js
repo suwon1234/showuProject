@@ -159,10 +159,10 @@ const S = {};
     display: flex;
     justify-content: center;
     align-items: center; 
-    margin: 50px 0 100px;
+    width: 1165px;
+    margin: 50px auto 100px;
     gap: 10px;
   `
-
 
   S.BackButton = styled.button`
     ${buttonStyles}
