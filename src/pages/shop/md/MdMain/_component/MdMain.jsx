@@ -36,14 +36,16 @@ const MdMain = () => {
         <FontAwesomeIcon icon={faChevronDown} className='icon1' />
       </S.MdTitle>
 
+      <S.BestWrapper>
       <S.BestTitle>
         <h1 className='best-title'>BEST</h1>
       </S.BestTitle>
       
-      <S.BestWrapper>
+      <S.BestItems>
         <S.LeftIconWrapper>
-        <FontAwesomeIcon icon={faCircleChevronLeft} className='left-icon'/>
+        <FontAwesomeIcon icon={faCircleChevronLeft} />
         </S.LeftIconWrapper>
+        
 
 
         <S.BestListWrapper>
@@ -57,10 +59,12 @@ const MdMain = () => {
           </S.Best>
         ))}
         </S.BestListWrapper>
+        
 
         <S.RightIconWrapper>
-        <FontAwesomeIcon icon={faCircleChevronRight} className='right-icon'/>
+        <FontAwesomeIcon icon={faCircleChevronRight} />
         </S.RightIconWrapper>
+      </S.BestItems>
       </S.BestWrapper>
 
       <S.CategoryButton>
@@ -81,11 +85,12 @@ const MdMain = () => {
             <Link to={"/shop/mdDetail"}>
             <img src={md.image} alt={md.image} className='image'/>
             </Link>   
-
             <div className='md-name'>{md.name}</div>
             <div className='md-price'>{md.price}원</div>
           </S.Md>
         ))}
+        </div>
+      </S.MdWrapper>
 
         <S.ButtonWrapper>
           <button>
@@ -93,8 +98,6 @@ const MdMain = () => {
             MD 더보기
           </button>
         </S.ButtonWrapper>
-        </div>
-      </S.MdWrapper>
     </S.MainWrapper>
   );
 };

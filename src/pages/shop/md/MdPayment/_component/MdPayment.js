@@ -2,10 +2,23 @@ import React from 'react';
 import S from './stylePayment';
 import Dropdown2 from './Dropdown2';
 import Dropdown1 from './Dropdown1';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle, faCreditCard, faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons';
 
 const MdPayment = ({ items }) => {
   const options = ['옵션 1', '옵션 2', '옵션 3']; 
+
+  const iconPaymentMethods = [
+    { label: "체크/신용 카드", icon: faCreditCard },
+    { label: "무통장 입금", icon: faMoneyBillTransfer }
+  ];
+  
+  const imagePaymentMethods = [
+    { label: "토스페이", image: `${process.env.PUBLIC_URL}/images/md/toss-pay.png` },
+    { label: "네이버페이", image: `${process.env.PUBLIC_URL}/images/md/naver-pay.png` },
+    { label: "카카오페이", image: `${process.env.PUBLIC_URL}/images/md/kakao-pay.png` },
+  ];
+  
+
   return (
     <S.PaymentWrapper>
       <S.PaymentTitle>
@@ -118,9 +131,15 @@ const MdPayment = ({ items }) => {
 
       <S.PayWrapper>
       <S.Info>결제 금액</S.Info>
-      <S.OrderInfo>상품 금액</S.OrderInfo>
-      <S.OrderInfo>배송비</S.OrderInfo>
-      <S.OrderInfo>할인 금액</S.OrderInfo>
+      <S.OrderInfo>
+        <p>상품 금액</p>
+      </S.OrderInfo>
+      <S.OrderInfo>
+        <p>배송비</p>
+      </S.OrderInfo>
+      <S.OrderInfo>
+        <p>할인 금액</p>
+      </S.OrderInfo>
       </S.PayWrapper>
 
       <S.TotalWrapper>
@@ -128,12 +147,22 @@ const MdPayment = ({ items }) => {
       </S.TotalWrapper>
       
       <S.MethodWrapper>
-      <S.Info>결제 수단</S.Info>
-      <S.OrderInfo>체크/신용 카드</S.OrderInfo>
-      <S.OrderInfo>무통장 입금</S.OrderInfo>
-      <S.OrderInfo>토스페이</S.OrderInfo>
-      <S.OrderInfo>네이버페이</S.OrderInfo>
-      <S.OrderInfo>카카오페이</S.OrderInfo>
+        <S.Info>결제 수단</S.Info>
+        {iconPaymentMethods.map((method) => (
+          <S.OrderInfo key={method.label}>
+            <S.Icon icon={faCheckCircle} />
+            <S.Icon2 icon={method.icon} />
+            <p>{method.label}</p>
+          </S.OrderInfo>
+        ))}
+          
+        {imagePaymentMethods.map((method) => (
+          <S.OrderInfo key={method.label}>
+            <S.Icon icon={faCheckCircle} />
+            <S.Image img src={method.image} alt={method.label}/>
+            <p>{method.label}</p>
+          </S.OrderInfo>
+        ))}
       </S.MethodWrapper>
     </S.PaymentWrapper>
   );

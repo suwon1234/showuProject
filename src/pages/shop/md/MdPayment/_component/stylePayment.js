@@ -154,7 +154,7 @@ const S = {};
     width: 1165px;
 
     .phone-input {
-      width: 320px; 
+      width: 333px; 
       height: 35px; 
       text-align: center; 
       background-color: #000;
@@ -218,7 +218,7 @@ const S = {};
     & p {
       font-size: 20px;
       margin-right: 20px;
-      width: 100px;
+      width: 120px;
     }
   `
 
@@ -279,6 +279,18 @@ const S = {};
   padding-right: 5px;
   padding-left: 5px;
   color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
+    &:hover {
+  
+      path{
+        color: #ffd400;
+      }
+    }
+`
+  S.Icon2 = styled(FontAwesomeIcon)`
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+  color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
   cursor: pointer;
 
     &:hover {
@@ -288,6 +300,12 @@ const S = {};
       }
     }
 `
+
+S.Image = styled.img`
+  width: 30px;
+  height: 30px;
+  margin: 0 10px;
+`;
 
   S.BasicAddress = styled.div`
     display: flex;
@@ -301,4 +319,18 @@ const S = {};
   }
 
   `
+
+S.Icon = styled(FontAwesomeIcon)`
+padding-right: 5px;
+padding-left: 5px;
+color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
+
+  &:hover {
+
+    path{
+      color: #ffd400;
+    }
+  }
+`
+
 export default S;

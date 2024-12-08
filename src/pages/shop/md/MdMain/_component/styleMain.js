@@ -31,17 +31,21 @@ const S = {};
       }
     `
 
+  S.BestWrapper = styled.div`
+    width: 1165px;
+    margin: 0 auto;
+  
+  `
   S.BestTitle = styled.div`
 
     & .best-title {
         font-size: 30px;
         font-weight: bold;
         color : #fff;
-        margin-left: 350px; 
       }
   `
 
-  S.BestWrapper = styled.div`
+  S.BestItems = styled.div`
     display: flex;
     align-items: center;
     margin-top : 30px;
@@ -50,28 +54,19 @@ const S = {};
   S.LeftIconWrapper = styled.div`
     font-size: 40px;
     cursor: pointer;
-
-    & .left-icon {
-      margin-left: 250px;
-    }
+    margin: 0 auto;
   `
 
   S.RightIconWrapper = styled.div`
+  margin: 0 auto;
     font-size: 40px;
     cursor: pointer;
-
-    & .right-icon {
-      margin-right: 250px;
-    }
   `
 
   S.BestListWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 40px;
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
   `
 
   S.Best = styled.div`
@@ -150,11 +145,10 @@ const S = {};
   `
 
   S.ButtonWrapper = styled.div `
-    display: flex;  
-    align-items: center;
+    display: flex;
     justify-content: center;
-    margin-top: 100px;
-
+    margin: 100px auto;
+  
     & button {
       width: 280px;
       height: 55px;
