@@ -174,18 +174,18 @@ const S = {};
   display: flex;
   flex-direction: column;
 
-  & input {
-    width: 1055px;
-    height: 35px;
-    background-color: #000;
-    border: 0.5px solid #fff;
-    border-radius: 5px;
-    padding-left: 10px;
-    font-size: 15px;
-    margin-top: 10px;
-    ${inputHover}
-  }
-  `
+    & input {
+      width: 1055px;
+      height: 35px;
+      background-color: #000;
+      border: 0.5px solid #fff;
+      border-radius: 5px;
+      padding-left: 10px;
+      font-size: 15px;
+      margin-top: 10px;
+      ${inputHover}
+    }
+    `
 
   S.Code = styled.div`
     display: flex;
@@ -196,18 +196,24 @@ const S = {};
     border-radius: 5px;
 
     .code {
-    display: flex;
-    align-items: center;
-    padding-left: 10px;
-    font-size: 15px;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+      font-size: 15px;
   }
   
   `
   S.Info = styled.div`
-      color: #ffd400;
-      font-size: 20px;
-      font-weight: bold;
-      margin-top: 50px;
+    color: #ffd400;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 50px;
+  `
+
+  S.OrderInfoWrapper = styled.div`
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
   `
 
   S.OrderInfo = styled.div`
@@ -222,6 +228,13 @@ const S = {};
     }
   `
 
+  S.Price = styled.div`
+    /* display: flex; */
+    font-size: 20px;
+    font-weight: bold;
+    padding-right: 5px;
+  `
+
   S.InfoWrapper= styled.div`
     width: 1165px;
     margin: auto;
@@ -229,9 +242,9 @@ const S = {};
   `
 
   S.TotalAmount = styled.div`
-  width: 1165px;
-  margin: 20px auto;
-  font-size: 20px;
+    width: 1165px;
+    margin: 20px auto;
+    font-size: 20px;
   `
 
   S.Dropdown1 = styled.div`
@@ -240,6 +253,7 @@ const S = {};
   S.Dropdown2 = styled.div`
     margin: 30px auto;
   `
+
 
   S.PayWrapper = styled.div`
     width: 1165px;
@@ -261,6 +275,13 @@ const S = {};
     border-radius: 5px;
     padding: 10px;
     margin: 30px auto;
+    justify-content: space-between;
+
+    .total-amount {
+      color: #000;
+      font-weight: bold;
+      padding-right: 5px;
+    }
   `
 
   S.TotalWrapper = styled.div`
@@ -302,11 +323,11 @@ const S = {};
     }
 `
 
-S.Image = styled.img`
-  width: 30px;
-  height: 30px;
-  margin: 0 10px;
-`;
+  S.Image = styled.img`
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+  `;
 
   S.BasicAddress = styled.div`
     display: flex;
@@ -321,17 +342,17 @@ S.Image = styled.img`
 
   `
 
-S.Icon = styled(FontAwesomeIcon)`
-padding-right: 5px;
-padding-left: 5px;
-color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
+  S.Icon = styled(FontAwesomeIcon)`
+  padding-right: 5px;
+  padding-left: 5px;
+  color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
 
-  &:hover {
+    &:hover {
 
-    path{
-      color: #ffd400;
+      path{
+        color: #ffd400;
+      }
     }
-  }
 `
 
 const buttonStyles = `
@@ -369,6 +390,13 @@ S.NextButton = styled.button`
 ${buttonStyles}
 background-color: #ffd400;
 color: #000;
+
+& p {
+  color: #000;
+  font-weight: bold;
+  font-size: 17px;
+  padding-right: 5px;
+}
 `;
 
 export default S;

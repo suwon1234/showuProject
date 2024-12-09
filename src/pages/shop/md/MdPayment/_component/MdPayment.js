@@ -17,6 +17,12 @@ const MdPayment = ({ items }) => {
     { label: "네이버페이", image: `${process.env.PUBLIC_URL}/images/md/naver-pay.png` },
     { label: "카카오페이", image: `${process.env.PUBLIC_URL}/images/md/kakao-pay.png` },
   ];
+
+  let productTotal = 0;
+  items.forEach(item => {productTotal += item.price});
+  const deliveryFee = productTotal >= 70000 ? 0 : 3000;
+  const discountAmount = 0;
+  const totalAmount = productTotal + deliveryFee - discountAmount;
   
 
   return (
@@ -131,20 +137,37 @@ const MdPayment = ({ items }) => {
 
       <S.PayWrapper>
       <S.Info>결제 금액</S.Info>
+
+      <S.OrderInfoWrapper>
       <S.OrderInfo>
         <p>상품 금액</p>
       </S.OrderInfo>
+      <S.Price>{productTotal.toLocaleString()} 원</S.Price>
+      </S.OrderInfoWrapper>
+
+      <S.OrderInfoWrapper>
       <S.OrderInfo>
         <p>배송비</p>
       </S.OrderInfo>
+      <S.Price>{deliveryFee.toLocaleString()} 원</S.Price>
+      </S.OrderInfoWrapper>
+
+      <S.OrderInfoWrapper>
       <S.OrderInfo>
         <p>할인 금액</p>
       </S.OrderInfo>
+      <S.Price>{discountAmount.toLocaleString()} 원</S.Price>
+      </S.OrderInfoWrapper>
       </S.PayWrapper>
 
+      <S.OrderInfoWrapper>
       <S.TotalWrapper>
-      <S.TotalAmount2>총 결제 금액</S.TotalAmount2>
+      <S.TotalAmount2>총 결제 금액
+      <S.Price className='total-amount'>{totalAmount.toLocaleString()} 원</S.Price>
+      </S.TotalAmount2>
       </S.TotalWrapper>
+      </S.OrderInfoWrapper>
+   
       
       <S.MethodWrapper>
         <S.Info>결제 수단</S.Info>
@@ -168,7 +191,8 @@ const MdPayment = ({ items }) => {
       <S.PaymentButton>
         <S.BackButton>이전 페이지로</S.BackButton>
         {/* <Link to={'/shop/mddetail/inquiry/list'}> */}
-          <S.NextButton>결제 진행</S.NextButton>
+          
+          <S.NextButton><p>{totalAmount.toLocaleString()}원</p>결제 진행 </S.NextButton>
         {/* </Link> */}
       </S.PaymentButton>
 
