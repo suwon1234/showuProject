@@ -1,8 +1,8 @@
 import React from 'react';
 import S from './style';
 import LoginHeader from '../login/_component/LoginHeader';
-import Checkbox from '../login/_component/Checkbox';
 import { Link } from 'react-router-dom';
+import Checkbox from '../login/_component/Checkbox';
 
 const JoinContainer = () => {
   return (
