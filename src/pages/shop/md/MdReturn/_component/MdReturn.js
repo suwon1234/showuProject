@@ -1,10 +1,89 @@
-import React from 'react';
+import React, { useState } from 'react';
+import S from './styleReturn';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCheckCircle, faXmark } from '@fortawesome/free-solid-svg-icons';
 
-const MdReturn = () => {
+const MdReturn = ({ items }) => {
+  const [checkedItems, setCheckedItems] = useState(Array(items.length).fill(false));
+  const [number, setNumber] = useState(Array(items.length).fill(1));
+
+  // 전체 상품 선택
+  const SelectAll = () => {
+    const allChecked = checkedItems.every(item => item);
+    setCheckedItems(Array(items.length).fill(!allChecked));
+  };
+
+  // 각 상품 선택
+  const SelectEach = (index) => {
+    const newCheckedItems = [...checkedItems];
+    newCheckedItems[index] = !newCheckedItems[index];
+    setCheckedItems(newCheckedItems);
+  };
+
+  // 수량 감소
+  const decrease = (index) => { setNumber(prevNumber => {
+    const newNumber = [...prevNumber];
+    if (newNumber[index] > 1) {
+      newNumber[index] -= 1;
+    }
+    return newNumber;
+  });
+};
+  
+  // 수량 증가
+  const increase = (index) => { setNumber(prevNumber => {
+    const newNumber = [...prevNumber];
+    newNumber[index] += 1;
+    return newNumber;
+  });
+  };
+
   return (
-    <div>
+    <S.ReturnWrapper>
+      <S.ReturnTitle>
+        <h1>반품 신청</h1>
+      </S.ReturnTitle>
+
+
+      <S.ReturnProduct>
+      <S.Info>반품 상품</S.Info>
+      <S.SelectAll>
+        <S.CheckIcon1 onClick={SelectAll} checked={checkedItems.every(item => item)}>
+          <FontAwesomeIcon className='icon2' icon={faCheckCircle}  />
+        </S.CheckIcon1>
+        <span>해당 상품 전체 선택</span>
+      </S.SelectAll>
       
-    </div>
+      <S.BarWrapper>
+        <S.BarName>상품명</S.BarName>
+        <S.BarQuantity>수량</S.BarQuantity>
+        <S.BarPrice>금액</S.BarPrice>
+      </S.BarWrapper>
+
+      <S.ProductList>
+        {items.map((item, index) => (
+          <S.ProductItem key={item.id}>
+            <S.CheckIcon2 onClick={() => SelectEach(index)} checked={checkedItems[index]}>
+              <FontAwesomeIcon className='icon2' icon={faCheckCircle} style={{ color: checkedItems[index] ? '#ffd400' : '#fff' }} />
+            </S.CheckIcon2>
+            <S.ProductImage src={process.env.PUBLIC_URL + "/images/md/md-1.jpg"} alt="장바구니 상품" />
+            
+            <S.ProductInfo>
+              <S.ProductName>{item.name}</S.ProductName>
+              <S.QuantityControl>
+                <S.QuantityButton onClick={() => decrease(index)}>-</S.QuantityButton>
+                <span>{number[index]}</span>
+                <S.QuantityButton onClick={() => increase(index)}>+</S.QuantityButton>
+              </S.QuantityControl>
+              <S.ProductPrice>{item.price.toLocaleString()}원</S.ProductPrice>
+              <FontAwesomeIcon className='icon3' icon={faXmark} />
+            </S.ProductInfo>
+          </S.ProductItem>
+        ))}
+      </S.ProductList>
+      </S.ReturnProduct>
+      
+    </S.ReturnWrapper>
   );
 };
 

@@ -3,6 +3,7 @@ import S from './stylePayment';
 import Dropdown2 from './Dropdown2';
 import Dropdown1 from './Dropdown1';
 import { faCheckCircle, faCreditCard, faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const MdPayment = ({ items }) => {
   const options = ['옵션 1', '옵션 2', '옵션 3']; 
@@ -189,11 +190,12 @@ const MdPayment = ({ items }) => {
       </S.MethodWrapper>
 
       <S.PaymentButton>
+        <Link to={'/shop/mddetail'}>
         <S.BackButton>이전 페이지로</S.BackButton>
-        {/* <Link to={'/shop/mddetail/inquiry/list'}> */}
-          
+        </Link>
+        <Link to={'/shop/mddetail/completed'}>
           <S.NextButton><p>{totalAmount.toLocaleString()}원</p>결제 진행 </S.NextButton>
-        {/* </Link> */}
+        </Link>
       </S.PaymentButton>
 
     </S.PaymentWrapper>

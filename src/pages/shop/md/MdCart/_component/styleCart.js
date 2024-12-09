@@ -135,7 +135,6 @@ const S = {};
       }
   `
 
-
   S.ProductImage = styled.img`
     width: 300px;
     height: 250px;

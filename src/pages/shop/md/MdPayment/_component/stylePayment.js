@@ -46,7 +46,7 @@ const S = {};
     width: 1165px;
     height: 45px;
     background-color: rgba(255, 212, 0, 0.8);
-    margin : 40px auto;
+    margin : 0auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -99,11 +99,10 @@ const S = {};
     
     `
 
-  S.ProductImage = styled.div`
+  S.ProductImage = styled.img`
     width: 300px;
     height: 250px;
-    /* margin-right: 50px; */
-    /* margin-bottom: 30px; */
+    margin: 30px;
     `
 
   S.InputName = styled.div`
@@ -355,48 +354,48 @@ const S = {};
     }
 `
 
-const buttonStyles = `
-display: flex;
-align-items: center;
-justify-content: center;
-width: 250px;
-height: 55px;
-border-radius: 50px;
-border: none;
-font-weight: bold;
-font-size: 17px;
-cursor: pointer;
-margin-top: 50px;
-`;
+  const buttonStyles = `
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 55px;
+    border-radius: 50px;
+    border: none;
+    font-weight: bold;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 50px;
+  `;
 
-S.PaymentButton = styled.div`
-display: flex;
-justify-content: center;
-align-items: center; 
-margin: 50px auto 100px;
-gap: 20px;
-width: 1165px;
-border-top: 0.5px solid #fff;
-`
+  S.PaymentButton = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: 50px auto 100px;
+    gap: 20px;
+    width: 1165px;
+    border-top: 0.5px solid #fff;
+  `
 
 
-S.BackButton = styled.button`
-${buttonStyles}
-background-color: #797979;
-color: #fff;
-`;
+  S.BackButton = styled.button`
+    ${buttonStyles}
+    background-color: #797979;
+    color: #fff;
+  `
 
-S.NextButton = styled.button`
-${buttonStyles}
-background-color: #ffd400;
-color: #000;
+  S.NextButton = styled.button`
+    ${buttonStyles}
+    background-color: #ffd400;
+    color: #000;
 
-& p {
-  color: #000;
-  font-weight: bold;
-  font-size: 17px;
-  padding-right: 5px;
-}
-`;
+    & p {
+      color: #000;
+      font-weight: bold;
+      font-size: 17px;
+      padding-right: 5px;
+    }
+  `
 
-export default S;
+  export default S;
