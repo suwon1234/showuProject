@@ -200,4 +200,221 @@ S.QuantityControl = styled.div`
     cursor: pointer;
   `
 
+S.ReturnForm = styled.table`
+width: 1165px;
+border-collapse: collapse;
+background-color: #000;
+color: #fff;
+font-size: 16px;
+margin: 40px auto;
+
+body {
+  background-color: #000; 
+  color: #fff;
+  margin: 20px;
+
+}
+
+table {
+  font-size: 18px;
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 2px solid #fff; 
+  border-bottom : 2px solid #fff;
+}
+
+th, td {
+  border-top: 2px solid #fff; 
+  border-bottom: 2px solid #fff;
+  padding: 10px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+th {
+  width: 20%;
+  background-color: #000;
+  color: #ffd400;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  border-right: 0.5px solid #fff;
+}
+
+td {
+  width: 80%;
+}
+
+tr:nth-child(1) {
+  height: 300px;
+  border-left: none;
+}
+
+tr:nth-child(2) {
+  height: 150px;
+}
+
+tr:nth-child(3) {
+  height: 400px;
+}
+
+`
+
+S.Dropdown = styled.div`
+`
+
+S.Input = styled.input`
+  width: 890px;
+  height: 150px;
+  background-color: #000;
+  border-radius: 5px;
+  border-color: #fff;
+  margin: 20px 20px;
+
+`
+
+S.Icon = styled.div`
+
+`
+
+const inputHover = `
+  &:hover {
+    border-color: #ffd400;
+  }
+`
+
+S.InputName = styled.div`
+    /* width: 1165px; */
+    
+
+  & input {
+    width: 800px;
+    height: 35px;
+    background-color: #000;
+    border: 0.5px solid #fff;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 15px;
+    ${inputHover}
+  }
+  `
+
+S.InputPhone = styled.div`
+display: flex;
+align-items: center;
+justify-content: space-between; 
+width: 800px;
+
+.phone-input {
+  width: 250px; 
+  height: 35px; 
+  text-align: center; 
+  background-color: #000;
+  border: 0.5px solid #fff;
+  border-radius: 5px; 
+  ${inputHover}
+}
+
+& span {
+  font-size: 18px;
+  margin: 0 10px;
+  color: #fff; 
+}
+`;
+
+S.InputAddress = styled.div`
+display: flex;
+flex-direction: column;
+
+
+  & input {
+    width: 800px;
+    height: 35px;
+    background-color: #000;
+    border: 0.5px solid #fff;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 15px;
+    margin-top: 10px;
+    ${inputHover}
+  }
+  `
+
+S.Code = styled.div`
+  display: flex;
+  width: 200px;
+  height: 35px;
+  background-color: #000;
+  border: 0.5px solid #fff;
+  border-radius: 5px;
+
+  .code {
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 15px;
+}
+`
+S.OrderInfo = styled.div`
+display: flex;
+align-items: center;
+margin: 30px 0;
+
+& p {
+  font-size: 20px;
+  margin : 0 10px;
+  width: 100px;
+}
+`
+S.Estimated = styled.div`
+  width: 1165px;
+  margin: 0 auto 50px;
+  border-bottom: 0.5px solid #fff;
+
+`
+
+const buttonStyles = `
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 250px;
+    height: 55px;
+    border-radius: 50px;
+    border: none;
+    font-weight: bold;
+    font-size: 17px;
+    cursor: pointer;
+    margin-top: 50px;
+  `;
+
+  S.PaymentButton = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    margin: 50px auto 100px;
+    gap: 20px;
+    width: 1165px;
+    border-top: 0.5px solid #fff;
+  `
+
+
+  S.BackButton = styled.button`
+    ${buttonStyles}
+    background-color: #797979;
+    color: #fff;
+  `
+
+  S.NextButton = styled.button`
+    ${buttonStyles}
+    background-color: #ffd400;
+    color: #000;
+
+    & p {
+      color: #000;
+      font-weight: bold;
+      font-size: 17px;
+      padding-right: 5px;
+    }
+  `
+
 export default S;

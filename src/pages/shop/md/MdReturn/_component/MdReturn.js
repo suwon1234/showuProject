@@ -2,8 +2,12 @@ import React, { useState } from 'react';
 import S from './styleReturn';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faXmark } from '@fortawesome/free-solid-svg-icons';
+import Dropdown from './Dropdown';
 
 const MdReturn = ({ items }) => {
+
+  const options = ['옵션 1', '옵션 2', '옵션 3']; 
+
   const [checkedItems, setCheckedItems] = useState(Array(items.length).fill(false));
   const [number, setNumber] = useState(Array(items.length).fill(1));
 
@@ -82,6 +86,84 @@ const MdReturn = ({ items }) => {
         ))}
       </S.ProductList>
       </S.ReturnProduct>
+
+      <S.ReturnForm>
+        <table className="return-form">
+          <tr>
+            <th>반품 사유</th>
+            <td colSpan="2">
+            <S.Dropdown>
+            <Dropdown options={options} /> 
+            </S.Dropdown>
+            <S.Input type='text' placeholder='반품 사유를 입력해주세요.' />
+            </td>
+          </tr>
+          <tr>
+            <th>반품 발송 방법</th>
+            <td colSpan="2">
+              <S.Icon icon={faCheckCircle} />
+              <p>지정택배 방문요청 (판매사와 계약된 택배업체에서 방문수령 수거)</p>
+              <S.Icon icon={faCheckCircle} />
+              <p>직접 발송 (구매자께서 개별로 상품을 이미 발송한 경우)</p>
+            </td>
+          </tr>
+          <tr>
+            <th>상품 수거지 주소</th>
+            <td colSpan="2">
+            <S.OrderInfo>
+            <p>받는 사람</p>
+            <S.InputName>
+            <input type='text' id='name' placeholder='이름' />
+            </S.InputName>
+            </S.OrderInfo>
+
+            <S.OrderInfo>
+            <p>주소</p>
+            <S.InputAddress>
+            <S.Code>
+              <p className='code'>우편번호</p>
+            </S.Code>
+            <input type='text' placeholder='기본 주소' />
+            <input type='text' placeholder='나머지 주소(선택)' />
+            </S.InputAddress>
+            </S.OrderInfo>
+
+            <S.OrderInfo>
+            <p>휴대전화</p>
+            <S.InputPhone>
+            <input type="text" maxlength="3" class="phone-input" />
+            <span>-</span>
+            <input type="text" maxlength="4" class="phone-input" />
+            <span>-</span>
+            <input type="text" maxlength="4" class="phone-input" />
+            </S.InputPhone>
+            </S.OrderInfo>
+            </td>
+          </tr>
+          </table>
+          </S.ReturnForm>
+
+          <S.Estimated>
+          <S.Info>예상 환불 금액</S.Info>
+            <S.OrderInfo>
+              <p>상품 금액</p>
+            </S.OrderInfo>
+            <S.OrderInfo>
+              <p>배송비</p>
+            </S.OrderInfo>
+            <S.OrderInfo>
+              <p>할인</p>
+            </S.OrderInfo>
+          </S.Estimated>
+
+          <S.PaymentButton>
+        {/* <Link to={'/shop/mddetail'}> */}
+        <S.BackButton>취소</S.BackButton>
+        {/* </Link> */}
+        {/* <Link to={'/shop/mddetail/completed'}> */}
+          <S.NextButton>반품 신청하기</S.NextButton>
+        {/* </Link> */}
+      </S.PaymentButton>
       
     </S.ReturnWrapper>
   );
