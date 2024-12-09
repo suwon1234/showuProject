@@ -26,6 +26,11 @@ const S = {};
   `
   S.Tr = styled.tr`
 
+    & th {
+      text-align: left;
+      padding-left: 30px;
+    }
+
     &:hover {
       border-left: 2px solid #ffd400;
       background-color: rgb(255, 212, 0, 0.1);

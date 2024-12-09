@@ -32,6 +32,8 @@ const S = {};
 
     & th {
       cursor: pointer;
+      text-align: left;
+      padding-left: 30px;
       
       &:hover {
         color: #ffd400;
@@ -47,6 +49,7 @@ const S = {};
     &:hover {
       border-left: 2px solid #ffd400;
       background-color: rgb(255, 212, 0, 0.1);
+      cursor: pointer;
       }
 
     & td {

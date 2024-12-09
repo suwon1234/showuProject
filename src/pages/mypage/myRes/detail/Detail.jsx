@@ -43,7 +43,7 @@ const Detail = () => {
             <S.DetailTrTitle>
             <S.Checkbox>
                 <input type="checkbox" id='check' />
-                <label for="check"></label>
+                <label htmlFor="check"></label>
               </S.Checkbox>
               <th scope='col'>예매 번호</th>
               <th scope='col'>좌석 등급</th>
@@ -59,7 +59,7 @@ const Detail = () => {
             <S.DetailTr>
               <S.Checkbox>
                 <input type="checkbox" id='check' />
-                <label for="check"></label>
+                <label htmlFor="check"></label>
               </S.Checkbox>
               <th scope='row' className='num'>1</th>
               <td>S석</td>
