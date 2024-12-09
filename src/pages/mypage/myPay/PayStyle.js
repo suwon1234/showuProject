@@ -6,20 +6,18 @@ const S = {};
     margin-top: 40px;
     width: 800px;
     height: auto;
-    
   `
 
   S.Thead = styled.thead`
     font-size: 16px;
-    background-color: black;
-    font-weight: 700;
+    font-weight: 500;
   `
 
   S.Tr = styled.tr`
     & th {
       color: white;
       padding: 10px;
-      text-align: left;
+      text-align: center;
     }
   `
 
@@ -30,9 +28,14 @@ const S = {};
   `
 
   S.ContentTr = styled.tr`
+    & tr, td {
+      text-align: center;
+    }
+
     &:hover {
-      border-left: 2px solid #ffd400;
+      /* border-left: 2px solid #ffd400; */
       background-color: rgb(255, 212, 0, 0.1);
+      cursor: pointer;
     }
 
 
@@ -46,13 +49,30 @@ const S = {};
     }
   `
 
-  S.Select = styled.select`
-    color: white;
-    font-size: 16px;
-    font-weight: 700;
-    background-color: black;
+  S.Image = styled.div`
+    width: 220px;
+    height: 190px;
+    
+    display: flex;
 
-    border: none;
+    position: relative;
+    cursor: pointer;
+    
+    & img {
+      width: 210px;
+      height: 180px;
+      padding: 10px;
+
+      border: 0.5px solid #444444;
+      margin: 0 10px;
+
+      transition: transform 0.3s ease, z-index 0 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+        z-index: 10;
+      }
+    }
   `
   
 
