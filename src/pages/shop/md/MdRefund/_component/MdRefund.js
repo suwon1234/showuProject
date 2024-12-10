@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import S from './styleReturn';
+import React, { useEffect, useState } from 'react';
+import S from './styleRefund';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faXmark } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from './Dropdown';
 
-const MdReturn = ({ items }) => {
+const MdRefund = ({ items }) => {
 
   const options = ['옵션 1', '옵션 2', '옵션 3']; 
 
   const [checkedItems, setCheckedItems] = useState(Array(items.length).fill(false));
   const [number, setNumber] = useState(Array(items.length).fill(1));
+  const [refundAmount, setRefundAmount] = useState(0);
 
   // 전체 상품 선택
   const SelectAll = () => {
@@ -42,6 +43,16 @@ const MdReturn = ({ items }) => {
   });
   };
 
+  useEffect(() => {
+    let totalRefund = 0;
+    checkedItems.forEach((isChecked, index) => {
+      if (isChecked) {
+        totalRefund += items[index].price * number[index];
+      }
+    });
+    setRefundAmount(totalRefund);
+  }, [checkedItems, number, items])
+
   return (
     <S.ReturnWrapper>
       <S.ReturnTitle>
@@ -54,8 +65,8 @@ const MdReturn = ({ items }) => {
       <S.SelectAll>
         <S.CheckIcon1 onClick={SelectAll} checked={checkedItems.every(item => item)}>
           <FontAwesomeIcon className='icon2' icon={faCheckCircle}  />
+        <S.P>해당 상품 전체 선택</S.P>
         </S.CheckIcon1>
-        <span>해당 상품 전체 선택</span>
       </S.SelectAll>
       
       <S.BarWrapper>
@@ -101,10 +112,14 @@ const MdReturn = ({ items }) => {
           <tr>
             <th>반품 발송 방법</th>
             <td colSpan="2">
+              <S.TypeWrapper>
               <S.Icon icon={faCheckCircle} />
               <p>지정택배 방문요청 (판매사와 계약된 택배업체에서 방문수령 수거)</p>
+              </S.TypeWrapper>
+              <S.TypeWrapper>
               <S.Icon icon={faCheckCircle} />
               <p>직접 발송 (구매자께서 개별로 상품을 이미 발송한 경우)</p>
+              </S.TypeWrapper>
             </td>
           </tr>
           <tr>
@@ -145,16 +160,36 @@ const MdReturn = ({ items }) => {
 
           <S.Estimated>
           <S.Info>예상 환불 금액</S.Info>
+
+            <S.OrderInfoWrapper>
             <S.OrderInfo>
               <p>상품 금액</p>
             </S.OrderInfo>
+              <S.Price>{refundAmount.toLocaleString()}원</S.Price>
+            </S.OrderInfoWrapper>
+
+            <S.OrderInfoWrapper>
             <S.OrderInfo>
               <p>배송비</p>
             </S.OrderInfo>
+              <S.Price>0원</S.Price>
+            </S.OrderInfoWrapper>
+
+            <S.OrderInfoWrapper>
             <S.OrderInfo>
               <p>할인</p>
             </S.OrderInfo>
+              <S.Price>0원</S.Price>
+            </S.OrderInfoWrapper>
           </S.Estimated>
+
+        <S.OrderInfoWrapper>
+      <S.TotalWrapper>
+      <S.TotalAmount2>예상 환불 금액
+      <S.Price className='total-amount'>{refundAmount.toLocaleString()}원</S.Price>
+      </S.TotalAmount2>
+      </S.TotalWrapper>
+      </S.OrderInfoWrapper>
 
           <S.PaymentButton>
         {/* <Link to={'/shop/mddetail'}> */}
@@ -169,4 +204,4 @@ const MdReturn = ({ items }) => {
   );
 };
 
-export default MdReturn;
+export default MdRefund;

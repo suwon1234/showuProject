@@ -1,18 +1,18 @@
 import React from 'react';
-import MdReturn from './_component/MdReturn';
+import MdRefund from './_component/MdRefund';
 
-const ReturnContainer = () => {
+const ReFundContainer = () => {
 
-  const returnItems = [
+  const refundItems = [
     { id: 1, name: "2024 베르사유의 장미 프로그램북 스페셜 에디션", price: 65000 },
     { id: 2, name: "2024 베르사유의 장미 프로그램북 스페셜 에디션", price: 65000 },
   ];
 
   return (
     <div>
-      <MdReturn items={returnItems} />
+      <MdRefund items={refundItems} />
     </div>
   );
 };
 
-export default ReturnContainer;
+export default ReFundContainer;
