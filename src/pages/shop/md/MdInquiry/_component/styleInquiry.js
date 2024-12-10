@@ -1,18 +1,25 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const S = {};
 
+const flexStyle = css`
+  display: flex;
+  align-items: center;
+  `
+
+const flexStyle2 = css`
+  ${flexStyle}
+  flex-direction: column;
+  `
+
   S.InquiryWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
+    ${flexStyle2}
     background-color: #000;
-    align-items: center;
   `
 
   S.InquiryTitle = styled.div`
-    display: flex;
-    align-items: center;
+    ${flexStyle}
     width: 100%;
     max-width: 1165px;
     height: 55px;
@@ -101,8 +108,7 @@ const S = {};
   `
 
   S.Type = styled.div`
-    display: flex;
-    align-items: center;
+    ${flexStyle}
     margin-right: 20px;
     cursor: pointer;
 
@@ -156,9 +162,8 @@ const S = {};
     `;
 
   S.InquiryButton = styled.div`
-    display: flex;
+    ${flexStyle}
     justify-content: center;
-    align-items: center; 
     width: 1165px;
     margin: 50px auto 100px;
     gap: 10px;
@@ -168,13 +173,12 @@ const S = {};
     ${buttonStyles}
     background-color: #797979;
     color: #fff;
-  `;
+  `
 
   S.NextButton = styled.button`
     ${buttonStyles}
     background-color: #ffd400;
     color: #000;
-  `;
-
+  `
 
 export default S;

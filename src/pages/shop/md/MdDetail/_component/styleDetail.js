@@ -1,15 +1,19 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const S = {};
+
+const flexStyle = css`
+  display: flex;
+  align-items: center;
+`
 
   S.Wrapper = styled.div`
     display: flex;
     flex-direction: column;
   `
   S.DetailContainer = styled.div`
-    display: flex;
+    ${flexStyle}
     justify-content: flex-end;
-    align-items: center;
     margin-top: 150px;
     gap: 130px;
     margin-left: auto; 
@@ -28,22 +32,22 @@ const S = {};
     width: 505px;
     
     & p:first-child {
-        padding-bottom: 30px; 
-        font-size: 15px;
-        font-weight: bold;
-        color: #ffd400;
+      padding-bottom: 30px; 
+      font-size: 15px;
+      font-weight: bold;
+      color: #ffd400;
     }
       
     & p:nth-child(2) {
-        padding-bottom: 40px; 
-        font-size: 18px;
+      padding-bottom: 40px; 
+      font-size: 18px;
     }
       
     & p:last-child {
-        padding-bottom: 30px; 
-        font-size: 20px;
-        font-weight: bold;
-      }
+      padding-bottom: 30px; 
+      font-size: 20px;
+      font-weight: bold;
+    }
   `
   
   S.ButtonWrapper = styled.div`
@@ -96,8 +100,7 @@ const S = {};
   `
 
   S.Dropdown = styled.div`
-    display: flex;
-    align-items: center;
+    ${flexStyle}
     width: 505px;
     margin-bottom: 30px;
     font-size: 18px;
@@ -147,7 +150,6 @@ const S = {};
   S.MdInfo = styled.div`
     width: 1140px;
     border-top: 0.5px solid white;
-    /* align-items: center; */
     margin: -120px auto 0;
 
     & .description, & .notice, & .return {
@@ -159,7 +161,7 @@ const S = {};
     }
   `
     
-    S.ImageWrapper2 = styled.div`
+  S.ImageWrapper2 = styled.div`
     flex: 1;
     display: flex;
     justify-content: center;
@@ -176,7 +178,7 @@ const S = {};
     display: flex;
     justify-content: center;
     margin-top: 100px;
-
+    
     & button {
       width: 280px;
       height: 55px;
@@ -231,6 +233,7 @@ const S = {};
       border: 0.5px solid #000;
     }
   `
+
   S.Return = styled.div`
 
     & .return2 {
@@ -242,11 +245,11 @@ const S = {};
     & .content {
       margin-top: 20px;
       margin-bottom: 20px;
-      
     }
   `
 
   S.Content = styled.div`
+  
     & p {
       margin-top: 20px;
     }

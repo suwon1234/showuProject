@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const inputHover = `
@@ -9,16 +9,19 @@ const inputHover = `
 
 const S = {};
 
+const flexStyle = css`
+  display: flex;
+  align-items: center;
+`
+
   S.PaymentWrapper = styled.div`
     display: flex;
     flex-direction: column;
     background-color: #000;
-    /* min-height: 100vh; */
   `
 
   S.PaymentTitle = styled.div`
-      display: flex;
-      align-items: center;
+      ${flexStyle}
       width: 100%;
       max-width: 1165px;
       height: 55px;
@@ -39,18 +42,16 @@ const S = {};
   S.PaymentProduct = styled.div`
     width: 1165px;
     margin: auto;
-
   `
 
   S.Head = styled.div`
+    ${flexStyle}
     width: 1165px;
     height: 45px;
     background-color: rgba(255, 212, 0, 0.8);
     margin : 0auto;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
-    `
+  `
 
   S.HeadItem = styled.div`
     flex: 1;
@@ -64,13 +65,13 @@ const S = {};
     flex: 6;
     /* text-align: left; */
     /* padding-right: 20px; */
-    `
+  `
 
   S.Center = styled.div`
     display: flex;
     flex: 2;
     text-align: center;
-    `
+  `
 
   S.Right = styled.div`
     display: flex;
@@ -80,54 +81,46 @@ const S = {};
 
 
   S.PaymentList = styled.div`
-    display: flex;
+    ${flexStyle}
     flex-direction: column;
-    align-items: center;
     margin: 0 auto;
     width: 1165px;
-    `
+  `
 
   S.PaymentItem = styled.div`
-    display: flex;
+    ${flexStyle}
     justify-content: center;
-    align-items: center;
     border-bottom: 0.5px solid #fff;
     padding: 20px 0;
-    /* width: 100%; */
     width: 1165px;
     margin-top: 30px;
-    
-    `
+  `
 
   S.ProductImage = styled.img`
     width: 300px;
     height: 250px;
     margin: 30px;
-    `
+  `
 
   S.InputName = styled.div`
-    /* width: 1165px; */
     
-
-  & input {
-    width: 1055px;
-    height: 35px;
-    background-color: #000;
-    border: 0.5px solid #fff;
-    border-radius: 5px;
-    padding-left: 10px;
-    font-size: 15px;
-    ${inputHover}
-  }
+    & input {
+      width: 1055px;
+      height: 35px;
+      background-color: #000;
+      border: 0.5px solid #fff;
+      border-radius: 5px;
+      padding-left: 10px;
+      font-size: 15px;
+      ${inputHover}
+    }
   `
 
   S.InputEmail = styled.div`
-      display: flex;
-      align-items: center;
-      justify-content: space-between; 
-      width: 1165px;
+    ${flexStyle}
+    justify-content: space-between; 
+    width: 1165px;
       
-
     .email-input{
       width: 500px; 
       height: 35px; 
@@ -147,8 +140,7 @@ const S = {};
   `
 
   S.InputPhone = styled.div`
-    display: flex;
-    align-items: center;
+    ${flexStyle}
     justify-content: space-between; 
     width: 1165px;
 
@@ -167,7 +159,7 @@ const S = {};
       margin: 0 10px;
       color: #fff; 
     }
-  `;
+  `
 
   S.InputAddress = styled.div`
   display: flex;
@@ -184,7 +176,7 @@ const S = {};
       margin-top: 10px;
       ${inputHover}
     }
-    `
+  `
 
   S.Code = styled.div`
     display: flex;
@@ -195,12 +187,10 @@ const S = {};
     border-radius: 5px;
 
     .code {
-      display: flex;
-      align-items: center;
+      ${flexStyle}
       padding-left: 10px;
       font-size: 15px;
-  }
-  
+    }
   `
   S.Info = styled.div`
     color: #ffd400;
@@ -216,8 +206,7 @@ const S = {};
   `
 
   S.OrderInfo = styled.div`
-    display: flex;
-    align-items: center;
+    ${flexStyle}
     margin-top: 30px;
 
     & p {
@@ -228,7 +217,6 @@ const S = {};
   `
 
   S.Price = styled.div`
-    /* display: flex; */
     font-size: 20px;
     font-weight: bold;
     padding-right: 5px;
@@ -247,24 +235,20 @@ const S = {};
   `
 
   S.Dropdown1 = styled.div`
-    /* margin: 30px auto; */
+   
   `
   S.Dropdown2 = styled.div`
     margin: 30px auto;
   `
 
-
   S.PayWrapper = styled.div`
     width: 1165px;
     margin: 0 auto;
-    /* border-top: 0.5px solid #fff; */
-    /* border-bottom: 0.5px solid #fff; */
     margin-bottom: 30px;
   `
 
   S.TotalAmount2 = styled.div`
-    display: flex;
-    align-items: center;
+    ${flexStyle}
     color: #000;
     font-weight: bold;
     font-size: 20px;
@@ -296,41 +280,40 @@ const S = {};
   `
 
   S.Icon = styled(FontAwesomeIcon)`
-  padding-right: 5px;
-  padding-left: 5px;
-  color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
+    padding-right: 5px;
+    padding-left: 5px;
+    color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
 
-    &:hover {
-  
-      path{
-        color: #ffd400;
+      &:hover {
+    
+        path{
+          color: #ffd400;
+        }
       }
-    }
-`
+  `
   S.Icon2 = styled(FontAwesomeIcon)`
-  width: 30px;
-  height: 30px;
-  margin: 0 10px;
-  color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
-  cursor: pointer;
+    width: 30px;
+    height: 30px;
+    margin: 0 10px;
+    color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
+    cursor: pointer;
 
-    &:hover {
-  
-      path{
-        color: #ffd400;
+      &:hover {
+    
+        path{
+          color: #ffd400;
+        }
       }
-    }
-`
+  `
 
   S.Image = styled.img`
     width: 30px;
     height: 30px;
     margin: 0 10px;
-  `;
+  `
 
   S.BasicAddress = styled.div`
-    display: flex;
-    align-items: center;
+    ${flexStyle}
     width: 1165px;
     margin: auto;
     margin-bottom: 30px;
@@ -342,17 +325,17 @@ const S = {};
   `
 
   S.Icon = styled(FontAwesomeIcon)`
-  padding-right: 5px;
-  padding-left: 5px;
-  color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
+    padding-right: 5px;
+    padding-left: 5px;
+    color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
 
-    &:hover {
+      &:hover {
 
-      path{
-        color: #ffd400;
+        path{
+          color: #ffd400;
+        }
       }
-    }
-`
+  `
 
   const buttonStyles = `
     display: flex;
@@ -369,15 +352,13 @@ const S = {};
   `;
 
   S.PaymentButton = styled.div`
-    display: flex;
+    ${flexStyle}
     justify-content: center;
-    align-items: center; 
     margin: 50px auto 100px;
     gap: 20px;
     width: 1165px;
     border-top: 0.5px solid #fff;
   `
-
 
   S.BackButton = styled.button`
     ${buttonStyles}

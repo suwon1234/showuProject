@@ -4,11 +4,8 @@ import theme from "./global/theme";
 import { RouterProvider } from "react-router-dom";
 import router from "./routes/router";
 import LessonDetails from "./pages/showu/lesson/LessonMain/lessonDetails/LessonDetails";
-import RefundContainer from "./pages/shop/md/MdRefund/RefundContainer";
-
-
-
-
+import RefundInfoContainer from "./pages/shop/md/MdRefundInfo/RefundInfoContainer";
+import PayInfoContainer from "./pages/shop/md/MdPayInfo/PayInfoContainer";
 
 
 function App() {
@@ -16,7 +13,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <RefundContainer />
+        <RefundInfoContainer />
         {/* <RouterProvider router={router} /> */}
       </ThemeProvider>
     </>

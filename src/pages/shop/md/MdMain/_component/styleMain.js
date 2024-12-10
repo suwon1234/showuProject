@@ -1,16 +1,20 @@
 // styleMain.js
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const S = {};
+
+const flexStyle = css`
+  display: flex;
+  align-items: center;
+`
 
   S.MainWrapper = styled.div`
     background-color: #000;
   `
 
   S.MdTitle = styled.div`
-    display: flex;
+    ${flexStyle}
     flex-direction: column;
-    align-items: center;
     
     & .md-title {
         font-weight: bold;
@@ -46,8 +50,7 @@ const S = {};
   `
 
   S.BestItems = styled.div`
-    display: flex;
-    align-items: center;
+    ${flexStyle}
     margin-top : 30px;
   `
 
@@ -58,7 +61,7 @@ const S = {};
   `
 
   S.RightIconWrapper = styled.div`
-  margin: 0 auto;
+    margin: 0 auto;
     font-size: 40px;
     cursor: pointer;
   `

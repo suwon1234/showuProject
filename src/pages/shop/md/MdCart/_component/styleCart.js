@@ -1,19 +1,21 @@
 // styleCart.js
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const S = {};
+
+const flexStyle = css`
+  display: flex;
+  align-items: center;
+`
 
   S.CartWrapper = styled.div`
     display: flex;
     flex-direction: column;
     background-color: #000;
-    /* height: 100vh; */
-    /* width: 100%; */
   `
 
   S.CartTitle = styled.div`
-    display: flex;
-    align-items: center;
+    ${flexStyle}
     width: 100%;
     max-width: 1165px;
     height: 55px;
@@ -32,15 +34,13 @@ const S = {};
     `
 
   S.Delete = styled.div`
-    display: flex;
-    align-items: center;
+    ${flexStyle}
     width: 1165px;
     margin: 5px auto;
     justify-content: flex-end;
     
     .icon1 {
       font-size: 16px;
-      
       
       path {
         color: #ffd400;
@@ -55,8 +55,7 @@ const S = {};
   `
 
   S.SelectAll = styled.div`
-    display: flex;
-    align-items: center;
+    ${flexStyle}
     margin: 10px 0;
     width: 1165px;
     margin: 30px auto 10px;
@@ -76,9 +75,8 @@ const S = {};
   `
 
   S.BarWrapper = styled.div`
-    display: flex; 
-    justify-content: flex-end; 
-    align-items: center; 
+    ${flexStyle}
+    justify-content: flex-end;  
     width: 1165px;
     height: 45px;
     background-color: rgba(255, 212, 0, 0.8);
@@ -104,20 +102,17 @@ const S = {};
   `
 
   S.ProductList = styled.div`
-    display: flex;
+    ${flexStyle}
     flex-direction: column;
-    align-items: center;
     margin: 0 auto;
     width: 1165px;
   `
 
   S.ProductItem = styled.div`
-    display: flex;
+    ${flexStyle}
     justify-content: center;
-    align-items: center;
     border-bottom: 0.5px solid #fff;
     padding: 20px 0;
-    /* width: 100%; */
     width: 1165px;
     margin-top: 30px;
   `
@@ -143,11 +138,9 @@ const S = {};
   `
 
   S.ProductInfo = styled.div`
-    display: flex; 
+    ${flexStyle}
     justify-content: space-between; 
-    align-items: center; 
     width: 1165px;
-    /* margin: 20px 0; */
 
     .icon3 {
       font-size: 20px;
@@ -166,8 +159,7 @@ const S = {};
   `
 
   S.QuantityControl = styled.div`
-    display: flex;
-    align-items: center;
+    ${flexStyle}
     margin-right: 10px;
     
     & span {
@@ -183,9 +175,8 @@ const S = {};
   `
 
   S.Total = styled.div`
-    display: flex;
+    ${flexStyle}
     justify-content: space-between;
-    align-items: center;
     width: 1165px;
     margin: 20px auto;
     padding: 20px 0 100px;
@@ -213,8 +204,5 @@ const S = {};
     border: none;
     cursor: pointer;
   `
-      
-
-    
 
 export default S;
