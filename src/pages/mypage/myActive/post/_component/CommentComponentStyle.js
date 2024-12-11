@@ -44,7 +44,7 @@ const S = {};
     & p.date{
       font-size: 13px;
       font-weight: 400;
-      color: #444444;
+      color: #797979;
     }
   `
 

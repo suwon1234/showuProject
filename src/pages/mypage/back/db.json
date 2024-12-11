@@ -164,5 +164,55 @@
       "date" : "2024.12.10 17:00",
       "profileImageUrl" : "/images/Mypage/user.png" 
     }
+  ],
+  "post" : [
+    {
+      "id" : "1",
+      "writer" : "작성자1",
+      "title": "작성한 글 제목1",
+      "content" : "작성한 글 내용1",
+      "date" : "24.12.10",
+      "postImageUrl" : "/images/Mypage/myActive/post.png" 
+    },
+    {
+      "id" : "2",
+      "writer" : "작성자2",
+      "title" : "작성한 글 제목2",
+      "content" : "작성한 글 내용2",
+      "date" : "24.12.10",
+      "postImageUrl" : "/images/Mypage/myActive/post.png" 
+    },
+    {
+      "id" : "3",
+      "writer" : "작성자3",
+      "title" : "작성한 글 제목3",
+      "content" : "작성한 글 내용3",
+      "date" : "24.12.10",
+      "postImageUrl" : "/images/Mypage/myActive/post.png" 
+    },
+    {
+      "id" : "4",
+      "writer" : "작성자4",
+      "title" : "작성한 글 제목4",
+      "content" : "작성한 글 내용4",
+      "date" : "24.12.10",
+      "postImageUrl" : "/images/Mypage/myActive/post.png" 
+    },
+    {
+      "id" : "5",
+      "writer" : "작성자5",
+      "title" : "작성한 글 제목5",
+      "content" : "작성한 글 내용5",
+      "date" : "24.12.10",
+      "postImageUrl" : "/images/Mypage/myActive/post.png" 
+    },
+    {
+      "id" : "6",
+      "writer" : "작성자6",
+      "title" : "작성한 글 제목6",
+      "content" : "작성한 글 내용5",
+      "date" : "24.12.10",
+      "postImageUrl" : "/images/Mypage/myActive/post.png" 
+    }
   ]
 }
