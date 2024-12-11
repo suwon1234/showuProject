@@ -26,7 +26,7 @@ const CommentComponent = () => {
 
   return (
     <S.Container className='Container'>
-          { comments.map((item, i) => (
+          { comments && comments.map((item, i) => (
             <S.Wrapper key={i}>
               <S.Write>
                 <img src={item.profileImageUrl} alt="프로필 사진" />

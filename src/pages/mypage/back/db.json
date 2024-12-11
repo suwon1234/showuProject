@@ -40,10 +40,37 @@
     {
       "id" : "1",
       "state" : "매칭 완료",
-      "imageUrl" : "/images/mypage/myTeam/team1.png",
-      "gerne" : "뮤지컬",
-      "intro" : "본인에게 잘 어울리는 연기를 같이 만들어 가요!",
+      "imageUrl" : "/images/mypage/myTeam/team6.jpg",
+      "gerne" : "연기",
+      "intro" : "팀 소개멘트1",
       "teamName" : "팀명1",
+      "period" : "2024.09.09 ~ 2024.11.01"
+    },
+    {
+      "id" : "2",
+      "state" : "매칭 완료",
+      "imageUrl" : "/images/mypage/myTeam/team2.png",
+      "gerne" : "연기",
+      "intro" : "팀 소개멘트2",
+      "teamName" : "팀명2",
+      "period" : "2024.09.09 ~ 2024.11.01"
+    },
+    {
+      "id" : "3",
+      "state" : "매칭 완료",
+      "imageUrl" : "/images/mypage/myTeam/team3.jpg",
+      "gerne" : "마술",
+      "intro" : "팀 소개멘트3",
+      "teamName" : "팀명3",
+      "period" : "2024.09.09 ~ 2024.11.01"
+    },
+    {
+      "id" : "4",
+      "state" : "매칭 대기",
+      "imageUrl" : "/images/mypage/myTeam/team4.jpg",
+      "gerne" : "마술",
+      "intro" : "팀 소개멘트4",
+      "teamName" : "팀명4",
       "period" : "2024.09.09 ~ 2024.11.01"
     }
   ],

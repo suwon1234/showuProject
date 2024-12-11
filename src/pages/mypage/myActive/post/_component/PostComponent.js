@@ -24,7 +24,7 @@ const PostComponent = () => {
 
   return (
     <S.Container className='Container'>
-      { posts.map((item, i) => (
+      { posts && posts.map((item, i) => (
         <S.Wrapper key={i} className='Wrapper'>
         <S.Wrap className='wrap'>
           <img src={item.postImageUrl} alt='post 이미지' />

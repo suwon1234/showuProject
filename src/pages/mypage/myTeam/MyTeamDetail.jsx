@@ -1,95 +1,50 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './MyTeamDetailStyle';
+import { useNavigate } from 'react-router-dom';
 
-const MyTeamDetail = () => {
+const MyTeamDetail = ({ stateValue }) => {
+  const [ teams, setTeams ] = useState([]);
+  const navigate = useNavigate();
+  const handleNavigate = (path) => {
+    navigate(path)
+  }
+  useEffect(() => {
+    const getTeams = async () => {
+      try {
+        const response = await fetch(`http://localhost:4000/myTeam`);
+        const datas = await response.json();
+        setTeams(datas)
+      }catch (error) {
+        console.log(error)
+      }
+    }
+
+    getTeams()
+      
+  }, [])
+
+  const filterTeam = teams.filter((iteam) => iteam.state === stateValue)
+
   return (
     <S.Container>
-      <S.Wrapper className='wrapper'>
-
-        <S.OuterBox className='outerBox'>
-          <S.Box className='box'>
-            <img src={process.env.PUBLIC_URL + "/images/Mypage/myTeam/team1.png"} alt="팀매칭 이미지" />
-            <S.RightContent className='rightContent'>
-              <S.Right className='right'>
-                <p className='state'>매칭 완료</p>
-                <p className='genre'>뮤지컬</p>
-                <p className='intro'>본인에게 잘 어울리는 연기를 같이 만들어 가요!</p>
-                <p className='name'>(팀명)</p>
-                <p className='date'>2024.09.09 - 2024.11.01</p>
+      <S.Wrapper>
+        
+        { filterTeam && filterTeam.map((item, i) => (
+          <S.OuterBox key={i} onClick={() => handleNavigate('/my-team')}>
+          <S.Box>
+            <img src={item.imageUrl} alt="팀매칭 이미지" />
+            <S.RightContent>
+              <S.Right>
+                <p className='genre'>{item.gerne}</p>
+                <p className='intro'>{item.intro}</p>
+                <p className='name'>{item.teamName}</p>
+                <p className='date'>{item.period}</p>
               </S.Right>
             </S.RightContent>
+            <S.Button type='button'>{item.state}</S.Button>
           </S.Box>
         </S.OuterBox>
-        <S.OuterBox className='outerBox'>
-          <S.Box className='box'>
-            <img src={process.env.PUBLIC_URL + "/images/Mypage/myTeam/team1.png"} alt="팀매칭 이미지" />
-            <S.RightContent className='rightContent'>
-              <S.Right className='right'>
-                <p className='state'>매칭 완료</p>
-                <p className='genre'>뮤지컬</p>
-                <p className='intro'>본인에게 잘 어울리는 연기를 같이 만들어 가요!</p>
-                <p className='name'>(팀명)</p>
-                <p className='date'>2024.09.09 - 2024.11.01</p>
-              </S.Right>
-            </S.RightContent>
-          </S.Box>
-        </S.OuterBox>
-        <S.OuterBox className='outerBox'>
-          <S.Box className='box'>
-            <img src={process.env.PUBLIC_URL + "/images/Mypage/myTeam/team1.png"} alt="팀매칭 이미지" />
-            <S.RightContent className='rightContent'>
-              <S.Right className='right'>
-                <p className='state'>매칭 완료</p>
-                <p className='genre'>뮤지컬</p>
-                <p className='intro'>본인에게 잘 어울리는 연기를 같이 만들어 가요!</p>
-                <p className='name'>(팀명)</p>
-                <p className='date'>2024.09.09 - 2024.11.01</p>
-              </S.Right>
-            </S.RightContent>
-          </S.Box>
-        </S.OuterBox>
-        <S.OuterBox className='outerBox'>
-          <S.Box className='box'>
-            <img src={process.env.PUBLIC_URL + "/images/Mypage/myTeam/team1.png"} alt="팀매칭 이미지" />
-            <S.RightContent className='rightContent'>
-              <S.Right className='right'>
-                <p className='state'>매칭 완료</p>
-                <p className='genre'>뮤지컬</p>
-                <p className='intro'>본인에게 잘 어울리는 연기를 같이 만들어 가요!</p>
-                <p className='name'>(팀명)</p>
-                <p className='date'>2024.09.09 - 2024.11.01</p>
-              </S.Right>
-            </S.RightContent>
-          </S.Box>
-        </S.OuterBox>
-        <S.OuterBox className='outerBox'>
-          <S.Box className='box'>
-            <img src={process.env.PUBLIC_URL + "/images/Mypage/myTeam/team1.png"} alt="팀매칭 이미지" />
-            <S.RightContent className='rightContent'>
-              <S.Right className='right'>
-                <p className='state'>매칭 완료</p>
-                <p className='genre'>뮤지컬</p>
-                <p className='intro'>본인에게 잘 어울리는 연기를 같이 만들어 가요!</p>
-                <p className='name'>(팀명)</p>
-                <p className='date'>2024.09.09 - 2024.11.01</p>
-              </S.Right>
-            </S.RightContent>
-          </S.Box>
-        </S.OuterBox>
-        <S.OuterBox className='outerBox'>
-          <S.Box className='box'>
-            <img src={process.env.PUBLIC_URL + "/images/Mypage/myTeam/team1.png"} alt="팀매칭 이미지" />
-            <S.RightContent className='rightContent'>
-              <S.Right className='right'>
-                <p className='state'>매칭 완료</p>
-                <p className='genre'>뮤지컬</p>
-                <p className='intro'>본인에게 잘 어울리는 연기를 같이 만들어 가요!</p>
-                <p className='name'>(팀명)</p>
-                <p className='date'>2024.09.09 - 2024.11.01</p>
-              </S.Right>
-            </S.RightContent>
-          </S.Box>
-        </S.OuterBox>
+        ))}
 
       </S.Wrapper>
     </S.Container>
