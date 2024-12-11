@@ -127,5 +127,42 @@
       "date" : "2024.11.02(토)",
       "imageUrl" : "/images/mypage/myVod/vod3.png"
     }
+  ],
+  "comment" : [
+    {
+      "id" : "1",
+      "writer" : "작성자1",
+      "comment" : "작성한 댓글 내용1",
+      "date" : "2024.12.10 17:00",
+      "profileImageUrl" : "/images/Mypage/user.png" 
+    },
+    {
+      "id" : "2",
+      "writer" : "작성자2",
+      "comment" : "작성한 댓글 내용2",
+      "date" : "2024.12.10 17:00",
+      "profileImageUrl" : "/images/Mypage/user.png" 
+    },
+    {
+      "id" : "3",
+      "writer" : "작성자3",
+      "comment" : "작성한 댓글 내용3",
+      "date" : "2024.12.10 17:00",
+      "profileImageUrl" : "/images/Mypage/user.png" 
+    },
+    {
+      "id" : "4",
+      "writer" : "작성자4",
+      "comment" : "작성한 댓글 내용4",
+      "date" : "2024.12.10 17:00",
+      "profileImageUrl" : "/images/Mypage/user.png" 
+    },
+    {
+      "id" : "5",
+      "writer" : "작성자5",
+      "comment" : "작성한 댓글 내용5",
+      "date" : "2024.12.10 17:00",
+      "profileImageUrl" : "/images/Mypage/user.png" 
+    }
   ]
 }

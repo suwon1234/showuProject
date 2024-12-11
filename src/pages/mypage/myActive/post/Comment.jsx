@@ -1,11 +1,13 @@
 import React from 'react';
-import S from './CommentStyle';
+import CommentComponent from './_component/CommentComponent';
 
 const Comment = () => {
   return (
-    <div>
-      <div>
-        <S.Table>
+    <CommentComponent />
+  );
+};
+
+{/* <S.Table>
           <S.Thead>
             <S.Tr>
               <th scope='col'>No</th>
@@ -64,10 +66,6 @@ const Comment = () => {
               <td>2024.11.29 17:00</td>
             </S.ContentTr>
           </S.Tbody>
-        </S.Table>
-      </div>
-    </div>
-  );
-};
+        </S.Table> */}
 
 export default Comment;
