@@ -12,7 +12,13 @@ const S = {};
     height: 90px;
     border: 1px solid #444444;
     border-radius: 10px;
-    padding: 20px;
+    padding: 15px;
+    margin-bottom: 20px;
+
+    &:hover {
+      border: 1px solid #ffd400;
+      cursor: pointer;
+    }
   `
 
   S.Write = styled.div`
@@ -26,62 +32,33 @@ const S = {};
       border-radius: 50px;
     }
 
+    & p {
+      margin-top: 5px;
+    }
+
     & p.wirter{
       font-size: 17px;
       font-weight: 700;
     }
 
     & p.date{
-      font-size: 16px;
-      font-weight: 500;
+      font-size: 13px;
+      font-weight: 400;
+      color: #444444;
     }
   `
 
+  S.Title = styled.div`
+    display: flex;
+    gap: 680px;
+  `
 
-
-  // S.Table = styled.table`
-  //   margin-top: 40px;
-  //   width: 800px;
-  //   height: auto;
-    
-  // `
-
-  // S.Thead = styled.thead`
-  //   font-size: 16px;
-  //   background-color: black;
-  //   font-weight: 700;
-  // `
-
-  // S.Tr = styled.tr`
-  //   & th {
-  //     color: white;
-  //     padding: 10px 0 10px 10px;
-  //     text-align: left;
-  //   }
-  // `
-
-  // S.Tbody = styled.tbody`
-  //   & td {
-  //     padding: 20px 10px 20px 10px;
-  //   }
-  // `
-
-  // S.ContentTr = styled.tr`
-  //   &:hover {
-  //     border-left: 2px solid #ffd400;
-  //     background-color: rgb(255, 212, 0, 0.1);
-  //   }
-
-
-  //   & td {
-  //     padding: 20px 10px 20px 10px; 
-  //   }
-
-
-  //   & td:last-of-type {
-  //     color: #ffd400;
-  //   }
-  // `
+  S.Content = styled.div`
+    & p {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+  `
 
 
   

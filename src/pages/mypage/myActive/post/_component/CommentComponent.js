@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import S from '../CommentStyle';
+import S from './CommentComponentStyle';
+
 
 const CommentComponent = () => {
   const [ comments, setComments ] = useState([]);
