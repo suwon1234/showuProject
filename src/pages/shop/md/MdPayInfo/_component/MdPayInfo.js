@@ -7,27 +7,26 @@ import { Link } from 'react-router-dom';
 const MdPayInfo = ({ items }) => {
   return (
     <S.CompletedWrapper>
-
       <S.OrderCompleted>
-      <FontAwesomeIcon className='icon' icon={faBagShopping} />
-      <p>주문이 완료되었습니다.</p>
+        <FontAwesomeIcon className='icon' icon={faBagShopping} />
+        <p>주문이 완료되었습니다.</p>
       </S.OrderCompleted>
 
       <S.PaymentProduct>
         <S.InfoWrapper>
-        <S.Info>주문 상품</S.Info>
-        <S.OrderNumber>주문번호 :</S.OrderNumber>
+          <S.Info>주문 상품</S.Info>
+          <S.OrderNumber>주문번호 :</S.OrderNumber>
         </S.InfoWrapper>
 
         <S.Head>
           <S.Left>
-          <S.HeadItem>상품명</S.HeadItem>
+            <S.HeadItem>상품명</S.HeadItem>
           </S.Left>
           <S.Center>
-          <S.HeadItem>수량</S.HeadItem>
+           <S.HeadItem>수량</S.HeadItem>
           </S.Center>
           <S.Right>
-          <S.HeadItem>금액</S.HeadItem>
+            <S.HeadItem>금액</S.HeadItem>
           </S.Right>
         </S.Head>
 
@@ -38,27 +37,27 @@ const MdPayInfo = ({ items }) => {
               <S.Left>{item.name}</S.Left>
               <S.Center>1</S.Center>
               <S.Right>{item.price.toLocaleString()} 원</S.Right>
-              </S.PaymentItem>
+            </S.PaymentItem>
           ))}
         </S.PaymentList>
       </S.PaymentProduct>
       
       <S.Container>
-      <S.CustomerWrapper>
-        <S.CustomerInfo>주문자 정보</S.CustomerInfo>
-        <S.Info2>이름</S.Info2>
-        <S.Info2>휴대전화</S.Info2>
-        <S.Info2>배송지 주소</S.Info2>
-      </S.CustomerWrapper>
+        <S.CustomerWrapper>
+          <S.CustomerInfo>주문자 정보</S.CustomerInfo>
+          <S.Info2>이름</S.Info2>
+          <S.Info2>휴대전화</S.Info2>
+          <S.Info2>배송지 주소</S.Info2>
+        </S.CustomerWrapper>
 
-      <S.PaymentWrapper>
-        <S.PaymentInfo>결제 정보</S.PaymentInfo>
-        <S.Info2>결제 수단</S.Info2>
-        <S.Info2>상품 금액</S.Info2>
-        <S.Info2>할인 금액</S.Info2>
-        <S.Info2>배송비</S.Info2>
-        <S.Info2>총 결제 금액</S.Info2>
-      </S.PaymentWrapper>
+        <S.PaymentWrapper>
+          <S.PaymentInfo>결제 정보</S.PaymentInfo>
+          <S.Info2>결제 수단</S.Info2>
+          <S.Info2>상품 금액</S.Info2>
+          <S.Info2>할인 금액</S.Info2>
+          <S.Info2>배송비</S.Info2>
+          <S.Info2>총 결제 금액</S.Info2>
+        </S.PaymentWrapper>
       </S.Container>
 
       <S.PaymentButton>
