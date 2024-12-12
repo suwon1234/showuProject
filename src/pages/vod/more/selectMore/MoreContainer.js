@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import Vod from './Vod';
+import React from 'react';
+import More from './More';
+import { useEffect ,useState} from 'react';
 
-const VodContainer = () => {
-
-
+const MoreContainer = () => {
 
 
   const [plays, setPlays] = useState(null);
@@ -22,10 +21,10 @@ const VodContainer = () => {
     fetchPlays();
   }, []);
   return (
-    <div> 
-      <Vod plays={plays}/>
+    <div>
+      <More plays={plays}/>
     </div>
   );
 };
 
-export default VodContainer;
+export default MoreContainer;

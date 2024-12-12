@@ -66,6 +66,10 @@ import InquiryListContainer from '../pages/shop/md/MdInquiryList/InquiryListCont
 import MyGradeUpdateContainer from '../pages/mypage/myGrade/update/MyGradeUpdateContainer';
 import MainContainer2 from '../pages/shop/auction/AuctionMain/MainContainer2';
 import DetailContainer2 from '../pages/shop/auction/AuctionDetail/DetailContainer2';
+import MoreContainer from '../pages/vod/more/selectMore/MoreContainer'
+import PopularContainer from '../pages/vod/more/popular/PopularContainer'
+import MusicalContainer from '../pages/vod/more/musical/MusicalContainer'
+import NonLoginContainer from '../pages/vod/video/nonloginpage/NonLoginContainer'
 
 const router = createBrowserRouter([
   {
@@ -310,9 +314,25 @@ const router = createBrowserRouter([
       },
       {
         path : '/vod/play',
-        element : <PlayContainer/>
+        element : <NonLoginContainer/>
 
       },
+      {
+        path : 'vod/play/start',
+        element : <PlayContainer/>
+      },
+      {
+        path : '/vod/more/rec',
+        element : <MoreContainer/>
+      },
+      {
+        path : '/vod/more/rec/pop',
+        element : <PopularContainer/>
+      },
+      {
+        path : '/vod/more/rec/musical',
+        element : <MusicalContainer/>
+      }
 
     ]
   },
@@ -335,7 +355,8 @@ const router = createBrowserRouter([
   {
     path : '/reset-password',
     element : <FindPasswordContainer /> //비밀번호 변경 페이지
-  }
+  },
+  
 
   
 ]

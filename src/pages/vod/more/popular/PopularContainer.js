@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Vod from './Vod';
+import Popular from '../popular/Popular'
 
-const VodContainer = () => {
-
-
-
-
+const PopularContainer = () => {
   const [plays, setPlays] = useState(null);
   
   useEffect(() => {
@@ -22,10 +18,10 @@ const VodContainer = () => {
     fetchPlays();
   }, []);
   return (
-    <div> 
-      <Vod plays={plays}/>
+    <div>
+      <Popular plays={plays}/>
     </div>
   );
 };
 
-export default VodContainer;
+export default PopularContainer;

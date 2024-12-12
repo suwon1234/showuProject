@@ -59,8 +59,10 @@ const Vod = ({plays}) => {
       </S.slider>
 
       <S.showuRecommendation>
-        <div className='title'>ShowU의 추천</div>
-        <a className="more" href='/vod/more'>더보기</a>
+        <S.titlewrapper className='titlewrapper'>
+          <div className='title'>ShowU의 추천</div>
+          <a className="more" href='/vod/more/rec'>더보기</a>
+        </S.titlewrapper>
         <S.showuRecommendationPage className='showuRecommendationPage'>
         {plays && plays.map((play) => (
             <S.Card key={play.id}>
@@ -77,12 +79,14 @@ const Vod = ({plays}) => {
 
       </S.showuRecommendation>
       <S.showuRecommendation>
-        <div className='title'>실시간 인기 컨텐츠</div>
-        <a className="more" href='/vod/more'>더보기</a>
+      <S.titlewrapper className='titlewrapper'>
+          <div className='title'>실시간 인기 컨텐츠</div>
+          <a className="more" href='/vod/more/rec/pop'>더보기</a>
+        </S.titlewrapper>
         <S.showuRecommendationPage className='showuRecommendationPage'>
         {plays && plays.map((play) => (
             <S.Card key={play.id}>
-              {/* 클릭 시 /vod/play 경로로 이동 */}
+
               <Link to={`/vod/play?programid=${play.id}`} >
                 <a  role="button" >
                   {play.mainImage && (
@@ -104,12 +108,13 @@ const Vod = ({plays}) => {
 
 
       <S.showuRecommendation>
-        <div className='title'>ShowU의 추천</div>
-        <a className="more" href='/vod/more'>더보기</a>
+      <S.titlewrapper className='titlewrapper'>
+          <div className='title'>뮤지컬</div>
+          <a className="more" href='/vod/more/rec/musical'>더보기</a>
+        </S.titlewrapper>
         <S.showuRecommendationPage className='showuRecommendationPage'>
         {plays && plays.map((play) => (
             <S.Card key={play.id}>
-              {/* 클릭 시 /vod/play 경로로 이동 */}
               <Link to={`/vod/play?programid=${play.id}`} >
                 <a  role="button" >
                   {play.mainImage && (
