@@ -1,6 +1,6 @@
 import React from 'react';
 import S from './style';
-import Paging from '../_component/Paging';
+import Grade from './Grade';
 
 const MyGrade = () => {
   return (
@@ -16,11 +16,10 @@ const MyGrade = () => {
             </S.SubTitle>
           </S.Title>
 
+          <Grade />
 
         </S.Wapper>
       </S.Container>
-
-      <Paging />
     </>
   );
 };

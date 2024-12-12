@@ -37,7 +37,7 @@ const MyActiveMd = () => {
         </S.Wapper>
       </S.Container>
 
-      <Paging />
+      {/* <Paging /> */}
     </>
   );
 };

@@ -63,6 +63,7 @@ import CartContainer from '../pages/shop/md/MdCart/CartContainer';
 import PaymentContainer from '../pages/shop/md/MdPayment/PaymentContainer';
 import InquiryContainer from '../pages/shop/md/MdInquiry/InquiryContainer';
 import InquiryListContainer from '../pages/shop/md/MdInquiryList/InquiryListContainer';
+import MyGradeUpdateContainer from '../pages/mypage/myGrade/update/MyGradeUpdateContainer';
 const router = createBrowserRouter([
   {
     path : '/',
@@ -245,6 +246,10 @@ const router = createBrowserRouter([
         element : <MyInfoContainer /> //회원 정보
       },
       {
+        path : '/mypage/up-grade/update',
+        element : <MyGradeUpdateContainer /> //회원 정보
+      },
+      {
         path : '/my-pay',
         element : <MyPayContainer /> //결제 정보
       },
@@ -313,8 +318,8 @@ const router = createBrowserRouter([
     element : <FindIdContainer />
   },
   {
-    path : '/complete',
-    element : <CompleteIdContainer /> //아이디 찾기 완료 페이지
+    path : '/verify',
+    element : <CompleteIdContainer /> //비밀번호 변경 전 확인 페이지
   },
   {
     path : '/reset-password',

@@ -24,31 +24,31 @@ const Cancele = () => {
             </S.TrTitle>
           </S.Thead>
           <S.Tbody>
-
-            <S.Tr>
-              <th scope='row' onClick={() => handleNavigate('/my-res/ticket/detail')}>1</th>
+            <S.Tr onClick={() => handleNavigate('/my-res/ticket/detail')}>
+              <th scope='row'>1</th>
               <td>뮤지컬&lt;클로버&gt;</td>
               <td>2024.11.30(화) 15:00</td>
               <td>2</td>
               <td>2024.11.29 17:00</td>
-              <td>전체 취소
-                  <br />
-                  2024.11.02
-              </td>
+              <td>예약 완료</td>
             </S.Tr>
-
-            <S.Tr>
-              <th scope='row' onClick={() => handleNavigate('/my-res/ticket/detail')}>2</th>
+            <S.Tr onClick={() => handleNavigate('/my-res/ticket/detail')}>
+              <th scope='row'>2</th>
               <td>뮤지컬&lt;광화문연가&gt;</td>
               <td>2024.11.30(화) 15:00</td>
               <td>2</td>
               <td>2024.11.29 17:00</td>
-              <td>전체 취소
-                  <br />
-                  2024.11.02
-              </td>
+              <td>예약 완료</td>
             </S.Tr>
-      
+            <S.Tr onClick={() => handleNavigate('/my-res/ticket/detail')}>
+              <th scope='row'>3</th>
+              <td>뮤지컬&lt;해적&gt;
+                : THE LAST LOVE</td>
+              <td>2024.11.30(화) 15:00</td>
+              <td>2</td>
+              <td>2024.11.29 17:00</td>
+              <td>예약 완료</td>
+            </S.Tr>
           </S.Tbody>
         </S.Table>
     </div>
