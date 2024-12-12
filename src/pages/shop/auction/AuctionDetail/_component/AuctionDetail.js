@@ -100,9 +100,7 @@ const AuctionDetail = ({ auctionItems, inquiryList, auctionInfo }) => {
           <S.ClosingListWrapper>
             {auctionItems.map((item) => (
               <S.Closing key={item.id}>
-                {/* <Link to={'/shop/auction-detail'}> */}
                 <img src={item.image} alt={item.image} className='image' />
-                {/* </Link> */}
                 <div className='closing-name'>{item.name}</div>
                 <S.Closing2>
                   <div className='closing-number'>{item.number} |</div>
