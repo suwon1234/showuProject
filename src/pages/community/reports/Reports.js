@@ -25,6 +25,8 @@ const Reports = () => {
         <FontAwesomeIcon icon={faChevronDown} className='icon' />
       </S.IconWrapper>
     <S.SubWrapper>
+
+    <S.TitleContainer>
       <S.Title>
         <p>제보 내역 확인</p>
       </S.Title>
@@ -33,6 +35,8 @@ const Reports = () => {
           <li>제보 내역</li>
         </ul>
       </S.SubTitle>
+      </S.TitleContainer>
+
       <S.TableWrapper>
         
         <table>

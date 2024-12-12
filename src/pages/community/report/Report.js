@@ -1,8 +1,12 @@
 // 제보하기 페이지  /community/report
 
-import React from 'react';
+import React, { useState } from 'react';
 import S from './styleReport';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCircleCheck as solidCircleCheck } from '@fortawesome/free-solid-svg-icons';
+import { faCircleCheck as regularCircle } from '@fortawesome/free-regular-svg-icons';
 
 const handleFile = () => {
     alert("파일 크기는 5MB 이하로 업로드해주세요.");
@@ -13,10 +17,14 @@ const handleSubmit = () => {
 };
 
 
-
 const Report = () => {
 
   const navigate = useNavigate();
+  const [isChecked, setIsChecked] = useState(false);
+
+  const CheckIcon = () => {
+    setIsChecked((check) => !check);
+  };
 
   const handleBack = () => {
     const userCheck =window.confirm("News 홈 화면으로 이동합니다. 이동하시겠습니까?");
@@ -86,7 +94,9 @@ const Report = () => {
         </S.Input>
 
         <S.section>
-          <p>개인정보 수집 및 이용 동의 안내</p>
+          <div>
+            <p>개인정보 수집 및 이용 동의 안내</p>  
+          </div>     
           <div>
             <p>개인정보를 제공받는 업체</p>
             <p>(주) 문화방송</p>
@@ -102,8 +112,19 @@ const Report = () => {
           <div>
             <p>개인정보의 보유 및 이용 기간</p>
             <p>이용 목적 달성 후 즉시 파기하나, 보유할 필요가 있는 경우에 한하여 3년간 보유 및 이용</p>
-          </div>
+          </div>     
         </S.section>
+
+          <S.CheckWrapper>
+            <S.CheckIcon onClick={CheckIcon}>
+              {/* <FontAwesomeIcon className='checkedIcon' icon={faCircleCheck}  /> */}
+                <FontAwesomeIcon className="checkedIcon"
+                  icon={isChecked ? solidCircleCheck : regularCircle}
+                />
+            </S.CheckIcon>
+              <p>개인정보 수집 및 이용에 동의합니다.</p>
+          </S.CheckWrapper>
+
         <S.buttonWrapper>
         {/* <NavLink to="/community/newsMain"> */}
           <button onClick={handleBack}>이전 화면으로</button>
