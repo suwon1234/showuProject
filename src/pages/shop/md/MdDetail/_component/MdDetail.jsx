@@ -1,3 +1,4 @@
+// MD - 상세페이지
 import React from 'react'; 
 import S from './styleDetail';
 import { Link } from 'react-router-dom';
@@ -34,14 +35,14 @@ const MdDetail = () => {
       
           <S.ButtonWrapper2>
             <div className='button-wrapper1'>
-              <Link to={'/shop/mddetail/cart'}>
+              <Link to={'/shop/md/detail/cart'}>
                 <button className='button cart'><p>카트 추가</p></button>
               </Link>
-              <Link to={'/shop/mddetail/payment'}>
+              <Link to={'/shop/md/detail/payment'}>
                 <button className='button buy'><p>바로 구매</p></button>
               </Link>
             </div>
-              <Link to={'/shop/mddetail/inquiry'}>
+              <Link to={'/shop/md/detail/inquiry'}>
                 <button className='button inquiry'><p>문의하기</p></button>
               </Link>
           </S.ButtonWrapper2>
