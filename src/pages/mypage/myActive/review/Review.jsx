@@ -10,10 +10,17 @@ const Review = () => {
         <S.Table>
           <S.Thead>
             <S.Tr>
-              <th scope='col'></th>
+              <th scope='col'>No</th>
               <th scope='col'>상품명</th>
               <th scope='col'>후기내용</th>
-              <th scope='col'>카테고리</th>
+              <th scope='col'>
+              <S.Select name="category" id="category">
+                  <option value="MD">전체</option>
+                  <option value="MD">MD</option>
+                  <option value="경매">경매</option>
+                  <option value="경매">레슨</option>
+                </S.Select>
+              </th>
               <th scope='col'>별점</th>
               <th scope='col'>작성일</th>
             </S.Tr>

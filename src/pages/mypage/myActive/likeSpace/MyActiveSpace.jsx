@@ -37,7 +37,7 @@ const MyActiveSpace = () => {
         </S.Wapper>
       </S.Container>
 
-      <Paging />
+      {/* <Paging /> */}
     </>
   );
 };

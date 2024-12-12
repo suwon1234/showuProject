@@ -9,15 +9,16 @@ const S = {};
   `
 
   S.Thead = styled.thead`
-    font-size: 17px;
-    background-color: #ffd400;
+    font-size: 16px;
+    background-color: black;
     font-weight: 700;
   `
 
   S.TrTitle = styled.tr`
     & th {
-      color: #333;
+      color: white;
       padding: 10px;
+      text-align: left;
     }
   `
 
@@ -31,6 +32,8 @@ const S = {};
 
     & th {
       cursor: pointer;
+      text-align: left;
+      padding-left: 30px;
       
       &:hover {
         color: #ffd400;
@@ -40,7 +43,17 @@ const S = {};
     & td:nth-of-type(4),
     td:last-of-type {
       color: #ffd400;
-      text-align: center;
+      text-align: left;
+    }
+
+    &:hover {
+      border-left: 2px solid #ffd400;
+      background-color: rgb(255, 212, 0, 0.1);
+      cursor: pointer;
+      }
+
+    & td {
+      padding: 20px 10px 20px 10px; 
     }
   `
 
