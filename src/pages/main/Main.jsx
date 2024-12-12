@@ -1,9 +1,10 @@
 import React from 'react';
+import MainContainer from './MainContainer';
 
 const Main = () => {
   return (
     <div>
-      메인페이지
+      <MainContainer />
     </div>
   );
 };
