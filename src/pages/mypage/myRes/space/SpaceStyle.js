@@ -17,7 +17,7 @@ const S = {};
   `
 
   S.Image = styled.div`
-
+    
     & img {
       width: 400px;
       height: 250px;
@@ -48,6 +48,7 @@ const S = {};
     display: flex;
     gap: 170px;
     align-items: center;
+    justify-content: space-between;
 
     & .heartBox {
       display: flex;

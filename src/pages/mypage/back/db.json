@@ -96,15 +96,68 @@
       "area" : "서울 마포구",
       "price" : "660,000원~/8시간",
       "like" : "66",
-      "spaceImageUrl" : ""
+      "spaceImageUrl" : "/images/Mypage/myRes/space1.png"
+    },
+    {
+      "id" : "2",
+      "space" : "스튜디오 워터",
+      "type" : "메인홀",
+      "area" : "서울 영등포구",
+      "price" : "100,000원~ /1시간",
+      "like" : "22",
+      "spaceImageUrl" : "/images/Mypage/myRes/space2.png"
+    },
+    {
+      "id" : "3",
+      "space" : "대학로 드림시어터 소극장",
+      "type" : "드림시어터 소극장",
+      "area" : "서울 종로구",
+      "price" : "50,000원~ /1시간",
+      "like" : "66",
+      "spaceImageUrl" : "/images/Mypage/myRes/space3.png"
+    },
+    {
+      "id" : "4",
+      "space" : "페스티벌 무대를 축소한 공연장 프리즘홀",
+      "type" : "페스티벌 무대같은 공연장",
+      "area" : "서울 마포구",
+      "price" : "120,000원~ /1시간",
+      "like" : "66",
+      "spaceImageUrl" : "/images/Mypage/myRes/space4.png"
     }
   ],
   "myResProps" : [
     {
+      "id" : "1",
       "product" : "레트로 캐리어 가죽 여행가방 촬영소품",
       "price" : "25,000원",
       "like" : "66",
-      "period" : "4일 남음"
+      "status" : "4일 남음",
+      "propsImageUrl" : "/images/Mypage/myRes/props1.png"
+    },
+    {
+      "id" : "2",
+      "product" : "레트로 캐리어 가죽 여행가방 촬영소품",
+      "price" : "25,000원",
+      "like" : "66",
+      "status" : "4일 남음",
+      "propsImageUrl" : "/images/Mypage/myRes/props2.png"
+    },
+    {
+      "id" : "3",
+      "product" : "레트로 캐리어 가죽 여행가방 촬영소품",
+      "price" : "25,000원",
+      "like" : "66",
+      "status" : "반납 완료",
+      "propsImageUrl" : "/images/Mypage/myRes/props3.png"
+    },
+    {
+      "id" : "4",
+      "product" : "레트로 캐리어 가죽 여행가방 촬영소품",
+      "price" : "25,000원",
+      "like" : "66",
+      "status" : "반납 완료",
+      "propsImageUrl" : "/images/Mypage/myRes/props4.png"
     }
   ],
   "myVod" : [
