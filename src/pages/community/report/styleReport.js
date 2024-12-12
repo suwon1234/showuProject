@@ -123,13 +123,19 @@ const S = {};
             flex-direction: column;
         }
 
-        .textArea{
-            
+        textArea {
+            width: 100%; 
+            height: 450px; 
+            border: 1px solid #ffd400;
+            padding: 10px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #000; 
+            resize: none; 
         }
     `;
 
     S.section = styled.div`
-        margin-bottom: 40px;
         display: flex;
         flex-direction: column;
   
@@ -151,10 +157,34 @@ const S = {};
     }
     `
 
+    S.CheckIcon = styled.div`
+        cursor: 'pointer';
+        display: 'flex'; 
+        align-Items: 'center';
+        gap: 10px;
+            .icon {
+                margin-Right: '10px';
+            }
+    `
+
+    S.CheckWrapper = styled.div`
+        border: 1px solid ${({ theme }) => theme.PALLETE.gray["600"]};
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        gap: 10px;
+
+            p {
+            margin: 0;
+            }
+    `
+
     S.buttonWrapper = styled.div`
         display: flex;
         justify-content: center;
         gap: 10px;
+        padding-top: 20px;
 
         button {          
             padding: 10px;

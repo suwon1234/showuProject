@@ -1,11 +1,11 @@
-// 제보내역 스타일
+// 커뮤니티 댓글 수정 메인 페이지 스타일
 
 import styled from "styled-components";
 import { backgroundBlack } from "../../../global/common";
 
 const S = {};
 
-    S.Wrapper = styled.div`
+S.Wrapper = styled.div`
         background-color: #444444;
          
     `
@@ -19,7 +19,7 @@ const S = {};
         margin-right: 140px;
     `;
 
-    S.TopTitle = styled.div` // 상단 News title
+    S.TopTitle = styled.div` 
         font-size: 30px;
         font-weight: bold;
         color: #ffd400;
@@ -41,9 +41,9 @@ const S = {};
 
             path {
                 color : #ffd400;
+        }
     }
-}
-`
+    `
 
     S.TitleContainer = styled.div`
         display: flex;

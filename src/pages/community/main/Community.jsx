@@ -186,7 +186,7 @@ const Community = () => {
           <S.Buttons>
             <S.hoverButton>둘러보기</S.hoverButton>
             <Link to={`/community/write`}>
-            <button>글쓰기</button>
+              <button>글쓰기</button>
             </Link>
           </S.Buttons>
 
