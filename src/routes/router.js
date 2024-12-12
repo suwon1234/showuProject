@@ -64,6 +64,9 @@ import PaymentContainer from '../pages/shop/md/MdPayment/PaymentContainer';
 import InquiryContainer from '../pages/shop/md/MdInquiry/InquiryContainer';
 import InquiryListContainer from '../pages/shop/md/MdInquiryList/InquiryListContainer';
 import MyGradeUpdateContainer from '../pages/mypage/myGrade/update/MyGradeUpdateContainer';
+import MainContainer2 from '../pages/shop/auction/AuctionMain/MainContainer2';
+import DetailContainer2 from '../pages/shop/auction/AuctionDetail/DetailContainer2';
+
 const router = createBrowserRouter([
   {
     path : '/',
@@ -266,28 +269,36 @@ const router = createBrowserRouter([
         element : <ReservationContainer />
       },
       {
-        path : '/shop',
+        path : '/shop/md',
         element : <MainContainer /> // MD 메인
       },
       {
-        path : '/shop/mddetail',
+        path : '/shop/md/detail',
         element : <DetailContainer /> // MD 상세
       },
       {
-        path : '/shop/mddetail/cart/',
+        path : '/shop/md/detail/cart/',
         element : <CartContainer /> // MD 장바구니
       },
       {
-        path : '/shop/mddetail/payment',
+        path : '/shop/md/detail/payment',
         element : <PaymentContainer /> // MD 주문/결제
       },
       {
-        path : '/shop/mddetail/inquiry',
+        path : '/shop/md/detail/inquiry',
         element : <InquiryContainer /> // MD 문의
       },
       {
-        path : '/shop/mddetail/inquiry/list',
+        path : '/shop/md/detail/inquiry/list',
         element : <InquiryListContainer /> // MD 문의목록
+      },
+      {
+        path : '/shop/auction',
+        element : <MainContainer2 /> // 경매 메인
+      },
+      {
+        path : '/shop/auction/detail',
+        element : <DetailContainer2 /> // 경매 상세
       },
       {
         path : '/showu',

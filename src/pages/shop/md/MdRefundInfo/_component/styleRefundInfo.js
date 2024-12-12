@@ -1,4 +1,4 @@
-// MD - 결제정보 페이지 스타일
+// MD - 반품정보 페이지 스타일일
 import styled, { css } from "styled-components";
 
 const S = {};
@@ -8,13 +8,13 @@ const flexStyle = css`
   align-items: center;
 `
 
-  S.CompletedWrapper = styled.div`
+  S.RefundInfoWrapper = styled.div`
     display: flex;
     flex-direction: column;
     background-color: #000;
   `
 
-  S.OrderCompleted = styled.div`
+  S.RefundInfo = styled.div`
     ${flexStyle}
     flex-direction: column;
     margin-top: 70px;
@@ -32,7 +32,7 @@ const flexStyle = css`
       font-size: 25px;
       font-weight: bold;
       color: #ffd400;
-      margin-top: 30px;
+      margin-top: 40px;
     }
   `
 
@@ -112,12 +112,12 @@ const flexStyle = css`
   `
 
   S.Container = styled.div`
-    display: flex;
-    justify-content: space-between;
-    margin: 50px auto;
-    padding: 20px;
-    width: 1165px;
-  `
+  display: flex;
+  justify-content: space-between;
+  margin: 50px auto;
+  padding: 20px;
+  width: 1165px;
+`
 
   S.CustomerWrapper = styled.div`
     /* flex: 2; */
@@ -182,7 +182,5 @@ const flexStyle = css`
     background-color: #ffd400;
     color: #000;
   `
-  
-
 
 export default S;

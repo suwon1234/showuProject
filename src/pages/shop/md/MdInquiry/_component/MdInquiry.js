@@ -1,9 +1,14 @@
+// MD - 문의 페이지
 import React, { useState } from 'react';
 import S from './styleInquiry';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const MdInquiry = () => {
+  const inquiryTypes = ['상품', '배송', '기타'];
+  const inquiryForms = ['공개', '비공개'];
+  const alarmTypes = ['SMS', '메일'];
+
   const [selectedType, setSelectedType] = useState(null);
   const [selectedForm, setSelectedForm] = useState(null); 
   const [title, setTitle] = useState(''); 
@@ -55,7 +60,7 @@ const MdInquiry = () => {
             <th>문의 유형</th>
             <td colSpan="2">
               <S.TypeWrapper>
-                {['상품', '배송', '기타'].map((type) => (
+                {inquiryTypes.map((type) => (
                   <S.Type key={type} onClick={() => setSelectedType(type)} selected={selectedType === type}>
                     <S.Icon icon={faCheckCircle} selected={selectedType === type} />
                     <p>{type}</p>
@@ -68,7 +73,7 @@ const MdInquiry = () => {
             <th>문의 형식</th>
             <td colSpan="2">
               <S.TypeWrapper>
-                {['공개', '비공개'].map((form) => (
+              {inquiryForms.map((form) => (
                   <S.Type key={form} onClick={() => setSelectedForm(form)} selected={selectedForm === form}>
                     <S.Icon icon={faCheckCircle} selected={selectedForm === form} />
                     <p>{form}</p>
@@ -99,9 +104,9 @@ const MdInquiry = () => {
             <th>답변 완료 알림</th>
             <td>
               <S.TypeWrapper>
-                {['SMS', '메일'].map((alarm) => (
-                  <S.Type key={alarm}>
-                    <S.Icon icon={faCheckCircle} selected={setSelectedAlarm} />
+                {alarmTypes.map((alarm) => (
+                  <S.Type key={alarm} onClick={() => setSelectedAlarm(alarm)} selected={setSelectedAlarm === alarm}>
+                    <S.Icon icon={faCheckCircle} selected={setSelectedAlarm === alarm} />
                     <p>{alarm}</p>
                   </S.Type>
                 ))}
@@ -127,7 +132,7 @@ const MdInquiry = () => {
 
       <S.InquiryButton>
         <S.BackButton>취소</S.BackButton>
-        <Link to={'/shop/mddetail/inquiry/list'}>
+        <Link to={'/shop/md/detail/inquiry/list'}>
           <S.NextButton onClick={handleSubmit}>등록</S.NextButton>
         </Link>
       </S.InquiryButton>
