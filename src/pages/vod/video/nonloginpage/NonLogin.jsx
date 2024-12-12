@@ -4,9 +4,8 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
-// VideoDetail 컴포넌트 정의
 const VideoDetail = ({ play,plays }) => {
-  const [activePage, setActivePage] = useState('rec'); // 'rec'을 기본 활성화 페이지로 설정
+  const [activePage, setActivePage] = useState('rec'); 
   const handlePageChange = (page) => {
     setActivePage(page);
   };
