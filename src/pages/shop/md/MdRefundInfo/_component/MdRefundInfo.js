@@ -1,30 +1,29 @@
-// MD - 결제정보 페이지
+// MD - 반품정보 페이지
 import React from 'react';
-import S from './stylePayInfo';
+import S from './styleRefundInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBagShopping } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { faArrowRightArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
-const MdPayInfo = ({ items }) => {
+const MdRefundInfo = ({ items }) => {
   return (
-    <S.CompletedWrapper>
-      <S.OrderCompleted>
-        <FontAwesomeIcon className='icon' icon={faBagShopping} />
-        <p>주문이 완료되었습니다.</p>
-      </S.OrderCompleted>
+    <S.RefundInfoWrapper>
+      <S.RefundInfo>
+        <FontAwesomeIcon className='icon' icon={faArrowRightArrowLeft} />
+        <p>반품 접수가 완료되었습니다.</p>
+      </S.RefundInfo>
 
       <S.PaymentProduct>
         <S.InfoWrapper>
-          <S.Info>주문 상품</S.Info>
+          <S.Info>반품 상품</S.Info>
           <S.OrderNumber>주문번호 :</S.OrderNumber>
         </S.InfoWrapper>
-
+        
         <S.Head>
           <S.Left>
             <S.HeadItem>상품명</S.HeadItem>
           </S.Left>
           <S.Center>
-           <S.HeadItem>수량</S.HeadItem>
+            <S.HeadItem>수량</S.HeadItem>
           </S.Center>
           <S.Right>
             <S.HeadItem>금액</S.HeadItem>
@@ -42,36 +41,35 @@ const MdPayInfo = ({ items }) => {
           ))}
         </S.PaymentList>
       </S.PaymentProduct>
-      
+
       <S.Container>
         <S.CustomerWrapper>
-          <S.CustomerInfo>주문자 정보</S.CustomerInfo>
+          <S.CustomerInfo>반품 정보</S.CustomerInfo>
           <S.Info2>이름</S.Info2>
           <S.Info2>휴대전화</S.Info2>
           <S.Info2>배송지 주소</S.Info2>
+          <S.Info2>반품 사유</S.Info2>
         </S.CustomerWrapper>
 
         <S.PaymentWrapper>
-          <S.PaymentInfo>결제 정보</S.PaymentInfo>
-          <S.Info2>결제 수단</S.Info2>
+          <S.PaymentInfo>환불 예정 금액</S.PaymentInfo>
           <S.Info2>상품 금액</S.Info2>
-          <S.Info2>할인 금액</S.Info2>
-          <S.Info2>배송비</S.Info2>
-          <S.Info2>총 결제 금액</S.Info2>
+          <S.Info2>반품 시 추가 배송비</S.Info2>
+          <S.Info2>환불 예정 금액</S.Info2>
         </S.PaymentWrapper>
       </S.Container>
 
       <S.PaymentButton>
         {/* <Link to={'/shop/mddetail'}> */}
-        <S.BackButton>주문 상세보기</S.BackButton>
+        <S.BackButton>반품 상세보기</S.BackButton>
         {/* </Link> */}
         {/* <Link to={'/shop'}> */}
           <S.NextButton>계속 쇼핑하기</S.NextButton>
         {/* </Link> */}
       </S.PaymentButton>
-      
-    </S.CompletedWrapper>
+
+    </S.RefundInfoWrapper>
   );
 };
 
-export default MdPayInfo;
+export default MdRefundInfo;

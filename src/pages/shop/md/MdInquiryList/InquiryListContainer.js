@@ -1,3 +1,4 @@
+// MD - 문의내역 페이지 스타일
 import React from 'react';
 import MdInquiryList from './_component/MdInquiryList';
 
