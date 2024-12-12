@@ -90,11 +90,13 @@
   ],
   "MyResSpace" : [
     {
+      "id" : "1",
       "space" : "지스페이스홀(G-SPACEHALL)",
       "type" : "공연홀",
       "area" : "서울 마포구",
       "price" : "660,000원~/8시간",
-      "like" : "66"
+      "like" : "66",
+      "spaceImageUrl" : ""
     }
   ],
   "myResProps" : [
