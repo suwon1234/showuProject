@@ -1,4 +1,4 @@
-// MD 메인페이지
+// MD - 메인페이지
 import React from 'react';
 import S from './styleMain'
 import { Link } from 'react-router-dom'

@@ -1,3 +1,4 @@
+// MD - 결제정보 페이지
 import React from 'react';
 import S from './stylePayInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

@@ -1,3 +1,4 @@
+// MD - 결제페이지 스타일
 import styled, { css } from 'styled-components'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

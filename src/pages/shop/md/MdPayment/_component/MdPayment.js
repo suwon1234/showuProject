@@ -1,3 +1,4 @@
+// MD - 결제 페이지
 import React from 'react';
 import S from './stylePayment';
 import Dropdown2 from './Dropdown2';

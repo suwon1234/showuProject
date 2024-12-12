@@ -1,3 +1,4 @@
+// Dropdown - 메일 선택 스타일
 import styled from 'styled-components';
 
 const S = {};

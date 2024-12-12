@@ -1,4 +1,4 @@
-// MD 장바구니 페이지
+// MD - 장바구니 페이지
 import React, { useEffect, useState } from 'react';
 import S from './styleCart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

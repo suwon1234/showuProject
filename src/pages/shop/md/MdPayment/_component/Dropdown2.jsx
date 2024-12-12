@@ -1,4 +1,4 @@
-// Dropdown.js
+// Dropdown - 배송메시지 선택
 import React, { useState } from 'react';
 import S from './styleDropdown2';
 

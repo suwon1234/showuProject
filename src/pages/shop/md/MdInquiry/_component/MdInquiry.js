@@ -1,3 +1,4 @@
+// MD - 문의 페이지
 import React, { useState } from 'react';
 import S from './styleInquiry';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';

@@ -1,4 +1,4 @@
-// MD 문의페이지
+// MD - 문의내역 페이지
 import React from 'react';
 import S from './styleInquiryList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

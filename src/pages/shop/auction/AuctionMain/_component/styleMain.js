@@ -1,4 +1,4 @@
-// 경매 - 메인페이지 스타일일
+// 경매 - 메인페이지 스타일
 import styled, { css } from "styled-components";
 
 const S = {};

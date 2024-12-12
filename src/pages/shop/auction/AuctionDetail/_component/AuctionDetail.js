@@ -1,9 +1,16 @@
-import React from 'react';
+// 경매 - 상세페이지
+import React, { useState } from 'react';
 import S from './styleDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faCircleChevronLeft, faCircleChevronRight, faCircleExclamation, faClock, faLock, faPencil } from '@fortawesome/free-solid-svg-icons';
+import DeliveryPopup from './DeliveryPopup';
 
 const AuctionDetail = ({ auctionItems, inquiryList, auctionInfo }) => {
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
+  const openPopup = () => setIsPopupVisible(true);
+  const closePopup = () => setIsPopupVisible(false);
+  
   return (
     <S.DetailWrapper>
       <S.Title>
@@ -43,10 +50,18 @@ const AuctionDetail = ({ auctionItems, inquiryList, auctionInfo }) => {
             <button className='button button1'><p>입찰하기</p></button>
             <button className='button button2'><p>즉시구매 불가</p></button>
             <div className='button-wrapper1'>
-              <button className='button delivery'><p>배송정보</p></button>
+              <button className='button delivery' onClick={openPopup}><p>배송정보</p></button>
               <button className='button heart'><p>관심물품</p></button>
             </div>
           </S.ButtonContainer>
+
+          {isPopupVisible && (
+            <DeliveryPopup title="배송 정보" onClose={closePopup}>
+              <p>배송지역 : 전국 (제주 및 도서산간 지역은 배송비가 추가될 수 있습니다.)</p>
+              <p>배송방법 : 택배</p>
+              <p>배송비용 : 착불 5,000원</p>
+            </DeliveryPopup>
+          )}
         </S.Auction>
       </S.AuctionWrapper>
       

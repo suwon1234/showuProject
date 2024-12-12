@@ -1,3 +1,4 @@
+// 경매 - 메인페이지
 import React from 'react';
 import S from './styleMain';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

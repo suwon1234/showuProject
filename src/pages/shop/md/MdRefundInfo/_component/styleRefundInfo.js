@@ -1,3 +1,4 @@
+// MD - 반품정보 페이지 스타일일
 import styled, { css } from "styled-components";
 
 const S = {};

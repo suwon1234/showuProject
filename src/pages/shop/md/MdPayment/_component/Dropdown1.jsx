@@ -1,4 +1,4 @@
-// Dropdown.js
+// Dropdown - 메일 선택
 import React, { useState } from 'react';
 import S from './styleDropdown1';
 
