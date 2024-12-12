@@ -12,6 +12,14 @@ const Layout = () => {
       setHover(false);
   };
 
+    const [hover2, setHover2] = useState(false);  // Shop 호버 상태
+    const handleMouseEnter2 = () => {
+      setHover2(true);
+  } 
+    const handleMouseLeave2 = () => {
+      setHover2(false);
+  };
+
   const location = useLocation();
 
   //index 페이지에서 헤더 숨김
@@ -49,9 +57,28 @@ const Layout = () => {
     <NavLink to={"/showU"} className="menuitem">
       showU
     </NavLink>
+
+{/* Shop */}
+    <div 
+      onMouseEnter={handleMouseEnter2} 
+      onMouseLeave={handleMouseLeave2}
+      >
     <NavLink to={"/shop"} className="menuitem">
       Shop
     </NavLink>
+    {hover && (
+      <S.dropdown>
+        <S.dropdownItem>
+          <Link to="/shop/md">MD</Link>
+        </S.dropdownItem>
+        <S.dropdownItem>
+            <Link to="/shop/auction">경매</Link>
+        </S.dropdownItem>
+      </S.dropdown>
+      )}
+    </div>
+
+
     <NavLink to={"/vod"} className="menuitem">
       VOD
     </NavLink>

@@ -266,27 +266,27 @@ const router = createBrowserRouter([
         element : <ReservationContainer />
       },
       {
-        path : '/shop',
+        path : '/shop/md',
         element : <MainContainer /> // MD 메인
       },
       {
-        path : '/shop/mddetail',
+        path : '/shop/md/detail',
         element : <DetailContainer /> // MD 상세
       },
       {
-        path : '/shop/mddetail/cart/',
+        path : '/shop/md/detail/cart/',
         element : <CartContainer /> // MD 장바구니
       },
       {
-        path : '/shop/mddetail/payment',
+        path : '/shop/md/detail/payment',
         element : <PaymentContainer /> // MD 주문/결제
       },
       {
-        path : '/shop/mddetail/inquiry',
+        path : '/shop/md/detail/inquiry',
         element : <InquiryContainer /> // MD 문의
       },
       {
-        path : '/shop/mddetail/inquiry/list',
+        path : '/shop/md/detail/inquiry/list',
         element : <InquiryListContainer /> // MD 문의목록
       },
       {

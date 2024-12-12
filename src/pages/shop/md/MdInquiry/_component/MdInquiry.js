@@ -132,7 +132,7 @@ const MdInquiry = () => {
 
       <S.InquiryButton>
         <S.BackButton>취소</S.BackButton>
-        <Link to={'/shop/mddetail/inquiry/list'}>
+        <Link to={'/shop/md/detail/inquiry/list'}>
           <S.NextButton onClick={handleSubmit}>등록</S.NextButton>
         </Link>
       </S.InquiryButton>

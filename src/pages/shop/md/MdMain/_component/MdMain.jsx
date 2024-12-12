@@ -49,9 +49,9 @@ const MdMain = () => {
           <S.BestListWrapper>
             {mdBest.map((best) => (
             <S.Best key={best.id}>
-                {/* <Link to={'/shop/mddetail'}> */}
+                <Link to={'/shop/md/detail'}>
                 <img src={best.image} alt={best.image} className='image' />
-                {/* </Link> */}
+                </Link>
               <div className='best-name'>{best.name}</div>
               <div className='best-price'>{best.price.toLocaleString()}원</div>
             </S.Best>
