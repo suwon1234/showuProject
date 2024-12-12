@@ -5,8 +5,8 @@ import S from './styleReport';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
-import { faCircleCheck as solidCircleCheck } from '@fortawesome/free-solid-svg-icons';
-import { faCircleCheck as regularCircle } from '@fortawesome/free-regular-svg-icons';
+// import { faCircleCheck as solidCircleCheck } from '@fortawesome/free-solid-svg-icons';
+// import { faCircleCheck as regularCircle } from '@fortawesome/free-regular-svg-icons';
 
 const handleFile = () => {
     alert("파일 크기는 5MB 이하로 업로드해주세요.");
@@ -119,7 +119,7 @@ const Report = () => {
             <S.CheckIcon onClick={CheckIcon}>
               {/* <FontAwesomeIcon className='checkedIcon' icon={faCircleCheck}  /> */}
                 <FontAwesomeIcon className="checkedIcon"
-                  icon={isChecked ? solidCircleCheck : regularCircle}
+                  // icon={isChecked ? solidCircleCheck : faCircleCheck}
                 />
             </S.CheckIcon>
               <p>개인정보 수집 및 이용에 동의합니다.</p>
