@@ -1,0 +1,245 @@
+{
+  "user" : [
+    {
+      "id" : "1",
+      "name" : "asd123",
+      "password" : "1234",
+      "email" : "asd123@gamail.com",
+      "phone" : "010-1111-2222"
+    },
+    {
+      "id" : "2",
+      "name" : "sdf123",
+      "password" : "1234",
+      "email" : "sdf123@gamail.com",
+      "phone" : "010-2222-3333"
+    },
+    {
+      "id" : "3",
+      "name" : "qwe123",
+      "password" : "1234",
+      "email" : "qwe123@gamail.com",
+      "phone" : "010-3333-4444"
+    },
+    {
+      "id" : "4",
+      "name" : "dfg123",
+      "password" : "1234",
+      "email" : "dfg123@gamail.com",
+      "phone" : "010-4444-5555"
+    },
+    {
+      "id" : "5",
+      "name" : "jkl123",
+      "password" : "1234",
+      "email" : "jkl123@gamail.com",
+      "phone" : "010-5555-6666"
+    }
+  ],
+  "myTeam" : [
+    {
+      "id" : "1",
+      "state" : "매칭 완료",
+      "imageUrl" : "/images/mypage/myTeam/team6.jpg",
+      "gerne" : "연기",
+      "intro" : "팀 소개멘트1",
+      "teamName" : "팀명1",
+      "period" : "2024.09.09 ~ 2024.11.01"
+    },
+    {
+      "id" : "2",
+      "state" : "매칭 완료",
+      "imageUrl" : "/images/mypage/myTeam/team2.png",
+      "gerne" : "연기",
+      "intro" : "팀 소개멘트2",
+      "teamName" : "팀명2",
+      "period" : "2024.09.09 ~ 2024.11.01"
+    },
+    {
+      "id" : "3",
+      "state" : "매칭 완료",
+      "imageUrl" : "/images/mypage/myTeam/team3.jpg",
+      "gerne" : "마술",
+      "intro" : "팀 소개멘트3",
+      "teamName" : "팀명3",
+      "period" : "2024.09.09 ~ 2024.11.01"
+    },
+    {
+      "id" : "4",
+      "state" : "매칭 대기",
+      "imageUrl" : "/images/mypage/myTeam/team4.jpg",
+      "gerne" : "마술",
+      "intro" : "팀 소개멘트4",
+      "teamName" : "팀명4",
+      "period" : "2024.09.09 ~ 2024.11.01"
+    }
+  ],
+  "myClass" : [
+    {
+      "id" : "1",
+      "teacher" : "이찬혁",
+      "lesson" : "연기레슨",
+      "advice" : {
+        "id" : "1",
+        "date" : "2024.11.30(화) 15:00",
+        "phone" : "010-1111-2222",
+        "email" : "asd123@gamail.com",
+        "etc" : "비고" 
+      }
+    }
+  ],
+  "MyResSpace" : [
+    {
+      "space" : "지스페이스홀(G-SPACEHALL)",
+      "type" : "공연홀",
+      "area" : "서울 마포구",
+      "price" : "660,000원~/8시간",
+      "like" : "66"
+    }
+  ],
+  "myResProps" : [
+    {
+      "product" : "레트로 캐리어 가죽 여행가방 촬영소품",
+      "price" : "25,000원",
+      "like" : "66",
+      "period" : "4일 남음"
+    }
+  ],
+  "myVod" : [
+    {
+      "id" : "1",
+      "title" : "연극<더 드레서>",
+      "place" : "국립정동극장",
+      "period" : "2024.10.08 ~ 11.03",
+      "date" : "2024.11.02(토)",
+      "imageUrl" : "/images/mypage/myVod/vod.png"
+    },
+    {
+      "id" : "2",
+      "title" : "연극<긴긴밤>",
+      "place" : "국립정동극장",
+      "period" : "2024.10.08 ~ 11.03",
+      "date" : "2024.11.02(토)",
+      "imageUrl" : "/images/mypage/myVod/subVod.png"
+    },
+    {
+      "id" : "3",
+      "title" : "라라랜드",
+      "place" : "국립정동극장",
+      "period" : "2024.10.08 ~ 11.03",
+      "date" : "2024.11.02(토)",
+      "imageUrl" : "/images/mypage/myVod/vod3.png"
+    },
+    {
+      "id" : "4",
+      "title" : "연극<더 드레서>",
+      "place" : "국립정동극장",
+      "period" : "2024.10.08 ~ 11.03",
+      "date" : "2024.11.02(토)",
+      "imageUrl" : "/images/mypage/myVod/vod.png"
+    },
+    {
+      "id" : "5",
+      "title" : "연극<긴긴밤>",
+      "place" : "국립정동극장",
+      "period" : "2024.10.08 ~ 11.03",
+      "date" : "2024.11.02(토)",
+      "imageUrl" : "/images/mypage/myVod/subVod.png"
+    },
+    {
+      "id" : "6",
+      "title" : "라라랜드",
+      "place" : "국립정동극장",
+      "period" : "2024.10.08 ~ 11.03",
+      "date" : "2024.11.02(토)",
+      "imageUrl" : "/images/mypage/myVod/vod3.png"
+    }
+  ],
+  "comment" : [
+    {
+      "id" : "1",
+      "writer" : "작성자1",
+      "comment" : "작성한 댓글 내용1",
+      "date" : "2024.12.10 17:00",
+      "profileImageUrl" : "/images/Mypage/user.png" 
+    },
+    {
+      "id" : "2",
+      "writer" : "작성자2",
+      "comment" : "작성한 댓글 내용2",
+      "date" : "2024.12.10 17:00",
+      "profileImageUrl" : "/images/Mypage/user.png" 
+    },
+    {
+      "id" : "3",
+      "writer" : "작성자3",
+      "comment" : "작성한 댓글 내용3",
+      "date" : "2024.12.10 17:00",
+      "profileImageUrl" : "/images/Mypage/user.png" 
+    },
+    {
+      "id" : "4",
+      "writer" : "작성자4",
+      "comment" : "작성한 댓글 내용4",
+      "date" : "2024.12.10 17:00",
+      "profileImageUrl" : "/images/Mypage/user.png" 
+    },
+    {
+      "id" : "5",
+      "writer" : "작성자5",
+      "comment" : "작성한 댓글 내용5",
+      "date" : "2024.12.10 17:00",
+      "profileImageUrl" : "/images/Mypage/user.png" 
+    }
+  ],
+  "post" : [
+    {
+      "id" : "1",
+      "writer" : "작성자1",
+      "title": "작성한 글 제목1",
+      "content" : "작성한 글 내용1",
+      "date" : "24.12.10",
+      "postImageUrl" : "/images/Mypage/myActive/post.png" 
+    },
+    {
+      "id" : "2",
+      "writer" : "작성자2",
+      "title" : "작성한 글 제목2",
+      "content" : "작성한 글 내용2",
+      "date" : "24.12.10",
+      "postImageUrl" : "/images/Mypage/myActive/post.png" 
+    },
+    {
+      "id" : "3",
+      "writer" : "작성자3",
+      "title" : "작성한 글 제목3",
+      "content" : "작성한 글 내용3",
+      "date" : "24.12.10",
+      "postImageUrl" : "/images/Mypage/myActive/post.png" 
+    },
+    {
+      "id" : "4",
+      "writer" : "작성자4",
+      "title" : "작성한 글 제목4",
+      "content" : "작성한 글 내용4",
+      "date" : "24.12.10",
+      "postImageUrl" : "/images/Mypage/myActive/post.png" 
+    },
+    {
+      "id" : "5",
+      "writer" : "작성자5",
+      "title" : "작성한 글 제목5",
+      "content" : "작성한 글 내용5",
+      "date" : "24.12.10",
+      "postImageUrl" : "/images/Mypage/myActive/post.png" 
+    },
+    {
+      "id" : "6",
+      "writer" : "작성자6",
+      "title" : "작성한 글 제목6",
+      "content" : "작성한 글 내용5",
+      "date" : "24.12.10",
+      "postImageUrl" : "/images/Mypage/myActive/post.png" 
+    }
+  ]
+}

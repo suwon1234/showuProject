@@ -3,39 +3,15 @@ import { flexCenterRow } from '../../global/common';
 
 const S = {};
 
-  S.YellowBar = styled.div`
-    background-color: ${({theme}) => theme.PALLETE.primary["main"]};
-    height: 48px;
-  `
-
-  S.LoginHeader = styled.ul`
-    height: 90px;
-    display: flex;
-    align-items: center;
-    margin-left: 200px;
-
-    & .show {
-      font-weight: 900;
-      font-size: 25px;
-      color: #fff;
-      margin-right: 5px;
-    }
-    
-    & .u {
-      font-weight: 900;
-      font-size: 25px;
-      color: ${({theme}) => theme.PALLETE.primary["main"]};
-    }
-  `
-
   S.Container = styled.div`
     background-color: #000;
+    height: 150vh;
   `
 
   S.Wapper = styled.div`
     width: 560px;
-    height: 764.16px;
-    margin: auto;
+    height: 700px;
+    margin: 0 auto;
     padding: 40px 0 40px 0;
     background-color: #252525;
 
@@ -49,7 +25,7 @@ const S = {};
     margin: 30px 0 40px 0;
   `
 
-  S.inputWapper = styled.div`
+  S.Form = styled.form`
     padding: 0 40px 0 40px;
     position: relative;
   `
@@ -108,6 +84,11 @@ const S = {};
     border-radius: 50px;
     font-size: 17px;
 
+    &:hover {
+      background-color: #ffd400;
+      color: black;
+    }
+
   `
 
   S.JoinFind = styled.ul`
@@ -151,6 +132,15 @@ const S = {};
       cursor: pointer;
     }
 
+  `
+
+  S.SaveId = styled.div`
+    display: flex;
+    align-items: center;
+
+    & span {
+      margin-left: 5px;
+    }
   `
 
 

@@ -4,6 +4,7 @@ const S = {};
 
   S.RightSection = styled.div`
     width: 800px;
+    height: 150vh;
 
     & .infoTitle {
       font-size: 30px;
@@ -80,19 +81,39 @@ const S = {};
       display: none;      
     }
   `
+
+  S.UpdateButton = styled.div`
+
+    margin-top: 90px;
+    margin-left: 255px;
+
+    & button {
+      border: none;
+      width: 150px;
+      height: 55px;
+      border-radius: 50px;
+      padding: 10px;
+      text-align: center;
+      line-height: 2.2;
+      background-color: #ffd400;
+      font-size: 17px;
+      color: #000;
+      cursor: pointer;
+    }
+  `
   
   S.UserChangeWapper = styled.ul`
     display: flex;
     flex-direction: column;
-    /* gap: 10px; */
 
-    border-bottom: 0.5px solid #ffd400;
+    border-bottom: 0.5px solid #444444;
 
     & li {
       display: grid;
       grid-template-columns: 270px 400px 29px 100px;
-      border-top: 0.5px solid #ffd400;
-      padding: 25px 0;
+      align-items: center;
+      border-top: 0.5px solid #444444;
+      padding: 15px 0;
 
       & span{
         font-size: 17px;
@@ -132,11 +153,13 @@ const S = {};
     border: none;
     border-radius: 50px;
     cursor: pointer;
+    height: 55px;
+
   `
   S.DelteButton = styled.div`
     display: flex;
     justify-content: space-between;
-    margin-top: 190px;
+    margin-top: 50px;
 
     & button {
       border: none;

@@ -7,7 +7,8 @@ const S = {};
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;    
+    row-gap: 50px;
+    column-gap: 30px;
   `
 
   S.Warpper = styled.div`
