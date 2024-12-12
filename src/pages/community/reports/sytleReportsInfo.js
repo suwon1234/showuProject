@@ -19,23 +19,33 @@ const S = {};
         display: flex;
         flex-direction: column;
         gap: 20px;
+        margin-top: 20px;
         margin-left: 140px;
         margin-right: 140px;
     `
 
     S.Title = styled.h1`
-        font-size: 20px;
-        font-weight: bold;
+       font-size: 18px;
+        font-weight: ${({ theme }) => theme.FONT_WEIGHT.medium};;
+        display: flex;
+        margin-left: 20px;
         margin-top: 30px;
-        margin-bottom: 20px;
-        text-align: left;
     `;
 
     S.Content = styled.p`
-        font-size: 16px;
-        margin-top: 20px;
-        margin-bottom: 40px;
-        text-align: left;
+        font-size: 18px;
+        font-weight: ${({ theme }) => theme.FONT_WEIGHT.medium};
+        display: flex;
+        margin-left: 20px;
+        margin-top: 30px;
+    `;
+
+    S.Content2 = styled.p`
+        font-size:20px;
+        font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
+        display: flex;
+        margin-left: 20px;
+        margin-top: 30px;
     `;
 
     S.Date = styled.p`
@@ -47,6 +57,7 @@ const S = {};
         display: flex;
         justify-content: center;
         gap: 10px;
+        margin-bottom: 20px;
 
         button {          
             padding: 10px;
@@ -72,6 +83,73 @@ const S = {};
         justify-content: center;
         text-align: center;
     `
+
+    S.TopTitle = styled.div` // 상단 News title
+        font-size: 30px;
+        font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
+        color: #ffd400;
+        justify-content: center;
+        display: flex;
+        padding-top: 30px;
+    `
+
+    S.IconWrapper = styled.div`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+        height: 100%;
+
+        .icon{
+            font-size: 20px;
+            padding-bottom: 50px;
+
+        path {
+            color : #ffd400;
+        }
+    }
+    `
+
+    S.Titles = styled.div` // 페이지 메인 타이틀 All
+        display: flex;
+        margin: 20px;
+
+    `
+
+    S.MainTitle = styled.div` // 페이지 메인 타이틀
+        font-size: ${({ theme }) => theme.FONT_SIZE.h3};
+        font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
+        margin-top: 0px;
+           
+    `
+
+    S.SubTitle = styled.div` // 페이지 서브 타이틀
+        font-size: ${({ theme }) => theme.FONT_SIZE.h7};
+        margin-top: 14px;
+        margin-left: 8px;
+    `
+
+    S.Section = styled.div`
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: column;
+
+        p {
+            font-size: 16px;
+            font-weight: ${({ theme }) => theme.FONT_WEIGHT.medium};
+        }
+
+        div {
+            margin-bottom: 10px;
+            text-align: left;
+        }
+    `
+     S.Line2 = styled.div`
+        border-bottom: 2px solid #ffd400;
+        margin-left: 20px;
+        margin-right: 1000px;
+        margin-top: 10px;
+ `
     
 
 export default S;
