@@ -62,14 +62,15 @@ const S = {};
             border-radius: 50px;
             padding: 10px 15px;
             background-color: black;
-            color: ${({ theme }) => theme.PALLETE.white};
+            color: #fff;
             border: 1px solid #ffd400;
             cursor: pointer;
 
             &:hover { // 버튼 호버
                 background-color: #ffd400;
-                color: ${({ theme }) => theme.PALLETE.black};
+                color: #000;
             }
+
         }
     `
 

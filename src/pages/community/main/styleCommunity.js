@@ -53,7 +53,8 @@ const S = {};
             padding: 8px 15px;
             cursor: pointer;
         &:hover {
-            color: #ffd400;
+            background-color: #ffd400;
+            color: #000;
         }
     }
 `;
@@ -99,13 +100,13 @@ const S = {};
             border-radius: 50px;
             padding: 10px 15px;
             background-color: black;
-            color: ${({ theme }) => theme.PALLETE.white};
+            color: #fff;
             border: 1px solid #ffd400;
             cursor: pointer;
 
-            &:hover { // 버튼 호버
+            &:hover { 
                 background-color: #ffd400;
-                color: ${({ theme }) => theme.PALLETE.black};
+                color: #000;
             }
             
         }
@@ -113,7 +114,7 @@ const S = {};
 
     S.hoverButton = styled.button`
         background-color: #ffd400 !important; 
-        color: #000;
+        color : #000 !important;
     `;
 
     S.Info = styled.div`
