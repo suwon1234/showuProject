@@ -81,7 +81,7 @@ const Vod = ({plays}) => {
       <S.showuRecommendation>
       <S.titlewrapper className='titlewrapper'>
           <div className='title'>실시간 인기 컨텐츠</div>
-          <a className="more" href='/vod/more/rec'>더보기</a>
+          <a className="more" href='/vod/more/rec/pop'>더보기</a>
         </S.titlewrapper>
         <S.showuRecommendationPage className='showuRecommendationPage'>
         {plays && plays.map((play) => (
@@ -110,7 +110,7 @@ const Vod = ({plays}) => {
       <S.showuRecommendation>
       <S.titlewrapper className='titlewrapper'>
           <div className='title'>뮤지컬</div>
-          <a className="more" href='/vod/more/rec'>더보기</a>
+          <a className="more" href='/vod/more/rec/musical'>더보기</a>
         </S.titlewrapper>
         <S.showuRecommendationPage className='showuRecommendationPage'>
         {plays && plays.map((play) => (
