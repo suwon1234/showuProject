@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Vod from './Vod';
+import MoreMusical from './MoreMusical'
 
-const VodContainer = () => {
-
-
-
-
+const MusicalContainer = () => {
   const [plays, setPlays] = useState(null);
   
   useEffect(() => {
@@ -22,10 +18,10 @@ const VodContainer = () => {
     fetchPlays();
   }, []);
   return (
-    <div> 
-      <Vod plays={plays}/>
+    <div>
+      <MoreMusical plays={plays}/>
     </div>
   );
 };
 
-export default VodContainer;
+export default MusicalContainer;
