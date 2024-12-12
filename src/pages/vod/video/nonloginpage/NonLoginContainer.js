@@ -1,31 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import NonLogin from './NonLogin';
-import { useState,useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import S from './style';
+
 
 const NonLoginContainer = () => {
-  const [plays,setPlays]=useState({});
+  const [plays, setPlays] = useState(null);
+  useEffect(() => {
+    const fetchPlays = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/play');
+        const data = await response.json();
+        setPlays(data);  
+      } catch (error) {
+        console.error('Error fetching video data:', error);
+      }
+    };
+
+    fetchPlays();
+  }, []);
+
+  const [play, setPlay] = useState({});
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const programId = queryParams.get('programid');
   
-  useEffect(()=>{
-    const getPlays=async()=>{
-      try{
-        const response =await fetch(`http://localhost:4000/play/${programId}`);
-        const datas =await response.json();
-        return datas;
-      }catch (error){
-        console.log(error)
+  useEffect(() => {
+    const getPlays = async () => {
+      try {
+        const response = await fetch(`http://localhost:4000/play/${programId}`);
+        const datas = await response.json();
+        setPlay(datas);
+      } catch (error) {
+        console.log(error);
       }
-    }
-    getPlays().then(setPlays).catch(console.error);
-  },[programId])
-  console.log(plays)
+    };
+    getPlays();
+  }, [programId]);
+
+
   return (
-    <div>
-      <NonLogin play={plays}/> 
-    </div>
+    <S.container className='container'>
+      <NonLogin play={play} plays={plays}/>
+    </S.container>
   );
 };
 
