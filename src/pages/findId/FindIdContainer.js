@@ -1,31 +1,31 @@
 import React from 'react';
 import S from './style';
+import LoginHeader from '../login/_component/LoginHeader';
 import { Link } from 'react-router-dom';
 
 const FindIdContainer = () => {
   return (
     <S.Container>
-      <S.YellowBar></S.YellowBar>
-      <S.LoginHeader>
-      <Link to={"/main"}>
-          <span className='show'>Show</span>
-          <span className='u'>U</span>
-        </Link>
-      </S.LoginHeader>
+      <LoginHeader />
       <S.Wapper>
         <S.title>showU ID 찾기</S.title>
 
-          <S.inputWapper>
-            <S.idLabel>
-              <S.input type="text" id='id' placeholder='아이디'/>
-            </S.idLabel>
-            <S.passwordLabel>
-              <S.input type="password" id='password' placeholder='비밀번호'/>
-            </S.passwordLabel>
-              <S.LockImage src={process.env.PUBLIC_URL + "/images/login/lock.png"} alt="비밀번호 잠금" />
-          </S.inputWapper>
+          <form>
+            <S.inputWapper>
+              <S.idLabel>
+                <S.input type="text" id='id' placeholder='아이디' autoComplete="off"/>
+              </S.idLabel>
+              <S.passwordLabel>
+                <S.input type="password" id='password' placeholder='비밀번호' autoComplete="off"/>
+              </S.passwordLabel>
+                <S.LockImage src={process.env.PUBLIC_URL + "/images/login/lock.png"} alt="비밀번호 잠금" />
+            </S.inputWapper>
+          </form>
 
           <S.LoginButton>아이디 찾기</S.LoginButton>
+          <Link to={'/login'}>
+          <S.LoginButton>로그인으로</S.LoginButton>
+          </Link>
 
       </S.Wapper>
     </S.Container>

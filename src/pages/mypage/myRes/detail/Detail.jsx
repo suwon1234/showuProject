@@ -1,6 +1,6 @@
 import React from 'react';
 import S from './DetailStyle';
-import BasicButton from '../../../../components/button/BasicButton';
+import Checkbox from '../../../login/_component/Checkbox';
 
 const Detail = () => {
   return (
@@ -42,10 +42,7 @@ const Detail = () => {
         <S.DetailTable>
           <S.DetailThead>
             <S.DetailTrTitle>
-            <S.Checkbox>
-                <input type="checkbox" id='check' />
-                <label for="check"></label>
-              </S.Checkbox>
+            {/* <Checkbox /> */}
               <th scope='col'>예매 번호</th>
               <th scope='col'>좌석 등급</th>
               <th scope='col'>권종</th>
@@ -58,11 +55,8 @@ const Detail = () => {
           <S.DetailTbody>
 
             <S.DetailTr>
-              <S.Checkbox>
-                <input type="checkbox" id='check' />
-                <label for="check"></label>
-              </S.Checkbox>
-              <th scope='row'>1</th>
+              {/* <Checkbox /> */}
+              <th scope='row' className='num'>1</th>
               <td>S석</td>
               <td>L열 20번</td>
               <td>55,000원</td>

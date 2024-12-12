@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import S from './style';
 import Paging from '../_component/Paging';
 import MyTeamDetail from './MyTeamDetail';
-
+import FilterContainer from './_component/FilterContainer';
 const MyTeam = () => {
+  const [ stateValue, setStateValue ] = useState("매칭 완료");
+
   return (
     <>
       <S.Container className='container'>
@@ -17,12 +19,14 @@ const MyTeam = () => {
             </S.SubTitle>
           </S.Title>
 
-          <MyTeamDetail />
+          <FilterContainer setStateValue={setStateValue} stateValue={stateValue} />
+
+          <MyTeamDetail stateValue={stateValue} />
 
         </S.Wapper>
       </S.Container>
 
-      <Paging />
+      {/* <Paging /> */}
     </>
   );
 };

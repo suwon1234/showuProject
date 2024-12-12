@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import users from '../_component/users';
 import S from './style';
-import { Link } from 'react-router-dom';
 import DeleteAccount from './_component/DeleteAccount';
+import { useNavigate } from 'react-router-dom';
 
 
 const MyInfo = () => {
@@ -10,6 +10,12 @@ const MyInfo = () => {
   const [ profileImage, setProfileImage ] = useState(
     process.env.PUBLIC_URL + "/images/myPage/user.png"
   )
+
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path)
+  }
 
   return (
       <S.RightSection>
@@ -28,6 +34,11 @@ const MyInfo = () => {
               </label>
             </S.fileInputButton>
           </div>
+
+          {/* 등급업 정보 수정 버튼 */}
+          <S.UpdateButton onClick={() => handleNavigate('/mypage/up-grade/update')}>
+            <button>등급업 수정</button>
+          </S.UpdateButton>
         </S.Profile>
 
         {/* 회원정보 변경 */}
@@ -59,7 +70,7 @@ const MyInfo = () => {
                 <span>전화 번호</span>
                 <S.Input type="text" name='phoneNumber' placeholder='010-1234-5678'/>
                 <div></div>
-                <S.Button type='button'>전화 번호 변경</S.Button>
+                <S.Button type='button'>전화번호 변경</S.Button>
               </li>
           </S.UserChangeWapper>
         </div>

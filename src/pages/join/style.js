@@ -2,34 +2,9 @@ import styled from 'styled-components'
 
 const S = {};
 
-  S.YellowBar = styled.div`
-    background-color: ${({theme}) => theme.PALLETE.primary["main"]};
-    height: 48px;
-  `
-
-  S.LoginHeader = styled.ul`
-    height: 90px;
-    display: flex;
-    align-items: center;
-    margin-left: 200px;
-
-    & .show {
-      font-weight: 900;
-      font-size: 25px;
-      color: #fff;
-      margin-right: 5px;
-    }
-    
-    & .u {
-      font-weight: 900;
-      font-size: 25px;
-      color: ${({theme}) => theme.PALLETE.primary["main"]};
-    }
-  `
-
   S.JoinBox = styled.div`
     width: 560px;
-    height: 900px;
+    height: 890px;
     margin: auto;
     padding: 40px 0;
     background-color: #252525;
@@ -39,15 +14,14 @@ const S = {};
 
   S.Container = styled.div`
     background-color: #000;
-    height: 100%;
+    height: 150vh;
   `
 
   S.Wapper = styled.div`
-    /* width: 560px;
-    height: 100%;
+    width: 560px;
+    height: 630px;
     margin: auto;
-    padding: 40px 0;
-    background-color: #252525; */
+    background-color: #252525;
 
     display: flex;
     
@@ -59,7 +33,7 @@ const S = {};
     margin: 30px 0 40px 0;
   `
 
-  S.inputWapper = styled.div`
+  S.Form = styled.form`
     padding: 0 40px 0 40px;
     position: relative;
   `
@@ -103,6 +77,11 @@ const S = {};
     border: none;
     border-radius: 50px;
     font-size: 17px;
+
+    &:hover {
+      background-color: #ffd400;
+      color: black;
+    }
   `
 
   S.AgreeWapper = styled.ul`
@@ -115,13 +94,14 @@ const S = {};
     margin-bottom: 5px;
 
     & .AllAgree {
-      font-size: 13px;
+      font-size: 16px;
       font-weight: 700;
     }
 
     & span {
-      font-size: 12px;
-      font-weight: 300;
+      font-size: 15px;
+      font-weight: 400;
+      margin-left: 5px;
     }
   `
 

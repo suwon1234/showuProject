@@ -16,62 +16,62 @@ const Advice = () => {
             </S.Tr>
           </S.Thead>
           <S.Tbody>
-            <tr>
-              <th scope='row'>1</th>
+            <S.RowTr>
+              <th scope='row' className='num'>1</th>
               <td>2024.11.30(화) 15:00</td>
               <td>010-1234-5678</td>
               <td>aaa1234@showu.com</td>
               <td>비고</td>
-            </tr>
-            <tr>
-              <th scope='row'>2</th>
+            </S.RowTr>
+            <S.RowTr>
+              <th scope='row' className='num'>2</th>
               <td>2024.11.30(화) 15:00</td>
               <td>010-1234-5678</td>
               <td>aaa1234@showu.com</td>
               <td>비고</td>
-            </tr>
-            <tr>
-              <th scope='row'>3</th>
+            </S.RowTr>
+            <S.RowTr>
+              <th scope='row' className='num'>3</th>
               <td>2024.11.30(화) 15:00</td>
               <td>010-1234-5678</td>
               <td>aaa1234@showu.com</td>
               <td>비고</td>
-            </tr>
-            <tr>
-              <th scope='row'>4</th>
+            </S.RowTr>
+            <S.RowTr>
+              <th scope='row' className='num'>4</th>
               <td>2024.11.30(화) 15:00</td>
               <td>010-1234-5678</td>
               <td>aaa1234@showu.com</td>
               <td>비고</td>
-            </tr>
-            <tr>
-              <th scope='row'>5</th>
+            </S.RowTr>
+            <S.RowTr>
+              <th scope='row' className='num'>5</th>
               <td>2024.11.30(화) 15:00</td>
               <td>010-1234-5678</td>
               <td>aaa1234@showu.com</td>
               <td>비고</td>
-            </tr>
-            <tr>
-              <th scope='row'>6</th>
+            </S.RowTr>
+            <S.RowTr>
+              <th scope='row' className='num'>6</th>
               <td>2024.11.30(화) 15:00</td>
               <td>010-1234-5678</td>
               <td>aaa1234@showu.com</td>
               <td>비고</td>
-            </tr>
-            <tr>
-              <th scope='row'>7</th>
+            </S.RowTr>
+            <S.RowTr>
+              <th scope='row' className='num'>7</th>
               <td>2024.11.30(화) 15:00</td>
               <td>010-1234-5678</td>
               <td>aaa1234@showu.com</td>
               <td>비고</td>
-            </tr>
-            <tr>
-              <th scope='row'>8</th>
+            </S.RowTr>
+            <S.RowTr>
+              <th scope='row' className='num'>8</th>
               <td>2024.11.30(화) 15:00</td>
               <td>010-1234-5678</td>
               <td>aaa1234@showu.com</td>
               <td>비고</td>
-            </tr>
+            </S.RowTr>
           </S.Tbody>
         </S.Table>
       </div>
