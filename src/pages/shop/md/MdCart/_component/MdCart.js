@@ -1,5 +1,5 @@
-// MD 장바구니 페이지
-import React, { useState } from 'react';
+// MD - 장바구니 페이지
+import React, { useEffect, useState } from 'react';
 import S from './styleCart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation, faCheckCircle, faXmark } from '@fortawesome/free-solid-svg-icons';
@@ -7,6 +7,7 @@ import { faCircleExclamation, faCheckCircle, faXmark } from '@fortawesome/free-s
 const MdCart = ({ items }) => {
   const [checkedItems, setCheckedItems] = useState(Array(items.length).fill(false));
   const [number, setNumber] = useState(Array(items.length).fill(1));
+  const [totalAmount, setTotalAmount] = useState(0);
 
   // 전체 상품 선택
   const SelectAll = () => {
@@ -38,6 +39,16 @@ const MdCart = ({ items }) => {
     return newNumber;
   });
  };
+
+ useEffect(() => {
+  let total = 0;
+  items.forEach((item, index) => {
+    if (checkedItems[index]) {
+      total += item.price * number[index];
+    }
+  });
+  setTotalAmount(total);
+ }, [checkedItems, number, items])
 
   return (
     <S.CartWrapper>
@@ -87,7 +98,7 @@ const MdCart = ({ items }) => {
 
       <S.Total>
         <S.TotalAmount>총 상품 금액 ({items.length}개)</S.TotalAmount>
-        <S.Pay>0 원</S.Pay>
+        <S.Pay>{totalAmount.toLocaleString()}원</S.Pay>
         <S.CheckoutButton>결제 진행</S.CheckoutButton>
       </S.Total>
     </S.CartWrapper>

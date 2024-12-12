@@ -1,4 +1,4 @@
-// MD - 메인페이지 스타일
+// 경매 - 메인페이지 스타일
 import styled, { css } from "styled-components";
 
 const S = {};
@@ -9,16 +9,17 @@ const flexStyle = css`
 `
 
   S.MainWrapper = styled.div`
-    background-color: #000;
     display: flex;
     flex-direction: column;
+    background-color: #000;
+    align-items: center;
   `
 
   S.MdTitle = styled.div`
     ${flexStyle}
     flex-direction: column;
     
-    & .md-title {
+    & .auction-title {
         font-weight: bold;
         font-size: 30px;
         text-align: center;
@@ -37,20 +38,19 @@ const flexStyle = css`
       }
     `
 
-  S.BestWrapper = styled.div`
+  S.ClosingWrapper = styled.div`
     margin: 0 auto;
-  
   `
-  S.BestTitle = styled.div`
+  S.ClosingTitle = styled.div`
 
-    & .best-title {
+    & .closing-title {
         font-size: 30px;
         font-weight: bold;
         color : #fff;
       }
   `
 
-  S.BestItems = styled.div`
+  S.ClosingItems = styled.div`
     display: grid;
     grid-template-columns: auto 1fr auto; 
     align-items: center;
@@ -72,7 +72,7 @@ const flexStyle = css`
     margin-left: 10px;
   `
 
-  S.BestListWrapper = styled.div`
+  S.ClosingListWrapper = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr); 
     grid-gap: 50px;
@@ -80,22 +80,36 @@ const flexStyle = css`
     width: 1090px; 
   `
 
-  S.Best = styled.div`
+  S.Closing = styled.div`
 
-    & .best-name {
+    & .closing-name {
         font-size: 16px;
-        margin-top: 5px;
-    }
-
-    & .best-price {
-        font-size: 18px;
-        font-weight: bold;
         margin-top: 5px;
     }
 
     & .image {
       width: 300px;
       height: 300px;
+    }
+  `
+
+  S.Closing2 = styled.div`
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+
+    & .closing-number {
+        font-size: 16px;
+    }
+
+    & .closing-time {
+        font-size: 16px;
+    }
+
+    .icon {
+      font-size: 15px;
+      color: #ffd400;
+      padding: 0 5px;
     }
   `
 
@@ -127,11 +141,11 @@ const flexStyle = css`
     }
   `
 
-  S.MdWrapper = styled.div`
+  S.AuctionWrapper = styled.div`
     margin-top: 30px;
     margin-left: 20px;
 
-    & .md-list {
+    & .auction-list {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 50px;
@@ -139,25 +153,6 @@ const flexStyle = css`
         margin: 0 auto;
       }
     `
-
-  S.Md = styled.image`
-  
-    & img {
-        width: 300px;
-        height: 300px;
-      }
-
-    & .md-name {
-        font-size: 16px;
-        margin-top: 5px;
-    }
-
-    & .md-price {
-        font-size: 18px;
-        font-weight: bold;
-        margin-top: 5px;
-    }
-  `
 
   S.ButtonWrapper = styled.div `
     display: flex;
@@ -198,5 +193,5 @@ const flexStyle = css`
       }
   `
   
-export default S;
 
+export default S;

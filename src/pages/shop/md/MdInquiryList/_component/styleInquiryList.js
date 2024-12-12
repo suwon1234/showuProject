@@ -1,19 +1,21 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const S = {};
 
+const flexStyle = css`
+  display: flex;
+  align-items: center;
+`
+
   S.ListWrapper = styled.div`
-    display: flex;
+    ${flexStyle}
     flex-direction: column;
     background-color: #000;
-    align-items: center;
-    width: 100%;
     min-height: 100vh;
   `
 
   S.ListTitle = styled.div`
-    display: flex;
-    align-items: center;
+    ${flexStyle}
     width: 100%;
     max-width: 1165px;
     height: 55px;
@@ -32,10 +34,9 @@ const S = {};
   `
 
   S.InquiryList = styled.div`
+    ${flexStyle}
     width: 1165px;
     height: 45px;
-    display: flex;
-    align-items: center; 
     justify-content: space-between;
     border-bottom: 1px solid #fff;
     padding: 0 20px;
@@ -44,10 +45,9 @@ const S = {};
   `
 
   S.Head = styled.div`
+    ${flexStyle}
     width: 1165px;
     height: 45px;
-    display: flex;
-    align-items: center;
     justify-content: space-between;
     background-color: #fff;
     padding: 0 20px;
@@ -69,14 +69,10 @@ const S = {};
   S.Left1 = styled.div`
     display: flex;
     flex: 1;
-    /* text-align: left; */
-    /* padding-right: 20px; */
   `
   S.Left2 = styled.div`
     display: flex;
     flex: 1;
-    /* text-align: left; */
-    /* padding-right: 20px; */
   `
 
   S.Center = styled.div`
@@ -97,8 +93,7 @@ const S = {};
   `
 
   S.PrivateWrapper = styled.div`
-    display: flex;
-    align-items: center;
+    ${flexStyle}
     justify-content: center;
     padding-left: 50px;
     
