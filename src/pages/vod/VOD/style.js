@@ -32,10 +32,10 @@ S.slider = styled.div`
     text-align: center;
   }
 
-  /* 오른쪽 버튼 */
+
   & .arrowrightarrow {
     position: absolute;
-    right: 10px; /* 오른쪽에 배치 */
+    right: 10px; 
     background: rgba(0, 0, 0, 0.5);
     border: none;
     border-radius: 50%;
@@ -50,10 +50,10 @@ S.slider = styled.div`
     z-index: 10;
   }
 
-  /* 왼쪽 버튼 */
+
   & .arrowleftarrow {
     position: absolute;
-    left: 10px; /* 왼쪽에 배치 */
+    left: 10px; 
     background: rgba(0, 0, 0, 0.5);
     border: none;
     border-radius: 50%;
@@ -68,7 +68,6 @@ S.slider = styled.div`
     z-index: 10;
   }
 
-  /* 슬라이드 이미지 */
   & .slide-image {
     max-width: 100%;
     height: auto;
@@ -96,6 +95,10 @@ S.Card = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
+        }
+   &:hover img {
+      transform: scale(1.1); 
   }
 
   .badge {
@@ -111,11 +114,13 @@ S.Card = styled.div`
   }
 `;
 S.showuRecommendationPage = styled.div`
-  display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  padding: 10px 0;
-  scroll-behavior: smooth;
+    position: relative;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    transition-property: transform;
+    box-sizing: content-box;
   &::-webkit-scrollbar {
     display: none; 
   }
@@ -133,24 +138,6 @@ S.showuRecommendation = styled.div`
   min-height: 100px;
   max-height: 440px;
   color: white;
-
-  & .title{
-
-  font-size: 24px;
-  font-weight: bold;
-  color: #FFD700;
-  align-self: flex-start; /* 개별 요소를 왼쪽 끝에 배치 */
-  margin-left: 190px;
-  padding-left: 0;
-  }
-
-  & .more{
-    font-size: 16px;
-    color: #A5A5A5;
-    align-self: flex-end;
-    margin-right : 190px;
-    padding-right: 0;
-  }
   
   
 `;
@@ -165,8 +152,32 @@ align-items: center;
 width: 260px;
 height: 45px;
 border-radius: 50px;
+font-weight: bold;
 background-color: #FFD400;
+color: black;
 } 
 
 `
+
+S.titlewrapper = styled.div`
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  min-width: 1240px;
+  min-height: 36px;
+
+  & .title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFD700; 
+    padding-left: 0;
+  }
+
+  & .more {
+    font-size: 16px;
+    color: #A5A5A5; 
+    padding-right: 0;
+    cursor: pointer; 
+  }
+`;
 export default S;
