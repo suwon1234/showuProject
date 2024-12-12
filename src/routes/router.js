@@ -64,6 +64,9 @@ import PaymentContainer from '../pages/shop/md/MdPayment/PaymentContainer';
 import InquiryContainer from '../pages/shop/md/MdInquiry/InquiryContainer';
 import InquiryListContainer from '../pages/shop/md/MdInquiryList/InquiryListContainer';
 import MyGradeUpdateContainer from '../pages/mypage/myGrade/update/MyGradeUpdateContainer';
+import MainContainer2 from '../pages/shop/auction/AuctionMain/MainContainer2';
+import DetailContainer2 from '../pages/shop/auction/AuctionDetail/DetailContainer2';
+
 const router = createBrowserRouter([
   {
     path : '/',
@@ -288,6 +291,14 @@ const router = createBrowserRouter([
       {
         path : '/shop/md/detail/inquiry/list',
         element : <InquiryListContainer /> // MD 문의목록
+      },
+      {
+        path : '/shop/auction',
+        element : <MainContainer2 /> // 경매 메인
+      },
+      {
+        path : '/shop/auction/detail',
+        element : <DetailContainer2 /> // 경매 상세
       },
       {
         path : '/showu',

@@ -1,7 +1,7 @@
 import React from 'react';
 import AuctionMain from './_component/AuctionMain';
 
-const MainContainer = () => {
+const MainContainer2 = () => {
   return (
     <div>
       <AuctionMain />
@@ -9,4 +9,4 @@ const MainContainer = () => {
   );
 };
 
-export default MainContainer;
+export default MainContainer2;

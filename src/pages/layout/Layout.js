@@ -66,7 +66,7 @@ const Layout = () => {
     <NavLink to={"/shop"} className="menuitem">
       Shop
     </NavLink>
-    {hover && (
+    {hover2 && (
       <S.dropdown>
         <S.dropdownItem>
           <Link to="/shop/md">MD</Link>

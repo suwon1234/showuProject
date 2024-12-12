@@ -1,7 +1,7 @@
 import React from 'react';
 import AuctionDetail from './_component/AuctionDetail';
 
-const DetailContainer = () => {
+const DetailContainer2 = () => {
 
   const auctionItems = [
     { id: 1, name: "베르사유의 장미 고블렛", number: "88회", time: "20시간 47분", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510"},
@@ -28,4 +28,4 @@ const DetailContainer = () => {
   );
 };
 
-export default DetailContainer;
+export default DetailContainer2;
