@@ -12,7 +12,7 @@ const S = {};
 
   S.Warpper = styled.div`
     width: 400px;
-    height: 300px;
+    height: 360px;
     
   `
 
@@ -26,10 +26,10 @@ const S = {};
     
   `
   S.Content = styled.div`
-    margin: 10px 0 0 20px;
+    margin: 5px;
 
     & p {
-      font-size: 13px;
+      font-size: 15px;
     }
 
     & p:nth-child(2) {
@@ -54,9 +54,11 @@ const S = {};
       display: flex;
       gap: 5px;
       align-items: center;
+
+      & p.likeCount {
+        font-size: 15px;
+      }
     }
   `
-
-  
 
 export default S;
