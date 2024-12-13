@@ -4,25 +4,27 @@ const S = {};
 
   S.Container = styled.div`
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-wrap: wrap;
-    column-gap: 30px;
-    row-gap: 50px;
+    row-gap: 100px;
+    column-gap: 10px;
+
+    margin-top: 60px;
   `
 
   S.Warpper = styled.div`
-    width: 400px;
-    height: 300px;
+    width: 290px;
+    height: 290px;
     
   `
 
   S.Image = styled.div`
 
     & img {
-      width: 400px;
-      height: 250px;
-      border-radius: 20px;
+      width: 290px;
+      height: 290px;
+      border-radius: 10px;
     }
     
   `

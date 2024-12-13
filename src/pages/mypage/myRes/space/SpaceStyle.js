@@ -8,6 +8,8 @@ const S = {};
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
+
+    margin-top: 60px;
   `
 
   S.Warpper = styled.div`
@@ -26,20 +28,23 @@ const S = {};
     
   `
   S.Content = styled.div`
-    margin: 5px;
+    margin: 15px 5px 5px 5px;
 
-    & p {
+    & p.spaceName {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+
+    & p.likeCount {
       font-size: 15px;
     }
 
-    & p:nth-child(2) {
+    & p.type,
+    p.area,
+    p.price {
       font-size: 17px;
       font-weight: 700;
-    }
-
-    & p:nth-child(4) {
-      font-size: 17px;
-      font-weight: 800;
+      margin-bottom: 5px;
     }
   `
 
