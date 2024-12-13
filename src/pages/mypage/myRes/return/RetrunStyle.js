@@ -7,51 +7,29 @@ const S = {};
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    row-gap: 50px;
-    column-gap: 30px;
+    row-gap: 100px;
+    column-gap: 10px;
   `
 
   S.Warpper = styled.div`
-    width: 400px;
-    height: 300px;
+    width: 290px;
+    height: 290px;
     
   `
 
   S.Image = styled.div`
-
-    & img {
-      width: 400px;
-      height: 250px;
-      border-radius: 20px;
-    }
-  `
-
-  S.GrayImg = styled.div`
-    background-color: #444444;
-    border-radius: 20px;
     position: relative;
-    height: 250px;
-    
+
     & img {
-      width: 400px;
-      height: 250px;
-      border-radius: 20px;
-      opacity: 0.6;
+      width: 290px;
+      height: 290px;
+      border-radius: 10px;
     }
-
-    & p {
-      position: absolute;
-      top: 45%;
-      left: 36%;
-
-      font-size: 30px;
-      font-weight: 700;
-    }
-    
   `
+
 
   S.Content = styled.div`
-    margin: 10px 0 0 20px;
+    margin: 5px;
 
     & p:first-child {
       font-size: 17px;
@@ -59,7 +37,7 @@ const S = {};
     }
 
     & p:nth-child(2) {
-      margin: 5px 0 10px 0;
+      margin: 10px 0;
       font-size: 15px;
       font-weight: 700;
       
@@ -69,8 +47,10 @@ const S = {};
 
 
   S.Title = styled.div`
+    width: 293px;
     display: flex;
-    gap: 90px;
+    gap: 80px;
+    justify-content: space-between;
 
     & .heartBox {
       display: flex;
@@ -88,6 +68,25 @@ const S = {};
       }
 
     }
+  `
+
+// 반납 완료 시 이미지 배경 비활성화
+  S.Overlay = styled.div`
+    background-color: rgb(0, 0, 0, 0.5);
+    width: 290px;
+    height: 290px;
+    border-radius: 10px;
+
+    position: absolute;
+    top: 0;
+
+    & p{
+      font-size: 30px;
+      font-weight: 800;
+      text-align: center;
+      line-height: 8;
+    }
+
   `
 
   

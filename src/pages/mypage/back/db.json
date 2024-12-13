@@ -129,7 +129,7 @@
   "myResProps" : [
     {
       "id" : "1",
-      "product" : "레트로 캐리어 가죽 여행가방 촬영소품",
+      "product" : "팬던트등",
       "price" : "25,000원",
       "like" : "66",
       "status" : "4일 남음",
@@ -137,15 +137,15 @@
     },
     {
       "id" : "2",
-      "product" : "교지 두루마리 상소문 족자 소품",
+      "product" : "경광등",
       "price" : "7,000원",
       "like" : "66",
-      "status" : "4일 남음",
+      "status" : "6일 남음",
       "propsImageUrl" : "/images/Mypage/myRes/props2.png"
     },
     {
       "id" : "3",
-      "product" : "오랑우탄 인형 아마존 사육사 촬영소품",
+      "product" : "인형",
       "price" : "9,000원",
       "like" : "66",
       "status" : "반납 완료",
@@ -153,11 +153,35 @@
     },
     {
       "id" : "4",
-      "product" : "밥 아저씨 코스프레 가발",
+      "product" : "오픈 표지판",
       "price" : "20,000원",
       "like" : "66",
       "status" : "반납 완료",
       "propsImageUrl" : "/images/Mypage/myRes/props4.png"
+    },
+    {
+      "id" : "5",
+      "product" : "액자",
+      "price" : "50,000원",
+      "like" : "66",
+      "status" : "10일 남음",
+      "propsImageUrl" : "/images/Mypage/myRes/props5.png"
+    },
+    {
+      "id" : "6",
+      "product" : "옛날 전화기",
+      "price" : "30,000원",
+      "like" : "66",
+      "status" : "1일 남음",
+      "propsImageUrl" : "/images/Mypage/myRes/props6.png"
+    },
+    {
+      "id" : "7",
+      "product" : "카트",
+      "price" : "30,000원",
+      "like" : "66",
+      "status" : "반납 완료",
+      "propsImageUrl" : "/images/Mypage/myRes/props7.png"
     }
   ],
   "myVod" : [
