@@ -7,7 +7,8 @@ const S = {};
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    column-gap: 30px;
+    row-gap: 50px;
   `
 
   S.Warpper = styled.div`
@@ -26,7 +27,7 @@ const S = {};
     
   `
   S.Content = styled.div`
-    margin: 10px 0 0 20px;
+    margin: 5px;
 
     & p:first-child {
       font-size: 17px;
@@ -34,7 +35,7 @@ const S = {};
     }
 
     & p:nth-child(2) {
-      margin: 5px 0 10px 0;
+      margin: 10px 0;
       font-size: 15px;
       font-weight: 700;
       
@@ -45,6 +46,7 @@ const S = {};
 
   S.Title = styled.div`
     display: flex;
+    justify-content: space-between;
     gap: 90px;
 
     & .heartBox {
