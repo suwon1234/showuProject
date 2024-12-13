@@ -77,15 +77,63 @@
   "myClass" : [
     {
       "id" : "1",
-      "teacher" : "이찬혁",
+      "teacher" : "김준수",
       "lesson" : "연기레슨",
-      "advice" : {
-        "id" : "1",
-        "date" : "2024.11.30(화) 15:00",
-        "phone" : "010-1111-2222",
-        "email" : "asd123@gamail.com",
-        "etc" : "비고" 
-      }
+      "lessonImageUrl" : "/images/Mypage/myClass/lesson1.png",
+      "etc" : "비고1",
+      "date" : "2024.11.30(화) 15:00",
+      "phone" : "010-1111-2222",
+      "email" : "asf123@naver.com"
+    },
+    {
+      "id" : "2",
+      "teacher" : "카이",
+      "lesson" : "연기레슨",
+      "lessonImageUrl" : "/images/Mypage/myClass/lesson2.png",
+      "etc" : "비고2",
+      "date" : "2024.11.29(화) 15:00",
+      "phone" : "010-3355-6666",
+      "email" : "tes123@naver.com"
+    },
+    {
+      "id" : "3",
+      "teacher" : "신영숙",
+      "lesson" : "연기레슨",
+      "lessonImageUrl" : "/images/Mypage/myClass/lesson3.png",
+      "etc" : "비고3",
+      "date" : "2024.11.28(화) 15:00",
+      "phone" : "010-7777-8888",
+      "email" : "dfg455@naver.com"
+    },
+    {
+      "id" : "4",
+      "teacher" : "이찬혁",
+      "lesson" : "음악레슨",
+      "lessonImageUrl" : "/images/Mypage/myClass/lesson4.png",
+      "etc" : "비고4",
+      "date" : "2024.11.27(화) 15:00",
+      "phone" : "010-2221-5555",
+      "email" : "gfg345@naver.com"
+    },
+    {
+      "id" : "5",
+      "teacher" : "Mac Ayres",
+      "lesson" : "음악레슨",
+      "lessonImageUrl" : "/images/Mypage/myClass/lesson5.png",
+      "etc" : "비고5",
+      "date" : "2024.11.26(화) 15:00",
+      "phone" : "010-9999-1111",
+      "email" : "rty334@naver.com"
+    },
+    {
+      "id" : "6",
+      "teacher" : "선우정아",
+      "lesson" : "음악레슨",
+      "lessonImageUrl" : "/images/Mypage/myClass/lesson6.png",
+      "etc" : "비고6",
+      "date" : "2024.11.25(화) 15:00",
+      "phone" : "010-1234-4567",
+      "email" : "jkl987@naver.com"
     }
   ],
   "MyResSpace" : [
