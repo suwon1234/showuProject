@@ -19,7 +19,7 @@ const S = {};
   `
 
   S.OuterBox = styled.div`
-    width: 330px;
+    width: 380px;
     height: 310px;
 
     border-radius: 16px;
@@ -30,14 +30,14 @@ const S = {};
   `
 
   S.Box = styled.div`
-    width: 330px;
+    width: 340px;
     height: 310px;
     padding: 15px 20px;
 
     position: relative;
 
     & img {
-      width: 290px;
+      width: 340px;
       height: 156px;
       border-radius: 20px;
     }
@@ -45,7 +45,7 @@ const S = {};
     & svg.heart {
       position: absolute;
       top: 25px;
-      right: 35px;
+      right: 0;
     }
   `
 

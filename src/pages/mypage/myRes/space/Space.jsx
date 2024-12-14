@@ -13,7 +13,7 @@ const Space = () => {
         const datas = await response.json();
         setSpaces(datas);
       } catch (error) {
-        console.log(error)
+        console.log("SpaceError", error)
       }
     }
 
@@ -21,7 +21,7 @@ const Space = () => {
       
   }, [])
 
-  console.log(spaces)
+  // console.log(spaces)
 
   return (
     <S.Container className='container'>

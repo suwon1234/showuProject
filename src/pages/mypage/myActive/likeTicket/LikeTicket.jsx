@@ -1,169 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './LikeTicketStyle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 const LikeTicket = () => {
+  const [ ticket, setTicket ] = useState([]);
+
+  useEffect(() => {
+    const getTicket = async () => {
+     try {
+      const response = await fetch(`http://localhost:4000/ticket`);
+      const datas = await response.json();
+      setTicket(datas);
+     } catch (error) {
+      console.log("LikeTicketError", error)
+     }
+    }
+
+    getTicket()
+
+  }, [])
+
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  }
+
   return (
     <div>
-      <S.Conatiner className='Container'>
-        <S.Wrapper className='Wrapper'>
-          <FontAwesomeIcon icon={faHeart} className='heart'/>
-          <p>뮤지컬 &lt;클로버&gt;</p>
-          <S.Table>
-            <tbody>
-              <S.Tr>
-                <th scope='row'>티켓명</th>
-                <td>
-                  <span>뮤지컬&lt;클로버&gt;</span>
-                </td>
-              </S.Tr>
-              <S.Tr>
-                <th scope='row'>관람 일시</th>
-                <td>2024.11.30(토) 15:00</td>
-              </S.Tr>
-              <S.Tr>
-                <th scope='row'>좌석</th>
-                <td>S석 L열 20번</td>
-              </S.Tr>
-              <S.Tr>
-                <th>예매일</th>
-                <td>2024.11.02</td>
-              </S.Tr>
-            </tbody>
-          </S.Table>
-        </S.Wrapper>
-        <S.Wrapper className='Wrapper'>
-          <FontAwesomeIcon icon={faHeart} className='heart'/>
-          <p>뮤지컬 &lt;클로버&gt;</p>
-          <S.Table>
-            <tbody>
-              <S.Tr>
-                <th scope='row'>티켓명</th>
-                <td>
-                  <span>뮤지컬&lt;클로버&gt;</span>
-                </td>
-              </S.Tr>
-              <S.Tr>
-                <th scope='row'>관람 일시</th>
-                <td>2024.11.30(토) 15:00</td>
-              </S.Tr>
-              <S.Tr>
-                <th scope='row'>좌석</th>
-                <td>S석 L열 20번</td>
-              </S.Tr>
-              <S.Tr>
-                <th>예매일</th>
-                <td>2024.11.02</td>
-              </S.Tr>
-            </tbody>
-          </S.Table>
-        </S.Wrapper>
-        <S.Wrapper className='Wrapper'>
-          <FontAwesomeIcon icon={faHeart} className='heart'/>
-          <p>뮤지컬 &lt;클로버&gt;</p>
-          <S.Table>
-            <tbody>
-              <S.Tr>
-                <th scope='row'>티켓명</th>
-                <td>
-                  <span>뮤지컬&lt;클로버&gt;</span>
-                </td>
-              </S.Tr>
-              <S.Tr>
-                <th scope='row'>관람 일시</th>
-                <td>2024.11.30(토) 15:00</td>
-              </S.Tr>
-              <S.Tr>
-                <th scope='row'>좌석</th>
-                <td>S석 L열 20번</td>
-              </S.Tr>
-              <S.Tr>
-                <th>예매일</th>
-                <td>2024.11.02</td>
-              </S.Tr>
-            </tbody>
-          </S.Table>
-        </S.Wrapper>
-        <S.Wrapper className='Wrapper'>
-          <FontAwesomeIcon icon={faHeart} className='heart'/>
-          <p>뮤지컬 &lt;클로버&gt;</p>
-          <S.Table>
-            <tbody>
-              <S.Tr>
-                <th scope='row'>티켓명</th>
-                <td>
-                  <span>뮤지컬&lt;클로버&gt;</span>
-                </td>
-              </S.Tr>
-              <S.Tr>
-                <th scope='row'>관람 일시</th>
-                <td>2024.11.30(토) 15:00</td>
-              </S.Tr>
-              <S.Tr>
-                <th scope='row'>좌석</th>
-                <td>S석 L열 20번</td>
-              </S.Tr>
-              <S.Tr>
-                <th>예매일</th>
-                <td>2024.11.02</td>
-              </S.Tr>
-            </tbody>
-          </S.Table>
-        </S.Wrapper>
-        <S.Wrapper className='Wrapper'>
-          <FontAwesomeIcon icon={faHeart} className='heart'/>
-          <p>뮤지컬 &lt;클로버&gt;</p>
-          <S.Table>
-            <tbody>
-              <S.Tr>
-                <th scope='row'>티켓명</th>
-                <td>
-                  <span>뮤지컬&lt;클로버&gt;</span>
-                </td>
-              </S.Tr>
-              <S.Tr>
-                <th scope='row'>관람 일시</th>
-                <td>2024.11.30(토) 15:00</td>
-              </S.Tr>
-              <S.Tr>
-                <th scope='row'>좌석</th>
-                <td>S석 L열 20번</td>
-              </S.Tr>
-              <S.Tr>
-                <th>예매일</th>
-                <td>2024.11.02</td>
-              </S.Tr>
-            </tbody>
-          </S.Table>
-        </S.Wrapper>
-        <S.Wrapper className='Wrapper'>
-          <FontAwesomeIcon icon={faHeart} className='heart'/>
-          <p>뮤지컬 &lt;클로버&gt;</p>
-          <S.Table>
-            <tbody>
-              <S.Tr>
-                <th scope='row'>티켓명</th>
-                <td>
-                  <span>뮤지컬&lt;클로버&gt;</span>
-                </td>
-              </S.Tr>
-              <S.Tr>
-                <th scope='row'>관람 일시</th>
-                <td>2024.11.30(토) 15:00</td>
-              </S.Tr>
-              <S.Tr>
-                <th scope='row'>좌석</th>
-                <td>S석 L열 20번</td>
-              </S.Tr>
-              <S.Tr>
-                <th>예매일</th>
-                <td>2024.11.02</td>
-              </S.Tr>
-            </tbody>
-          </S.Table>
-        </S.Wrapper>
-      </S.Conatiner>
+      <S.Container className='Container'>
+        { ticket && ticket.map((item, i) => (
+          <S.Wrapper key={i} className='Wrapper' onClick={() => handleNavigate('/my-res/ticket/detail')}>
+            <S.RightContent className='rightContent'>
+              <p className='date'>{item.date}</p>
+              <p className='id'>예매번호 {item.id}</p>
+              <p className='ticketName'>{item.ticketName}</p>
+              <p className='qty'>{item.qty}매</p>
+              {/* <p className='cancellableDate'>취소 가능일 {item.cancellableDate}</p> */}
+              <p className='location'>{item.location}</p>
+              <p className='state'>{item.state}</p>
+            </S.RightContent>
+            <S.Img className='img'>
+              <img src={item.ticketImgUrl} alt="티켓 포스터 이미지" />
+              <div className='top'></div>
+              <div className='bottom'></div>
+            </S.Img>
+          </S.Wrapper>
+        ))
+        }
+      </S.Container>
     </div>
   );
 };

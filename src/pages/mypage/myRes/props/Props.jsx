@@ -13,7 +13,7 @@ const Props = () => {
         const datas = await response.json();
         setProps(datas);
       } catch (error) {
-        console.log("getProps", error)
+        console.log("PropsError", error)
       }
     }
 

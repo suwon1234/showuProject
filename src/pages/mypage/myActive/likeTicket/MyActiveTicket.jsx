@@ -37,7 +37,7 @@ const MyActiveTicket = () => {
         </S.Wapper>
       </S.Container>
 
-      <Paging />
+      {/* <Paging /> */}
     </>
   );
 };
