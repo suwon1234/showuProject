@@ -3,91 +3,96 @@ import styled from "styled-components";
 const S = {};
 
   S.Container = styled.div`
-    width: 900px;
+    width: 800px;
     height: 100%;
+
+    margin-top: 60px;
   `
 
   S.Wrapper = styled.div`
-    width: 900px;
-    height: 100%;
+    width: 800px;
+    height: 90%;
 
     display: flex;
     flex-wrap: wrap;
-    row-gap: 30px;
-    column-gap: 15px;
+    column-gap: 40px;
   `
 
   S.OuterBox = styled.div`
-    width: 395px;
-    height: 186px;
-    background-color: #fff;
-    border-radius: 5px;
-    border: 2px solid #fff;
+    width: 330px;
+    height: 310px;
 
-    margin-right: 5px;
+    border-radius: 16px;
+    /* border: 0.5px solid #797979; */
+    background-color: white;
 
-    &:hover {
-      border: 2px solid #ffd400;
-    }
+    cursor: pointer;
   `
 
   S.Box = styled.div`
-    display: flex;
-    
-    & img {
-      width: 140px;
-      height: 182px;
-    }
-  `
+    width: 330px;
+    height: 310px;
+    padding: 15px 20px;
 
-  S.RightContent = styled.div`
-    display: flex;
-    gap: 4px;
+    position: relative;
+
+    & img {
+      width: 290px;
+      height: 156px;
+      border-radius: 20px;
+    }
+
+    & svg.heart {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+    }
   `
 
   S.Right = styled.div`
     display: flex;
     flex-direction: column;
-    gap: 7px;
-    justify-content: center;
+    gap: 5px;
 
-    padding: 13px;
-
-    & .state {
-      font-size: 12px;
-      font-weight: 700;
-      color: #FF7262;
-      border: 0.5px solid #FF7262;
-      line-height: 1.7;
-      text-align: center;
-
-      width: 62px;
-      height: 24px;
+    & p{
+      color: black;
     }
 
-    & .genre {
-      font-size: 15px;
-      font-weight: 700;
-      color: #ffd400;
+    & p.genre {
+      font-size: 16px;
+      font-weight: 400;
+      margin-top: 5px;
     }
-
-    & .intro {
+    
+    & p.intro {
       font-size: 17px;
       font-weight: 700;
-      color: #333;
     }
 
-    & .name {
-      font-size: 14px;
+    & p.name {
+      font-size: 16px;
       font-weight: 400;
-      color: #444444;
     }
 
-    & .date {
-      font-size: 14px;
+    & p.date {
+      font-size: 16px;
       font-weight: 400;
-      color: #444444;
+      color: #797979;
     }
+  `
+
+  S.Button = styled.button`
+    width: 290px;
+    height: 55px;
+    border-radius: 5px;
+    border: none;
+
+    background-color: #ffd400;
+    color: black;
+    font-size: 17px;
+
+    position: absolute;
+    bottom: 15px;
   `
 
 export default S;

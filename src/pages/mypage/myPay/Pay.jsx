@@ -35,8 +35,8 @@ const Pay = () => {
           </S.Tbody>
         </S.Table>
         <S.Image className='image'>
-          <img onClick={() => handleNavigate('/shop/mddetail')} src={process.env.PUBLIC_URL + "/images/Mypage/myMd/md.png"} alt="엠디1" />
-          <img onClick={() => handleNavigate('/shop/mddetail')} src={process.env.PUBLIC_URL + "/images/Mypage/myMd/md2.png"} alt="엠디1" />
+          <img onClick={() => handleNavigate('/shop/md/detail')} src={process.env.PUBLIC_URL + "/images/Mypage/myMd/md.png"} alt="엠디1" />
+          <img onClick={() => handleNavigate('/shop/md/detail')} src={process.env.PUBLIC_URL + "/images/Mypage/myMd/md2.png"} alt="엠디1" />
         </S.Image>
         <S.Table>
           <S.Thead>
@@ -61,8 +61,8 @@ const Pay = () => {
           </S.Tbody>
         </S.Table>
         <S.Image className='image'>
-          <img onClick={() => handleNavigate('/shop/mddetail')} src={process.env.PUBLIC_URL + "/images/Mypage/myMd/md.png"} alt="엠디1" />
-          <img onClick={() => handleNavigate('/shop/mddetail')} src={process.env.PUBLIC_URL + "/images/Mypage/myMd/md2.png"} alt="엠디1" />
+          <img onClick={() => handleNavigate('/shop/md/detail')} src={process.env.PUBLIC_URL + "/images/Mypage/myMd/md.png"} alt="엠디1" />
+          <img onClick={() => handleNavigate('/shop/md/detail')} src={process.env.PUBLIC_URL + "/images/Mypage/myMd/md2.png"} alt="엠디1" />
         </S.Image>
       </div>
     </>

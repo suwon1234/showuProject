@@ -38,7 +38,7 @@ const MyActiveTeam = () => {
         </S.Wapper>
       </S.Container>
 
-      <Paging />
+      {/* <Paging /> */}
     </>
   );
 };
