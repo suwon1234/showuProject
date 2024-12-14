@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './DetailStyle';
 import Checkbox from '../../../login/_component/Checkbox';
 
 const Detail = () => {
+  const [ ticket, setTicket ] = useState([]);
+
+  useEffect(() => {
+    const getTicket = async () => {
+     try {
+      const response = await fetch(`http://localhost:4000/ticket`);
+      const datas = await response.json();
+      setTicket(datas);
+     } catch (error) {
+      console.log("TicketDetailError", error)
+     }
+    }
+
+    getTicket()
+
+  }, [])
+
   return (
     <div>
       <S.Table>
