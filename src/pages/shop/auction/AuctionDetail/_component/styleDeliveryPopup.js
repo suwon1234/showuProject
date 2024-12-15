@@ -37,10 +37,16 @@ const S = {};
     padding: 20px 10px;
     font-size: 16px;
 
-    p {
+    h1 {
       margin: 40px 100px;
     }
+
+    p {
+      margin: 40px 100px;
+
+    }
   `
+
 
   S.PopupButton = styled.button`
     background-color: #ffd400;

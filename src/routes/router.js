@@ -70,6 +70,7 @@ import MoreContainer from '../pages/vod/more/selectMore/MoreContainer'
 import PopularContainer from '../pages/vod/more/popular/PopularContainer'
 import MusicalContainer from '../pages/vod/more/musical/MusicalContainer'
 import NonLoginContainer from '../pages/vod/video/nonloginpage/NonLoginContainer'
+import HotContainer from '../pages/hot/HotContainer';
 
 const router = createBrowserRouter([
   {
@@ -332,6 +333,10 @@ const router = createBrowserRouter([
       {
         path : '/vod/more/rec/musical',
         element : <MusicalContainer/>
+      },
+      {
+        path : '/hot',
+        element : <HotContainer/>
       }
 
     ]
