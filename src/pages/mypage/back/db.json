@@ -540,5 +540,37 @@
       "auctionCount" : "22회",
       "time" : "3일 12시간"
     }
+  ],
+  "review" : [
+    {
+      "id" : "1",
+      "writer" : "작성자1",
+      "productName" : "연기레슨명",
+      "content" : "후기내용이 들어가요 후기내용이 들어가요 후기내용이 들어가요 후기내용이 들어가요 후기내용이 들어가요 후기내용이 들어가요",
+      "category" : "레슨",
+      "rating" : "5.0",
+      "date" : "2024.12.10 17:00",
+      "profileImageUrl" : "/images/Mypage/user.png"
+    },
+    {
+      "id" : "2",
+      "writer" : "작성자2",
+      "productName" : "음악레슨명",
+      "content" : "후기내용이 들어가요",
+      "category" : "레슨",
+      "rating" : "5.0",
+      "date" : "2024.12.10 17:00",
+      "profileImageUrl" : "/images/Mypage/user.png"
+    },
+    {
+      "id" : "3",
+      "writer" : "작성자3",
+      "productName" : "마술레슨명",
+      "content" : "후기내용이 들어가요",
+      "category" : "레슨",
+      "rating" : "5.0",
+      "date" : "2024.12.10 17:00",
+      "profileImageUrl" : "/images/Mypage/user.png"
+    }
   ]
 }
