@@ -622,5 +622,31 @@
       "content" : "뮤지컬에 대한 정보를 제보합니다!",
       "date" : "2024.12.10 17:00"
     }
+  ],
+  "pay" : [
+    {
+      "id" : "202412101234",
+      "date" : "2024.11.29.17:00",
+      "productName" : "베르사유의 장미",
+      "price" : "50,000원",
+      "category" : "MD",
+      "state" : "결제 완료",
+      "images": [
+        "/images/Mypage/myMd/md1.png",
+        "/images/Mypage/myMd/md2.png"
+      ]
+    },
+    {
+      "id" : "202412101235",
+      "date" : "2024.11.26.17:00",
+      "productName" : "베르사유의 고블렛",
+      "price" : "66,000원",
+      "category" : "MD",
+      "state" : "결제 완료",
+      "images": [
+        "/images/Mypage/myMd/md3.png",
+        "/images/Mypage/myMd/md4.png"
+      ]
+    }
   ]
 }
