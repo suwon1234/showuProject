@@ -7,12 +7,13 @@ const Watch = () => {
   useEffect(() => {
     const getVod = async () => {
 
-      try {const response = await fetch(`http://localhost:4000/myVod`);
-      const datas = await response.json();
-      return datas;
+      try {
+        const response = await fetch(`http://localhost:4000/myVod`);
+        const datas = await response.json();
+        return datas;
       }
       catch (error){
-        console.log(error)
+        console.log("WatchError", error)
       }
     }
     
@@ -22,13 +23,16 @@ const Watch = () => {
 
   }, [])
 
-  console.log(vod);
+  // console.log(vod);
+
+  const watch = vod.filter((item) => item.state.includes("찜"))
 
   return (
     <S.Container className='Container'>
       <p className='edit'>편집</p>
+
         <S.Wrapper className='Wrapper'>
-          { vod && vod.map((item, i) => (
+          { watch && watch.map((item, i) => (
             <S.Item key={i} className='item'>
               <S.Image className='image'>
                 <img src={item.imageUrl} alt='vod 이미지'></img>

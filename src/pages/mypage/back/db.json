@@ -235,27 +235,30 @@
   "myVod" : [
     {
       "id" : "1",
-      "title" : "연극<더 드레서>",
-      "place" : "국립정동극장",
+      "title" : "뮤지컬 <연남동 빨래방>",
+      "place" : "대학로 스타시티",
       "period" : "2024.10.08 ~ 11.03",
       "date" : "2024.11.02(토)",
-      "imageUrl" : "/images/mypage/myVod/vod.png"
+      "imageUrl" : "/images/Mypage/myRes/ticket6.png",
+      "state" : "찜"
     },
     {
       "id" : "2",
-      "title" : "연극<긴긴밤>",
-      "place" : "국립정동극장",
+      "title" : "뮤지컬 <해피 오! 해피>",
+      "place" : "더굿씨어터",
       "period" : "2024.10.08 ~ 11.03",
       "date" : "2024.11.02(토)",
-      "imageUrl" : "/images/mypage/myVod/subVod.png"
+      "imageUrl" : "/images/Mypage/myRes/ticket5.png",
+      "state" : "찜"
     },
     {
       "id" : "3",
-      "title" : "라라랜드",
-      "place" : "국립정동극장",
+      "title" : "뮤지컬 <그해 여름>",
+      "place" : "서경스퀘어",
       "period" : "2024.10.08 ~ 11.03",
       "date" : "2024.11.02(토)",
-      "imageUrl" : "/images/mypage/myVod/vod3.png"
+      "imageUrl" : "/images/Mypage/myRes/ticket4.png",
+      "state" : "찜"
     },
     {
       "id" : "4",
@@ -263,23 +266,44 @@
       "place" : "국립정동극장",
       "period" : "2024.10.08 ~ 11.03",
       "date" : "2024.11.02(토)",
-      "imageUrl" : "/images/mypage/myVod/vod.png"
+      "imageUrl" : "/images/mypage/myVod/vod.png",
+      "state" : "찜"
     },
     {
       "id" : "5",
-      "title" : "연극<긴긴밤>",
-      "place" : "국립정동극장",
+      "title" : "뮤지컬 <웃는 남자>",
+      "place" : "예술의 전당 오페라극장",
       "period" : "2024.10.08 ~ 11.03",
       "date" : "2024.11.02(토)",
-      "imageUrl" : "/images/mypage/myVod/subVod.png"
+      "imageUrl" : "/images/Mypage/myRes/ticket3.png",
+      "state" : "찜"
     },
     {
       "id" : "6",
-      "title" : "라라랜드",
-      "place" : "국립정동극장",
+      "title" : "뮤지컬 <광화문연가>",
+      "place" : "부산 드림씨어터",
       "period" : "2024.10.08 ~ 11.03",
       "date" : "2024.11.02(토)",
-      "imageUrl" : "/images/mypage/myVod/vod3.png"
+      "imageUrl" : "/images/Mypage/myRes/ticket1.png",
+      "state" : "찜"
+    },
+    {
+      "id" : "7",
+      "title" : "뮤지컬 <시라노>",
+      "place" : "예술의 전당",
+      "period" : "2024.12.06 ~2025.02.23",
+      "date" : "2024.12.17(화)",
+      "imageUrl" : "/images/Mypage/MyVod/vod7.png",
+      "state" : "구독"
+    },
+    {
+      "id" : "8",
+      "title" : "뮤지컬 <알라딘>",
+      "place" : "샤롯데씨어터",
+      "period" : "2024.11.22 ~2025.06.22",
+      "date" : "2024.12.17(화)",
+      "imageUrl" : "/images/Mypage/MyVod/vod8.png",
+      "state" : "구독"
     }
   ],
   "comment" : [
