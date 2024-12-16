@@ -31,7 +31,7 @@ const Watch = () => {
           { vod && vod.map((item, i) => (
             <S.Item key={i} className='item'>
               <S.Image className='image'>
-                <img src={item.imageUrl} alt='`vod ${i}`'></img>
+                <img src={item.imageUrl} alt='vod 이미지'></img>
               </S.Image>
               <S.Title className='title'>
                 <p>{item.title}</p>

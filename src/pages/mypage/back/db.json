@@ -482,5 +482,39 @@
       "cancellationStatus" : "취소 가능",
       "bookingDay" : "2024.11.02"
     }
+  ],
+  "md" : [
+    {
+      "id" : "1",
+      "mdName" : "베르사유의 장미 고블렛",
+      "mdImgUrl" : "/images/Mypage/myMd/md1.png",
+      "price" : "65,000원",
+      "auctionCount" : "33회",
+      "time" : "2일 21시간"
+    },
+    {
+      "id" : "2",
+      "mdName" : "베르사유의 장미 프로그램북",
+      "mdImgUrl" : "/images/Mypage/myMd/md2.png",
+      "price" : "48,000원",
+      "auctionCount" : "20회",
+      "time" : "1일 20시간"
+    },
+    {
+      "id" : "3",
+      "mdName" : "4월은 너의 거짓말 메시지 엽서",
+      "mdImgUrl" : "/images/Mypage/myMd/md3.png",
+      "price" : "32,000원",
+      "auctionCount" : "66회",
+      "time" : "6일 19시간"
+    },
+    {
+      "id" : "4",
+      "mdName" : "2025 캘린더",
+      "mdImgUrl" : "/images/Mypage/myMd/md4.png",
+      "price" : "66,000원",
+      "auctionCount" : "22회",
+      "time" : "3일 12시간"
+    }
   ]
 }
