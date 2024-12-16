@@ -648,5 +648,36 @@
         "/images/Mypage/myMd/md4.png"
       ]
     }
+  ],
+  "areaList": [
+      { "id": 1, "name": "서울" },
+      { "id": 2, "name": "경기" },
+      { "id": 3, "name": "경북" },
+      { "id": 4, "name": "경남" },
+      { "id": 5, "name": "충북" },
+      { "id": 6, "name": "충남" },
+      { "id": 7, "name": "전북" },
+      { "id": 8, "name": "전남" },
+      { "id": 9, "name": "인천" },
+      { "id": 10, "name": "강원" },
+      { "id": 11, "name": "제주" }
+  ],
+  "fieldList": [
+    { "id": 1, "name": "연기" },
+    { "id": 2, "name": "마술" },
+    { "id": 3, "name": "음악" }
+  ],
+  "totalList": [
+    { "id": 1, "experience": "신입" },
+    { "id": 2, "experience": "1년" },
+    { "id": 4, "experience": "2년" },
+    { "id": 5, "experience": "3년" },
+    { "id": 6, "experience": "4년" },
+    { "id": 7, "experience": "5년" },
+    { "id": 8, "experience": "6년" },
+    { "id": 9, "experience": "7년" },
+    { "id": 10, "experience": "8년" },
+    { "id": 11, "experience": "9년" },
+    { "id": 12, "experience": "10년 이상" }
   ]
 }

@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import S from '../GradeStyle';
 import useDropdown from '../../../../hooks/useDropdown';
 import Field from './Field';
@@ -8,8 +8,25 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 const FieldContainer = () => {
   const dropdownRef = useRef(null);
   const [ fieldlValue, setFieldValue ] = useState("선택하세요");
-  const fieldList = [ "선택하세요", "연기", "마술", "음악" ];
   const [ isOpen, setIsOpen ] = useDropdown(dropdownRef, false);
+  const [ fieldList, setFieldList ] = useState([]);
+  // const fieldList = [ "선택하세요", "연기", "마술", "음악" ];
+  useEffect(() => {
+    const getField = async () => {
+      try {
+      const response = await fetch(`http://localhost:4000/fieldList`)
+      const datas = await response.json()
+      setFieldList(datas)
+      } catch (error) {
+       console.log("FieldContainerError", error) 
+      }
+    }
+
+    getField()
+
+  }, [])
+
+  // console.log(fieldList)
 
   return (
     <>
@@ -33,7 +50,7 @@ const FieldContainer = () => {
           { isOpen &&
             <ul>
               {fieldList.map((field, i) => (
-                <Field key={i} value={field} isOpen={isOpen} setFieldValue={setFieldValue} setIsOpen={setIsOpen} />
+                <Field key={i} value={field.name} isOpen={isOpen} setFieldValue={setFieldValue} setIsOpen={setIsOpen} />
               ))}
             </ul>
           }
