@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import S from './DetailStyle';
-import Checkbox from '../../../login/_component/Checkbox';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const Detail = () => {
+  const { id } = useParams();
+  // console.log(id)
   const [ ticket, setTicket ] = useState([]);
 
   useEffect(() => {
     const getTicket = async () => {
      try {
-      const response = await fetch(`http://localhost:4000/ticket`);
+      const response = await fetch(`http://localhost:4000/ticket/${id}`);
       const datas = await response.json();
       setTicket(datas);
      } catch (error) {
@@ -20,6 +22,12 @@ const Detail = () => {
 
   }, [])
 
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  }
+
   return (
     <div>
       <S.Table>
@@ -27,28 +35,26 @@ const Detail = () => {
           <S.Tr>
             <th scope='row'>티켓명</th>
             <td>
-              <span>뮤지컬&lt;클로버&gt;</span>
+              <span>{ticket.ticketName}</span>
             </td>
             <th scope='row'>예매자</th>
-            <td>홍길동</td>
+            <td>{ticket.name}</td>
           </S.Tr>
           <S.Tr>
             <th scope='row'>관람 일시</th>
-            <td>2024.11.30(토) 15:00</td>
+            <td>{ticket.date}</td>
             <th scope='row'>장소</th>
-            <td>대학로 자유극장</td>
+            <td>{ticket.location}</td>
           </S.Tr>
           <S.Tr>
             <th scope='row'>좌석</th>
-            <td>S석 L열 20번</td>
-            <th scope='row'>티켓수령 방법</th>
-            <td>현장수령</td>
+            <td>{ticket.seat}</td>
+            <th>예매일</th>
+            <td>{ticket.bookingDay}</td>
           </S.Tr>
           <S.Tr>
-            <th>예매일</th>
-            <td>2024.11.02</td>
             <th>현재상태</th>
-            <td>예매완료</td>
+            <td>{ticket.state}</td>
           </S.Tr>
         </tbody>
       </S.Table>
@@ -61,8 +67,8 @@ const Detail = () => {
             <S.DetailTrTitle>
             {/* <Checkbox /> */}
               <th scope='col'>예매 번호</th>
-              <th scope='col'>좌석 등급</th>
-              <th scope='col'>권종</th>
+              <th scope='col'>좌석</th>
+              {/* <th scope='col'>권종</th> */}
               <th scope='col'>가격</th>
               <th scope='col'>취소 여부</th>
               <th scope='col'>취소(가능)일</th>
@@ -73,20 +79,20 @@ const Detail = () => {
 
             <S.DetailTr>
               {/* <Checkbox /> */}
-              <th scope='row' className='num'>1</th>
-              <td>S석</td>
-              <td>L열 20번</td>
-              <td>55,000원</td>
-              <td>취소 가능</td>
-              <td>2024.11.29
-                  <br />
-                  17:00
-              </td>
+              <th scope='row' className='num'>{ticket.id}</th>
+              <td>{ticket.seat}</td>
+              {/* <td>L열 20번</td> */}
+              <td>{ticket.price}</td>
+              <td>{ticket.cancellationStatus}</td>
+              <td>{ticket.cancellableDate}</td>
             </S.DetailTr>
       
           </S.DetailTbody>
         </S.DetailTable>
-        <S.Button>취소하기</S.Button>
+        <S.ButtonContainer className='ButtonContainer'>
+          <S.Button onClick={() => handleNavigate('/my-res/ticket/cancele')}>이전으로</S.Button>
+          <S.Button>취소하기</S.Button>
+        </S.ButtonContainer>
       </div>
     </div>
   );
