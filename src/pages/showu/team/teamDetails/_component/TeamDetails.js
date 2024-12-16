@@ -22,7 +22,7 @@ const TeamDetails = () => {
                         <div className='TeamCharactersWrapper'>
                             <div className='TeamCharacter'>
                                 <span>icon</span>
-                                <span>남자만만</span>
+                                <span>남자만</span>
                             </div>
                             <div className='TeamCharacter'>
                                 <span>icon</span>
