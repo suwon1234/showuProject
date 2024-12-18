@@ -15,7 +15,7 @@ const S = {};
   S.Profile = styled.div`
     display: flex;
     align-items: center;
-    gap : 50px;
+    gap : 40px;
 
     margin: 40px 0 50px 0;
 
@@ -84,8 +84,8 @@ const S = {};
 
   S.UpdateButton = styled.div`
 
-    margin-top: 90px;
-    margin-left: 255px;
+    margin-top: 10px;
+    margin-left: 300px;
 
     & button {
       border: none;
@@ -102,15 +102,15 @@ const S = {};
     }
   `
   
-  S.UserChangeWapper = styled.ul`
+  S.UserChangeWapper = styled.form`
     display: flex;
     flex-direction: column;
 
     border-bottom: 0.5px solid #444444;
 
-    & li {
+    & label {
       display: grid;
-      grid-template-columns: 270px 400px 29px 100px;
+      grid-template-columns: 280px 380px 80px 10px;
       align-items: center;
       border-top: 0.5px solid #444444;
       padding: 15px 0;
@@ -124,6 +124,10 @@ const S = {};
     & li:nth-child(2) {
       justify-content: flex-start;
     }
+
+    & svg.pen {
+      cursor: pointer;
+    }
   `
 
   S.Input = styled.input`
@@ -135,14 +139,18 @@ const S = {};
     border-color: #ffd400;
     color: #fff;
     border: none;
+    font-size: 17px;
+    text-align: right;
+    padding: 15px;
 
     &::placeholder{
       color: #fff;
       font-size: 17px;
       text-align: right;
 
-      padding: 15px;
     }
+
+    
   `
 
   S.Button = styled.button`

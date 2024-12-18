@@ -1,21 +1,13 @@
-import React, { useState } from 'react';
-import S from './GradeStyle';
-import Dropdown from './_component/Dropdown';
+import React from 'react';
+import Dropdown from '../../myGrade/_component/Dropdown';
+import S from './UpdateStyle';
+import { useNavigate } from 'react-router-dom';
 
-const Grade = () => {
-  const [ formData, setFormData ] = useState({
-    name : "",
-    introdution : "",
-    location : "",
-    field : "",
-    experienceYears: "",
-    experienceDetails: "",
-    portfolio: "",
-  });
+const Update = () => {
+  const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name] : value });
+  const handleNavigate = (path) => {
+    navigate(path)
   }
 
   return (
@@ -48,11 +40,17 @@ const Grade = () => {
             </S.Label>
           </S.Portfolio>
 
-          <S.Button>작성 완료</S.Button>
+          <S.UpdateButton className='updateButton'>
+            <S.Button onClick={() => handleNavigate('/mypage')}>이전으로</S.Button>
+            <S.Button onClick={() => {
+              alert("수정이 완료되었습니다")
+            }}>수정 완료</S.Button>
+          </S.UpdateButton>
+          
         </S.Form>
       </S.Fieldset>
     </S.Container>
   );
 };
 
-export default Grade;
+export default Update;

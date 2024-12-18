@@ -9,22 +9,22 @@ const FieldContainer = () => {
   const dropdownRef = useRef(null);
   const [ fieldlValue, setFieldValue ] = useState("선택하세요");
   const [ isOpen, setIsOpen ] = useDropdown(dropdownRef, false);
-  const [ fieldList, setFieldList ] = useState([]);
-  // const fieldList = [ "선택하세요", "연기", "마술", "음악" ];
-  useEffect(() => {
-    const getField = async () => {
-      try {
-      const response = await fetch(`http://localhost:4000/fieldList`)
-      const datas = await response.json()
-      setFieldList(datas)
-      } catch (error) {
-       console.log("FieldContainerError", error) 
-      }
-    }
+  // const [ fieldList, setFieldList ] = useState([]);
+  const fieldList = [ "연기", "마술", "음악" ];
+  // useEffect(() => {
+  //   const getField = async () => {
+  //     try {
+  //     const response = await fetch(`http://localhost:4000/fieldList`)
+  //     const datas = await response.json()
+  //     setFieldList(datas)
+  //     } catch (error) {
+  //      console.log("FieldContainerError", error) 
+  //     }
+  //   }
 
-    getField()
+  //   getField()
 
-  }, [])
+  // }, [])
 
   // console.log(fieldList)
 
@@ -50,7 +50,7 @@ const FieldContainer = () => {
           { isOpen &&
             <ul>
               {fieldList.map((field, i) => (
-                <Field key={i} value={field.name} isOpen={isOpen} setFieldValue={setFieldValue} setIsOpen={setIsOpen} />
+                <Field key={i} value={field} isOpen={isOpen} setFieldValue={setFieldValue} setIsOpen={setIsOpen} />
               ))}
             </ul>
           }

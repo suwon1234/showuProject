@@ -1,13 +1,13 @@
 import React from 'react';
-import MyGrade from '../MyGrade';
 import Layout from '../../_component/Layout';
 import MypageContainer from '../../MypageContainer';
+import MyGradeUpdate from './MyGradeUpdate';
 
 const MyGradeUpdateContainer = () => {
   return (
     <Layout 
       leftContent={<MypageContainer />}
-      rightContent={<MyGrade />}
+      rightContent={<MyGradeUpdate />}
     />
   );
 };
