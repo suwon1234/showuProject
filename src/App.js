@@ -5,6 +5,9 @@ import { RouterProvider } from "react-router-dom";
 import router from "./routes/router";
 import LessonDetails from "./pages/showu/lesson/LessonMain/lessonDetails/LessonDetails";
 
+import ManagementContainer from "./pages/shop/auction/AuctionManagement/ManagementContainer";
+
+
 
 
 function App() {
@@ -12,7 +15,8 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <RouterProvider router={router} />
+        <ManagementContainer />
+        {/* <RouterProvider router={router} /> */}
       </ThemeProvider>
     </>
   );

@@ -102,34 +102,42 @@ const flexStyle = css`
       border: none;
       cursor: pointer;
 
-      &:hover {
-        background-color: #ffd400;
-        border: 2px solid #000;
+    }
+    
+    .button1 { // 입찰하기
+      background-color: #444444;
+      width: 505px;
+    }
+    
+    .button2 { // 즉시구매 불가
+      background-color: #444444;
+      width: 505px;
+    }
+    
+    .delivery { // 배송정보
+      background-color: #797979;
+    }
+    
+    .heart { // 관심물품 
+      background-color: #797979;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        & p {
-          color: #000;
+    .heart-icon {
+      font-size: 20px;
+      margin-right: 5px;
+    
+      
+      &:hover {
+        path {
+          color: #ffd400; 
         }
       }
     }
-    
-    .delivery {
-      background-color: #797979;
-    }
-    
-    .heart {
-      background-color: #797979;
-    }
-
-    .button1 {
-      background-color: #444444;
-      width: 505px;
-    }
-
-    .button2 {
-      background-color: #444444;
-      width: 505px;
-    }
-    `
+      
+  `
 
   S.Info = styled.div`
     width: 1140px;

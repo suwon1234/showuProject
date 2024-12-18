@@ -1,7 +1,7 @@
 import React from 'react';
-import MdInquiryList from './_component/MdInquiryList';
+import AuctionInquiryList from './_component/AuctionInquiryList';
 
-const InquiryListContainer = () => {
+const InquiryListContainer2 = () => {
 
   const inquiryList = [
     { id: 1, type: '기타', title: '제목1', writer: '홍길동', date: '0000/00/00'},
@@ -16,9 +16,9 @@ const InquiryListContainer = () => {
 
   return (
     <div>
-      <MdInquiryList inquiryList={inquiryList}/>
+      <AuctionInquiryList inquiryList={inquiryList}/>
     </div>
   );
 };
 
-export default InquiryListContainer;
+export default InquiryListContainer2;
