@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import S from './style';
 import LoginHeader from '../login/_component/LoginHeader';
 import { Link, useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
+import {useForm} from 'react-hook-form'
 import Checkbox from '../login/_component/Checkbox';
 
 const JoinContainer = () => {
