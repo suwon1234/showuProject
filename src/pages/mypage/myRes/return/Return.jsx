@@ -1,78 +1,59 @@
-import React from 'react';
-import S from './RetrunStyle';
+import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import S from './RetrunStyle';
 
-const Return = () => {
+const Return = ({ stateValue }) => {
+  const [turn, setTurn] = useState([]);
+
+  useEffect(() => {
+    const getReturn = async () => {
+      try {
+        const response = await fetch(`http://localhost:4000/myResProps`);
+        const datas = await response.json();
+        setTurn(datas);
+      } catch (error) {
+        console.log("ReturnError", error);
+      }
+    };
+
+    getReturn();
+  }, []);
+
+  const filterReturn = turn.filter((item) =>
+    stateValue === "남은 기간"
+      ? item.status.includes("남음")
+      : item.status.includes("반납 완료")
+  );
+
   return (
     <div>
       <S.Container>
-      <S.Warpper>
-        <S.Image>
-          <img src={process.env.PUBLIC_URL + "/images/Mypage/myRes/props.png"} alt="소품대여" />
-        </S.Image>
-        <S.Content>
-          <S.Title>
-            <p>레트로 캐리어 가죽 여행가방 촬영소품</p>
-            <div className='heartBox'>
-              <FontAwesomeIcon icon={faHeart} className='heart'/>
-              <p>66</p>
-            </div>
-          </S.Title>
-          <p>25,000원</p>
-          <p>4일 남음</p>
-        </S.Content>
-      </S.Warpper>
-      <S.Warpper>
-        <S.Image>
-          <img src={process.env.PUBLIC_URL + "/images/Mypage/myRes/props.png"} alt="소품대여" />
-        </S.Image>
-        <S.Content>
-          <S.Title>
-            <p>레트로 캐리어 가죽 여행가방 촬영소품</p>
-            <div className='heartBox'>
-              <FontAwesomeIcon icon={faHeart} className='heart'/>
-              <p>66</p>
-            </div>
-          </S.Title>
-          <p>25,000원</p>
-          <p>6일 남음</p>
-        </S.Content>
-      </S.Warpper>
-      <S.Warpper>
-        <S.GrayImg>
-          <img className='grayImg' src={process.env.PUBLIC_URL + "/images/Mypage/myRes/props.png"} alt="소품대여" />
-          <p>반납 완료</p>
-        </S.GrayImg>
-        <S.Content>
-          <S.Title>
-            <p>레트로 캐리어 가죽 여행가방 촬영소품</p>
-            <div className='heartBox'>
-              <FontAwesomeIcon icon={faHeart} className='heart'/>
-              <p>66</p>
-            </div>
-          </S.Title>
-          <p>25,000원</p>
-        </S.Content>
-      </S.Warpper>
-      <S.Warpper>
-        <S.GrayImg>
-          <img className='grayImg' src={process.env.PUBLIC_URL + "/images/Mypage/myRes/props.png"} alt="소품대여" />
-          <p>반납 완료</p>
-        </S.GrayImg>
-        <S.Content>
-          <S.Title>
-            <p>레트로 캐리어 가죽 여행가방 촬영소품</p>
-            <div className='heartBox'>
-              <FontAwesomeIcon icon={faHeart} className='heart'/>
-              <p>66</p>
-            </div>
-          </S.Title>
-          <p>25,000원</p>
-        </S.Content>
-      </S.Warpper>
-
-    </S.Container>
+        {filterReturn && filterReturn.map((item, i) => (
+          <S.Warpper key={i}>
+            <S.Image>
+              <img src={item.propsImageUrl} alt={item.product} />
+              {/* 반납 완료 시 이미지 배경 비활성화 */}
+              { item.status === "반납 완료" && (
+                <S.Overlay className='overlay'>
+                  <p>반납 완료</p>
+                </S.Overlay>
+              )}
+            </S.Image>
+            <S.Content>
+              <S.Title>
+                <p>{item.product}</p>
+                <div className='heartBox'>
+                  <FontAwesomeIcon icon={faHeart} className='heart' />
+                  <p>{item.like}</p>
+                </div>
+              </S.Title>
+              <p>{item.price}</p>
+              <p>{item.status}</p>
+            </S.Content>
+          </S.Warpper>
+        ))}
+      </S.Container>
     </div>
   );
 };

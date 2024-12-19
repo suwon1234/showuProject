@@ -8,44 +8,45 @@ const S = {};
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
+
+    margin-top: 60px;
   `
 
   S.Warpper = styled.div`
     width: 400px;
-    height: 300px;
+    height: 360px;
 
     position: relative;
+    
   `
 
   S.Image = styled.div`
-
+    
     & img {
       width: 400px;
       height: 250px;
-      border-radius: 20px;
+      border-radius: 10px;
     }
     
   `
   S.Content = styled.div`
-    margin: 10px 0 0 20px;
-    & p {
-      font-size: 13px;
+    margin: 15px 5px 5px 5px;
+
+    & p.spaceName {
+      font-size: 15px;
+      margin-bottom: 5px;
     }
 
-    & p:nth-child(2) {
+    & p.likeCount {
+      font-size: 15px;
+    }
+
+    & p.type,
+    p.area,
+    p.price {
       font-size: 17px;
       font-weight: 700;
-    }
-
-    & p:nth-child(4) {
-      font-size: 17px;
-      font-weight: 800;
-    }
-
-    & .heart {
-      position: absolute;
-      top: 15px;
-      right: 15px;
+      margin-bottom: 5px;
     }
   `
 
@@ -54,8 +55,19 @@ const S = {};
     display: flex;
     gap: 170px;
     align-items: center;
-  `
+    justify-content: space-between;
 
-  
+    & .heartBox {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+    }
+
+    & svg.heart{
+      position: absolute;
+      top: 15px;
+      right: 15px;
+    }
+  `
 
 export default S;

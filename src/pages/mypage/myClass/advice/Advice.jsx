@@ -1,7 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './AdviceStyle';
 
 const Advice = () => {
+  const [ advice, setAdvice ] = useState([]);
+
+  useEffect(() => {
+    const getAdvice = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/myClass')
+        const datas = await response.json()
+        setAdvice(datas)
+      } catch (error) {
+        console.log("AdviceError", error)
+      }
+    }
+
+    getAdvice()
+
+  }, [])
+
+  // console.log(advice)
+
   return (
     <div>
       <div>
@@ -16,62 +35,15 @@ const Advice = () => {
             </S.Tr>
           </S.Thead>
           <S.Tbody>
-            <S.RowTr>
-              <th scope='row' className='num'>1</th>
-              <td>2024.11.30(화) 15:00</td>
-              <td>010-1234-5678</td>
-              <td>aaa1234@showu.com</td>
-              <td>비고</td>
-            </S.RowTr>
-            <S.RowTr>
-              <th scope='row' className='num'>2</th>
-              <td>2024.11.30(화) 15:00</td>
-              <td>010-1234-5678</td>
-              <td>aaa1234@showu.com</td>
-              <td>비고</td>
-            </S.RowTr>
-            <S.RowTr>
-              <th scope='row' className='num'>3</th>
-              <td>2024.11.30(화) 15:00</td>
-              <td>010-1234-5678</td>
-              <td>aaa1234@showu.com</td>
-              <td>비고</td>
-            </S.RowTr>
-            <S.RowTr>
-              <th scope='row' className='num'>4</th>
-              <td>2024.11.30(화) 15:00</td>
-              <td>010-1234-5678</td>
-              <td>aaa1234@showu.com</td>
-              <td>비고</td>
-            </S.RowTr>
-            <S.RowTr>
-              <th scope='row' className='num'>5</th>
-              <td>2024.11.30(화) 15:00</td>
-              <td>010-1234-5678</td>
-              <td>aaa1234@showu.com</td>
-              <td>비고</td>
-            </S.RowTr>
-            <S.RowTr>
-              <th scope='row' className='num'>6</th>
-              <td>2024.11.30(화) 15:00</td>
-              <td>010-1234-5678</td>
-              <td>aaa1234@showu.com</td>
-              <td>비고</td>
-            </S.RowTr>
-            <S.RowTr>
-              <th scope='row' className='num'>7</th>
-              <td>2024.11.30(화) 15:00</td>
-              <td>010-1234-5678</td>
-              <td>aaa1234@showu.com</td>
-              <td>비고</td>
-            </S.RowTr>
-            <S.RowTr>
-              <th scope='row' className='num'>8</th>
-              <td>2024.11.30(화) 15:00</td>
-              <td>010-1234-5678</td>
-              <td>aaa1234@showu.com</td>
-              <td>비고</td>
-            </S.RowTr>
+            { advice && advice.map((item, i) => (
+              <S.RowTr key={i}>
+                <th scope='row' className='num'>{item.id}</th>
+                <td>{item.date}</td>
+                <td>{item.phone}</td>
+                <td>{item.email}</td>
+                <td>{item.etc}</td>
+              </S.RowTr>
+            ))}
           </S.Tbody>
         </S.Table>
       </div>

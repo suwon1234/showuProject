@@ -2,60 +2,107 @@ import styled from 'styled-components';
 
 const S = {};
 
-  S.Table = styled.table`
-    margin-top: 40px;
-    width: 800px;
-    height: auto;
+  S.Container = styled.div`
+    width: 100%;
+    height: 110%;
+
+    margin-top: 60px;
+
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 7%;
+    row-gap: 80px;
+
   `
 
-  S.Thead = styled.thead`
-    font-size: 16px;
-    background-color: black;
-    font-weight: 700;
+  S.Wrapper = styled.div`
+    width: 400px;
+    height: 200px;
+
+    display: flex;
+
+    cursor: pointer;
+
+    /* border: 1px solid #444444; */
+    border-radius: 5px;
+    background-color: #fff;
+
+    position: relative;
   `
 
-  S.TrTitle = styled.tr`
-    & th {
-      color: white;
-      padding: 10px;
-      text-align: left;
+  S.Img = styled.div`
+
+    & img {
+      width: 140px;
+      height: 200px;
+
+      border-radius: 5px;
+    }
+
+    & div.top{
+      width: 25px;
+      height: 12.5px;
+
+      border-radius: 0 0 12.5px 12.5px;
+      background-color: black;
+
+      position: absolute;
+      top: 0;
+      right: 130px;
+    }
+
+    & div.bottom{
+      width: 25px;
+      height: 12.5px;
+
+      border-radius: 12.5px 12.5px 0 0;
+      background-color: black;
+
+      position: absolute;
+      bottom: 0;
+      right: 130px;
     }
   `
 
-  S.Tbody = styled.tbody`
-    & td {
-      padding: 20px 10px;
-    }
-  `
+  S.RightContent = styled.div`
+    width: 400px;
+    height: 200px;
 
-  S.Tr = styled.tr`
+    display: flex;
+    flex-direction: column;
 
-    & th {
-      cursor: pointer;
-      text-align: left;
-      padding-left: 30px;
-      
-      &:hover {
-        color: #ffd400;
-      }
+    position: relative;
+
+    border-left: 3px dotted #444444;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-right: 1px dotted #444444;
+
+    /* border-bottom: 1px solid #444444; */
+    & p {
+      font-size: 17px;
+      margin: 10px 0 0 10px;
+
+      color: black;
     }
-    
-    & td:nth-of-type(4),
-    td:last-of-type {
+
+    & p.date{
+      font-size: 17px;
+    }
+
+    & p.ticketName{
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    & p.state {
+      font-size: 17px;
       color: #ffd400;
-      text-align: left;
-    }
 
-    &:hover {
-      border-left: 2px solid #ffd400;
-      background-color: rgb(255, 212, 0, 0.1);
-      cursor: pointer;
-      }
-
-    & td {
-      padding: 20px 10px 20px 10px; 
+      position: absolute;
+      bottom: 10px;
+      right: 20px;
     }
   `
-
 
 export default S;

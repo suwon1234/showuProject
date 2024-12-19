@@ -57,12 +57,8 @@ S.DetailTr = styled.tr`
     cursor: pointer;
     text-align: left;
 
-    &:hover {
-      color: #ffd400;
-    }
-
     &.num {
-      padding-left: 10px;
+      padding-left: 35px;
     }
   }
 
@@ -88,12 +84,23 @@ S.DetailTr = styled.tr`
     width: 145px;
     height: 55px;
     background-color: #797979;
-    margin: auto 40%;
     color: #fff;
     font-size: 17px;
     padding: 10px;
     font-weight: 700;
     border-radius: 20px;
+
+    &:hover{
+      background-color: #ffd400;
+      color: black;
+    }
+  `
+
+  S.ButtonContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 20px;    
   `
 
 export default S;
