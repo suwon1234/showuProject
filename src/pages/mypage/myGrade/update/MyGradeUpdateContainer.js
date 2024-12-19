@@ -1,10 +1,14 @@
 import React from 'react';
+import Layout from '../../_component/Layout';
+import MypageContainer from '../../MypageContainer';
+import MyGradeUpdate from './MyGradeUpdate';
 
 const MyGradeUpdateContainer = () => {
   return (
-    <div>
-      등급업 수정 페이지
-    </div>
+    <Layout 
+      leftContent={<MypageContainer />}
+      rightContent={<MyGradeUpdate />}
+    />
   );
 };
 

@@ -5,6 +5,10 @@ import LoginHeader from './_component/LoginHeader';
 import Checkbox from './_component/Checkbox';
 
 const LoginContainer = () => {
+
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/;
+
   return (
     <S.Container>
 

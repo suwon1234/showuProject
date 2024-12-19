@@ -1,15 +1,10 @@
-import React, { useState } from 'react';
-import users from '../_component/users';
+import React, { useEffect, useState } from 'react';
 import S from './style';
-import DeleteAccount from './_component/DeleteAccount';
 import { useNavigate } from 'react-router-dom';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPen } from '@fortawesome/free-solid-svg-icons'
 
 const MyInfo = () => {
-  const [ fristUser, ...otherUsers ] = users;
-  const [ profileImage, setProfileImage ] = useState(
-    process.env.PUBLIC_URL + "/images/myPage/user.png"
-  )
 
   const navigate = useNavigate();
 
@@ -17,14 +12,35 @@ const MyInfo = () => {
     navigate(path)
   }
 
+  const [ user, setUser ] = useState([]);
+
+  useEffect(() => {
+    const getUsers = async () => {
+      try {
+        const response = await fetch(`http://localhost:4000/user/1`)
+        const datas = await response.json()
+        return datas;
+      } catch (error) {
+        console.error("MyInfoError", error)
+      }
+    }
+
+    getUsers()
+      .then(setUser)
+      .catch(console.error)
+
+  }, [])
+
+  // console.log(user)
+  
   return (
       <S.RightSection>
         <p className='infoTitle'>회원정보 관리</p>
 
         {/* 프로필 이미지 */}
         <S.Profile className='profile'>
-          <img src={profileImage} alt='프로필 사진'/>
-          <p>{fristUser.name}님</p>
+          <img src={process.env.PUBLIC_URL + "/images/myPage/user.png"} alt='프로필 사진'/>
+          <p>{user &&user.name}님</p>
 
         {/* 프로필 사진 변경 버튼 */}
           <div className='buttonWapper'>
@@ -42,42 +58,49 @@ const MyInfo = () => {
         </S.Profile>
 
         {/* 회원정보 변경 */}
-        <div>
+        <fieldset>
           <S.UserChangeWapper className='userChangeWapper'>
-              <li>
+              <label>
                 <span>아이디</span>
-                <S.Input type="text" name='id' placeholder='영문 소문자, 숫자 포함 6~12자리'/>
+                <S.Input type="text" name='id' value={user && user.email} readOnly />
                 <div></div>
-                <S.Button type='button'>아이디 변경</S.Button>
-              </li>
-              <li>
+                <FontAwesomeIcon icon={faPen} className='pen'/>
+                {/* <S.Button type='button'>아이디 변경</S.Button> */}
+              </label>
+              <label>
                 <span>새 비밀번호</span>
-                <S.Input type="password" name='password' placeholder='영문, 숫자, 특수문자(~!@#$%^&*) 조합 8~15자리'/>
-              </li>
-              <li>
+                <S.Input type="password" name='password' placeholder='변경할 비밀번호를 입력하세요'/>
+              </label>
+              <label>
                 <span>새 비밀번호 확인</span>
                 <S.Input type="password" name='password' placeholder='영문, 숫자, 특수문자(~!@#$%^&*) 조합 8~15자리'/>
                 <div></div>
-                <S.Button type='button'>비밀번호 변경</S.Button>
-              </li>
-              <li>
+                <FontAwesomeIcon icon={faPen} className='pen'/>
+                {/* <S.Button type='button'>비밀번호 변경</S.Button> */}
+              </label>
+              {/* <li>
                 <span>이메일</span>
                 <S.Input type="text" name='email' placeholder='showU@example.com'/>
                 <div></div>
                 <S.Button type='button'>이메일 변경</S.Button>
-              </li>
-              <li>
+              </li> */}
+              <label>
                 <span>전화 번호</span>
-                <S.Input type="text" name='phoneNumber' placeholder='010-1234-5678'/>
+                <S.Input type="text" name='phoneNumber' value={user && user.phone} readOnly />
                 <div></div>
-                <S.Button type='button'>전화번호 변경</S.Button>
-              </li>
+                <FontAwesomeIcon icon={faPen} className='pen'/>
+                {/* <S.Button type='button'>전화번호 변경</S.Button> */}
+              </label>
           </S.UserChangeWapper>
-        </div>
+        </fieldset>
 
         {/* 회원탈퇴, 변경완료 버튼 */}
         <S.DelteButton className='deleteButton'>
-          <DeleteAccount />
+
+          <S.Button onClick={() => {
+            window.confirm("탈퇴하시겠습니까?")
+          }}>회원 탈퇴</S.Button>
+
           <S.ChangeButton onClick={() => {
             alert("변경이 완료되었습니다")
           }}>변경 완료</S.ChangeButton>
