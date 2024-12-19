@@ -16,7 +16,6 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <RouterProvider router={router} />
-        <TeamMaking />
       </ThemeProvider>
     </>
   );
