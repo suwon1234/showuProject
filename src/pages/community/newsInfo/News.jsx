@@ -1,12 +1,13 @@
 // 뉴스 세부 화면
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import S from './newsStyle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const newsDatas = [
+
   {
     id: 1,
     title: "CJ 뮤지컬의 대표작 물랑루즈",
@@ -37,7 +38,14 @@ const newsDatas = [
 ];
 
 const News = () => {
-  const { id } = useParams();  
+
+  const { id } = useParams();
+const [likeCount, setLikeCount] = useState(0);
+
+const handleLikeButton = () => {
+  setLikeCount(likeCount + 1);
+};
+
   
   // let newsItems = null;
   // for (let i = 0; i < newsDatas.length; i++) {
@@ -78,6 +86,11 @@ const News = () => {
       </S.Images>
 
       <S.content>{content}</S.content> 
+
+      <S.ButtonGroup>
+                    <button onClick={handleLikeButton}>좋아요 {likeCount} </button>
+                  </S.ButtonGroup>
+      
       </S.section>
 
     </S.SubWrapper>

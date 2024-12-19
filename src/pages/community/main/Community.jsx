@@ -170,7 +170,7 @@ const Community = () => {
       
       <S.SubWrapper>
       <S.FilterButton onClick={() => setFilterDrop(!filterDrop)}>
-        <span>Filter</span> 
+        <label>Filter</label> 
         <FontAwesomeIcon icon={faChevronDown} className='icon' />
       </S.FilterButton>
 

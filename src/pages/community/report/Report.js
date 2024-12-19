@@ -12,15 +12,22 @@ const handleFile = () => {
     alert("파일 크기는 5MB 이하로 업로드해주세요.");
 };
 
-const handleSubmit = () => {
-  alert("참여가 완료되었습니다!");  
-};
 
 
 const Report = () => {
-
+  
   const navigate = useNavigate();
   const [isChecked, setIsChecked] = useState(false);
+
+
+
+  const handleSubmit = () => {
+    const userCheck = window.confirm("제보하시겠습니까?");
+      if (userCheck) {
+        alert("제보가 완료되었습니다. News 홈 화면으로 이동합니다.")
+        navigate('/community/newsMain');
+      }
+  };
 
   const CheckIcon = () => {
     setIsChecked((check) => !check);
@@ -119,10 +126,16 @@ const Report = () => {
             <S.CheckIcon onClick={CheckIcon}>
               {/* <FontAwesomeIcon className='checkedIcon' icon={faCircleCheck}  /> */}
                 <FontAwesomeIcon className="checkedIcon"
-                  // icon={isChecked ? solidCircleCheck : faCircleCheck}
+                // icon={isChecked ? solidCircleCheck : faCircleCheck}
                 />
+
+            <S.CheckboxWrapper>
+              <S.Checkbox>
+                  <input type="checkbox" id='check' />
+                  <label htmlFor="check">개인정보 수집 및 이용에 동의합니다.</label>
+              </S.Checkbox>
+            </S.CheckboxWrapper>
             </S.CheckIcon>
-              <p>개인정보 수집 및 이용에 동의합니다.</p>
           </S.CheckWrapper>
 
         <S.buttonWrapper>

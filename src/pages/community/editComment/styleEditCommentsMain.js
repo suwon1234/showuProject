@@ -154,6 +154,32 @@ S.Wrapper = styled.div`
             cursor: pointer;
             color : #ffd400;  
         }
-    `;
+    `
+
+
+S.buttonWrapper = styled.div`
+        display: flex;     
+        gap: 2px;
+
+        button {
+            display: flex;
+            padding: 0px;
+            font-size: 18px;
+            font-weight: ${({ theme }) => theme.FONT_WEIGHT.medium};
+            color: #fff;
+            background-color: #000;
+            border: 1px solid #ffd400;
+            height: 30px;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: #ffd400;
+                color: #000 !important;
+            }
+        }
+    `
 
 export default S;

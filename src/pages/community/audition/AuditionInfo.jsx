@@ -12,8 +12,8 @@ const auditionData = [
     },
     {
       id: 2,
-      image: 'https://www.sac.or.kr/site/main/file/image/uu/7867438c5b71479c9620edecd609801e',
-      title: "연극 햄릿 오디션 공고"
+      image: 'https://www.contestkorea.com/admincenter/files/meet/202402221229383763310.jpg',
+      title: "뮤지컬 루카스 오디션 공고"
     },
     {
       id: 3,
@@ -27,13 +27,13 @@ const auditionData = [
     },
     {
       id: 5,
-      image: 'https://otr.co.kr/wp-content/uploads/mangboard/2024/06/21/F201233_lost_odi.jpg',
-      title: ""
+      image: 'https://www.contestkorea.com/admincenter/files/meet/202411282051036809763.jpg',
+      title: "뮤지컬 로보카 폴리 오디션 공고"
     },
     {
       id: 6,
-      image: '',
-      title: "물랑루즈 오디션 공고"
+      image: 'https://www.contestkorea.com/admincenter/files/meet/202412042146563150340.jpg',
+      title: "연극 너에게로 가는 길 오디션 공고"
     },
     {
       id: 7,
@@ -59,6 +59,41 @@ const auditionData = [
       id: 11,
       image: '',
       title: "브로드웨이 42번가 오디션 공고"
+    },
+    {
+      id: 12,
+      image: 'https://www.sac.or.kr/site/main/file/image/uu/7867438c5b71479c9620edecd609801e',
+      title: "연극 햄릿 오디션 공고"
+    },
+    {
+      id: 13,
+      image: 'https://postfiles.pstatic.net/MjAyNDAyMTVfMTgz/MDAxNzA3OTgzNTI0MTAz.ftWF9f8NdmxzvKSL3I6h2LlOwSvS7mjIDpR2YPUC0RIg.sagHjKFR5HpI8qPu6KxwUgXtoRG01-OiMnIvki9wWvEg.PNG.immcompany/8.png?type=w3840',
+      title: "뮤지컬 명성황후 아역 오디션 공고"
+    },
+    {
+      id: 14,
+      image: 'https://cafeptthumb-phinf.pstatic.net/MjAyNDA5MjFfMTk4/MDAxNzI2ODc4ODQ1MjYy._jAEpW3QyRYVENYsAZDs0a15uQ1S7M5rwr7nEgBboOMg.5-X7T-D5GLR4NN0argXe_KueBnJbeVIoD44PTWTprWMg.JPEG/F209750_2025_%EC%97%B0%EA%B7%B9_%EB%8D%94%EC%85%80_%EC%98%A4%EB%94%94%EC%85%98_%EA%B3%B5%EA%B3%A0%EB%AC%B8.jpg?type=w1600',
+      title: "연극 the cell 오디션 공고"
+    },
+    {
+      id: 15,
+      image: '',
+      title: "물랑루즈 오디션 공고"
+    },
+    {
+      id: 16,
+      image: 'https://otr.co.kr/wp-content/uploads/mangboard/2024/06/21/F201233_lost_odi.jpg',
+      title: ""
+    },
+    {
+      id: 17,
+      image: 'https://www.iseensee.com/event/letmein/241010_audition1.jpg',
+      title: "연극 렛미인 오디션 공고"
+    },
+    {
+      id: 18,
+      image: 'https://www.contestkorea.com/admincenter/files/meet/202411211101245257434.jpg',
+      title: "연극 분홍립스틱 오디션 공고"
     },
 
   ];
