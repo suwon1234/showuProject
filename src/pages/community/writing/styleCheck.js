@@ -1,5 +1,3 @@
-// 뉴스 세부 페이지 스타일
-
 import styled  from "styled-components"
 import { backgroundBlack } from "../../../global/common";
 
@@ -51,24 +49,6 @@ import { backgroundBlack } from "../../../global/common";
         display: flex;
         padding-top: 30px;
     `
-    
-
-    S.Titles = styled.div` // 페이지 메인 타이틀 All
-        display: flex;
-        margin: 20px;
-
-    `
-
-    S.MainTitle = styled.div` // 페이지 메인 타이틀
-
-           
-    `
-
-    S.SubTitle = styled.div` // 페이지 서브 타이틀
-        margin-top: 14px;
-        margin-left: 8px;
-    `
-
 
 
     S.section = styled.div`
@@ -139,26 +119,4 @@ import { backgroundBlack } from "../../../global/common";
         padding: 20px;
     `
 
-S.ButtonGroup = styled.div`
-display: flex;
-justify-content: center;
-gap: 10px;
-margin-top: 20px;
-
-button {
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff;
-  background-color: ${({ theme }) => theme.PALLETE.gray["300"]};
-  border: none;
-  border-radius: 50px;
-  cursor: pointer;
-  padding: 12px 20px;
-
-    &:hover {
-      background-color: #ffd400; 
-      color: black; 
-      }
-  }
-`
 export default S;

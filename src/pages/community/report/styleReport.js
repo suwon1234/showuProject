@@ -138,12 +138,6 @@ const S = {};
     S.section = styled.div`
         display: flex;
         flex-direction: column;
-  
-        p {
-            font-size: ${({ theme }) => theme.FONT_SIZE.h7};
-            font-weight: ${({ theme }) => theme.FONT_WEIGHT.medium};
-        }
-  
         div {
             margin-bottom: 10px;
             text-align: left;
@@ -201,6 +195,60 @@ const S = {};
             color: black; 
         }
     }`
+
+
+    S.CheckboxWrapper = styled.div`
+        display: flex;
+        align-items: center;
+
+        & span {
+        margin-left: 5px;
+        }
+    `
+
+    S.Checkbox = styled.div`
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+
+        & input[type="checkbox"] {
+          /* 기본 체크박스 숨기기 */
+            appearance: none; 
+            -webkit-appearance: none; 
+            width: 20px;
+            height: 20px;
+            border: 2px solid gray;
+            border-radius: 50%;
+            background-color: transparent;
+            cursor: pointer;
+            transition: background-color 0.3s, border-color 0.3s;
+            position: relative;
+        }
+
+        /* 체크 상태 스타일 */
+        & input[type="checkbox"]:checked {
+              background-color: #444444;
+              border-color: #444444;
+        } 
+
+        /* 체크 표시 아이콘 추가 */
+        & input[type="checkbox"]:checked::before {
+            content: ''; 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 4px;
+            border: solid white;
+            border-width: 0 0 2px 2px;
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        label{
+            margin-left: 5px;
+        }
+        `
 
     
 

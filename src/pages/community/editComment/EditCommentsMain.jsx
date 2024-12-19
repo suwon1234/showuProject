@@ -4,9 +4,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import S from './styleEditCommentsMain';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const EditCommentsMain = () => {
+
+  const navigate = useNavigate();
+
+  const handleEdit = () => {
+    const complete =window.confirm("수정 페이지로 이동하시겠습니까?");
+      if(complete){
+        navigate('/community/communityInfo/editComments');
+      }
+  };
+
+  const handleDelete = () => {
+    const complete =window.confirm("삭제하시겠습니까?");
+      if(complete){
+        alert("삭제되었습니다.")
+      }
+  };
 
     const editData = [
         { id: 1, title: "홍길동", content: "첫 번째 댓글입니다...", date: "2024.12.01 18:30" },
@@ -30,7 +46,7 @@ const EditCommentsMain = () => {
   
       <S.TitleContainer>
         <S.Title>
-          <p>수정 / 삭제</p>
+          <p>댓글 수정 / 삭제</p>
         </S.Title>
         <S.SubTitle>
           <ul>
@@ -47,6 +63,7 @@ const EditCommentsMain = () => {
                 <th>제목</th>
                 <th>내용</th>
                 <th>작성 날짜</th>
+                <th>수정/삭제</th>
               </tr>
             </thead>
             <tbody>
@@ -54,16 +71,23 @@ const EditCommentsMain = () => {
                 <tr key={edit.id}>
                   <td>{edit.title}</td>
                   <td>
-                  {/* <Link className="linkStyle" to={`/community/communityInfo/editComments/${edit.id}`}> */}
-                  <Link className="linkStyle" to={`/community/communityInfo/editComments`}>
+                  {/* <Link className="linkStyle" to={`/community/communityInfo/Comments/${edit.id}`}> */}
+                  <Link className="linkStyle" to={`/community/communityInfo/Comments`}>
                     {edit.content}
                   </Link>
                   </td>
                   <td>{edit.date}</td>
+
+                <S.buttonWrapper>
+                  <button onClick={handleEdit}><td>수정</td></button>
+                  <button onClick={handleDelete}><td>삭제</td></button>
+                </S.buttonWrapper>
                 </tr>
+
               ))}
             </tbody>
           </table>
+
         </S.TableWrapper>
         <S.PageNumber>
           <span>«</span>
