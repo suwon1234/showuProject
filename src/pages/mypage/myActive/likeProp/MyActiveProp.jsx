@@ -37,7 +37,7 @@ const MyActiveProp = () => {
         </S.Wapper>
       </S.Container>
 
-      <Paging />
+      {/* <Paging /> */}
     </>
   );
 };

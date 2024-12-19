@@ -42,4 +42,29 @@ const S = {};
     }
   `
 
+  S.AgreeWapper = styled.ul`
+    margin: 0 40px;
+  `
+
+  S.AgreeBox = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+
+    & .AllAgree {
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    & span {
+      font-size: 15px;
+      font-weight: 400;
+      margin-left: 5px;
+    }
+  `
+
+  S.CheckImg = styled.img`
+    margin-right: 10px;
+  `
+
 export default S;

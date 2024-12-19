@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import S from './GradeStyle';
 import Dropdown from './_component/Dropdown';
 
 const Grade = () => {
+  const [ formData, setFormData ] = useState({
+    name : "",
+    introdution : "",
+    location : "",
+    field : "",
+    experienceYears: "",
+    experienceDetails: "",
+    portfolio: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name] : value });
+  }
+
   return (
     <S.Container className='Container'>
       <S.Fieldset>

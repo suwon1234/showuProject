@@ -57,10 +57,10 @@ const S = {};
       padding-right: 5px;
     }
 
-    & img {
+    & svg.alram {
       width: 15px;
       height: 15px;
-      margin-top: 7px;
+      margin-top: 10px;
     }
   `
 

@@ -15,7 +15,7 @@ const MyTeamDetail = ({ stateValue }) => {
         const datas = await response.json();
         setTeams(datas)
       }catch (error) {
-        console.log(error)
+        console.log("MyTeamDetailError", error)
       }
     }
 

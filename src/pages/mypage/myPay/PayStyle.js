@@ -2,10 +2,19 @@ import styled from 'styled-components';
 
 const S = {};
 
-  S.Table = styled.table`
+  S.Container = styled.div`
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    gap: 20px; 
+    margin-top: 20px;
+  `
+
+S.Table = styled.table`
     margin-top: 40px;
     width: 800px;
     height: auto;
+    
   `
 
   S.Thead = styled.thead`

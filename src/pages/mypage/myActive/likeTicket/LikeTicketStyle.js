@@ -2,71 +2,107 @@ import styled from 'styled-components';
 
 const S = {};
 
-  S.Conatiner = styled.div`
-    width: 900px;
-    height: auto;
+  S.Container = styled.div`
+    width: 100%;
+    height: 110%;
+
+    margin-top: 60px;
+
     display: flex;
     flex-wrap: wrap;
-    column-gap: 30px;
-    row-gap: 20px;
+    column-gap: 7%;
+    row-gap: 80px;
+
   `
 
   S.Wrapper = styled.div`
-    width: 360px;
-    height: 188px;
+    width: 400px;
+    height: 200px;
 
-    /* border-top: 0.3px solid #444444;
-    border-bottom: 0.3px solid #444444; */
+    display: flex;
+
+    cursor: pointer;
+
+    /* border: 1px solid #444444; */
     border-radius: 5px;
-    border: 0.3px solid #444444;
+    background-color: #fff;
 
-    padding: 20px;
+    position: relative;
+  `
+
+  S.Img = styled.div`
+
+    & img {
+      width: 140px;
+      height: 200px;
+
+      border-radius: 5px;
+    }
+
+    & div.top{
+      width: 25px;
+      height: 12.5px;
+
+      border-radius: 0 0 12.5px 12.5px;
+      background-color: black;
+
+      position: absolute;
+      top: 0;
+      right: 130px;
+    }
+
+    & div.bottom{
+      width: 25px;
+      height: 12.5px;
+
+      border-radius: 12.5px 12.5px 0 0;
+      background-color: black;
+
+      position: absolute;
+      bottom: 0;
+      right: 130px;
+    }
+  `
+
+  S.RightContent = styled.div`
+    width: 400px;
+    height: 200px;
+
+    display: flex;
+    flex-direction: column;
 
     position: relative;
 
+    border-left: 3px dotted #444444;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border-right: 1px dotted #444444;
+
+    /* border-bottom: 1px solid #444444; */
     & p {
+      font-size: 17px;
+      margin: 10px 0 0 10px;
+
+      color: black;
+    }
+
+    & p.date{
+      font-size: 17px;
+    }
+
+    & p.ticketName{
       font-size: 18px;
       font-weight: 700;
     }
 
-    & svg.heart {
+    & p.state {
+      font-size: 17px;
+      color: #ffd400;
+
       position: absolute;
-      top: 15px;
-      right: 30px;
-
-      & :hover{
-        color: #ffd400;
-      }
+      bottom: 10px;
+      right: 20px;
     }
   `
 
-  S.Table = styled.table`
-    width: 400px;
-    height: auto;
-    margin-top: 10px;
-  `
-
-  S.Tr = styled.tr`
-    font-size:  15px;
-
-    & th {
-      color: #fff;
-      font-size: 17px;
-      font-weight: 400;
-
-      width: 62px;
-      height: 14px;
-      text-align: left;
-
-      padding-top: 5px;
-    }
-
-    & td {
-      font-size: 17px;
-      font-weight: 400;
-      padding-left: 20px;
-    }
-  `
-
-  
 export default S;

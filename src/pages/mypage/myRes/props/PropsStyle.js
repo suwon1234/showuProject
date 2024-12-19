@@ -4,29 +4,32 @@ const S = {};
 
   S.Container = styled.div`
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    row-gap: 100px;
+    column-gap: 10px;
+
+    margin-top: 60px;
   `
 
   S.Warpper = styled.div`
-    width: 400px;
-    height: 300px;
+    width: 290px;
+    height: 290px;
     
   `
 
   S.Image = styled.div`
 
     & img {
-      width: 400px;
-      height: 250px;
-      border-radius: 20px;
+      width: 290px;
+      height: 290px;
+      border-radius: 10px;
     }
     
   `
   S.Content = styled.div`
-    margin: 10px 0 0 20px;
+    margin: 5px;
 
     & p:first-child {
       font-size: 17px;
@@ -34,7 +37,7 @@ const S = {};
     }
 
     & p:nth-child(2) {
-      margin: 5px 0 10px 0;
+      margin: 10px 0;
       font-size: 15px;
       font-weight: 700;
       
@@ -45,6 +48,7 @@ const S = {};
 
   S.Title = styled.div`
     display: flex;
+    justify-content: space-between;
     gap: 90px;
 
     & .heartBox {
