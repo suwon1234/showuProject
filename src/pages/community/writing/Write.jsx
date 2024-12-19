@@ -32,6 +32,20 @@ const Write = () => {
       }
   };
 
+  // const handleCheck = () => {
+  //   const complete =window.confirm("내역 확인 페이지로 이동하시겠습니까?");
+  //     if(complete){
+  //       navigate('/community/writing/history');
+  //     }
+  // };
+
+  const handleEdit = () => {
+    const complete =window.confirm("수정/삭제 페이지로 이동하시겠습니까?");
+      if(complete){
+        navigate('/community/write/history/edit');
+      }
+  };
+
   return (   
     <S.Wrapper>
       <S.TopTitle>커뮤니티</S.TopTitle>
@@ -44,8 +58,8 @@ const Write = () => {
 
       <S.Titles>
         <S.ButtonsAll>
-        <button>내역 확인하기</button>
-        <button>수정/삭제하기</button>
+        {/* <button onClick={handleCheck}>내역 확인하기</button> */}
+        <button onClick={handleEdit}>수정/삭제하기</button>
         </S.ButtonsAll>
       </S.Titles>  
 
