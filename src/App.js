@@ -15,8 +15,7 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <ManagementContainer />
-        {/* <RouterProvider router={router} /> */}
+        <RouterProvider router={router} />
       </ThemeProvider>
     </>
   );
