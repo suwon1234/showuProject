@@ -51,7 +51,7 @@ const AuctionManagement = () => {
             <S.Head>물품명</S.Head>
             <S.Head>구매가격</S.Head>
             <S.Head>구매일</S.Head>
-            <S.Head>입금기한한</S.Head>
+            <S.Head>입금기한</S.Head>
           </tr>
         </thead>
         <tbody>
