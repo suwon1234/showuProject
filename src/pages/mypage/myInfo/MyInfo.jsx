@@ -62,7 +62,7 @@ const MyInfo = () => {
           <S.UserChangeWapper className='userChangeWapper'>
               <label>
                 <span>아이디</span>
-                <S.Input type="text" name='id' value={user.email || ''} readOnly />
+                <S.Input type="text" name='id' value={user && user.email} readOnly />
                 <div></div>
                 <FontAwesomeIcon icon={faPen} className='pen'/>
                 {/* <S.Button type='button'>아이디 변경</S.Button> */}
@@ -86,7 +86,7 @@ const MyInfo = () => {
               </li> */}
               <label>
                 <span>전화 번호</span>
-                <S.Input type="text" name='phoneNumber' value={user.phone || ''} readOnly />
+                <S.Input type="text" name='phoneNumber' value={user && user.phone} readOnly />
                 <div></div>
                 <FontAwesomeIcon icon={faPen} className='pen'/>
                 {/* <S.Button type='button'>전화번호 변경</S.Button> */}
