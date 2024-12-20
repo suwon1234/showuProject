@@ -1,0 +1,187 @@
+{
+  "md" : [
+    {
+      "id": "1", 
+      "name": "BEST상품 1", 
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "2", 
+      "name": "BEST상품 2", 
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "3", 
+      "name": "BEST상품 3", 
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "4", 
+      "name": "상품 4",
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "5", 
+      "name": "상품 5", 
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "6", 
+      "name": "상품 6", 
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "7", 
+      "name": "상품 7",
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "8", 
+      "name": "상품 8", 
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "9", 
+      "name": "상품 9", 
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "9", 
+      "name": "상품 9",
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "10", 
+      "name": "상품 10", 
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "11", 
+      "name": "상품 11", 
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "12", 
+      "name": "상품 12",
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "13", 
+      "name": "상품 13", 
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "14", 
+      "name": "상품 14", 
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "15", 
+      "name": "상품 15", 
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    }
+  ],
+
+  "auction" : [
+    { 
+      "id": "4",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "5",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "6",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "7",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "8",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "9",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "10",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "11",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "12",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "13",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "14",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "15",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    }
+  ]
+}
