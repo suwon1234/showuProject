@@ -51,11 +51,12 @@ const flexStyle = css`
   `
 
   S.BestItems = styled.div`
-    display: grid;
-    grid-template-columns: auto 1fr auto; 
-    align-items: center;
-    margin-top: 30px;
-    column-gap: 20px; 
+  display: flex;
+  overflow: hidden; /* 보이는 영역 제한 */
+  position: relative;
+  margin-top: 30px;
+  align-items: center;
+
   `
 
   S.LeftIconWrapper = styled.div`
@@ -74,10 +75,14 @@ const flexStyle = css`
 
   S.BestListWrapper = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    grid-gap: 50px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px; /* 간격 */
+    width: 1090px; /* 슬라이드 영역 크기 */
+    margin: 0 auto;
     justify-items: center;
-    width: 1090px; 
+    transform: translateX(${(props) => props.offset}px); /* 슬라이드 이동 */
+    transition: transform 0.5s ease-in-out; /* 부드러운 이동 효과 */
+    overflow: hidden;
   `
 
   S.Best = styled.div`
@@ -140,7 +145,7 @@ const flexStyle = css`
       }
     `
 
-  S.Md = styled.image`
+  S.Md = styled.div`
   
     & img {
         width: 300px;

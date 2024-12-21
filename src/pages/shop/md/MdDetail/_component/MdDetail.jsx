@@ -1,7 +1,7 @@
 // MD - 상세페이지
-import React from 'react'; 
+import React, { useEffect, useState } from 'react'; 
 import S from './styleDetail';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from './Dropdown' 
@@ -9,18 +9,39 @@ import Dropdown from './Dropdown'
 const MdDetail = () => {
   const options = ['옵션 1', '옵션 2', '옵션 3']; 
 
+  const { id } = useParams();  // URL에서 id를 받아옴
+  const [product, setProduct] = useState(null);  // 상품 정보를 저장할 상태
+
+  useEffect(() => {
+    const getProductDetail = async () => {
+      try {
+        const response = await fetch(`http://localhost:4000/md/${id}`);
+        const productData = await response.json();
+        setProduct(productData); // 상세 정보를 저장
+      } catch (error) {
+        console.error("상품 상세 정보 로드 오류", error);
+      }
+    };
+    
+    getProductDetail();
+  }, [id]);  // id가 변경될 때마다 실행되도록 설정
+
+  if (!product) {
+    return <p>상품을 찾을 수 없습니다.</p>; // 상품을 못 찾은 경우
+  }
+
   return (
     <S.Wrapper>
       <S.DetailContainer>
         <S.ImageWrapper>
-          <img src={process.env.PUBLIC_URL + "/images/md/md-1.jpg"}/>
+          <img src={product.images} alt={product.name}/>
         </S.ImageWrapper>
         
         <S.DetailWrapper>
           <S.MdTitle>
             <p>뮤지컬</p>
-            <p>2024 베르사유의 장미 프로그램북 스페셜 에디션</p>
-            <p>65,000원</p>
+            <p>{product.name}</p>
+            <p>{product.price.toLocaleString()}원</p>
           </S.MdTitle>
         
           <S.Dropdown>
@@ -35,16 +56,16 @@ const MdDetail = () => {
       
           <S.ButtonWrapper2>
             <div className='button-wrapper1'>
-              <Link to={'/shop/md/detail/cart'}>
+              {/* <Link to={'/shop/md/detail/cart'}> */}
                 <button className='button cart'><p>카트 추가</p></button>
-              </Link>
-              <Link to={'/shop/md/detail/payment'}>
+              {/* </Link> */}
+              {/* <Link to={'/shop/md/detail/payment'}> */}
                 <button className='button buy'><p>바로 구매</p></button>
-              </Link>
+              {/* </Link> */}
             </div>
-              <Link to={'/shop/md/detail/inquiry'}>
+              {/* <Link to={'/shop/md/detail/inquiry'}> */}
                 <button className='button inquiry'><p>문의하기</p></button>
-              </Link>
+              {/* </Link> */}
           </S.ButtonWrapper2>
         </S.DetailWrapper>
       </S.DetailContainer>
@@ -52,7 +73,7 @@ const MdDetail = () => {
       <S.MdInfo>
         <p className='description'>상품 설명</p>
         <S.ImageWrapper2>
-          <img className='imagewrapper' src={process.env.PUBLIC_URL + "/images/md/md-2.jpg"}/>
+          <img className='imagewrapper' src={product.detailsImage} alt="상세 이미지"/>
         </S.ImageWrapper2>
         <S.ButtonWrapper3>
           <button>
@@ -66,7 +87,7 @@ const MdDetail = () => {
         <tbody>
           <tr>
             <th>품명 / 모델명</th>
-            <td>2024 베르사유의 장미 프로그램북 스페셜 에디션</td>
+            <td>{product.name}</td>
           </tr>
           <tr>
             <th>제조자(사)</th>
@@ -118,10 +139,6 @@ const MdDetail = () => {
         </S.Return>
       </S.MdInfo>
     </S.Wrapper>
-
-
-
-
 
 
   );

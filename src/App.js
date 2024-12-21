@@ -1,11 +1,11 @@
 import { ThemeProvider } from "styled-components";
 import GlobalStyle from "./global/global";
 import theme from "./global/theme";
-import { RouterProvider } from "react-router-dom";
+import { Route, Router, RouterProvider, Routes } from "react-router-dom";
 import router from "./routes/router";
-import LessonDetails from "./pages/showu/lesson/LessonMain/lessonDetails/LessonDetails";
+import DetailContainer from "./pages/shop/md/MdDetail/DetailContainer";
+import ShopContainer from "./pages/shop/ShopContainer";
 
-import ManagementContainer from "./pages/shop/auction/AuctionManagement/ManagementContainer";
 
 
 
@@ -16,6 +16,7 @@ function App() {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <RouterProvider router={router} />
+        {/* <ShopContainer/> */}
       </ThemeProvider>
     </>
   );

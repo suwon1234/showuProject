@@ -10,178 +10,211 @@
       "id": "2", 
       "name": "BEST상품 2", 
       "price": 65000,
-      "images": "/images/shop/md/md1.jpg"
+      "images": "/images/shop/md/md2.jpg"
     },
     {
       "id": "3", 
       "name": "BEST상품 3", 
       "price": 65000,
-      "images": "/images/shop/md/md1.jpg"
+      "images": "/images/shop/md/md3.jpg"
     },
     {
       "id": "4", 
-      "name": "상품 4",
+      "name": "BEST상품 4", 
       "price": 65000,
       "images": "/images/shop/md/md1.jpg"
     },
     {
       "id": "5", 
-      "name": "상품 5", 
+      "name": "BEST상품 5", 
       "price": 65000,
-      "images": "/images/shop/md/md1.jpg"
+      "images": "/images/shop/md/md2.jpg"
     },
     {
       "id": "6", 
-      "name": "상품 6", 
+      "name": "BEST상품 6", 
       "price": 65000,
-      "images": "/images/shop/md/md1.jpg"
+      "images": "/images/shop/md/md3.jpg"
     },
     {
       "id": "7", 
-      "name": "상품 7",
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션",
       "price": 65000,
       "images": "/images/shop/md/md1.jpg"
     },
     {
       "id": "8", 
-      "name": "상품 8", 
+      "name": "베르사유의 장미 금속 마그넷", 
       "price": 65000,
-      "images": "/images/shop/md/md1.jpg"
+      "images": "/images/shop/md/md2.jpg"
     },
     {
       "id": "9", 
-      "name": "상품 9", 
+      "name": "베르사유의 장미 고블렛", 
       "price": 65000,
-      "images": "/images/shop/md/md1.jpg"
-    },
-    {
-      "id": "9", 
-      "name": "상품 9",
-      "price": 65000,
-      "images": "/images/shop/md/md1.jpg"
+      "images": "/images/shop/md/md3.jpg"
     },
     {
       "id": "10", 
-      "name": "상품 10", 
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션",
       "price": 65000,
       "images": "/images/shop/md/md1.jpg"
     },
     {
       "id": "11", 
-      "name": "상품 11", 
+      "name": "베르사유의 장미 금속 마그넷", 
       "price": 65000,
-      "images": "/images/shop/md/md1.jpg"
+      "images": "/images/shop/md/md2.jpg"
     },
     {
       "id": "12", 
-      "name": "상품 12",
+      "name": "베르사유의 장미 고블렛", 
       "price": 65000,
-      "images": "/images/shop/md/md1.jpg"
+      "images": "/images/shop/md/md3.jpg"
     },
     {
       "id": "13", 
-      "name": "상품 13", 
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션", 
       "price": 65000,
       "images": "/images/shop/md/md1.jpg"
     },
     {
       "id": "14", 
-      "name": "상품 14", 
+      "name": "베르사유의 장미 금속 마그넷", 
+      "price": 65000,
+      "images": "/images/shop/md/md2.jpg"
+    },
+    {
+      "id": "15", 
+      "name": "베르사유의 장미 고블렛",
+      "price": 65000,
+      "images": "/images/shop/md/md3.jpg"
+    },
+    {
+      "id": "16", 
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션", 
       "price": 65000,
       "images": "/images/shop/md/md1.jpg"
     },
     {
-      "id": "15", 
-      "name": "상품 15", 
+      "id": "17", 
+      "name": "베르사유의 장미 금속 마그넷", 
       "price": 65000,
-      "images": "/images/shop/md/md1.jpg"
+      "images": "/images/shop/md/md2.jpg"
+    },
+    {
+      "id": "18", 
+      "name": "베르사유의 장미 고블렛", 
+      "price": 65000,
+      "images": "/images/shop/md/md3.jpg"
     }
   ],
 
   "auction" : [
     { 
-      "id": "4",
+      "id": "1",
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "2",
+      "name": "베르사유의 장미 금속 마그넷",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction2.jpg"
+    },
+    { 
+      "id": "3",
       "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction3.jpg"
+    },
+    { 
+      "id": "4",
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션",
       "number": "88회",
       "time": "20시간 47분",
       "image": "/images/shop/auction/auction1.jpg"
     },
     { 
       "id": "5",
-      "name": "베르사유의 장미 고블렛",
+      "name": "베르사유의 장미 금속 마그넷",
       "number": "88회",
       "time": "20시간 47분",
-      "image": "/images/shop/auction/auction1.jpg"
+      "image": "/images/shop/auction/auction2.jpg"
     },
     { 
       "id": "6",
       "name": "베르사유의 장미 고블렛",
       "number": "88회",
       "time": "20시간 47분",
-      "image": "/images/shop/auction/auction1.jpg"
+      "image": "/images/shop/auction/auction3.jpg"
     },
     { 
       "id": "7",
-      "name": "베르사유의 장미 고블렛",
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션",
       "number": "88회",
       "time": "20시간 47분",
       "image": "/images/shop/auction/auction1.jpg"
     },
     { 
       "id": "8",
-      "name": "베르사유의 장미 고블렛",
+      "name": "베르사유의 장미 금속 마그넷",
       "number": "88회",
       "time": "20시간 47분",
-      "image": "/images/shop/auction/auction1.jpg"
+      "image": "/images/shop/auction/auction2.jpg"
     },
     { 
       "id": "9",
       "name": "베르사유의 장미 고블렛",
       "number": "88회",
       "time": "20시간 47분",
-      "image": "/images/shop/auction/auction1.jpg"
+      "image": "/images/shop/auction/auction3.jpg"
     },
     { 
       "id": "10",
-      "name": "베르사유의 장미 고블렛",
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션",
       "number": "88회",
       "time": "20시간 47분",
       "image": "/images/shop/auction/auction1.jpg"
     },
     { 
       "id": "11",
-      "name": "베르사유의 장미 고블렛",
+      "name": "베르사유의 장미 금속 마그넷",
       "number": "88회",
       "time": "20시간 47분",
-      "image": "/images/shop/auction/auction1.jpg"
+      "image": "/images/shop/auction/auction2.jpg"
     },
     { 
       "id": "12",
       "name": "베르사유의 장미 고블렛",
       "number": "88회",
       "time": "20시간 47분",
-      "image": "/images/shop/auction/auction1.jpg"
+      "image": "/images/shop/auction/auction3.jpg"
     },
     { 
       "id": "13",
-      "name": "베르사유의 장미 고블렛",
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션",
       "number": "88회",
       "time": "20시간 47분",
       "image": "/images/shop/auction/auction1.jpg"
     },
     { 
       "id": "14",
-      "name": "베르사유의 장미 고블렛",
+      "name": "베르사유의 장미 금속 마그넷",
       "number": "88회",
       "time": "20시간 47분",
-      "image": "/images/shop/auction/auction1.jpg"
+      "image": "/images/shop/auction/auction2.jpg"
     },
     { 
       "id": "15",
       "name": "베르사유의 장미 고블렛",
       "number": "88회",
       "time": "20시간 47분",
-      "image": "/images/shop/auction/auction1.jpg"
+      "image": "/images/shop/auction/auction3.jpg"
     }
   ]
 }

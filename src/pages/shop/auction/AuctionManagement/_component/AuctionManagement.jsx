@@ -14,14 +14,15 @@ const AuctionManagement = () => {
 
       <S.State>
         <p className='subtitle'>거래 진행 중</p>
+
         <tbody>
           <tr>
             <th>결제 상태</th>
-            <td>결제 전</td>
+            <td>결제 전(  ) | 결제 완료(  )</td>
           </tr>
           <tr>
             <th>거래 상태</th>
-            <td>결제 전</td>
+            <td>입금 요청(  ) → 입금확인중(  ) → 배송준비중(  ) → 배송중(  ) → 구매결정대기(  ) → 거래완료</td>
           </tr>
           </tbody>
       </S.State>
@@ -40,7 +41,7 @@ const AuctionManagement = () => {
 
 
       <S.TableWrapper>
-        <p>입금요청에 대해서 모두 2개가 검색되었습니다.</p>
+        <p className='search'>입금요청에 대해서 모두 2개가 검색되었습니다.</p>
       <S.Table>
         <thead>
           <tr>
@@ -56,24 +57,41 @@ const AuctionManagement = () => {
         </thead>
         <tbody>
           <tr>
-            <S.Data>
-              <FontAwesomeIcon icon={faCheckCircle} className='icon'/>
-            </S.Data>
+            <S.Data><FontAwesomeIcon icon={faCheckCircle} className='icon'/></S.Data>
+            <S.Data><p>1</p></S.Data>
+            <S.Data><p>뮤지컬</p></S.Data>
+            <S.Data><S.Image  alt='입금요청'/></S.Data>
+            <S.Data><p>2024 베르사유의 장미 프로그램북 스페셜 에디션</p></S.Data>
+            <S.Data><p>65,000원</p></S.Data>
+            <S.Data></S.Data>
+            <S.Data></S.Data>
           </tr>
           <tr>
-            <S.Data>
-              <FontAwesomeIcon icon={faCheckCircle} className='icon' />
-            </S.Data>
+            <S.Data><FontAwesomeIcon icon={faCheckCircle} className='icon'/></S.Data>
+            <S.Data><p>1</p></S.Data>
+            <S.Data><p>뮤지컬</p></S.Data>
+            <S.Data><S.Image alt='입금요청'/></S.Data>
+            <S.Data><p>2024 베르사유의 장미 프로그램북 스페셜 에디션</p></S.Data>
+            <S.Data><p>65,000원</p></S.Data>
+            <S.Data></S.Data>
+            <S.Data></S.Data>
           </tr>
           <tr>
-            <S.Data>
-              <FontAwesomeIcon icon={faCheckCircle} className='icon' />
-            </S.Data>
+            <S.Data><FontAwesomeIcon icon={faCheckCircle} className='icon'/></S.Data>
+            <S.Data><p>1</p></S.Data>
+            <S.Data><p>뮤지컬</p></S.Data>
+            <S.Data><S.Image  alt='입금요청'/></S.Data>
+            <S.Data><p>2024 베르사유의 장미 프로그램북 스페셜 에디션</p></S.Data>
+            <S.Data><p>65,000원</p></S.Data>
+            <S.Data></S.Data>
+            <S.Data></S.Data>
           </tr>
-
         </tbody>
-
       </S.Table>
+
+      <S.Button>
+        <button>입금 신청</button>
+      </S.Button>
       </S.TableWrapper>
 
       

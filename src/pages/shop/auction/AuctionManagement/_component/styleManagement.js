@@ -36,14 +36,6 @@ const flexStyle2 = css`
       }
   `
 
-  S.SubTitle = styled.div`
-    font-size: 20px;
-    font-weight: bold;
-    color: #ffd400;
-    width: 1140px;
-    margin: 30px auto;
-  `
-
   S.State = styled.table`
     width: 1160px;
     border-collapse: collapse;
@@ -65,6 +57,11 @@ const flexStyle2 = css`
       border: 0.5px solid #fff;
       padding: 10px;
       text-align: left;
+
+      &:hover {
+        color: #ffd400;
+        cursor: pointer;
+      }
     }
     
     & p {
@@ -105,7 +102,7 @@ const flexStyle2 = css`
   S.TableWrapper = styled.div`
     margin-top: 100px;
 
-  & p {
+  .search {
       margin-bottom: 10px;
 
   }
@@ -113,7 +110,6 @@ const flexStyle2 = css`
 
   S.Table = styled.table`
     width: 1160px;
-  
   `
 
   S.Head = styled.th`
@@ -130,18 +126,55 @@ const flexStyle2 = css`
   S.Data = styled.td`
     border: 1px solid #fff;
     text-align: center;
-    padding: 10px;
     background-color: #000;
     color: #fff;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
 
-    .icon {
-      font-size: 30px;
-
-    }
-    &:hover {
-      color: #ffd400;
+    & p {
+      
     }
     
+    .icon {
+      font-size: 20px;
+      cursor: pointer;
+      
+      path{
+        &:hover {
+          color: #ffd400;
+        }
+      }
+    }
+    
+  `
+
+  S.Image = styled.img`
+    width: 50px;
+    height: 50px;
+
+  `
+
+  S.Button = styled.div`
+    margin-bottom: 150px;
+
+  & button {
+    margin-top: 30px;
+    width: 100px;
+    height: 55px;
+    font-weight: bold;
+    font-size: 17px;
+    color: #fff;
+    background-color: #444444;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #ffd400;
+      color: #000;
+    }
+  }
   `
 
 

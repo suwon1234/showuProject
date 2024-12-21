@@ -95,4 +95,82 @@ const flexStyle2 = css`
     color: #fff;
   `
 
+S.TableWrapper = styled.div`
+margin-top: 100px;
+
+.search {
+  margin-bottom: 10px;
+
+}
+`
+
+S.Table = styled.table`
+width: 1160px;
+`
+
+S.Head2 = styled.th`
+border: 1px solid #ffd400;
+text-align: center;
+padding: 10px;
+background-color: rgba(255, 212, 0, 0.8);
+color: black;
+font-weight: bold;
+font-size: 17px;
+
+`
+
+S.Data = styled.td`
+border: 1px solid #fff;
+text-align: center;
+background-color: #000;
+color: #fff;
+justify-content: center;
+align-items: center;
+padding: 10px;
+
+& p {
+  
+}
+
+.icon {
+  font-size: 20px;
+  cursor: pointer;
+  
+  path{
+    &:hover {
+      color: #ffd400;
+    }
+  }
+}
+
+`
+
+S.Image = styled.img`
+width: 50px;
+height: 50px;
+
+`
+
+S.Button = styled.div`
+margin-bottom: 150px;
+
+& button {
+margin-top: 30px;
+width: 100px;
+height: 55px;
+font-weight: bold;
+font-size: 17px;
+color: #fff;
+background-color: #444444;
+border-radius: 50px;
+border: none;
+cursor: pointer;
+
+&:hover {
+  background-color: #ffd400;
+  color: #000;
+}
+}
+`
+
 export default S;

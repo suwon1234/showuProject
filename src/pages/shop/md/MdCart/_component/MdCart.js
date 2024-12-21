@@ -80,7 +80,7 @@ const MdCart = ({ items }) => {
             <S.CheckIcon2 onClick={() => SelectEach(index)} checked={checkedItems[index]}>
               <FontAwesomeIcon className='icon2' icon={faCheckCircle} style={{ color: checkedItems[index] ? '#ffd400' : '#fff' }} />
             </S.CheckIcon2>
-            <S.ProductImage src={process.env.PUBLIC_URL + "/images/md/md-1.jpg"} alt="장바구니 상품" />
+            <S.ProductImage src={process.env.PUBLIC_URL + "/images/shop/md/md1.jpg"} alt="장바구니 상품" />
             
             <S.ProductInfo>
               <S.ProductName>{item.name}</S.ProductName>
