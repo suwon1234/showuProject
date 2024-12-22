@@ -1,10 +1,27 @@
 // MD - 문의내역 페이지
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './styleInquiryList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 
-const MdInquiryList = ({ inquiryList }) => {
+const MdInquiryList = () => {
+  const [inquiryList, setInquiryList] = useState([]);
+
+  useEffect(() => {
+    const getList = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/inquiry');
+        const datas = await response.json();
+        setInquiryList(datas);
+      } catch (error) {
+        console.error("InquiryListError", error);
+      }
+    };
+
+    getList();
+
+  }, []);
+
   return (
     <S.ListWrapper>
       <S.ListTitle>

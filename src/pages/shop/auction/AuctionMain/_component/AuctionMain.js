@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import S from './styleMain';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronRight, faCircleChevronLeft, faCircleChevronRight, faClock } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronRight, faCircleChevronLeft, faCircleChevronRight, faClock, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const AuctionMain = () => {
   const [auctionItems, setAuctionItems] = useState([]);
+  const [heartedItems, setHeartedItems] = useState([]);
 
   useEffect(() => {
 
@@ -26,6 +27,15 @@ const AuctionMain = () => {
 
   const ClosingItems = auctionItems.slice(0, 3); 
   const otherItems = auctionItems.slice(3); 
+
+  const handleHeartClick = (e, id) => {
+    e.preventDefault(); // 하트 클릭 => 링크 이동 X
+    setHeartedItems((prev) =>
+      prev.includes(id)
+        ? prev.filter((itemId) => itemId !== id) // 하트 제거
+        : [...prev, id] // 하트 추가
+    );
+  };
 
   return (
     <S.MainWrapper>
@@ -48,7 +58,13 @@ const AuctionMain = () => {
             {ClosingItems.map((closing) => (
               <S.Closing key={closing.id}>
                 <Link to={'/shop/auction/detail'}>
-                <img src={closing.image} alt={closing.image} className='image' />
+                <div className="image-wrapper">
+                  <img src={closing.image} alt={closing.image} className='image' />
+                  <S.HeartIconWrapper isHearted={heartedItems.includes(closing.id)}
+                    onClick={(e) => handleHeartClick(e, closing.id)} >
+                      <FontAwesomeIcon icon={faHeart} />
+                  </S.HeartIconWrapper>
+                </div>
                 </Link>
                 <div className='closing-name'>{closing.name}</div>
                 <S.Closing2>
@@ -83,7 +99,13 @@ const AuctionMain = () => {
           {otherItems.map((auction) => (
           <S.Closing key={auction.id}>
             {/* <Link to={"/shop/mdDetail"}> */}
+            <div className="image-wrapper">
             <img src={auction.image} alt={auction.image} className='image'/>
+            <S.HeartIconWrapper isHearted={heartedItems.includes(auction.id)}
+              onClick={(e) => handleHeartClick(e, auction.id)} >
+                <FontAwesomeIcon icon={faHeart} />
+            </S.HeartIconWrapper>
+            </div>
             {/* </Link>    */}
             <div className='closing-name'>{auction.name}</div>
             <S.Closing2>

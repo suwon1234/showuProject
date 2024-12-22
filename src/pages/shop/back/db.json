@@ -216,5 +216,79 @@
       "time": "20시간 47분",
       "image": "/images/shop/auction/auction3.jpg"
     }
+  ],
+
+  "inquiry" : [
+    {
+      "id": "1",
+      "type": "상품",
+      "title": "상품 문의",
+      "writer": "",
+      "date": ""
+    },
+    {
+      "id": "2",
+      "type": "배송",
+      "title": "배송 문의",
+      "writer": "",
+      "date": ""
+    },
+    {
+      "id": "3",
+      "type": "기타",
+      "title": "기타 문의",
+      "writer": "",
+      "date": ""
+    },
+    {
+      "id": "4",
+      "type": "상품",
+      "title": "상품 문의",
+      "writer": "",
+      "date": ""
+    },
+    {
+      "id": "5",
+      "type": "배송",
+      "title": "배송 문의",
+      "writer": "",
+      "date": ""
+    },
+    {
+      "id": "6",
+      "type": "기타",
+      "title": "기타 문의",
+      "writer": "",
+      "date": ""
+    },
+    {
+      "id": "7",
+      "type": "상품",
+      "title": "상품 문의",
+      "writer": "",
+      "date": ""
+    },
+    {
+      "id": "8",
+      "type": "배송",
+      "title": "배송 문의",
+      "writer": "",
+      "date": ""
+    },
+    {
+      "id": "9",
+      "type": "기타",
+      "title": "기타 문의",
+      "writer": "",
+      "date": ""
+    },
+    {
+      "id": "10",
+      "type": "상품",
+      "title": "상품 문의",
+      "writer": "",
+      "date": ""
+    }
   ]
+
 }

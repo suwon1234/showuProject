@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import S from "./styleMain";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faChevronRight, faCircleChevronLeft, faCircleChevronRight,} from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronRight, faCircleChevronLeft, faCircleChevronRight, faHeart,} from "@fortawesome/free-solid-svg-icons";
 
 const MdMain = () => {
   const [mdItems, setMdItems] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0); // 현재 슬라이드 상태
-  const itemsPerSlide = 3; // 한 번에 보여줄 아이템 수
-  const slideWidth = 1090; // 슬라이드 영역 너비 (px 단위)
+  const itemsPerSlide = 3; // 한 번에 보여줄 상품 수
+  const slideWidth = 1090; // 슬라이드 영역
+  const [heartedItems, setHeartedItems] = useState([]); 
 
   useEffect(() => {
     
@@ -44,6 +45,17 @@ const MdMain = () => {
     (currentSlide + 1) * itemsPerSlide
   );
 
+
+  const handleHeartClick = (e, id) => {
+    e.preventDefault(); // 하트 클릭 => 링크 이동 X
+    setHeartedItems((prev) =>
+      prev.includes(id)
+        ? prev.filter((itemId) => itemId !== id) // 하트 제거
+        : [...prev, id] // 하트 추가
+    );
+  };
+
+
   return (
     <S.MainWrapper>
       <S.MdTitle>
@@ -65,7 +77,13 @@ const MdMain = () => {
             {visibleBestItems.map((best) => (
               <S.Best key={best.id}>
                 <Link to={`/shop/md/detail/${best.id}`}>
-                  <img src={best.images} alt={best.name} className="image" />
+                  <div className="image-wrapper">
+                    <img src={best.images} alt={best.name} className="image" />
+                      <S.HeartIconWrapper isHearted={heartedItems.includes(best.id)}
+                        onClick={(e) => handleHeartClick(e, best.id)}>
+                        <FontAwesomeIcon icon={faHeart}/>
+                      </S.HeartIconWrapper>
+                  </div>
                 </Link>
                 <div className="best-name">{best.name}</div>
                 <div className="best-price">{best.price.toLocaleString()}원</div>
@@ -96,7 +114,14 @@ const MdMain = () => {
           {mdItems.slice(6).map((item) => (
             <S.Md key={item.id}>
               <Link to={`/shop/md/detail/${item.id}`}>
+              <div className="image-wrapper">
                 <img src={item.images} alt={item.name} />
+                <S.HeartIconWrapper isHearted={heartedItems.includes(item.id)}
+                  onClick={(e) => handleHeartClick(e, item.id)} >
+                    <FontAwesomeIcon icon={faHeart} />
+                </S.HeartIconWrapper>
+                
+              </div>
               </Link>
               <div className="md-name">{item.name}</div>
               <div className="md-price">{item.price.toLocaleString()}원</div>
@@ -115,5 +140,6 @@ const MdMain = () => {
     </S.MainWrapper>
   );
 };
+
 
 export default MdMain;

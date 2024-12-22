@@ -1,5 +1,5 @@
 // 경매 - 상세페이지
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './styleDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faCircleChevronLeft, faCircleChevronRight, faCircleExclamation, faClock, faHeart, faLock, faPencil } from '@fortawesome/free-solid-svg-icons';
@@ -7,10 +7,12 @@ import DeliveryPopup from './DeliveryPopup';
 import { Link } from 'react-router-dom';
 import BidPopup from './BidPopup';
 
-const AuctionDetail = ({ auctionItems, inquiryList, auctionInfo }) => {
+// const AuctionDetail = ({ auctionItems, inquiryList, auctionInfo }) => {
+const AuctionDetail = ({auctionItems, auctionInfo}) => {
   const [PopupVisible1, setPopupVisible1] = useState(false);
   const [PopupVisible2, setPopupVisible2] = useState(false);
   const [HeartClicked, setHeartClicked] = useState(false);
+  const [inquiryList, setInquiryList] = useState([]);
 
   const openPopup1 = () => setPopupVisible1(true);
   const closePopup1 = () => setPopupVisible1(false);
@@ -24,6 +26,21 @@ const AuctionDetail = ({ auctionItems, inquiryList, auctionInfo }) => {
       setHeartClicked(true);
     }
   };
+
+  useEffect(() => {
+    const getList = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/inquiry');
+        const datas = await response.json();
+        setInquiryList(datas);
+      } catch (error) {
+        console.error("InquiryListError", error);
+      }
+    };
+
+    getList();
+
+  }, []);
   
   return (
     <S.DetailWrapper>
