@@ -15,12 +15,12 @@ const flexStyle2 = css`
   S.ManagementWrapper = styled.div`
     ${flexStyle2}
     background-color: #000;
+    min-height: 100vh;
   `
 
   S.Title = styled.div`
     ${flexStyle}
-    width: 100%;
-    max-width: 1165px;
+    width: 1165px;
     height: 55px;
     border-radius: 50px;
     background-color: #ffd400;

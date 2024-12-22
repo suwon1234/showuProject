@@ -16,6 +16,7 @@ const flexStyle2 = css`
   S.StateWrapper = styled.div`
     ${flexStyle2}
     background-color: #000;
+    min-height: 100vh;
   `
 
   S.Title = styled.div`
@@ -39,8 +40,7 @@ const flexStyle2 = css`
     S.Purchase = styled.div`
       ${flexStyle}
       width: 1165px;
-      margin: auto;
-      margin-top: 30px;
+      margin: 30px auto 10px;
       justify-content: flex-end;
     
       .icon1 {
@@ -63,7 +63,6 @@ const flexStyle2 = css`
     height: 240px;
     border-collapse: collapse;
     margin-top: 20px;
-    margin-bottom: 100px;
   `
 
   S.TableHead = styled.th`
@@ -96,8 +95,7 @@ const flexStyle2 = css`
   `
 
 S.TableWrapper = styled.div`
-margin-top: 100px;
-
+  margin-top: 50px;
 .search {
   margin-bottom: 10px;
 

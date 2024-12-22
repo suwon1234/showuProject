@@ -8,6 +8,7 @@ import ShopContainer from "./pages/shop/ShopContainer";
 import ManagementContainer from "./pages/shop/auction/AuctionManagement/ManagementContainer";
 import StateContainer from "./pages/shop/auction/AuctionState/StateContainer";
 import MainContainer from "./pages/shop/md/MdMain/MainContainer";
+import InquiryDetailContainer from "./pages/shop/auction/AuctionInquiryDetail/InquiryDetailContainer";
 
 
 
@@ -18,8 +19,8 @@ function App() {
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <RouterProvider router={router} />
-        {/* <ManagementContainer/> */}
+        {/* <RouterProvider router={router} /> */}
+        <InquiryDetailContainer />
         {/* <StateContainer /> */}
         {/* <MainContainer /> */}
       </ThemeProvider>
