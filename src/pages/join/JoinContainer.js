@@ -28,11 +28,11 @@ const JoinContainer = () => {
           <S.title>showU 회원가입</S.title>
 
             <S.Form onSubmit={handleSubmit( async (data) => {
-              console.log(data)
+              console.log("data", data)
 
               const { email, password, phone } = data;
 
-              await fetch(`http://localhost:3000/join`, {
+              await fetch(`http://localhost:8000/users/register`, {
                 method : "POST",
                 headers : {
                   "Content-Type" : "application/json"
@@ -44,8 +44,14 @@ const JoinContainer = () => {
                 })
               })
               .then((res) => res.json())
+              .then((res) => {
+                if(!res.ok){
+                  return alert(res.message);
+                }
+                alert(res.message);
+                navigate('/login')
+              })
               .catch(console.error)
-
             })}>
 
               <S.idLabel>
@@ -110,15 +116,19 @@ const JoinContainer = () => {
                 <S.input type="text" id='phone' placeholder='전화번호(ex.010-1234-5678)'/>
               </S.idLabel>
 
-            </S.Form>
-
             <Checkbox setButtonColor={setButtonColor}/>
           
             
             <S.JoinButton
-              disabled={isSubmitting}
               {...(buttonColor ? { state: "true" } : {})}
-            >가입하기</S.JoinButton>
+              disabled={isSubmitting}
+            >
+              회원가입
+              </S.JoinButton>
+
+            </S.Form>
+
+
             <Link to={'/login'}>
             <S.LoginButton>로그인으로</S.LoginButton>
             </Link>
