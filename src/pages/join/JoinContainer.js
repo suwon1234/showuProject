@@ -12,9 +12,12 @@ const JoinContainer = () => {
   const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/;
 
   const navigate = useNavigate();
-  const { register, handleSubmit, getValues,
-          formState : { isSubmitting, isSubmitted, errors }
-        } = useForm({ mode : "onChange"});
+  const { 
+    register, 
+    handleSubmit, 
+    getValues,
+    formState : { isSubmitting, errors }
+  } = useForm({ mode : "onChange"});
 
   
 
@@ -29,6 +32,11 @@ const JoinContainer = () => {
 
             <S.Form onSubmit={handleSubmit( async (data) => {
               console.log("data", data)
+
+              if(!buttonColor){
+                console.log("약관 동의하지 않음")
+                alert("약관에 동의해야 회원가입이 가능합니다.");
+              }
 
               const { email, password, phone } = data;
 
@@ -45,13 +53,17 @@ const JoinContainer = () => {
               })
               .then((res) => res.json())
               .then((res) => {
-                if(!res.ok){
+                if(!res.registerSuccess){
                   return alert(res.message);
                 }
-                alert(res.message);
-                navigate('/login')
+                  alert(res.message);
+                  navigate('/login'); 
+                  console.log("회원가입 완료")
               })
-              .catch(console.error)
+              .catch((error) => {
+                console.error("회원가입 중 오류 발생:", error);
+                alert("회원가입 중 오류가 발생했습니다.");
+              });
             })}>
 
               <S.idLabel>
@@ -113,7 +125,11 @@ const JoinContainer = () => {
               </S.idLabel> */}
 
               <S.idLabel>
-                <S.input type="text" id='phone' placeholder='전화번호(ex.010-1234-5678)'/>
+                <S.input type="text" id='phone' placeholder='전화번호(ex.010-1234-5678)'
+                  {...register("phone", {
+                    required : true
+                  })}
+                />
               </S.idLabel>
 
             <Checkbox setButtonColor={setButtonColor}/>
@@ -121,7 +137,15 @@ const JoinContainer = () => {
             
             <S.JoinButton
               {...(buttonColor ? { state: "true" } : {})}
-              disabled={isSubmitting}
+              // disabled={!buttonColor || isSubmitting}
+              onClick={(e) => {
+                if(!buttonColor){
+                  e.preventDefault();
+                  console.log("약관동의안함")
+                  alert("약관 동의해야 회원가입이 가능합니다")
+                  return;
+                }
+              }}
             >
               회원가입
               </S.JoinButton>
