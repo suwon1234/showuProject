@@ -19,7 +19,7 @@ const S = {}
   S.topbar=styled.div`
     width: 100%;
     height: 48px;
-    background-color: #FDDE39;
+    background-color: #FDDE40;
   `
 
   S.navbar=styled.nav`
@@ -46,7 +46,6 @@ const S = {}
       font-size: 1.5rem;
       color: white;
       text-decoration: none;
-      font-style: Pretendard;
     }
 
     & span {
@@ -107,7 +106,7 @@ const S = {}
 
   `
 
-  S.menubar=styled.div`
+  S.menubar = styled.div`
     display: flex;
     justify-content: center;
     margin-top: 18px;
@@ -117,27 +116,27 @@ const S = {}
     text-decoration: none;
     color: white;
     font-size: 18px;
+    }
+  `
 
-    & .active {
-        & p {
-          color : #917cf0 !important;
-        }
+    S.HotBox = styled.div`
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      & p {
+        color: #FB0505;
+        font-size: 18px;
+      }
+
+      & svg.fire {
 
         & path {
-          color : #917cf0 !important;
+          color : #FB0505;
         }
       }
-    }
+    `
 
-    & .menuitemhot{
-      color: red;
-    }
-
-    & .menudivider{
-      color: white;
-    } 
-
-  `
   S.main=styled.main`
     width: 100%;
     z-index: 10;

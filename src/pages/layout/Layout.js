@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faFire, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import S from './style';
 import Footer from './footer/Footer';
 import { setUser, setUserStatus } from '../../modules/user';
@@ -153,7 +153,10 @@ const Layout = () => {
               <span className="menudivider">|</span>
             
               <NavLink to={"/hot"} className="menuitemhot">
-                HOT
+                <S.HotBox className='HotBox'>
+                  <FontAwesomeIcon icon={faFire} className='fire'/>
+                  <p>HOT</p>
+                </S.HotBox>
               </NavLink>
         
               {/* 커뮤니티 */}
