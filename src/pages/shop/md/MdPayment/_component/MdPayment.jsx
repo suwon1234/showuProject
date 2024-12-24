@@ -15,9 +15,9 @@ const MdPayment = ({ items }) => {
   ];
   
   const imagePaymentMethods = [
-    { label: "토스페이", image: `${process.env.PUBLIC_URL}/images/md/toss-pay.png` },
-    { label: "네이버페이", image: `${process.env.PUBLIC_URL}/images/md/naver-pay.png` },
-    { label: "카카오페이", image: `${process.env.PUBLIC_URL}/images/md/kakao-pay.png` },
+    { label: "토스페이", image: `${process.env.PUBLIC_URL}/images/shop/md/toss-pay.png` },
+    { label: "네이버페이", image: `${process.env.PUBLIC_URL}/images/shop/md/naver-pay.png` },
+    { label: "카카오페이", image: `${process.env.PUBLIC_URL}/images/shop/md/kakao-pay.png` },
   ];
 
   let productTotal = 0;
@@ -51,7 +51,7 @@ const MdPayment = ({ items }) => {
         <S.PaymentList>
           {items.map((item, index) => (
             <S.PaymentItem key={item.id}>
-              <S.ProductImage src={process.env.PUBLIC_URL + "/images/md/md-1.jpg"} alt="주문 상품" />
+              <S.ProductImage src={process.env.PUBLIC_URL + "/images/shop/md/md1.jpg"} alt="주문 상품" />
               <S.Left>{item.name}</S.Left>
               <S.Center>1</S.Center>
               <S.Right>{item.price.toLocaleString()} 원</S.Right>
@@ -191,10 +191,10 @@ const MdPayment = ({ items }) => {
       </S.MethodWrapper>
 
       <S.PaymentButton>
-        <Link to={'/shop/mddetail'}>
+        <Link to={'/shop/md/detail/cart'}>
         <S.BackButton>이전 페이지로</S.BackButton>
         </Link>
-        <Link to={'/shop/mddetail/completed'}>
+        <Link to={'/shop/md/detail/payment/info'}>
           <S.NextButton><p>{totalAmount.toLocaleString()}원</p>결제 진행 </S.NextButton>
         </Link>
       </S.PaymentButton>

@@ -71,6 +71,10 @@ import PopularContainer from '../pages/vod/more/popular/PopularContainer'
 import MusicalContainer from '../pages/vod/more/musical/MusicalContainer'
 import NonLoginContainer from '../pages/vod/video/nonloginpage/NonLoginContainer'
 import HotContainer from '../pages/hot/HotContainer';
+import ShopContainer from '../pages/shop/ShopContainer';
+import InquiryDetailContainer from '../pages/shop/auction/AuctionInquiryDetail/InquiryDetailContainer';
+import InquiryContainer2 from '../pages/shop/auction/AuctionInquiry/InquiryContainer2';
+import PayInfoContainer from '../pages/shop/md/MdPayInfo/PayInfoContainer';
 
 const router = createBrowserRouter([
   {
@@ -274,11 +278,15 @@ const router = createBrowserRouter([
         element : <ReservationContainer />
       },
       {
+        path : '/shop',
+        element : <ShopContainer /> // Shop 메인
+      },
+      {
         path : '/shop/md',
         element : <MainContainer /> // MD 메인
       },
       {
-        path : '/shop/md/detail',
+        path : '/shop/md/detail/:id',
         element : <DetailContainer /> // MD 상세
       },
       {
@@ -290,6 +298,10 @@ const router = createBrowserRouter([
         element : <PaymentContainer /> // MD 주문/결제
       },
       {
+        path : '/shop/md/detail/payment/info',
+        element : <PayInfoContainer /> // MD 주문 내역
+      },
+      {
         path : '/shop/md/detail/inquiry',
         element : <InquiryContainer /> // MD 문의
       },
@@ -297,6 +309,10 @@ const router = createBrowserRouter([
         path : '/shop/md/detail/inquiry/list',
         element : <InquiryListContainer /> // MD 문의목록
       },
+      // {
+      //   path : '/shop/md/detail/inquiry/:id',
+      //   element : <InquiryListContainer /> // MD 문의내역 상세
+      // },
       {
         path : '/shop/auction',
         element : <MainContainer2 /> // 경매 메인
@@ -305,6 +321,15 @@ const router = createBrowserRouter([
         path : '/shop/auction/detail',
         element : <DetailContainer2 /> // 경매 상세
       },
+      {
+        path : '/shop/auction/detail/inquiry',
+        element : <InquiryContainer2 /> // 경매 문의
+      },
+      {
+        path : '/shop/auction/detail/inquiry/:id',
+        element : <InquiryDetailContainer /> // 경매 문의 상세
+      },
+
       {
         path : '/showu',
         element : <ShowuContainer />
