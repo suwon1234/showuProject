@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import S from './styleCart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation, faCheckCircle, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const MdCart = ({ items }) => {
   const [checkedItems, setCheckedItems] = useState(Array(items.length).fill(false));
@@ -80,7 +81,7 @@ const MdCart = ({ items }) => {
             <S.CheckIcon2 onClick={() => SelectEach(index)} checked={checkedItems[index]}>
               <FontAwesomeIcon className='icon2' icon={faCheckCircle} style={{ color: checkedItems[index] ? '#ffd400' : '#fff' }} />
             </S.CheckIcon2>
-            <S.ProductImage src={process.env.PUBLIC_URL + "/images/md/md-1.jpg"} alt="장바구니 상품" />
+            <S.ProductImage src={process.env.PUBLIC_URL + "/images/shop/md/md1.jpg"} alt="장바구니 상품" />
             
             <S.ProductInfo>
               <S.ProductName>{item.name}</S.ProductName>
@@ -99,7 +100,9 @@ const MdCart = ({ items }) => {
       <S.Total>
         <S.TotalAmount>총 상품 금액 ({items.length}개)</S.TotalAmount>
         <S.Pay>{totalAmount.toLocaleString()}원</S.Pay>
+        <Link to={'/shop/md/detail/payment'}>
         <S.CheckoutButton>결제 진행</S.CheckoutButton>
+        </Link>
       </S.Total>
     </S.CartWrapper>
   );

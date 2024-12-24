@@ -34,7 +34,7 @@ const MdPayInfo = ({ items }) => {
         <S.PaymentList>
           {items.map((item, index) => (
             <S.PaymentItem key={item.id}>
-              <S.ProductImage src={process.env.PUBLIC_URL + "/images/md/md-1.jpg"} alt="주문 상품" />
+              <S.ProductImage src={process.env.PUBLIC_URL + "/images/shop/md/md1.jpg"} alt="주문 상품" />
               <S.Left>{item.name}</S.Left>
               <S.Center>1</S.Center>
               <S.Right>{item.price.toLocaleString()} 원</S.Right>
@@ -62,12 +62,10 @@ const MdPayInfo = ({ items }) => {
       </S.Container>
 
       <S.PaymentButton>
-        {/* <Link to={'/shop/mddetail'}> */}
         <S.BackButton>주문 상세보기</S.BackButton>
-        {/* </Link> */}
-        {/* <Link to={'/shop'}> */}
+        <Link to={'/shop/md'}>
           <S.NextButton>계속 쇼핑하기</S.NextButton>
-        {/* </Link> */}
+        </Link>
       </S.PaymentButton>
       
     </S.CompletedWrapper>
