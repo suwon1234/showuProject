@@ -182,5 +182,12 @@ const S = {}
         }
   `;
 
+  S.AfterLogin = styled.div`
+    & button {
+      background-color: #000;
+      border: none;
+    }
+  `
+
 
 export default S;

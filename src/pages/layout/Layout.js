@@ -96,10 +96,10 @@ const Layout = () => {
                 <span className="divider">|</span>
 
                 { isLogin ? (
-                  <>
+                  <S.AfterLogin className='afterLogin'>
                     <span>{currentUser.email}</span>
                     <button onClick={handleLogout}>로그아웃</button>
-                  </>
+                  </S.AfterLogin>
                 ) : (
                   <>
                   <Link to="/login" className="highlight">
