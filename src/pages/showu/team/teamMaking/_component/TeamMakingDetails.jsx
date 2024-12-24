@@ -4,7 +4,7 @@ import S from './style';
 const TeamMakingDetails = () => {
     return (
         <div className='TeamMakingDetailsWrapper'>
-            <div className='TeamMakingNameWrapper'>
+            <S.TeamMakingNameWrapper>
                 <S.MakingDetailsTitle>
                     <span>
                         팀 이름을
@@ -17,69 +17,69 @@ const TeamMakingDetails = () => {
                     <S.DetailsTitle>팀 이름</S.DetailsTitle>
                     <S.TeamNameInput/>
                 </S.TeamMakingName>
-                <div className='TeamMakingCode'>
-                    <span>팀 코드</span>
-                    <input type='text' className='TeamCodeInpput'/>
-                </div>
-                <div className='TeamMakingNameGuide'>
+                <S.TeamMakingCode>
+                    <S.DetailsTitle>팀 코드</S.DetailsTitle>
+                    <S.TeamCodeInput/>
+                </S.TeamMakingCode>
+                <S.TeamMakingNameGuide>
                     <p>팀 URL은 팀 페이지 주소로 사용해 주세요</p>
                     <p>https://www.showU.com/teamName/</p>
-                </div>
+                </S.TeamMakingNameGuide>
 
-                <div className='TeamMakingSubmibuttonWrapper'>
+                <S.TeamMakingSubmibuttonWrapper>
                     <button type='button'>가입 신청하기</button>
-                </div> 
-            </div>
+                </S.TeamMakingSubmibuttonWrapper> 
+            </S.TeamMakingNameWrapper>
 
-            <div className='TeamMakingProfileWrapper'>
-                <h3 className='MakingDetailsTitle'>
+            <S.TeamMakingProfileWrapper>
+                <S.MakingDetailsTitle>
                     <span>
                         프로필을
                     </span>
                     <span>
                         선택해 주세요
                     </span>   
-                </h3>
+                </S.MakingDetailsTitle>
                 <input type='file'/>
-                <div className='TeamCategoryWrapper'>
+                <S.TeamCategoryWrapper>
                     <button type='button'>음악</button>
                     <button type='button'>연기</button>
                     <button type='button'>마술</button>
-                </div>
-                <div className='TeamMakingSubmibuttonWrapper'>
-                    <button type='button'>뒤로</button>
-                    <button type='button'>다음</button>
-                </div> 
-            </div>
+                </S.TeamCategoryWrapper>
+                <S.TeamMakingSubmibuttonWrapperTwo>
+                    <button type='button' className='backButton'>뒤로</button>
+                    <button type='button' className='nextButton'>다음</button>
+                </S.TeamMakingSubmibuttonWrapperTwo> 
+            </S.TeamMakingProfileWrapper>
 
-            <div className='TeamMakingDateWrapper'>
-                <h3 className='MakingDetailsTitle'>
+            <S.TeamMakingDateWrapper>
+                <S.MakingDetailsTitle>
                     <span>
                         주로 언제 모이나요
                     </span>
-                </h3>
+                </S.MakingDetailsTitle>
                 <p>정확하지 않아도 괜찮아요. 자주 모이는 시간과 요일을 알려주세요</p>
 
-                <div className='TeamMakingDate'>
+                <S.TeamMakingDate>
                     <span>활동 요일</span>
-                    <div className='TeamDateWrapper'>
+                    <S.TeamDateWrapper>
                         <button type='button'>월</button>
-                        <button type='button'>화</button>
+                        <button type='button' className='active'>화</button>
                         <button type='button'>수</button>
                         <button type='button'>목</button>
                         <button type='button'>금</button>
                         <button type='button'>토</button>
                         <button type='button'>일</button>
-                    </div>
-                </div>
-                <div className='TeamMakingTime'>
+                    </S.TeamDateWrapper>
+                </S.TeamMakingDate>
+                <S.TeamMakingTime>
                     <span>활동 시간대</span>
-                    <div className='TeamTimeWrapper'>
+                    <S.TeamTimeWrapper>
                         <button type='button'>
                             <span>아침</span>
                             <p>12시 이전</p>
                         </button>
-                        <button type='button'>
+                        <button type='button' className='active'>
                             <span>낮</span>
                             <p>12시-15시</p>
                         </button>
@@ -91,91 +91,91 @@ const TeamMakingDetails = () => {
                             <span>저녘</span>
                             <p>20시 이후</p>
                         </button>
-                    </div>
-                </div>
-                <div className='TeamMakingSubmibuttonWrapper'>
-                    <button type='button'>뒤로</button>
-                    <button type='button'>다음</button>
-                </div> 
-            </div>
+                    </S.TeamTimeWrapper>
+                </S.TeamMakingTime>
+                <S.TeamMakingSubmibuttonWrapperTwo>
+                    <button type='button' className='backButton'>뒤로</button>
+                    <button type='button' className='nextButton'>다음</button>
+                </S.TeamMakingSubmibuttonWrapperTwo> 
+            </S.TeamMakingDateWrapper>
 
-            <div className='TeamMakingMemberWrapper'>
-                <h3 className='MakingDetailsTitle'>
+            <S.TeamMakingMemberWrapper>
+                <S.MakingDetailsTitle>
                     <span>
                         어떤 사람들이
                     </span>
                     <span>
                         모여 있나요?
                     </span>
-                </h3>
+                </S.MakingDetailsTitle>
                 <p>정확하지 않아도 괜찮아요.</p>
-                <div className='TeamMakingAge'> 
+                <S.TeamMakingAge > 
                     <span>주요 나이대</span>
-                    <div className='TeamAgeWrapper'>
+                    <S.TeamAgeWrapper>
                         <button type='button'>10대</button>
-                        <button type='button'>20대</button>
+                        <button type='button' className='active'>20대</button>
                         <button type='button'>30대</button>
                         <button type='button'>40대</button>
                         <button type='button'>50대</button>
                         <button type='button'>60대 이상상</button>
-                    </div>
-                </div>
-                <div className='TeamMakingGender'>
+                    </S.TeamAgeWrapper>
+                </S.TeamMakingAge>
+                <S.TeamMakingGender>
                     <span>성별</span>
-                    <div className='TeamGenderWrapper'>
+                    <S.TeamGenderWrapper>
                         <button type='button'>남자</button>
                         <button type='button'>여자</button>
-                        <button type='button'>남녀무관</button>
-                    </div>
-                </div>
-                <div className='TeamMakingSubmibuttonWrapper'>
-                    <button type='button'>뒤로</button>
-                    <button type='button'>다음</button>
-                </div> 
-            </div>
+                        <button type='button' className='active'>남녀무관</button>
+                    </S.TeamGenderWrapper>
+                </S.TeamMakingGender>
+                <S.TeamMakingSubmibuttonWrapperTwo>
+                    <button type='button' className='backButton'>뒤로</button>
+                    <button type='button' className='nextButton'>다음</button>
+                </S.TeamMakingSubmibuttonWrapperTwo> 
+            </S.TeamMakingMemberWrapper>
 
-            <div className='TeamMakingSkillWrapper'>
-                <h3 className='MakingDetailsTitle'>
+            <S.TeamMakingSkillWrapper>
+                <S.MakingDetailsTitle>
                     <span>
                         팀 실력을
                     </span>
                     <span>
                         선택해 주세요
                     </span>
-                </h3>
+                </S.MakingDetailsTitle>
                 <p>정확하지 않아도 괜찮아요.  나중에 수정할 수 있어요</p>
-                <div className='TeamMakingSkill'>
+                <S.TeamMakingSkill>
                     <span>팀의 평균 실력</span>
-                    <div className='TeamSkillWrapper'>
+                    <S.TeamSkillWrapper>
                         <button type='button'>스타터</button>
                         <button type='button'>비기너</button>
-                        <button type='button'>아마추어</button>
+                        <button type='button' className='active'>아마추어</button>
                         <button type='button'>세미프로</button>
                         <button type='button'>프로 준비생</button>
                         <button type='button'>프로로</button>
-                    </div>
-                </div>
-                <div className='TeamMakingSubmibuttonWrapper'>
-                    <button type='button'>뒤로</button>
-                    <button type='button'>다음</button>
-                </div> 
-            </div>
+                    </S.TeamSkillWrapper>
+                </S.TeamMakingSkill>
+                <S.TeamMakingSubmibuttonWrapperTwo>
+                    <button type='button' className='backButton'>뒤로</button>
+                    <button type='button' className='nextButton'>다음</button>
+                </S.TeamMakingSubmibuttonWrapperTwo> 
+            </S.TeamMakingSkillWrapper>
 
-            <div className='TeamMaKingAnnouncementWrapper'>
-                <h3 className='MakingDetailsTitle'>
+            <S.TeamMaKingAnnouncementWrapper>
+                <S.MakingDetailsTitle>
                     <span>
                         팀 공지사항을
                     </span>
                     <span>
                         작성해 주세요
                     </span>
-                </h3>
+                </S.MakingDetailsTitle>
                 <textarea></textarea>
-                <div className='TeamMakingSubmibuttonWrapper'>
-                    <button type='button'>뒤로</button>
-                    <button type='button'>다음</button>
-                </div> 
-            </div>
+                <S.TeamMakingSubmibuttonWrapperTwo>
+                    <button type='button' className='backButton'>뒤로</button>
+                    <button type='button' className='nextButton'>다음</button>
+                </S.TeamMakingSubmibuttonWrapperTwo> 
+            </S.TeamMaKingAnnouncementWrapper>
         </div>
     );
 };
