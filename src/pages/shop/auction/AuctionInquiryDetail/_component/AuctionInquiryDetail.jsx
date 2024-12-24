@@ -1,3 +1,4 @@
+// 경매 - 문의 내역 상세 페이지
 import React, { useEffect, useState } from 'react';
 import S from './styleInquiryDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,47 +15,50 @@ const AuctionInquiryDetail = () => {
   const { id } = useParams();
 
 
-  // 이전글, 다음글글
+  // 이전글, 다음글
   useEffect(() => {
-    const fetchInquiryList = async () => {
+    const getInquiryList = async () => {
       try {
         const response = await fetch('http://localhost:4000/inquiry');
-        const data = await response.json();
-        setInquiryList(data);
+        const datas = await response.json();
+        setInquiryList(datas);
       } catch (error) {
-        console.error('Error fetching inquiry list:', error);
+        console.error("InquiryListErorr", error);
       }
     };
 
-    fetchInquiryList();
+    getInquiryList();
   }, []);
 
   // 상세글
   useEffect(() => {
     if (id) {
-      const fetchInquiryDetail = async () => {
+      const getInquiryDetail = async () => {
         try {
           const response = await fetch(`http://localhost:4000/inquiry/${id}`);
-          const data = await response.json();
-          setCurrentInquiry(data);
-          setUpdatedContent(data.content || '');  // content가 없다면 빈 문자열로 설정
+          const datas = await response.json();
+          setCurrentInquiry(datas);
+          setUpdatedContent(datas.content || '');  
         } catch (error) {
-          console.error('Error fetching inquiry detail:', error);
+          console.error("InquiryDetailError", error);
         }
       };
   
-      fetchInquiryDetail();
+      getInquiryDetail();
     }
+
   }, [id, setUpdatedContent]);
 
+  // 수정 버튼 => 기존 내용 나옴
   const handleEdit = () => {
     setIsEditing(true);
-    setUpdatedContent(currentInquiry?.content || '');  // 수정 버튼 클릭 시 기존 내용 입력
+    setUpdatedContent(currentInquiry?.content || '');  
   };
 
+  // 수정 취소 => 기존 내용 되돌리기
   const handleCancel = () => {
     setIsEditing(false);  // 편집 취소
-    setUpdatedContent(currentInquiry?.content || '');  // 기존 내용으로 되돌리기
+    setUpdatedContent(currentInquiry?.content || '');  
   };
 
   const handleSave = async () => {
@@ -77,10 +81,10 @@ const AuctionInquiryDetail = () => {
           content: updatedContent,
         }));
       } else {
-        console.error('Failed to save inquiry.');
+        console.error("Failed to save inquiry...");
       }
     } catch (error) {
-      console.error('Error saving inquiry:', error);
+      console.error("SavingError", error);
     }
   };
 
@@ -120,9 +124,7 @@ const AuctionInquiryDetail = () => {
 
         <S.Input>
           {isEditing ? (
-            <S.InputContent
-              type="text"
-              placeholder="내용을 입력하세요."
+            <S.InputContent type="text" placeholder="내용을 입력하세요."
               value={updatedContent || ''}  // undefined가 되지 않도록 기본값 설정
               onChange={(e) => setUpdatedContent(e.target.value)}
             />

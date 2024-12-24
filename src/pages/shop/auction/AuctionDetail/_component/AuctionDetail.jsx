@@ -49,7 +49,7 @@ const AuctionDetail = ({auctionItems, auctionInfo}) => {
       </S.Title>
 
       <S.AuctionWrapper>
-        <S.Image src={process.env.PUBLIC_URL + "/images/md/md-1.jpg"} alt="경매 상품" />
+        <S.Image src={process.env.PUBLIC_URL + "/images/shop/md/md1.jpg"} alt="경매 상품" />
         <S.Auction>
           <S.InfoContainer>
             <S.InfoWrapper>
@@ -125,7 +125,7 @@ const AuctionDetail = ({auctionItems, auctionInfo}) => {
       </S.Content>
 
       <S.ImageWrapper>
-        <S.Image2 className='content-image' src={process.env.PUBLIC_URL + "/images/md/md-1.jpg"} alt="경매 상품" />
+        <S.Image2 className='content-image' src={process.env.PUBLIC_URL + "/images/shop/md/md4.jpg"} alt="경매 상품" />
       </S.ImageWrapper>
 
       <S.Customized>

@@ -9,25 +9,26 @@ import Dropdown from './Dropdown'
 const MdDetail = () => {
   const options = ['옵션 1', '옵션 2', '옵션 3']; 
 
-  const { id } = useParams();  // URL에서 id를 받아옴
-  const [product, setProduct] = useState(null);  // 상품 정보를 저장할 상태
+  const { id } = useParams(); 
+  const [product, setProduct] = useState(null);  
 
   useEffect(() => {
-    const getProductDetail = async () => {
+    const getMdDetail = async () => {
       try {
         const response = await fetch(`http://localhost:4000/md/${id}`);
-        const productData = await response.json();
-        setProduct(productData); // 상세 정보를 저장
+        const datas = await response.json();
+        setProduct(datas);
       } catch (error) {
-        console.error("상품 상세 정보 로드 오류", error);
+        console.error("MdDetailError", error);
       }
     };
     
-    getProductDetail();
-  }, [id]);  // id가 변경될 때마다 실행되도록 설정
+    getMdDetail();
+
+  }, [id]);  
 
   if (!product) {
-    return <p>상품을 찾을 수 없습니다.</p>; // 상품을 못 찾은 경우
+    return <p>상품을 찾을 수 없습니다.</p>; 
   }
 
   return (
@@ -56,16 +57,16 @@ const MdDetail = () => {
       
           <S.ButtonWrapper2>
             <div className='button-wrapper1'>
-              {/* <Link to={'/shop/md/detail/cart'}> */}
+              <Link to={'/shop/md/detail/cart'}>
                 <button className='button cart'><p>카트 추가</p></button>
-              {/* </Link> */}
-              {/* <Link to={'/shop/md/detail/payment'}> */}
+              </Link>
+              <Link to={'/shop/md/detail/payment'}>
                 <button className='button buy'><p>바로 구매</p></button>
-              {/* </Link> */}
+              </Link>
             </div>
-              {/* <Link to={'/shop/md/detail/inquiry'}> */}
+              <Link to={'/shop/md/detail/inquiry'}>
                 <button className='button inquiry'><p>문의하기</p></button>
-              {/* </Link> */}
+              </Link>
           </S.ButtonWrapper2>
         </S.DetailWrapper>
       </S.DetailContainer>

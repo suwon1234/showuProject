@@ -1,3 +1,4 @@
+// MD - 메인페이지
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import S from "./styleMain";
@@ -7,8 +8,8 @@ import { faChevronDown, faChevronRight, faCircleChevronLeft, faCircleChevronRigh
 const MdMain = () => {
   const [mdItems, setMdItems] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0); // 현재 슬라이드 상태
-  const itemsPerSlide = 3; // 한 번에 보여줄 상품 수
-  const slideWidth = 1090; // 슬라이드 영역
+  const itemsPerSlide = 3; // 한 번에 3개씩 보여줌
+  const slideWidth = 1090; // 슬라이드 너비
   const [heartedItems, setHeartedItems] = useState([]); 
 
   useEffect(() => {

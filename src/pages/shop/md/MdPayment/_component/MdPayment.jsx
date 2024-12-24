@@ -191,12 +191,12 @@ const MdPayment = ({ items }) => {
       </S.MethodWrapper>
 
       <S.PaymentButton>
-        {/* <Link to={'/shop/mddetail'}> */}
+        <Link to={'/shop/md/detail/cart'}>
         <S.BackButton>이전 페이지로</S.BackButton>
-        {/* </Link> */}
-        {/* <Link to={'/shop/mddetail/completed'}> */}
+        </Link>
+        <Link to={'/shop/md/detail/payment/info'}>
           <S.NextButton><p>{totalAmount.toLocaleString()}원</p>결제 진행 </S.NextButton>
-        {/* </Link> */}
+        </Link>
       </S.PaymentButton>
 
     </S.PaymentWrapper>

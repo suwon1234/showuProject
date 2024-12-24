@@ -50,12 +50,12 @@ const Shop = () => {
       </S.ShopTitle>
 
       <S.ShopButton>
-        {/* <Link to={'/shop/md'}> */}
+        <Link to={'/shop/md'}>
         <S.MdButton>MD</S.MdButton>
-        {/* </Link> */}
-        {/* <Link to={'/shop/auction> */}
+        </Link>
+        <Link to={'/shop/auction'}>
           <S.AuctionButton>경매</S.AuctionButton>
-        {/* </Link> */}
+        </Link>
       </S.ShopButton>
       
       <S.Title>MD</S.Title>
@@ -64,9 +64,9 @@ const Shop = () => {
         <div className="md-list">
           {mdItems.slice(6,12).map((item) => (
             <S.Md key={item.id}>
-              {/* <Link to={`/shop/md/detail/${item.id}`}> */}
+              <Link to={`/shop/md/detail/${item.id}`}>
                 <img src={item.images} alt={item.name} />
-              {/* </Link> */}
+              </Link>
               <div className="md-name">{item.name}</div>
               <div className="md-price">{item.price.toLocaleString()}원</div>
             </S.Md>
@@ -75,12 +75,12 @@ const Shop = () => {
       </S.MdWrapper>
 
       <S.ButtonWrapper>
-        {/* <Link to={"/shop/md"}> */}
+        <Link to={"/shop/md"}>
         <button>
           <FontAwesomeIcon icon={faChevronRight} className='icon2'/>
           MD 더보기
         </button>
-        {/* </Link> */}
+        </Link>
       </S.ButtonWrapper>
 
       <S.Title>경매</S.Title>
@@ -89,9 +89,9 @@ const Shop = () => {
         <div className='auction-list'>
           {auctionItems.slice(6,12).map((auction) => (
           <S.Closing key={auction.id}>
-            {/* <Link to={"/shop/mdDetail"}> */}
+            <Link to={`/shop/md/detail/${auction.id}`}>
             <img src={auction.image} alt={auction.image} className='image'/>
-            {/* </Link>    */}
+            </Link>   
             <div className='closing-name'>{auction.name}</div>
             <S.Closing2>
               <div className='closing-number'>{auction.number} |</div>
