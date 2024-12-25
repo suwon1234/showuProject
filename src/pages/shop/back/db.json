@@ -1,0 +1,304 @@
+{
+  "md" : [
+    {
+      "id": "1", 
+      "name": "BEST상품 1", 
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "2", 
+      "name": "BEST상품 2", 
+      "price": 65000,
+      "images": "/images/shop/md/md2.jpg"
+    },
+    {
+      "id": "3", 
+      "name": "BEST상품 3", 
+      "price": 65000,
+      "images": "/images/shop/md/md3.jpg"
+    },
+    {
+      "id": "4", 
+      "name": "BEST상품 4", 
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "5", 
+      "name": "BEST상품 5", 
+      "price": 65000,
+      "images": "/images/shop/md/md2.jpg"
+    },
+    {
+      "id": "6", 
+      "name": "BEST상품 6", 
+      "price": 65000,
+      "images": "/images/shop/md/md3.jpg"
+    },
+    {
+      "id": "7", 
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션",
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "8", 
+      "name": "베르사유의 장미 금속 마그넷", 
+      "price": 65000,
+      "images": "/images/shop/md/md2.jpg"
+    },
+    {
+      "id": "9", 
+      "name": "베르사유의 장미 고블렛", 
+      "price": 65000,
+      "images": "/images/shop/md/md3.jpg"
+    },
+    {
+      "id": "10", 
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션",
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "11", 
+      "name": "베르사유의 장미 금속 마그넷", 
+      "price": 65000,
+      "images": "/images/shop/md/md2.jpg"
+    },
+    {
+      "id": "12", 
+      "name": "베르사유의 장미 고블렛", 
+      "price": 65000,
+      "images": "/images/shop/md/md3.jpg"
+    },
+    {
+      "id": "13", 
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션", 
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "14", 
+      "name": "베르사유의 장미 금속 마그넷", 
+      "price": 65000,
+      "images": "/images/shop/md/md2.jpg"
+    },
+    {
+      "id": "15", 
+      "name": "베르사유의 장미 고블렛",
+      "price": 65000,
+      "images": "/images/shop/md/md3.jpg"
+    },
+    {
+      "id": "16", 
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션", 
+      "price": 65000,
+      "images": "/images/shop/md/md1.jpg"
+    },
+    {
+      "id": "17", 
+      "name": "베르사유의 장미 금속 마그넷", 
+      "price": 65000,
+      "images": "/images/shop/md/md2.jpg"
+    },
+    {
+      "id": "18", 
+      "name": "베르사유의 장미 고블렛", 
+      "price": 65000,
+      "images": "/images/shop/md/md3.jpg"
+    }
+  ],
+
+  "auction" : [
+    { 
+      "id": "1",
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "2",
+      "name": "베르사유의 장미 금속 마그넷",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction2.jpg"
+    },
+    { 
+      "id": "3",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction3.jpg"
+    },
+    { 
+      "id": "4",
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "5",
+      "name": "베르사유의 장미 금속 마그넷",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction2.jpg"
+    },
+    { 
+      "id": "6",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction3.jpg"
+    },
+    { 
+      "id": "7",
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "8",
+      "name": "베르사유의 장미 금속 마그넷",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction2.jpg"
+    },
+    { 
+      "id": "9",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction3.jpg"
+    },
+    { 
+      "id": "10",
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "11",
+      "name": "베르사유의 장미 금속 마그넷",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction2.jpg"
+    },
+    { 
+      "id": "12",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction3.jpg"
+    },
+    { 
+      "id": "13",
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction1.jpg"
+    },
+    { 
+      "id": "14",
+      "name": "베르사유의 장미 금속 마그넷",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction2.jpg"
+    },
+    { 
+      "id": "15",
+      "name": "베르사유의 장미 고블렛",
+      "number": "88회",
+      "time": "20시간 47분",
+      "image": "/images/shop/auction/auction3.jpg"
+    }
+  ],
+
+  "inquiry" : [
+    {
+      "id": "1",
+      "type": "상품",
+      "title": "상품 문의",
+      "writer": "작성자1",
+      "date": "2024/00/00",
+      "content": "내용1"
+    },
+    {
+      "id": "2",
+      "type": "배송",
+      "title": "배송 문의",
+      "writer": "작성자2",
+      "date": "2024/00/00",
+      "content": "내용2"
+    },
+    {
+      "id": "3",
+      "type": "기타",
+      "title": "기타 문의",
+      "writer": "작성자3",
+      "date": "2024/00/00",
+      "content": "내용3"
+    },
+    {
+      "id": "4",
+      "type": "상품",
+      "title": "상품 문의",
+      "writer": "작성자4",
+      "date": "2024/00/00",
+      "content": "내용4"
+    },
+    {
+      "id": "5",
+      "type": "배송",
+      "title": "배송 문의",
+      "writer": "작성자5",
+      "date": "2024/00/00",
+      "content": "내용5"
+    },
+    {
+      "id": "6",
+      "type": "기타",
+      "title": "기타 문의",
+      "writer": "작성자6",
+      "date": "2024/00/00",
+      "content": "내용6"
+    },
+    {
+      "id": "7",
+      "type": "상품",
+      "title": "상품 문의",
+      "writer": "작성자7",
+      "date": "2024/00/00",
+      "content": "내용7"
+    },
+    {
+      "id": "8",
+      "type": "배송",
+      "title": "배송 문의",
+      "writer": "작성자8",
+      "date": "2024/00/00",
+      "content": "내용8"
+    },
+    {
+      "id": "9",
+      "type": "기타",
+      "title": "기타 문의",
+      "writer": "작성자9",
+      "date": "2024/00/00",
+      "content": "내용9"
+    },
+    {
+      "id": "10",
+      "type": "상품",
+      "title": "상품 문의",
+      "writer": "작성자10",
+      "date": "2024/00/00",
+      "content": "내용10"
+    }
+  ]
+
+}

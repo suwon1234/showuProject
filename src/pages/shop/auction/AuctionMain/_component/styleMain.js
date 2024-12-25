@@ -81,6 +81,7 @@ const flexStyle = css`
   `
 
   S.Closing = styled.div`
+    margin: 0 auto;
 
     & .closing-name {
         font-size: 16px;
@@ -91,6 +92,23 @@ const flexStyle = css`
       width: 300px;
       height: 300px;
     }
+
+    .image-wrapper {
+      position: relative; 
+    }
+  `
+
+  S.HeartIconWrapper = styled.div`
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+
+    path {
+      color: ${({ isHearted }) => (isHearted ? "red" : "#fff")};
+    }
+
   `
 
   S.Closing2 = styled.div`
