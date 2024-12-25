@@ -45,7 +45,7 @@ import { backgroundBlack } from "../../../global/common";
 
     S.TopTitle = styled.div` // 상단 News title
         font-size: 30px;
-        font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
+        font-weight: bold;
         color: #ffd400;
         justify-content: center;
         display: flex;
@@ -118,18 +118,18 @@ import { backgroundBlack } from "../../../global/common";
     }    
     `
 
-    S.Titles = styled.div` // 페이지 메인 타이틀 All
+    S.Titles = styled.div` 
         display: flex;
         margin: 20px;
     `
 
-    S.MainTitle = styled.div` // 페이지 메인 타이틀
+    S.MainTitle = styled.div` 
         font-size: ${({ theme }) => theme.FONT_SIZE.h3};
         font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
         margin-top: 0px;
     `
 
-    S.SubTitle = styled.div` // 페이지 서브 타이틀
+    S.SubTitle = styled.div` 
         font-size: ${({ theme }) => theme.FONT_SIZE.h7};
         margin-top: 14px;
         margin-left: 8px;     

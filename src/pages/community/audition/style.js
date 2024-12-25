@@ -142,4 +142,30 @@ import styled  from "styled-components";
             }
     `;
 
+    S.ScrollTop = styled.div`
+        position: fixed;
+        bottom: 30px;
+        right: 40px;
+        width: 40px;
+        height: 40px;
+        background-color: #ffd400;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 100;
+                
+        .upicon {
+          font-size: 20px;
+          color: #000 !important;
+        }
+        
+        &:hover {
+          background-color: #ffb800;
+        }
+        
+        
+        `;
+
 export default S;

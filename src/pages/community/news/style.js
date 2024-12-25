@@ -9,7 +9,7 @@ const S = {};
     S.MainContents = styled.div`
         flex: 3;
     `
-    S.Wrapper = styled.div` // 전체 배경 gray
+    S.Wrapper = styled.div` 
         background-color: #444444;      
     `
 
@@ -30,7 +30,7 @@ const S = {};
 }
 `
 
-    S.TopTitle = styled.div` // 상단 News title
+    S.TopTitle = styled.div` 
         font-size: 30px;
         font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
         color: #ffd400;
@@ -39,7 +39,7 @@ const S = {};
         padding-top: 30px;
     `
 
-    S.SubWrapper = styled.div` // 내용 black 배경
+    S.SubWrapper = styled.div` 
         ${backgroundBlack}
         display: flex;
         flex-direction: row;
@@ -48,17 +48,17 @@ const S = {};
         margin-right: 140px;
     `
 
-    S.ButtonsAll = styled.div` // 상단 버튼들
+    S.ButtonsAll = styled.div`
         display: flex;
         justify-content: space-between;
         padding: 10px 20px;
 
-        div { // 버튼 간격
+        div { 
             display: flex;
             gap: 8px; 
         }
 
-        button { // 버튼 스타일
+        button { 
             border-radius: 50px;
             padding: 10px 15px;
             background-color: black;
@@ -66,7 +66,7 @@ const S = {};
             border: 1px solid #ffd400;
             cursor: pointer;
 
-            &:hover { // 버튼 호버
+            &:hover { 
                 background-color: #ffd400;
                 color: #000;
             }
@@ -75,17 +75,17 @@ const S = {};
     `
 
 
-        S.Titles = styled.div` // 페이지 메인 타이틀 All
+        S.Titles = styled.div` 
             display: flex;
             margin: 20px;
         
         `
-        S.MainTitle = styled.div` // 페이지 메인 타이틀
+        S.MainTitle = styled.div` 
             font-size: ${({ theme }) => theme.FONT_SIZE.h3};
             font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
             margin-top: 0px;
         `
-        S.SubTitle = styled.div` // 페이지 서브 타이틀
+        S.SubTitle = styled.div` 
             font-size: ${({ theme }) => theme.FONT_SIZE.h7};
             margin-top: 14px;
             margin-left: 8px;     
@@ -176,6 +176,36 @@ const S = {};
                 font-size: ${({ theme }) => theme.FONT_SIZE.h7};
                 color: ${({ theme }) => theme.PALLETE.white};
             }
+        `;
+
+
+    S.ScrollTop = styled.div`
+        position: fixed;
+        bottom: 30px;
+        right: 40px;
+        width: 40px;
+        height: 40px;
+        background-color: #ffd400;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 100;
+
+        .upicon {
+          font-size: 20px;
+
+          path{
+              color: #000 !important;
+          }
+        }
+    
+        &:hover {
+          background-color: #ffb800;
+        }
+
+
         `;
 
 export default S;
