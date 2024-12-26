@@ -1,10 +1,14 @@
 import React from 'react';
+import S from './style';
 
 const MainTalent = () => {
   return (
-    <div>
+    <S.Wrapper>
+      <S.SubWrapper>
+
+      </S.SubWrapper>
       
-    </div>
+    </S.Wrapper>
   );
 };
 
