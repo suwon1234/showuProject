@@ -49,7 +49,7 @@ const MdPayment = ({ items }) => {
         </S.Head>
 
         <S.PaymentList>
-          {items.map((item, index) => (
+          {items.map((item, i) => (
             <S.PaymentItem key={item.id}>
               <S.ProductImage src={process.env.PUBLIC_URL + "/images/shop/md/md1.jpg"} alt="주문 상품" />
               <S.Left>{item.name}</S.Left>

@@ -11,7 +11,17 @@ const flexStyle = css`
   S.Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+    /* height: 100vh; */
+
+  `
+
+  S.DetailContainer = styled.div`
+    ${flexStyle}
+    justify-content: center;; 
+    gap: 100px; 
+    width: 1140px;
+    margin: 100px auto;
   `
 
   S.DetailContainer = styled.div`
@@ -42,34 +52,21 @@ const flexStyle = css`
     flex-direction: column;
     /* justify-content: flex-start; */
     /* align-items: flex-end;  */
-    max-width: 600px; 
+    max-width: 500px;
   `
 
-  S.QuantityControl = styled.div`
-    ${flexStyle}
-    justify-content: center; 
-
-    & span {
-      margin: 0 15px;
-    }
-  `
-
-  S.IconWrapper = styled.div`
+  S.ImageWrapper = styled.div`
+    width: 500px; 
+    height: 400px; 
     display: flex;
-    justify-content: flex-end; 
-    flex: 0.2;
-    cursor: pointer;
+    justify-content: flex-start; 
+    align-items: center;
 
-    .icon {
-      font-size: 20px;
-
-      &:hover path {
-        color: #ffd400;
-      }
+    & img {
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; // 비율 유지
     }
-  `
-
-  S.OptionWrapper = styled.div`
   `
 
   S.MdTitle = styled.div`
@@ -157,6 +154,61 @@ const flexStyle = css`
     }
   `
 
+  S.SelectedOption = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+
+    & p {
+      font-size: 18px;
+      flex: 1; 
+      text-align: left;
+    }
+/* 
+    .icon {
+      margin-left: 10px;
+      cursor: pointer; 
+    } */
+  `
+
+  S.IconWrapper = styled.div`
+    display: flex;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    flex: 0.2;
+    cursor: pointer;
+
+    .icon {
+      font-size: 20px;
+
+      &:hover path {
+        color: #ffd400;
+      }
+    }
+  `
+
+  S.QuantityControl = styled.div`
+    ${flexStyle}
+    justify-content: center;
+
+    & span {
+      margin: 0 15px;
+    }
+  `
+
+  S.QuantityButton = styled.button`
+    background-color: #000;
+    border: 0.5px solid white;
+    padding: 5px 10px;
+    cursor: pointer;
+  `
+
+  S.OptionWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  `
+
   S.Max = styled.div`
     display: flex;
     border : 0.5px solid #ffd400;
@@ -183,7 +235,8 @@ const flexStyle = css`
   S.MdInfo = styled.div`
     width: 1140px;
     border-top: 0.5px solid white;
-    margin: 50px auto;
+    margin: -120px auto 0;
+    margin: auto;
 
     & .description, & .notice, & .return {
       margin-top: 50px;
