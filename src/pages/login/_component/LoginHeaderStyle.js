@@ -10,19 +10,19 @@ const S = {};
   S.LoginHeader = styled.ul`
     height: 90px;
     display: flex;
-    align-items: center;
-    margin-left: 200px;
+    margin-left: 261px;
+    line-height: 3.1;
 
     & .show {
       font-weight: 900;
-      font-size: 25px;
+      font-size: 24px;
       color: #fff;
       margin-right: 5px;
     }
 
     & .u {
       font-weight: 900;
-      font-size: 25px;
+      font-size: 24px;
       color: ${({theme}) => theme.PALLETE.primary["main"]};
     }
   `

@@ -75,6 +75,8 @@ import ShopContainer from '../pages/shop/ShopContainer';
 import InquiryDetailContainer from '../pages/shop/auction/AuctionInquiryDetail/InquiryDetailContainer';
 import InquiryContainer2 from '../pages/shop/auction/AuctionInquiry/InquiryContainer2';
 import PayInfoContainer from '../pages/shop/md/MdPayInfo/PayInfoContainer';
+import NotFoundContainer from '../pages/notFound/NotFoundContainer';
+import FAQContainer from '../pages/FAQ/FAQContainer';
 
 const router = createBrowserRouter([
   {
@@ -226,7 +228,7 @@ const router = createBrowserRouter([
         element : <MyResCanceleContainer /> //티켓 내역 페이지
       },
       {
-        path : '/my-res/ticket/detail',
+        path : '/my-res/ticket/detail/:id',
         element : <MyResDetailContainer /> //티켓 상세 페이지 페이지
       },
       {
@@ -362,8 +364,15 @@ const router = createBrowserRouter([
       {
         path : '/hot',
         element : <HotContainer/>
+      },
+      {
+        path : '/*',
+        element : <NotFoundContainer />
+      },
+      {
+        path : '/faq',
+        element : <FAQContainer />
       }
-
     ]
   },
   {
@@ -386,9 +395,6 @@ const router = createBrowserRouter([
     path : '/reset-password',
     element : <FindPasswordContainer /> //비밀번호 변경 페이지
   },
-  
-
-  
 ]
 )
 

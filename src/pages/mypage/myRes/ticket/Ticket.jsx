@@ -36,7 +36,7 @@ const Ticket = () => {
     <div>
       <S.Container className='Container'>
         { filterTicket && filterTicket.map((item, i) => (
-          <S.Wrapper key={i} className='Wrapper' onClick={() => handleNavigate('/my-res/ticket/detail')}>
+          <S.Wrapper key={i} className='Wrapper' onClick={() => handleNavigate(`/my-res/ticket/detail/${item.id}`)}>
             <S.RightContent className='rightContent'>
               <p className='date'>{item.date}</p>
               <p className='id'>예매번호 {item.id}</p>
