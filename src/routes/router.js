@@ -77,6 +77,7 @@ import InquiryContainer2 from '../pages/shop/auction/AuctionInquiry/InquiryConta
 import PayInfoContainer from '../pages/shop/md/MdPayInfo/PayInfoContainer';
 import NotFoundContainer from '../pages/notFound/NotFoundContainer';
 import FAQContainer from '../pages/FAQ/FAQContainer';
+import CommentsContainer from '../pages/community/editComment/CommentsContainer';
 
 const router = createBrowserRouter([
   {
@@ -104,11 +105,15 @@ const router = createBrowserRouter([
         element : <CommunityInfoContainer /> // 커뮤니티 세부 페이지 
       },
       {
+        path : '/community/communityInfo/Comments/:id',
+        element : <CommentsContainer/> // 커뮤니티 댓글 상세 페이지
+      },
+      {
         path : '/community/communityInfo/editCommentsMain',
         element : <EditCommentsMainContainer /> // 커뮤니티 댓글 수정 메인 페이지
       },
       {
-        path : '/community/communityInfo/editComments',
+        path : '/community/communityInfo/editComments/:id',
         element : <EditCommentsContainer /> // 커뮤니티 댓글 수정 세부 페이지
       },
       {
@@ -124,7 +129,7 @@ const router = createBrowserRouter([
         element : <HistoryContainer /> // 커뮤니티 글쓰기 내역 페이지
       },
       {
-        path : '/community/write/history/check',
+        path : '/community/write/history/check/:id',
         element : <HistoryCheckContainer /> // 커뮤니티 글쓰기 내역 확인 페이지
       },
       {
@@ -132,7 +137,7 @@ const router = createBrowserRouter([
         element : <HistoryEditContainer /> // 커뮤니티 글쓰기 내역 수정/삭제 메인 페이지
       },
       {
-        path : '/community/write/history/edit/active',
+        path : '/community/write/history/edit/active/:id',
         element : <HistoryEditActiveContainer /> // 커뮤니티 글쓰기 내역 수정/삭제 페이지
       },
       {

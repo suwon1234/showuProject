@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import S from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 
@@ -145,6 +145,10 @@ const auditionData = [
 
 const filterData = filter === "전체" ? (auditionData) : (auditionData.filter((items) => items.category === filter));
 
+const handleScrollTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
+
   return (
     <S.Wrapper>
         <S.TopTitle>Audition</S.TopTitle>
@@ -180,6 +184,10 @@ const filterData = filter === "전체" ? (auditionData) : (auditionData.filter((
           ))}
         </S.ImageWrapper>
       </S.SubWrapper>   
+
+      <S.ScrollTop onClick={handleScrollTop}>
+        <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+      </S.ScrollTop>
         
     </S.Wrapper>
   );

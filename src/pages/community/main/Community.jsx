@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import S from './styleCommunity';
 import { Link } from 'react-router-dom';
 
@@ -158,6 +158,12 @@ const Community = () => {
 
   const filteredData = filter === "전체" ? (commuData) : (commuData.filter(items => items.category === filter));
 
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+
+
   return (
     <S.Wrapper>
       <S.TopTitle>커뮤니티</S.TopTitle>
@@ -205,6 +211,11 @@ const Community = () => {
           ))}
         </S.Info>
       </S.SubWrapper>
+
+      <S.ScrollTop onClick={handleScrollTop}>
+        <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+      </S.ScrollTop>
+
     </S.Wrapper>
   );
 };
