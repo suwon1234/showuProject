@@ -2,12 +2,13 @@
 
 import styled  from "styled-components";
 import { backgroundBlack } from "../../../global/common";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const S = {};
 
-    S.TopTitle = styled.div` // 상단 News title
+    S.TopTitle = styled.div` 
         font-size: 30px;
-        font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
+        font-weight: bold;
         color: #ffd400;
         justify-content: center;
         display: flex;
@@ -153,18 +154,40 @@ const S = {};
         h3 {
             margin-top: 5px;
             font-size: 20px;
-            color: #fff;
         }
 
         p {
             font-size: 15px;
-            color: #fff;
         } 
-    `;
+    `
+
+    S.ScrollTop = styled.div`
+        position: fixed;
+        bottom: 30px;
+        right: 40px;
+        width: 40px;
+        height: 40px;
+        background-color: #ffd400;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        z-index: 100;
+
+        .upicon {
+          font-size: 20px;
+          color: #000 !important;
+        }
+    
+        &:hover {
+          background-color: #ffb800;
+        }
 
 
+        `;
 
-
+        
 
 export default S;
 
