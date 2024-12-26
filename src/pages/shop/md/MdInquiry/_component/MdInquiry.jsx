@@ -2,9 +2,11 @@
 import React, { useState } from 'react';
 import S from './styleInquiry';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const MdInquiry = () => {
+  const navigate = useNavigate();
+  
   const inquiryTypes = ['상품', '배송', '기타'];
   const inquiryForms = ['공개', '비공개'];
   const alarmTypes = ['SMS', '메일'];
@@ -13,10 +15,12 @@ const MdInquiry = () => {
   const [selectedForm, setSelectedForm] = useState(null); 
   const [title, setTitle] = useState(''); 
   const [content, setContent] = useState(''); 
-  const [alarm, setSelectedAlarm] = useState(null); 
+  const [selectedAlarm, setSelectedAlarm] = useState(null); 
   const [isAgreed, setIsAgreed] = useState(false);
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  const handleSubmit = () => {
     if (!selectedType) {
       alert('문의 유형을 선택하세요.');
       return;
@@ -33,7 +37,7 @@ const MdInquiry = () => {
       alert('내용을 입력하세요.');
       return;
     }
-    if (!alarm) {
+    if (!selectedAlarm) {
       alert('답변 완료 알림을 선택하세요.');
       return;
     }
@@ -41,7 +45,9 @@ const MdInquiry = () => {
       alert('개인정보 수집, 이용에 동의해주세요.');
       return;
     }
+
     alert('등록이 완료되었습니다!');
+    navigate('/shop/md/detail/inquiry/list');
   };
 
   return (
@@ -61,7 +67,7 @@ const MdInquiry = () => {
             <td colSpan="2">
               <S.TypeWrapper>
                 {inquiryTypes.map((type) => (
-                  <S.Type key={type} onClick={() => setSelectedType(type)} selected={selectedType === type}>
+                  <S.Type key={type} onClick={() => setSelectedType(selectedType === type ? null : type)} selected={selectedType === type}>
                     <S.Icon icon={faCheckCircle} selected={selectedType === type} />
                     <p>{type}</p>
                   </S.Type>
@@ -74,7 +80,7 @@ const MdInquiry = () => {
             <td colSpan="2">
               <S.TypeWrapper>
               {inquiryForms.map((form) => (
-                  <S.Type key={form} onClick={() => setSelectedForm(form)} selected={selectedForm === form}>
+                  <S.Type key={form} onClick={() => setSelectedForm(selectedForm === form ? null : form)} selected={selectedF === form}>
                     <S.Icon icon={faCheckCircle} selected={selectedForm === form} />
                     <p>{form}</p>
                   </S.Type>
@@ -105,8 +111,8 @@ const MdInquiry = () => {
             <td>
               <S.TypeWrapper>
                 {alarmTypes.map((alarm) => (
-                  <S.Type key={alarm} onClick={() => setSelectedAlarm(alarm)} selected={setSelectedAlarm === alarm}>
-                    <S.Icon icon={faCheckCircle} selected={setSelectedAlarm === alarm} />
+                  <S.Type key={alarm} onClick={() => setSelectedAlarm(selectedAlarm === alarm ? null : alarm)} selected={selectedAlarm === alarm}>
+                    <S.Icon icon={faCheckCircle} selected={selectedAlarm === alarm} />
                     <p>{alarm}</p>
                   </S.Type>
                 ))}
@@ -132,9 +138,7 @@ const MdInquiry = () => {
 
       <S.InquiryButton>
         <S.BackButton>취소</S.BackButton>
-        <Link to={'/shop/md/detail/inquiry/list'}>
           <S.NextButton onClick={handleSubmit}>등록</S.NextButton>
-        </Link>
       </S.InquiryButton>
     </S.InquiryWrapper>
   );
