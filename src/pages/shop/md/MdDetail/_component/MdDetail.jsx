@@ -1,55 +1,53 @@
+// MD - 상세페이지
 import React, { useEffect, useState } from 'react'; 
 import S from './styleDetail';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleExclamation, faChevronUp, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faCircleExclamation, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from './Dropdown' 
 
 const MdDetail = () => {
   const options = ['옵션 1', '옵션 2', '옵션 3']; 
+  const [selectedOption, setSelectedOption] = useState(null);
   const { id } = useParams(); 
   const [product, setProduct] = useState(null);  
-  const [selectedOptions, setSelectedOptions] = useState([]); 
-  const [quantity, setQuantity] = useState(1); 
+  const [selectedOptions, setSelectedOptions] = useState([]); // 선택된 옵션
 
-  // 수량 감소
-  const decrease = (index) => {
-    setSelectedOptions((prev) => {
-      const updated = [...prev];
-      if (updated[index].quantity > 1) {
-        updated[index].quantity -= 1;
+    // 옵션 선택 핸들러
+    const handleSelect = (option) => {
+      // 이미 선택된 옵션인지 확인
+      if (selectedOptions.find((item) => item.option === option)) {
+        alert("이미 선택된 옵션입니다.");
+        return;
       }
-      return updated;
-    });
-  };
-
-  // 수량 증가
-  const increase = (index) => {
-    setSelectedOptions((prev) => {
-      const updated = [...prev];
-      updated[index].quantity += 1;
-      return updated;
-    });
-  };
-
-  // 옵션 선택 핸들러
-  const handleSelect = (option) => {
-    if (selectedOptions.find((item) => item.option === option)) {
-      alert("이미 선택된 옵션입니다!");
-      return;
-    }
-
-    // 새로운 옵션 추가
-    setSelectedOptions((prev) => [
-      ...prev,
-      { option, quantity: 1 },
-    ]);
-  };
-
-  const handleRemove = () => {
-    
-  }
-
+  
+      // 새로운 옵션 추가
+      setSelectedOptions((prev) => [
+        ...prev,
+        { option, quantity: 1 }, // 초기 수량 1
+      ]);
+    };
+  
+    // 수량 감소
+    const decrease = (index) => {
+      setSelectedOptions((prev) => {
+        const updated = [...prev];
+        if (updated[index].quantity > 1) {
+          updated[index].quantity -= 1;
+        }
+        return updated;
+      });
+    };
+  
+    // 수량 증가
+    const increase = (index) => {
+      setSelectedOptions((prev) => {
+        const updated = [...prev];
+        updated[index].quantity += 1;
+        return updated;
+      });
+    };
+  
   useEffect(() => {
     const getMdDetail = async () => {
       try {
@@ -62,6 +60,7 @@ const MdDetail = () => {
     };
     
     getMdDetail();
+
   }, [id]);  
 
   if (!product) {
@@ -84,7 +83,7 @@ const MdDetail = () => {
         
           <S.Dropdown>
             <p>옵션 선택</p>
-            <Dropdown options={options} onSelect={handleSelect} /> 
+            <Dropdown options={options} onSelect={setSelectedOption} /> 
           </S.Dropdown>
 
           <S.Max>
@@ -92,25 +91,17 @@ const MdDetail = () => {
             <p>각 옵션별로 최대 2개까지 구매 가능합니다.</p>
           </S.Max>
 
-          <S.OptionWrapper>
-            {selectedOptions.map((selected, index) => (
-              <S.SelectedOption key={index}>
-                <p>{selected.option}</p>
+          {selectedOption && (
+            <S.SelectedOption>
+              <p>{selectedOption}</p>
+              <S.QuantityControl>
+                <S.QuantityButton onClick={() => decrease()}>-</S.QuantityButton>
+                <span></span>
+                <S.QuantityButton onClick={() => increase()}>+</S.QuantityButton>
+              </S.QuantityControl>
+            </S.SelectedOption>
+          )}
 
-                <S.QuantityControl>
-                  <S.QuantityButton onClick={() => decrease(index)}>-</S.QuantityButton>
-                  <span>{selected.quantity}</span>
-                  <S.QuantityButton onClick={() => increase(index)}>+</S.QuantityButton>
-                </S.QuantityControl>
-
-                <S.IconWrapper>
-                  <FontAwesomeIcon
-                    className="icon" icon={faXmark} onClick={() => handleRemove(index)}
-                  />
-                </S.IconWrapper>
-              </S.SelectedOption>
-            ))}
-          </S.OptionWrapper>
           
           <S.ButtonWrapper2>
             <div className='button-wrapper1'>
@@ -197,6 +188,8 @@ const MdDetail = () => {
         </S.Return>
       </S.MdInfo>
     </S.Wrapper>
+
+
   );
 };
 

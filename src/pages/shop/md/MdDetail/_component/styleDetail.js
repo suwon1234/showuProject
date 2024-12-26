@@ -11,29 +11,38 @@ const flexStyle = css`
   S.Wrapper = styled.div`
     display: flex;
     flex-direction: column;
+    height: 100vh;
   `
+
   S.DetailContainer = styled.div`
     ${flexStyle}
-    justify-content: flex-end;
-    margin-top: 150px;
-    gap: 130px;
-    margin-left: auto; 
-    margin-right: auto; 
+    /* justify-content: center;  */
+    gap: 100px;
+    width: 1140px;
+    margin: auto; 
   `
+
+  S.ImageWrapper = styled.div`
+    width: 500px; 
+    height: 400px; 
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+
+    & img {
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; // 비율 유지
+    }
+  `;
 
   S.DetailWrapper = styled.div`
-    background-color: #000;
-  `
-    S.SelectedOption = styled.div`
+    flex: 1; 
     display: flex;
-    align-items: center;
-    margin-bottom: 30px;
-
-    & p {
-      font-size: 18px;
-      flex: 1; /* 옵션명이 왼쪽에 위치 */
-      text-align: left;
-    }
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    /* align-items: flex-end;  */
+    max-width: 600px; 
   `
 
   S.QuantityControl = styled.div`
@@ -60,14 +69,13 @@ const flexStyle = css`
     }
   `
 
-S.OptionWrapper = styled.div`
-`
+  S.OptionWrapper = styled.div`
+  `
 
   S.MdTitle = styled.div`
     display: flex;
     flex-direction: column; 
     border-bottom: 0.5px solid white;
-    margin-top: -200px;
     width: 505px;
     
     & p:first-child {
@@ -99,8 +107,6 @@ S.OptionWrapper = styled.div`
   S.ButtonWrapper2 = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    padding-right: 200px;
     gap: 5px;
     
     .button-wrapper1 {
@@ -151,18 +157,6 @@ S.OptionWrapper = styled.div`
     }
   `
 
-  S.ImageWrapper = styled.div`
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    margin : 0 0 200px 200px;
-
-    & img {
-      width: 500px;
-      height: 400px;
-    }
-  `
-
   S.Max = styled.div`
     display: flex;
     border : 0.5px solid #ffd400;
@@ -189,7 +183,7 @@ S.OptionWrapper = styled.div`
   S.MdInfo = styled.div`
     width: 1140px;
     border-top: 0.5px solid white;
-    margin: -120px auto 0;
+    margin: 50px auto;
 
     & .description, & .notice, & .return {
       margin-top: 50px;
