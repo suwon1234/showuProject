@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ShowuInsert from './ShowuInsert';
+import ShowuInsert from './showuInsert';
 
 const MyShowuContainer = () => {
   const [plays, setplays] = useState(null); // 수정: 구조 분해 할당
