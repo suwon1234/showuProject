@@ -18,17 +18,17 @@ const Movie = ({ plays }) => {
           <S.DropdownWrapper>
             <S.Dropdown onChange={handleCategoryChange} value={selectedCategory}>
               <option value="인기순" className="select">영화전체</option>
-              <option value="최신순" className="select">코미디</option>
-              <option value="최신순" className="select">다큐멘터리</option>
-              <option value="최신순" className="select">액션</option>
-              <option value="최신순" className="select">가족</option>
-              <option value="최신순" className="select">공포</option>
-              <option value="최신순" className="select">단편</option>
-              <option value="최신순" className="select">드라마</option>
-              <option value="최신순" className="select">모험</option>
-              <option value="최신순" className="select">로멘스</option>
-              <option value="최신순" className="select">서부</option>
-              <option value="최신순" className="select">스포츠</option>
+              <option value="코미디" className="select">코미디</option>
+              <option value="다큐멘터리" className="select">다큐멘터리</option>
+              <option value="액션" className="select">액션</option>
+              <option value="가족" className="select">가족</option>
+              <option value="공포" className="select">공포</option>
+              <option value="단편" className="select">단편</option>
+              <option value="드라마" className="select">드라마</option>
+              <option value="모험" className="select">모험</option>
+              <option value="로멘스" className="select">로멘스</option>
+              <option value="서부" className="select">서부</option>
+              <option value="스포츠" className="select">스포츠</option>
             </S.Dropdown>
           </S.DropdownWrapper>
         </S.topwrapper>

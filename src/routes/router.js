@@ -79,6 +79,11 @@ import NotFoundContainer from '../pages/notFound/NotFoundContainer';
 import FAQContainer from '../pages/FAQ/FAQContainer';
 import CommentsContainer from '../pages/community/editComment/CommentsContainer';
 import LessonDetails from '../pages/showu/lesson/LessonMain/lessonDetails/LessonDetails';
+import MusicalContainer2 from '../pages/vod/musical/MusicalContainer2';
+import MovieContainer from '../pages/vod/movie/MovieContainer';
+import MusicContainer from '../pages/vod/music/MusicContainer'
+import MyShowuContainer from '../pages/vod/showu/MyShowuContainer';
+import ShowuVideoConatiner from '../pages/vod/video/showuvideopage/ShowuVideoContainer';
 
 const router = createBrowserRouter([
   {
@@ -384,6 +389,26 @@ const router = createBrowserRouter([
       {
         path : '/faq',
         element : <FAQContainer />
+      },
+      {
+        path: '/vod/musical',
+        element : <MusicalContainer2/>
+      },
+      {
+        path : '/vod/movie',
+        element : <MovieContainer/>
+      },
+      {
+        path : '/vod/music',
+        element : <MusicContainer/>
+      },
+      {
+        path : '/vod/my-ShowU',
+        element : <MyShowuContainer/>
+      },
+      {
+        path : '/vod/my-ShowU/video',
+        element : <ShowuVideoConatiner/>
       }
     ]
   },
@@ -407,6 +432,7 @@ const router = createBrowserRouter([
     path : '/reset-password',
     element : <FindPasswordContainer /> //비밀번호 변경 페이지
   },
+
 ]
 )
 

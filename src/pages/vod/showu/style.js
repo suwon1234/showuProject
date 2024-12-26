@@ -380,7 +380,6 @@ S.buttonWrapper = styled.div`
   bottom: 0; 
   left: 0;
   background-color: black;
-  padding: 10px 20px;
   z-index: 10; 
   
 `;

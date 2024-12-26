@@ -200,7 +200,7 @@ const ShowuInsert = ({ plays }) => {
                   />
                 </S.InputWrapper>
 
-                <S.InputWrapper>
+                <S.InputWrapper className='category'>
                   <label>카테고리</label>
                   <select
                     value={videoCategory}
