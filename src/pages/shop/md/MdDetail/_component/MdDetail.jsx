@@ -87,7 +87,7 @@ const MdDetail = () => {
         
           <S.Dropdown>
             <p>옵션 선택</p>
-            <Dropdown options={options} onSelect={handleSelect} /> 
+            <Dropdown options={options} handleSelect={handleSelect} /> 
           </S.Dropdown>
 
           <S.Max>

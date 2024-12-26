@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import S from './styleDropdown';
 
-const Dropdown = ({ options, onSelect }) => {
+const Dropdown = ({ options, handleSelect }) => {
   const [isOpen, setIsOpen] = useState(false);
   
   const toggleDropdown = () => {
@@ -11,7 +11,7 @@ const Dropdown = ({ options, onSelect }) => {
   
   const handleOptionClick = (option) => {
     // console.log(`선택한 옵션: ${option}`);
-    onSelect(option);
+    handleSelect(option);
     setIsOpen(false); // 옵션 선택 후 드롭다운 닫기
     };
     

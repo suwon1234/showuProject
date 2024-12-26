@@ -80,7 +80,7 @@ const MdInquiry = () => {
             <td colSpan="2">
               <S.TypeWrapper>
               {inquiryForms.map((form) => (
-                  <S.Type key={form} onClick={() => setSelectedForm(selectedForm === form ? null : form)} selected={selectedF === form}>
+                  <S.Type key={form} onClick={() => setSelectedForm(selectedForm === form ? null : form)} selected={selectedForm === form}>
                     <S.Icon icon={faCheckCircle} selected={selectedForm === form} />
                     <p>{form}</p>
                   </S.Type>
