@@ -10,55 +10,31 @@ const CommunityInfo = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [likeCount, setLikeCount] = useState(0);
+    const [commentText, setCommentText ] = useState("");
+    const [comments, setComments] = useState([]);;
 
 
 
-
-
-
-
-    // 댓글 상태
-    const [commentText, setCommentText] = useState("");
-    const [comments, setComments] = useState([]);
-
-    useEffect(() => {
-      const savedComments = JSON.parse(localStorage.getItem(`comments_${id}`));
-      if (savedComments) {
-          setComments(savedComments);
-      } else {
-          setComments([]);
-      }
-  }, [id]);
 
     // 댓글 작성
-    const handlerCommentButton = () => {
+    const handleCommentSubmit = async () => {
       if (!commentText) {
           alert("댓글을 입력해주세요.");
           return;
       }
 
       const newComment = {
+        postId : id,
         user : "홍길동",
         grade : "사용자",
         content : commentText,
         date : new Date().toLocaleDateString(),
       };
 
-      const updatedComments = ([ ...comments, newComment ]);
-      setComments(updatedComments);
-
-      localStorage.setItem(`comments_${id}`, JSON.stringify(updatedComments));
-
-      setCommentText("");
-      alert("댓글 작성이 완료되었습니다.")
-    };
-
-
-
-
-
-
-
+      setComments([...comments, newComment]);
+      setCommentText('');
+      alert('댓글이 등록되었습니다.');
+};
 
 
 
@@ -93,6 +69,7 @@ const CommunityInfo = () => {
     }
 };
 
+// 게시물 데이터
     const commuData = [
         {
           id: 1,
@@ -270,7 +247,7 @@ const CommunityInfo = () => {
                 onChange={(e)=> setCommentText(e.target.value)}
                 />
                 <div>
-                  <button onClick={handlerCommentButton}>등록하기</button>
+                  <button onClick={handleCommentSubmit}>등록하기</button>
                   <button onClick={handleEditButton}>수정/삭제하기</button>
                 </div>
               </S.CommentInput>

@@ -2,6 +2,9 @@ import React, { useEffect, useRef, useState } from 'react';
 import { faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import S from './style'; 
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 
 const MainChat = () => {
   const [messages1, setMessages1] = useState([
@@ -35,8 +38,20 @@ const MainChat = () => {
     },
   ]);
 
+
+  useEffect(() => {
+    AOS.init({
+      duration: 1000, 
+      easing: 'ease-out', 
+      once: true, 
+    });
+  }, []);
+
+  
+
   const [inputValue1, setInputValue1] = useState('');
   const [inputValue2, setInputValue2] = useState('');
+
 
   const handleSendMessage1 = () => {
     if (inputValue1) {
@@ -85,7 +100,10 @@ const MainChat = () => {
 
         <S.TopWrapper>
 
-          <S.SectionWrapper1>
+          <S.SectionWrapper1 
+            data-aos="fade-up"
+            data-aos-anchor-placement="top-bottom"
+          >
             <S.ChatArea>
               {messages1.map((msg, i) => (
                 <S.ChatBubble1
@@ -93,6 +111,8 @@ const MainChat = () => {
                   user={msg.send == 'user'}
                   align={msg.send == 'user' ? 'right' : 'left'}
                   style={{ animationDelay: `${i * 0.75}s` }}
+                  // data-aos="fade-up" 
+                  // data-aos-delay={i * 200} 
                 >
                   {msg.text}
                 </S.ChatBubble1>
@@ -112,7 +132,10 @@ const MainChat = () => {
             </S.InputWrapper>
           </S.SectionWrapper1>
 
-          <S.InfoBlock1>
+          <S.InfoBlock1 
+            data-aos="fade-left"
+            data-aos-anchor-placement="top-bottom"
+            >
             <div className='text-container'>
             <S.InfoTitle>누구나 레슨 가능</S.InfoTitle>
             <S.InfoText>참여하고 싶은 레슨이 있다면 지금 바로 시작해보세요!</S.InfoText>
@@ -124,21 +147,21 @@ const MainChat = () => {
 
         <S.bottomWrapper>
 
-        <S.InfoBlock2>
+        <S.InfoBlock2 data-aos="fade-right">
             <div className='text-container'>
             <S.InfoTitle>새로운 동료와 도전</S.InfoTitle>
             <S.InfoText>같은 꿈을 가진 팀원을 만나 함께 성장해보세요!</S.InfoText>
             </div>
         </S.InfoBlock2>
 
-        <S.SectionWrapper2>
+        <S.SectionWrapper2 data-aos="fade-up">
           <S.ChatArea>
             {messages2.map((message, i) => (
               <S.ChatBubble2
                 key={i}
                 user={message.send == 'user'}
                 align={message.send == 'user' ? 'right' : 'left'}
-                style={{ animationDelay: `${i * 0.75}s` }}
+                style={{ animationDelay: `${i * 0.75}s` }}           
               >
                 {message.text}
               </S.ChatBubble2>
