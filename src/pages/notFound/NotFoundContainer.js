@@ -1,9 +1,16 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faHouseCircleXmark, faSquareXmark, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faHouseCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 import S from './style';
 
 const NotFoundContainer = () => {
+
+  const navigate = useNavigate();
+  const handleNavigate = () => {
+    navigate('/main')
+  }
+
   return (
     <S.Wrap>
 
@@ -17,10 +24,10 @@ const NotFoundContainer = () => {
         </S.NotFoundMsg>
       </S.NotFoundBox>
 
-      <div className='GoHome'>
-        <FontAwesomeIcon icon={faHouse} />
+      <S.GoHome className='GoHome' onClick={() => handleNavigate()}>
+        <FontAwesomeIcon icon={faHouse} className='main'/>
         <button>메인으로</button>
-      </div>
+      </S.GoHome>
 
     </S.Wrap>
   );

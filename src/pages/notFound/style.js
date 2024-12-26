@@ -44,5 +44,39 @@ const S = {};
     }
   `
 
+  S.GoHome = styled.button`
+    width: 100px;
+    height: 30px;
+
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+
+    & button {
+      border: none;
+      background-color: #fff;
+      color: #000;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    & svg.main {
+      width: 20px;
+      height: 20px;
+
+      & path {
+        color: #000;
+      }
+
+    }
+    
+
+  `
+
 
 export default S;
