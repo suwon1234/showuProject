@@ -78,6 +78,7 @@ import PayInfoContainer from '../pages/shop/md/MdPayInfo/PayInfoContainer';
 import NotFoundContainer from '../pages/notFound/NotFoundContainer';
 import FAQContainer from '../pages/FAQ/FAQContainer';
 import CommentsContainer from '../pages/community/editComment/CommentsContainer';
+import LessonDetails from '../pages/showu/lesson/LessonMain/lessonDetails/LessonDetails';
 
 const router = createBrowserRouter([
   {
@@ -341,6 +342,12 @@ const router = createBrowserRouter([
         path : '/showu',
         element : <ShowuContainer />
       },
+      {
+        path : '/showu/details',
+        element : <LessonDetails />
+      },
+      
+
       {
         path : '/vod',
         element : <VodContainer />

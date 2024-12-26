@@ -23,12 +23,13 @@ const SelectSido = () => {
     const {val1, setVal1} = useState("");
     const { sido } = hangjungdong;
     return (
-        <select onChange={(e) => setVal1(e.target.value)} style={{
-            backgroundColor : "#000"
+        <select onChange={(e) => setVal1(e.target.value)} className='lessonCategory' style={{
+            backgroundColor : "#000",
+            padding : "5px"
         }}>
         <option value="">선택</option>
         {sido.map((el) => (
-          <option key={el.sido} value={el.sido}>
+          <option key={el.sido} value={el.sido} >
             {el.codeNm}
           </option>
         ))}
