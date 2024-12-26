@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import S from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const newsData = [
   {
@@ -194,6 +194,10 @@ const NewsMain = () => {
         news => news.category === filter);
     };
 
+    const handleScrollTop = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
   return (
     <S.Wrapper>
       <S.TopTitle>News</S.TopTitle>
@@ -202,7 +206,6 @@ const NewsMain = () => {
       </S.IconWrapper>
 
       <S.SubWrapper> 
-        {/* 뉴스 콘텐츠 화면 */}
       <S.MainContents>
         <S.Titles>
           <S.MainTitle>News</S.MainTitle>
@@ -247,19 +250,25 @@ const NewsMain = () => {
       </S.MainContents>
 
       {/* 인기순 사이드 */}
-      <S.side>
-        <S.SideTitle>TOP5</S.SideTitle>
-        {popularData.map((data)=>(
-          <S.SideItem key={data.id}>
-            {/* <Link to={`/community/newsMain/popularity`}> */}
-            {/* <Link to={`/community/newsMain/popularity${data.id}`}> */}
-            <img src={data.imageUrl} alt={data.title} />
-            <p>{data.title}</p>
-            {/* </Link> */}
-          </S.SideItem>
-        ))}
-      </S.side>
+      {/* <S.side> */}
+        {/* <S.SideTitle>TOP5</S.SideTitle> */}
+        {/* {popularData.map((data)=>( */}
+          {/* <S.SideItem key={data.id}> */}
+            {/* <Link to={`/community/newsMain/popularity`}> /// */}
+            {/* <Link to={`/community/newsMain/popularity${data.id}`}> /// */}
+            {/* <img src={data.imageUrl} alt={data.title} /> */}
+            {/* <p>{data.title}</p> */}
+            {/* </Link>  /// */}
+          {/* </S.SideItem> */}
+        {/* ))} */}
+      {/* </S.side> */}
+      
       </S.SubWrapper>
+
+      <S.ScrollTop onClick={handleScrollTop}>
+        <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+      </S.ScrollTop>
+
     </S.Wrapper>
     );
   };

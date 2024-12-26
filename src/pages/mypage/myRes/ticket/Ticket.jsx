@@ -1,89 +1,60 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './TicketStyle';
+import { useNavigate } from 'react-router-dom';
 
 const Ticket = () => {
+  const [ ticket, setTicket ] = useState([]);
+
+  useEffect(() => {
+    const getTicket = async () => {
+     try {
+      const response = await fetch(`http://localhost:4000/ticket`);
+      const datas = await response.json();
+      setTicket(datas);
+     } catch (error) {
+      console.log("TicketError", error)
+     }
+    }
+
+    getTicket()
+
+  }, [])
+
+  const navigate = useNavigate();
+
+  const handleNavigate = (path) => {
+    navigate(path);
+  }
+
+  // console.log(ticket)
+  
+  //예약 완료인 티켓내역만 보여주기
+  const filterTicket = ticket.filter((item) => item.state.includes("예약 완료"))
+  // console.log(filterTicket)
+
   return (
     <div>
-      <S.Table>
-          <S.Thead>
-            <S.TrTitle>
-              <th scope='col'>예매 번호</th>
-              <th scope='col'>티켓명</th>
-              <th scope='col'>관람 일시</th>
-              <th scope='col'>매수</th>
-              <th scope='col'>취소 가능일</th>
-              <th scope='col'>상태</th>
-            </S.TrTitle>
-          </S.Thead>
-          <S.Tbody>
-            <S.Tr>
-              <th scope='row'>1</th>
-              <td>뮤지컬&lt;클로버&gt;</td>
-              <td>2024.11.30(화) 15:00</td>
-              <td>2</td>
-              <td>2024.11.29 17:00</td>
-              <td>예약 완료</td>
-            </S.Tr>
-            <S.Tr>
-              <th scope='row'>2</th>
-              <td>뮤지컬&lt;광화문연가&gt;</td>
-              <td>2024.11.30(화) 15:00</td>
-              <td>2</td>
-              <td>2024.11.29 17:00</td>
-              <td>예약 완료</td>
-            </S.Tr>
-            <S.Tr>
-              <th scope='row'>3</th>
-              <td>뮤지컬&lt;랭보&gt;</td>
-              <td>2024.11.30(화) 15:00</td>
-              <td>2</td>
-              <td>2024.11.29 17:00</td>
-              <td>예약 완료</td>
-            </S.Tr>
-            <S.Tr>
-              <th scope='row'>4</th>
-              <td>뮤지컬&lt;글루미 선데이&gt;</td>
-              <td>2024.11.30(화) 15:00</td>
-              <td>2</td>
-              <td>2024.11.29 17:00</td>
-              <td>예약 완료</td>
-            </S.Tr>
-            <S.Tr>
-              <th scope='row'>5</th>
-              <td>뮤지컬&lt;해피 오! 해피&gt;</td>
-              <td>2024.11.30(화) 15:00</td>
-              <td>2</td>
-              <td>2024.11.29 17:00</td>
-              <td>예약 완료</td>
-            </S.Tr>
-            <S.Tr>
-              <th scope='row'>6</th>
-              <td>뮤지컬&lt;해적&gt;
-                : THE LAST LOVE
-              </td>
-              <td>2024.11.30(화) 15:00</td>
-              <td>2</td>
-              <td>2024.11.29 17:00</td>
-              <td>예약 완료</td>
-            </S.Tr>
-            <S.Tr>
-              <th scope='row'>7</th>
-              <td>뮤지컬&lt;클로버&gt;</td>
-              <td>2024.11.30(화) 15:00</td>
-              <td>2</td>
-              <td>2024.11.29 17:00</td>
-              <td>예약 완료</td>
-            </S.Tr>
-            <S.Tr>
-              <th scope='row'>8</th>
-              <td>뮤지컬&lt;클로버&gt;</td>
-              <td>2024.11.30(화) 15:00</td>
-              <td>2</td>
-              <td>2024.11.29 17:00</td>
-              <td>예약 완료</td>
-            </S.Tr>
-          </S.Tbody>
-        </S.Table>
+      <S.Container className='Container'>
+        { filterTicket && filterTicket.map((item, i) => (
+          <S.Wrapper key={i} className='Wrapper' onClick={() => handleNavigate(`/my-res/ticket/detail/${item.id}`)}>
+            <S.RightContent className='rightContent'>
+              <p className='date'>{item.date}</p>
+              <p className='id'>예매번호 {item.id}</p>
+              <p className='ticketName'>{item.ticketName}</p>
+              <p className='qty'>{item.qty}매</p>
+              {/* <p className='cancellableDate'>취소 가능일 {item.cancellableDate}</p> */}
+              <p className='location'>{item.location}</p>
+              <p className='state'>{item.state}</p>
+            </S.RightContent>
+            <S.Img className='img'>
+              <img src={item.ticketImgUrl} alt="티켓 포스터 이미지" />
+              <div className='top'></div>
+              <div className='bottom'></div>
+            </S.Img>
+          </S.Wrapper>
+        ))
+        }
+      </S.Container>
     </div>
   );
 };

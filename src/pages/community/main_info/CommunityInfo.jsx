@@ -1,6 +1,6 @@
 // 커뮤니티 세부 내용
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import S from './commuInfoStyle';
 
@@ -10,7 +10,36 @@ const CommunityInfo = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [likeCount, setLikeCount] = useState(0);
+    const [commentText, setCommentText ] = useState("");
+    const [comments, setComments] = useState([]);;
 
+
+
+
+    // 댓글 작성
+    const handleCommentSubmit = async () => {
+      if (!commentText) {
+          alert("댓글을 입력해주세요.");
+          return;
+      }
+
+      const newComment = {
+        postId : id,
+        user : "홍길동",
+        grade : "사용자",
+        content : commentText,
+        date : new Date().toLocaleDateString(),
+      };
+
+      setComments([...comments, newComment]);
+      setCommentText('');
+      alert('댓글이 등록되었습니다.');
+};
+
+
+
+
+    // 신고 버튼 클릭
     const handleNotifyButton = () => {
         const isConfirmed = window.confirm("신고하기 페이지로 이동하시겠습니까?");
         if (isConfirmed) {
@@ -18,18 +47,21 @@ const CommunityInfo = () => {
         }
     };
 
+    // 좋아요 버튼 클릭
     const handleLikeButton = () => {
       setLikeCount(likeCount + 1);
   };
 
 
-  const handleregisterButton = () => {
-    const isConfirmed = window.confirm("등록하시겠습니까?");
-    if (isConfirmed) {
-      alert("등록이 완료되었습니다.")
-    }
-};
+  // 등록 버튼 클릭
+//   const handleregisterButton = () => {
+//     const isConfirmed = window.confirm("등록하시겠습니까?");
+//     if (isConfirmed) {
+//       alert("등록이 완료되었습니다.")
+//     }
+// };
 
+// 수정/삭제 페이지
   const handleEditButton = () => {
     const isConfirmed = window.confirm("수정/삭제 페이지로 이동합니다.");
     if (isConfirmed) {
@@ -37,6 +69,7 @@ const CommunityInfo = () => {
     }
 };
 
+// 게시물 데이터
     const commuData = [
         {
           id: 1,
@@ -205,28 +238,38 @@ const CommunityInfo = () => {
             </S.ButtonGroup>
 
             <S.CommentWrapper>
-      <S.CommentInput>
-        <h1>댓글</h1>
-        <textarea placeholder="너의 의견을 자유롭게 적어줘" />
-        <div>
-          <button onClick={handleregisterButton}>등록하기</button>
-          <button onClick={handleEditButton}>수정/삭제하기</button>
-        </div>
-      </S.CommentInput>
 
-      <S.CommentList>
-        <S.CommentItem>
-          <p className="user">김** <span>실버 등급</span></p>
-          <p className="content">대체 어떻게 찾으셨어요 ㅋㅋㅋㅋㅋ</p>
-          <p className="date">2024.11.01</p>
-        </S.CommentItem>
-        <S.Line2 />
-        <S.CommentItem>
-          <p className="user">이** <span>골드 등급</span></p>
-          <p className="content">이런 TMI 좋습니다 ㅎㅎ</p>
-          <p className="date">2024.11.01</p>
-        </S.CommentItem>
-      </S.CommentList>
+              <S.CommentInput>
+                <h1>댓글</h1>
+                <textarea 
+                placeholder="너의 의견을 자유롭게 적어줘" 
+                value={commentText}
+                onChange={(e)=> setCommentText(e.target.value)}
+                />
+                <div>
+                  <button onClick={handleCommentSubmit}>등록하기</button>
+                  <button onClick={handleEditButton}>수정/삭제하기</button>
+                </div>
+              </S.CommentInput>
+
+
+
+
+              
+
+              <div>
+              {comments.map((comment, i) => (
+                    <div key={i}>
+                      <div>
+                        <p className="user">{comment.user} <span>{comment.grade}</span></p>
+                        <p className="content">{comment.content}</p>
+                        <p className="date">{comment.date}</p>
+                      </div>
+                  
+                    </div>
+                        ))}
+              </div>
+      
     </S.CommentWrapper>
 
           </S.SubWrapper>

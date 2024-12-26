@@ -6,27 +6,29 @@ const S = {};
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
+
+    margin-top: 60px;
   `
 
   S.Container = styled.ul`
-    width: 410px;
+    width: 400px;
     height: 220px;
   `
 
   S.Wapper = styled.li`
-    width: 410px;
+    width: 400px;
     height: 220px;
 
   `
 
   S.Lesson = styled.div`
-    width: 410px;
+    width: 400px;
     height: 220px;
 
     position: relative;
 
     & img {
-      width: 410px;
+      width: 400px;
       height: 220px;
       border-radius: 20px;
       filter: brightness(70%);
@@ -38,7 +40,7 @@ const S = {};
       top: 13px;
       left: 13px;
 
-      font-size: 12px;
+      font-size: 17px;
       font-weight: 700;
       z-index: 2;
     }

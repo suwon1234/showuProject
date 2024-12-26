@@ -71,6 +71,14 @@ import PopularContainer from '../pages/vod/more/popular/PopularContainer'
 import MusicalContainer from '../pages/vod/musical/MusicalContainer2'
 import NonLoginContainer from '../pages/vod/video/nonloginpage/NonLoginContainer'
 import HotContainer from '../pages/hot/HotContainer';
+import ShopContainer from '../pages/shop/ShopContainer';
+import InquiryDetailContainer from '../pages/shop/auction/AuctionInquiryDetail/InquiryDetailContainer';
+import InquiryContainer2 from '../pages/shop/auction/AuctionInquiry/InquiryContainer2';
+import PayInfoContainer from '../pages/shop/md/MdPayInfo/PayInfoContainer';
+import NotFoundContainer from '../pages/notFound/NotFoundContainer';
+import FAQContainer from '../pages/FAQ/FAQContainer';
+import CommentsContainer from '../pages/community/editComment/CommentsContainer';
+import LessonDetails from '../pages/showu/lesson/LessonMain/lessonDetails/LessonDetails';
 
 const router = createBrowserRouter([
   {
@@ -98,11 +106,15 @@ const router = createBrowserRouter([
         element : <CommunityInfoContainer /> // 커뮤니티 세부 페이지 
       },
       {
+        path : '/community/communityInfo/Comments/:id',
+        element : <CommentsContainer/> // 커뮤니티 댓글 상세 페이지
+      },
+      {
         path : '/community/communityInfo/editCommentsMain',
         element : <EditCommentsMainContainer /> // 커뮤니티 댓글 수정 메인 페이지
       },
       {
-        path : '/community/communityInfo/editComments',
+        path : '/community/communityInfo/editComments/:id',
         element : <EditCommentsContainer /> // 커뮤니티 댓글 수정 세부 페이지
       },
       {
@@ -118,7 +130,7 @@ const router = createBrowserRouter([
         element : <HistoryContainer /> // 커뮤니티 글쓰기 내역 페이지
       },
       {
-        path : '/community/write/history/check',
+        path : '/community/write/history/check/:id',
         element : <HistoryCheckContainer /> // 커뮤니티 글쓰기 내역 확인 페이지
       },
       {
@@ -126,7 +138,7 @@ const router = createBrowserRouter([
         element : <HistoryEditContainer /> // 커뮤니티 글쓰기 내역 수정/삭제 메인 페이지
       },
       {
-        path : '/community/write/history/edit/active',
+        path : '/community/write/history/edit/active/:id',
         element : <HistoryEditActiveContainer /> // 커뮤니티 글쓰기 내역 수정/삭제 페이지
       },
       {
@@ -222,7 +234,7 @@ const router = createBrowserRouter([
         element : <MyResCanceleContainer /> //티켓 내역 페이지
       },
       {
-        path : '/my-res/ticket/detail',
+        path : '/my-res/ticket/detail/:id',
         element : <MyResDetailContainer /> //티켓 상세 페이지 페이지
       },
       {
@@ -274,11 +286,15 @@ const router = createBrowserRouter([
         element : <ReservationContainer />
       },
       {
+        path : '/shop',
+        element : <ShopContainer /> // Shop 메인
+      },
+      {
         path : '/shop/md',
         element : <MainContainer /> // MD 메인
       },
       {
-        path : '/shop/md/detail',
+        path : '/shop/md/detail/:id',
         element : <DetailContainer /> // MD 상세
       },
       {
@@ -290,6 +306,10 @@ const router = createBrowserRouter([
         element : <PaymentContainer /> // MD 주문/결제
       },
       {
+        path : '/shop/md/detail/payment/info',
+        element : <PayInfoContainer /> // MD 주문 내역
+      },
+      {
         path : '/shop/md/detail/inquiry',
         element : <InquiryContainer /> // MD 문의
       },
@@ -297,6 +317,10 @@ const router = createBrowserRouter([
         path : '/shop/md/detail/inquiry/list',
         element : <InquiryListContainer /> // MD 문의목록
       },
+      // {
+      //   path : '/shop/md/detail/inquiry/:id',
+      //   element : <InquiryListContainer /> // MD 문의내역 상세
+      // },
       {
         path : '/shop/auction',
         element : <MainContainer2 /> // 경매 메인
@@ -306,9 +330,24 @@ const router = createBrowserRouter([
         element : <DetailContainer2 /> // 경매 상세
       },
       {
+        path : '/shop/auction/detail/inquiry',
+        element : <InquiryContainer2 /> // 경매 문의
+      },
+      {
+        path : '/shop/auction/detail/inquiry/:id',
+        element : <InquiryDetailContainer /> // 경매 문의 상세
+      },
+
+      {
         path : '/showu',
         element : <ShowuContainer />
       },
+      {
+        path : '/showu/details',
+        element : <LessonDetails />
+      },
+      
+
       {
         path : '/vod',
         element : <VodContainer />
@@ -337,8 +376,15 @@ const router = createBrowserRouter([
       {
         path : '/hot',
         element : <HotContainer/>
+      },
+      {
+        path : '/*',
+        element : <NotFoundContainer />
+      },
+      {
+        path : '/faq',
+        element : <FAQContainer />
       }
-
     ]
   },
   {
@@ -361,9 +407,6 @@ const router = createBrowserRouter([
     path : '/reset-password',
     element : <FindPasswordContainer /> //비밀번호 변경 페이지
   },
-  
-
-  
 ]
 )
 

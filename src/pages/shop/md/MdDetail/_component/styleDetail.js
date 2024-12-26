@@ -11,25 +11,68 @@ const flexStyle = css`
   S.Wrapper = styled.div`
     display: flex;
     flex-direction: column;
-  `
-  S.DetailContainer = styled.div`
-    ${flexStyle}
-    justify-content: flex-end;
-    margin-top: 150px;
-    gap: 130px;
-    margin-left: auto; 
-    margin-right: auto; 
+    min-height: 100vh;
+    /* height: 100vh; */
+
   `
 
+  S.DetailContainer = styled.div`
+    ${flexStyle}
+    justify-content: center;; 
+    gap: 100px; 
+    width: 1140px;
+    margin: 100px auto;
+  `
+
+  S.DetailContainer = styled.div`
+    ${flexStyle}
+    /* justify-content: center;  */
+    gap: 100px;
+    width: 1140px;
+    margin: auto; 
+  `
+
+  S.ImageWrapper = styled.div`
+    width: 500px; 
+    height: 400px; 
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+
+    & img {
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; // 비율 유지
+    }
+  `;
+
   S.DetailWrapper = styled.div`
-    background-color: #000;
+    flex: 1; 
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    /* align-items: flex-end;  */
+    max-width: 500px;
+  `
+
+  S.ImageWrapper = styled.div`
+    width: 500px; 
+    height: 400px; 
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center;
+
+    & img {
+      width: 100%; 
+      height: 100%; 
+      object-fit: cover; // 비율 유지
+    }
   `
 
   S.MdTitle = styled.div`
     display: flex;
     flex-direction: column; 
     border-bottom: 0.5px solid white;
-    margin-top: -200px;
     width: 505px;
     
     & p:first-child {
@@ -61,8 +104,6 @@ const flexStyle = css`
   S.ButtonWrapper2 = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    padding-right: 200px;
     gap: 5px;
     
     .button-wrapper1 {
@@ -113,16 +154,59 @@ const flexStyle = css`
     }
   `
 
-  S.ImageWrapper = styled.div`
-    flex: 1;
+  S.SelectedOption = styled.div`
     display: flex;
-    justify-content: center;
-    margin : 0 0 200px 200px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
 
-    & img {
-      width: 500px;
-      height: 400px;
+    & p {
+      font-size: 18px;
+      flex: 1; 
+      text-align: left;
     }
+/* 
+    .icon {
+      margin-left: 10px;
+      cursor: pointer; 
+    } */
+  `
+
+  S.IconWrapper = styled.div`
+    display: flex;
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    flex: 0.2;
+    cursor: pointer;
+
+    .icon {
+      font-size: 20px;
+
+      &:hover path {
+        color: #ffd400;
+      }
+    }
+  `
+
+  S.QuantityControl = styled.div`
+    ${flexStyle}
+    justify-content: center;
+
+    & span {
+      margin: 0 15px;
+    }
+  `
+
+  S.QuantityButton = styled.button`
+    background-color: #000;
+    border: 0.5px solid white;
+    padding: 5px 10px;
+    cursor: pointer;
+  `
+
+  S.OptionWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   `
 
   S.Max = styled.div`
@@ -152,6 +236,7 @@ const flexStyle = css`
     width: 1140px;
     border-top: 0.5px solid white;
     margin: -120px auto 0;
+    margin: auto;
 
     & .description, & .notice, & .return {
       margin-top: 50px;

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import S from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 
@@ -23,10 +23,10 @@ const auditionData = [
   },
   {
     id: 2,
-    category: "연극",
-    image: 'https://www.sac.or.kr/site/main/file/image/uu/7867438c5b71479c9620edecd609801e',
-    title: '예술의 전당',
-    description: '연극 <햄릿> 오디션',
+    category: "뮤지컬",
+    image: 'https://www.contestkorea.com/admincenter/files/meet/202402221229386112816.jpg',
+    title: '문화감각',
+    description: '뮤지컬 <루카스> 오디션',
   },
   {
     id: 3,
@@ -44,17 +44,17 @@ const auditionData = [
   },
   {
     id: 5,
-    category: "연극",
-    image: 'https://postfiles.pstatic.net/MjAyNDA3MTBfMjgw/MDAxNzIwNTg2NDM2MzE0.5nng4UOvvmjA97DLdfkqDoUZmh5hpnZed2e7T-Tj9L4g.BIvTBzJqS9aDDgrMh0v2j8BvYiTBeeDq-BTWO16DGrEg.JPEG/KakaoTalk_20240709_111907546.jpg?type=w966',
-    title: '(주)나인진엔터테인먼트',
-    description: '연극 <로스트> 오디션',
+    category: "뮤지컬",
+    image: 'https://www.contestkorea.com/admincenter/files/meet/202411282051038432751.jpg',
+    title: '도깨비이엔티',
+    description: '뮤지컬 <로보카 폴리> 오디션',
   },
   {
     id: 6,
-    category: "뮤지컬",
-    image: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEwMjFfMTMz%2FMDAxNzI5NDk1OTk1MDQw.9fH3RyIqD9YCMMM59QwBRYCEhdr9JQuRAr2_rRydmj0g.HQk8bunSa_na6JavgvSdjVeHjCis0V1BtZFdUp-P0jog.PNG%2F1.png&type=a340',
-    title: 'CJ MUSICAL',
-    description: '뮤지컬 <물랑루즈> 오디션',
+    category: "연극",
+    image: 'https://www.contestkorea.com/admincenter/files/meet/202412042146561163027.jpg',
+    title: '바다컴퍼니',
+    description: '연극 <너에게로 가는 길> 오디션',
   },
   {
     id: 7,
@@ -74,7 +74,7 @@ const auditionData = [
     id: 9,
     category: "뮤지컬",
     image: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMjA0MTNfMTM1%2FMDAxNjQ5ODE1ODc3MzQ1.3BHjoHCANe4WycbNHeJ613_qjysx_fb-z41o9_M8l1Yg.zv5Ku68OApU8lzmDQF5SQ6OmRubdjgdQ-8A83VT5MH4g.JPEG.ellychoux%2F1.jpg&type=sc960_832',
-    title: '',
+    title: 'EMK MUSIAL COMPANY',
     description: '뮤지컬 <마타하리> 오디션',
   },
   {
@@ -91,10 +91,63 @@ const auditionData = [
     title: 'CJ MUSICAL',
     description: '뮤지컬 브로드웨이 42번가 오디션',
   },
+  {
+    id: 12,
+    category: "연극",
+    image: 'https://www.sac.or.kr/site/main/file/image/uu/7867438c5b71479c9620edecd609801e',
+    title: '예술의 전당',
+    description: '연극 <햄릿> 오디션',
+  },
+  {
+    id: 13,
+    category: "뮤지컬",
+    image: 'https://image.newdaily.co.kr/site/data/img/2024/02/15/2024021500021_0.jpg?u=20240215085801',
+    title: '에이콤',
+    description: '뮤지컬 <명성황후> 오디션',
+  },
+  {
+    id: 14,
+    category: "연극",
+    image: 'https://cdn.mhns.co.kr/news/photo/202411/703708_806763_3039.jpg',
+    title: 'comporama',
+    description: '연극<THE CELL> 오디션',
+  },
+  {
+    id: 15,
+    category: "뮤지컬",
+    image: 'https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEwMjFfMTMz%2FMDAxNzI5NDk1OTk1MDQw.9fH3RyIqD9YCMMM59QwBRYCEhdr9JQuRAr2_rRydmj0g.HQk8bunSa_na6JavgvSdjVeHjCis0V1BtZFdUp-P0jog.PNG%2F1.png&type=a340',
+    title: 'CJ MUSICAL',
+    description: '뮤지컬 <물랑루즈> 오디션',
+  },
+  {
+    id: 16,
+    category: "연극",
+    image: 'https://otr.co.kr/wp-content/uploads/mangboard/2024/06/21/F201233_lost_odi.jpg',
+    title: '(주)나인진엔터테인먼트',
+    description: '연극 <로스트> 오디션',
+  },
+  {
+    id: 17,
+    category: "연극",
+    image: 'https://www.iseensee.com/event/letmein/241010_audition1.jpg',
+    title: '신시컴퍼니',
+    description: '연극 <렛미인> 오디션',
+  },
+  {
+    id: 18,
+    category: "연극",
+    image: 'https://www.contestkorea.com/admincenter/files/meet/202411211101244741412.jpg',
+    title: '(주)문컴퍼니',
+    description: '연극 <분홍립스틱> 오디션',
+  },
 
 ];
 
 const filterData = filter === "전체" ? (auditionData) : (auditionData.filter((items) => items.category === filter));
+
+const handleScrollTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
   return (
     <S.Wrapper>
@@ -131,6 +184,10 @@ const filterData = filter === "전체" ? (auditionData) : (auditionData.filter((
           ))}
         </S.ImageWrapper>
       </S.SubWrapper>   
+
+      <S.ScrollTop onClick={handleScrollTop}>
+        <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+      </S.ScrollTop>
         
     </S.Wrapper>
   );

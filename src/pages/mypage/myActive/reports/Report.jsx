@@ -1,8 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './ReportStyle';
 
 
 const Report = () => {
+  const [ reports, setReports ] = useState([]);
+
+  useEffect(() => {
+    const getReports = async () => {
+      try {
+        const response = await fetch(`http://localhost:4000/reports`);
+        const datas = await response.json();
+        setReports(datas)
+      } catch (error) {
+        console.log("ReportsError", error)
+      }
+    }
+
+    getReports()
+
+  }, [])
+
+  // console.log(reports)
+
   return (
     <div>
       <S.Table>
@@ -15,54 +34,14 @@ const Report = () => {
             </S.Tr>
           </S.Thead>
           <S.Tbody>
-            <S.ContentTr>
-              <th scope='row'>1</th>
-              <td>제보합니다</td>
-              <td>뮤지컬 클로벌에 대한 정보를 제보합니다!</td>
-              <td>2024.11.29 17:00</td>
-            </S.ContentTr>
-            <S.ContentTr>
-              <th scope='row'>2</th>
-              <td>제보합니다</td>
-              <td>뮤지컬 클로벌에 대한 정보를 제보합니다!</td>
-              <td>2024.11.29 17:00</td>
-            </S.ContentTr>
-            <S.ContentTr>
-              <th scope='row'>3</th>
-              <td>제보합니다</td>
-              <td>뮤지컬 클로벌에 대한 정보를 제보합니다!</td>
-              <td>2024.11.29 17:00</td>
-            </S.ContentTr>
-            <S.ContentTr>
-              <th scope='row'>4</th>
-              <td>제보합니다</td>
-              <td>뮤지컬 클로벌에 대한 정보를 제보합니다!</td>
-              <td>2024.11.29 17:00</td>
-            </S.ContentTr>
-            <S.ContentTr>
-              <th scope='row'>5</th>
-              <td>제보합니다</td>
-              <td>뮤지컬 클로벌에 대한 정보를 제보합니다!</td>
-              <td>2024.11.29 17:00</td>
-            </S.ContentTr>
-            <S.ContentTr>
-              <th scope='row'>6</th>
-              <td>제보합니다</td>
-              <td>뮤지컬 클로벌에 대한 정보를 제보합니다!</td>
-              <td>2024.11.29 17:00</td>
-            </S.ContentTr>
-            <S.ContentTr>
-              <th scope='row'>7</th>
-              <td>제보합니다</td>
-              <td>뮤지컬 클로벌에 대한 정보를 제보합니다!</td>
-              <td>2024.11.29 17:00</td>
-            </S.ContentTr>
-            <S.ContentTr>
-              <th scope='row'>8</th>
-              <td>제보합니다</td>
-              <td>뮤지컬 클로벌에 대한 정보를 제보합니다!</td>
-              <td>2024.11.29 17:00</td>
-            </S.ContentTr>
+            { reports && reports.map((item, i) => (
+              <S.ContentTr key={i}>
+                <th scope='row'>{item.id}</th>
+                <td>{item.title}</td>
+                <td>{item.content}</td>
+                <td>{item.date}</td>
+              </S.ContentTr>
+            ))}
           </S.Tbody>
         </S.Table>
     </div>

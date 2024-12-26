@@ -1,3 +1,4 @@
+// MD - 문의내역 페이지 스타일
 import styled, { css } from "styled-components";
 
 const S = {};

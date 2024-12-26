@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const S = {};
 
   S.Table = styled.table`
-    margin-top: 40px;
+    margin-top: 60px;
     width: 800px;
     height: auto;
     
@@ -35,6 +35,7 @@ const S = {};
     &:hover {
       border-left: 2px solid #ffd400;
       background-color: rgb(255, 212, 0, 0.1);
+      cursor: pointer;
       }
 
     & td {
