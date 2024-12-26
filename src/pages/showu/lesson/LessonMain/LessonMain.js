@@ -1,6 +1,7 @@
 import React from 'react';
 import LessonList from './_component/LessonList';
 import S from '../style';
+import SelectSido from '../../team/teamMain/_component/SelectSido';
 
 
 const LessonMain = () => {
@@ -14,11 +15,7 @@ const LessonMain = () => {
                             과목
                         </option>
                     </select>
-                    <select className='lessonCategory' name='lessonPlace'>
-                        <option disabled selected>
-                            지역
-                        </option>
-                    </select>
+                   <SelectSido/>
                 </S.LessonCategoryWrapper>
 
                 <S.LessonButtonWrapper>
