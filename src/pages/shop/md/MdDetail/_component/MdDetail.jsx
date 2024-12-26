@@ -75,6 +75,7 @@ const MdDetail = () => {
   return (
     <S.Wrapper>
       <S.DetailContainer>
+        
         <S.ImageWrapper>
           <img src={product.images} alt={product.name}/>
         </S.ImageWrapper>
