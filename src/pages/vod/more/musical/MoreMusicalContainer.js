@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import MoreMusical from './MoreMusical'
 
-const MusicalContainer = () => {
+const MoreMusicalContainer = () => {
   const [plays, setPlays] = useState(null);
   
   useEffect(() => {
@@ -24,4 +24,4 @@ const MusicalContainer = () => {
   );
 };
 
-export default MusicalContainer;
+export default MoreMusicalContainer;

@@ -5,7 +5,7 @@
       "title": "영상 1",
       "thumbnail": "연인으로 발전한 제인과 리스본은 FBI에서 활약을 이어가지만 제인은 매일같이 목숨을 걸어야 하는 삶에  회의를 느끼고 리스본과 함께 떠나고 싶어 한다.",
       "time" : "107분",
-      "genre" : "드라마",
+      "genre" : "뮤지컬",
       "year" : "2020",
       "videoUrl": "/video/testplay.mp4",
       "mainImage": "https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=167824821/200x300?"
@@ -15,7 +15,7 @@
       "title": "영상 2",
       "thumbnail": "연인으로 발전한 제인과 리스본은 FBI에서 활약을 이어가지만 제인은 매일같이 목숨을 걸어야 하는 삶에  회의를 느끼고 리스본과 함께 떠나고 싶어 한다.",
       "time" : "107분",
-      "genre" : "드라마",
+      "genre" : "뮤지컬",
       "year" : "2020",
       "videoUrl": "/video/testplay.mp4",
       "mainImage": "https://web-cf-image.cjenm.com/resize/1344x756/public/share/metamng/programs/42ndstreetonbroadway-musical-ko-003-07.jpg?v=1676454555/200x300?"
@@ -26,7 +26,7 @@
       "title": "영상 3",
       "thumbnail": "연인으로 발전한 제인과 리스본은 FBI에서 활약을 이어가지만 제인은 매일같이 목숨을 걸어야 하는 삶에  회의를 느끼고 리스본과 함께 떠나고 싶어 한다.",
       "time" : "107분",
-      "genre" : "드라마",
+      "genre" : "영화",
       "year" : "2020",
       "videoUrl": "/video/testplay.mp4",
       "mainImage": "https://web-cf-image.cjenm.com/resize/1344x756/public/share/metamng/programs/gwangwhamunlovesong-musical-ko-004-03.jpg?v=1727398714/200x300?"
@@ -37,7 +37,7 @@
       "title": "영상 4",
       "thumbnail": "연인으로 발전한 제인과 리스본은 FBI에서 활약을 이어가지만 제인은 매일같이 목숨을 걸어야 하는 삶에  회의를 느끼고 리스본과 함께 떠나고 싶어 한다.",
       "time" : "107분",
-      "genre" : "드라마",
+      "genre" : "영화",
       "year" : "2020",
       "videoUrl": "/video/testplay.mp4",
       "mainImage": "https://web-cf-image.cjenm.com/resize/1344x756/public/share/metamng/programs/contents-detail-image-moulin-rouge-the-musical-10.jpg?v=1678248215/200x300?"
@@ -48,7 +48,7 @@
       "title": "영상 5",
       "thumbnail": "연인으로 발전한 제인과 리스본은 FBI에서 활약을 이어가지만 제인은 매일같이 목숨을 걸어야 하는 삶에  회의를 느끼고 리스본과 함께 떠나고 싶어 한다.",
       "time" : "107분",
-      "genre" : "드라마",
+      "genre" : "음악",
       "year" : "2020",
       "videoUrl": "/video/testplay.mp4",
       "mainImage": "https://search.pstatic.net/common?quality=75&direct=true&src=https%3A%2F%2Fmovie-phinf.pstatic.net%2F20241015_196%2F1728982918695jsvLp_JPEG%2Fmovie_image.jpg/200x300?"
@@ -58,7 +58,7 @@
   "Action" : [
     {
       "id" : "1",
-      "title" : "짱구는 못말려"
+      "title" : "기타 겁나 잘치는 사람"
     }
   ]
   
