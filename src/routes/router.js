@@ -395,9 +395,6 @@ const router = createBrowserRouter([
     path : '/reset-password',
     element : <FindPasswordContainer /> //비밀번호 변경 페이지
   },
-  
-
-  
 ]
 )
 
