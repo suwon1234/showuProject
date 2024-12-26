@@ -1,6 +1,7 @@
 import React from 'react';
 import TeamList from './_component/TeamList';
 import S from '../style';
+import SelectSido from './_component/SelectSido';
 
 const TeamMain = () => {
     return (
@@ -8,11 +9,7 @@ const TeamMain = () => {
             <S.TeamMainTitle>팀 매칭하기</S.TeamMainTitle>
             <S.TeamCategoryWrapper>
                 <S.TeamCategorys>
-                    <select className='teamLocation'>
-                        <option>
-                            지역
-                        </option>
-                    </select>
+                    <SelectSido />
                     <select className='teamField'>
                         <option>
                             분야
