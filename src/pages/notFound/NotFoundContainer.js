@@ -11,7 +11,10 @@ const NotFoundContainer = () => {
         <S.NotFoundIcon className='NotFoundicon'>
           <FontAwesomeIcon icon={faHouseCircleXmark} className='house'/>
         </S.NotFoundIcon>
-        <p>페이지를 찾을 수 없습니다.</p>
+        <S.NotFoundMsg className='NotFoundMsg'>
+          <p>페이지를 찾을 수 없습니다.</p>
+          <p>찾고 있는 페이지가 존재하지 않거나 제거되었을 수 있습니다.</p>
+        </S.NotFoundMsg>
       </S.NotFoundBox>
 
       <div className='GoHome'>
