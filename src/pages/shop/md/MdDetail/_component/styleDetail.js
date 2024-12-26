@@ -24,6 +24,44 @@ const flexStyle = css`
   S.DetailWrapper = styled.div`
     background-color: #000;
   `
+    S.SelectedOption = styled.div`
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+
+    & p {
+      font-size: 18px;
+      flex: 1; /* 옵션명이 왼쪽에 위치 */
+      text-align: left;
+    }
+  `
+
+  S.QuantityControl = styled.div`
+    ${flexStyle}
+    justify-content: center; 
+
+    & span {
+      margin: 0 15px;
+    }
+  `
+
+  S.IconWrapper = styled.div`
+    display: flex;
+    justify-content: flex-end; 
+    flex: 0.2;
+    cursor: pointer;
+
+    .icon {
+      font-size: 20px;
+
+      &:hover path {
+        color: #ffd400;
+      }
+    }
+  `
+
+S.OptionWrapper = styled.div`
+`
 
   S.MdTitle = styled.div`
     display: flex;
