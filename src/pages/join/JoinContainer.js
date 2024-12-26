@@ -120,13 +120,13 @@ const JoinContainer = () => {
                 <S.LockImage src={process.env.PUBLIC_URL + "/images/login/lock.png"} alt="비밀번호 잠금" />
               </S.idLabel>
               
-              <S.idLabel>
+              {/* <S.idLabel>
                 <S.input type="text" id='name' placeholder='이름'
                   {...register("name", {
                     required : true
                   })}
                 />
-              </S.idLabel>
+              </S.idLabel> */}
 
               <S.idLabel>
                 <S.input type="text" id='phone' placeholder='전화번호(ex.010-1234-5678)'
