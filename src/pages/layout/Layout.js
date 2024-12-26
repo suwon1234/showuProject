@@ -34,7 +34,10 @@ const Layout = () => {
     if (tokenFromStorage) {
       // 토큰이 있다면 로컬 스토리지에 저장
       localStorage.setItem("jwtToken", tokenFromStorage);
-      navigate("/main", { replace: true });
+
+      if (location.pathname === "/") {
+        navigate("/", { replace: true });
+      }
     }
 
     const jwtToken = localStorage.getItem("jwtToken");
