@@ -11,7 +11,7 @@ const NotFoundContainer = () => {
           <FontAwesomeIcon icon={faPager} />
           <FontAwesomeIcon icon={faSquareXmark} />
         </div>
-        페이지를 찾을 수 없습니다.
+        <p>페이지를 찾을 수 없습니다.</p>
       </div>
 
       <div className='GoHome'>
