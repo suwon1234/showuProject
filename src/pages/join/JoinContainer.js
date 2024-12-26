@@ -12,9 +12,12 @@ const JoinContainer = () => {
   const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/;
 
   const navigate = useNavigate();
-  const { register, handleSubmit, getValues,
-          formState : { isSubmitting, isSubmitted, errors }
-        } = useForm({ mode : "onChange"});
+  const { 
+    register, 
+    handleSubmit, 
+    getValues,
+    formState : { isSubmitting, errors }
+  } = useForm({ mode : "onChange"});
 
   
 
@@ -28,11 +31,16 @@ const JoinContainer = () => {
           <S.title>showU 회원가입</S.title>
 
             <S.Form onSubmit={handleSubmit( async (data) => {
-              console.log(data)
+              console.log("data", data)
+
+              if(!buttonColor){
+                console.log("약관 동의하지 않음")
+                alert("약관에 동의해야 회원가입이 가능합니다.");
+              }
 
               const { email, password, phone } = data;
 
-              await fetch(`http://localhost:3000/join`, {
+              await fetch(`http://localhost:8000/users/register`, {
                 method : "POST",
                 headers : {
                   "Content-Type" : "application/json"
@@ -44,8 +52,18 @@ const JoinContainer = () => {
                 })
               })
               .then((res) => res.json())
-              .catch(console.error)
-
+              .then((res) => {
+                if(!res.registerSuccess){
+                  return alert(res.message);
+                }
+                  alert(res.message);
+                  navigate('/login'); 
+                  console.log("회원가입 완료")
+              })
+              .catch((error) => {
+                console.error("회원가입 중 오류 발생:", error);
+                alert("회원가입 중 오류가 발생했습니다.");
+              });
             })}>
 
               <S.idLabel>
@@ -102,23 +120,43 @@ const JoinContainer = () => {
                 <S.LockImage src={process.env.PUBLIC_URL + "/images/login/lock.png"} alt="비밀번호 잠금" />
               </S.idLabel>
               
-              {/* <S.idLabel>
-                <S.input type="text" id='email' placeholder='이메일'/>
-              </S.idLabel> */}
-
               <S.idLabel>
-                <S.input type="text" id='phone' placeholder='전화번호(ex.010-1234-5678)'/>
+                <S.input type="text" id='name' placeholder='이름'
+                  {...register("name", {
+                    required : true
+                  })}
+                />
               </S.idLabel>
 
-            </S.Form>
+              <S.idLabel>
+                <S.input type="text" id='phone' placeholder='전화번호(ex.010-1234-5678)'
+                  {...register("phone", {
+                    required : true
+                  })}
+                />
+              </S.idLabel>
 
             <Checkbox setButtonColor={setButtonColor}/>
           
             
             <S.JoinButton
-              disabled={isSubmitting}
               {...(buttonColor ? { state: "true" } : {})}
-            >가입하기</S.JoinButton>
+              // disabled={!buttonColor || isSubmitting}
+              onClick={(e) => {
+                if(!buttonColor){
+                  e.preventDefault();
+                  console.log("약관동의안함")
+                  alert("약관 동의해야 회원가입이 가능합니다")
+                  return;
+                }
+              }}
+            >
+              회원가입
+              </S.JoinButton>
+
+            </S.Form>
+
+
             <Link to={'/login'}>
             <S.LoginButton>로그인으로</S.LoginButton>
             </Link>

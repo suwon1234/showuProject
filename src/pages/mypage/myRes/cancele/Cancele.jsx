@@ -22,6 +22,7 @@ const Cancele = () => {
 
   // console.log(cancele)
 
+  //전체 취소인 티켓내역만 보여주기
   const filterCanceleTicket = cancele.filter((item) => item.state.includes("전체 취소"))
   // console.log(filterCanceleTicket)
 
@@ -35,7 +36,7 @@ const Cancele = () => {
     <div>
       <S.Container className='Container'>
         { filterCanceleTicket && filterCanceleTicket.map((item, i) => (
-          <S.Wrapper key={i} className='Wrapper' onClick={() => handleNavigate('/my-res/ticket/detail')}>
+          <S.Wrapper key={i} className='Wrapper' onClick={() => handleNavigate(`/my-res/ticket/detail/${item.id}`)}>
             <S.RightContent className='rightContent'>
               <p className='date'>{item.date}</p>
               <p className='id'>예매번호 {item.id}</p>

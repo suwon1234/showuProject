@@ -52,15 +52,14 @@ const S = {};
     width: 480px;
     height: 53px;
     padding: 16px;
-    background-color: #000;
+    background-color: #2F2F2F;
+    color: #888888;
+    border: none;
     font-size: 15px;
-    color: #fff;
-    border: 0.5px solid #fff;
     border-radius: 5px;
   `
 
   S.CheckBoxWapper = styled.div`
-    margin: 0 40px 0 40px;
     display: flex;
 
     & img {
@@ -76,7 +75,8 @@ const S = {};
   S.LoginButton = styled.button`
     width: 480px;
     height: 55px;
-    margin: 20px 40px 0 40px;
+    /* margin: 20px 40px 0 40px; */
+    margin-top: 20px;
 
     background-color: #717171;
     color: #fff;

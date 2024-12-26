@@ -1,15 +1,46 @@
 // 경매 - 상세페이지
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './styleDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faCircleChevronLeft, faCircleChevronRight, faCircleExclamation, faClock, faLock, faPencil } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faCircleChevronLeft, faCircleChevronRight, faCircleExclamation, faClock, faHeart, faLock, faPencil } from '@fortawesome/free-solid-svg-icons';
 import DeliveryPopup from './DeliveryPopup';
+import { Link } from 'react-router-dom';
+import BidPopup from './BidPopup';
 
-const AuctionDetail = ({ auctionItems, inquiryList, auctionInfo }) => {
-  const [isPopupVisible, setIsPopupVisible] = useState(false);
+// const AuctionDetail = ({ auctionItems, inquiryList, auctionInfo }) => {
+const AuctionDetail = ({auctionItems, auctionInfo}) => {
+  const [PopupVisible1, setPopupVisible1] = useState(false);
+  const [PopupVisible2, setPopupVisible2] = useState(false);
+  const [HeartClicked, setHeartClicked] = useState(false);
+  const [inquiryList, setInquiryList] = useState([]);
 
-  const openPopup = () => setIsPopupVisible(true);
-  const closePopup = () => setIsPopupVisible(false);
+  const openPopup1 = () => setPopupVisible1(true);
+  const closePopup1 = () => setPopupVisible1(false);
+  const openPopup2 = () => setPopupVisible2(true);
+  const closePopup2 = () => setPopupVisible2(false);
+
+  const toggleHeart = () => {
+    if (HeartClicked) {
+      setHeartClicked(false);
+    } else {
+      setHeartClicked(true);
+    }
+  };
+
+  useEffect(() => {
+    const getList = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/inquiry');
+        const datas = await response.json();
+        setInquiryList(datas);
+      } catch (error) {
+        console.error("InquiryListError", error);
+      }
+    };
+
+    getList();
+
+  }, []);
   
   return (
     <S.DetailWrapper>
@@ -18,7 +49,7 @@ const AuctionDetail = ({ auctionItems, inquiryList, auctionInfo }) => {
       </S.Title>
 
       <S.AuctionWrapper>
-        <S.Image src={process.env.PUBLIC_URL + "/images/md/md-1.jpg"} alt="경매 상품" />
+        <S.Image src={process.env.PUBLIC_URL + "/images/shop/md/md1.jpg"} alt="경매 상품" />
         <S.Auction>
           <S.InfoContainer>
             <S.InfoWrapper>
@@ -47,19 +78,27 @@ const AuctionDetail = ({ auctionItems, inquiryList, auctionInfo }) => {
           </S.InfoContainer>
           
           <S.ButtonContainer>
-            <button className='button button1'><p>입찰하기</p></button>
+            <button className='button button1' onClick={openPopup1}><p>입찰하기</p></button>
             <button className='button button2'><p>즉시구매 불가</p></button>
             <div className='button-wrapper1'>
-              <button className='button delivery' onClick={openPopup}><p>배송정보</p></button>
-              <button className='button heart'><p>관심물품</p></button>
+              <button className='button delivery' onClick={openPopup2}><p>배송정보</p></button>
+              <button className='button heart' onClick={toggleHeart}>
+              <FontAwesomeIcon icon={faHeart} className="heart-icon"
+              style={{ color: HeartClicked ? 'red' : '#fff' }}/>
+              <p>관심물품</p>
+              </button>
             </div>
           </S.ButtonContainer>
 
-          {isPopupVisible && (
-            <DeliveryPopup title="배송 정보" onClose={closePopup}>
-              <p>배송지역 : 전국 (제주 및 도서산간 지역은 배송비가 추가될 수 있습니다.)</p>
-              <p>배송방법 : 택배</p>
-              <p>배송비용 : 착불 5,000원</p>
+          {PopupVisible1 && (
+            <BidPopup
+              title="입찰하기" onClose={closePopup1}>
+            </BidPopup>
+          )}
+
+          {PopupVisible2 && (
+            <DeliveryPopup 
+              title="배송 정보" onClose={closePopup2}>
             </DeliveryPopup>
           )}
         </S.Auction>
@@ -86,7 +125,7 @@ const AuctionDetail = ({ auctionItems, inquiryList, auctionInfo }) => {
       </S.Content>
 
       <S.ImageWrapper>
-        <S.Image2 className='content-image' src={process.env.PUBLIC_URL + "/images/md/md-1.jpg"} alt="경매 상품" />
+        <S.Image2 className='content-image' src={process.env.PUBLIC_URL + "/images/shop/md/md4.jpg"} alt="경매 상품" />
       </S.ImageWrapper>
 
       <S.Customized>
@@ -173,10 +212,12 @@ const AuctionDetail = ({ auctionItems, inquiryList, auctionInfo }) => {
       </S.Inquiry>
 
       <S.ButtonWrapper>
+        <Link to={"/shop/auction/detail/inquiry"}>
       <S.InquiryButton>
         <p>문의하기</p>
         <FontAwesomeIcon className='icon' icon={faPencil} />
       </S.InquiryButton>
+      </Link>
       </S.ButtonWrapper>
 
       

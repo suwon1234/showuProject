@@ -1,7 +1,7 @@
 // MD - 상세페이지
-import React from 'react'; 
+import React, { useEffect, useState } from 'react'; 
 import S from './styleDetail';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation, faChevronUp } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from './Dropdown' 
@@ -9,18 +9,40 @@ import Dropdown from './Dropdown'
 const MdDetail = () => {
   const options = ['옵션 1', '옵션 2', '옵션 3']; 
 
+  const { id } = useParams(); 
+  const [product, setProduct] = useState(null);  
+
+  useEffect(() => {
+    const getMdDetail = async () => {
+      try {
+        const response = await fetch(`http://localhost:4000/md/${id}`);
+        const datas = await response.json();
+        setProduct(datas);
+      } catch (error) {
+        console.error("MdDetailError", error);
+      }
+    };
+    
+    getMdDetail();
+
+  }, [id]);  
+
+  if (!product) {
+    return <p>상품을 찾을 수 없습니다.</p>; 
+  }
+
   return (
     <S.Wrapper>
       <S.DetailContainer>
         <S.ImageWrapper>
-          <img src={process.env.PUBLIC_URL + "/images/md/md-1.jpg"}/>
+          <img src={product.images} alt={product.name}/>
         </S.ImageWrapper>
         
         <S.DetailWrapper>
           <S.MdTitle>
             <p>뮤지컬</p>
-            <p>2024 베르사유의 장미 프로그램북 스페셜 에디션</p>
-            <p>65,000원</p>
+            <p>{product.name}</p>
+            <p>{product.price.toLocaleString()}원</p>
           </S.MdTitle>
         
           <S.Dropdown>
@@ -52,7 +74,7 @@ const MdDetail = () => {
       <S.MdInfo>
         <p className='description'>상품 설명</p>
         <S.ImageWrapper2>
-          <img className='imagewrapper' src={process.env.PUBLIC_URL + "/images/md/md-2.jpg"}/>
+          <img className='imagewrapper' src={product.detailsImage} alt="상세 이미지"/>
         </S.ImageWrapper2>
         <S.ButtonWrapper3>
           <button>
@@ -66,7 +88,7 @@ const MdDetail = () => {
         <tbody>
           <tr>
             <th>품명 / 모델명</th>
-            <td>2024 베르사유의 장미 프로그램북 스페셜 에디션</td>
+            <td>{product.name}</td>
           </tr>
           <tr>
             <th>제조자(사)</th>
@@ -118,10 +140,6 @@ const MdDetail = () => {
         </S.Return>
       </S.MdInfo>
     </S.Wrapper>
-
-
-
-
 
 
   );

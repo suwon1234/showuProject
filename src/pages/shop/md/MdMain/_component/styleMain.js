@@ -51,11 +51,12 @@ const flexStyle = css`
   `
 
   S.BestItems = styled.div`
-    display: grid;
-    grid-template-columns: auto 1fr auto; 
-    align-items: center;
-    margin-top: 30px;
-    column-gap: 20px; 
+  display: flex;
+  overflow: hidden; /* 보이는 영역 제한 */
+  position: relative;
+  margin-top: 30px;
+  align-items: center;
+
   `
 
   S.LeftIconWrapper = styled.div`
@@ -74,13 +75,22 @@ const flexStyle = css`
 
   S.BestListWrapper = styled.div`
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    grid-gap: 50px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px; /* 간격 */
+    width: 1090px; /* 슬라이드 영역 크기 */
+    margin: 0 auto;
     justify-items: center;
-    width: 1090px; 
+    transform: translateX(${(props) => props.offset}px); /* 슬라이드 이동 */
+    transition: transform 0.5s ease-in-out; /* 부드러운 이동 효과 */
+    overflow: hidden;
   `
 
   S.Best = styled.div`
+
+    & img {
+      width: 300px;
+      height: 300px;
+    }
 
     & .best-name {
         font-size: 16px;
@@ -93,9 +103,19 @@ const flexStyle = css`
         margin-top: 5px;
     }
 
-    & .image {
-      width: 300px;
-      height: 300px;
+    .image-wrapper {
+      position: relative; 
+    }
+
+    .heart-icon {
+      position: absolute; 
+      bottom: 10px;
+      right: 10px; 
+      font-size: 20px; 
+      color: red; 
+      cursor: pointer; 
+      
+      /* transform: translate(0, 50%); */
     }
   `
 
@@ -129,23 +149,42 @@ const flexStyle = css`
 
   S.MdWrapper = styled.div`
     margin-top: 30px;
-    margin-left: 20px;
+    margin: 30px auto;
+    width: 100%;
+    max-width: 1090px;
 
     & .md-list {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 50px;
-        width: 1090px;
-        margin: 0 auto;
-      }
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 50px;
+      width: 1090px;
+      margin: 0 auto;
+    }
+      
+    `
+  S.MdWrapper = styled.div`
+    margin-top: 30px;
+    margin: 30px auto;
+    width: 100%;
+    max-width: 1090px;
+
+    & .md-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 50px;
+      width: 1090px;
+      margin: 0 auto;
+    }
+      
     `
 
-  S.Md = styled.image`
+  S.Md = styled.div`
+    margin: 0 auto;
   
     & img {
-        width: 300px;
-        height: 300px;
-      }
+      width: 300px;
+      height: 300px;
+    }
 
     & .md-name {
         font-size: 16px;
@@ -157,6 +196,32 @@ const flexStyle = css`
         font-weight: bold;
         margin-top: 5px;
     }
+      .image-wrapper {
+        position: relative; 
+      }
+
+    /* .heart-icon {
+      position: absolute; 
+      bottom: 10px;
+      right: 10px; 
+      font-size: 20px; 
+      color: red; 
+      cursor: pointer; 
+    } */
+
+  `
+
+  S.HeartIconWrapper = styled.div`
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+
+    path {
+      color: ${({ isHearted }) => (isHearted ? "red" : "#fff")};
+    }
+
   `
 
   S.ButtonWrapper = styled.div `
@@ -197,6 +262,6 @@ const flexStyle = css`
         height: 16px;
       }
   `
-  
+
 export default S;
 

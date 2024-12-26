@@ -1,32 +1,41 @@
 // 경매 - 메인페이지
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './styleMain';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faChevronRight, faCircleChevronLeft, faCircleChevronRight, faClock } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faChevronRight, faCircleChevronLeft, faCircleChevronRight, faClock, faHeart } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
-const auctionClosing = [
-  { id: 1, name: "베르사유의 장미 고블렛", number: "88회", time: "20시간 47분", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510"},
-  { id: 2, name: "베르사유의 장미 고블렛", number: "88회", time: "20시간 47분", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510"},
-  { id: 3, name: "베르사유의 장미 고블렛", number: "88회", time: "20시간 47분", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510"}
-]
-
-const auctions = [
-  { id: 4, name: "베르사유의 장미 고블렛", number: "88회", time: "20시간 47분", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510" },
-  { id: 5, name: "베르사유의 장미 고블렛", number: "88회", time: "20시간 47분", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510" },
-  { id: 6, name: "베르사유의 장미 고블렛", number: "88회", time: "20시간 47분", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510" },
-  { id: 7, name: "베르사유의 장미 고블렛", number: "88회", time: "20시간 47분", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510" },
-  { id: 8, name: "베르사유의 장미 고블렛", number: "88회", time: "20시간 47분", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510" },
-  { id: 9, name: "베르사유의 장미 고블렛", number: "88회", time: "20시간 47분", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510" },
-  { id: 10, name: "베르사유의 장미 고블렛", number: "88회", time: "20시간 47분", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510" },
-  { id: 11, name: "베르사유의 장미 고블렛", number: "88회", time: "20시간 47분", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510" },
-  { id: 12, name: "베르사유의 장미 고블렛", number: "88회", time: "20시간 47분", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510" },
-  { id: 13, name: "베르사유의 장미 고블렛", number: "88회", time: "20시간 47분", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510" },
-  { id: 14, name: "베르사유의 장미 고블렛", number: "88회", time: "20시간 47분", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510" },
-  { id: 15, name: "베르사유의 장미 고블렛", number: "88회", time: "20시간 47분", image: "https://shop-phinf.pstatic.net/20240911_83/17260383426329TtFF_JPEG/6410700596837064_1032211939.jpg?type=m510" },
-];
-
 const AuctionMain = () => {
+  const [auctionItems, setAuctionItems] = useState([]);
+  const [heartedItems, setHeartedItems] = useState([]);
+
+  useEffect(() => {
+
+    const getAuction = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/auction');
+        const datas = await response.json();
+        setAuctionItems(datas);
+      } catch (error) {
+        console.error("AuctionMainError", error);
+      }
+    };
+
+    getAuction();
+
+  }, [])
+
+  const ClosingItems = auctionItems.slice(0, 3); 
+  const otherItems = auctionItems.slice(3); 
+
+  const handleHeartClick = (e, id) => {
+    e.preventDefault(); // 하트 클릭 => 링크 이동 X
+    setHeartedItems((prev) =>
+      prev.includes(id)
+        ? prev.filter((itemId) => itemId !== id) // 하트 제거
+        : [...prev, id] // 하트 추가
+    );
+  };
 
   return (
     <S.MainWrapper>
@@ -46,10 +55,16 @@ const AuctionMain = () => {
           </S.LeftIconWrapper>
 
           <S.ClosingListWrapper>
-            {auctionClosing.map((closing) => (
+            {ClosingItems.map((closing) => (
               <S.Closing key={closing.id}>
                 <Link to={'/shop/auction/detail'}>
-                <img src={closing.image} alt={closing.image} className='image' />
+                <div className="image-wrapper">
+                  <img src={closing.image} alt={closing.image} className='image' />
+                  <S.HeartIconWrapper isHearted={heartedItems.includes(closing.id)}
+                    onClick={(e) => handleHeartClick(e, closing.id)} >
+                      <FontAwesomeIcon icon={faHeart} />
+                  </S.HeartIconWrapper>
+                </div>
                 </Link>
                 <div className='closing-name'>{closing.name}</div>
                 <S.Closing2>
@@ -80,10 +95,17 @@ const AuctionMain = () => {
       </S.CategoryButton>
 
       <S.AuctionWrapper>
-        <div className='auction-list'>{auctions.map((auction) => (
+        <div className='auction-list'>
+          {otherItems.map((auction) => (
           <S.Closing key={auction.id}>
             {/* <Link to={"/shop/mdDetail"}> */}
+            <div className="image-wrapper">
             <img src={auction.image} alt={auction.image} className='image'/>
+            <S.HeartIconWrapper isHearted={heartedItems.includes(auction.id)}
+              onClick={(e) => handleHeartClick(e, auction.id)} >
+                <FontAwesomeIcon icon={faHeart} />
+            </S.HeartIconWrapper>
+            </div>
             {/* </Link>    */}
             <div className='closing-name'>{auction.name}</div>
             <S.Closing2>
