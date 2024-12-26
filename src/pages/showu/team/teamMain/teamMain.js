@@ -1,24 +1,50 @@
 import React from 'react';
+import TeamList from './_component/TeamList';
+import S from '../style';
+import SelectSido from './_component/SelectSido';
 
-const teamMain = () => {
+const TeamMain = () => {
     return (
-        <div className='teamMainWrapper'>
-            <h1 className='title'>팀 매칭하기</h1>
-            <div className='teamCategoryWrapper'>
-                <select className='teamLocation'>지역</select>
-                <select className='teamField'>분야</select>
-                <select className='teamGender'>성별</select>
-                <select className='teamAge'>나이</select>
-                <select className='teamMeetDate'>요일</select>
-                <select className='teamMeetTime'>시간대</select>
-                <button className='teamMakeButton'>
+        <S.TeamMainWrapper>
+            <S.TeamMainTitle>팀 매칭하기</S.TeamMainTitle>
+            <S.TeamCategoryWrapper>
+                <S.TeamCategorys>
+                    <SelectSido />
+                    <select className='teamField'>
+                        <option>
+                            분야
+                        </option>
+                    </select>
+                    <select className='teamGender'>
+                        <option>
+                            성별
+                        </option>
+                    </select>
+                    <select className='teamAge'>
+                        <option>
+                            나이
+                        </option>
+                    </select>
+                    <select className='teamMeetDate'>
+                        <option>
+                            요일
+                        </option>
+                    </select>
+                    <select className='teamMeetTime'>
+                        <option>
+                            시간대
+                        </option>
+                    </select>
+                </S.TeamCategorys>
+                <S.TeamMakeButton>
                     팀 만들기
-                </button>
-            </div>
-            <ul className='teamListWrapper'>
-            </ul>
-        </div>
+                </S.TeamMakeButton>
+            </S.TeamCategoryWrapper>
+            <S.TeamListWrapper>
+                <TeamList />
+            </S.TeamListWrapper>
+        </S.TeamMainWrapper>
     );
 };
 
-export default teamMain;
+export default TeamMain;
