@@ -1,25 +1,25 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHouse, faPager, faSquareXmark } from '@fortawesome/free-solid-svg-icons';
+import { faHouse, faHouseCircleXmark, faSquareXmark, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
+import S from './style';
 
 const NotFoundContainer = () => {
   return (
-    <div>
+    <S.Wrap>
 
-      <div className='wrap'>
-        <div className='NotFoundicon'>
-          <FontAwesomeIcon icon={faPager} />
-          <FontAwesomeIcon icon={faSquareXmark} />
-        </div>
+      <S.NotFoundBox className='NotFoundBox'>
+        <S.NotFoundIcon className='NotFoundicon'>
+          <FontAwesomeIcon icon={faHouseCircleXmark} className='house'/>
+        </S.NotFoundIcon>
         <p>페이지를 찾을 수 없습니다.</p>
-      </div>
+      </S.NotFoundBox>
 
       <div className='GoHome'>
         <FontAwesomeIcon icon={faHouse} />
         <button>메인으로</button>
       </div>
 
-    </div>
+    </S.Wrap>
   );
 };
 
