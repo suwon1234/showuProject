@@ -68,7 +68,7 @@ import MainContainer2 from '../pages/shop/auction/AuctionMain/MainContainer2';
 import DetailContainer2 from '../pages/shop/auction/AuctionDetail/DetailContainer2';
 import MoreContainer from '../pages/vod/more/selectMore/MoreContainer'
 import PopularContainer from '../pages/vod/more/popular/PopularContainer'
-import MusicalContainer from '../pages/vod/more/musical/MusicalContainer'
+import MusicalContainer from '../pages/vod/musical/MusicalContainer2'
 import NonLoginContainer from '../pages/vod/video/nonloginpage/NonLoginContainer'
 import HotContainer from '../pages/hot/HotContainer';
 

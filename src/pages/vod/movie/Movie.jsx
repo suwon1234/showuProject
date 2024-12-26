@@ -2,10 +2,9 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import S from './style';
 
-
-const Music = ({ plays }) => {
-  const musicals = (plays || []).filter(item => item.genre === '뮤지컬');
-  const [selectedCategory, setSelectedCategory] = useState("음악전체");
+const Movie = ({ plays }) => {
+  const musicals = (plays || []).filter(item => item.genre === '영화');
+  const [selectedCategory, setSelectedCategory] = useState("장르");
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
@@ -18,13 +17,18 @@ const Music = ({ plays }) => {
           <S.title className="title">Movie</S.title>
           <S.DropdownWrapper>
             <S.Dropdown onChange={handleCategoryChange} value={selectedCategory}>
-              <option value="음악전체" className="select">음악전체</option>
-              <option value="오케스트라" className="select">오케스트라</option>
-              <option value="국내음악" className="select">국내음악</option>
-              <option value="해외음악" className="select">해외음악</option>
-              <option value="랩 힙합" className="select">랩 힙합</option>
-              <option value="영화 OST" className="select">영화 OST</option>
-              <option value="만화 OST" className="select">만화 OST</option>
+              <option value="인기순" className="select">영화전체</option>
+              <option value="최신순" className="select">코미디</option>
+              <option value="최신순" className="select">다큐멘터리</option>
+              <option value="최신순" className="select">액션</option>
+              <option value="최신순" className="select">가족</option>
+              <option value="최신순" className="select">공포</option>
+              <option value="최신순" className="select">단편</option>
+              <option value="최신순" className="select">드라마</option>
+              <option value="최신순" className="select">모험</option>
+              <option value="최신순" className="select">로멘스</option>
+              <option value="최신순" className="select">서부</option>
+              <option value="최신순" className="select">스포츠</option>
             </S.Dropdown>
           </S.DropdownWrapper>
         </S.topwrapper>
@@ -50,4 +54,4 @@ const Music = ({ plays }) => {
   );
 };
 
-export default Music;
+export default Movie;

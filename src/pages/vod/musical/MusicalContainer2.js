@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import Music from './Music';
+import Musical from './Musical';
 
-const MusicContainer = () => {
+const MusicalContainer2 = () => {
+  
   const [plays, setPlays] = useState(null);
   
   useEffect(() => {
-    const musiclist = async () => {
+    const playlist = async () => {
       try {
         const response = await fetch('http://localhost:4000/play');
         const data = await response.json();
@@ -15,13 +16,13 @@ const MusicContainer = () => {
       }
     };
 
-    musiclist();
+    playlist();
   }, []);
   return (
     <div>
-      <Music plays={plays}/>
+      <Musical plays={plays}/>
     </div>
   );
 };
 
-export default MusicContainer;
+export default MusicalContainer2;

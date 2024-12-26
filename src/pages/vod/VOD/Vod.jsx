@@ -100,10 +100,10 @@ const Vod = ({plays}) => {
 
       </S.showuRecommendation>
       <S.categorybutton>
-      <Link to={"/vod/Musical"} > <button className='category'>Musical</button></Link>
-      <Link to={"/vod/Movie"} > <button className='category'>Movie</button></Link>
-      <Link to={"/vod/Music"} > <button className='category'>Music</button></Link>
-      <Link to={"/vod/ShowU"} > <button className='category'>ShowU</button></Link> 
+      <Link to={"/vod/musical"} > <button className='category'>Musical</button></Link>
+      <Link to={"/vod/movie"} > <button className='category'>Movie</button></Link>
+      <Link to={"/vod/music"} > <button className='category'>Music</button></Link>
+      <Link to={"/vod/my-ShowU"} > <button className='category'>ShowU</button></Link> 
       </S.categorybutton>
 
 

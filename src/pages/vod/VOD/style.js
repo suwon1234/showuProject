@@ -90,12 +90,14 @@ S.Card = styled.div`
   border-radius: 10px;
   overflow: hidden;
   position: relative;
+  margin: 10px;
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
+    
         }
    &:hover img {
       transform: scale(1.1); 
@@ -138,6 +140,7 @@ S.showuRecommendation = styled.div`
   min-height: 100px;
   max-height: 440px;
   color: white;
+ 
   
   
 `;
