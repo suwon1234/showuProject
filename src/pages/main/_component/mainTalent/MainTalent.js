@@ -5,7 +5,7 @@ const MainTalent = () => {
   return (
     <S.Wrapper>
       <S.SubWrapper>
-
+         
       </S.SubWrapper>
       
     </S.Wrapper>
