@@ -1,17 +1,59 @@
-// MD - 상세페이지
 import React, { useEffect, useState } from 'react'; 
 import S from './styleDetail';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleExclamation, faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faCircleExclamation, faChevronUp, faXmark } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from './Dropdown' 
 
 const MdDetail = () => {
   const options = ['옵션 1', '옵션 2', '옵션 3']; 
-
   const { id } = useParams(); 
   const [product, setProduct] = useState(null);  
+  const [selectedOptions, setSelectedOptions] = useState([]); // 선택된 옵션들
+  const [quantity, setQuantity] = useState(1); // 기본 수량 1로 설정
 
+  // 수량 감소
+  const decrease = (index) => {
+    setSelectedOptions((prev) => {
+      const updated = [...prev];
+      if (updated[index].quantity > 1) {
+        updated[index].quantity -= 1;
+      }
+      return updated;
+    });
+  };
+
+  // 수량 증가
+  const increase = (index) => {
+    setSelectedOptions((prev) => {
+      const updated = [...prev];
+      updated[index].quantity += 1;
+      return updated;
+    });
+  };
+
+  // 옵션 선택
+  const handleSelect = (option) => {
+    if (selectedOptions.find((item) => item.option === option)) {
+      alert("이미 선택된 옵션입니다!");
+      return;
+    }
+    
+    // 새로운 옵션 추가
+    setSelectedOptions((prev) => [
+      ...prev,
+      { option, quantity: 1 }, // 초기 수량 
+      ]);
+    };
+
+  // 옵션 삭제
+  const handleRemove = (indexToRemove) => {
+    setSelectedOptions((prevOptions) =>
+      prevOptions.filter((_, index) => index !== indexToRemove)
+    );
+  };
+
+  
   useEffect(() => {
     const getMdDetail = async () => {
       try {
@@ -24,7 +66,6 @@ const MdDetail = () => {
     };
     
     getMdDetail();
-
   }, [id]);  
 
   if (!product) {
@@ -34,6 +75,7 @@ const MdDetail = () => {
   return (
     <S.Wrapper>
       <S.DetailContainer>
+        
         <S.ImageWrapper>
           <img src={product.images} alt={product.name}/>
         </S.ImageWrapper>
@@ -47,14 +89,30 @@ const MdDetail = () => {
         
           <S.Dropdown>
             <p>옵션 선택</p>
-            <Dropdown options={options} /> 
+            <Dropdown options={options} handleSelect={handleSelect} /> 
           </S.Dropdown>
-          
+
           <S.Max>
             <FontAwesomeIcon icon={faCircleExclamation} className='icon1'/>
             <p>각 옵션별로 최대 2개까지 구매 가능합니다.</p>
           </S.Max>
-      
+
+          <S.OptionWrapper>
+            {selectedOptions.map((selected, index) => (
+              <S.SelectedOption key={index}>
+                <p>{selected.option}</p>
+                <S.QuantityControl>
+                  <S.QuantityButton onClick={() => decrease(index)}>-</S.QuantityButton>
+                  <span>{selected.quantity}</span>
+                  <S.QuantityButton onClick={() => increase(index)}>+</S.QuantityButton>
+                </S.QuantityControl>
+                <S.IconWrapper>
+                <FontAwesomeIcon className='icon' icon={faXmark} onClick={() => handleRemove(index)} />
+                </S.IconWrapper>
+              </S.SelectedOption>
+            ))} 
+          </S.OptionWrapper>
+          
           <S.ButtonWrapper2>
             <div className='button-wrapper1'>
               <Link to={'/shop/md/detail/cart'}>
@@ -140,8 +198,6 @@ const MdDetail = () => {
         </S.Return>
       </S.MdInfo>
     </S.Wrapper>
-
-
   );
 };
 
