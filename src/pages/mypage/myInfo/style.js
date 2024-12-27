@@ -210,5 +210,12 @@ const S = {};
     border-bottom: 0.5px solid #444444;
   `
 
+  S.IdLabel = styled.label`
+    & span.currentEmail{
+      text-align: right;
+      padding: 4px 15px;
+    }
+  `
+
 
 export default S;

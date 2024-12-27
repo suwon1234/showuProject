@@ -3,12 +3,10 @@ import S from './style';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPen } from '@fortawesome/free-solid-svg-icons'
+import DeleteAccount from './_component/DeleteAccount';
 
 const MyInfo = () => {
 
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/;
 
   const jwtToken = localStorage.getItem("jwtToken");
@@ -18,7 +16,9 @@ const MyInfo = () => {
 
   const { register, handleSubmit, getValues,
           formState : { isSubmitting, errors }
-        } = useForm({ mode : "onChange" });
+        } = useForm({ 
+            mode : "onChange",
+            });
 
   const handleNavigate = (path) => {
     navigate(path)
@@ -28,9 +28,8 @@ const MyInfo = () => {
     if(!jwtToken){
       navigate("/login", { replace : true })
     }
-  }, [jwtToken])
+  }, [jwtToken, navigate])
 
-  
   return (
       <S.RightSection>
         <p className='infoTitle'>회원정보 관리</p>
@@ -59,16 +58,16 @@ const MyInfo = () => {
         <fieldset>
           <S.Form 
             onSubmit={handleSubmit( async (data) => {
-              // console.log(data);
+              console.log(data);
 
               const { email , password, phone } = data;
               await fetch("http://localhost:8000/users/modify", {
                 method : "PUT",
                 headers : {
-                  "Content-Type" : "application/json"
+                  "Content-Type" : "application/json",
+                  'Authorization': `Bearer ${jwtToken}`
                 },
                 body : JSON.stringify({
-                  email : email,
                   password : password,
                   phone : phone
                 })
@@ -76,25 +75,14 @@ const MyInfo = () => {
               .then((res) => res.json())
               .then((res) => {
                 console.log(res)
+                alert(res.message)
               })
-
             })}       
           >
-              <label>
+              <S.IdLabel>
                 <span>아이디</span>
-                <S.Input 
-                  type="text" name='id'
-                  value={currentUser.email || ''}
-                  {...register("email")}
-                />
-                <div></div>
-                {errors?.email?.type === 'required' && (
-                  <S.ConfirmMessage>이메일을 입력해주세요</S.ConfirmMessage>
-                )}
-                {errors?.email?.type === 'pattern' && (
-                  <S.ConfirmMessage>이메일 양식에 맞게 입력해주세요</S.ConfirmMessage>
-                )}
-              </label>
+                <span className='currentEmail'>{currentUser.email}</span>
+              </S.IdLabel>
 
               <label>
                 <span>새 비밀번호</span>
@@ -148,11 +136,7 @@ const MyInfo = () => {
               {/* 회원탈퇴, 변경완료 버튼 */}
               <S.DelteButton className='deleteButton'>
 
-                <S.Button 
-                  onClick={() => { window.confirm("탈퇴하시겠습니까?") }}
-                >
-                  회원 탈퇴
-                </S.Button>
+                
 
                 <S.ChangeButton type="submit" 
                   disabled={isSubmitting} 
@@ -162,7 +146,9 @@ const MyInfo = () => {
 
               </S.DelteButton>
           </S.Form>
+                <DeleteAccount />
         </fieldset>
+
 
 
       </S.RightSection>
