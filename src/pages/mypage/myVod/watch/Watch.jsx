@@ -14,6 +14,7 @@ const Watch = () => {
       }
       catch (error){
         console.log("WatchError", error)
+        return []; // 오류 발생 시 빈 배열 반환
       }
     }
     
@@ -24,8 +25,8 @@ const Watch = () => {
   }, [])
 
   // console.log(vod);
-
-  const watch = vod.filter((item) => item.state.includes("찜"))
+  // const subscriptions = Array.isArray(vod) ? vod.filter((item) => item.state.includes("찜")) : [];
+  const watch = Array.isArray(vod) ? vod.filter((item) => item.state.includes("찜")) : [];
 
   return (
     <S.Container className='Container'>
