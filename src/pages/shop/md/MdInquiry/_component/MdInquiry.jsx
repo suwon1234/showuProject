@@ -47,7 +47,7 @@ const MdInquiry = () => {
     }
 
     alert('등록이 완료되었습니다!');
-    navigate('/shop/md/detail/inquiry/list');
+    navigate('/shop/md/inquiry/list');
   };
 
   return (
