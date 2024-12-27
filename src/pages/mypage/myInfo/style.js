@@ -106,11 +106,9 @@ const S = {};
     display: flex;
     flex-direction: column;
 
-    border-bottom: 0.5px solid #444444;
-
     & label {
       display: grid;
-      grid-template-columns: 280px 380px 80px 10px;
+      grid-template-columns: 400px 400px;
       align-items: center;
       border-top: 0.5px solid #444444;
       padding: 15px 0;
@@ -203,8 +201,13 @@ const S = {};
   `
 
   S.ConfirmMessage = styled.p`
+  text-align: right;
     font-size: 13px;
     color: #797979;
+  `
+
+  S.Label = styled.label`
+    border-bottom: 0.5px solid #444444;
   `
 
 

@@ -95,6 +95,7 @@ const MyInfo = () => {
                   <S.ConfirmMessage>이메일 양식에 맞게 입력해주세요</S.ConfirmMessage>
                 )}
               </label>
+
               <label>
                 <span>새 비밀번호</span>
                 <S.Input type="password" name='password' placeholder='변경할 비밀번호를 입력하세요'
@@ -113,6 +114,7 @@ const MyInfo = () => {
                   <S.ConfirmMessage>소문자, 숫자, 특수문자를 각 하나씩 포함한 8자리 이상</S.ConfirmMessage>
                 )}
               </label>
+
               <label>
                 <span>새 비밀번호 확인</span>
                 <S.Input type="password" name='password' placeholder='소문자, 숫자, 특수문자를 각 하나씩 포함한 8자리 이상'
@@ -133,15 +135,15 @@ const MyInfo = () => {
                 )}
               </label>
               
-              <label>
+              <S.Label>
                 <span>전화 번호</span>
                 <S.Input 
                   type="text" name='phoneNumber' 
-                  // placeholder={currentUser.phone}
+                  placeholder={currentUser.phone}
                   {...register("phone")} 
                 />
                 <div></div>
-              </label>
+              </S.Label>
 
               {/* 회원탈퇴, 변경완료 버튼 */}
               <S.DelteButton className='deleteButton'>
