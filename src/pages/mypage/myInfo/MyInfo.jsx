@@ -26,7 +26,7 @@ const MyInfo = () => {
 
   useEffect(() => {
     if(!jwtToken){
-      navigate("/main", { replace : true })
+      navigate("/login", { replace : true })
     }
   }, [jwtToken])
 
@@ -59,7 +59,7 @@ const MyInfo = () => {
         <fieldset>
           <S.Form 
             onSubmit={handleSubmit( async (data) => {
-              console.log(data);
+              // console.log(data);
 
               const { email , password, phone } = data;
               await fetch("http://localhost:8000/users/modify", {
@@ -84,16 +84,10 @@ const MyInfo = () => {
                 <span>아이디</span>
                 <S.Input 
                   type="text" name='id'
-                  // placeholder={currentUser.email}
-                  {...register("email", {
-                    required : true,
-                    pattern : {
-                      value : emailRegex
-                    }
-                  })}
+                  value={currentUser.email || ''}
+                  {...register("email")}
                 />
                 <div></div>
-                <FontAwesomeIcon icon={faPen} className='pen'/>
                 {errors?.email?.type === 'required' && (
                   <S.ConfirmMessage>이메일을 입력해주세요</S.ConfirmMessage>
                 )}
@@ -112,7 +106,6 @@ const MyInfo = () => {
                   })}
                 />
                 <div></div>
-                <FontAwesomeIcon icon={faPen} className='pen'/>
                 {errors?.password?.type === 'required' && (
                   <S.ConfirmMessage>비밀번호를 입력해주세요</S.ConfirmMessage>
                 )}
@@ -135,7 +128,6 @@ const MyInfo = () => {
                   })}
                 />
                 <div></div>
-                <FontAwesomeIcon icon={faPen} className='pen'/>
                 {errors.passwordConfirm && (
                   <S.ConfirmMessage>비밀번호를 확인해주세요</S.ConfirmMessage>
                 )}
@@ -149,7 +141,6 @@ const MyInfo = () => {
                   {...register("phone")} 
                 />
                 <div></div>
-                <FontAwesomeIcon icon={faPen} className='pen'/>
               </label>
 
               {/* 회원탈퇴, 변경완료 버튼 */}
