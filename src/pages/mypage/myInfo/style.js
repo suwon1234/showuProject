@@ -102,7 +102,7 @@ const S = {};
     }
   `
   
-  S.UserChangeWapper = styled.form`
+  S.Form = styled.form`
     display: flex;
     flex-direction: column;
 
@@ -189,7 +189,7 @@ const S = {};
     }
   `
 
-  S.ChangeButton = styled.div`
+  S.ChangeButton = styled.button`
     width: 150px;
     height: 55px;
     border-radius: 50px;
@@ -200,6 +200,11 @@ const S = {};
     font-size: 17px;
     color: #000;
     cursor: pointer;
+  `
+
+  S.ConfirmMessage = styled.p`
+    font-size: 13px;
+    color: #797979;
   `
 
 
