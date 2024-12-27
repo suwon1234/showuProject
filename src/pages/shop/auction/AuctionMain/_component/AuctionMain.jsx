@@ -8,6 +8,9 @@ import { Link } from 'react-router-dom';
 const AuctionMain = () => {
   const [auctionItems, setAuctionItems] = useState([]);
   const [heartedItems, setHeartedItems] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0); // 현재 슬라이드 상태
+  const itemsPerSlide = 3; // 한 번에 3개씩 보여줌
+  const slideWidth = 1090; // 슬라이드 너비
 
   useEffect(() => {
 
@@ -25,9 +28,24 @@ const AuctionMain = () => {
 
   }, [])
 
-  const ClosingItems = auctionItems.slice(0, 3); 
-  const otherItems = auctionItems.slice(3); 
+  const handleNext = () => {
+    setCurrentSlide((prev) =>
+      prev === Math.ceil(auctionItems.length / itemsPerSlide) - 1 ? 0 : prev + 1
+    ); // 마지막 슬라이드에서 처음으로 돌아감
+  };
 
+  const handlePrev = () => {
+    setCurrentSlide((prev) =>
+      prev === 0 ? Math.ceil(auctionItems.length / itemsPerSlide) - 1 : prev - 1
+    ); // 처음 슬라이드에서 마지막으로 돌아감
+  };
+
+  // 현재 슬라이드에 맞는 BEST 아이템을 선택
+  const visibleBestItems = auctionItems.slice(
+    currentSlide * itemsPerSlide,
+    (currentSlide + 1) * itemsPerSlide
+  );
+  
   const handleHeartClick = (e, id) => {
     e.preventDefault(); // 하트 클릭 => 링크 이동 X
     setHeartedItems((prev) =>
@@ -55,9 +73,9 @@ const AuctionMain = () => {
           </S.LeftIconWrapper>
 
           <S.ClosingListWrapper>
-            {ClosingItems.map((closing) => (
+            {visibleBestItems.map((closing) => (
               <S.Closing key={closing.id}>
-                <Link to={'/shop/auction/detail'}>
+                <Link to={`/shop/auction/detail/${closing.id}`}>
                 <div className="image-wrapper">
                   <img src={closing.image} alt={closing.image} className='image' />
                   <S.HeartIconWrapper isHearted={heartedItems.includes(closing.id)}
@@ -96,9 +114,9 @@ const AuctionMain = () => {
 
       <S.AuctionWrapper>
         <div className='auction-list'>
-          {otherItems.map((auction) => (
+          {auctionItems.slice(6).map((auction) => (
           <S.Closing key={auction.id}>
-            {/* <Link to={"/shop/mdDetail"}> */}
+            <Link to={`/shop/auction/detail/${auction.id}`}>
             <div className="image-wrapper">
             <img src={auction.image} alt={auction.image} className='image'/>
             <S.HeartIconWrapper isHearted={heartedItems.includes(auction.id)}
@@ -106,7 +124,7 @@ const AuctionMain = () => {
                 <FontAwesomeIcon icon={faHeart} />
             </S.HeartIconWrapper>
             </div>
-            {/* </Link>    */}
+            </Link> 
             <div className='closing-name'>{auction.name}</div>
             <S.Closing2>
               <div className='closing-number'>{auction.number} |</div>

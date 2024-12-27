@@ -1,8 +1,14 @@
 // 경매 팝업 - 입찰 정보
 import React from 'react';
 import S from './styleBidPopup';
+import { useNavigate } from 'react-router-dom';
 
 const BidPopup = ({ title, onClose }) => {
+  const navigate = useNavigate();
+
+  const handleBid = () => {
+    navigate('/shop/auction/payment')
+  }
   return (
     <S.PopupOverlay onClick={onClose}>
       <S.PopupContainer onClick={(e) => e.stopPropagation()}>
@@ -28,7 +34,7 @@ const BidPopup = ({ title, onClose }) => {
         <S.BidButton>
         <S.BackButton onClick={onClose}>취소</S.BackButton>
       
-          <S.NextButton>신중하게 입찰하기</S.NextButton>
+          <S.NextButton onClick={handleBid}>신중하게 입찰하기</S.NextButton>
       </S.BidButton>
 
 

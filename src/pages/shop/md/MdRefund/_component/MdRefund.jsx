@@ -4,6 +4,7 @@ import S from './styleRefund';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faXmark } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from './Dropdown';
+import { Link } from 'react-router-dom';
 
 const MdRefund = ({ items }) => {
 
@@ -193,12 +194,12 @@ const MdRefund = ({ items }) => {
       </S.OrderInfoWrapper>
 
           <S.PaymentButton>
-        {/* <Link to={'/shop/mddetail'}> */}
+        <Link to={'/shop/md/payment/info'}>
         <S.BackButton>취소</S.BackButton>
-        {/* </Link> */}
-        {/* <Link to={'/shop/mddetail/completed'}> */}
+        </Link>
+        <Link to={'/shop/md/refund/info'}>
           <S.NextButton>반품 신청하기</S.NextButton>
-        {/* </Link> */}
+        </Link>
       </S.PaymentButton>
       
     </S.ReturnWrapper>
