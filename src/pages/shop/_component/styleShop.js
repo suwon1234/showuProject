@@ -6,6 +6,7 @@ const S = {};
     display: flex;
     flex-direction: column;
     background-color: #000;
+    height: 100vh;
   `
 
   S.ShopTitle = styled.div`
