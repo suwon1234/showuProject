@@ -3,6 +3,7 @@ import React from 'react';
 import S from './styleRefundInfo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const MdRefundInfo = ({ items }) => {
   return (
@@ -63,9 +64,9 @@ const MdRefundInfo = ({ items }) => {
         {/* <Link to={'/shop/mddetail'}> */}
         <S.BackButton>반품 상세보기</S.BackButton>
         {/* </Link> */}
-        {/* <Link to={'/shop'}> */}
+        <Link to={'/shop/md'}>
           <S.NextButton>계속 쇼핑하기</S.NextButton>
-        {/* </Link> */}
+        </Link>
       </S.PaymentButton>
 
     </S.RefundInfoWrapper>

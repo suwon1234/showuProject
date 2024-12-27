@@ -18,18 +18,10 @@ const flexStyle = css`
 
   S.DetailContainer = styled.div`
     ${flexStyle}
-    justify-content: center;; 
-    gap: 100px; 
-    width: 1140px;
-    margin: 100px auto;
-  `
-
-  S.DetailContainer = styled.div`
-    ${flexStyle}
-    /* justify-content: center;  */
+    justify-content: center; 
     gap: 100px;
     width: 1140px;
-    margin: auto; 
+    margin: 100px auto; 
   `
 
   S.ImageWrapper = styled.div`
@@ -122,7 +114,10 @@ const flexStyle = css`
 
       &:hover {
         background-color: #ffd400;
-        color: #000
+
+        p {
+          color: #000;
+        }
       }
     }
     

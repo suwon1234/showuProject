@@ -1,11 +1,10 @@
 import React from 'react';
-import AuctionInquiryDetail from './_component/AuctionInquiryDetail';
-
+import MdInquiryDetail from './_component/MdInquiryDetail';
 
 const InquiryDetailContainer = () => {
   return (
     <div>
-      <AuctionInquiryDetail />
+      <MdInquiryDetail />
     </div>
   );
 };
