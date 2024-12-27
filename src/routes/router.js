@@ -72,7 +72,6 @@ import MusicalContainer from '../pages/vod/musical/MusicalContainer2'
 import NonLoginContainer from '../pages/vod/video/nonloginpage/NonLoginContainer'
 import HotContainer from '../pages/hot/HotContainer';
 import ShopContainer from '../pages/shop/ShopContainer';
-import InquiryDetailContainer from '../pages/shop/auction/AuctionInquiryDetail/InquiryDetailContainer';
 import InquiryContainer2 from '../pages/shop/auction/AuctionInquiry/InquiryContainer2';
 import PayInfoContainer from '../pages/shop/md/MdPayInfo/PayInfoContainer';
 import NotFoundContainer from '../pages/notFound/NotFoundContainer';
@@ -84,6 +83,14 @@ import MovieContainer from '../pages/vod/movie/MovieContainer';
 import MusicContainer from '../pages/vod/music/MusicContainer'
 import MyShowuContainer from '../pages/vod/showu/MyShowuContainer';
 import ShowuVideoConatiner from '../pages/vod/video/showuvideopage/ShowuVideoContainer';
+import ManagementContainer from '../pages/shop/auction/AuctionManagement/ManagementContainer';
+import PaymentContainer2 from '../pages/shop/auction/AuctionPayment/PaymentContainer2';
+import RefundContainer from '../pages/shop/md/MdRefund/RefundContainer';
+import RefundInfoContainer from '../pages/shop/md/MdRefundInfo/RefundInfoContainer';
+import StateContainer from '../pages/shop/auction/AuctionState/StateContainer';
+import InquiryListContainer2 from '../pages/shop/auction/AuctionInquiryList/InquiryListContainer2';
+import InquiryDetailContainer from '../pages/shop/md/MdInquiryDetail/InquiryDetailContainer';
+import InquiryDetailContainer2 from '../pages/shop/auction/AuctionInquiryDetail/InquiryDetailContainer2';
 
 const router = createBrowserRouter([
   {
@@ -303,44 +310,68 @@ const router = createBrowserRouter([
         element : <DetailContainer /> // MD 상세
       },
       {
-        path : '/shop/md/detail/cart/',
+        path : '/shop/md/cart',
         element : <CartContainer /> // MD 장바구니
       },
       {
-        path : '/shop/md/detail/payment',
+        path : '/shop/md/payment',
         element : <PaymentContainer /> // MD 주문/결제
       },
       {
-        path : '/shop/md/detail/payment/info',
-        element : <PayInfoContainer /> // MD 주문 내역
+        path : '/shop/md/payment/info',
+        element : <PayInfoContainer /> // MD 주문 정보
       },
       {
-        path : '/shop/md/detail/inquiry',
+        path : '/shop/md/inquiry',
         element : <InquiryContainer /> // MD 문의
       },
       {
-        path : '/shop/md/detail/inquiry/list',
+        path : '/shop/md/inquiry/list',
         element : <InquiryListContainer /> // MD 문의목록
       },
-      // {
-      //   path : '/shop/md/detail/inquiry/:id',
-      //   element : <InquiryListContainer /> // MD 문의내역 상세
-      // },
+      {
+        path : '/shop/md/inquiry/:id',
+        element : <InquiryDetailContainer /> // MD 문의 상세글
+      },
+      {
+        path : '/shop/md/refund',
+        element : <RefundContainer /> // MD 반품
+      },
+      {
+        path : '/shop/md/refund/info',
+        element : <RefundInfoContainer /> // MD 반품 정보
+      },
       {
         path : '/shop/auction',
         element : <MainContainer2 /> // 경매 메인
       },
       {
-        path : '/shop/auction/detail',
+        path : '/shop/auction/detail/:id',
         element : <DetailContainer2 /> // 경매 상세
       },
       {
-        path : '/shop/auction/detail/inquiry',
-        element : <InquiryContainer2 /> // 경매 문의
+        path : '/shop/auction/inquiry',
+        element : <InquiryContainer2 /> // 경매 문의 양식
       },
       {
-        path : '/shop/auction/detail/inquiry/:id',
-        element : <InquiryDetailContainer /> // 경매 문의 상세
+        path : '/shop/auction/inquiry/list',
+        element : <InquiryListContainer2 /> // 경매 문의 목록
+      },
+      {
+        path : '/shop/auction/inquiry/:id',
+        element : <InquiryDetailContainer2 /> // 경매 문의 상세글
+      },
+      {
+        path : '/shop/auction/payment',
+        element : <PaymentContainer2 /> // 경매 입찰
+      },
+      {
+        path : '/shop/auction/management',
+        element : <ManagementContainer /> // 경매 관리
+      },
+      {
+        path : '/shop/auction/state',
+        element : <StateContainer /> // 경매 구매 상태
       },
 
       {

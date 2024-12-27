@@ -116,7 +116,7 @@ const MdCart = () => {
       <S.Total>
         <S.TotalAmount>총 상품 금액 ({product?.length}개)</S.TotalAmount>
         <S.Pay>{totalAmount.toLocaleString()}원</S.Pay>
-        <Link to={'/shop/md/detail/payment'}>
+        <Link to={'/shop/md/payment'}>
           <S.CheckoutButton>결제 진행</S.CheckoutButton>
         </Link>
       </S.Total>

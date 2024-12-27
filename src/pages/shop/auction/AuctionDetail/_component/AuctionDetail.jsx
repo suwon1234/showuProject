@@ -212,7 +212,7 @@ const AuctionDetail = ({auctionItems, auctionInfo}) => {
       </S.Inquiry>
 
       <S.ButtonWrapper>
-        <Link to={"/shop/auction/detail/inquiry"}>
+        <Link to={"/shop/auction/inquiry"}>
       <S.InquiryButton>
         <p>문의하기</p>
         <FontAwesomeIcon className='icon' icon={faPencil} />

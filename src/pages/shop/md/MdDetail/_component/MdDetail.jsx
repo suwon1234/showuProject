@@ -115,14 +115,14 @@ const MdDetail = () => {
           
           <S.ButtonWrapper2>
             <div className='button-wrapper1'>
-              <Link to={'/shop/md/detail/cart'}>
+              <Link to={'/shop/md/cart'}>
                 <button className='button cart'><p>카트 추가</p></button>
               </Link>
-              <Link to={'/shop/md/detail/payment'}>
+              <Link to={'/shop/md/payment'}>
                 <button className='button buy'><p>바로 구매</p></button>
               </Link>
             </div>
-              <Link to={'/shop/md/detail/inquiry'}>
+              <Link to={'/shop/md/inquiry'}>
                 <button className='button inquiry'><p>문의하기</p></button>
               </Link>
           </S.ButtonWrapper2>
@@ -132,7 +132,7 @@ const MdDetail = () => {
       <S.MdInfo>
         <p className='description'>상품 설명</p>
         <S.ImageWrapper2>
-          <img className='imagewrapper' src={product.detailsImage} alt="상세 이미지"/>
+          <img className='imagewrapper' src={product.images} alt="상세 이미지"/>
         </S.ImageWrapper2>
         <S.ButtonWrapper3>
           <button>
