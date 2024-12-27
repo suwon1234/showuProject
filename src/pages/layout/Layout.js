@@ -100,7 +100,7 @@ const Layout = () => {
 
                 { isLogin ? (
                   <S.AfterLogin className='afterLogin'>
-                    <span>{currentUser.email}</span>
+                    <span>{currentUser.name}님</span>
                     <button onClick={handleLogout}>로그아웃</button>
                   </S.AfterLogin>
                 ) : (
