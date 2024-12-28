@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import S from './style';
 import Grade from './Grade';
+import { useNavigate } from 'react-router';
 
 const MyGrade = () => {
+  const jwtToken = localStorage.getItem("jwtToken");
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!jwtToken){
+      navigate("/login", { replace : true })
+    }
+  }, [jwtToken, navigate])
+
   return (
     <>
       <S.Container className='container'>

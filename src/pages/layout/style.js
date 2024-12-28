@@ -109,13 +109,13 @@ const S = {}
   S.menubar = styled.div`
     display: flex;
     justify-content: center;
-    margin-top: 18px;
+    margin: 18px 0;
     gap: 84px;
 
     & .menuitem{
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
     }
   `
 
