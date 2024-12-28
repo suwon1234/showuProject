@@ -38,6 +38,14 @@ const S = {};
     display: block;
     position: relative;
     margin: 0 0 10px 0;
+
+    & svg.lockImage {
+      position: absolute;
+      top: 17px;
+      right: 20px;
+
+      cursor: pointer;
+    }
   `
 
   S.LockImage = styled.img`
