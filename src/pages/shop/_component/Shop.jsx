@@ -65,8 +65,9 @@ const Shop = () => {
           {mdItems.slice(6,12).map((item) => (
             <S.Md key={item.id}>
               <Link to={`/shop/md/detail/${item.id}`}>
-                <img src={item.images} alt={item.name} />
+                <img src={item.image} alt={item.name} />
               </Link>
+              <div className="md-category">{item.category}</div>
               <div className="md-name">{item.name}</div>
               <div className="md-price">{item.price.toLocaleString()}원</div>
             </S.Md>
@@ -92,9 +93,10 @@ const Shop = () => {
             <Link to={`/shop/md/detail/${auction.id}`}>
             <img src={auction.image} alt={auction.image} className='image'/>
             </Link>   
+            <div className='closing-category'>{auction.category}</div>
             <div className='closing-name'>{auction.name}</div>
             <S.Closing2>
-              <div className='closing-number'>{auction.number} |</div>
+              <div className='closing-number'>{auction.count}회 |</div>
               <FontAwesomeIcon className='icon' icon={faClock} />
               <div className='closing-time'>{auction.time}</div>
             </S.Closing2>

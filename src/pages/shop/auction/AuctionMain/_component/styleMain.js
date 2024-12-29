@@ -83,6 +83,12 @@ const flexStyle = css`
   S.Closing = styled.div`
     margin: 0 auto;
 
+    & .closing-category {
+        font-size: 15px;
+        color: #ffd400;
+        margin-top: 5px;
+    }
+
     & .closing-name {
         font-size: 16px;
         margin-top: 5px;
@@ -131,32 +137,54 @@ const flexStyle = css`
     }
   `
 
-  S.CategoryButton = styled.div` // 상단 버튼들
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-    width: 1140px;
-    margin: 50px auto 0;
+  // S.CategoryButton = styled.div` // 상단 버튼들
+  //   display: flex;
+  //   justify-content: space-between;
+  //   padding: 10px 20px;
+  //   width: 1140px;
+  //   margin: 50px auto 0;
     
-    div { // 버튼 간격
-      display: flex;
-      gap: 8px; 
-      margin-left: 20px;
-    }
+  //   div { // 버튼 간격
+  //     display: flex;
+  //     gap: 8px; 
+  //     margin-left: 20px;
+  //   }
 
-    button { // 버튼 스타일
-      border-radius: 30px;
-      padding: 10px 15px;
-      background-color: black;
-      color: ${({ theme }) => theme.PALLETE.white};
-      border: 1px solid #ffd400;
-      cursor: pointer;
+  //   button { // 버튼 스타일
+  //     border-radius: 30px;
+  //     padding: 10px 15px;
+  //     background-color: black;
+  //     color: ${({ theme }) => theme.PALLETE.white};
+  //     border: 1.5px solid #ffd400;
+  //     cursor: pointer;
     
-      &:hover { // 버튼 호버
+  //     &:hover { // 버튼 호버
+  //       background-color: #ffd400;
+  //       color: ${({ theme }) => theme.PALLETE.black};
+  //     }
+  //   }
+  // `
+
+  S.CategoryButtonWrapper = styled.div`
+  display: flex;
+  gap: 10px;  // 버튼 간격 추가
+  width: 1100px;
+  margin: 60px auto 0;
+  padding: 10px 20px;
+`
+
+  S.CategoryButton = styled.button`
+    border-radius: 30px;
+    padding: 10px 15px;
+    background-color: ${({ isActive }) => (isActive ? "#ffd400" : "black")};  // isActive일 때 배경색 변경
+    color: ${({ isActive, theme }) => (isActive ? theme.PALLETE.black : theme.PALLETE.white)};
+    border: 1.5px solid #ffd400;
+    cursor: pointer;
+
+      &:hover {
         background-color: #ffd400;
         color: ${({ theme }) => theme.PALLETE.black};
       }
-    }
   `
 
   S.AuctionWrapper = styled.div`
@@ -171,6 +199,27 @@ const flexStyle = css`
         margin: 0 auto;
       }
     `
+
+    S.Auction = styled.div`
+    margin: 0 auto;
+
+      & img {
+        width: 300px;
+        height: 300px;
+      }
+
+      & .auction-category {
+          font-size: 15px;
+          color: #ffd400;
+          margin-top: 5px;
+      }
+
+      & .auction-name {
+          font-size: 16px;
+          margin-top: 5px;
+      }
+
+  `
 
   S.ButtonWrapper = styled.div `
     display: flex;

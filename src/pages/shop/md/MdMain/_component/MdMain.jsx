@@ -6,55 +6,70 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronRight, faCircleChevronLeft, faCircleChevronRight, faHeart,} from "@fortawesome/free-solid-svg-icons";
 
 const MdMain = () => {
-  const [mdItems, setMdItems] = useState([]);
+  const [mdProducts, setMdProducts] = useState([]);
+  const [heartedProducts, setHeartedProducts] = useState([]); 
   const [currentSlide, setCurrentSlide] = useState(0); // 현재 슬라이드 상태
-  const itemsPerSlide = 3; // 한 번에 3개씩 보여줌
+  const ProductsPerSlide = 3; // 한 번에 3개씩 보여줌
   const slideWidth = 1090; // 슬라이드 너비
-  const [heartedItems, setHeartedItems] = useState([]); 
+  const [currentCategory, setCurrentCategory] = useState("전체"); // 현재 선택된 카테고리
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   useEffect(() => {
     
-    const getMdItems = async () => {
+    const getMdProducts = async () => {
       try {
         const response = await fetch("http://localhost:4000/md");
         const datas = await response.json();
-        setMdItems(datas);
+        setMdProducts(datas);
+        setFilteredProducts(datas);
       } catch (error) {
         console.error("MdMainError", error);
       }
     };
 
-    getMdItems();
+    getMdProducts();
 
   }, []);
 
   const handleNext = () => {
     setCurrentSlide((prev) =>
-      prev === Math.ceil(mdItems.length / itemsPerSlide) - 1 ? 0 : prev + 1
+      prev === Math.ceil(mdProducts.length / ProductsPerSlide) - 1 ? 0 : prev + 1
     ); // 마지막 슬라이드에서 처음으로 돌아감
   };
 
   const handlePrev = () => {
     setCurrentSlide((prev) =>
-      prev === 0 ? Math.ceil(mdItems.length / itemsPerSlide) - 1 : prev - 1
+      prev === 0 ? Math.ceil(mdProducts.length / ProductsPerSlide) - 1 : prev - 1
     ); // 처음 슬라이드에서 마지막으로 돌아감
   };
 
   // 현재 슬라이드에 맞는 BEST 아이템을 선택
-  const visibleBestItems = mdItems.slice(
-    currentSlide * itemsPerSlide,
-    (currentSlide + 1) * itemsPerSlide
+  const visibleBestProducts = mdProducts.slice(
+    currentSlide * ProductsPerSlide,
+    (currentSlide + 1) * ProductsPerSlide
   );
 
 
   const handleHeartClick = (e, id) => {
     e.preventDefault(); // 하트 클릭 => 링크 이동 X
-    setHeartedItems((prev) =>
+    setHeartedProducts((prev) =>
       prev.includes(id)
         ? prev.filter((itemId) => itemId !== id) // 하트 제거
         : [...prev, id] // 하트 추가
     );
   };
+
+    // 카테고리 변경 시 필터링
+    const handleCategoryChange = (category) => {
+      setCurrentCategory(category);
+      if (category === "전체") {
+        setFilteredProducts(mdProducts); // 전체 상품 표시
+      } else {
+        setFilteredProducts(
+          mdProducts.filter((product) => product.category === category)
+        );
+      }
+    };
 
 
   return (
@@ -74,18 +89,20 @@ const MdMain = () => {
             <FontAwesomeIcon icon={faCircleChevronLeft} />
           </S.LeftIconWrapper>
 
+          {/* BEST 상품 */}
           <S.BestListWrapper offset={-currentSlide * slideWidth}>
-            {visibleBestItems.map((best) => (
+            {visibleBestProducts.map((best) => (
               <S.Best key={best.id}>
                 <Link to={`/shop/md/detail/${best.id}`}>
                   <div className="image-wrapper">
-                    <img src={best.images} alt={best.name} className="image" />
-                      <S.HeartIconWrapper isHearted={heartedItems.includes(best.id)}
+                    <img src={best.image} alt={best.name} className="image" />
+                      <S.HeartIconWrapper isHearted={heartedProducts.includes(best.id)}
                         onClick={(e) => handleHeartClick(e, best.id)}>
                         <FontAwesomeIcon icon={faHeart}/>
                       </S.HeartIconWrapper>
                   </div>
                 </Link>
+                <div className="best-category">{best.category}</div>
                 <div className="best-name">{best.name}</div>
                 <div className="best-price">{best.price.toLocaleString()}원</div>
               </S.Best>
@@ -98,34 +115,36 @@ const MdMain = () => {
         </S.BestItems>
       </S.BestWrapper>
 
-      <S.CategoryButton>
-        <div>
-          <button>showU</button>
-          <button>공연</button>
-          <button>뮤지컬</button>
-          <button>영화</button>
-          <button>영화</button>
-          <button>연극</button>
-          <button>밴드</button>
-        </div>
-      </S.CategoryButton>
+      <S.CategoryButtonWrapper>
+        <S.CategoryButton onClick={() => handleCategoryChange("전체")}
+          isActive={currentCategory === "전체"}>전체</S.CategoryButton>
+        <S.CategoryButton onClick={() => handleCategoryChange("뮤지컬")}
+          isActive={currentCategory === "뮤지컬"}>뮤지컬</S.CategoryButton>
+        <S.CategoryButton onClick={() => handleCategoryChange("영화")}
+          isActive={currentCategory === "영화"}>영화</S.CategoryButton>
+        <S.CategoryButton onClick={() => handleCategoryChange("연극")}
+          isActive={currentCategory === "연극"}>연극</S.CategoryButton>
+      </S.CategoryButtonWrapper>
 
+
+      {/* 일반 MD 상품 */}
       <S.MdWrapper>
         <div className="md-list">
-          {mdItems.slice(6).map((item) => (
-            <S.Md key={item.id}>
-              <Link to={`/shop/md/detail/${item.id}`}>
+          {filteredProducts.map((product) => (
+            <S.Md key={product.id}>
+              <Link to={`/shop/md/detail/${product.id}`}>
               <div className="image-wrapper">
-                <img src={item.images} alt={item.name} />
-                <S.HeartIconWrapper isHearted={heartedItems.includes(item.id)}
-                  onClick={(e) => handleHeartClick(e, item.id)} >
+                <img src={product.image} alt={product.name} />
+                <S.HeartIconWrapper isHearted={heartedProducts.includes(product.id)}
+                  onClick={(e) => handleHeartClick(e, product.id)} >
                     <FontAwesomeIcon icon={faHeart} />
                 </S.HeartIconWrapper>
                 
               </div>
               </Link>
-              <div className="md-name">{item.name}</div>
-              <div className="md-price">{item.price.toLocaleString()}원</div>
+              <div className="md-category">{product.category}</div>
+              <div className="md-name">{product.name}</div>
+              <div className="md-price">{product.price.toLocaleString()}원</div>
             </S.Md>
           ))}
         </div>

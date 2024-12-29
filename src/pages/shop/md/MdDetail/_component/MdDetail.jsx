@@ -13,24 +13,30 @@ const MdDetail = () => {
   const [quantity, setQuantity] = useState(1); // 기본 수량 1로 설정
 
   // 수량 감소
-  const decrease = (index) => {
+  const decrease = (i) => {
     setSelectedOptions((prev) => {
       const updated = [...prev];
-      if (updated[index].quantity > 1) {
-        updated[index].quantity -= 1;
+      if (updated[i].quantity > 1) {
+        updated[i].quantity -= 1;
       }
       return updated;
     });
   };
 
+
   // 수량 증가
-  const increase = (index) => {
+  const increase = (i) => {
     setSelectedOptions((prev) => {
       const updated = [...prev];
-      updated[index].quantity += 1;
+      if (updated[i].quantity < 5) { 
+        updated[i].quantity += 1;
+      } else {
+        alert("각 옵션의 수량은 5개까지 선택 가능합니다.");
+      }
       return updated;
     });
   };
+
 
   // 옵션 선택
   const handleSelect = (option) => {
@@ -38,21 +44,41 @@ const MdDetail = () => {
       alert("이미 선택된 옵션입니다!");
       return;
     }
+
     
-    // 새로운 옵션 추가
-    setSelectedOptions((prev) => [
-      ...prev,
-      { option, quantity: 1 }, // 초기 수량 
-      ]);
-    };
+  // 새로운 옵션 추가
+  setSelectedOptions((prev) => [
+    ...prev,
+    { 
+      option,
+      quantity: 1,
+      price: product.price,
+      name: product.name,
+      image: product.image
+    }, // 초기 수량 
+    ]);
+  };
+
 
   // 옵션 삭제
-  const handleRemove = (indexToRemove) => {
+  const handleRemove = (iToRemove) => {
     setSelectedOptions((prevOptions) =>
-      prevOptions.filter((_, index) => index !== indexToRemove)
+      prevOptions.filter((_, i) => i !== iToRemove)
     );
   };
 
+
+  // 바로 구매 버튼 스타일 조건
+  const isOptionSelected = selectedOptions.length > 0;
+
+
+  // 옵션 선택 X => 카드 추가, 바로 구매 X
+  const handleButton = (e) => {
+    if (!isOptionSelected) {
+      alert("상품을 선택하세요!");
+      e.preventDefault(); 
+    }
+  };
   
   useEffect(() => {
     const getMdDetail = async () => {
@@ -77,12 +103,12 @@ const MdDetail = () => {
       <S.DetailContainer>
         
         <S.ImageWrapper>
-          <img src={product.images} alt={product.name}/>
+          <img src={product.image} alt={product.name}/>
         </S.ImageWrapper>
         
         <S.DetailWrapper>
           <S.MdTitle>
-            <p>뮤지컬</p>
+            <p>{product.category}</p>
             <p>{product.name}</p>
             <p>{product.price.toLocaleString()}원</p>
           </S.MdTitle>
@@ -94,20 +120,20 @@ const MdDetail = () => {
 
           <S.Max>
             <FontAwesomeIcon icon={faCircleExclamation} className='icon1'/>
-            <p>각 옵션별로 최대 2개까지 구매 가능합니다.</p>
+            <p>각 옵션별로 최대 5개까지 구매 가능합니다.</p>
           </S.Max>
 
           <S.OptionWrapper>
-            {selectedOptions.map((selected, index) => (
-              <S.SelectedOption key={index}>
+            {selectedOptions.map((selected, i) => (
+              <S.SelectedOption key={i}>
                 <p>{selected.option}</p>
                 <S.QuantityControl>
-                  <S.QuantityButton onClick={() => decrease(index)}>-</S.QuantityButton>
+                  <S.QuantityButton onClick={() => decrease(i)}>-</S.QuantityButton>
                   <span>{selected.quantity}</span>
-                  <S.QuantityButton onClick={() => increase(index)}>+</S.QuantityButton>
+                  <S.QuantityButton onClick={() => increase(i)}>+</S.QuantityButton>
                 </S.QuantityControl>
                 <S.IconWrapper>
-                <FontAwesomeIcon className='icon' icon={faXmark} onClick={() => handleRemove(index)} />
+                <FontAwesomeIcon className='icon' icon={faXmark} onClick={() => handleRemove(i)} />
                 </S.IconWrapper>
               </S.SelectedOption>
             ))} 
@@ -115,15 +141,17 @@ const MdDetail = () => {
           
           <S.ButtonWrapper2>
             <div className='button-wrapper1'>
-              <Link to={'/shop/md/cart'}>
-                <button className='button cart'><p>카트 추가</p></button>
+              <Link to={'/shop/md/cart'} state={{ selectedOptions }}>
+                <button className='button cart' onClick={handleButton}><p>카트 추가</p></button>
               </Link>
-              <Link to={'/shop/md/payment'}>
-                <button className='button buy'><p>바로 구매</p></button>
+              <Link to={'/shop/md/payment'} state={{ selectedOptions }}>
+                <S.BuyButton isOptionSelected={isOptionSelected} onClick={handleButton}>
+                  <p>바로 구매</p>
+                </S.BuyButton>
               </Link>
             </div>
-              <Link to={'/shop/md/inquiry'}>
-                <button className='button inquiry'><p>문의하기</p></button>
+              <Link to={'/shop/md/inquiry'} state={{ productName : product.name }}>
+                <button className='button inquiry' isOptionSelected={isOptionSelected}><p>문의하기</p></button>
               </Link>
           </S.ButtonWrapper2>
         </S.DetailWrapper>
@@ -131,8 +159,9 @@ const MdDetail = () => {
       
       <S.MdInfo>
         <p className='description'>상품 설명</p>
+        <p>{product.description}</p>
         <S.ImageWrapper2>
-          <img className='imagewrapper' src={product.images} alt="상세 이미지"/>
+          <img className='imagewrapper' src={product.image_detail} alt="상세 이미지"/>
         </S.ImageWrapper2>
         <S.ButtonWrapper3>
           <button>

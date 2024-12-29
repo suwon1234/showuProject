@@ -62,15 +62,17 @@ const flexStyle = css`
   `
 
   S.CheckIcon1 = styled.div`
-    color: ${(props) => (props.checked ? '#ffd400' : '#fff')}; 
+   
     margin-right: 10px;
     font-size: 20px;
     cursor: pointer;
 
-      &:hover {
-        path {
-          color: #ffd400;
-        }
+    path {
+      color: ${({ checked }) => (checked ? '#ffd400' : '#fff')}; 
+    }
+
+      &:hover path {
+        color: #ffd400;
       }
   `
 
@@ -118,15 +120,16 @@ const flexStyle = css`
   `
 
   S.CheckIcon2 = styled.div`
-    color: ${(props) => (props.checked ? '#ffd400' : '#fff')}; 
     margin-right: 50px;
     font-size: 20px;
     cursor: pointer;
 
-      &:hover {
-        path {
-          color: #ffd400;
-        }
+    path {
+      color: ${({ checked }) => (checked ? '#ffd400' : '#fff')};
+    }
+
+      &:hover path {
+        color: #ffd400;
       }
   `
 
@@ -144,28 +147,33 @@ const flexStyle = css`
 
     .icon3 {
       font-size: 20px;
+      
+      &:hover path {
+        color: #ffd400;
+      }
     }
   `
 
   S.ProductName = styled.div`
     font-size: 18px; 
     color: #fff;
+    margin-left: 30px;
   `
 
   S.ProductPrice = styled.div`
     font-size: 20px; 
     color: #fff; 
-    margin-right: 30px;
   `
 
   S.QuantityControl = styled.div`
     ${flexStyle}
-    margin-right: 10px;
+    margin-left: 20px;
     
     & span {
       margin: 0 10px;
     }
   `
+  
 
   S.QuantityButton = styled.button`
     background-color: #000;
@@ -203,6 +211,9 @@ const flexStyle = css`
     border-radius: 50px;
     border: none;
     cursor: pointer;
+
+    background-color: ${props => props.isAnyChecked ? '#ffd400' : '#444444'};
+    color: ${props => props.isAnyChecked ? '#000' : '#fff'};
   `
 
 export default S;

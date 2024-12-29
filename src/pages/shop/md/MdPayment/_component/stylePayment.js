@@ -50,8 +50,8 @@ const flexStyle = css`
     width: 1165px;
     height: 45px;
     background-color: rgba(255, 212, 0, 0.8);
-    margin : 0auto;
-    justify-content: space-between;
+    margin : 0 auto;
+    /* justify-content: space-between; */
   `
 
   S.HeadItem = styled.div`
@@ -63,21 +63,21 @@ const flexStyle = css`
 
   S.Left = styled.div`
     display: flex;
-    flex: 6;
+    flex: 3;
     /* text-align: left; */
-    /* padding-right: 20px; */
+    /* padding-left: 50px; */
   `
 
   S.Center = styled.div`
     display: flex;
-    flex: 2;
+    flex: 3;
     text-align: center;
   `
 
   S.Right = styled.div`
     display: flex;
     flex: 1;
-    text-align: right;
+    text-align: center;
   `
 
 
@@ -94,13 +94,20 @@ const flexStyle = css`
     border-bottom: 0.5px solid #fff;
     padding: 20px 0;
     width: 1165px;
-    margin-top: 30px;
+    /* margin-top: 30px; */
+
+    .icon {
+      &:hover path {
+        color: #ffd400;
+
+      }
+    }
   `
 
   S.ProductImage = styled.img`
     width: 300px;
     height: 250px;
-    margin: 30px;
+    margin: 20px 0;
   `
 
   S.InputName = styled.div`
@@ -198,6 +205,7 @@ const flexStyle = css`
     font-size: 20px;
     font-weight: bold;
     margin-top: 50px;
+    margin-bottom: 20px;
   `
 
   S.OrderInfoWrapper = styled.div`

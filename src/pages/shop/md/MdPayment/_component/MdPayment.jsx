@@ -1,12 +1,19 @@
 // MD - 결제 페이지
-import React from 'react';
+import React, { useState } from 'react';
 import S from './stylePayment';
 import Dropdown2 from './Dropdown2';
 import Dropdown1 from './Dropdown1';
-import { faCheckCircle, faCreditCard, faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { faCheckCircle, faCreditCard, faMoneyBillTransfer, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Link, useLocation } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const MdPayment = ({ items }) => {
+const MdPayment = () => {
+
+  const { state } = useLocation();
+  const initialSelectedOptions = state?.selectedOptions || [];
+
+  const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions); // 장바구니 아이템
+
   const options = ['옵션 1', '옵션 2', '옵션 3']; 
 
   const iconPaymentMethods = [
@@ -21,12 +28,19 @@ const MdPayment = ({ items }) => {
   ];
 
   let productTotal = 0;
-  items.forEach(item => {productTotal += item.price});
+  selectedOptions.forEach(item => { productTotal += item.price * item.quantity }); // 가격과 수량을 합산
   const deliveryFee = productTotal >= 70000 ? 0 : 3000;
   const discountAmount = 0;
   const totalAmount = productTotal + deliveryFee - discountAmount;
-  
 
+  // 상품 삭제 함수
+  const deleteProduct = (index) => {
+    // 사용자에게 확인 메시지 띄우기
+    const confirmDelete = window.confirm("이 상품을 삭제하시겠습니까?");
+    if (confirmDelete) {
+      setSelectedOptions((prev) => prev.filter((item, i) => i !== index)); // 선택된 상품에서 해당 인덱스를 제외한 새로운 배열 생성
+    }
+  };
   return (
     <S.PaymentWrapper>
       <S.PaymentTitle>
@@ -37,29 +51,33 @@ const MdPayment = ({ items }) => {
         <S.Info>주문 상품</S.Info>
 
         <S.Head>
+          <S.Left></S.Left>
           <S.Left>
-          <S.HeadItem>상품명</S.HeadItem>
+            <S.HeadItem>상품명</S.HeadItem>
           </S.Left>
           <S.Center>
-          <S.HeadItem>수량</S.HeadItem>
+            <S.HeadItem>수량</S.HeadItem>
           </S.Center>
           <S.Right>
-          <S.HeadItem>금액</S.HeadItem>
+            <S.HeadItem>금액</S.HeadItem>
           </S.Right>
         </S.Head>
 
         <S.PaymentList>
-          {items.map((item, i) => (
-            <S.PaymentItem key={item.id}>
-              <S.ProductImage src={process.env.PUBLIC_URL + "/images/shop/md/md1.jpg"} alt="주문 상품" />
+          {selectedOptions.map((item, i) => (
+            <S.PaymentItem key={i}>
+              <S.ProductImage src={item.image || "/images/shop/md/md1.jpg"} alt="주문 상품" />
               <S.Left>{item.name}</S.Left>
-              <S.Center>1</S.Center>
-              <S.Right>{item.price.toLocaleString()} 원</S.Right>
-              </S.PaymentItem>
+              <S.Center>{item.quantity}</S.Center>
+              <S.Right>{(item.price * item.quantity).toLocaleString()} 원</S.Right>
+              <FontAwesomeIcon className='icon' icon={faXmark} 
+                onClick={() => deleteProduct(i)} // 삭제 버튼 클릭 시 해당 인덱스를 기반으로 삭제
+              />
+            </S.PaymentItem>
           ))}
         </S.PaymentList>
 
-        <S.TotalAmount>총 상품 금액 ({items.length}개)</S.TotalAmount>
+        <S.TotalAmount>총 상품 금액 ({selectedOptions.length}개)</S.TotalAmount>
 
       </S.PaymentProduct>
 
@@ -137,40 +155,40 @@ const MdPayment = ({ items }) => {
 
       </S.InfoWrapper>
 
+
       <S.PayWrapper>
-      <S.Info>결제 금액</S.Info>
+        <S.Info>결제 금액</S.Info>
 
-      <S.OrderInfoWrapper>
-      <S.OrderInfo>
-        <p>상품 금액</p>
-      </S.OrderInfo>
-      <S.Price>{productTotal.toLocaleString()} 원</S.Price>
-      </S.OrderInfoWrapper>
+        <S.OrderInfoWrapper>
+          <S.OrderInfo>
+            <p>상품 금액</p>
+          </S.OrderInfo>
+          <S.Price>{productTotal.toLocaleString()} 원</S.Price>
+        </S.OrderInfoWrapper>
 
-      <S.OrderInfoWrapper>
-      <S.OrderInfo>
-        <p>배송비</p>
-      </S.OrderInfo>
-      <S.Price>{deliveryFee.toLocaleString()} 원</S.Price>
-      </S.OrderInfoWrapper>
+        <S.OrderInfoWrapper>
+          <S.OrderInfo>
+            <p>배송비</p>
+          </S.OrderInfo>
+          <S.Price>{deliveryFee.toLocaleString()} 원</S.Price>
+        </S.OrderInfoWrapper>
 
-      <S.OrderInfoWrapper>
-      <S.OrderInfo>
-        <p>할인 금액</p>
-      </S.OrderInfo>
-      <S.Price>{discountAmount.toLocaleString()} 원</S.Price>
-      </S.OrderInfoWrapper>
+        <S.OrderInfoWrapper>
+          <S.OrderInfo>
+            <p>할인 금액</p>
+          </S.OrderInfo>
+          <S.Price>{discountAmount.toLocaleString()} 원</S.Price>
+        </S.OrderInfoWrapper>
       </S.PayWrapper>
 
       <S.OrderInfoWrapper>
-      <S.TotalWrapper>
-      <S.TotalAmount2>총 결제 금액
-      <S.Price className='total-amount'>{totalAmount.toLocaleString()} 원</S.Price>
-      </S.TotalAmount2>
-      </S.TotalWrapper>
+        <S.TotalWrapper>
+          <S.TotalAmount2>총 결제 금액
+            <S.Price className='total-amount'>{totalAmount.toLocaleString()} 원</S.Price>
+          </S.TotalAmount2>
+        </S.TotalWrapper>
       </S.OrderInfoWrapper>
-   
-      
+
       <S.MethodWrapper>
         <S.Info>결제 수단</S.Info>
         {iconPaymentMethods.map((method) => (
@@ -180,11 +198,11 @@ const MdPayment = ({ items }) => {
             <p>{method.label}</p>
           </S.OrderInfo>
         ))}
-          
+
         {imagePaymentMethods.map((method) => (
           <S.OrderInfo key={method.label}>
             <S.Icon icon={faCheckCircle} />
-            <S.Image img src={method.image} alt={method.label}/>
+            <S.Image img src={method.image} alt={method.label} />
             <p>{method.label}</p>
           </S.OrderInfo>
         ))}
@@ -192,7 +210,7 @@ const MdPayment = ({ items }) => {
 
       <S.PaymentButton>
         <Link to={'/shop/md/cart'}>
-        <S.BackButton>이전 페이지로</S.BackButton>
+          <S.BackButton>이전 페이지로</S.BackButton>
         </Link>
         <Link to={'/shop/md/payment/info'}>
           <S.NextButton><p>{totalAmount.toLocaleString()}원</p>결제 진행 </S.NextButton>
