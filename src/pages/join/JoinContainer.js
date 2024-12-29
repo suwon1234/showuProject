@@ -2,11 +2,23 @@ import React, { useState } from 'react';
 import S from './style';
 import LoginHeader from '../login/_component/LoginHeader';
 import { Link, useNavigate } from 'react-router-dom';
-import {useForm} from 'react-hook-form'
+import { useForm } from 'react-hook-form'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import Checkbox from '../login/_component/Checkbox';
 
 const JoinContainer = () => {
   const [ buttonColor, setButtonColor ] = useState(false);
+  const [ showPw, setShowPw ] = useState(false);
+  const [ showPwConfirm, setShowPwConfirm ] = useState(false);
+
+  const handleShowPw = () => {
+    setShowPw(!showPw)
+  }
+
+  const handleShowPwConfirm = () => {
+    setShowPwConfirm(!showPwConfirm)
+  }
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/;
@@ -38,7 +50,7 @@ const JoinContainer = () => {
                 alert("약관에 동의해야 회원가입이 가능합니다.");
               }
 
-              const { email, password, phone } = data;
+              const { email, password, phone, name } = data;
 
               await fetch(`http://localhost:8000/users/register`, {
                 method : "POST",
@@ -48,7 +60,8 @@ const JoinContainer = () => {
                 body : JSON.stringify({
                   email : email,
                   password : password,
-                  phone : phone
+                  phone : phone,
+                  name : name
                 })
               })
               .then((res) => res.json())
@@ -67,7 +80,7 @@ const JoinContainer = () => {
             })}>
 
               <S.idLabel>
-                <S.input type="text" id='email' placeholder='이메일' autoComplete="off" 
+                <S.input type="text" id='email' placeholder='이메일' autoComplete="off"
                   {...register("email", {
                     required : true,
                     pattern : {
@@ -84,7 +97,11 @@ const JoinContainer = () => {
               </S.idLabel>
 
               <S.passwordLabel>
-                <S.input type="password" id='password' placeholder='비밀번호' autoComplete="off"
+                <S.input 
+                  type={ showPw ? "text" : "password"} 
+                  id='password' 
+                  placeholder='비밀번호' 
+                  autoComplete="off" 
                   {...register("password", {
                     required : true,
                     pattern : {
@@ -98,11 +115,32 @@ const JoinContainer = () => {
                 {errors?.password?.type === 'pattern' && (
                   <p>소문자, 숫자, 특수문자를 각 하나씩 포함한 8자리 이상이어야 합니다</p>
                 )}
-                <S.LockImage src={process.env.PUBLIC_URL + "/images/login/lock.png"} alt="비밀번호 잠금" />
+                {
+                  showPw ?
+                  (
+                  <FontAwesomeIcon 
+                    icon={faLockOpen} 
+                    onClick={() => handleShowPw()}
+                    className='lockImage' 
+                  />
+                  )
+                   : 
+                  (
+                  <FontAwesomeIcon 
+                    icon={faLock}
+                    onClick={() => handleShowPw()}
+                    className='lockImage'
+                  />
+                  )
+                }
               </S.passwordLabel>
               
               <S.idLabel>
-                <S.input type="password" id='passwordConfirm' placeholder='비밀번호 확인' autoComplete="off"
+                <S.input 
+                  type={ showPwConfirm ? "text" : "password"} 
+                  id='passwordConfirm' 
+                  placeholder='비밀번호 확인' 
+                  autoComplete="off"
                   {...register("passwordConfirm", {
                     required : true,
                     validate : {
@@ -117,16 +155,33 @@ const JoinContainer = () => {
                 {errors?.passwordConfirm && (
                   <p>비밀번호를 확인해주세요</p>
                 )}
-                <S.LockImage src={process.env.PUBLIC_URL + "/images/login/lock.png"} alt="비밀번호 잠금" />
+                {
+                  showPwConfirm ?
+                  (
+                  <FontAwesomeIcon 
+                    icon={faLockOpen} 
+                    onClick={() => handleShowPwConfirm()}
+                    className='lockImage' 
+                  />
+                  )
+                   : 
+                  (
+                  <FontAwesomeIcon 
+                    icon={faLock}
+                    onClick={() => handleShowPwConfirm()}
+                    className='lockImage'
+                  />
+                  )
+                }
               </S.idLabel>
               
-              {/* <S.idLabel>
+              <S.idLabel>
                 <S.input type="text" id='name' placeholder='이름'
                   {...register("name", {
                     required : true
                   })}
                 />
-              </S.idLabel> */}
+              </S.idLabel>
 
               <S.idLabel>
                 <S.input type="text" id='phone' placeholder='전화번호(ex.010-1234-5678)'

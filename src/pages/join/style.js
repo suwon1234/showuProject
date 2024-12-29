@@ -42,19 +42,28 @@ const S = {};
     display: block;
     margin: 0 0 20px 0;
     position: relative;
+
+    & svg.lockImage {
+      position: absolute;
+      top: 17px;
+      right: 20px;
+
+      cursor: pointer;
+    }
   `
+
   S.passwordLabel = styled.label`
     display: block;
     position: relative;
     margin: 0 0 10px 0;
-  `
 
-  S.LockImage = styled.img`
-    position: absolute;
-    top: 17px;
-    right: 20px;
+    & svg.lockImage {
+      position: absolute;
+      top: 17px;
+      right: 20px;
 
-    cursor: pointer;
+      cursor: pointer;
+    }
   `
 
   S.input = styled.input`

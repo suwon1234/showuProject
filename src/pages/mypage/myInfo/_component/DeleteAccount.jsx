@@ -1,35 +1,47 @@
-import React, { useState } from 'react';
-import S from './DeleteAccountStyle';
+import React, { useEffect } from 'react';
+import S from '../style';
+import { useDispatch } from 'react-redux';
+import { setUser, setUserStatus } from '../../../../modules/user';
 
 const DeleteAccount = () => {
-  const [isModelOpen, setIsModelOpen] = useState(false);
+  const dispatch = useDispatch();
+  const jwtToken = localStorage.getItem("jwtToken");
 
-  const handleDelete = () => {
-    setIsModelOpen(true);
-  }
+    const removeAccount = async (data) => {
+      console.log(data)
 
-  const confirmDelete = () => {
-    alert("탈퇴되었습니다");
-    setIsModelOpen(false);
-    console.log("회원 탈퇴되었습니다");
-  }
+      const { email } = data;
 
-  const cancleDelete = () => {
-    setIsModelOpen(false);
-    console.log("회원 탈퇴를 취소하였습니다");
-  }
+      if(window.confirm("회원탈퇴를 하시겠습니까?")){
+        await fetch(`http://localhost:8000/users/remove`, {
+          method : 'DELETE',
+          headers : {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${jwtToken}`
+          },
+          body : JSON.stringify({
+            email : email
+          })
+        })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res)
+          localStorage.removeItem("jwtToken")
+          dispatch(setUser({})) 
+          dispatch(setUserStatus(false))
+          alert(res.message)
+        })
+        .catch(console.error)
+        return;
+      }
+      return;
+    }
 
   return (
     <div>
-      <S.Button onClick={handleDelete}>회원 탈퇴</S.Button>
-
-      { isModelOpen && (
-        <S.Model className='model'>
-          <p>탈퇴하시겠습니까?</p>
-          <button onClick={confirmDelete}>확인</button>
-          <button onClick={cancleDelete}>취소</button>
-        </S.Model>
-      )}
+      <S.Button onClick={removeAccount}>
+        회원 탈퇴
+      </S.Button>
     </div>
   );
 };

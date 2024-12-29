@@ -13,7 +13,7 @@ const LikeLesson = () => {
         const datas = await response.json();
         setLesson(datas);
       } catch (error) {
-        console.loe("LessonError" , error);
+        console.log("LikeLessonError" , error);
       }
     }
 
