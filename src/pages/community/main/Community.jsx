@@ -7,18 +7,22 @@ import { Link } from 'react-router-dom';
 const Community = () => {
   const [filterDrop, setFilterDrop] = useState(false);
   const [filter, setFilter] = useState("전체");
-  const [commuData, setCommuData] = useState([]); // commuData 상태 추가
+  const [commuData, setCommuData] = useState([]); 
 
   useEffect(() => {
     // 데이터 요청 (백엔드에서 가져오기)
     const fetchData = async () => {
       try {
-        const response = await fetch('http://localhost:8000/community/communities');
+        const response = await fetch('http://localhost:8000/community');
+        if (!response.ok) {
+          throw new Error('네트워크 응답이 실패했습니다.');
+        }
+       
         const fetchedData = await response.json(); 
         setCommuData(fetchedData); // 백엔드에서 가져온 데이터만 사용
       } catch (error) {
         console.error("커뮤니티 데이터를 불러오는 데 실패했습니다.", error);
-        setCommuData([]); // 요청 실패 시 빈 배열 사용
+        setCommuData([]);
       }
     };
   
@@ -63,18 +67,24 @@ const Community = () => {
         </S.Buttons>
 
         <S.Info>
-          {filteredData.map((item) => (
-            <S.Img key={item.id || item._id}>
-              <Link to={`/community/communityInfo/${item.id || item._id}`}>
+        {filteredData.length === 0 ? (
+        <p>데이터가 없습니다.</p>
+        ) : (
+          filteredData.map((item) => (
+            <S.Img key={item._id}>
+              <Link to={`/community/communityInfo/${item._id}`}>
                 <img src={item.imageUrl || item.file} alt={item.title} />
               </Link>
-              <div>
-                <h3>{item.title}</h3>
-                <p>{item.description || item.content}</p>
-              </div>
+                <div>
+                  <h3>{item.title}</h3>
+                  <p>{item.description}</p>
+                  <p>{item.content}</p>
+                </div>
             </S.Img>
-          ))}
-        </S.Info>
+
+          ))
+        )}
+      </S.Info>
       </S.SubWrapper>
 
       <S.ScrollTop onClick={handleScrollTop}>
