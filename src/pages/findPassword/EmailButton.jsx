@@ -31,7 +31,7 @@ const EmailButton = () => {
         to_email: email,
         code: code,
       },
-      process.env.REACT_APP_EMAILJS_USER_ID
+      'kFcGXKs0UUkucev49'
     )
       .then(() => {
         alert('인증번호가 이메일로 전송되었습니다!');
