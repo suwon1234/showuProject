@@ -9,7 +9,7 @@ const Footer = () => {
     <footer>
       <S.Footer className='Footer'>
         <p>Copyright © 2022 TicketBooker. All rights reserved.</p>
-        <p className='faq'>자주 묻는 질문</p>
+        <p className='faq' onClick={() => navigator('/faq')}>자주 묻는 질문</p>
       </S.Footer>
     </footer>
   );

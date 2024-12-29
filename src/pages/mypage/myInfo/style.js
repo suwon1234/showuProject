@@ -102,15 +102,13 @@ const S = {};
     }
   `
   
-  S.UserChangeWapper = styled.form`
+  S.Form = styled.form`
     display: flex;
     flex-direction: column;
 
-    border-bottom: 0.5px solid #444444;
-
     & label {
       display: grid;
-      grid-template-columns: 280px 380px 80px 10px;
+      grid-template-columns: 400px 400px;
       align-items: center;
       border-top: 0.5px solid #444444;
       padding: 15px 0;
@@ -154,26 +152,10 @@ const S = {};
   `
 
   S.Button = styled.button`
-    background-color: #ffd400;
-    color: #000;
-    font-size: 15px;
-    font-weight: 500;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    height: 55px;
-
-  `
-  S.DelteButton = styled.div`
-    display: flex;
-    justify-content: space-between;
-    margin-top: 50px;
-
-    & button {
-      border: none;
       width: 150px;
       height: 55px;
       border-radius: 50px;
+      border: none;
       padding: 10px;
       text-align: center;
       line-height: 2.2;
@@ -186,20 +168,53 @@ const S = {};
         background-color: #ffd400 !important;
         color: #000;
       }
-    }
+  `
+  S.ButtonBox = styled.div`
+    margin-top: 50px;
+    position: relative;
   `
 
-  S.ChangeButton = styled.div`
+  S.ChangeButton = styled.button`
+    border: none;
     width: 150px;
     height: 55px;
     border-radius: 50px;
     padding: 10px;
     text-align: center;
     line-height: 2.2;
-    background-color: #ffd400;
+    background-color: #797979;
     font-size: 17px;
     color: #000;
     cursor: pointer;
+
+    position: absolute;
+    right: 0;
+
+    &:hover{
+        background-color: #ffd400;
+        color: #000;
+      }
+  `
+
+  S.DeleteButton = styled.div`
+
+  `
+
+  S.ConfirmMessage = styled.p`
+    text-align: right;
+    font-size: 13px;
+    color: #797979;
+  `
+
+  S.Label = styled.label`
+    border-bottom: 0.5px solid #444444;
+  `
+
+  S.IdLabel = styled.label`
+    & span.currentEmail{
+      text-align: right;
+      padding: 4px 15px;
+    }
   `
 
 

@@ -37,6 +37,14 @@ const S = {};
     display: block;
     position: relative;
     margin: 0 0 10px 0;
+
+    & svg.lockImage {
+      position: absolute;
+      top: 17px;
+      right: 20px;
+
+      cursor: pointer;
+    }
   `
 
   S.LockImage = styled.img`
@@ -51,10 +59,10 @@ const S = {};
     width: 480px;
     height: 53px;
     padding: 16px;
-    background-color: #000;
+    background-color: #2F2F2F;
+    color: #888888;
+    border: none;
     font-size: 15px;
-    color: #fff;
-    border: 0.5px solid #fff;
     border-radius: 5px;
   `
 

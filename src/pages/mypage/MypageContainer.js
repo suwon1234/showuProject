@@ -2,17 +2,18 @@ import React from 'react';
 import users from './_component/users';
 import S from './style';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 const MypageContainer = () => {
-  const [ fristUser, ...otherUsers ] = users;
+  const { currentUser } = useSelector((state) => state.user)
 
   return (
     <S.Container className='Container'>
       <S.LeftSection className='Wapper'>
         <S.Title className='title'>
           <li>마이페이지</li>
-          <li>{fristUser.name}님, 안녕하세요!</li>
+          <li>{currentUser.name}님, 안녕하세요!</li>
         </S.Title>
         <S.Ul>
             <li>MY TEAM</li>
