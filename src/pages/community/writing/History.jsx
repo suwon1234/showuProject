@@ -54,8 +54,8 @@ const History = () => {
               <tr key={history.id}>
                 <td>{history.title}</td>
                 <td>
-                {/* <Link className="linkStyle" to={`/community/write/history/check${history.id}`}> */}
-                <Link className="linkStyle" to={`/community/write/history/check`}>
+                <Link className="linkStyle" to={`/community/write/history/check${history.id}`}>
+                {/* <Link className="linkStyle" to={`/community/write/history/check`}> */}
                   {history.content}
                 </Link>
                 </td>
