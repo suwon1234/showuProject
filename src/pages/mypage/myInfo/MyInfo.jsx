@@ -133,20 +133,21 @@ const MyInfo = () => {
                 <div></div>
               </S.Label>
 
-              {/* 회원탈퇴, 변경완료 버튼 */}
-              <S.DelteButton className='deleteButton'>
-
-                
-
-                <S.ChangeButton type="submit" 
+              <S.ButtonBox className='buttonBox'>
+                <S.ChangeButton 
+                  type="submit" 
                   disabled={isSubmitting} 
                 >
                   변경 완료
                 </S.ChangeButton>
-
-              </S.DelteButton>
+              </S.ButtonBox>
           </S.Form>
-                <DeleteAccount />
+
+            {/* 회원탈퇴 */}
+            <S.DeleteButton className='deleteButton'>
+              <DeleteAccount />
+            </S.DeleteButton>
+
         </fieldset>
 
 

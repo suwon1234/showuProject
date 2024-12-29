@@ -5,11 +5,23 @@ import { setUser, setUserStatus } from '../../../../modules/user';
 
 const DeleteAccount = () => {
   const dispatch = useDispatch();
+  const jwtToken = localStorage.getItem("jwtToken");
 
-    const removeAccount = async () => {
+    const removeAccount = async (data) => {
+      console.log(data)
+
+      const { email } = data;
+
       if(window.confirm("회원탈퇴를 하시겠습니까?")){
         await fetch(`http://localhost:8000/users/remove`, {
           method : 'DELETE',
+          headers : {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${jwtToken}`
+          },
+          body : JSON.stringify({
+            email : email
+          })
         })
         .then((res) => res.json())
         .then((res) => {
