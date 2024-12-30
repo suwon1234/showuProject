@@ -33,7 +33,6 @@ const PostContainer = () => {
         </S.Wapper>
       </S.Container>
 
-      <Paging />
     </>
   );
 };
