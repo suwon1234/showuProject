@@ -84,6 +84,10 @@ const S = {};
       font-size: 17px;
       margin: 10px 0 0 10px;
     }
+
+    & textarea {
+      font-size: 17px;
+    }
   `
 
   S.LabelSelect = styled.label`
@@ -189,6 +193,10 @@ const S = {};
       font-size: 17px;
       margin-left: 10px;
     }
+
+    & input {
+      font-size: 17px;
+    }
   `
 
   S.Form = styled.form`
@@ -220,12 +228,26 @@ const S = {};
     
       border-radius: 50px;
       background-color: #ffd400;
+      border: none;
     
-      margin: 15px auto 0 auto;
-
       color: black;
       font-size: 17px;
-      font-weight: 800;
+      font-weight: 500;
+      
+      &.back{
+        background-color: #797979;
+        color: white;
+
+        position: absolute;
+        bottom: 98px;
+        left: 680px;
+      }
+
+      &.update {
+        position: absolute;
+        bottom: 98px;
+        left: 850px;
+      }
     `
 
     S.hr = styled.hr`
@@ -280,4 +302,12 @@ const S = {};
       }
     `;
 
+
+  S.UpdateButton = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+  `
 export default S;

@@ -8,6 +8,7 @@ export const setPreviousUrl = createAction(SET_PREVIOUS_URL, (previousUrl) => pr
 export const setUser = createAction(SET_USER, (currentUser) => currentUser);
 export const setUserStatus = createAction(SET_USER_STATUS, (isLogin) => isLogin);
 
+
 const UserInitalValue = {
     currentUser : {},
     isLogin : false,

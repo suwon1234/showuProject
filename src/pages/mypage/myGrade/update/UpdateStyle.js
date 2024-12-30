@@ -225,6 +225,7 @@ const S = {};
 
       color: black;
       font-size: 17px;
+
     `
 
     S.hr = styled.hr`
@@ -280,16 +281,7 @@ const S = {};
     `;
 
     S.UpdateButton = styled.div`
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-
-      & button:first-child{
-        background-color: #797979 !important;
-        border: none;
-        color: white;
-      }
+      position: relative;
     `
 
 export default S;

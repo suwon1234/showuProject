@@ -5,57 +5,59 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import Area from './Area';
 import useDropdown from '../../../../hooks/useDropdown';
 
-const AreaContainer = () => {
+const AreaContainer = ({ setValue, userInfo }) => {
   const dropdownRef = useRef(null);
-  const [ areaValue, setAreaValue ] = useState("선택하세요");
-  const [ isOpen, setIsOpen ] = useDropdown(dropdownRef, false);
-  const areaList = [ "서울", "경기", "경북", "경남", "충북", "충남", "전북", "전남", "인천", "강원", "제주"];
-  // const [ areaList, setAreaList ] = useState([]);
+  const [areaValue, setAreaValue] = useState("선택하세요"); // 기본값
+  const [isOpen, setIsOpen] = useDropdown(dropdownRef, false);
+  const areaList = [
+    "서울", "경기", "경북", "경남", "충북", "충남", "전북", "전남", "인천", "강원", "제주"
+  ];
 
-  // useEffect(() => {
-  //   const getArea = async () => {
-  //     try {
-  //       const response = await fetch(`http://localhost:4000/areaList`)
-  //       const datas = await response.json()
-  //       setAreaList(datas)
-  //     } catch (error) {
-  //       console.log("AreaContainerError", error)
-  //     }
-  //   }
+  // userInfo에서 초기값 설정
+  useEffect(() => {
+    if (userInfo?.area) {
+      setAreaValue(userInfo.area); // userInfo의 area 값을 초기화
+      setValue("area", userInfo.area); // useForm에 초기 area 값 설정
+    }
+  }, [userInfo, setValue]);
 
-  //   getArea()
-
-  // }, [])
-
-  // console.log(areaList)
-
-
+  const handleDropdownSelect = (value) => {
+    setAreaValue(value);
+    setValue("area", value); // useForm에 area 값을 설정
+    setIsOpen(false);
+  };
 
   return (
     <>
-      <S.LabelSelect htmlFor="area" className='area' ref={dropdownRef}>
+      <S.LabelSelect htmlFor="area" className="area" ref={dropdownRef}>
         <span>지역</span>
 
-        <S.DropdownButton 
-        type='button'
-        className='dropdown'
-        onClick={() => setIsOpen(!isOpen)}
-        value={areaValue}
+        <S.DropdownButton
+          type="button"
+          className="dropdown"
+          onClick={() => setIsOpen(!isOpen)}
+          value={areaValue}
         >
           {areaValue}
-        <span>
-          <FontAwesomeIcon icon={faAngleDown} className='down'/>
-        </span>
+          <span>
+            <FontAwesomeIcon icon={faAngleDown} className="down" />
+          </span>
         </S.DropdownButton>
 
-        <S.DropdownMenu className='dropdownMenu'>
-          { isOpen &&
+        <S.DropdownMenu className="dropdownMenu">
+          {isOpen && (
             <ul>
               {areaList.map((area, i) => (
-                <Area key={i} value={area} setAreaValue={setAreaValue} setIsOpen={setIsOpen} isOpen={isOpen} />
-            ))}
+                <Area
+                  key={i}
+                  value={area}
+                  setAreaValue={handleDropdownSelect}
+                  setIsOpen={setIsOpen}
+                  isOpen={isOpen}
+                />
+              ))}
             </ul>
-          }
+          )}
         </S.DropdownMenu>
       </S.LabelSelect>
     </>
