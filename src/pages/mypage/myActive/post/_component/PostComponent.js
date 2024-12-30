@@ -1,46 +1,38 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import S from './PostComponentStyle';
+import { useNavigate } from 'react-router-dom';
+import Paging from '../../../_component/Paging';
 
-const PostComponent = () => {
-  const [ posts, setPosts ] = useState([]);
-  
-  useEffect(() => {
-    const getPosts = async () => {
-      try {
-        const response = await fetch(`http://localhost:4000/post`);
-        const datas = await response.json();
-        return datas;
-      } catch (error) {
-        console.log(error)
-      }
-    }
 
-    getPosts()
-      .then((data) => setPosts(data))
-      .catch(console.error)
-  }, [])
-  
-  // console.log(posts);
+const PostComponent = ({ page, currentList, setPage, totalPost, PAGINATION }) => {
+  const navigate = useNavigate();
 
   return (
     <S.Container className='Container'>
-      { posts && posts.map((item, i) => (
-        <S.Wrapper key={i} className='Wrapper'>
-        <S.Wrap className='wrap'>
-          <img src={item.postImageUrl} alt='post 이미지' />
-          <S.Right className='right'>
-            <p className='title'>{item.title}</p>
-            <p className='content'>{item.content}</p>
-            <S.Writer className='writer'>
-              <p className='date'>{item.date}</p>
-              <p className='writer'>{item.writer}</p>
-              <p className='read'>READ MORE</p>
-            </S.Writer>
-          </S.Right>
-        </S.Wrap>
-      </S.Wrapper>
-      ))
-      }
+      { currentList && currentList.map((item) => (
+        <S.Wrapper 
+          key={item._id} 
+          onClick={() => navigate(`/community/communityInfo/${item._id}`)}>
+          <S.Wrap className='wrap'>
+            <img src={item.imageUrl} alt='post 이미지' />
+            <S.Right className='right'>
+              <p className='title'>{item.title}</p>
+              <p className='content'>{item.content}</p>
+              <S.Writer className='writer'>
+                <p className='date'>{item.createdAt}</p>
+                <p className='writer'>{item.writer}</p>
+              </S.Writer>
+            </S.Right>
+          </S.Wrap>
+        </S.Wrapper>
+      ))}
+      <Paging 
+        page={page}
+        setPage={setPage}
+        totalPost={totalPost}
+        btnRange={PAGINATION.btnRange}
+        pageRange={PAGINATION.pageRange}
+      />
     </S.Container>
   );
 };

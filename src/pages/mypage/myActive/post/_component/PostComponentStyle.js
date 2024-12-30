@@ -9,11 +9,15 @@ const S = {};
     display: flex;
     flex-wrap: wrap;
     column-gap: 50px;
+
+    margin-top: 60px;
   `
 
   S.Wrapper = styled.div`
     width: 400px;
     height: 140px;
+
+    margin-bottom: 50px;
 
     cursor: pointer;
   `
@@ -23,6 +27,7 @@ const S = {};
       width: 180px;
       height: 140px;
       border-radius: 20px;
+      object-fit: cover;
     }
 
     display: flex;
