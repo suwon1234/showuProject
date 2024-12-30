@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import S from './style';
 
 const ShowuVideo = ({ play, videoList }) => {
@@ -6,14 +6,16 @@ const ShowuVideo = ({ play, videoList }) => {
 
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([
-    { id: 1, user: '사용자1', text: '멋진 영상이네요!', replies: [] },
-    { id: 2, user: '사용자2', text: '정말 재밌어요!', replies: [] },
+    { id: 1, user: '사용자1', text: '멋진 영상이네요!', replies: [], showOptions: false },
+    { id: 2, user: '사용자2', text: '정말 재밌어요!', replies: [], showOptions: false },
   ]);
   const [currentUser, setCurrentUser] = useState('사용자1');
   const [showReportModal, setShowReportModal] = useState(false);
   const [reportCommentId, setReportCommentId] = useState(null);
   const [reportReason, setReportReason] = useState('');
-  const [selectedItem, setSelectedItem] = useState(null); // 선택된 항목 상태
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [isCommentFocused, setIsCommentFocused] = useState(false);
+  const [focusedReplyId, setFocusedReplyId] = useState(false);
 
   const handleRegisterButton = () => {
     if (comment.trim()) {
@@ -22,9 +24,11 @@ const ShowuVideo = ({ play, videoList }) => {
         user: currentUser,
         text: comment,
         replies: [],
+        showOptions: false,
       };
       setComments([...comments, newComment]);
       setComment('');
+      setIsCommentFocused(false);
     }
   };
 
@@ -36,6 +40,7 @@ const ShowuVideo = ({ play, videoList }) => {
 
   const handleCancel = () => {
     setComment('');
+    setIsCommentFocused(false);
   };
 
   const handleEditComment = (id, newText) => {
@@ -80,25 +85,57 @@ const ShowuVideo = ({ play, videoList }) => {
           : comment
       );
       setComments(updatedComments);
+      setFocusedReplyId(null);
     }
   };
 
   const handleSelectItem = (index) => {
-    setSelectedItem(index === selectedItem ? null : index); // 아이템 선택 해제 기능 추가
-    setReportReason(['성적인 콘텐츠', '폭력적 또는 혐오스러운 콘텐츠', '증오 또는 악의적인 콘텐츠', '괴롭힘 또는 폭력', '유해하거나 위험한 행위', '잘못된 정보', '아동 학대', '스팸 또는 혼동을 야기하는 콘텐츠'][index]);
+    setSelectedItem(index === selectedItem ? null : index);
+    setReportReason([
+      '성적인 콘텐츠',
+      '폭력적 또는 혐오스러운 콘텐츠',
+      '증오 또는 악의적인 콘텐츠',
+      '괴롭힘 또는 폭력',
+      '유해하거나 위험한 행위',
+      '잘못된 정보',
+      '아동 학대',
+      '스팸 또는 혼동을 야기하는 콘텐츠',
+    ][index]);
   };
 
-  // 모달을 닫는 함수
   const closeModal = () => {
     setShowReportModal(false);
     setReportReason('');
     setReportCommentId(null);
   };
 
+  const handleToggleOptions = (id) => {
+    const updatedComments = comments.map((comment) =>
+      comment.id === id ? { ...comment, showOptions: !comment.showOptions } : comment
+    );
+    setComments(updatedComments);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.target.closest('.comment-options') && !e.target.closest('.comment button')) {
+        const updatedComments = comments.map((comment) => ({
+          ...comment,
+          showOptions: false,
+        }));
+        setComments(updatedComments);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [comments]);
+
   return (
     <div className="main">
       <S.app className="app">
-        {/* Header */}
         <S.header className="header">
           <S.logo className="logo">
             <p className="front">Show</p> <p className="back">U</p>
@@ -131,14 +168,20 @@ const ShowuVideo = ({ play, videoList }) => {
               <S.commentInput
                 className="comment-input"
                 value={comment}
+                onFocus={() => setIsCommentFocused(true)}
+                onBlur={() => {
+                  if (!comment.trim()) setIsCommentFocused(false);
+                }}
                 onChange={(e) => setComment(e.target.value)}
                 onKeyPress={handleKeyPress}
                 placeholder="댓글을 입력하세요..."
               />
-              <S.buttonstyle className="buttonstyle">
-                <button onClick={handleRegisterButton}>등록하기</button>
-                <button onClick={handleCancel}>취소</button>
-              </S.buttonstyle>
+              {isCommentFocused && (
+                <S.buttonstyle className="buttonstyle">
+                  <button onClick={handleRegisterButton}>등록하기</button>
+                  <button onClick={handleCancel}>취소</button>
+                </S.buttonstyle>
+              )}
 
               <S.commentsList className="comments-list">
                 {comments.map((comment) => (
@@ -148,32 +191,44 @@ const ShowuVideo = ({ play, videoList }) => {
                     </S.commentText>
 
                     <S.buttonstyle className="comment-buttons">
-                      {comment.user === currentUser ? (
-                        <>
-                          <button
-                            onClick={() =>
-                              handleEditComment(
-                                comment.id,
-                                prompt('수정할 댓글을 입력하세요', comment.text)
-                              )
-                            }
-                          >
-                            수정
-                          </button>
-                          <button onClick={() => handleDeleteComment(comment.id)}>
-                            삭제
-                          </button>
-                        </>
-                      ) : (
-                        <button onClick={() => handleReportComment(comment.id)}>
-                          신고
-                        </button>
+                      <button onClick={() => handleToggleOptions(comment.id)} className="point">
+                        ⋮
+                      </button>
+
+                      {comment.showOptions && (
+                        <div className="comment-options">
+                          {comment.user === currentUser ? (
+                            <>
+                              <button
+                                onClick={() =>
+                                  handleEditComment(
+                                    comment.id,
+                                    prompt('수정할 댓글을 입력하세요', comment.text)
+                                  )
+                                }
+                              >
+                                수정
+                              </button>
+                              <button onClick={() => handleDeleteComment(comment.id)}>
+                                삭제
+                              </button>
+                            </>
+                          ) : (
+                            <button onClick={() => handleReportComment(comment.id)}>
+                              신고
+                            </button>
+                          )}
+                        </div>
                       )}
                     </S.buttonstyle>
 
                     <S.commentInput
                       className="reply-input"
                       placeholder="답글을 입력하세요..."
+                      onFocus={() => setFocusedReplyId(comment.id)}
+                      onBlur={(e) => {
+                        if (!e.target.value.trim()) setFocusedReplyId(null);
+                      }}
                       onKeyPress={(e) => {
                         if (e.key === 'Enter') {
                           handleReply(comment.id, e.target.value);
@@ -186,7 +241,7 @@ const ShowuVideo = ({ play, videoList }) => {
                       {comment.replies.map((reply, index) => (
                         <S.comment key={index} className="reply">
                           <S.commentText className="comment-text">
-                            <strong>{reply.user}:</strong> {reply.text}
+                            <strong className="comment">{reply.user}:</strong> {reply.text}
                           </S.commentText>
                         </S.comment>
                       ))}
@@ -220,10 +275,10 @@ const ShowuVideo = ({ play, videoList }) => {
       {showReportModal && (
         <S.ModalBackground onClick={closeModal}>
           <S.ModalContent onClick={(e) => e.stopPropagation()}>
-          <S.reportbutton className='reportbutton'>
-            <h2>신고</h2>
-            <button onClick={closeModal} className="close-btn">X</button>
-          </S.reportbutton>
+            <S.reportbutton className="reportbutton">
+              <h2>신고</h2>
+              <button onClick={closeModal} className="close-btn">X</button>
+            </S.reportbutton>
             <p>어떤 문제인가요?</p>
 
             <S.checklist className="checklist">
@@ -239,9 +294,7 @@ const ShowuVideo = ({ play, videoList }) => {
               ].map((label, index) => (
                 <div
                   key={index}
-                  className={`checklist-item ${
-                    selectedItem === index ? 'selected' : ''
-                  }`}
+                  className={`checklist-item ${selectedItem === index ? 'selected' : ''}`}
                   onClick={() => handleSelectItem(index)}
                 >
                   <span className="empty-circle" />
@@ -250,7 +303,9 @@ const ShowuVideo = ({ play, videoList }) => {
               ))}
             </S.checklist>
 
-            <div className='finishbutton'><button onClick={handleSubmitReport} className='finish'>신고</button></div>
+            <div className="finishbutton">
+              <button onClick={handleSubmitReport} className="finish">신고</button>
+            </div>
           </S.ModalContent>
         </S.ModalBackground>
       )}
