@@ -19,7 +19,7 @@ const MdInquiry = () => {
   const [isAgreed, setIsAgreed] = useState(false);
 
   const location = useLocation();
-  const { productName } = location.state || {}; // state에서 상품명 받기
+  const { productName } = location.state || {}; 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -57,7 +57,7 @@ const MdInquiry = () => {
 
   const handleCancel = () => {
     if (title || content || selectedType || selectedForm || selectedAlarm || isAgreed) {
-      if (window.confirm('작성하신 내용이 사라집니다. 정말 취소하시겠습니까?')) {
+      if (window.confirm('작성하신 내용이 모두 사라집니다. 취소하시겠습니까?')) {
         navigate(-1);
       }
     } else {

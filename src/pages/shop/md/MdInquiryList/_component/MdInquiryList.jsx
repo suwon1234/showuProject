@@ -11,7 +11,7 @@ const MdInquiryList = () => {
   useEffect(() => {
     const getList = async () => {
       try {
-        const response = await fetch('http://localhost:4000/inquiry');
+        const response = await fetch('http://localhost:8000/shop/md/inquiry/list');
         const datas = await response.json();
         setInquiryList(datas);
       } catch (error) {

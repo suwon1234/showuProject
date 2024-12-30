@@ -13,7 +13,8 @@ const Shop = () => {
     
     const getMdItems = async () => {
       try {
-        const response = await fetch("http://localhost:4000/md");
+        // const response = await fetch("http://localhost:4000/md");
+        const response = await fetch("http://localhost:8000/shop/md");
         const datas = await response.json();
         setMdItems(datas);
       } catch (error) {
@@ -29,7 +30,8 @@ const Shop = () => {
 
     const getAuction = async () => {
       try {
-        const response = await fetch('http://localhost:4000/auction');
+        // const response = await fetch('http://localhost:4000/auction');
+        const response = await fetch('http://localhost:8000/shop/auction');
         const datas = await response.json();
         setAuctionItems(datas);
       } catch (error) {

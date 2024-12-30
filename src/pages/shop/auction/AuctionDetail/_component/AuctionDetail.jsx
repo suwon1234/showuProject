@@ -39,7 +39,8 @@ const AuctionDetail = () => {
     
     const getAuctionProducts = async () => {
       try {
-        const response = await fetch('http://localhost:4000/auction');
+        // const response = await fetch('http://localhost:4000/auction');
+        const response = await fetch('http://localhost:8000/shop/auction');
         const datas = await response.json();
         setAuctionProducts(datas);
       } catch (error) {
@@ -55,7 +56,7 @@ const AuctionDetail = () => {
 
     const getAuctionDetail = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/auction/${id}`);
+        const response = await fetch(`http://localhost:8000/shop/auction/${id}`);
         const datas = await response.json();
         setAuctionProduct(datas);
       } catch (error) {
@@ -72,7 +73,7 @@ const AuctionDetail = () => {
 
     const getInquiryList = async () => {
       try {
-        const response = await fetch('http://localhost:4000/inquiry');
+        const response = await fetch('http://localhost:8000/shop/auction/inquiry');
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const datas = await response.json();
         setInquiryList(datas);

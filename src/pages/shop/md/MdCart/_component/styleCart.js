@@ -68,12 +68,9 @@ const flexStyle = css`
     cursor: pointer;
 
     path {
-      color: ${({ checked }) => (checked ? '#ffd400' : '#fff')}; 
-    }
-
-      &:hover path {
-        color: #ffd400;
-      }
+    color: ${({ checked }) => (checked ? '#ffd400' : '#fff')};
+  }
+  
   `
 
   S.BarWrapper = styled.div`
@@ -123,6 +120,7 @@ const flexStyle = css`
     margin-right: 50px;
     font-size: 20px;
     cursor: pointer;
+    /* transition: color 0.3s ease, transform 0.3s ease; */
 
     path {
       color: ${({ checked }) => (checked ? '#ffd400' : '#fff')};

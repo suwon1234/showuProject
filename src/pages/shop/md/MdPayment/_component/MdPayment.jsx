@@ -4,15 +4,16 @@ import S from './stylePayment';
 import Dropdown2 from './Dropdown2';
 import Dropdown1 from './Dropdown1';
 import { faCheckCircle, faCreditCard, faMoneyBillTransfer, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const MdPayment = () => {
-
+  const { id } = useParams();
   const { state } = useLocation();
   const initialSelectedOptions = state?.selectedOptions || [];
+  const navigate = useNavigate();
 
-  const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions); // 장바구니 아이템
+  const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions); // 장바구니 상품
 
   const options = ['옵션 1', '옵션 2', '옵션 3']; 
 
@@ -28,19 +29,27 @@ const MdPayment = () => {
   ];
 
   let productTotal = 0;
-  selectedOptions.forEach(item => { productTotal += item.price * item.quantity }); // 가격과 수량을 합산
+  selectedOptions.forEach(item => { productTotal += item.price * item.quantity }); 
   const deliveryFee = productTotal >= 70000 ? 0 : 3000;
   const discountAmount = 0;
   const totalAmount = productTotal + deliveryFee - discountAmount;
 
-  // 상품 삭제 함수
+  // 결제 상품 삭제 
   const deleteProduct = (index) => {
-    // 사용자에게 확인 메시지 띄우기
-    const confirmDelete = window.confirm("이 상품을 삭제하시겠습니까?");
+    const confirmDelete = window.confirm("해당 상품을 삭제하시겠습니까?");
     if (confirmDelete) {
-      setSelectedOptions((prev) => prev.filter((item, i) => i !== index)); // 선택된 상품에서 해당 인덱스를 제외한 새로운 배열 생성
+      setSelectedOptions((prev) => prev.filter((item, i) => i !== index));
     }
   };
+
+  // 이전 페이지로 이동
+  const handleBackButton = () => {
+    const confirmLeave = window.confirm("작성하신 정보가 모두 사라집니다. 취소하시겠습니까?");
+    if (confirmLeave) {
+      navigate(`/shop/md`); 
+    }
+  };
+
   return (
     <S.PaymentWrapper>
       <S.PaymentTitle>
@@ -71,7 +80,7 @@ const MdPayment = () => {
               <S.Center>{item.quantity}</S.Center>
               <S.Right>{(item.price * item.quantity).toLocaleString()} 원</S.Right>
               <FontAwesomeIcon className='icon' icon={faXmark} 
-                onClick={() => deleteProduct(i)} // 삭제 버튼 클릭 시 해당 인덱스를 기반으로 삭제
+                onClick={() => deleteProduct(i)} 
               />
             </S.PaymentItem>
           ))}
@@ -209,9 +218,7 @@ const MdPayment = () => {
       </S.MethodWrapper>
 
       <S.PaymentButton>
-        <Link to={'/shop/md/cart'}>
-          <S.BackButton>이전 페이지로</S.BackButton>
-        </Link>
+          <S.BackButton onClick={handleBackButton}>이전 페이지로</S.BackButton>
         <Link to={'/shop/md/payment/info'}>
           <S.NextButton><p>{totalAmount.toLocaleString()}원</p>결제 진행 </S.NextButton>
         </Link>
