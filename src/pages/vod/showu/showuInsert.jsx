@@ -15,13 +15,13 @@ const ShowuInsert = ({ plays }) => {
   const [videoCategory, setVideoCategory] = useState('카테고리');
   const [thumbnail, setThumbnail] = useState(null);
   const [selectedCircle, setSelectedCircle] = useState(null);
+  
+  const containerRef = useRef(null);
+
   const handleCircleClick = (index) => {
     setSelectedCircle(index);
   };
 
-  const containerRef = useRef(null);
-
-  // 외부 클릭 감지 함수
   const handleClickOutside = (e) => {
     if (containerRef.current && !containerRef.current.contains(e.target)) {
       setShowCreateOption(false);
@@ -72,7 +72,13 @@ const ShowuInsert = ({ plays }) => {
   };
 
   const goToNextPage = () => {
-    if (activePage < 3) {
+    if (activePage === 3) {
+      // Show confirmation before closing modal
+      const confirmUpload = window.confirm('영상을 업로드 하겠습니까?');
+      if (confirmUpload) {
+        closeModal();  // Close modal if confirmed
+      }
+    } else if (activePage < 3) {
       setActivePage((prev) => prev + 1);
     }
   };
@@ -215,68 +221,74 @@ const ShowuInsert = ({ plays }) => {
                 </S.InputWrapper>
               </S.detailWrapper>
             )}
-             {activePage === 1 && (
-             <S.videaddowrapper className='videaddowrapper'>
-             <h1>동영상 요소</h1>
-             <p>카드와 최종 화면을 사용하여 시청자에게 관련 동영상, 웹사이트, 클릭 유도 문구를 표시하세요.</p>
-           
-             <div className='subtitle'>
-               <img src="/path-to-your-image.png" alt="icon" />
-               <div className='subtitleadd'>
-                 <span>자막 추가</span>
-                 <p>동영상에 자막을 추가하여 더 많은 시청자에게 다가가세요</p>
-               </div>
-               <button onClick={() => alert("자막이 추가되었습니다!")}>추가</button>
-             </div>
-           
-             <div className='addscreen'>
-               <img src="/path-to-your-image.png" alt="icon" />
-               <div className='subtitleadd'>
-                 <span>최종 화면 추가</span>
-                 <p>동영상이 끝날 때 관련 콘텐츠를 홍보합니다.</p>
-               </div>
-               <button onClick={() => alert("최종 화면이 추가되었습니다!")}>추가</button>
-             </div>
-           </S.videaddowrapper>
-           
-            )}
-            {activePage === 2 && (
-             <S.videaddowrapper className='videaddowrapper'>
-             <h1>검토</h1>
-             <p>ShowU에서 동영상에 공개 상태를 제한할 수 있는 문제가 있는지 검사합니다. 그러면 동영상을 게시하기 전에 문제를 해결할 수 있습니다</p>
-           
-             <div className='subtitle'>
-               <img src="/path-to-your-image.png" alt="icon" />
-               <div className='subtitleadd'>
-                 <span>저작권</span>
-                 <p>발견된 문제가 없습니다</p>
-               </div>
-             </div>
-           </S.videaddowrapper>
-           
-            )}
-             {activePage === 3 && (
-             <S.videaddowrapper className='videaddowrapper'>
-             <h1>공개 상태</h1>
-             <p>게시할 시기 동영상을 볼 수 있는 사람을 선택하세요</p>
-             <div className='openvideo'>
-               <div className='open'>
-               <span className="empty-circle" />
-                 <span>비공개</span>
-                 <p>나만 볼 수 있습니다.</p>
-                 <span className="empty-circle" />
-                 <span>공개</span>
-                 <p>누구나 내 동영상을 시청할 수 있습니다.</p>
-               </div>
-             </div>
-           </S.videaddowrapper>
-           
+
+            {activePage === 1 && (
+              <S.videaddowrapper className='videaddowrapper'>
+                <h1>동영상 요소</h1>
+                <p>카드와 최종 화면을 사용하여 시청자에게 관련 동영상, 웹사이트, 클릭 유도 문구를 표시하세요.</p>
+                <div className='subtitle'>
+                  <img src="/path-to-your-image.png" alt="icon" />
+                  <div className='subtitleadd'>
+                    <span>자막 추가</span>
+                    <p>동영상에 자막을 추가하여 더 많은 시청자에게 다가가세요</p>
+                  </div>
+                  <button onClick={() => alert("자막이 추가되었습니다!")}>추가</button>
+                </div>
+
+                <div className='addscreen'>
+                  <img src="/path-to-your-image.png" alt="icon" />
+                  <div className='subtitleadd'>
+                    <span>최종 화면 추가</span>
+                    <p>동영상이 끝날 때 관련 콘텐츠를 홍보합니다.</p>
+                  </div>
+                  <button onClick={() => alert("최종 화면이 추가되었습니다!")}>추가</button>
+                </div>
+              </S.videaddowrapper>
             )}
 
+            {activePage === 2 && (
+              <S.videaddowrapper className='videaddowrapper'>
+                <h1>검토</h1>
+                <p>ShowU에서 동영상에 공개 상태를 제한할 수 있는 문제가 있는지 검사합니다. 그러면 동영상을 게시하기 전에 문제를 해결할 수 있습니다</p>
+
+                <div className='subtitle'>
+                  <img src="/path-to-your-image.png" alt="icon" />
+                  <div className='subtitleadd'>
+                    <span>저작권</span>
+                    <p>발견된 문제가 없습니다</p>
+                  </div>
+                </div>
+              </S.videaddowrapper>
+            )}
+
+            {activePage === 3 && (
+              <S.videaddowrapper className='videaddowrapper'>
+                <h1>공개 상태</h1>
+                <p>게시할 시기 동영상을 볼 수 있는 사람을 선택하세요</p>
+                <div className='openvideo'>
+                  <div className='open'>
+                    <div
+                      className="circle"
+                      onClick={() => handleCircleClick(0)}
+                      style={{ backgroundColor: selectedCircle === 0 ? '#FFD400' : 'gray' }}
+                    ></div>
+                    <span>비공개</span>
+                    <p>나만 볼 수 있습니다.</p>
+                    <div
+                      className="circle"
+                      onClick={() => handleCircleClick(1)}
+                      style={{ backgroundColor: selectedCircle === 1 ? '#FFD400' : 'gray' }}
+                    ></div>
+                    <span>공개</span>
+                    <p>누구나 내 동영상을 시청할 수 있습니다.</p>
+                  </div>
+                </div>
+              </S.videaddowrapper>
+            )}
 
             <S.buttonWrapper>
-            <S.PreviousButton onClick={goToPreviousPage}>이전 단계로</S.PreviousButton>
-            <S.NextButton onClick={goToNextPage}>다음 단계로</S.NextButton>
+              <S.PreviousButton onClick={goToPreviousPage}>이전 단계로</S.PreviousButton>
+              <S.NextButton onClick={goToNextPage}>다음 단계로</S.NextButton>
             </S.buttonWrapper>
           </S.ModalContent>
         </S.ModalBackground>

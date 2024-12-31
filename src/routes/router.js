@@ -396,7 +396,7 @@ const router = createBrowserRouter([
         element: <VodContainer />,
       },
       {
-        path: "/vod/play",
+        path: "/vod/play/:id",
         element: <NonLoginContainer />,
       },
       {
