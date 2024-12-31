@@ -1,102 +1,134 @@
-// 커뮤니티 댓글 수정 메인 페이지
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './styleEditCommentsMain';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 
 const EditCommentsMain = () => {
-
+  const { id } = useParams();
   const navigate = useNavigate();
 
-  const handleEdit = () => {
-    const complete =window.confirm("수정 페이지로 이동하시겠습니까?");
-      if(complete){
-        navigate('/community/communityInfo/editComments');
+  const [comments, setComments] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // 댓글 데이터 가져오기
+  useEffect(() => {
+    console.log("Received ID:", id); 
+    if (!id) {
+      setError("유효한 id가 제공되지 않았습니다.");
+      setLoading(false);
+      return;
+    }
+
+    const fetchComments = async () => {
+      try {
+        const response = await fetch(`http://localhost:8000/community/comments/${id}`);
+        if (!response.ok) {
+          const errorResponse = await response.json();
+          throw new Error(errorResponse.message || "댓글 데이터를 가져오는 데 실패했습니다.");
+        }
+        const result = await response.json();
+        setComments(result);
+      } catch (error) {
+        console.error("댓글 가져오기 오류:", error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
+    };
+
+    fetchComments();
+  }, [id]);
+
+  // 댓글 수정 페이지 이동
+  const handleEdit = (commentId) => {
+    const complete = window.confirm("수정 페이지로 이동하시겠습니까?");
+    if (complete) {
+      navigate(`/community/communityInfo/editComments/${commentId}`);
+    }
   };
 
-  const handleDelete = () => {
-    const complete =window.confirm("삭제하시겠습니까?");
-      if(complete){
-        alert("삭제되었습니다.")
+  // 댓글 삭제
+  const handleDelete = async (commentId) => {
+    const complete = window.confirm("삭제하시겠습니까?");
+    if (!complete) return;
+
+    try {
+      const response = await fetch(`http://localhost:8000/community/comments/${commentId}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("댓글 삭제에 실패했습니다.");
       }
+
+      // 삭제 후 댓글 목록 업데이트
+      setComments((prevComments) => prevComments.filter((comment) => comment._id !== commentId));
+      alert("댓글이 삭제되었습니다.");
+    } catch (error) {
+      console.error("댓글 삭제 오류:", error);
+      alert("댓글 삭제 중 오류가 발생했습니다.");
+    }
   };
 
-    const editData = [
-        { id: 1, title: "홍길동", content: "첫 번째 댓글입니다...", date: "2024.12.01 18:30" },
-        { id: 2, title: "홍길동", content: "두 번째 댓글입니다...", date: "2024.11.13 12:59" },
-        { id: 3, title: "홍길동", content: "세 번째 댓글입니다...", date: "2024.10.29 20:01" },
-        { id: 4, title: "홍길동", content: "네 번째 댓글입니다...", date: "2024.10.29 20:01" },
-        { id: 5, title: "홍길동", content: "다섯 번째 댓글입니...", date: "2024.10.29 20:01" },
-        { id: 6, title: "홍길동", content: "여섯 번째 댓글입니...", date: "2024.10.29 20:01" },
-      ];
+  if (loading) return <p>로딩 중...</p>;
+  if (error) return <p>오류: {error}</p>;
+  if (comments.length === 0) return <p>댓글이 없습니다.</p>;
 
-
-    return (
-        <S.Wrapper>
-        <S.TopTitle>
-          커뮤니티
-        </S.TopTitle>
-        <S.IconWrapper>
-          <FontAwesomeIcon icon={faChevronDown} className='icon' />
-        </S.IconWrapper>
+  return (
+    <S.Wrapper>
+      <S.TopTitle>커뮤니티</S.TopTitle>
+      <S.IconWrapper>
+        <FontAwesomeIcon icon={faChevronDown} className="icon" />
+      </S.IconWrapper>
       <S.SubWrapper>
-  
-      <S.TitleContainer>
-        <S.Title>
-          <p>댓글 수정 / 삭제</p>
-        </S.Title>
-        <S.SubTitle>
-          <ul>
-            <li>작성 내역</li>
-          </ul>
-        </S.SubTitle>
+        <S.TitleContainer>
+          <S.Title>
+            <p>댓글 수정 / 삭제</p>
+          </S.Title>
+          <S.SubTitle>
+            <ul>
+              <li>작성 내역</li>
+            </ul>
+          </S.SubTitle>
         </S.TitleContainer>
-  
+
         <S.TableWrapper>
-          
           <table>
             <thead>
               <tr>
-                <th>제목</th>
                 <th>내용</th>
                 <th>작성 날짜</th>
                 <th>수정/삭제</th>
               </tr>
             </thead>
             <tbody>
-              {editData.map((edit) => (
-                <tr key={edit.id}>
-                  <td>{edit.title}</td>
+              {comments.map((comment) => (
+                <tr key={comment._id}>
+                  <td>{comment.title}</td>
+                  <td>{comment.content}</td>
+                  <td>{new Date(comment.createdAt).toLocaleString()}</td>
                   <td>
-                  {/* <Link className="linkStyle" to={`/community/communityInfo/Comments/${edit.id}`}> */}
-                  <Link className="linkStyle" to={`/community/communityInfo/Comments`}>
-                    {edit.content}
-                  </Link>
+                    {/* 수정/삭제 버튼 */}
+                    <button onClick={() => navigate(`/community/communityInfo/editCommentsMain/${id}`)}>
+                      수정/삭제
+                    </button>
                   </td>
-                  <td>{edit.date}</td>
-
-                <S.buttonWrapper>
-                  <button onClick={handleEdit}><td>수정</td></button>
-                  <button onClick={handleDelete}><td>삭제</td></button>
-                </S.buttonWrapper>
                 </tr>
-
               ))}
             </tbody>
           </table>
-
         </S.TableWrapper>
+
         <S.PageNumber>
           <span>«</span>
           <p>1</p>
           <span>»</span>
         </S.PageNumber>
       </S.SubWrapper>
-      </S.Wrapper>
-    );
-  };
+    </S.Wrapper>
+  );
+};
 
 export default EditCommentsMain;
