@@ -87,9 +87,9 @@ const handleLikeButton = () => {
 
       <S.content>{content}</S.content> 
 
-      <S.ButtonGroup>
+      {/* <S.ButtonGroup>
                     <button onClick={handleLikeButton}>좋아요 {likeCount} </button>
-                  </S.ButtonGroup>
+                  </S.ButtonGroup> */}
       
       </S.section>
 

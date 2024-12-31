@@ -122,7 +122,7 @@ const router = createBrowserRouter([
         element : <CommentsContainer/> // 커뮤니티 댓글 상세 페이지
       },
       {
-        path : '/community/communityInfo/editCommentsMain',
+        path : '/community/communityInfo/editCommentsMain/:id',
         element : <EditCommentsMainContainer /> // 커뮤니티 댓글 수정 메인 페이지
       },
       {
