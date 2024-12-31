@@ -11,9 +11,7 @@ const S = {};
   `
 
   S.InputBox = styled.div`
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+    position: relative;
 
     & input {
       width: 480px;
@@ -24,8 +22,17 @@ const S = {};
       border: none;
       font-size: 15px;
       border-radius: 5px;
+
+      margin-bottom: 30px;
+    }
+
+    & svg.lockImage {
+      position: absolute;
+      top: 18px;
+      right: 15px;
     }
   `
+
 
   S.Button = styled.div`
     width: 480px;
