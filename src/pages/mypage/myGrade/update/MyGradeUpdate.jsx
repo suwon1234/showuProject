@@ -11,7 +11,7 @@ const MyGradeUpdate = () => {
             <p>등급업 정보</p>
             <S.SubTitle className='subTitle'>
               <ul>
-                <li>신청서 작성</li>
+                <li>신청서 수정</li>
               </ul>
             </S.SubTitle>
           </S.Title>
