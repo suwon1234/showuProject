@@ -408,15 +408,15 @@ height: 100%;
 S.videaddowrapper=styled.div`
 width: 100%;
 height: 100%;
-.empty-circle {
-    width: 20px;
-    height: 20px;
-    border: 2px solid white; 
+.circle {
+    width: 21.33px;
+    height: 21.33px;
+    background-color: gray;
     border-radius: 50%;
-    margin-right: 10px;
-    background-color: transparent;
+    transition: background-color 0.3s;
+    cursor: pointer;
   }
-  &.selected .empty-circle {
+  &.select .circle {
     background-color: #FFD400; 
   }
 
@@ -474,7 +474,7 @@ h1{
     }
 }
 .openvideo{
-   display: flex;
+    display: flex;
     align-items: center; 
     max-width: 534px;
     height : 283px;
