@@ -61,7 +61,10 @@ const FindIdContainer = () => {
             </S.inputWapper>
           </form>
 
-          <S.LoginButton>아이디 찾기</S.LoginButton>
+          <S.LoginButton
+            disabled = {isSubmitting}
+          >아이디 찾기</S.LoginButton>
+          
           <Link to={'/login'}>
           <S.LoginButton>로그인으로</S.LoginButton>
           </Link>
