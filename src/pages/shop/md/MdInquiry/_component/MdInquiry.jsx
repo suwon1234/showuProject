@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import S from './styleInquiry';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 
 const MdInquiry = () => {
   const navigate = useNavigate();
@@ -17,7 +17,10 @@ const MdInquiry = () => {
   const [content, setContent] = useState(''); 
   const [selectedAlarm, setSelectedAlarm] = useState(null); 
   const [isAgreed, setIsAgreed] = useState(false);
-  
+
+  const location = useLocation();
+  const { productName } = location.state || {}; 
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -46,8 +49,22 @@ const MdInquiry = () => {
       return;
     }
 
-    alert('등록이 완료되었습니다!');
-    navigate('/shop/md/inquiry/list');
+    if (window.confirm('등록하시겠습니까?')) {
+      alert('등록이 완료되었습니다!');
+      navigate('/shop/md/inquiry/list');
+    }
+  };
+
+  const handleCancel = () => {
+    if (title || content || selectedType || selectedForm || selectedAlarm || isAgreed) {
+      if (window.confirm('작성하신 내용이 모두 사라집니다. 취소하시겠습니까?')) {
+        navigate(-1);
+      }
+    } else {
+      if (window.confirm('이전 화면으로 돌아가시겠습니까?')) {
+        navigate(-1);
+      }
+    }
   };
 
   return (
@@ -60,7 +77,7 @@ const MdInquiry = () => {
         <table className="inquiry-table">
           <tr>
             <th>상품명</th>
-            <td colSpan="2">2024 베르사유의 장미 프로그램북 스페셜 에디션</td>
+            <td colSpan="2">{productName}</td>
           </tr>
           <tr>
             <th>문의 유형</th>
@@ -137,7 +154,7 @@ const MdInquiry = () => {
       </S.Inquiry>
 
       <S.InquiryButton>
-        <S.BackButton>취소</S.BackButton>
+        <S.BackButton onClick={handleCancel}>취소</S.BackButton>
           <S.NextButton onClick={handleSubmit}>등록</S.NextButton>
       </S.InquiryButton>
     </S.InquiryWrapper>

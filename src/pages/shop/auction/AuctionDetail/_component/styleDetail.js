@@ -1,4 +1,5 @@
 // 경매 - 상세페이지 스타일
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled, { css } from "styled-components";
 
 const S = {};
@@ -120,20 +121,22 @@ const flexStyle = css`
     
     .heart { // 관심물품 
       background-color: #797979;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
+      
+  `
+
+  S.HeartIconWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     .heart-icon {
       font-size: 20px;
-      margin-right: 5px;
-    
-      
-      &:hover {
-        path {
-          color: #ffd400; 
-        }
+      margin-right: 10px;
+
+
+      path {
+        color: ${(props) => (props.clicked ? 'red' : 'white')}; 
       }
     }
       

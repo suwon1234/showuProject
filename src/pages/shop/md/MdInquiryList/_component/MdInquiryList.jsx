@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import S from './styleInquiryList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
 
 const MdInquiryList = () => {
   const [inquiryList, setInquiryList] = useState([]);
@@ -10,7 +11,7 @@ const MdInquiryList = () => {
   useEffect(() => {
     const getList = async () => {
       try {
-        const response = await fetch('http://localhost:4000/inquiry');
+        const response = await fetch('http://localhost:8000/shop/md/inquiry/list');
         const datas = await response.json();
         setInquiryList(datas);
       } catch (error) {
@@ -52,6 +53,7 @@ const MdInquiryList = () => {
       </S.Head>
       
       {inquiryList.map((inquiry) => (
+        <Link to={`/shop/md/inquiry/${inquiry.id}`}>
         <S.InquiryList key={inquiry.id}>
           <S.Left1>
             <S.ListItem>{inquiry.id}</S.ListItem>
@@ -75,6 +77,7 @@ const MdInquiryList = () => {
             <S.ListItem>{inquiry.date}</S.ListItem>
           </S.Right2>
         </S.InquiryList>
+        </Link>
       ))}
     </S.ListWrapper>
   );

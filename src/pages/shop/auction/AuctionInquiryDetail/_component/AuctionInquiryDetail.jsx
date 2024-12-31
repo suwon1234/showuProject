@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import S from './styleInquiryDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import useInput from '../../../_component/useInput';
 
 const AuctionInquiryDetail = () => {
@@ -142,7 +142,9 @@ const AuctionInquiryDetail = () => {
           </S.ButtonContainer>
         ) : (
           <S.ButtonContainer>
+            <Link to={'/shop/auction/inquiry/list'}>
             <S.ListButton>목록</S.ListButton>
+            </Link>
             <S.ButtonWrapper>
               <S.DeleteButton>삭제</S.DeleteButton>
               <S.ModifyButton onClick={handleEdit}>수정</S.ModifyButton>
