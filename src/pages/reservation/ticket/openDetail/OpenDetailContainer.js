@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ShowDetail = () => {
+const OpenDetailContainer = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const ShowDetail = () => {
   );
 };
 
-export default ShowDetail;
+export default OpenDetailContainer;

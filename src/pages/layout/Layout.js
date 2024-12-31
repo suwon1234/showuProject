@@ -68,29 +68,31 @@ const Layout = () => {
 
   return (
     <div>
-      <S.Background className='Background'>
-        { !hideHeaderPage.includes(location.pathname) && 
+      <S.Background className="Background">
+        {!hideHeaderPage.includes(location.pathname) && (
           <header className="header">
             <S.topbar className="topbar"></S.topbar>
 
-              <S.navbar className="navbar">
-                <S.LogoBox className='logoBox'>
-                  <S.logo className="logo">
-                    <Link to="/main" className="logolink">
-                      Show <span className="highlight">U</span>
-                    </Link>
-                  </S.logo>
+            <S.navbar className="navbar">
+              <S.LogoBox className="logoBox">
+                <S.logo className="logo">
+                  <Link to="/main" className="logolink">
+                    Show <span className="highlight">U</span>
+                  </Link>
+                </S.logo>
 
-                  <S.SearchBox className='searchBox'>
-                    <input
-                      type="text"
-                      placeholder="너의 재능을 보여줘"
-                      className="searchinput"
-                    />
-                    <FontAwesomeIcon icon={faMagnifyingGlass} className='search'/>
-                  </S.SearchBox>
-
-                </S.LogoBox>
+                <S.SearchBox className="searchBox">
+                  <input
+                    type="text"
+                    placeholder="너의 재능을 보여줘"
+                    className="searchinput"
+                  />
+                  <FontAwesomeIcon
+                    icon={faMagnifyingGlass}
+                    className="search"
+                  />
+                </S.SearchBox>
+              </S.LogoBox>
 
               <S.authlinks className="authlinks">
                 <Link to="/up-grade" className="highlight">
@@ -98,39 +100,37 @@ const Layout = () => {
                 </Link>
                 <span className="divider">|</span>
 
-                { isLogin ? (
-                  <S.AfterLogin className='afterLogin'>
+                {isLogin ? (
+                  <S.AfterLogin className="afterLogin">
                     <span>{currentUser.name}님</span>
                     <button onClick={handleLogout}>로그아웃</button>
                   </S.AfterLogin>
                 ) : (
                   <>
-                  <Link to="/login" className="highlight">
-                    로그인
-                  </Link>
-                  <Link to="/join" className="showUlink">
-                    회원가입
-                  </Link>
-                </>
+                    <Link to="/login" className="highlight">
+                      로그인
+                    </Link>
+                    <Link to="/join" className="showUlink">
+                      회원가입
+                    </Link>
+                  </>
                 )}
-
               </S.authlinks>
-              </S.navbar>
+            </S.navbar>
 
-              <S.menubar className="menubar">
-
+            <S.menubar className="menubar">
               {/* showU  */}
-              <HoverMenu 
+              <HoverMenu
                 menuLabel="showU"
                 to="/showu"
                 dropdownLinks={[
-                  {to: "/showu", label: "팀매칭"},
-                  {to: "/showu", label: "레슨"}
+                  { to: "/showu", label: "팀매칭" },
+                  { to: "/showu", label: "레슨" },
                 ]}
-              />  
-        
+              />
+
               {/* Shop */}
-              <HoverMenu 
+              <HoverMenu
                 menuLabel="Shop"
                 to="/shop"
                 dropdownLinks={[
@@ -144,26 +144,26 @@ const Layout = () => {
               </NavLink>
 
               {/* 예약 */}
-              <HoverMenu 
+              <HoverMenu
                 menuLabel="예약"
                 to="/reservation"
                 dropdownLinks={[
-                  {to: "/reservation", label: "공간 대여"},
-                  {to: "/reservation", label: "티켓 예매"}
+                  { to: "/reservation/space/space-rental", label: "공간 대여" },
+                  { to: "/reservation", label: "티켓 예매" },
                 ]}
               />
 
               <span className="menudivider">|</span>
-            
+
               <NavLink to={"/hot"} className="menuitemhot">
-                <S.HotBox className='HotBox'>
-                  <FontAwesomeIcon icon={faFire} className='fire'/>
+                <S.HotBox className="HotBox">
+                  <FontAwesomeIcon icon={faFire} className="fire" />
                   <p>HOT</p>
                 </S.HotBox>
               </NavLink>
-        
+
               {/* 커뮤니티 */}
-              <HoverMenu 
+              <HoverMenu
                 menuLabel="커뮤니티"
                 to="/community"
                 dropdownLinks={[
@@ -176,14 +176,15 @@ const Layout = () => {
                 마이페이지
               </NavLink>
             </S.menubar>
-          </header> }
+          </header>
+        )}
 
         {/* 메인 */}
-        <S.main className='main'>
-          <Outlet/>
+        <S.main className="main">
+          <Outlet />
         </S.main>
       </S.Background>
-            
+
       {/* 푸터 */}
       <Footer />
     </div>
