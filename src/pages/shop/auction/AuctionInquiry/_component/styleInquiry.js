@@ -112,20 +112,18 @@ const flexStyle2 = css`
     ${flexStyle}
     margin-right: 20px;
     cursor: pointer;
-
-    color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
   `
 
   S.Icon = styled(FontAwesomeIcon)`
     padding-right: 5px;
     padding-left: 5px;
-    color: ${(props) => (props.selected ? '#ffd400' : '#fff')};
 
-      &:hover {
+    path {
+      color: ${({ selected }) => (selected ? '#ffd400' : '#fff')};
+    }
 
-        path{
+      &:hover path{
           color: #ffd400;
-        }
       }
   `
 

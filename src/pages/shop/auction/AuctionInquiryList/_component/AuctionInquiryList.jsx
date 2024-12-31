@@ -3,7 +3,7 @@ import React from 'react';
 import S from './styleInquiryList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const AuctionInquiryList = ({ inquiryList }) => {
   const navigate = useNavigate();
@@ -43,6 +43,7 @@ const AuctionInquiryList = ({ inquiryList }) => {
       </S.Head>
       
       {inquiryList.map((inquiry) => (
+        <Link to={`/shop/auction/inquiry/${inquiry.id}`}>
         <S.InquiryList key={inquiry.id} onClick={() => handleClick(inquiry.id)}>
           <S.Left1>
             <S.ListItem>{inquiry.id}</S.ListItem>
@@ -66,6 +67,7 @@ const AuctionInquiryList = ({ inquiryList }) => {
             <S.ListItem>{inquiry.date}</S.ListItem>
           </S.Right2>
         </S.InquiryList>
+        </Link>
       ))}
     </S.ListWrapper>
   );

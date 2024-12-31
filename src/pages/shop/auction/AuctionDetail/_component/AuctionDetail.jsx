@@ -4,88 +4,147 @@ import S from './styleDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faCircleChevronLeft, faCircleChevronRight, faCircleExclamation, faClock, faHeart, faLock, faPencil } from '@fortawesome/free-solid-svg-icons';
 import DeliveryPopup from './DeliveryPopup';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import BidPopup from './BidPopup';
 
-// const AuctionDetail = ({ auctionItems, inquiryList, auctionInfo }) => {
-const AuctionDetail = ({auctionItems, auctionInfo}) => {
+// const AuctionDetail = ({auctionItems, auctionInfo}) => {
+const AuctionDetail = () => {
+  const { id } = useParams();
   const [PopupVisible1, setPopupVisible1] = useState(false);
   const [PopupVisible2, setPopupVisible2] = useState(false);
   const [HeartClicked, setHeartClicked] = useState(false);
+  const [auctionProduct, setAuctionProduct] = useState(null);
+  const [auctionProducts, setAuctionProducts] = useState([]);
   const [inquiryList, setInquiryList] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0); // 현재 슬라이드 상태
+  const ProductsPerSlide = 3; // 한 번에 3개씩 보여줌
 
   const openPopup1 = () => setPopupVisible1(true);
   const closePopup1 = () => setPopupVisible1(false);
   const openPopup2 = () => setPopupVisible2(true);
   const closePopup2 = () => setPopupVisible2(false);
+  
+  // 회원 맞춤 슬라이드에 들어갈 상품 
+  const visibleBestProduct = Array.isArray(auctionProducts) && auctionProducts.slice(
+    currentSlide * ProductsPerSlide,
+    (currentSlide + 1) * ProductsPerSlide
+  );
 
+  // 관심 물품 하트
   const toggleHeart = () => {
-    if (HeartClicked) {
-      setHeartClicked(false);
-    } else {
-      setHeartClicked(true);
-    }
+    setHeartClicked(!HeartClicked); 
   };
-
+  
   useEffect(() => {
-    const getList = async () => {
+    
+    const getAuctionProducts = async () => {
       try {
-        const response = await fetch('http://localhost:4000/inquiry');
+        const response = await fetch(`http://localhost:8000/shop/auction`);
         const datas = await response.json();
-        setInquiryList(datas);
+        setAuctionProducts(datas);
       } catch (error) {
-        console.error("InquiryListError", error);
+        console.error("AuctionMainError", error);
       }
     };
 
-    getList();
+    getAuctionProducts();
 
-  }, []);
+  }, [])
+
+  useEffect(() => {
+
+    const getAuctionDetail = async () => {
+      try {
+        const response = await fetch(`http://localhost:8000/shop/auction/detail/${id}`);
+        const datas = await response.json();
+        setAuctionProduct(datas);
+      } catch (error) {
+        console.error("AuctionDetailError", error);
+      }
+    };
+  
+    getAuctionDetail();
+
+  }, [id]);  
+
+  
+  useEffect(() => {
+
+    const getInquiryList = async () => {
+      try {
+        const response = await fetch('http://localhost:8000/shop/auction/inquiry/list');
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const datas = await response.json();
+        setInquiryList(datas);
+      } catch (error) {
+        console.error("Error fetching inquiry list:", error);
+      }
+    };
+  
+    getInquiryList();
+
+  }, []); 
+
+  if(!auctionProduct) {
+    return <p>상품을 찾을 수 없습니다.</p>
+  }
+
+  if (auctionProducts.length === 0) {
+    return <p>경매 상품이 없습니다. 잠시 후 다시 시도해주세요.</p>;
+  }
+  
+  const maxSlideIndex = Math.floor(auctionProducts.length / ProductsPerSlide);
+  if (currentSlide > maxSlideIndex) {
+    setCurrentSlide(maxSlideIndex);
+  }
   
   return (
     <S.DetailWrapper>
       <S.Title>
-        <h1>2024 베르사유의 장미 프로그램북 스페셜 에디션</h1>
+        <h1>{auctionProduct.name}</h1>
       </S.Title>
 
       <S.AuctionWrapper>
-        <S.Image src={process.env.PUBLIC_URL + "/images/shop/md/md1.jpg"} alt="경매 상품" />
+        {/* <S.Image src={process.env.PUBLIC_URL + "/images/shop/md/md1.jpg"} alt="경매 상품" /> */}
+        <S.Image src={auctionProduct.image} alt="경매 상품" />
         <S.Auction>
           <S.InfoContainer>
             <S.InfoWrapper>
               <S.Label>남은 시간</S.Label>
-              <S.AuctionInfo>{auctionInfo[0].time}</S.AuctionInfo>
+              <S.AuctionInfo>{auctionProduct.time}</S.AuctionInfo>
             </S.InfoWrapper>
             <S.InfoWrapper>
               <S.Label>경매 번호</S.Label>
-              <S.AuctionInfo>{auctionInfo[0].number}</S.AuctionInfo>
+              <S.AuctionInfo>{auctionProduct.auctionId}</S.AuctionInfo>
             </S.InfoWrapper>
             <S.InfoWrapper>
               <S.Label>입찰 기록</S.Label>
-              <S.AuctionInfo>{auctionInfo[0].record}회</S.AuctionInfo>
+              <S.AuctionInfo>{auctionProduct.count}회</S.AuctionInfo>
             </S.InfoWrapper>
             <S.InfoWrapper>
               <S.Label>입찰 단위</S.Label>
-              <S.AuctionInfo>{auctionInfo[0].unit.toLocaleString()}원</S.AuctionInfo>
+              <S.AuctionInfo>{Number(auctionProduct.unit).toLocaleString()}원</S.AuctionInfo>
             </S.InfoWrapper>
             <S.InfoWrapper>
               <S.Label>희망 입찰가</S.Label>
-              <S.AuctionInfo>{auctionInfo[0].pay.toLocaleString()}원</S.AuctionInfo>
+              <S.AuctionInfo> {Number(auctionProduct.bid).toLocaleString()}원</S.AuctionInfo>
             </S.InfoWrapper>
             <S.InfoWrapper>
               <S.Label>예상 구매가</S.Label>
+              <S.AuctionInfo>{Number(auctionProduct.finalPrice).toLocaleString()}원</S.AuctionInfo>
             </S.InfoWrapper>
           </S.InfoContainer>
           
           <S.ButtonContainer>
             <button className='button button1' onClick={openPopup1}><p>입찰하기</p></button>
-            <button className='button button2'><p>즉시구매 불가</p></button>
+            <button className='button button2'><p>즉시 구매 불가</p></button>
             <div className='button-wrapper1'>
-              <button className='button delivery' onClick={openPopup2}><p>배송정보</p></button>
+              <button className='button delivery' onClick={openPopup2}><p>배송 정보</p></button>
               <button className='button heart' onClick={toggleHeart}>
-              <FontAwesomeIcon icon={faHeart} className="heart-icon"
-              style={{ color: HeartClicked ? 'red' : '#fff' }}/>
-              <p>관심물품</p>
+              <S.HeartIconWrapper clicked={HeartClicked} onClick={toggleHeart}>
+              <FontAwesomeIcon icon={faHeart} className="heart-icon"/>
+              <p>관심 물품</p>
+            </S.HeartIconWrapper>
               </button>
             </div>
           </S.ButtonContainer>
@@ -119,13 +178,11 @@ const AuctionDetail = ({auctionItems, auctionInfo}) => {
       </S.Info>
 
       <S.Content>
-        <p>상세 설명 ... </p>
-        <p>상세 설명 ... </p>
-        <p>상세 설명 ... </p>
+        <p>{auctionProduct.description}</p>
       </S.Content>
 
       <S.ImageWrapper>
-        <S.Image2 className='content-image' src={process.env.PUBLIC_URL + "/images/shop/md/md4.jpg"} alt="경매 상품" />
+        <S.Image2 className='content-image' src={auctionProduct.image_detail} alt="경매 상품" />
       </S.ImageWrapper>
 
       <S.Customized>
@@ -137,18 +194,23 @@ const AuctionDetail = ({auctionItems, auctionInfo}) => {
           </S.LeftIconWrapper>
 
           <S.ClosingListWrapper>
-            {auctionItems.map((item) => (
-              <S.Closing key={item.id}>
-                <img src={item.image} alt={item.image} className='image' />
-                <div className='closing-name'>{item.name}</div>
-                <S.Closing2>
-                  <div className='closing-number'>{item.number} |</div>
-                  <FontAwesomeIcon className='icon' icon={faClock} />
-                  <div className='closing-time'>{item.time}</div>
-                </S.Closing2>
-              </S.Closing>
-            ))}
+            {visibleBestProduct && visibleBestProduct.length > 0 ? (
+              visibleBestProduct.map((item) => (
+                <S.Closing key={item.id}>
+                  <img src={item.image} alt={item.image} className='image' />
+                  <div className='closing-name'>{item.name}</div>
+                  <S.Closing2>
+                    <div className='closing-number'>{item.count}회 |</div>
+                    <FontAwesomeIcon className='icon' icon={faClock} />
+                    <div className='closing-time'>{item.time}</div>
+                  </S.Closing2>
+                </S.Closing>
+              ))
+            ) : (
+              <p>추천 상품이 없습니다.</p>
+            )}
           </S.ClosingListWrapper>
+
           
           <S.RightIconWrapper>
             <FontAwesomeIcon icon={faCircleChevronRight} />
@@ -185,6 +247,8 @@ const AuctionDetail = ({auctionItems, auctionInfo}) => {
       </S.Head>
       
       {inquiryList.map((inquiry) => (
+        <Link to={`/shop/auction/inquiry/${inquiry.id}`}>
+        {/*  <Link to={`/shop/auction/inquiry/list`}> */}
         <S.InquiryList key={inquiry.id}>
           <S.Left1>
             <S.ListItem>{inquiry.id}</S.ListItem>
@@ -208,11 +272,12 @@ const AuctionDetail = ({auctionItems, auctionInfo}) => {
             <S.ListItem>{inquiry.date}</S.ListItem>
           </S.Right2>
         </S.InquiryList>
+        </Link>
       ))}
       </S.Inquiry>
 
       <S.ButtonWrapper>
-        <Link to={"/shop/auction/inquiry"}>
+        <Link to={"/shop/auction/inquiry"} state={{ productName : auctionProduct.name }}>
       <S.InquiryButton>
         <p>문의하기</p>
         <FontAwesomeIcon className='icon' icon={faPencil} />

@@ -2,9 +2,11 @@
 import React, { useState } from 'react';
 import S from './styleInquiry';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-const MdInquiry = () => {
+const AuctionInquiry = () => {
+  const navigate = useNavigate();
+  
   const inquiryTypes = ['상품', '배송', '기타'];
   const inquiryForms = ['공개', '비공개'];
   const alarmTypes = ['SMS', '메일'];
@@ -13,10 +15,15 @@ const MdInquiry = () => {
   const [selectedForm, setSelectedForm] = useState(null); 
   const [title, setTitle] = useState(''); 
   const [content, setContent] = useState(''); 
-  const [alarm, setSelectedAlarm] = useState(null); 
+  const [selectedAlarm, setSelectedAlarm] = useState(null); 
   const [isAgreed, setIsAgreed] = useState(false);
 
-  const handleSubmit = () => {
+  const location = useLocation();
+  const { productName } = location.state || {}; // state에서 상품명 받기
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
     if (!selectedType) {
       alert('문의 유형을 선택하세요.');
       return;
@@ -33,7 +40,7 @@ const MdInquiry = () => {
       alert('내용을 입력하세요.');
       return;
     }
-    if (!alarm) {
+    if (!selectedAlarm) {
       alert('답변 완료 알림을 선택하세요.');
       return;
     }
@@ -41,7 +48,23 @@ const MdInquiry = () => {
       alert('개인정보 수집, 이용에 동의해주세요.');
       return;
     }
-    alert('등록이 완료되었습니다!');
+
+    if (window.confirm('등록하시겠습니까?')) {
+      alert('등록이 완료되었습니다!');
+      navigate('/shop/auction/inquiry/list');
+    }
+  };
+  
+  const handleCancel = () => {
+    if (title || content || selectedType || selectedForm || selectedAlarm || isAgreed) {
+      if (window.confirm('작성하신 내용이 사라집니다. 정말 취소하시겠습니까?')) {
+        navigate(-1);
+      }
+    } else {
+      if (window.confirm('이전 화면으로 돌아가시겠습니까?')) {
+        navigate(-1);
+      }
+    }
   };
 
   return (
@@ -54,14 +77,14 @@ const MdInquiry = () => {
         <table className="inquiry-table">
           <tr>
             <th>상품명</th>
-            <td colSpan="2">2024 베르사유의 장미 프로그램북 스페셜 에디션</td>
+            <td colSpan="2">{productName}</td>
           </tr>
           <tr>
             <th>문의 유형</th>
             <td colSpan="2">
               <S.TypeWrapper>
                 {inquiryTypes.map((type) => (
-                  <S.Type key={type} onClick={() => setSelectedType(type)} selected={selectedType === type}>
+                  <S.Type key={type} onClick={() => setSelectedType(selectedType === type ? null : type)} selected={selectedType === type}>
                     <S.Icon icon={faCheckCircle} selected={selectedType === type} />
                     <p>{type}</p>
                   </S.Type>
@@ -74,7 +97,7 @@ const MdInquiry = () => {
             <td colSpan="2">
               <S.TypeWrapper>
               {inquiryForms.map((form) => (
-                  <S.Type key={form} onClick={() => setSelectedForm(form)} selected={selectedForm === form}>
+                  <S.Type key={form} onClick={() => setSelectedForm(selectedForm === form ? null : form)} selected={selectedForm === form}>
                     <S.Icon icon={faCheckCircle} selected={selectedForm === form} />
                     <p>{form}</p>
                   </S.Type>
@@ -105,8 +128,8 @@ const MdInquiry = () => {
             <td>
               <S.TypeWrapper>
                 {alarmTypes.map((alarm) => (
-                  <S.Type key={alarm} onClick={() => setSelectedAlarm(alarm)} selected={setSelectedAlarm === alarm}>
-                    <S.Icon icon={faCheckCircle} selected={setSelectedAlarm === alarm} />
+                  <S.Type key={alarm} onClick={() => setSelectedAlarm(selectedAlarm === alarm ? null : alarm)} selected={selectedAlarm === alarm}>
+                    <S.Icon icon={faCheckCircle} selected={selectedAlarm === alarm} />
                     <p>{alarm}</p>
                   </S.Type>
                 ))}
@@ -131,13 +154,11 @@ const MdInquiry = () => {
       </S.Inquiry>
 
       <S.InquiryButton>
-        <S.BackButton>취소</S.BackButton>
-        <Link to={'/shop/auction/inquiry/list'}>
+        <S.BackButton onClick={handleCancel}>취소</S.BackButton>
           <S.NextButton onClick={handleSubmit}>등록</S.NextButton>
-        </Link>
       </S.InquiryButton>
     </S.InquiryWrapper>
   );
 };
 
-export default MdInquiry;
+export default AuctionInquiry;
