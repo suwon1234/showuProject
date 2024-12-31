@@ -2,13 +2,33 @@ import React, { useState,useEffect } from 'react';
 import S from '../VOD/style';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
-const Vod = ({plays}) => {
+const Vod = () => {
 
   const location=useLocation();
   useEffect(() => {
     // 경로가 변경될 때마다 스크롤을 맨 위로 이동
     window.scrollTo(0, 0);
   }, [location]);
+
+  const [videolist,setVideoList]=useState([]);
+  useEffect(()=>{
+    const vodVideo=async()=>{
+      try{
+        const response = await fetch("http://localhost:8000/vod")
+        const data = await response.json();
+        console.log(data)
+        if(response.ok){
+          setVideoList(data);
+        }else{
+          console.error('Error',data.message);
+        }
+      }catch (error){
+        console.error('Error',error)
+      }
+
+    };
+    vodVideo();
+  },[])
 
  
 
@@ -64,13 +84,12 @@ const Vod = ({plays}) => {
           <a className="more" href='/vod/more/rec'>더보기</a>
         </S.titlewrapper>
         <S.showuRecommendationPage className='showuRecommendationPage'>
-        {plays && plays.map((play) => (
-            <S.Card key={play.id}>
-              <Link to={`/vod/play?programid=${play.id}`} role='button' onClick={() => window.scrollTo(0, 0)} >
-               
-                  {play.mainImage && (
-                    <img src={play.mainImage} alt={`Video ${play.id}`} />
-                  )}
+        {videolist && videolist.map((video) => (
+            <S.Card key={video._id}>
+              <Link to={`/vod/play/${video._id}`} role="button" onClick={() => window.scrollTo(0, 0)}>
+                {video.mainImage && (
+                  <img src={video.mainImage} alt={`Video ${video.mainImage}`} />
+                )}
              
               </Link>
             </S.Card>
@@ -84,13 +103,13 @@ const Vod = ({plays}) => {
           <a className="more" href='/vod/more/rec/pop'>더보기</a>
         </S.titlewrapper>
         <S.showuRecommendationPage className='showuRecommendationPage'>
-        {plays && plays.map((play) => (
-            <S.Card key={play.id}>
+        {videolist && videolist.map((list) => (
+            <S.Card key={list._id}>
 
-              <Link to={`/vod/play?programid=${play.id}`} >
+              <Link to={`/vod/play?programid=${list.id}`} >
                 <a  role="button" >
-                  {play.mainImage && (
-                    <img src={play.mainImage} alt={`Video ${play.id}`} />
+                  {list.mainImage && (
+                    <img src={list.mainImage} alt={`Video ${list.id}`} />
                   )}
                 </a>
               </Link>
@@ -113,12 +132,13 @@ const Vod = ({plays}) => {
           <a className="more" href='/vod/more/rec/musical'>더보기</a>
         </S.titlewrapper>
         <S.showuRecommendationPage className='showuRecommendationPage'>
-        {plays && plays.map((play) => (
-            <S.Card key={play.id}>
-              <Link to={`/vod/play?programid=${play.id}`} >
+        {videolist && videolist.map((list) => (
+            <S.Card key={list._id}>
+
+              <Link to={`/vod/play?programid=${list.id}`} >
                 <a  role="button" >
-                  {play.mainImage && (
-                    <img src={play.mainImage} alt={`Video ${play.id}`} />
+                  {list.mainImage && (
+                    <img src={list.mainImage} alt={`Video ${list.id}`} />
                   )}
                 </a>
               </Link>

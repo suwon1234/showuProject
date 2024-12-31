@@ -2,22 +2,19 @@ import styled from "styled-components";
 
 const S = {};
 
-S.container=styled.div`
+S.container = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100%;
   background-color: black;
+`;
 
-
-`
 S.Wapper = styled.div`
-    width: 100%;
-    height: 100%;
-    `;
-
-
+  width: 100%;
+  height: 100%;
+`;
 
 S.VideoDetailArea = styled.div`
   display: flex;
@@ -28,25 +25,24 @@ S.VideoDetailArea = styled.div`
   gap: 20px;
   padding: 20px;
   background-color: black;
-  position: relative; 
-  
+  position: relative;
 
   img {
-    max-width: 100%;
-    height: 100%;
+    max-width: 1240px;
+    max-height: 654px;
     object-fit: contain;
   }
 
   .content-area {
-    position: absolute; 
+    position: absolute;
     top: 50%;
-    left: 20px; 
-    transform: translateY(-50%); 
+    left: 20px;
+    transform: translateY(-50%);
     display: flex;
     flex-direction: column;
     gap: 10px;
     color: white;
-    bottom : 450px; 
+    bottom: 400px;
 
     h1 {
       font-size: 2rem;
@@ -62,14 +58,13 @@ S.VideoDetailArea = styled.div`
       justify-content: center;
       align-items: center;
       color: black;
+    }
 
+    span {
+      padding: 10px;
+      max-width: 500px;
+      overflow-wrap: break-word;
     }
-    span{
-    padding: 10px;
-    max-width: 500px; 
-    overflow-wrap: break-word; 
-    }
-    
   }
 `;
 
@@ -104,7 +99,6 @@ S.PlayerNoticeBox = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
 `;
 
 S.location = styled.div`
@@ -113,11 +107,12 @@ S.location = styled.div`
   bottom: 600px;
 `;
 
-S.buttonstyle=styled.div`
-display: inline-flex;
-height: 45px;
-gap: 10px;
-`
+S.buttonstyle = styled.div`
+  display: inline-flex;
+  height: 45px;
+  gap: 10px;
+`;
+
 S.page = styled.div`
   & ul {
     display: flex;
@@ -130,61 +125,57 @@ S.page = styled.div`
     font-size: 17px;
     font-weight: 400;
     color: #444444;
-    padding-bottom: 3px; 
-    position: relative; 
-    transition: color 0.3s ease, box-shadow 0.3s ease; 
+    padding-bottom: 3px;
+    position: relative;
+    transition: color 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     &.active {
-      color: #FFFFFF; 
-      box-shadow: 0 3px 0 0 #FFD400;
+      color: #ffffff;
+      box-shadow: 0 3px 0 0 #ffd400;
     }
-    
   }
 
   & li:hover {
-    color: #FFFFFF; 
-    box-shadow: 0 3px 0 0 #FFD400; 
+    color: #ffffff;
+    box-shadow: 0 3px 0 0 #ffd400;
   }
-
 `;
 
 S.hert = styled.nav`
-width: 100%;
-height: 100px;
+  width: 100%;
+  height: 100px;
 
-& p {
-    color : #FFFFFF;
+  & p {
+    color: #ffffff;
+  }
+
+  & .icon {
+    font-size: 24px;
+    padding: 4px;
+    cursor: pointer;
+
+    &:hover path {
+      fill: #ffd400;
     }
-
-& .icon {
-  font-size : 24px;
-  padding : 4px;
-  cursor: pointer;
-  &:hover path{
-        fill: #ffd400;
-      }
-  }
-  & icon:hover{
-    color: #FFFFFF; 
-    box-shadow: 0 3px 0 0 #FFD400;
-
   }
 
-
+  & .icon:hover {
+    color: #ffffff;
+    box-shadow: 0 3px 0 0 #ffd400;
+  }
 `;
 
-S.bottom=styled.div`
-    display: flex;
-    flex-direction: column;
-
+S.bottom = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
-S.pages=styled.main`
-width: 100%;
-min-height: 383px;
-overflow: hidden;
-min-width: 1240px;
-background-color: black;
+S.pages = styled.main`
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  min-width: 1240px;
+  background-color: black;
 `;
 
 S.Card = styled.div`
@@ -202,16 +193,18 @@ S.Card = styled.div`
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
-        }
-   &:hover img {
-      transform: scale(1.1); 
+    
+  }
+
+  &:hover img {
+    transform: scale(1.1);
   }
 
   .badge {
     position: absolute;
     top: 10px;
     left: 10px;
-    background: #4169E1;
+    background: #4169e1;
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
@@ -219,33 +212,33 @@ S.Card = styled.div`
     font-weight: bold;
   }
 `;
+
 S.showuRecommendationPage = styled.div`
-    position: relative;
+   position: relative;
     height: 100%;
     z-index: 1;
     display: flex;
     justify-content: center;
     transition-property: transform;
     box-sizing: content-box;
+    gap: 20px;
   &::-webkit-scrollbar {
-    display: none; 
+    display: none;
   }
 `;
-
-
 
 S.showuRecommendation = styled.div`
   background-color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top : 10px;
+  margin-top: 10px;
   padding: 20px;
   min-height: 100px;
   max-height: 440px;
   color: white;
+  align-items: flex-start;
 `;
-
 
 S.MovieContainer = styled.div`
   display: flex;
@@ -257,16 +250,15 @@ S.MovieContainer = styled.div`
 `;
 
 S.Poster = styled.div`
-  flex: 0 0 250px; /* 포스터 크기 */
+  flex: 0 0 250px;
   margin-right: 30px;
 
   img {
     width: 100%;
     min-height: 277px;
     border-radius: 8px;
-    background-color: #333; /* 이미지가 없을 때 배경색 */
+    background-color: #333;
     object-fit: cover;
-
   }
 `;
 
@@ -301,7 +293,7 @@ S.Info = styled.div`
   span {
     font-weight: bold;
     width: 60px;
-    color: #FDDE39; /* 강조 색상 */
+    color: #fdde39;
     display: inline-block;
   }
 
@@ -316,7 +308,5 @@ S.Description = styled.p`
   line-height: 1.5;
   color: gray;
 `;
-
-
 
 export default S;

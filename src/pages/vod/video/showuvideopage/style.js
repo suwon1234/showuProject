@@ -109,6 +109,8 @@ S.comment = styled.li`
 
 S.commentText = styled.p`
   margin: 0.5rem 0;
+
+
 `;
 
 S.replyButton = styled.button`
@@ -152,6 +154,16 @@ S.buttonstyle=styled.div`
 display: inline-flex;
 width: 100%;
 justify-content: flex-end;
+
+.point{
+  background-color: black;
+    color: white;
+    font-size: 24px;
+    border: none;
+    &:hover{
+      background-color: black;
+    }
+}
 button{
     border-radius : 5px;
     color: black;
