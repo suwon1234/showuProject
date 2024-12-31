@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { backgroundBlack, flexCenterColumn } from "../../../global/common";
+import { backgroundBlack, flexCenterColumn } from "../../../../global/common";
 
 const S = {};
 
@@ -18,14 +18,14 @@ S.SectionTitle = styled.h2`
   color: #ffffff;
   justify-content: center;
   display: flex;
-  margin-top: 50px;
+  margin-top: 10px;
   margin-bottom: 30px;
   padding: 10px;
 `;
 
-// 현재 공연 중 컨테이너
-S.CurrentlyPerforming = styled.div`
-  margin-top: 50px;
+// 티켓 오픈 컨테이너
+S.TicketOpen = styled.div`
+  margin-top: 100px;
   width: 1200px;
   background-color: black;
   display: flex;
@@ -34,25 +34,25 @@ S.CurrentlyPerforming = styled.div`
   align-items: center;
 `;
 
-// 공연 박스 컨테이너
-S.PerformingBoxContainer = styled.div`
+// 티켓 박스 컨테이너
+S.TicketBoxContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(5, 1fr); // 5열로 설정
+  grid-template-columns: repeat(3, 1fr); // 3열로 설정
   grid-gap: 20px;
   justify-content: center;
   align-items: center;
   margin-bottom: 200px;
 `;
 
-// 공연 박스
-S.PerformingBox = styled.div`
+// 티켓 박스
+S.TicketBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 180px;
-  height: 220px;
-  margin: 10px;
-  margin-bottom: 200px;
+  width: 300px;
+  height: 200px;
+  margin: 5px;
+  margin-bottom: 150px;
   background-color: white;
   border-radius: 5px;
 
@@ -71,10 +71,10 @@ S.PerformingBox = styled.div`
   }
 `;
 
-// 현재 공연 중 이미지 스타일
-S.PerformingImage = styled.img`
-  width: 180px;
-  height: 400px;
+// 티켓 오픈 이미지 스타일
+S.TicketImage = styled.img`
+  width: 300px;
+  height: 200px;
   border-radius: 5px;
 `;
 
