@@ -12,6 +12,8 @@ const MdDetail = () => {
   const [selectedOptions, setSelectedOptions] = useState([]); // 선택된 옵션들
   const [quantity, setQuantity] = useState(1); // 기본 수량 1개
   const navigate = useNavigate();
+  const [mdProducts, setMdProducts] = useState([]);
+
 
   // 수량 감소
   const decrease = (i) => {
@@ -74,6 +76,22 @@ const MdDetail = () => {
   //     e.preventDefault(); 
   //   }
   // };
+  
+  useEffect(() => {
+    
+    const getMdProducts = async () => {
+      try {
+        const response = await fetch(`http://localhost:8000/shop/md`);
+        const datas = await response.json();
+        setMdProducts(datas);
+      } catch (error) {
+        console.error("MdMainError", error);
+      }
+    };
+
+    getMdProducts();
+
+  }, [])
   
   useEffect(() => {
     const getMdDetail = async () => {

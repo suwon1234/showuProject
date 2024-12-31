@@ -19,6 +19,8 @@ const MdMain = () => {
   const [currentCategory, setCurrentCategory] = useState("전체");
   const [filteredProducts, setFilteredProducts] = useState([]);
 
+  
+
   useEffect(() => {
     const getMdProducts = async () => {
       try {
@@ -34,7 +36,7 @@ const MdMain = () => {
         } else {
           setMdProducts(datas);
           setFilteredProducts(datas);
-          // Best 제품은 별도의 상태로 초기화 (독립적으로 관리)
+          // Best 제품은 초기화
           setBestProducts(datas.slice(0, ProductsPerSlide)); // 초기 Best 제품
         }
       } catch (error) {
@@ -45,7 +47,7 @@ const MdMain = () => {
     getMdProducts();
   }, []);
 
-  // Best 슬라이드 관련 핸들러
+  // Best 슬라이드 
   const handleNext = () => {
     setCurrentSlide((prev) =>
       prev === Math.ceil(mdProducts.length / ProductsPerSlide) - 1 ? 0 : prev + 1
@@ -76,7 +78,7 @@ const MdMain = () => {
     );
   };
 
-  // 하트 클릭 핸들러 (카테고리 하단)
+  // 하트 클릭  (카테고리 하단)
   const handleHeartClickCategory = (e, productId) => {
     e.preventDefault();
     e.stopPropagation();
@@ -90,7 +92,7 @@ const MdMain = () => {
     );
   };
 
-  // 하트 클릭 핸들러 (Best 제품)
+  // 하트 클릭 (Best 제품)
   const handleHeartClickBest = (e, productId) => {
     e.preventDefault();
     e.stopPropagation();
@@ -104,7 +106,7 @@ const MdMain = () => {
     );
   };
 
-  // 카테고리 변경 핸들러
+  // 카테고리 변경 
   const handleCategoryChange = (category) => {
     setCurrentCategory(category);
   };

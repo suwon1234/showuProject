@@ -29,7 +29,7 @@ const AuctionMain = () => {
         } else {
           setAuctionProducts(datas);
           setFilteredProducts(datas);
-          // 오늘 마감 제품은 별도의 상태로 초기화 (독립적으로 관리)
+          // 오늘 마감 제품은 초기화
           setClosingProducts(datas.slice(0, ProductsPerSlide)); // 초기 오늘 마감 제품
         }
       } catch (error) {
@@ -40,7 +40,7 @@ const AuctionMain = () => {
     getAuctionProducts();
   }, []);
 
-  // Best 슬라이드 관련 핸들러
+  // 오늘 마감 슬라이드 
   const handleNext = () => {
     setCurrentSlide((prev) =>
       prev === Math.ceil(auctionProducts.length / ProductsPerSlide) - 1 ? 0 : prev + 1
@@ -71,7 +71,7 @@ const AuctionMain = () => {
     );
   };
   
-    // 하트 클릭 핸들러 (카테고리 하단)
+    // 하트 클릭 (카테고리 하단)
     const handleHeartClickCategory = (e, auctionId) => {
       e.preventDefault();
       e.stopPropagation();
@@ -86,7 +86,7 @@ const AuctionMain = () => {
     };
 
     
-  // 하트 클릭 핸들러 (오늘 마감 제품)
+  // 하트 클릭 (오늘 마감 제품)
   const handleHeartClickClosing = (e, closingId) => {
     e.preventDefault();
     e.stopPropagation();
@@ -121,7 +121,7 @@ const AuctionMain = () => {
   //   }
   // };
 
-    // 카테고리 변경 핸들러
+    // 카테고리 변경
     const handleCategoryChange = (category) => {
       setCurrentCategory(category);
     };
@@ -150,15 +150,15 @@ const AuctionMain = () => {
         </S.ClosingTitle>
     
         <S.ClosingItems>
-          <S.LeftIconWrapper>
+          <S.LeftIconWrapper onClick={handlePrev}>
             <FontAwesomeIcon icon={faCircleChevronLeft} />
           </S.LeftIconWrapper>
 
           {/* 오늘 마감 상품 */}
-          <S.ClosingListWrapper>
+          <S.ClosingListWrapper offset={-currentSlide * slideWidth}>
             {closingProducts.map((closing) => (
-              <S.Closing key={closing.id}>
-                <Link to={`/shop/auction/detail/${closing.id}`}>
+              <S.Closing key={closing._id}>
+                <Link to={`/shop/auction/detail/${closing._id}`}>
                   <div className="image-wrapper">
                     <img src={closing.image} alt={closing.image} className='image' />
                     <S.HeartIconWrapper
@@ -180,7 +180,7 @@ const AuctionMain = () => {
             ))}
           </S.ClosingListWrapper>
           
-          <S.RightIconWrapper>
+          <S.RightIconWrapper onClick={handleNext}>
             <FontAwesomeIcon icon={faCircleChevronRight} />
           </S.RightIconWrapper>
         </S.ClosingItems>

@@ -162,7 +162,14 @@ const MdCart = () => {
           isAnyChecked={isAnyChecked}
           onClick={() => {
             if (isAnyChecked) {
-              navigate('/shop/md/payment', { state: { selectedOptions: selectedOptions.filter((_, index) => checkedItems[index]) } });
+              const confirmCheckout = window.confirm("결제 페이지로 이동하시겠습니까?");
+              if (confirmCheckout) {
+                navigate('/shop/md/payment', { 
+                  state: { 
+                    selectedOptions: selectedOptions.filter((_, index) => checkedItems[index]) 
+                  }
+                });
+              }
             } else {
               alert("결제할 상품을 선택하세요!");
             }

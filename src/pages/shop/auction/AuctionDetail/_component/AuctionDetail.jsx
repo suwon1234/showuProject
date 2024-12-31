@@ -24,8 +24,8 @@ const AuctionDetail = () => {
   const openPopup2 = () => setPopupVisible2(true);
   const closePopup2 = () => setPopupVisible2(false);
   
-  // 현재 슬라이드에 맞는 BEST 아이템을 선택
-  const visibleBestProduct = auctionProducts.slice(
+  // 슬라이드에 맞는 BEST 상품 선택
+  const visibleBestProduct = Array.isArray(auctionProducts) && auctionProducts.slice(
     currentSlide * ProductsPerSlide,
     (currentSlide + 1) * ProductsPerSlide
   );
@@ -39,8 +39,7 @@ const AuctionDetail = () => {
     
     const getAuctionProducts = async () => {
       try {
-        // const response = await fetch('http://localhost:4000/auction');
-        const response = await fetch('http://localhost:8000/shop/auction');
+        const response = await fetch(`http://localhost:8000/shop/auction`);
         const datas = await response.json();
         setAuctionProducts(datas);
       } catch (error) {
@@ -56,7 +55,7 @@ const AuctionDetail = () => {
 
     const getAuctionDetail = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/shop/auction/${id}`);
+        const response = await fetch(`http://localhost:8000/shop/auction/detail/${id}`);
         const datas = await response.json();
         setAuctionProduct(datas);
       } catch (error) {
@@ -73,7 +72,7 @@ const AuctionDetail = () => {
 
     const getInquiryList = async () => {
       try {
-        const response = await fetch('http://localhost:8000/shop/auction/inquiry');
+        const response = await fetch('http://localhost:8000/shop/auction/inquiry/list');
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const datas = await response.json();
         setInquiryList(datas);
@@ -89,7 +88,15 @@ const AuctionDetail = () => {
   if(!auctionProduct) {
     return <p>상품을 찾을 수 없습니다.</p>
   }
+
+  if (auctionProducts.length === 0) {
+    return <p>경매 상품이 없습니다. 잠시 후 다시 시도해주세요.</p>;
+  }
   
+  const maxSlideIndex = Math.floor(auctionProducts.length / ProductsPerSlide);
+  if (currentSlide > maxSlideIndex) {
+    setCurrentSlide(maxSlideIndex);
+  }
   
   return (
     <S.DetailWrapper>
@@ -187,18 +194,23 @@ const AuctionDetail = () => {
           </S.LeftIconWrapper>
 
           <S.ClosingListWrapper>
-            {visibleBestProduct.map((item) => (
-              <S.Closing key={item.id}>
-                <img src={item.image} alt={item.image} className='image' />
-                <div className='closing-name'>{item.name}</div>
-                <S.Closing2>
-                  <div className='closing-number'>{item.count}회 |</div>
-                  <FontAwesomeIcon className='icon' icon={faClock} />
-                  <div className='closing-time'>{item.time}</div>
-                </S.Closing2>
-              </S.Closing>
-            ))}
+            {visibleBestProduct && visibleBestProduct.length > 0 ? (
+              visibleBestProduct.map((item) => (
+                <S.Closing key={item.id}>
+                  <img src={item.image} alt={item.image} className='image' />
+                  <div className='closing-name'>{item.name}</div>
+                  <S.Closing2>
+                    <div className='closing-number'>{item.count}회 |</div>
+                    <FontAwesomeIcon className='icon' icon={faClock} />
+                    <div className='closing-time'>{item.time}</div>
+                  </S.Closing2>
+                </S.Closing>
+              ))
+            ) : (
+              <p>추천 상품이 없습니다.</p>
+            )}
           </S.ClosingListWrapper>
+
           
           <S.RightIconWrapper>
             <FontAwesomeIcon icon={faCircleChevronRight} />
