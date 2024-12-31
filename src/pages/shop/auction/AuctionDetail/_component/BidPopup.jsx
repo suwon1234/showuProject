@@ -7,7 +7,7 @@ const BidPopup = ({ title, onClose }) => {
   const navigate = useNavigate();
 
   const handleBid = () => {
-    navigate('/shop/auction/payment')
+    // navigate('/shop/auction/payment')
   }
   return (
     <S.PopupOverlay onClick={onClose}>

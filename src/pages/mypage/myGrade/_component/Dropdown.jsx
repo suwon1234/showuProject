@@ -4,19 +4,20 @@ import AreaContainer from './AreaContainer';
 import FieldContainer from './FieldContainer';
 import TotalContainer from './TotalContainer';
 
-const Dropdown = () => {
+const Dropdown = ({ setValue, userInfo }) => {
+  
   return (
     <>
       {/* 지역 */}
-      <AreaContainer />
+      <AreaContainer setValue={setValue} userInfo={userInfo} />
 
       {/* 전문분야 */}
-      <FieldContainer />
+      <FieldContainer setValue={setValue} userInfo={userInfo} />
 
         <S.hr />
 
       {/* 총 경력기간 */}
-      <TotalContainer />
+      <TotalContainer setValue={setValue} userInfo={userInfo} />
     </>
   );
 };

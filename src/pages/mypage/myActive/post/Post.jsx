@@ -1,17 +1,45 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import PostComponent from './_component/PostComponent';
+import usePagination from '../../../../hooks/usePagination';
+
+const PAGINATION = {
+  pageRange: 6,
+  btnRange: 5,
+};
 
 const Post = () => {
-  const navigate = useNavigate();
+  const [ posts, setPosts ] = useState([]);
+  const { page, currentList, setPage, totalPost } = usePagination({
+    pageRange: PAGINATION.pageRange,
+    list: posts,
+  });
+  
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const response = await fetch(`http://localhost:8000/community`);
+        const datas = await response.json();
+        // console.log(datas)
+        setPosts(datas)
+      } catch (error) {
+        console.log(error)
+      }
+    }
 
-  const handleNavigate = (path) => {
-    navigate(path)
-  }
+    getPosts()
+
+  }, [])
+  
+  // console.log(posts);
 
   return (
     <>
-      <PostComponent />
+      <PostComponent 
+        page={page} setPage={setPage} 
+        currentList={currentList} 
+        totalPost={totalPost}
+        PAGINATION={PAGINATION}
+      />
     </>
   );
 };

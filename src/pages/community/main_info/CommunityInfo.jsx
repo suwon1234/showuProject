@@ -97,18 +97,44 @@ const CommunityInfo = () => {
 
 
 
-// 댓글 수정/삭제 페이지 이동
-const handleEditButton = () => {
-  const confirmMove = window.confirm("수정/삭제 페이지로 이동하시겠습니까?");
-    if (confirmMove) {
-    navigate(`/community/communityInfo/editCommentsMain`)
-  }
-};
+  // 댓글 수정/삭제 페이지 이동
+  const handleEditButton = () => {
+    const confirmMove = window.confirm("수정/삭제 페이지로 이동하시겠습니까?");
+      if (confirmMove) {
+      navigate(`/community/communityInfo/editCommentsMain/${id}`)
+    }
+  };
 
   // 좋아요
-  const handleLikeButton = () => {
-    setLikeCount((like) => like + 1);
+  const handleLikeButton = async () => {
+    try {
+      console.log('좋아요 요청 URL:', `http://localhost:8000/community/likes/${id}/like`);
+      console.log('요청 데이터:', { userId: user });
+
+      const response = await fetch(`http://localhost:8000/community/likes/${id}/like`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ userId: user }), 
+      });
+  
+      if (!response.ok) {
+        throw new Error('좋아요 요청 실패');
+      }
+  
+      const result = await response.json();
+  
+      // 좋아요 수 업데이트
+      setLikeCount(result.likes);
+      alert(result.message);
+    } catch (error) {
+      console.error('좋아요 요청 오류:', error);
+      alert('좋아요 요청 중 오류 발생');
+    }
   };
+
+
 
   // 신고하기 페이지 이동
   const handleNotifyButton = () => {

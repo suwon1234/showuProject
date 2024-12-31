@@ -2,28 +2,27 @@ import styled from "styled-components";
 
 const S = {};
 
-  S.Container = styled.div`
-    width: 800px;
-  `
+  S.Button = styled.button`
+    background-color: #000;
+    border: none;
+    margin: 0 20px;
 
-  S.Wapper = styled.ul`
-    width: 800px;
-    display: grid;
-    grid-template-columns: 1fr 50px 50px 1fr 1fr;
-    margin-left: 150px;
+    color: ${props => (props.$active ? '#ffd400' : 'white')};
+  `  
 
-    & li {
-      color: #444444;
-
-      &:hover{
-        color: #ffd400;
-      }
+  S.Nav = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    
+    & .prev{
+      display: flex;
     }
 
-    & li:nth-child(2) {
-      color: #ffd400;
+    & .next{
+      display: flex;
     }
-
   `
 
 export default S;

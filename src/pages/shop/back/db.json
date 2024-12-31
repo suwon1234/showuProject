@@ -2,111 +2,165 @@
   "md" : [
     {
       "id": "1", 
+      "category": "뮤지컬",
       "name": "BEST상품 1", 
       "price": 65000,
-      "images": "/images/shop/md/md1.jpg"
+      "image": "/images/shop/md/md1.jpg",
+      "image_detail": "/images/shop/md/md1-1.jpg",
+      "description": "상세 설명1"
     },
     {
       "id": "2", 
+      "category": "영화",
       "name": "BEST상품 2", 
       "price": 65000,
-      "images": "/images/shop/md/md2.jpg"
+      "image": "/images/shop/md/md2.jpg",
+      "image_detail": "/images/shop/md/md2-1.jpg",
+      "description": "상세 설명2"
     },
     {
       "id": "3", 
+      "category": "연극",
       "name": "BEST상품 3", 
       "price": 65000,
-      "images": "/images/shop/md/md3.jpg"
+      "image": "/images/shop/md/md3.jpg",
+      "image_detail": "/images/shop/md/md3-1.jpg",
+      "description": "상세 설명3"
     },
     {
       "id": "4", 
+      "category": "뮤지컬",
       "name": "BEST상품 4", 
       "price": 65000,
-      "images": "/images/shop/md/md1.jpg"
+      "image": "/images/shop/md/md1.jpg",
+      "image_detail": "/images/shop/md/md1-1.jpg",
+      "description": "상세 설명4"
     },
     {
       "id": "5", 
+      "category": "영화",
       "name": "BEST상품 5", 
       "price": 65000,
-      "images": "/images/shop/md/md2.jpg"
+      "image": "/images/shop/md/md2.jpg",
+      "image_detail": "/images/shop/md/md2-1.jpg",
+      "description": "상세 설명5"
     },
     {
       "id": "6", 
+      "category": "연극",
       "name": "BEST상품 6", 
       "price": 65000,
-      "images": "/images/shop/md/md3.jpg"
+      "image": "/images/shop/md/md3.jpg",
+      "image_detail": "/images/shop/md/md3-1.jpg",
+      "description": "상세 설명6"
     },
     {
       "id": "7", 
+      "category": "뮤지컬",
       "name": "베르사유의 장미 프로그램북 스페셜 에디션",
       "price": 65000,
-      "images": "/images/shop/md/md1.jpg"
+      "image": "/images/shop/md/md1.jpg",
+      "image_detail": "/images/shop/md/md1-1.jpg",
+      "description": "상세 설명7"
     },
     {
       "id": "8", 
+      "category": "영화",
       "name": "베르사유의 장미 금속 마그넷", 
       "price": 65000,
-      "images": "/images/shop/md/md2.jpg"
+      "image": "/images/shop/md/md2.jpg",
+      "image_detail": "/images/shop/md/md2-1.jpg",
+      "description": "상세 설명8"
     },
     {
       "id": "9", 
+      "category": "연극",
       "name": "베르사유의 장미 고블렛", 
       "price": 65000,
-      "images": "/images/shop/md/md3.jpg"
+      "image": "/images/shop/md/md3.jpg",
+      "image_detail": "/images/shop/md/md3-1.jpg",
+      "description": "상세 설명9"
     },
     {
       "id": "10", 
+      "category": "뮤지컬",
       "name": "베르사유의 장미 프로그램북 스페셜 에디션",
       "price": 65000,
-      "images": "/images/shop/md/md1.jpg"
+      "image": "/images/shop/md/md1.jpg",
+      "image_detail": "/images/shop/md/md1-1.jpg",
+      "description": "상세 설명10"
     },
     {
-      "id": "11", 
+      "id": "11",
+      "category": "영화",
       "name": "베르사유의 장미 금속 마그넷", 
       "price": 65000,
-      "images": "/images/shop/md/md2.jpg"
+      "image": "/images/shop/md/md2.jpg",
+      "image_detail": "/images/shop/md/md2-1.jpg",
+      "description": "상세 설명11"
     },
     {
       "id": "12", 
+      "category": "연극",
       "name": "베르사유의 장미 고블렛", 
       "price": 65000,
-      "images": "/images/shop/md/md3.jpg"
+      "image": "/images/shop/md/md3.jpg",
+      "image_detail": "/images/shop/md/md3-1.jpg",
+      "description": "상세 설명12"
     },
     {
       "id": "13", 
+      "category": "뮤지컬",
       "name": "베르사유의 장미 프로그램북 스페셜 에디션", 
       "price": 65000,
-      "images": "/images/shop/md/md1.jpg"
+      "image": "/images/shop/md/md1.jpg",
+      "image_detail": "/images/shop/md/md1-1.jpg",
+      "description": "상세 설명13"
     },
     {
       "id": "14", 
+      "category": "영화",
       "name": "베르사유의 장미 금속 마그넷", 
       "price": 65000,
-      "images": "/images/shop/md/md2.jpg"
+      "image": "/images/shop/md/md2.jpg",
+      "image_detail": "/images/shop/md/md2-1.jpg",
+      "description": "상세 설명14"
     },
     {
       "id": "15", 
+      "category": "연극",
       "name": "베르사유의 장미 고블렛",
       "price": 65000,
-      "images": "/images/shop/md/md3.jpg"
+      "image": "/images/shop/md/md3.jpg",
+      "image_detail": "/images/shop/md/md3-1.jpg",
+      "description": "상세 설명15"
     },
     {
       "id": "16", 
+      "category": "뮤지컬",
       "name": "베르사유의 장미 프로그램북 스페셜 에디션", 
       "price": 65000,
-      "images": "/images/shop/md/md1.jpg"
+      "image": "/images/shop/md/md1.jpg",
+      "image_detail": "/images/shop/md/md1-1.jpg",
+      "description": "상세 설명16"
     },
     {
       "id": "17", 
+      "category": "영화",
       "name": "베르사유의 장미 금속 마그넷", 
       "price": 65000,
-      "images": "/images/shop/md/md2.jpg"
+      "image": "/images/shop/md/md2.jpg",
+      "image_detail": "/images/shop/md/md2-1.jpg",
+      "description": "상세 설명17"
     },
     {
       "id": "18", 
+      "category": "연극",
       "name": "베르사유의 장미 고블렛", 
       "price": 65000,
-      "images": "/images/shop/md/md3.jpg"
+      "image": "/images/shop/md/md3.jpg",
+      "image_detail": "/images/shop/md/md3-1.jpg",
+      "description": "상세 설명18"
     }
   ],
 
@@ -114,108 +168,256 @@
     { 
       "id": "1",
       "name": "베르사유의 장미 프로그램북 스페셜 에디션",
-      "number": "88회",
-      "time": "20시간 47분",
-      "image": "/images/shop/auction/auction1.jpg"
+      "category": "뮤지컬",
+      "time": "1일 5시간 58분 23초",
+      "auctionId": "123ABC",
+      "count": 60,
+      "unit": 1000,
+      "bid": 166000,
+      "finalPrice": 166000,
+      "image": "/images/shop/auction/auction1.jpg",
+      "image_detail": "/images/shop/auction/auction1-1.jpg",
+      "description": "상세 설명1"
     },
     { 
       "id": "2",
       "name": "베르사유의 장미 금속 마그넷",
-      "number": "88회",
-      "time": "20시간 47분",
-      "image": "/images/shop/auction/auction2.jpg"
+      "category": "영화",
+      "time": "20시간 47분 23초",
+      "auctionId": "456ABC",
+      "count": 88,
+      "unit": 1000,
+      "bid": 183000,
+      "finalPrice": 183000,
+      "image": "/images/shop/auction/auction2.jpg",
+      "image_detail": "/images/shop/auction/auction2-1.jpg",
+      "description": "상세 설명2"
     },
     { 
       "id": "3",
       "name": "베르사유의 장미 고블렛",
-      "number": "88회",
-      "time": "20시간 47분",
-      "image": "/images/shop/auction/auction3.jpg"
+      "category": "연극",
+      "time": "9시간 12분 06초",
+      "auctionId": "789ABC",
+      "count": 23,
+      "unit": 1000,
+      "bid": 94000,
+      "finalPrice": 94000,
+      "image": "/images/shop/auction/auction3.jpg",
+      "image_detail": "/images/shop/auction/auction3-1.jpg",
+      "description": "상세 설명3"
     },
     { 
       "id": "4",
       "name": "베르사유의 장미 프로그램북 스페셜 에디션",
-      "number": "88회",
-      "time": "20시간 47분",
-      "image": "/images/shop/auction/auction1.jpg"
+      "category": "뮤지컬",
+      "time": "1일 5시간 58분 23초",
+      "auctionId": "123ABC",
+      "count": 60,
+      "unit": 1000,
+      "bid": 166000,
+      "finalPrice": 166000,
+      "image": "/images/shop/auction/auction1.jpg",
+      "image_detail": "/images/shop/auction/auction1-1.jpg",
+      "description": "상세 설명4"
     },
     { 
       "id": "5",
       "name": "베르사유의 장미 금속 마그넷",
-      "number": "88회",
-      "time": "20시간 47분",
-      "image": "/images/shop/auction/auction2.jpg"
+      "category": "영화",
+      "time": "20시간 47분 23초",
+      "auctionId": "456ABC",
+      "count": 88,
+      "unit": 1000,
+      "bid": 183000,
+      "finalPrice": 183000,
+      "image": "/images/shop/auction/auction2.jpg",
+      "image_detail": "/images/shop/auction/auction2-1.jpg",
+      "description": "상세 설명5"
     },
     { 
       "id": "6",
       "name": "베르사유의 장미 고블렛",
-      "number": "88회",
-      "time": "20시간 47분",
-      "image": "/images/shop/auction/auction3.jpg"
+      "category": "연극",
+      "time": "9시간 12분 06초",
+      "auctionId": "789ABC",
+      "count": 23,
+      "unit": 1000,
+      "bid": 94000,
+      "finalPrice": 94000,
+      "image": "/images/shop/auction/auction3.jpg",
+      "image_detail": "/images/shop/auction/auction3-1.jpg",
+      "description": "상세 설명6"
     },
     { 
       "id": "7",
       "name": "베르사유의 장미 프로그램북 스페셜 에디션",
-      "number": "88회",
-      "time": "20시간 47분",
-      "image": "/images/shop/auction/auction1.jpg"
+      "category": "뮤지컬",
+      "time": "1일 5시간 58분 23초",
+      "auctionId": "123ABC",
+      "count": 60,
+      "unit": 1000,
+      "bid": 166000,
+      "finalPrice": 166000,
+      "image": "/images/shop/auction/auction1.jpg",
+      "image_detail": "/images/shop/auction/auction1-1.jpg",
+      "description": "상세 설명7"
     },
     { 
       "id": "8",
       "name": "베르사유의 장미 금속 마그넷",
-      "number": "88회",
-      "time": "20시간 47분",
-      "image": "/images/shop/auction/auction2.jpg"
+      "category": "영화",
+      "time": "20시간 47분 23초",
+      "auctionId": "456ABC",
+      "count": 88,
+      "unit": 1000,
+      "bid": 183000,
+      "finalPrice": 183000,
+      "image": "/images/shop/auction/auction2.jpg",
+      "image_detail": "/images/shop/auction/auction2-1.jpg",
+      "description": "상세 설명8"
     },
     { 
       "id": "9",
       "name": "베르사유의 장미 고블렛",
-      "number": "88회",
-      "time": "20시간 47분",
-      "image": "/images/shop/auction/auction3.jpg"
+      "category": "연극",
+      "time": "9시간 12분 06초",
+      "auctionId": "789ABC",
+      "count": 23,
+      "unit": 1000,
+      "bid": 94000,
+      "finalPrice": 94000,
+      "image": "/images/shop/auction/auction3.jpg",
+      "image_detail": "/images/shop/auction/auction3-1.jpg",
+      "description": "상세 설명9"
     },
     { 
       "id": "10",
       "name": "베르사유의 장미 프로그램북 스페셜 에디션",
-      "number": "88회",
-      "time": "20시간 47분",
-      "image": "/images/shop/auction/auction1.jpg"
+      "category": "뮤지컬",
+      "time": "1일 5시간 58분 23초",
+      "auctionId": "123ABC",
+      "count": 60,
+      "unit": 1000,
+      "bid": 166000,
+      "finalPrice": 166000,
+      "image": "/images/shop/auction/auction1.jpg",
+      "image_detail": "/images/shop/auction/auction1-1.jpg",
+      "description": "상세 설명10"
     },
     { 
       "id": "11",
       "name": "베르사유의 장미 금속 마그넷",
-      "number": "88회",
-      "time": "20시간 47분",
-      "image": "/images/shop/auction/auction2.jpg"
+      "category": "영화",
+      "time": "20시간 47분 23초",
+      "auctionId": "456ABC",
+      "count": 88,
+      "unit": 1000,
+      "bid": 183000,
+      "finalPrice": 183000,
+      "image": "/images/shop/auction/auction2.jpg",
+      "image_detail": "/images/shop/auction/auction2-1.jpg",
+      "description": "상세 설명11"
     },
     { 
       "id": "12",
       "name": "베르사유의 장미 고블렛",
-      "number": "88회",
-      "time": "20시간 47분",
-      "image": "/images/shop/auction/auction3.jpg"
+      "category": "연극",
+      "time": "9시간 12분 06초",
+      "auctionId": "789ABC",
+      "count": 23,
+      "unit": 1000,
+      "bid": 94000,
+      "finalPrice": 94000,
+      "image": "/images/shop/auction/auction3.jpg",
+      "image_detail": "/images/shop/auction/auction3-1.jpg",
+      "description": "상세 설명12"
     },
     { 
       "id": "13",
       "name": "베르사유의 장미 프로그램북 스페셜 에디션",
-      "number": "88회",
-      "time": "20시간 47분",
-      "image": "/images/shop/auction/auction1.jpg"
+      "category": "뮤지컬",
+      "time": "1일 5시간 58분 23초",
+      "auctionId": "123ABC",
+      "count": 60,
+      "unit": 1000,
+      "bid": 166000,
+      "finalPrice": 166000,
+      "image": "/images/shop/auction/auction1.jpg",
+      "image_detail": "/images/shop/auction/auction1-1.jpg",
+      "description": "상세 설명13"
     },
     { 
       "id": "14",
       "name": "베르사유의 장미 금속 마그넷",
-      "number": "88회",
-      "time": "20시간 47분",
-      "image": "/images/shop/auction/auction2.jpg"
+      "category": "영화",
+      "time": "20시간 47분 23초",
+      "auctionId": "456ABC",
+      "count": 88,
+      "unit": 1000,
+      "bid": 183000,
+      "finalPrice": 183000,
+      "image": "/images/shop/auction/auction2.jpg",
+      "image_detail": "/images/shop/auction/auction2-1.jpg",
+      "description": "상세 설명14"
     },
     { 
       "id": "15",
       "name": "베르사유의 장미 고블렛",
-      "number": "88회",
-      "time": "20시간 47분",
-      "image": "/images/shop/auction/auction3.jpg"
+      "category": "연극",
+      "time": "9시간 12분 06초",
+      "auctionId": "789ABC",
+      "count": 23,
+      "unit": 1000,
+      "bid": 94000,
+      "finalPrice": 94000,
+      "image": "/images/shop/auction/auction3.jpg",
+      "image_detail": "/images/shop/auction/auction3-1.jpg",
+      "description": "상세 설명15"
+    },
+    { 
+      "id": "16",
+      "name": "베르사유의 장미 프로그램북 스페셜 에디션",
+      "category": "뮤지컬",
+      "time": "1일 5시간 58분 23초",
+      "auctionId": "123ABC",
+      "count": 60,
+      "unit": 1000,
+      "bid": 166000,
+      "finalPrice": 166000,
+      "image": "/images/shop/auction/auction1.jpg",
+      "image_detail": "/images/shop/auction/auction1-1.jpg",
+      "description": "상세 설명16"
+    },
+    { 
+      "id": "17",
+      "name": "베르사유의 장미 금속 마그넷",
+      "category": "영화",
+      "time": "20시간 47분 23초",
+      "auctionId": "456ABC",
+      "count": 88,
+      "unit": 1000,
+      "bid": 183000,
+      "finalPrice": 183000,
+      "image": "/images/shop/auction/auction2.jpg",
+      "image_detail": "/images/shop/auction/auction2-1.jpg",
+      "description": "상세 설명17"
+    },
+    { 
+      "id": "18",
+      "name": "베르사유의 장미 고블렛",
+      "category": "연극",
+      "time": "9시간 12분 06초",
+      "auctionId": "789ABC",
+      "count": 23,
+      "unit": 1000,
+      "bid": 94000,
+      "finalPrice": 94000,
+      "image": "/images/shop/auction/auction3.jpg",
+      "image_detail": "/images/shop/auction/auction3-1.jpg",
+      "description": "상세 설명18"
     }
+
   ],
 
   "inquiry" : [

@@ -136,6 +136,25 @@ const flexStyle = css`
     }
   `
 
+  S.BuyButton = styled.button`
+    border-radius: 50px;
+    width: 250px;
+    height: 55px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    background-color: ${(props) => (props.isOptionSelected ? '#ffd400' : '#444444')};
+    /* color: ${(props) => (props.isOptionSelected ? '#000' : '#fff')}; */
+
+    &:hover {
+      background-color: #ffd400;
+
+      p {
+        color: #000;
+      }
+    }
+  `
+
   S.Dropdown = styled.div`
     ${flexStyle}
     width: 505px;
@@ -210,6 +229,7 @@ const flexStyle = css`
     width : 505px;
     padding: 10px;
     margin: 10px 0 30px;
+    border-radius: 2px;
 
     & p {
       font-size: 14px;

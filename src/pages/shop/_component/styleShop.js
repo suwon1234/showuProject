@@ -6,6 +6,7 @@ const S = {};
     display: flex;
     flex-direction: column;
     background-color: #000;
+    min-height: 100vh;
   `
 
   S.ShopTitle = styled.div`
@@ -99,6 +100,12 @@ const S = {};
         width: 300px;
         height: 300px;
       }
+
+    & .md-category {
+        font-size: 15px;
+        color: #ffd400;
+        margin-top: 5px;
+    }
 
     & .md-name {
         font-size: 16px;
@@ -203,6 +210,12 @@ const S = {};
     }
   `
   S.Closing = styled.div`
+
+    & .closing-category {
+        font-size: 15px;
+        color: #ffd400;
+        margin-top: 5px;
+    }
 
     & .closing-name {
         font-size: 16px;
