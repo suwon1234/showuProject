@@ -178,6 +178,7 @@ const handleScrollTop = () => {
               <S.Info>
                 <h3>{audition.title}</h3>
                 <p>{audition.description}</p>
+    
               </S.Info>
             </S.Images>
             </Link>
