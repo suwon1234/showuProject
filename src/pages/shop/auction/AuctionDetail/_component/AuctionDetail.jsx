@@ -24,7 +24,7 @@ const AuctionDetail = () => {
   const openPopup2 = () => setPopupVisible2(true);
   const closePopup2 = () => setPopupVisible2(false);
   
-  // 슬라이드에 맞는 BEST 상품 선택
+  // 회원 맞춤 슬라이드에 들어갈 상품 
   const visibleBestProduct = Array.isArray(auctionProducts) && auctionProducts.slice(
     currentSlide * ProductsPerSlide,
     (currentSlide + 1) * ProductsPerSlide
@@ -248,6 +248,7 @@ const AuctionDetail = () => {
       
       {inquiryList.map((inquiry) => (
         <Link to={`/shop/auction/inquiry/${inquiry.id}`}>
+        {/*  <Link to={`/shop/auction/inquiry/list`}> */}
         <S.InquiryList key={inquiry.id}>
           <S.Left1>
             <S.ListItem>{inquiry.id}</S.ListItem>

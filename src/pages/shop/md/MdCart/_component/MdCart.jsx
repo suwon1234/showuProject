@@ -1,3 +1,4 @@
+// MD - 상세페이지
 import React, { useEffect, useState } from 'react';
 import S from './styleCart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,13 +10,13 @@ const MdCart = () => {
   const initialSelectedOptions = state?.selectedOptions || [];
   const navigate = useNavigate();
 
-  const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions); // 장바구니 아이템
+  const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions); 
   const [checkedItems, setCheckedItems] = useState([]); // 선택된 상품들
-  const [number, setNumber] = useState([]); // 각 아이템의 수량
+  const [number, setNumber] = useState([]); // 각 상품의 수량
   const [totalAmount, setTotalAmount] = useState(0);
 
   useEffect(() => {
-    // selectedOptions에 맞게 number 배열 초기화 (기본값 1로 설정)
+    // selectedOptions => 배열 초기화 
     setNumber(new Array(selectedOptions.length).fill(1));
   }, [selectedOptions]);
 
@@ -33,7 +34,6 @@ const MdCart = () => {
   };
 
   const isAllChecked = checkedItems.every(item => item);
-
   const isAnyChecked = checkedItems.some(item => item);
 
   // 수량 감소
@@ -66,15 +66,15 @@ const MdCart = () => {
       const updatedCheckedItems = checkedItems.filter((_, i) => i !== index);
       const updatedNumber = number.filter((_, i) => i !== index);
   
-      // 상태 업데이트: 장바구니에서만 삭제
+      // 장바구니에서만 삭제
       setSelectedOptions(updatedSelectedOptions);
       setCheckedItems(updatedCheckedItems);
       setNumber(updatedNumber);
   
-      // 필요한 경우 서버에 장바구니 업데이트를 요청할 수도 있음
+      // 장바구니 업데이트
       try {
         const response = await fetch(`http://localhost:8000/shop/md/cart`, {
-          method: "PUT",  // PUT 요청을 통해 장바구니 데이터를 업데이트
+          method: "PUT", 
           headers: {
             'Content-Type': 'application/json',
           },
@@ -143,7 +143,8 @@ const MdCart = () => {
                 <S.ProductName className='option'>{selected.option}</S.ProductName>
                 <S.QuantityControl>
                   <S.QuantityButton onClick={() => decrease(index)}>-</S.QuantityButton>
-                  <span>{number[index]}</span> 
+                  {/* <span>{number[index]}</span>  */}
+                  <span>{selected.quantity}</span> 
                   <S.QuantityButton onClick={() => increase(index)}>+</S.QuantityButton>
                 </S.QuantityControl>
                 <S.ProductPrice>{(selected.price * number[index]).toLocaleString()}원</S.ProductPrice>

@@ -8,15 +8,14 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const MdPayment = () => {
-  const { id } = useParams();
+  // const { id } = useParams();
   const { state } = useLocation();
   const initialSelectedOptions = state?.selectedOptions || [];
   const navigate = useNavigate();
 
-  const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions); // 장바구니 상품
-
+  const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions); 
   const options = ['옵션 1', '옵션 2', '옵션 3']; 
-
+  
   const iconPaymentMethods = [
     { label: "체크/신용 카드", icon: faCreditCard },
     { label: "무통장 입금", icon: faMoneyBillTransfer }

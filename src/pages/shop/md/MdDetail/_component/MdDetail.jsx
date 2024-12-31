@@ -76,7 +76,7 @@ const MdDetail = () => {
   //     e.preventDefault(); 
   //   }
   // };
-  
+
   useEffect(() => {
     
     const getMdProducts = async () => {
@@ -131,15 +131,26 @@ const MdDetail = () => {
       });
 
       // 응답 실패
-      if (!response.ok) {
-        throw new Error(`장바구니 추가 실패: ${response.statusText}`);
-      }
-      navigate('/shop/md/cart'); 
-    } catch (error) {
-      console.error("장바구니 추가 실패: ", error); 
-      alert("장바구니 추가에 실패했습니다."); 
+  //     if (!response.ok) {
+  //       throw new Error(`장바구니 추가 실패: ${response.statusText}`);
+  //     }
+  //     navigate('/shop/md/cart'); 
+  //   } catch (error) {
+  //     console.error("장바구니 추가 실패: ", error); 
+  //     alert("장바구니 추가에 실패했습니다."); 
+  //   }
+  // };
+    
+    if (response.ok) {
+      navigate('/shop/md/cart', { state: { selectedOptions } });
+    } else {
+      alert("장바구니 추가에 실패했습니다.");
     }
-  };
+  } catch (error) {
+    console.error("장바구니 추가 실패:", error);
+    alert("장바구니 추가에 실패했습니다.");
+  }
+  }
 
   // 바로 구매
   const purchase = async (e) => {
@@ -221,6 +232,7 @@ const MdDetail = () => {
             ))} 
           </S.OptionWrapper>
           
+          {/* 카트 추가 버튼튼 */}
           <S.ButtonWrapper2>
             <div className="button-wrapper1">
               <button className="button cart" onClick={(e) => { addToCart(e);
@@ -228,6 +240,7 @@ const MdDetail = () => {
                   <p>카트 추가</p>
               </button>
               
+              {/* 바로 구매 버튼 */}
               <S.BuyButton isOptionSelected={isOptionSelected} onClick={(e) => { purchase(e);
               if (isOptionSelected) {
                 navigate('/shop/md/payment', { state: { selectedOptions } }) }}}>
@@ -235,6 +248,7 @@ const MdDetail = () => {
               </S.BuyButton>
             </div>
             
+            {/* 문의하기 버튼 */}
             <button className="button inquiry" onClick={() => { sendInquiry();
                 navigate('/shop/md/inquiry', { state: { productName: product.name } }) }}>
                   <p>문의하기</p>
