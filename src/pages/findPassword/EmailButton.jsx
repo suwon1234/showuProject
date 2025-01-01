@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 import { useNavigate } from 'react-router-dom';
 import S from './EmailButtonStyle';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 
 const EmailButton = () => {
   const [ step, setStep ] = useState(1); 
@@ -10,8 +12,13 @@ const EmailButton = () => {
   const [ verificationCode, setVerificationCode ] = useState('');
   const [ createdCode, setCreatedCode ] = useState('');
   const [ newPassword, setNewPassword ] = useState('');
+  const [ showPw, setShowPw ] = useState(false);
   const navigate = useNavigate();
   const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/;
+
+  const handleShowPw = () => {
+    setShowPw(!showPw)
+  }
 
   const handleSendCode = () => {
     if (!email || !name) {
@@ -124,11 +131,31 @@ const EmailButton = () => {
           // <h2>비밀번호 변경</h2>
         <S.InputBox>
           <input
-            type="password"
+            type={showPw ? "test" : "password"}
             placeholder="새 비밀번호"
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}
           />
+          <>
+            {
+              showPw ?
+              (
+                <FontAwesomeIcon
+                  icon={faLockOpen}
+                  onClick={() => handleShowPw()}
+                  className='lockImage'
+                />
+              )
+                :
+              (
+                <FontAwesomeIcon
+                  icon={faLock}
+                  onClick={() => handleShowPw()}
+                  className='lockImage'
+                />
+              )
+            }
+          </>
           <S.Button onClick={handleChangePassword}>비밀번호 변경</S.Button>
         </S.InputBox>
       )}

@@ -48,7 +48,7 @@ const LoginContainer = () => {
             })
             .then((res) => res.json())
             .then((res) => {
-              if(!res.ok){ alert(res.message) }
+              if(!res.loginSuccess){ alert(res.message) }
               localStorage.setItem("jwtToken", res.jwtToken);
               navigate('/main')
               console.log(res)

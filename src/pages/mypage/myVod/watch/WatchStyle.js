@@ -35,6 +35,7 @@ const S = {};
     & img {
       width: 240px;
       height: 200px;
+      object-fit: cover;
     }
   `
 
