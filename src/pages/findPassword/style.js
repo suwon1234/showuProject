@@ -9,7 +9,7 @@ const S = {};
 
   S.Wapper = styled.div`
     width: 560px;
-    height: 764.16px;
+    height: 600px;
     margin: auto;
     padding: 40px 0 40px 0;
     background-color: #252525;
