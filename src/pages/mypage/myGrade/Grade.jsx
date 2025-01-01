@@ -48,7 +48,9 @@ const Grade = () => {
           .then((res) => res.json())
           .then((res) => {
             if(!res.upgradeSuccess){
-              return alert(res.message)
+              alert(res.message)
+              navigate('/mypage/up-grade/update')
+              return; 
             }
             alert(res.message)
             navigate('/mypage/up-grade/update')
