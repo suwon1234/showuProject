@@ -12,17 +12,22 @@ const Community = () => {
   useEffect(() => {
     // 데이터 요청 (백엔드에서 가져오기)
     const fetchData = async () => {
+      const token = localStorage.getItem('jwtToken'); // JWT 토큰 가져외기
       try {
-        const response = await fetch('http://localhost:8000/community');
+        const response = await fetch('http://localhost:8000/community', {
+          headers: {
+            'Authorization': `Bearer ${token}`, // 헤더에 토큰 추가
+          },
+        });
         if (!response.ok) {
           throw new Error('네트워크 응답이 실패했습니다.');
         }
-       
+  
         const fetchedData = await response.json(); 
         setCommuData(fetchedData); // 백엔드에서 가져온 데이터만 사용
       } catch (error) {
         console.error("커뮤니티 데이터를 불러오는 데 실패했습니다.", error);
-        setCommuData([]);
+        setCommuData([]); // 데이터 로드 실패 시 
       }
     };
   

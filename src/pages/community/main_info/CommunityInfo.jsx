@@ -6,20 +6,25 @@ const CommunityInfo = () => {
   const { id } = useParams();
   const navigate = useNavigate(); 
   console.log("useParams id:", id);
-  
+
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [likeCount, setLikeCount] = useState(0);
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState([]);
-  const [user, setUser] = useState("User"); 
+  const [user, setUser] = useState(null); // 사용자 정보
 
   // 데이터 가져오기
   useEffect(() => {
     const fetchCommunityInfo = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/community/communityInfo/${id}`);
+        const token = localStorage.getItem("token");  // JWT 토큰 가져오기
+        const response = await fetch(`http://localhost:8000/community/communityInfo/${id}`, {
+          headers: {
+            'Authorization': `Bearer ${token}`,  // JWT 토큰을 Authorization 헤더에 추가
+          },
+        });
         if (!response.ok) {
           throw new Error("데이터를 가져오는 데 실패했습니다.");
         }
@@ -34,16 +39,17 @@ const CommunityInfo = () => {
         setLoading(false);
       }
     };
-
+  
     fetchCommunityInfo();
   }, [id]);
 
 
-   // 댓글 데이터 가져오기
-   useEffect(() => {
+
+  // 댓글 데이터 가져오기
+  useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/community/comments/${id}`);
+        const response = await fetch(`http://localhost:8000/community/info/${id}/comments`);
         if (!response.ok) {
           throw new Error("댓글 데이터를 가져오는 데 실패했습니다.");
         }
@@ -58,74 +64,70 @@ const CommunityInfo = () => {
   }, [id]);
 
 
-   // 댓글 등록
-   const handleCommentSubmit = async () => {
-    if (!commentText) {
-      alert("댓글을 입력해주세요.");
-      return;
-    } 
-    try {
-      const response = await fetch(`http://localhost:8000/community/comments`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-          body: JSON.stringify({
-          postId: id, 
-          user: user, 
-          content: commentText, 
-        }),
-      });
-  
-      if (!response.ok) {
-        throw new Error("댓글 등록에 실패했습니다.");
-      }
-  
-      const newComment = await response.json();
-      console.log("등록된 댓글:", newComment);
-  
-      // 댓글 목록에 새 댓글 추가
-      setComments((prevComments) => [newComment.comment, ...prevComments]);
-      setCommentText("");
-      alert("댓글이 등록되었습니다!");
-    } catch (error) {
-      console.error("댓글 등록 오류:", error);
-      alert("댓글 등록 중 오류가 발생했습니다.");
+
+  // 댓글 등록
+  const handleCommentSubmit = async () => {
+  if (!commentText) {
+    alert("댓글을 입력해주세요.");
+    return;
+  }
+
+  const token = localStorage.getItem("token"); // 로컬 스토리지에서 토큰 가져오기
+
+  try {
+    const response = await fetch(`http://localhost:8000/community/comments`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`, // JWT 토큰을 Authorization 헤더에 추가
+      },
+      body: JSON.stringify({
+        postId: id,
+        content: commentText,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error("댓글 등록에 실패했습니다.");
     }
-  };
-  
+
+    const newComment = await response.json();
+    console.log("등록된 댓글:", newComment);
+
+    // 댓글 목록에 새 댓글 추가
+    setComments((prevComments) => [newComment.comment, ...prevComments]);
+    setCommentText("");
+    alert("댓글이 등록되었습니다!");
+  } catch (error) {
+    console.error("댓글 등록 오류:", error);
+    alert("댓글 등록 중 오류가 발생했습니다.");
+  }
+};
 
 
-
-  // 댓글 수정/삭제 페이지 이동
-  const handleEditButton = () => {
-    const confirmMove = window.confirm("수정/삭제 페이지로 이동하시겠습니까?");
-      if (confirmMove) {
-      navigate(`/community/communityInfo/editCommentsMain/${id}`)
-    }
-  };
 
   // 좋아요
   const handleLikeButton = async () => {
-    try {
-      console.log('좋아요 요청 URL:', `http://localhost:8000/community/likes/${id}/like`);
-      console.log('요청 데이터:', { userId: user });
+    const token = localStorage.getItem("token"); // JWT 토큰 가져오기
+    if (!token) {
+      alert("로그인 상태에서만 좋아요를 누를 수 있습니다.");
+      return;
+    }
 
-      const response = await fetch(`http://localhost:8000/community/likes/${id}/like`, {
-        method: 'POST',
+    try {
+      const response = await fetch(`http://localhost:8000/community/info/${id}/likes`, {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`,
         },
-        body: JSON.stringify({ userId: user }), 
       });
-  
+
       if (!response.ok) {
-        throw new Error('좋아요 요청 실패');
+        throw new Error("좋아요 요청 실패");
       }
-  
+
       const result = await response.json();
-  
-      // 좋아요 수 업데이트
       setLikeCount(result.likes);
       alert(result.message);
     } catch (error) {
@@ -134,16 +136,13 @@ const CommunityInfo = () => {
     }
   };
 
-
-
   // 신고하기 페이지 이동
   const handleNotifyButton = () => {
     const confirmMove = window.confirm("신고하기 페이지로 이동하시겠습니까?");
     if (confirmMove) {
-    navigate(`/community/communityInfo/Notify`)
+      navigate(`/community/communityInfo/Notify`);
     }
   };
-
 
   // 커뮤니티 홈으로
   const handleBackToList = () => {
@@ -181,7 +180,6 @@ const CommunityInfo = () => {
             />
             <div>
               <button onClick={handleCommentSubmit}>등록하기</button>
-              <button onClick={handleEditButton}>수정/삭제하기</button>
             </div>
           </S.CommentInput>
 
@@ -189,11 +187,8 @@ const CommunityInfo = () => {
             {comments.map((comment, i) => (
               <div key={i}>
                 <div>
-                  <p className="user">
-                    {comment.user} <span>{comment.grade}</span>
-                  </p>
+                  <p className="user">{comment.user} </p>
                   <p className="content">{comment.content}</p>
-                  <p className="date">{comment.date}</p>
                 </div>
               </div>
             ))}
