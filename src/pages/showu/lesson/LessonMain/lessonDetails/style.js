@@ -82,6 +82,10 @@ S.Infomation = styled.div`
         margin-bottom: 15px;
         display: flex;
         gap: 10px;
+
+        .infoIcon {
+            transform: translateY(3px);
+        }
     }
 
 `
@@ -174,25 +178,40 @@ S.PortfolioWrapper =styled.div`
     display: flex;
     gap: 30px;
     margin-bottom: 120px;
+
+    
 `
 S.Portfolio = styled.div`
     width: 200px;
     height: 200px;
     border-radius: 10px;
-    background-color: #333;
     padding-left: 15px;
     padding-top: 134px;
+    position: relative;
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.8;
+    }
 `
 
 S.PortfolioTitle =styled.p`
-    bottom: 50px;
+    top: 150px;
     font-size: 14px;
     font-weight: 600;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
+    position: absolute;
 `
-S.LessonType = styled.span`
+S.LessonType = styled.p`
+   
     font-size: 12px;
     font-weight: 400;
+    position: absolute;
+    z-index: 2;
+    
 `
 
 S.MediaWrapper = styled.div`
@@ -382,7 +401,47 @@ S.LessonAnswer = styled.div`
     }
 `
 
+S.RightButtonWrapper = styled.div`
+    width: 277px;
+    height: 192px;
+    border-radius: 10px;
+    padding: 40px 25px 30px 25px;
+    border: 1px solid #ffd400;
+    position: fixed;
+    top: 390px;
+    right: 360px;
+    background-color: #000;
 
+    button {
+        width: 227px;
+        height: 55px;
+        background-color: #ffd400;
+        color: #000;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        border: none;
+        border-radius: 50px;
+    }
+
+`
+S.RightTextWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-size: 14px;
+    gap: 8px;
+    margin-bottom: 25px;
+
+    .lessonTitle {
+        font-weight: 700;
+    }
+
+    .lessonSummary {
+        font-weight: 300;
+    }
+
+`
 
 
 export default S; 
