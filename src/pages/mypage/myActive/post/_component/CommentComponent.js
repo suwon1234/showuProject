@@ -34,7 +34,7 @@ const CommentComponent = () => {
 
   return (
     <S.Container className='Container'>
-    {Array.isArray(comments) && comments.length > 0 ? (
+    {comments && comments.length > 0 ? (
       comments.map((item) => (
         <S.Wrapper key={item._id}>
           <S.Write>

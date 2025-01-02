@@ -5,10 +5,10 @@ const S = {};
   S.Container = styled.div`
     display: flex;
     justify-content: center;
+    margin-left: 150px;
   `
 
   S.Table = styled.table`
-    margin-top: 60px;
     width: 1000px;
     height: auto;
     
