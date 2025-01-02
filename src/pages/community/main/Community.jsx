@@ -5,14 +5,14 @@ import S from './styleCommunity';
 import { Link } from 'react-router-dom';
 
 const Community = () => {
-  const [filterDrop, setFilterDrop] = useState(false);
-  const [filter, setFilter] = useState("전체");
-  const [commuData, setCommuData] = useState([]); 
+  const [filterDrop, setFilterDrop] = useState(false); // 필터 드롭다운 상태
+  const [filter, setFilter] = useState("전체"); // 현재 선택된 필터
+  const [commuData, setCommuData] = useState([]); // 커뮤니티 데이터
 
+  // 초기 데이터 요청
   useEffect(() => {
-    // 데이터 요청 (백엔드에서 가져오기)
     const fetchData = async () => {
-      const token = localStorage.getItem('jwtToken'); // JWT 토큰 가져외기
+      const token = localStorage.getItem('jwtToken'); // JWT 토큰 가져오기
       try {
         const response = await fetch('http://localhost:8000/community', {
           headers: {
@@ -20,23 +20,23 @@ const Community = () => {
           },
         });
         if (!response.ok) {
-          throw new Error('네트워크 응답이 실패했습니다.');
+          throw new Error('데이터를 불러오는 데 실패했습니다.');
         }
-  
-        const fetchedData = await response.json(); 
-        setCommuData(fetchedData); // 백엔드에서 가져온 데이터만 사용
+        const fetchedData = await response.json(); // JSON 형식으로 응답 파싱
+        setCommuData(fetchedData); // 상태에 데이터 저장
       } catch (error) {
         console.error("커뮤니티 데이터를 불러오는 데 실패했습니다.", error);
-        setCommuData([]); // 데이터 로드 실패 시 
+        setCommuData([]);
       }
     };
-  
+
     fetchData();
   }, []);
 
   // 필터링된 데이터 생성
   const filteredData = filter === "전체" ? commuData : commuData.filter(item => item.category === filter);
 
+  // 스크롤 맨 위로 이동
   const handleScrollTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -44,16 +44,15 @@ const Community = () => {
   return (
     <S.Wrapper>
       <S.TopTitle>커뮤니티</S.TopTitle>
-      <S.IconWrapper>
-        <FontAwesomeIcon icon={faChevronDown} className='icon' />
-      </S.IconWrapper>
 
       <S.SubWrapper>
+        {/* 필터 버튼 */}
         <S.FilterButton onClick={() => setFilterDrop(!filterDrop)}>
           <label>Filter</label>
           <FontAwesomeIcon icon={faChevronDown} className='icon' />
         </S.FilterButton>
 
+        {/* 필터 드롭다운 */}
         {filterDrop && (
           <S.FilterDropdown>
             {["전체", "공연", "뮤지컬", "영화", "연극", "밴드"].map((category) => (
@@ -64,6 +63,7 @@ const Community = () => {
           </S.FilterDropdown>
         )}
 
+        {/* 둘러보기 및 글쓰기 버튼 */}
         <S.Buttons>
           <S.hoverButton>둘러보기</S.hoverButton>
           <Link to={`/community/write`}>
@@ -71,27 +71,29 @@ const Community = () => {
           </Link>
         </S.Buttons>
 
+        {/* 필터링된 데이터 출력 */}
         <S.Info>
         {filteredData.length === 0 ? (
-        <p>데이터가 없습니다.</p>
+          <p>데이터가 없습니다.</p>
         ) : (
           filteredData.map((item) => (
             <S.Img key={item._id}>
-              <Link to={`/community/communityInfo/${item._id}`}>
+              {/* 상세 페이지로 이동하는 링크 */}
+              <Link to={`/community/${item._id}`}>
                 <img src={item.imageUrl || item.file} alt={item.title} />
               </Link>
-                <div>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                  <p>{item.content}</p>
-                </div>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+                <p>{item.content}</p>
+              </div>
             </S.Img>
-
           ))
         )}
-      </S.Info>
+        </S.Info>
       </S.SubWrapper>
 
+      {/* 스크롤 탑 버튼 */}
       <S.ScrollTop onClick={handleScrollTop}>
         <FontAwesomeIcon icon={faArrowUp} className="upicon" />
       </S.ScrollTop>
