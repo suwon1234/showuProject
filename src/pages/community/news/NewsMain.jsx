@@ -149,33 +149,33 @@ const newsData = [
   },
 ];
 
-const popularData = [
-  {
-    id: 1,
-    title: "인기 타이틀1",
-    imageUrl: "https://search.pstatic.net/common?type=a&size=3000&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fab43feac-a2bf-429e-8164-ff52d70e40ee.jpg",
-  },
-  {
-    id: 2,
-    title: "인기 타이틀2",
-    imageUrl: "https://img.sbs.co.kr/newimg/news/20241121/202009760_1280.jpg",
-  },
-  {
-    id: 3,
-    title: "인기 타이틀3",
-    imageUrl: "https://storageciggallery.addons.business/12201/cig-cozy-gallery-5482tuy-Matias-Feliu-hd.jpg?c=00",
-  },
-  {
-    id: 4,
-    title: "인기 타이틀4",
-    imageUrl: "https://www.shownote.com/Down/Perf/202401/HWG_poster_390x555_1.jpg",
-  },
-  {
-    id: 5,
-    title: "인기 타이틀5",
-    imageUrl: "https://storageciggallery.addons.business/12201/cig-cozy-gallery-5482tuy-Matias-Feliu-hd.jpg?c=00",
-  },
-];
+// const popularData = [
+//   {
+//     id: 1,
+//     title: "인기 타이틀1",
+//     imageUrl: "https://search.pstatic.net/common?type=a&size=3000&quality=100&direct=true&src=http%3A%2F%2Fsstatic.naver.net%2Fpeople%2FprofileImg%2Fab43feac-a2bf-429e-8164-ff52d70e40ee.jpg",
+//   },
+//   {
+//     id: 2,
+//     title: "인기 타이틀2",
+//     imageUrl: "https://img.sbs.co.kr/newimg/news/20241121/202009760_1280.jpg",
+//   },
+//   {
+//     id: 3,
+//     title: "인기 타이틀3",
+//     imageUrl: "https://storageciggallery.addons.business/12201/cig-cozy-gallery-5482tuy-Matias-Feliu-hd.jpg?c=00",
+//   },
+//   {
+//     id: 4,
+//     title: "인기 타이틀4",
+//     imageUrl: "https://www.shownote.com/Down/Perf/202401/HWG_poster_390x555_1.jpg",
+//   },
+//   {
+//     id: 5,
+//     title: "인기 타이틀5",
+//     imageUrl: "https://storageciggallery.addons.business/12201/cig-cozy-gallery-5482tuy-Matias-Feliu-hd.jpg?c=00",
+//   },
+// ];
 
 const NewsMain = () => {
 
