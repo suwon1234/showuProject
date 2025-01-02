@@ -9,7 +9,7 @@ const S = {};
 
   S.Wapper = styled.div`
     width: 560px;
-    height: 764.16px;
+    height: 600px;
     margin: auto;
     padding: 40px 0 40px 0;
     background-color: #252525;
@@ -82,6 +82,22 @@ const S = {};
       color: black;
     }
 
+  `
+
+  S.FoundId = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin-top: 20px;
+
+    & .currentUser {
+      text-align: center;
+      width: 300px;
+      border: 1px solid #444444;
+      padding: 20px;
+    }
   `
 
 export default S;
