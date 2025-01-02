@@ -7,8 +7,8 @@ import { useForm } from 'react-hook-form';
 const FindIdContainer = () => {
   const [ step, setStep ] = useState(1);
   const [ currentUser, setCurrentUser ] = useState(null);  // 찾은 아이디
-  const { register, handleSubmit, getValues,
-    formState : { isSubmitting, isSubmitted, errors }
+  const { register, handleSubmit,
+    formState : { isSubmitting, errors }
   } = useForm({ mode : "onSubmit"})
 
   // const phoneRegex = /^[0-9-]+$/;
@@ -45,7 +45,7 @@ const FindIdContainer = () => {
                   console.log(res.currentUser);
                   setCurrentUser(res.currentUser); 
                   setStep(2); 
-                }
+                } 
               })
               .catch((error) => {
                 console.error("아이디 찾기 실패:", error.message);
