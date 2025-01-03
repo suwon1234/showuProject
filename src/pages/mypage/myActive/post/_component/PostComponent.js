@@ -9,7 +9,7 @@ const PostComponent = ({ page, currentList, setPage, totalPost, PAGINATION }) =>
 
   return (
     <S.Container className='Container'>
-      { currentList && currentList.map((item) => (
+      { currentList && currentList.length > 0 ? (currentList.map((item) => (
         <S.Wrapper 
           key={item._id} 
           onClick={() => navigate(`/community/communityInfo/${item._id}`)}>
@@ -25,7 +25,9 @@ const PostComponent = ({ page, currentList, setPage, totalPost, PAGINATION }) =>
             </S.Right>
           </S.Wrap>
         </S.Wrapper>
-      ))}
+      ))) : (
+        <p>작성한 글이 없습니다</p>
+      )}
       <Paging 
         page={page}
         setPage={setPage}
