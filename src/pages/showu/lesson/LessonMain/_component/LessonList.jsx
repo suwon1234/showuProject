@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const LessonList = () => {
     return (
-        <Link to={'/showu/details'}>
+        <Link to={'/showu/lesson/details'}>
                 <S.LessonList>
                     <S.LessonWrapper>
                         <div>
