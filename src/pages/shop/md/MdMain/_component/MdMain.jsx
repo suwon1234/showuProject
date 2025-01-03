@@ -2,20 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import S from "./styleMain";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronDown,
-  faChevronRight,
-  faCircleChevronLeft,
-  faCircleChevronRight,
-  faHeart,
-} from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronRight, faCircleChevronLeft, faCircleChevronRight, faHeart} from "@fortawesome/free-solid-svg-icons";
 
 const MdMain = () => {
   const [mdProducts, setMdProducts] = useState([]);
   const [bestProducts, setBestProducts] = useState([]); // Best 제품 상태
   const [currentSlide, setCurrentSlide] = useState(0);
-  const ProductsPerSlide = 3; // 한 번에 3개씩 보여줌
-  const slideWidth = 1090;
+  const ProductsPerSlide = 3; // 슬라이드 3개씩
+  const slideWidth = 1090; // 슬라이드 넓이
   const [currentCategory, setCurrentCategory] = useState("전체");
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -78,8 +72,8 @@ const MdMain = () => {
     );
   };
 
-  // 하트 클릭  (카테고리 하단)
-  const handleHeartClickCategory = (e, productId) => {
+  // 하트 클릭 (일반MD 상품)
+  const handleHeartClickMd = (e, productId) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -92,7 +86,7 @@ const MdMain = () => {
     );
   };
 
-  // 하트 클릭 (Best 제품)
+  // 하트 클릭 (Best 상품)
   const handleHeartClickBest = (e, productId) => {
     e.preventDefault();
     e.stopPropagation();
@@ -106,7 +100,7 @@ const MdMain = () => {
     );
   };
 
-  // 카테고리 변경 
+  // 카테고리 필터
   const handleCategoryChange = (category) => {
     setCurrentCategory(category);
   };
@@ -154,7 +148,7 @@ const MdMain = () => {
                   </div>
                 </Link>
                 <div className="best-category">{best.category}</div>
-                <div className="best-name">{best.name}</div>
+                <div className="best-name">{best.mdName}</div>
                 <div className="best-price">
                   {best.price.toLocaleString()}원
                 </div>
@@ -190,14 +184,14 @@ const MdMain = () => {
                   <img src={product.image} alt={product.name} />
                   <S.HeartIconWrapper
                     isHearted={product.ishearted}
-                    onClick={(e) => handleHeartClickCategory(e, product._id)}
+                    onClick={(e) => handleHeartClickMd(e, product._id)}
                   >
                     <FontAwesomeIcon icon={faHeart} />
                   </S.HeartIconWrapper>
                 </div>
               </Link>
               <div className="md-category">{product.category}</div>
-              <div className="md-name">{product.name}</div>
+              <div className="md-name">{product.mdName}</div>
               <div className="md-price">
                 {product.price.toLocaleString()}원
               </div>

@@ -170,7 +170,7 @@ const AuctionMain = () => {
                   </div>
                 </Link>
                 <div className='closing-category'>{closing.category}</div>
-                <div className='closing-name'>{closing.name}</div>
+                <div className='closing-name'>{closing.auctionName}</div>
                 <S.Closing2>
                   <div className='closing-number'>{closing.count}회 |</div>
                   <FontAwesomeIcon className='icon' icon={faClock} />
@@ -215,7 +215,7 @@ const AuctionMain = () => {
                 </div>
               </Link> 
               <div className='auction-category'>{auction.category}</div>
-              <div className='auction-name'>{auction.name}</div>
+              <div className='auction-name'>{auction.auctionName}</div>
               <S.Closing2>
                 <div className='closing-number'>{auction.count}회 |</div>
                 <FontAwesomeIcon className='icon' icon={faClock} />
