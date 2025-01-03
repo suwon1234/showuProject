@@ -1,17 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import S from './LikeAuctionStyle';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClock, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { useSelector } from 'react-redux';
+import usePagination from '../../../../hooks/usePagination';
+import LikeAuctionComponent from './LikeAuctionComponent';
+
+const PAGINATION = {
+  pageRange: 4,
+  btnRange: 3,
+};
 
 const LikeAction = () => {
   const [ auctions, setAuctions ] = useState([]);
+  const { currentUser } = useSelector((state) => state.user);
+  const userId = currentUser ? currentUser._id : '';
+  const jwtToken = localStorage.getItem("jwtToken");
+  const { page, currentList, setPage, totalPost } = usePagination({
+    pageRange: PAGINATION.pageRange,
+    list: auctions || [],
+  });
 
   useEffect(() => {
     const getAuctions = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/md`);
-        const datas = await response.json();
-        setAuctions(datas)
+        const response = await fetch(`http://localhost:8000/my/like/auction`, {
+          method : "GET",
+          headers : {
+            "Authorization": `Bearer ${jwtToken}`,
+          }
+        })
+        .then((res) => res.json())
+        .then((res) => {
+          if(!res.foundLikeAuctoinSuccess){
+            console.error(res.message)
+          }
+          setAuctions(res.likedAuction)
+          console.log(res.message)
+        })
       } catch (error) {
         console.log("LikeAuctionError", error)
       }
@@ -24,31 +47,14 @@ const LikeAction = () => {
   // console.log(auctions)
 
   return (
-    <div>
-      <S.Container>
-
-      { auctions && auctions.map((item, i) => (
-        <S.Wrapper key={i}>
-        <S.Image>
-          <img src={item.mdImgUrl} alt="md 이미지" />
-        </S.Image>
-        <S.Content>
-          <p className='title'>{item.mdName}</p>
-          <S.AuctionBox>
-            <S.AuctionWrapper>
-              <p className='auction'>입찰 {item.auctionCount}</p>
-              <p>|</p>
-              <FontAwesomeIcon icon={faClock} className='alram' />
-              <p className='time'>{item.time}</p>
-            </S.AuctionWrapper>
-          </S.AuctionBox>
-          <FontAwesomeIcon icon={faHeart} className='heart'/>
-        </S.Content>
-      </S.Wrapper> 
-      ))}
-
-    </S.Container>
-    </div>
+    <>
+      <LikeAuctionComponent 
+        page={page} setPage={setPage} 
+        currentList={currentList} 
+        totalPost={totalPost}
+        PAGINATION={PAGINATION}
+      />
+    </>
   );
 };
 

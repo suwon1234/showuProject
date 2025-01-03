@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import S from './style';
+
 
 const AdminContainer = () => {
   const [ adminList, setAdminList ] = useState([]);
@@ -45,14 +47,26 @@ const AdminContainer = () => {
   console.log(adminList)
 
   return (
-    <ul>
-      {adminList.map((data, i) => (
-        <li key={i}>
-          {data.exportName}
-          {data.intro}
-        </li>
-      ))}
-    </ul>
+    <S.Container>
+      <S.Table>
+          <S.Thead>
+            <S.Tr>
+              <th scope='col'>전문가 ID</th>
+              <th scope='col'>전문분야</th>
+              <th scope='col'>경력사항</th>
+            </S.Tr>
+          </S.Thead>
+          <S.Tbody>
+            { adminList && adminList.map((item, i) => (
+              <S.RowTr key={i}>
+                <th scope='row' className='num'>{item.exportName}</th>
+                <td>{item.field}</td>
+                <td>{item.career}</td>
+              </S.RowTr>
+            ))}
+          </S.Tbody>
+        </S.Table>
+    </S.Container>
   );
 };
 

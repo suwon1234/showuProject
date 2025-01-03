@@ -15,7 +15,7 @@ const S = {};
   S.Profile = styled.div`
     display: flex;
     align-items: center;
-    gap : 40px;
+    /* gap : 40px; */
 
     margin: 40px 0 50px 0;
 
@@ -29,6 +29,8 @@ const S = {};
 
     & p {
       font-size: 23px;
+      width: 200px;
+      margin-left: 40px;
     }
 
     & .change {
