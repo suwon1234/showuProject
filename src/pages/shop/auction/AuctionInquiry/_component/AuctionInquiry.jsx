@@ -19,7 +19,7 @@ const AuctionInquiry = () => {
   const [isAgreed, setIsAgreed] = useState(false);
 
   const location = useLocation();
-  const { productName } = location.state || {}; // state에서 상품명 받기
+  const { auctionName } = location.state || {}; // state에서 상품명 받기
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -77,7 +77,7 @@ const AuctionInquiry = () => {
         <table className="inquiry-table">
           <tr>
             <th>상품명</th>
-            <td colSpan="2">{productName}</td>
+            <td colSpan="2">{auctionName}</td>
           </tr>
           <tr>
             <th>문의 유형</th>

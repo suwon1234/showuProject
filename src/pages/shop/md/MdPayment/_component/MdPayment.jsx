@@ -9,12 +9,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const MdPayment = () => {
   // const { id } = useParams();
+  const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions); 
+  const options = ['옵션 1', '옵션 2', '옵션 3']; 
   const { state } = useLocation();
   const initialSelectedOptions = state?.selectedOptions || [];
   const navigate = useNavigate();
-
-  const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions); 
-  const options = ['옵션 1', '옵션 2', '옵션 3']; 
   
   const iconPaymentMethods = [
     { label: "체크/신용 카드", icon: faCreditCard },
@@ -27,9 +26,10 @@ const MdPayment = () => {
     { label: "카카오페이", image: `${process.env.PUBLIC_URL}/images/shop/md/kakao-pay.png` },
   ];
 
+  // 배송비
   let productTotal = 0;
   selectedOptions.forEach(item => { productTotal += item.price * item.quantity }); 
-  const deliveryFee = productTotal >= 70000 ? 0 : 3000;
+  const deliveryFee = productTotal >= 70000 ? 0 : 3000; // 배송비 조건 (7만원 이상 무배)
   const discountAmount = 0;
   const totalAmount = productTotal + deliveryFee - discountAmount;
 

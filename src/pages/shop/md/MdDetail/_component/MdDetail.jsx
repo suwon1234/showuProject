@@ -188,7 +188,8 @@ const MdDetail = () => {
   // 문의하기 
   const sendInquiry = () => {
     alert("문의 페이지로 이동하시겠습니까?");
-    navigate('/shop/md/inquiry', { state: { productName: product.name } });
+    // navigate('/shop/md/inquiry', { state: { productName: product.name } });
+    navigate('/shop/md/inquiry', { state: { mdName: product.name } });
   };
 
   return (
@@ -202,7 +203,7 @@ const MdDetail = () => {
         <S.DetailWrapper>
           <S.MdTitle>
             <p>{product.category}</p>
-            <p>{product.name}</p>
+            <p>{product.mdName}</p>
             <p>{product.price.toLocaleString()}원</p>
           </S.MdTitle>
         
@@ -232,7 +233,7 @@ const MdDetail = () => {
             ))} 
           </S.OptionWrapper>
           
-          {/* 카트 추가 버튼튼 */}
+          {/* 카트 추가 버튼 */}
           <S.ButtonWrapper2>
             <div className="button-wrapper1">
               <button className="button cart" onClick={(e) => { addToCart(e);
@@ -250,7 +251,8 @@ const MdDetail = () => {
             
             {/* 문의하기 버튼 */}
             <button className="button inquiry" onClick={() => { sendInquiry();
-                navigate('/shop/md/inquiry', { state: { productName: product.name } }) }}>
+                // navigate('/shop/md/inquiry', { state: { productName: product.name } }) }}>
+                navigate('/shop/md/inquiry', { state: { mdName: product.mdName } }) }}>
                   <p>문의하기</p>
             </button>
           </S.ButtonWrapper2>
@@ -262,7 +264,7 @@ const MdDetail = () => {
         <p className='description'>상품 설명</p>
         <p>{product.description}</p>
         <S.ImageWrapper2>
-          <img className='imagewrapper' src={product.image_detail} alt="상세 이미지"/>
+          <img className='imagewrapper' src={product.imageDetail} alt="상세 이미지"/>
         </S.ImageWrapper2>
         <S.ButtonWrapper3>
           <button>

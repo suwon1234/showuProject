@@ -101,7 +101,7 @@ const AuctionDetail = () => {
   return (
     <S.DetailWrapper>
       <S.Title>
-        <h1>{auctionProduct.name}</h1>
+        <h1>{auctionProduct.auctionName}</h1>
       </S.Title>
 
       <S.AuctionWrapper>
@@ -182,7 +182,7 @@ const AuctionDetail = () => {
       </S.Content>
 
       <S.ImageWrapper>
-        <S.Image2 className='content-image' src={auctionProduct.image_detail} alt="경매 상품" />
+        <S.Image2 className='content-image' src={auctionProduct.imageDetail} alt="경매 상품" />
       </S.ImageWrapper>
 
       <S.Customized>
@@ -277,7 +277,8 @@ const AuctionDetail = () => {
       </S.Inquiry>
 
       <S.ButtonWrapper>
-        <Link to={"/shop/auction/inquiry"} state={{ productName : auctionProduct.name }}>
+        {/* <Link to={"/shop/auction/inquiry"} state={{ productName : auctionProduct.name }}> */}
+        <Link to={"/shop/auction/inquiry"} state={{ auctionName : auctionProduct.auctionName }}>
       <S.InquiryButton>
         <p>문의하기</p>
         <FontAwesomeIcon className='icon' icon={faPencil} />
