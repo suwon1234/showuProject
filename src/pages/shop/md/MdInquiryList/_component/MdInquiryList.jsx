@@ -53,10 +53,10 @@ const MdInquiryList = () => {
       </S.Head>
       
       {inquiryList.map((inquiry) => (
-        <Link to={`/shop/md/inquiry/${inquiry.id}`}>
-        <S.InquiryList key={inquiry.id}>
+        <Link to={`/shop/md/inquiry/${inquiry._id}`}>
+        <S.InquiryList key={inquiry._id}>
           <S.Left1>
-            <S.ListItem>{inquiry.id}</S.ListItem>
+            <S.ListItem>{inquiry._id}</S.ListItem>
           </S.Left1>
           <S.Left2>
             <S.ListItem>{inquiry.type}</S.ListItem>

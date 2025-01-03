@@ -65,13 +65,14 @@ const Shop = () => {
       <S.MdWrapper>
         <div className="md-list">
           {mdItems.slice(6,12).map((item) => (
-            <S.Md key={item.id}>
-              <Link to={`/shop/md/detail/${item.id}`}>
+            <S.Md key={item._id}>
+              <Link to={`/shop/md/detail/${item._id}`}>
                 <img src={item.image} alt={item.name} />
               </Link>
               <div className="md-category">{item.category}</div>
               <div className="md-name">{item.mdName}</div>
-              <div className="md-price">{item.price.toLocaleString()}원</div>
+              <div className="md-price">
+                {item.price ? item.price.toLocaleString() : "가격 정보 없음"}원</div>
             </S.Md>
           ))}
         </div>
@@ -91,8 +92,8 @@ const Shop = () => {
       <S.AuctionWrapper>
         <div className='auction-list'>
           {auctionItems.slice(6,12).map((auction) => (
-          <S.Closing key={auction.id}>
-            <Link to={`/shop/md/detail/${auction.id}`}>
+          <S.Closing key={auction._id}>
+            <Link to={`/shop/auction/detail/${auction._id}`}>
             <img src={auction.image} alt={auction.image} className='image'/>
             </Link>   
             <div className='closing-category'>{auction.category}</div>

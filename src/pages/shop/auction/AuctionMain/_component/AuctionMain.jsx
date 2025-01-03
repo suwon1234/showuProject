@@ -100,27 +100,6 @@ const AuctionMain = () => {
     );
   };
 
-  // const handleHeartClick = (e, id) => {
-  //   e.preventDefault(); // 하트 클릭 => 링크 이동 X
-  //   setHeartedProducts((prev) =>
-  //     prev.includes(id)
-  //       ? prev.filter((itemId) => itemId !== id) // 하트 제거
-  //       : [...prev, id] // 하트 추가
-  //   );
-  // };
-
-  // // 카테고리 변경 시 필터링
-  // const handleCategoryChange = (category) => {
-  //   setCurrentCategory(category);
-  //   if (category === "전체") {
-  //     setFilteredProducts(auctionProducts); // 전체 상품 표시
-  //   } else {
-  //     setFilteredProducts(
-  //       auctionProducts.filter((product) => product.category === category)
-  //     );
-  //   }
-  // };
-
     // 카테고리 변경
     const handleCategoryChange = (category) => {
       setCurrentCategory(category);

@@ -150,7 +150,7 @@ const MdMain = () => {
                 <div className="best-category">{best.category}</div>
                 <div className="best-name">{best.mdName}</div>
                 <div className="best-price">
-                  {best.price.toLocaleString()}원
+                  {best.price ? best.price.toLocaleString() : "가격 정보 없음"}원
                 </div>
               </S.Best>
             ))}
@@ -193,7 +193,7 @@ const MdMain = () => {
               <div className="md-category">{product.category}</div>
               <div className="md-name">{product.mdName}</div>
               <div className="md-price">
-                {product.price.toLocaleString()}원
+                {product.price ? product.price.toLocaleString() : "가격 정보 없음"}원
               </div>
             </S.Md>
           ))}

@@ -1,8 +1,7 @@
-// MD - 문의 페이지
 import React, { useState } from 'react';
 import S from './styleInquiry';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const MdInquiry = () => {
   const navigate = useNavigate();
@@ -19,71 +18,34 @@ const MdInquiry = () => {
   const [isAgreed, setIsAgreed] = useState(false);
 
   const location = useLocation();
-  const { mdName, mdInquiryId } = location.state || {}; 
-  // const { mdInquiryId } = useParams();
+  const { mdName } = location.state || {}; // 상품명
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
-    // 유효성 검사
-    if (!selectedType) {
-      alert('문의 유형을 선택하세요.');
-      return;
-    }
-    if (!selectedForm) {
-      alert('문의 형식을 선택하세요.');
-      return;
-    }
-    if (!title) {
-      alert('제목을 입력하세요.');
-      return;
-    }
-    if (!content) {
-      alert('내용을 입력하세요.');
-      return;
-    }
-    if (!selectedAlarm) {
-      alert('답변 완료 알림을 선택하세요.');
-      return;
-    }
-    if (!isAgreed) {
-      alert('개인정보 수집, 이용에 동의해주세요.');
-      return;
-    }
-  
-    // mdInquiryId가 제대로 전달되었는지 확인
-    // const { mdInquiryId } = location.state || {};
-    // if (!mdInquiryId) {
-    //   alert('상품 정보가 올바르게 전달되지 않았습니다.');
-    //   return;
-    // }
-  
+
+    // 서버로 전달할 데이터 준비
+    const mdInquiryData = {
+      type: selectedType,
+      form: selectedForm,
+      title,
+      content,
+      selectedAlarm,
+      isAgreed,
+      mdName,
+      category: 'md',
+    };
+
     // 등록 확인
     if (window.confirm('등록하시겠습니까?')) {
-      const inquiryData = {
-        type: selectedType,
-        form: selectedForm,
-        mdInquiryId,  // mdInquiryId 전달
-        title,
-        content,
-        selectedAlarm,
-        isAgreed,
-
-      };
-  
       try {
-        const response = await fetch('http:localhost:8000/shop/md', {
+        const response = await fetch('http://localhost:8000/shop/md/inquiry', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(inquiryData),
+          body: JSON.stringify(mdInquiryData),
         });
-  
-        if (!response.ok) {
-          throw new Error('서버에서 오류가 발생했습니다.');
-        }
-  
+
         const data = await response.json();  
         if (response.ok) {
           alert('문의 등록이 완료되었습니다!');
@@ -127,7 +89,7 @@ const MdInquiry = () => {
             <td colSpan="2">
               <S.TypeWrapper>
                 {inquiryTypes.map((type) => (
-                  <S.Type key={type} onClick={() => setSelectedType(selectedType === type ? null : type)} selected={selectedType === type}>
+                  <S.Type key={type} onClick={() => setSelectedType(type)} selected={selectedType === type}>
                     <S.Icon icon={faCheckCircle} selected={selectedType === type} />
                     <p>{type}</p>
                   </S.Type>
@@ -139,8 +101,8 @@ const MdInquiry = () => {
             <th>문의 형식</th>
             <td colSpan="2">
               <S.TypeWrapper>
-              {inquiryForms.map((form) => (
-                  <S.Type key={form} onClick={() => setSelectedForm(selectedForm === form ? null : form)} selected={selectedForm === form}>
+                {inquiryForms.map((form) => (
+                  <S.Type key={form} onClick={() => setSelectedForm(form)} selected={selectedForm === form}>
                     <S.Icon icon={faCheckCircle} selected={selectedForm === form} />
                     <p>{form}</p>
                   </S.Type>
@@ -151,8 +113,7 @@ const MdInquiry = () => {
           <tr>
             <th>제목</th>
             <td colSpan="2">
-              <S.InputTitle type="text" placeholder="제목을 입력하세요." value={title}
-                onChange={(e) => setTitle(e.target.value)} />
+              <S.InputTitle type="text" placeholder="제목을 입력하세요." value={title} onChange={(e) => setTitle(e.target.value)} />
             </td>
           </tr>
           <tr>
@@ -162,8 +123,7 @@ const MdInquiry = () => {
           <tr>
             <th>내용</th>
             <td colSpan="2">
-              <S.InputContent text="text" placeholder="내용을 입력하세요." value={content}
-                onChange={(e) => setContent(e.target.value)} />
+              <S.InputContent text="text" placeholder="내용을 입력하세요." value={content} onChange={(e) => setContent(e.target.value)} />
             </td>
           </tr>
           <tr>
@@ -171,7 +131,7 @@ const MdInquiry = () => {
             <td>
               <S.TypeWrapper>
                 {alarmTypes.map((alarm) => (
-                  <S.Type key={alarm} onClick={() => setSelectedAlarm(selectedAlarm === alarm ? null : alarm)} selected={selectedAlarm === alarm}>
+                  <S.Type key={alarm} onClick={() => setSelectedAlarm(alarm)} selected={selectedAlarm === alarm}>
                     <S.Icon icon={faCheckCircle} selected={selectedAlarm === alarm} />
                     <p>{alarm}</p>
                   </S.Type>
@@ -198,7 +158,7 @@ const MdInquiry = () => {
 
       <S.InquiryButton>
         <S.BackButton onClick={handleCancel}>취소</S.BackButton>
-          <S.NextButton onClick={handleSubmit}>등록</S.NextButton>
+        <S.NextButton onClick={handleSubmit}>등록</S.NextButton>
       </S.InquiryButton>
     </S.InquiryWrapper>
   );
