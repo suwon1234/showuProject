@@ -99,10 +99,10 @@ import OpenDetail from '../pages/reservation/ticket/openDetail/OpenDetail';
 import SpaceRental from '../pages/reservation/space/spaceRental/SpaceRental';
 import RentalDetail from '../pages/reservation/space/rentaldetail/RentalDetail';
 import RentalSelection from '../pages/reservation/space/rentalSelection/RentalSelection';
-import TeamMain from '../pages/showu/team/teamMain/TeamMain';
 import LessonMake from '../pages/showu/lesson/LessonMain/LessonMake/_component/LessonMake';
 import LessonMain from '../pages/showu/lesson/LessonMain/LessonMain';
 import TeamDetails from '../pages/showu/team/teamDetails/_component/TeamDetails';
+import TeamMain from '../pages/showu/team/teamMain/teamMain'
 import TeamMaking from '../pages/showu/team/teamMaking/TeamMaking';
 
 const router = createBrowserRouter([
