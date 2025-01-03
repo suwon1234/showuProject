@@ -412,11 +412,11 @@ const router = createBrowserRouter([
         path: "/showu/team/teamDetails",
         element: <TeamDetails />,
       },
-      // {
-      //   path: "/showu/team/teamMake",
-      //   element: <TeamMaking />,
-      // },
-
+      {
+        path: "/showu/team/teamMake",
+        element: <TeamMaking />,
+      },
+   
 
       {
         path: "/vod",

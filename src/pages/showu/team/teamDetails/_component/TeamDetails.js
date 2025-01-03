@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const TeamDetails = () => {
     return (
@@ -38,9 +39,12 @@ const TeamDetails = () => {
                             </div>
                         </div>
                     </div>
-                    <button className='SubscriptionButton'>
-                        가입 신청하기기
-                    </button>
+                    <Link to={"/showu/team/teamJoin"}>
+                        <button className='SubscriptionButton'>
+                            가입 신청하기기
+                        </button>
+                    
+                    </Link>
                 </div>
             </div>
             <div className='TeamDetailsRightContentsWrapper'>
