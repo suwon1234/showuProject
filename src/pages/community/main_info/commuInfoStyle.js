@@ -48,7 +48,7 @@ const S = {};
     margin-right: 1000px;
   `
 
-  S.ButtonGroup = styled.div`
+  S.Group = styled.div`
     display: flex;
     justify-content: center;
     gap: 10px;

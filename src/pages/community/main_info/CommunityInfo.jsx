@@ -9,7 +9,7 @@ const CommunityInfo = () => {
   const [data, setData] = useState(null); // 게시물 데이터
   const [loading, setLoading] = useState(true); // 로딩 상태
   const [error, setError] = useState(null); // 에러 메시지
-  const [likeCount, setLikeCount] = useState(0); // 좋아요 수
+  const [likeCount, setLikeCount] = useState(0); // 좋아요 수s
   const [commentText, setCommentText] = useState(""); // 댓글 텍스트
   const [comments, setComments] = useState([]); // 댓글 목록
 
@@ -130,9 +130,11 @@ const CommunityInfo = () => {
         </S.Img>
 
         {/* 좋아요 버튼 */}
-        <S.ButtonGroup>
-          <button onClick={handleLikeButton}>좋아요 {likeCount}</button>
-        </S.ButtonGroup>
+        <S.Group>
+          <button onClick={handleLikeButton}>
+            좋아요 {likeCount}
+          </button>
+        </S.Group>
 
         {/* 댓글 작성 및 표시 */}
         <S.CommentWrapper>
@@ -142,7 +144,9 @@ const CommunityInfo = () => {
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
             />
-            <button onClick={handleCommentSubmit}>등록하기</button>
+            <button onClick={handleCommentSubmit}>
+              등록하기
+            </button>
           </S.CommentInput>
 
           <div>
@@ -156,9 +160,11 @@ const CommunityInfo = () => {
         </S.CommentWrapper>
 
         {/* 커뮤니티 홈으로 이동 */}
-        <S.ButtonGroup>
-          <button onClick={handleBackToList}>커뮤니티 홈으로</button>
-        </S.ButtonGroup>
+        <S.Group>
+          <button onClick={handleBackToList}>
+            커뮤니티 홈으로
+          </button>
+        </S.Group>
       </S.SubWrapper>
     </S.Wrapper>
   );
