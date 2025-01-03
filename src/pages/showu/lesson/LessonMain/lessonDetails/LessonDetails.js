@@ -20,7 +20,7 @@ const lessonListData = [
             addressDongLi : "",
         },
         lessonAddressDetail : "서울시 서초구", // 상세 주소
-        lessonDetail : "끊임없는 기획사 오디션 / 매체 연기 / 영화 제작 및 배우 포트폴리오 전문 \n 1개월 마다, 배우 포트폴리오 준비를 위한 단편영화 제작을 함께합니다.", // 레슨 상세설명
+        lessonDetail :`끊임없는 기획사 오디션 / 매체 연기 / 영화 제작 및 배우 포트폴리오 전문  1개월 마다, 배우 포트폴리오 준비를 위한 단편영화 제작을 함께합니다.`, // 레슨 상세설명
         history : { //경력
             personal : "총 경력 14년", //이력
             recode : 
@@ -63,7 +63,7 @@ const lessonListData = [
             index : 1, //고유번호
             portfolioTitle : "메채 연기레슨",
 
-            portfolioURL : "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDAyMTZfOTIg%2FMDAxNzA4MDg4OTY2NjA0.Vypp3YxHr665oBOcQW5G1P6ULXRkoujYZ8V7_sjFZPkg.x61htAdeLDt42bOqwhn00ktO92NBE0-qCjEbIqQHTWYg.JPEG.rmflsxl6032%2FScreenshot%25A3%25DF20240216%25A3%25DF220835%25A3%25DFInstagram.jpg&type=sc960_832" // 포트폴리오 
+            portfolioURL : "https://web-cf-image.cjenm.com/crop/520x748/public/share/metamng/programs/moulinrouge-musical-poster.jpg?v=1678248215" // 포트폴리오 
         },
         media : 
             {

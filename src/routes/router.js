@@ -99,6 +99,11 @@ import OpenDetail from '../pages/reservation/ticket/openDetail/OpenDetail';
 import SpaceRental from '../pages/reservation/space/spaceRental/SpaceRental';
 import RentalDetail from '../pages/reservation/space/rentaldetail/RentalDetail';
 import RentalSelection from '../pages/reservation/space/rentalSelection/RentalSelection';
+import TeamMain from '../pages/showu/team/teamMain/TeamMain';
+import LessonMake from '../pages/showu/lesson/LessonMain/LessonMake/_component/LessonMake';
+import LessonMain from '../pages/showu/lesson/LessonMain/LessonMain';
+import TeamDetails from '../pages/showu/team/teamDetails/_component/TeamDetails';
+import TeamMaking from '../pages/showu/team/teamMaking/TeamMaking';
 
 const router = createBrowserRouter([
   {
@@ -387,9 +392,31 @@ const router = createBrowserRouter([
         element: <ShowuContainer />,
       },
       {
-        path: "/showu/details",
+        path: "/showu/lesson",
+        element: <LessonMain />,
+      },
+
+      {
+        path: "/showu/lesson/details",
         element: <LessonDetails />,
       },
+      {
+        path: "/showu/lesson/lessonMake",
+        element: <LessonMake />,
+      },
+      {
+        path: "/showu/team",
+        element: <TeamMain />,
+      },
+      {
+        path: "/showu/team/teamDetails",
+        element: <TeamDetails />,
+      },
+      // {
+      //   path: "/showu/team/teamMake",
+      //   element: <TeamMaking />,
+      // },
+
 
       {
         path: "/vod",

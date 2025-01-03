@@ -23,7 +23,7 @@ const LessonMain = () => {
                 </S.LessonCategoryWrapper>
 
                 <S.LessonButtonWrapper>
-                    <Link to={"/lessonMake"}>
+                    <Link to={"/showu/lesson/lessonMake"}>
                         <button className='lessonCreate'>레슨 개설하기</button>
                     </Link>
                 </S.LessonButtonWrapper>
