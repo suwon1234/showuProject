@@ -16,7 +16,7 @@ const TeamDetails = () => {
                                 <span>연기</span>
                                 <span>20대</span>
                                 <span>토요일 오후</span>
-                                <span>취미 연습습</span>
+                                <span>취미 연습</span>
                             </div>
                         </div>
                         <div className='TeamCharactersWrapper'>
