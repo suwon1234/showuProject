@@ -11,7 +11,8 @@ const LikeMdComponent = ({ page, currentList, setPage, totalPost, PAGINATION }) 
   return (
     <>
       <S.Container className='Container'>
-        { currentList && currentList.map((item, i) => (
+        { currentList && currentList.length > 0 ?
+        (currentList.map((item, i) => (
           <S.Wrapper key={i} className='Wrapper'>
             <S.Image className='Image'>
               <img src={item.image} alt='md 이미지' />
@@ -22,7 +23,10 @@ const LikeMdComponent = ({ page, currentList, setPage, totalPost, PAGINATION }) 
               <FontAwesomeIcon icon={faHeart} className='heart'/>
             </S.Content>
           </S.Wrapper>
-        ))}
+        ))) : (
+          <p>찜한 md가 없습니다</p>
+        )
+        }
         <Paging 
           page={page}
           setPage={setPage}
