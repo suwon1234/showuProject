@@ -19,11 +19,13 @@ const MdInquiry = () => {
   const [isAgreed, setIsAgreed] = useState(false);
 
   const location = useLocation();
-  const { productName } = location.state || {}; 
+  const { mdName, mdInquiryId } = location.state || {}; 
+  // const { mdInquiryId } = useParams();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
+    // 유효성 검사
     if (!selectedType) {
       alert('문의 유형을 선택하세요.');
       return;
@@ -48,10 +50,51 @@ const MdInquiry = () => {
       alert('개인정보 수집, 이용에 동의해주세요.');
       return;
     }
-
+  
+    // mdInquiryId가 제대로 전달되었는지 확인
+    // const { mdInquiryId } = location.state || {};
+    // if (!mdInquiryId) {
+    //   alert('상품 정보가 올바르게 전달되지 않았습니다.');
+    //   return;
+    // }
+  
+    // 등록 확인
     if (window.confirm('등록하시겠습니까?')) {
-      alert('등록이 완료되었습니다!');
-      navigate('/shop/md/inquiry/list');
+      const inquiryData = {
+        type: selectedType,
+        form: selectedForm,
+        mdInquiryId,  // mdInquiryId 전달
+        title,
+        content,
+        selectedAlarm,
+        isAgreed,
+
+      };
+  
+      try {
+        const response = await fetch('http:localhost:8000/shop/md', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(inquiryData),
+        });
+  
+        if (!response.ok) {
+          throw new Error('서버에서 오류가 발생했습니다.');
+        }
+  
+        const data = await response.json();  
+        if (response.ok) {
+          alert('문의 등록이 완료되었습니다!');
+          navigate('/shop/md/inquiry/list');
+        } else {
+          alert(data.message || '문의 등록 중 오류가 발생했습니다.');
+        }
+      } catch (error) {
+        console.error("문의 등록 오류:", error.message);
+        alert('문의 등록 중 오류가 발생했습니다.');
+      }
     }
   };
 
@@ -77,7 +120,7 @@ const MdInquiry = () => {
         <table className="inquiry-table">
           <tr>
             <th>상품명</th>
-            <td colSpan="2">{productName}</td>
+            <td colSpan="2">{mdName}</td>
           </tr>
           <tr>
             <th>문의 유형</th>

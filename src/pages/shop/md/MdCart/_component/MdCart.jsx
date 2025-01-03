@@ -6,25 +6,27 @@ import { faCircleExclamation, faCheckCircle, faXmark } from '@fortawesome/free-s
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const MdCart = () => {
-  const { state } = useLocation();
-  const initialSelectedOptions = state?.selectedOptions || [];
-  const navigate = useNavigate();
-
   const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions); 
   const [checkedItems, setCheckedItems] = useState([]); // 선택된 상품들
   const [number, setNumber] = useState([]); // 각 상품의 수량
   const [totalAmount, setTotalAmount] = useState(0);
+  const { state } = useLocation(); 
+  const initialSelectedOptions = state?.selectedOptions || [];
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     // selectedOptions => 배열 초기화 
     setNumber(new Array(selectedOptions.length).fill(1));
   }, [selectedOptions]);
 
+
   // 전체 상품 체크박스
   const SelectAll = () => {
     const allChecked = checkedItems.every(item => item);
     setCheckedItems(Array(selectedOptions.length).fill(!allChecked));
   };
+
 
   // 각 상품 체크박스 
   const SelectEach = (index) => {
@@ -36,6 +38,7 @@ const MdCart = () => {
   const isAllChecked = checkedItems.every(item => item);
   const isAnyChecked = checkedItems.some(item => item);
 
+
   // 수량 감소
   const decrease = (index) => {
     setNumber(prevNumber => {
@@ -44,6 +47,7 @@ const MdCart = () => {
       return newNumber;
     });
   };
+
 
   // 수량 증가
   const increase = (index) => {
@@ -58,7 +62,7 @@ const MdCart = () => {
     });
   };
 
-  // 상품 삭제
+  // 장바구니 상품 삭제
   const deleteProduct = async (index) => {
     const isConfirmed = window.confirm("해당 상품을 삭제하시겠습니까?");
     if (isConfirmed) {
@@ -93,7 +97,7 @@ const MdCart = () => {
   };
 
   useEffect(() => {
-    // 총 금액 계산
+    // 총 결제 금액 계산
     let total = 0;
     selectedOptions.forEach((item, index) => {
       if (checkedItems[index]) {
@@ -145,6 +149,7 @@ const MdCart = () => {
                   <S.QuantityButton onClick={() => decrease(index)}>-</S.QuantityButton>
                   {/* <span>{number[index]}</span>  */}
                   <span>{selected.quantity}</span> 
+                  {/* <span>{selectedOptions.quantity}</span>  */}
                   <S.QuantityButton onClick={() => increase(index)}>+</S.QuantityButton>
                 </S.QuantityControl>
                 <S.ProductPrice>{(selected.price * number[index]).toLocaleString()}원</S.ProductPrice>
@@ -165,12 +170,9 @@ const MdCart = () => {
             if (isAnyChecked) {
               const confirmCheckout = window.confirm("결제 페이지로 이동하시겠습니까?");
               if (confirmCheckout) {
-                navigate('/shop/md/payment', { 
-                  state: { 
-                    selectedOptions: selectedOptions.filter((_, index) => checkedItems[index]) 
-                  }
-                });
-              }
+                navigate('/shop/md/payment',
+                  { state: { selectedOptions: selectedOptions.filter((_, index) => checkedItems[index])}});
+                }
             } else {
               alert("결제할 상품을 선택하세요!");
             }

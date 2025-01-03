@@ -70,7 +70,7 @@ const Shop = () => {
                 <img src={item.image} alt={item.name} />
               </Link>
               <div className="md-category">{item.category}</div>
-              <div className="md-name">{item.name}</div>
+              <div className="md-name">{item.mdName}</div>
               <div className="md-price">{item.price.toLocaleString()}원</div>
             </S.Md>
           ))}
@@ -96,7 +96,7 @@ const Shop = () => {
             <img src={auction.image} alt={auction.image} className='image'/>
             </Link>   
             <div className='closing-category'>{auction.category}</div>
-            <div className='closing-name'>{auction.name}</div>
+            <div className='closing-name'>{auction.auctionName}</div>
             <S.Closing2>
               <div className='closing-number'>{auction.count}회 |</div>
               <FontAwesomeIcon className='icon' icon={faClock} />
