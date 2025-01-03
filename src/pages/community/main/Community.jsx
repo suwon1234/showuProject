@@ -43,7 +43,11 @@ const Community = () => {
 
   return (
     <S.Wrapper>
+
       <S.TopTitle>커뮤니티</S.TopTitle>
+        <S.IconWrapper>
+            <FontAwesomeIcon icon={faChevronDown} className='icon' />
+        </S.IconWrapper>
 
       <S.SubWrapper>
         {/* 필터 버튼 */}
