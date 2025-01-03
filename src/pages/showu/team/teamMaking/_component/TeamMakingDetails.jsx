@@ -3,7 +3,7 @@ import S from './style';
 
 const TeamMakingDetails = () => {
     return (
-        <div className='TeamMakingDetailsWrapper'>
+        <div className='TeamMakingDetailsWrapper' >
             <S.TeamMakingNameWrapper>
                 <S.MakingDetailsTitle>
                     <span>

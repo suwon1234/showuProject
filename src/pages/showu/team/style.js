@@ -33,6 +33,10 @@ S.TeamCategorys = styled.div`
         font-size: 17px;
         color: #ffd400;  
         font-weight: 400;
+
+        option {
+            background-color: #000;
+        }
     }
 `
 
