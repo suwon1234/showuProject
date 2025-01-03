@@ -1,14 +1,22 @@
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
-import S from './LikeMdStyle';
 import { useSelector } from 'react-redux';
+import usePagination from '../../../../hooks/usePagination';
+import LikeMdComponent from './LikeMdComponent';
+
+const PAGINATION = {
+  pageRange: 4,
+  btnRange: 3,
+};
 
 const LikeMd = () => {
   const [ mds, setMds ] = useState([]);
   const { currentUser } = useSelector((state) => state.user);
   const userId = currentUser ? currentUser._id : '';
   const jwtToken = localStorage.getItem("jwtToken");
+  const { page, currentList, setPage, totalPost } = usePagination({
+    pageRange: PAGINATION.pageRange,
+    list: mds || [],
+  });
 
   useEffect(() => {
     const getMds = async () => {
@@ -40,21 +48,14 @@ const LikeMd = () => {
   console.log(mds)
 
   return (
-    <S.Container className='Container'>
-
-      { mds && mds.map((item, i) => (
-        <S.Wrapper key={i} className='Wrapper'>
-          <S.Image className='Image'>
-            <img src={item.image} alt='md 이미지' />
-          </S.Image>
-          <S.Content className='Content'>
-            <p>{item.mdName}</p>
-            <p>{item.price}</p>
-            <FontAwesomeIcon icon={faHeart} className='heart'/>
-          </S.Content>
-        </S.Wrapper>
-      ))}
-    </S.Container>
+    <>
+      <LikeMdComponent 
+        page={page} setPage={setPage} 
+        currentList={currentList} 
+        totalPost={totalPost}
+        PAGINATION={PAGINATION}
+      />
+    </>
   );
 };
 

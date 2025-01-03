@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 
 const PAGINATION = {
   pageRange: 6,
-  btnRange: 5,
+  btnRange: 3,
 };
 
 const Post = () => {
