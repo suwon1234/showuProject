@@ -4,11 +4,13 @@ const SET_PREVIOUS_URL = "user/SET_PREVIOUS_URL";
 const SET_USER = "user/SET_USER"
 const SET_USER_STATUS = "user/USER_STATUS"
 const SET_USER_ROLE = "user/SET_USER_ROLE"
+const SET_ADMIN_STATUS = "user/SET_ADMIN_STATUS"
 
 export const setPreviousUrl = createAction(SET_PREVIOUS_URL, (previousUrl) => previousUrl);
 export const setUser = createAction(SET_USER, (currentUser) => currentUser);
 export const setUserStatus = createAction(SET_USER_STATUS, (isLogin) => isLogin);
 export const setUserRole = createAction(SET_USER_ROLE, (role) => role);
+export const setAdminStatus = createAction(SET_ADMIN_STATUS, (isAdmin) => isAdmin);
 
 
 const UserInitalValue = {
@@ -17,6 +19,7 @@ const UserInitalValue = {
     },
     isLogin : false,
     previousUrl : "",
+    isAdmin : false
 };
  
 const user = handleActions({
