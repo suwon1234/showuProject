@@ -1,17 +1,38 @@
 import React, { useEffect, useState } from 'react';
-import S from './LikeSpaceStyle';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import usePagination from '../../../../hooks/usePagination';
+import LikeSpaceComponent from './LikeSpaceComponent';
+
+const PAGINATION = {
+  pageRange: 4,
+  btnRange: 3,
+};
 
 const LikeSpace = () => {
   const [ spaces, setSpaces ] = useState([]);
+  const jwtToken = localStorage.getItem("jwtToken");
+  const { page, currentList, setPage, totalPost } = usePagination({
+    pageRange: PAGINATION.pageRange,
+    list: spaces || [],
+  });
+
 
   useEffect(() => {
     const getSpace = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/MyResSpace`);
-        const datas = await response.json();
-        setSpaces(datas);
+        const response = await fetch(`http://localhost:8000/my/like/space`, {
+          method : "GET",
+          headers : {
+            "Authorization": `Bearer ${jwtToken}`
+          }
+        })
+        .then((res) => res.json())
+        .then((res) => {
+          if(!res.likeSpaceSuccess){
+            console.error(res.message)
+          }
+          setSpaces(res.likeSpace)
+          console.log(res.message)
+        })
       } catch (error) {
         console.log("LikeSpaceError", error)
       }
@@ -22,27 +43,16 @@ const LikeSpace = () => {
   }, [])
 
   console.log(spaces)
+  
   return (
-    <S.Container className='container'>
-      { spaces && spaces.map((item, i) => (
-        <S.Warpper key={i} className='warpper'>
-          <S.Image className='image'>
-            <img src={item.spaceImageUrl} alt="공간대여" />
-          </S.Image>
-          <S.Content className='content'>
-            <S.Title className='title'>
-              <p className='spaceName'>{item.space}</p>
-              <div className='heartBox'>
-                <FontAwesomeIcon icon={faHeart} className='heart'/>
-              </div>
-            </S.Title>
-            <p className='type'>{item.type}</p>
-            <p className='area'>{item.area}</p>
-            <p className='price'>{item.price}</p>
-          </S.Content>
-        </S.Warpper>
-      ))}
-    </S.Container>
+    <>
+      <LikeSpaceComponent 
+        page={page} setPage={setPage} 
+        currentList={currentList} 
+        totalPost={totalPost}
+        PAGINATION={PAGINATION}
+      />
+    </>
   );
 };
 

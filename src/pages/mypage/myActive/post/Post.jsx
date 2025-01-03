@@ -24,7 +24,7 @@ const Post = () => {
       if(!userId || !jwtToken) return; 
 
       try {
-        await fetch(`http://localhost:8000/my/my-active/post/${userId}`, {
+        await fetch(`http://localhost:8000/my/my-active/post`, {
           method: "POST",
           headers : {
             "Authorization": `Bearer ${jwtToken}`,
