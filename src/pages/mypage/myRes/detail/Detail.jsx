@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import S from './DetailStyle';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux'
 
 const Detail = () => {
   const { id } = useParams();
   console.log(id)
   const [ ticket, setTicket ] = useState([]);
   const jwtToken = localStorage.getItem("jwtToken");
+
+  const { currentUser } = useSelector((state) => state.user)
 
 
   useEffect(() => {
@@ -25,6 +28,7 @@ const Detail = () => {
           }
           setTicket(res.resTicketList)
           console.log(res.message)
+          console.log(res.resTicketList)
         })
      } catch (error) {
       console.log("TicketError", error)
@@ -33,7 +37,7 @@ const Detail = () => {
 
     getTicket()
 
-  }, [])
+  }, [jwtToken])
 
   const navigate = useNavigate();
 
@@ -41,23 +45,26 @@ const Detail = () => {
     navigate(path);
   }
 
+  console.log("ticket", ticket)
+
   return (
     <>
-      <S.Table>
+      { ticket && ticket.map((ticket, i) => (
+        <S.Table key={i} >
         <tbody>
           <S.Tr>
             <th scope='row'>티켓명</th>
             <td>
-              <span>{ticket.ticketName}</span>
+              <span>{ticket.name}</span>
             </td>
             <th scope='row'>예매자</th>
-            <td>{ticket.name}</td>
+            <td>{currentUser.name}</td>
           </S.Tr>
           <S.Tr>
             <th scope='row'>관람 일시</th>
-            <td>{ticket.date}</td>
+            <td>{ticket.dates}</td>
             <th scope='row'>장소</th>
-            <td>{ticket.location}</td>
+            <td>{ticket.venue}</td>
           </S.Tr>
           <S.Tr>
             <th scope='row'>좌석</th>
@@ -71,6 +78,8 @@ const Detail = () => {
           </S.Tr>
         </tbody>
       </S.Table>
+      ))
+      }
 
       <div>
         <S.Title>티켓 예매 내역</S.Title>
@@ -90,18 +99,22 @@ const Detail = () => {
 
           <S.DetailTbody>
 
-            <S.DetailTr>
-              {/* <Checkbox /> */}
-              <th scope='row' className='num'>{ticket.id}</th>
-              <td>{ticket.seat}</td>
-              {/* <td>L열 20번</td> */}
-              <td>{ticket.price}</td>
-              <td>{ticket.cancellationStatus}</td>
-              <td>{ticket.cancellableDate}</td>
-            </S.DetailTr>
+            { ticket && ticket.map((ticket, i) => (
+              <S.DetailTr key={i} >
+                {/* <Checkbox /> */}
+                <th scope='row' className='num'>{ticket.id}</th>
+                <td>{ticket.seat}</td>
+                {/* <td>L열 20번</td> */}
+                <td>{ticket.price}</td>
+                <td>{ticket.cancellationStatus}</td>
+                <td>{ticket.cancellableDate}</td>
+              </S.DetailTr>
+            ))
+            }
       
           </S.DetailTbody>
         </S.DetailTable>
+        
         <S.ButtonContainer className='ButtonContainer'>
           <S.Button onClick={() => handleNavigate('/my-res/ticket/cancele')}>이전으로</S.Button>
           <S.Button>취소하기</S.Button>

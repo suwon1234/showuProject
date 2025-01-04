@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import S from './AdviceStyle';
 import usePagination from '../../../../hooks/usePagination';
 import Advicecomponent from './Advicecomponent';
 
