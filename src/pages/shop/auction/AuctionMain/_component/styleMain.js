@@ -97,6 +97,7 @@ const flexStyle = css`
     & .image {
       width: 300px;
       height: 300px;
+      border-radius: 5px;
     }
 
     .image-wrapper {
@@ -166,11 +167,11 @@ const flexStyle = css`
   // `
 
   S.CategoryButtonWrapper = styled.div`
-  display: flex;
-  gap: 10px;  // 버튼 간격 추가
-  width: 1100px;
-  margin: 60px auto 0;
-  padding: 10px 20px;
+    display: flex;
+    gap: 10px;  // 버튼 간격 추가
+    width: 1100px;
+    margin: 60px auto 0;
+    padding: 10px 20px;
 `
 
   S.CategoryButton = styled.button`
@@ -206,6 +207,7 @@ const flexStyle = css`
       & img {
         width: 300px;
         height: 300px;
+        border-radius: 5px;
       }
 
       & .auction-category {
