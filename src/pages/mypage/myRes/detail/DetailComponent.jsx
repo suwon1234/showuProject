@@ -1,46 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import S from './DetailStyle';
-import { useNavigate, useParams } from 'react-router-dom';
 
-const Detail = () => {
-  const { id } = useParams();
-  console.log(id)
-  const [ ticket, setTicket ] = useState([]);
-  const jwtToken = localStorage.getItem("jwtToken");
-
-
-  useEffect(() => {
-    const getTicket = async () => {
-     try {
-      const response = await fetch(`http://localhost:8000/my/reservation/ticket/${id}`, {
-        method : "GET",
-        headers : {
-          "Authorization": `Bearer ${jwtToken}`
-        }
-      })
-        .then((res) => res.json())
-        .then((res) => {
-          if(!res.ticketsuccess){
-            console.log(res.message)
-          }
-          setTicket(res.resTicketList)
-          console.log(res.message)
-        })
-     } catch (error) {
-      console.log("TicketError", error)
-     }
-    }
-
-    getTicket()
-
-  }, [])
-
-  const navigate = useNavigate();
-
-  const handleNavigate = (path) => {
-    navigate(path);
-  }
-
+const DetailComponent = () => {
   return (
     <>
       <S.Table>
@@ -102,13 +63,15 @@ const Detail = () => {
       
           </S.DetailTbody>
         </S.DetailTable>
+
         <S.ButtonContainer className='ButtonContainer'>
           <S.Button onClick={() => handleNavigate('/my-res/ticket/cancele')}>이전으로</S.Button>
           <S.Button>취소하기</S.Button>
         </S.ButtonContainer>
+
       </div>
     </>
   );
 };
 
-export default Detail;
+export default DetailComponent;

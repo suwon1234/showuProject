@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import S from './TicketStyle';
 import { useNavigate } from 'react-router-dom';
 import usePagination from '../../../../hooks/usePagination';
 import TicketComponent from './TicketComponent';

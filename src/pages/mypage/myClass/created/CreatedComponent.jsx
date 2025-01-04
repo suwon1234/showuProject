@@ -22,12 +22,12 @@ const CreatedComponent = ({ page, currentList, setPage, totalPost, PAGINATION })
           ))
         }
         <Paging 
-          page={page}
-          setPage={setPage}
-          totalPost={totalPost}
-          btnRange={PAGINATION.btnRange}
-          pageRange={PAGINATION.pageRange}
-      />
+          page={page} 
+          setPage={setPage} 
+          totalPost={totalPost} 
+          btnRange={PAGINATION.btnRange} 
+          pageRange={PAGINATION.pageRange} 
+        />
       </S.Outer> 
     </>
   );

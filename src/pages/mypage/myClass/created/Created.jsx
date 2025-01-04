@@ -7,6 +7,7 @@ const PAGINATION = {
   btnRange: 3,
 };
 
+
 const Created = () => {
   const [ lesson, setLesson ] = useState([]);
   const jwtToken = localStorage.getItem("jwtToken");
@@ -30,8 +31,9 @@ const Created = () => {
             if(!res.lessonSuccess){
               console.log(res.message)
             }
-            console.log(res.message)
-            setLesson(res.myLesson)
+            // console.log(res.message)
+            console.log(res.myLesson)
+            setLesson(res.myLesson || [])
           })
       } catch (error) {
         console.log("LessonError" , error);
@@ -40,7 +42,14 @@ const Created = () => {
 
     getLesson()
 
-  }, [])
+  }, [jwtToken])
+
+  if (lesson.length === 0) {
+    return <div>Loading...</div>;  // lesson 데이터가 없으면 로딩 화면을 보여줌
+  }
+
+  // console.log("totalPost", totalPost)
+
 
   // console.log(lesson)
 
@@ -50,7 +59,7 @@ const Created = () => {
         page={page} setPage={setPage} 
         currentList={currentList} 
         totalPost={totalPost}
-        PAGINATION={PAGINATION} 
+        PAGINATION={PAGINATION}
       />
     </>
   );
