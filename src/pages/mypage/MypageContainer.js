@@ -24,7 +24,7 @@ const MypageContainer = () => {
         </S.Ul>
         <S.Ul>
             <li>MY CLASS</li>
-            <Link to={"/my-class/watching"}>
+            <Link to={"/my-class/created"}>
               <li>레슨</li>
             </Link>
             <hr />
@@ -47,9 +47,9 @@ const MypageContainer = () => {
             <Link to={"/my-vod/subscriptions"}>
               <li>구독한 리스트</li>
             </Link>
-            <Link to={"/my-vod/watching"}>
+            {/* <Link to={"/my-vod/watching"}>
               <li>시청중인 컨텐츠</li>
-            </Link>
+            </Link> */}
             <hr />
         </S.Ul>
         <S.Ul>
@@ -57,11 +57,11 @@ const MypageContainer = () => {
             <Link to={"/my-active/like/my-team"}>
               <li>찜</li>
             </Link>
-            <Link to={"/my-active/reviews"}>
+            {/* <Link to={"/my-active/reviews"}>
               <li>후기 관리</li>
-            </Link>
+            </Link> */}
             <Link to={"/my-active/posts"}>
-              <li>작성한 글ㆍ댓글 관리</li>
+              <li>작성한 글</li>
             </Link>
             <Link to={"/my-active/reports"}>
               <li>제보 관리</li>

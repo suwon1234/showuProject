@@ -23,7 +23,7 @@ const MyActiveAction = () => {
               <li onClick={() => handleNavigate('/my-active/like/my-team')}>팀 매칭</li>
                 <li onClick={() => handleNavigate('/my-active/like/my-class')}>레슨</li>
                 <li onClick={() => handleNavigate('/my-active/like/space')}>공간</li>
-                <li onClick={() => handleNavigate('/my-active/like/prop')}>소품</li>
+                {/* <li onClick={() => handleNavigate('/my-active/like/prop')}>소품</li> */}
                 <li onClick={() => handleNavigate('/my-active/like/tickets')}>티켓</li>
                 <li onClick={() => handleNavigate('/my-active/like/md')}>MD</li>
                 <li onClick={() => handleNavigate('/my-active/like/auction')}>경매</li>

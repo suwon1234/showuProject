@@ -21,7 +21,7 @@ const MyVod = () => {
               <ul>
                 <li onClick={() => handleNavigate('/my-vod')}>나의 VOD</li>
                 <li onClick={() => handleNavigate('/my-vod/subscriptions')}>구독한 리스트</li>
-                <li onClick={() => handleNavigate('/my-vod/watching')}>시청중인 컨텐츠</li>
+                {/* <li onClick={() => handleNavigate('/my-vod/watching')}>시청중인 컨텐츠</li> */}
               </ul>
             </S.SubTitle>
           </S.Title>
