@@ -100,7 +100,7 @@ const flexStyle = css`
     
     .button-wrapper1 {
       display: flex;
-      gap: 5px;
+      gap: 10px;
     }
     
     .button {
@@ -111,6 +111,11 @@ const flexStyle = css`
       border-radius: 50px;
       border: none;
       cursor: pointer;
+      font-weight: bold;
+    }
+    
+    .cart {
+      background-color: #797979;
 
       &:hover {
         background-color: #ffd400;
@@ -120,18 +125,11 @@ const flexStyle = css`
         }
       }
     }
-    
-    .cart {
-      background-color: #797979;
-    }
-    
-    .buy {
-      background-color: #444444;
-    }
 
     .inquiry {
-      background-color: #797979;
-      width: 505px;
+      background-color: #000;
+      border: 1.5px solid #ffd400;
+      /* width: 505px; */
       margin-top: 15px;
     }
   `
@@ -141,6 +139,7 @@ const flexStyle = css`
     width: 250px;
     height: 55px;
     font-size: 20px;
+    font-weight: bold;
     border: none;
     cursor: pointer;
     background-color: ${(props) => (props.isOptionSelected ? '#ffd400' : '#444444')};

@@ -51,11 +51,11 @@ const flexStyle = css`
   `
 
   S.BestItems = styled.div`
-  display: flex;
-  overflow: hidden; /* 보이는 영역 제한 */
-  position: relative;
-  margin-top: 30px;
-  align-items: center;
+    display: flex;
+    overflow: hidden; /* 보이는 영역 제한 */
+    position: relative;
+    margin-top: 30px;
+    align-items: center;
 
   `
 
@@ -90,6 +90,7 @@ const flexStyle = css`
     & img {
       width: 300px;
       height: 300px;
+      border-radius: 5px;
     }
 
     & .best-category {
@@ -212,6 +213,7 @@ const flexStyle = css`
     & img {
       width: 300px;
       height: 300px;
+      border-radius: 5px;
     }
 
     & .md-category {
