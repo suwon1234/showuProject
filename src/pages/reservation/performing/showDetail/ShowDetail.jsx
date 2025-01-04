@@ -40,6 +40,8 @@ const ShowDetail = () => {
         "S석 청소년할인(본인, 생년월일 증명서류 지참) 30% 할인",
       ],
       img: "https://ticketimage.interpark.com/Play/image/large/24/24014885_p.gif",
+      detailImage:
+        "https://ticketimage.interpark.com/Play/image/etc/24/24014885-18.jpg",
       cast: [
         { name: "박정원", img: "path/to/image1.jpg" },
         { name: "손유동", img: "path/to/image2.jpg" },
@@ -304,25 +306,17 @@ const handleFavoriteClick = () => {
           <S.TabContent>
             <S.TimeInfoContainer>
               <S.TimeInfoTitle>공연시간 정보</S.TimeInfoTitle>
-              <S.TimeInfo>2024년 12월 19일 ~ 2024년 12월 30일</S.TimeInfo>
-              <S.TimeInfoContent>
-                평일 20시 / 토 15시, 19시 / 일 및 공휴일 14시, 18시
-              </S.TimeInfoContent>
+              <S.TimeInfo>{show.dates}</S.TimeInfo>
+              <S.TimeInfoContent> 평일 14시, 20시 주말 및 공휴일 14시, 20시 </S.TimeInfoContent>
             </S.TimeInfoContainer>
             <S.NoticeContainer>
               <S.NoticeTitle>공지사항: 코로나19 방역 지침 준수</S.NoticeTitle>
-              <S.NoticeContent>
-                *예매마감: 공연 전일 17시
-                <br />
-                *취소마감: 공연 전일 17시
-                <br />
+              <S.NoticeContent> *예매마감: 공연 전일 17시 <br />
+                *취소마감: 공연 전일 17시 <br />
                 *관람연령: 13세 이상
               </S.NoticeContent>
             </S.NoticeContainer>
-            <img
-              src="https://ticketimage.interpark.com/Play/image/etc/24/24014885-08.jpg"
-              alt="공연내용"
-            />
+            <img src={show.detailImage} alt="공연내용" />
           </S.TabContent>
         )}
         {activeTab === "관람후기" && (
