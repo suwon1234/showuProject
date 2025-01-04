@@ -74,27 +74,32 @@ const CommunityInfo = () => {
     }
   };
 
+
+
+
+
   // 좋아요 버튼 클릭 핸들러
   const handleLikeButton = async () => {
-    const token = localStorage.getItem("token"); // JWT 토큰 가져오기
+    const token = localStorage.getItem("jwtToken"); 
+  
     if (!token) {
-      alert("로그인 상태에서만 좋아요를 누를 수 있습니다.");
+      alert("로그인이 필요합니다.");
       return;
     }
-
+  
     try {
       const response = await fetch(`http://localhost:8000/community/${id}/likes`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          "Authorization": `Bearer ${token}`, // 사용자 인증
         },
       });
-
+  
       if (!response.ok) {
         throw new Error("좋아요 요청 실패");
       }
-
+  
       const result = await response.json();
       setLikeCount(result.likes); // 좋아요 수 업데이트
       alert(result.message);
@@ -103,6 +108,12 @@ const CommunityInfo = () => {
       alert("좋아요 요청 중 오류 발생");
     }
   };
+  
+  
+
+  
+
+  
 
   // 커뮤니티 홈으로 돌아가기
   const handleBackToList = () => {
