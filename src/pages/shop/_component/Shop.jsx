@@ -109,12 +109,12 @@ const Shop = () => {
       </S.AuctionWrapper>
 
       <S.ButtonWrapper>
-        {/* <Link to={"/shop/auction"}> */}
+        <Link to={"/shop/auction"}>
         <button>
           <FontAwesomeIcon icon={faChevronRight} className='icon2'/>
           경매 더보기
         </button>
-        {/* </Link> */}
+        </Link>
       </S.ButtonWrapper>
       
     </S.ShopWrapper>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './styleInquiry';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -16,59 +16,81 @@ const MdInquiry = () => {
   const [content, setContent] = useState(''); 
   const [selectedAlarm, setSelectedAlarm] = useState(null); 
   const [isAgreed, setIsAgreed] = useState(false);
-
+  const [userName, setUserName] = useState('');
   const location = useLocation();
   const { mdName } = location.state || {}; // 상품명
+
+  // useEffect(() => {
+  //   const user = JSON.parse(localStorage.getItem('user'));
+  //   if (user) {
+  //     setUserName(user.name);
+  //   }
+  // }, [])
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // 서버로 전달할 데이터 준비
-    const mdInquiryData = {
-      type: selectedType,
-      form: selectedForm,
-      title,
-      content,
-      selectedAlarm,
-      isAgreed,
-      mdName,
-      category: 'md',
-    };
+    if (!selectedType) {
+      alert('문의 유형을 선택하세요.');
+      return;
+    }
+    if (!selectedForm) {
+      alert('문의 형식을 선택하세요.');
+      return;
+    }
+    if (!title) {
+      alert('제목을 입력하세요.');
+      return;
+    }
+    if (!content) {
+      alert('내용을 입력하세요.');
+      return;
+    }
+    if (!selectedAlarm) {
+      alert('답변 완료 알림을 선택하세요.');
+      return;
+    }
+    if (!isAgreed) {
+      alert('개인정보 수집, 이용에 동의해주세요.');
+      return;
+    }
 
-    // 등록 확인
-    if (window.confirm('등록하시겠습니까?')) {
-      try {
-        const response = await fetch('http://localhost:8000/shop/md/inquiry', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(mdInquiryData),
-        });
+    try {
+      const response = await fetch("http://localhost:8000/shop/md/inquiry", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: selectedType,
+          form: selectedForm,
+          title,
+          content,
+          selectedAlarm,
+          isAgreed,
+          mdName: mdName || '알 수 없음',
+          writer: userName
+        }),
+      });
 
-        const data = await response.json();  
-        if (response.ok) {
-          alert('문의 등록이 완료되었습니다!');
-          navigate('/shop/md/inquiry/list');
-        } else {
-          alert(data.message || '문의 등록 중 오류가 발생했습니다.');
-        }
-      } catch (error) {
-        console.error("문의 등록 오류:", error.message);
-        alert('문의 등록 중 오류가 발생했습니다.');
+      const result = await response.json();
+
+      if (response.ok) {
+        alert(result.message);
+        navigate('/shop/md/inquiry/list'); // 리스트 페이지로 이동
+      } else {
+        alert(result.message || "문의 등록에 실패했습니다.");
       }
+    } catch (error) {
+      console.error("문의 등록 오류:", error);
+      alert("서버 오류로 문의 등록에 실패했습니다.");
     }
   };
 
   const handleCancel = () => {
-    if (title || content || selectedType || selectedForm || selectedAlarm || isAgreed) {
-      if (window.confirm('작성하신 내용이 모두 사라집니다. 취소하시겠습니까?')) {
-        navigate(-1);
-      }
-    } else {
-      if (window.confirm('이전 화면으로 돌아가시겠습니까?')) {
-        navigate(-1);
-      }
+    if (window.confirm("작성하신 내용이 사라집니다. 정말 취소하시겠습니까?")) {
+      navigate(-1, { state: { mdName: mdName } });
+      // window.history.back();
     }
   };
 
@@ -118,7 +140,7 @@ const MdInquiry = () => {
           </tr>
           <tr>
             <th>작성자</th>
-            <td colSpan="2"></td>
+            <td colSpan="2">{userName}</td>
           </tr>
           <tr>
             <th>내용</th>

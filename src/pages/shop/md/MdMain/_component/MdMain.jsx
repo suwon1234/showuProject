@@ -12,7 +12,7 @@ const MdMain = () => {
   const slideWidth = 1090; // 슬라이드 넓이
   const [currentCategory, setCurrentCategory] = useState("전체");
   const [filteredProducts, setFilteredProducts] = useState([]);
-
+  const [shownProducts, setShownProducts] = useState(15);
   
 
   useEffect(() => {
@@ -115,6 +115,13 @@ const MdMain = () => {
     }
   }, [mdProducts, currentCategory]);
 
+  const filteredProductsWithPrice = filteredProducts.filter(product => product.price != null);
+
+  const handleShowMore = () => {
+    if (shownProducts >= filteredProducts.length) return;
+    setShownProducts((prev) => prev + 15)
+  }
+
   return (
     <S.MainWrapper>
       <S.MdTitle>
@@ -151,6 +158,7 @@ const MdMain = () => {
                 <div className="best-name">{best.mdName}</div>
                 <div className="best-price">
                   {best.price ? best.price.toLocaleString() : "가격 정보 없음"}원
+                  {/* {best.price.toLocaleString()}원 */}
                 </div>
               </S.Best>
             ))}
@@ -177,7 +185,7 @@ const MdMain = () => {
       {/* 일반 MD 상품 */}
       <S.MdWrapper>
         <div className="md-list">
-          {filteredProducts.map((product) => (
+          {filteredProductsWithPrice.slice(0, shownProducts).map((product) => (
             <S.Md key={product._id}>
               <Link to={`/shop/md/detail/${product._id}`}>
                 <div className="image-wrapper">
@@ -194,18 +202,21 @@ const MdMain = () => {
               <div className="md-name">{product.mdName}</div>
               <div className="md-price">
                 {product.price ? product.price.toLocaleString() : "가격 정보 없음"}원
+                {/* {product.price.toLocaleString()}원 */}
               </div>
             </S.Md>
           ))}
         </div>
       </S.MdWrapper>
 
+      {filteredProductsWithPrice.length > shownProducts && (
       <S.ButtonWrapper>
-        <button>
+        <button onClick={handleShowMore}>
           <FontAwesomeIcon icon={faChevronRight} className="icon2" />
           MD 더보기
         </button>
       </S.ButtonWrapper>
+      )}
     </S.MainWrapper>
   );
 };

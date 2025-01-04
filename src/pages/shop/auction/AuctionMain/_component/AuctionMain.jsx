@@ -13,6 +13,7 @@ const AuctionMain = () => {
   const slideWidth = 1090; // 슬라이드 너비
   const [currentCategory, setCurrentCategory] = useState("전체"); // 현재 선택된 카테고리
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [shownProducts, setShownProducts] = useState(15);
 
   useEffect(() => {
     const getAuctionProducts = async () => {
@@ -114,6 +115,11 @@ const AuctionMain = () => {
         );
       }
     }, [auctionProducts, currentCategory]);
+
+    const handleShowMore = () => {
+      setShownProducts((prev) => prev + 15); // 더보기 버튼 클릭 시 15개씩 추가
+    };
+  
   
 
   return (
@@ -180,14 +186,14 @@ const AuctionMain = () => {
       {/* 일반 경매 상품 */}
       <S.AuctionWrapper>
         <div className='auction-list'>
-          {filteredProducts.map((auction) => (
+          {filteredProducts.slice(0, shownProducts).map((auction) => (
             <S.Auction key={auction._id}>
               <Link to={`/shop/auction/detail/${auction._id}`}>
                 <div className="image-wrapper">
                   <img src={auction.image} alt={auction.image} className='image'/>
                   <S.HeartIconWrapper
                     isHearted={auction.ishearted}
-                    onClick={(e) => handleHeartClickCategosry(e, auction._id)}
+                    onClick={(e) => handleHeartClickCategory(e, auction._id)}
                   >
                     <FontAwesomeIcon icon={faHeart} />
                   </S.HeartIconWrapper>
@@ -205,12 +211,15 @@ const AuctionMain = () => {
         </div>
       </S.AuctionWrapper>
 
-      <S.ButtonWrapper>
-        <button>
-          <FontAwesomeIcon icon={faChevronRight} className='icon2'/>
-          경매 더보기
-        </button>
-      </S.ButtonWrapper>
+
+      {filteredProducts.length > shownProducts && (
+        <S.ButtonWrapper>
+          <button onClick={handleShowMore}>
+            <FontAwesomeIcon icon={faChevronRight} className="icon2" />
+            경매 더보기
+          </button>
+        </S.ButtonWrapper>
+      )}
     </S.MainWrapper>
   );
 };

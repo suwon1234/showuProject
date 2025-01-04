@@ -21,7 +21,7 @@ const AuctionInquiry = () => {
   const location = useLocation();
   const { auctionName } = location.state || {}; // state에서 상품명 받기
   
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!selectedType) {
@@ -49,21 +49,40 @@ const AuctionInquiry = () => {
       return;
     }
 
-    if (window.confirm('등록하시겠습니까?')) {
-      alert('등록이 완료되었습니다!');
-      navigate('/shop/auction/inquiry/list');
+    try {
+      const response = await fetch("http://localhost:8000/shop/auction/inquiry", {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: selectedType,
+          form: selectedForm,
+          title,
+          content,
+          selectedAlarm,
+          isAgreed,
+          mdName: auctionName || '알 수 없음',
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        alert(result.message);
+        navigate('/shop/auction/inquiry/list'); // 리스트 페이지로 이동
+      } else {
+        alert(result.message || "문의 등록에 실패했습니다.");
+      }
+    } catch (error) {
+      console.error("문의 등록 오류:", error);
+      alert("서버 오류로 문의 등록에 실패했습니다.");
     }
   };
-  
+
   const handleCancel = () => {
-    if (title || content || selectedType || selectedForm || selectedAlarm || isAgreed) {
-      if (window.confirm('작성하신 내용이 사라집니다. 정말 취소하시겠습니까?')) {
-        navigate(-1);
-      }
-    } else {
-      if (window.confirm('이전 화면으로 돌아가시겠습니까?')) {
-        navigate(-1);
-      }
+    if (window.confirm("작성하신 내용이 사라집니다. 정말 취소하시겠습니까?")) {
+      navigate(-1);
     }
   };
 
