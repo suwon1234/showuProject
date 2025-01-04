@@ -5,14 +5,14 @@ import S from './styleCommunity';
 import { Link } from 'react-router-dom';
 
 const Community = () => {
-  const [filterDrop, setFilterDrop] = useState(false); // 필터 드롭다운 상태
+  const [filterDrop, setFilterDrop] = useState(false); // 필터 드롭다운
   const [filter, setFilter] = useState("전체"); // 현재 선택된 필터
   const [commuData, setCommuData] = useState([]); // 커뮤니티 데이터
 
-  // 초기 데이터 요청
+  // 초기 데이터 
   useEffect(() => {
     const fetchData = async () => {
-      const token = localStorage.getItem('jwtToken'); // JWT 토큰 가져오기
+      const token = localStorage.getItem('jwtToken'); // JWT 토큰 
       try {
         const response = await fetch('http://localhost:8000/community', {
           headers: {
@@ -22,8 +22,8 @@ const Community = () => {
         if (!response.ok) {
           throw new Error('데이터를 불러오는 데 실패했습니다.');
         }
-        const fetchedData = await response.json(); // JSON 형식으로 응답 파싱
-        setCommuData(fetchedData); // 상태에 데이터 저장
+        const fetchedData = await response.json(); 
+        setCommuData(fetchedData); 
       } catch (error) {
         console.error("커뮤니티 데이터를 불러오는 데 실패했습니다.", error);
         setCommuData([]);
@@ -33,21 +33,17 @@ const Community = () => {
     fetchData();
   }, []);
 
-  // 필터링된 데이터 생성
+
   const filteredData = filter === "전체" ? commuData : commuData.filter(item => item.category === filter);
 
-  // 스크롤 맨 위로 이동
+  
   const handleScrollTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <S.Wrapper>
-
       <S.TopTitle>커뮤니티</S.TopTitle>
-        <S.IconWrapper>
-            <FontAwesomeIcon icon={faChevronDown} className='icon' />
-        </S.IconWrapper>
 
       <S.SubWrapper>
         {/* 필터 버튼 */}
@@ -83,7 +79,7 @@ const Community = () => {
           filteredData.map((item) => (
             <S.Img key={item._id}>
               {/* 상세 페이지로 이동하는 링크 */}
-              <Link to={`/community/${item._id}`}>
+              <Link to={`/community/communityInfo/${item._id}`}>
                 <img src={item.imageUrl || item.file} alt={item.title} />
               </Link>
               <div>
