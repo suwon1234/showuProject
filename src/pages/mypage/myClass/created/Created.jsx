@@ -1,17 +1,40 @@
 import React, { useEffect, useState } from 'react';
-import S from './CreatedStyle';
+import CreatedComponent from './CreatedComponent';
+import usePagination from '../../../../hooks/usePagination';
+
+const PAGINATION = {
+  pageRange: 8,
+  btnRange: 3,
+};
 
 const Created = () => {
   const [ lesson, setLesson ] = useState([]);
+  const jwtToken = localStorage.getItem("jwtToken");
+
+  const { page, currentList, setPage, totalPost } = usePagination({
+    pageRange: PAGINATION.pageRange,
+    list: lesson || [],
+  });
 
   useEffect(() => {
     const getLesson = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/myClass`);
-        const datas = await response.json();
-        setLesson(datas);
+        const response = await fetch(`http://localhost:8000/my/showu/lesson`, {
+          method : "GET",
+          headers : {
+            "Authorization": `Bearer ${jwtToken}`,
+          }
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            if(!res.lessonSuccess){
+              console.log(res.message)
+            }
+            console.log(res.message)
+            setLesson(res.myLesson)
+          })
       } catch (error) {
-        console.loe("LessonError" , error);
+        console.log("LessonError" , error);
       }
     }
 
@@ -22,22 +45,14 @@ const Created = () => {
   // console.log(lesson)
 
   return (
-    <S.Outer className='outer'>
-
-      { lesson && lesson.map((item, i) => (
-        <S.Container key={i} className='Container'>
-        <S.Wapper className='Wapper'>
-          <S.Lesson className='lesson'>
-            <img src={item.lessonImageUrl} alt="레슨1" />
-            <p className='name'>{item.teacher}</p>
-            <p className='lessonTitle'>{item.lesson}</p>
-          </S.Lesson>
-        </S.Wapper>
-      </S.Container>
-      ))
-      }
-
-    </S.Outer>
+    <>
+      <CreatedComponent
+        page={page} setPage={setPage} 
+        currentList={currentList} 
+        totalPost={totalPost}
+        PAGINATION={PAGINATION} 
+      />
+    </>
   );
 };
 

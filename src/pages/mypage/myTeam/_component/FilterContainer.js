@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef } from 'react';
 import S from './FilterStyle';
 import useDropdown from '../../../../hooks/useDropdown';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

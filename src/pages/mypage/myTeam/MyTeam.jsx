@@ -38,7 +38,7 @@ const MyTeam = () => {
   useEffect(() => {
     const getTeams = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/my/myTeam/matching`, {
+        const response = await fetch(`http://localhost:8000/my/showu/matching`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${jwtToken}`,

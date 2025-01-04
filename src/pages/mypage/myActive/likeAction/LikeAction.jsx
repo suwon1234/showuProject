@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import usePagination from '../../../../hooks/usePagination';
 import LikeAuctionComponent from './LikeAuctionComponent';
 
@@ -11,6 +10,7 @@ const PAGINATION = {
 const LikeAction = () => {
   const [ auctions, setAuctions ] = useState([]);
   const jwtToken = localStorage.getItem("jwtToken");
+  
   const { page, currentList, setPage, totalPost } = usePagination({
     pageRange: PAGINATION.pageRange,
     list: auctions || [],
