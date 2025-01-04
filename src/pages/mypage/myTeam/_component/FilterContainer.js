@@ -12,14 +12,15 @@ const FilterContainer = ({ stateValue, setStateValue, completedTeams, waitingTea
   // 매칭 완료와 매칭 대기 팀을 합친 후 상태값에 따라 필터링
   const allTeams = [...completedTeams, ...waitingTeams];
   
-  const filterList = Array.from(new Set(allTeams.map((item) => item.status)));  // 상태값 중복 제거
+  // 상태값 중복 제거
+  const filterList = Array.from(new Set(allTeams.map((item) => item.status)));  
 
-  // 상태값에 맞는 리스트 필터링
-  const filteredCurrentList = allTeams.filter((item) => item.status === stateValue);
+  // 상태에 따른 모든 데이터
+  // const filteredCurrentList = allTeams.filter((item) => item.status === stateValue);
 
-  console.log("stateValue", stateValue);
-  console.log("filterList", filterList);
-  console.log("filteredCurrentList", filteredCurrentList); 
+  // console.log("stateValue", stateValue);
+  // console.log("filterList", filterList);
+  // console.log("filteredCurrentList", filteredCurrentList); 
 
   return (
     <S.FilterWrapper className="filterWraper">

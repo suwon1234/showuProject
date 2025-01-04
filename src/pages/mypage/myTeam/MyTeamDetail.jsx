@@ -4,17 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import Paging from '../_component/Paging';
 
 
-const MyTeamDetail = ({ stateValue, page, currentList, setPage, totalPost, PAGINATION }) => {
+const MyTeamDetail = ({ page, currentList, setPage, totalPost, PAGINATION }) => {
 
   const navigate = useNavigate();
   const handleNavigate = (path) => {
     navigate(path)
   }
-
-  // console.log("currentList", currentList)
-  // const filterTeam = currentList.filter((team) => team.status === stateValue)
-  // console.log("filterTeam", filterTeam)
-  console.log("stateValue", stateValue)
 
   return (
     <S.Container>

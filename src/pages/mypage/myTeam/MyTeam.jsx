@@ -3,7 +3,7 @@ import S from './style';
 import MyTeamDetail from './MyTeamDetail';
 import FilterContainer from './_component/FilterContainer';
 import usePagination from '../../../hooks/usePagination';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const PAGINATION = {
   pageRange: 4,
@@ -11,23 +11,34 @@ const PAGINATION = {
 };
 
 const MyTeam = () => {
-  const { page: pageFromUrl } = useParams();
-  const [stateValue, setStateValue] = useState("매칭 완료");
+  const location = useLocation(); 
+  const navigate = useNavigate();
+  const jwtToken = localStorage.getItem("jwtToken");
+
+  // 쿼리 파라미터에서 page, stateValue 값 추출
+  const queryParams = new URLSearchParams(location.search);
+  const stateValueFromUrl = queryParams.get("stateValue") || "매칭 완료";  // 초기값 "매칭 완료"
+
+  // 매칭 상태, 팀 매칭 목록
+  const [stateValue, setStateValue] = useState(stateValueFromUrl);
   const [completedTeams, setCompletedTeams] = useState([]);
   const [waitingTeams, setWaitingTeams] = useState([]);
-  const jwtToken = localStorage.getItem("jwtToken");
-  const navigate = useNavigate();
-
+  
+  // 페이지 네이션
   const { page, currentList, setPage, totalPost } = usePagination({
     pageRange: PAGINATION.pageRange,
-    list: stateValue === "매칭 완료" ? completedTeams : waitingTeams, 
-    initialPage: parseInt(pageFromUrl, 10) || 1
+    list: stateValue === "매칭 완료" ? completedTeams : waitingTeams,
   });
+
+  // 페이지가 변경될 때마다 URL의 쿼리 파라미터를 업데이트
+  useEffect(() => {
+    navigate(`/my-team?page=${page}&stateValue=${stateValue}`, { replace: true });
+  }, [page, stateValue, navigate]);
 
   useEffect(() => {
     const getTeams = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/my/myTeam/matching?page=${page}`, {
+        const response = await fetch(`http://localhost:8000/my/myTeam/matching`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${jwtToken}`,
@@ -47,11 +58,6 @@ const MyTeam = () => {
 
     getTeams();
   }, [jwtToken, page]);
-
-  // 페이지가 변경될 때 경로 업데이트
-  // useEffect(() => {
-  //   navigate(`/my-team/${page}`);
-  // }, [page, navigate]);
 
   return (
     <S.Container className="container">
