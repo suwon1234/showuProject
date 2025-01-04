@@ -25,7 +25,7 @@ const Post = () => {
 
       try {
         await fetch(`http://localhost:8000/my/my-active/post`, {
-          method: "POST",
+          method: "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`,
           }
