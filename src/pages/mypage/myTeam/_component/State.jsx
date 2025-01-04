@@ -1,9 +1,9 @@
 import React from 'react';
 
-const State = ({ value, setIsOpen, isOpen, setStateValue }) => {
+const State = ({ value, setIsOpen, setStateValue }) => {
   const valueClick = () => {
     setStateValue(value);
-    setIsOpen(!isOpen);
+    setIsOpen(false);
   }
 
   return (

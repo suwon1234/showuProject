@@ -5,54 +5,48 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowDownWideShort } from '@fortawesome/free-solid-svg-icons';
 import State from './State';
 
-const FilterContainer = ({ stateValue, setStateValue }) => {
+const FilterContainer = ({ stateValue, setStateValue, completedTeams, waitingTeams }) => {
   const dropdownRef = useRef(null);
-  const [ allData, setAllData ] = useState([]);
   const [ isOpen, setIsOpen ] = useDropdown(dropdownRef, false);
 
-  useEffect(() => {
-    const getState = async () => {
-      try {
-        const response = await fetch(`http://localhost:4000/myTeam`);
-        const datas = await response.json();
-          setAllData(datas)
-      }catch (error){
-        console.log(error)
-      }
-    }
+  // 매칭 완료와 매칭 대기 팀을 합친 후 상태값에 따라 필터링
+  const allTeams = [...completedTeams, ...waitingTeams];
+  
+  const filterList = Array.from(new Set(allTeams.map((item) => item.status)));  // 상태값 중복 제거
 
-    getState();
-      
-  }, [stateValue])
+  // 상태값에 맞는 리스트 필터링
+  const filteredCurrentList = allTeams.filter((item) => item.status === stateValue);
 
-
-  const filterList = Array.from(new Set(allData.map((items) => items.state)))
+  console.log("stateValue", stateValue);
+  console.log("filterList", filterList);
+  console.log("filteredCurrentList", filteredCurrentList); 
 
   return (
-    <>
-      <S.FilterWrapper className='filterWraper'>
+    <S.FilterWrapper className="filterWraper">
+      <S.Filter
+        className="filter"
+        onClick={() => setIsOpen(!isOpen)}  
+        value={stateValue}
+      >
+        <FontAwesomeIcon icon={faArrowDownWideShort} />
+        <p>{stateValue}</p>
+      </S.Filter>
 
-        <S.Filter 
-          className='filter'
-          onClick={() => setIsOpen(!isOpen)}  
-          value={stateValue}
-        >
-          <FontAwesomeIcon icon={faArrowDownWideShort} />
-          <p>{stateValue}</p>
-        </S.Filter>
-
-        <S.DropdownMenu className='dropdownMenu'>
-          { isOpen &&
-            <ul>
-              {filterList.map((state, i) => (
-                <State key={i} value={state} isOpen={isOpen} setStateValue={setStateValue} setIsOpen={setIsOpen} />
-              ))}
-            </ul>
-          }
+      {isOpen && (
+        <S.DropdownMenu className="dropdownMenu">
+          <ul>
+            {filterList.map((state, i) => (
+              <State
+                key={i}
+                value={state}
+                setStateValue={setStateValue}
+                setIsOpen={setIsOpen}
+              />
+            ))}
+          </ul>
         </S.DropdownMenu>
-
-      </S.FilterWrapper>
-    </>
+      )}
+    </S.FilterWrapper>
   );
 };
 

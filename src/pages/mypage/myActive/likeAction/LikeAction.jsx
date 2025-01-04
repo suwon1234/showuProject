@@ -10,8 +10,6 @@ const PAGINATION = {
 
 const LikeAction = () => {
   const [ auctions, setAuctions ] = useState([]);
-  const { currentUser } = useSelector((state) => state.user);
-  const userId = currentUser ? currentUser._id : '';
   const jwtToken = localStorage.getItem("jwtToken");
   const { page, currentList, setPage, totalPost } = usePagination({
     pageRange: PAGINATION.pageRange,
@@ -42,7 +40,7 @@ const LikeAction = () => {
 
     getAuctions()
 
-  }, [])
+  }, [jwtToken])
 
   // console.log(auctions)
 
