@@ -187,7 +187,7 @@ const AuctionMain = () => {
                   <img src={auction.image} alt={auction.image} className='image'/>
                   <S.HeartIconWrapper
                     isHearted={auction.ishearted}
-                    onClick={(e) => handleHeartClickCategory(e, auction._id)}
+                    onClick={(e) => handleHeartClickCategosry(e, auction._id)}
                   >
                     <FontAwesomeIcon icon={faHeart} />
                   </S.HeartIconWrapper>
