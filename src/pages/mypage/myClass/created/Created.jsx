@@ -45,11 +45,8 @@ const Created = () => {
   }, [jwtToken])
 
   if (lesson.length === 0) {
-    return <div>Loading...</div>;  // lesson 데이터가 없으면 로딩 화면을 보여줌
+    return <div>Loading...</div>; 
   }
-
-  // console.log("totalPost", totalPost)
-
 
   // console.log(lesson)
 

@@ -46,8 +46,12 @@ const Post = () => {
     getPosts()
 
   }, [userId, jwtToken])
+
+  if (posts.length === 0) {
+    return <div>Loading...</div>; 
+  }
   
-  console.log(posts);
+  // console.log(posts);
 
   return (
     <>
