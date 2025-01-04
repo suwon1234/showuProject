@@ -13,6 +13,7 @@ const AuctionMain = () => {
   const slideWidth = 1090; // 슬라이드 너비
   const [currentCategory, setCurrentCategory] = useState("전체"); // 현재 선택된 카테고리
   const [filteredProducts, setFilteredProducts] = useState([]);
+  const [shownProducts, setShownProducts] = useState(15);
 
   useEffect(() => {
     const getAuctionProducts = async () => {
@@ -100,27 +101,6 @@ const AuctionMain = () => {
     );
   };
 
-  // const handleHeartClick = (e, id) => {
-  //   e.preventDefault(); // 하트 클릭 => 링크 이동 X
-  //   setHeartedProducts((prev) =>
-  //     prev.includes(id)
-  //       ? prev.filter((itemId) => itemId !== id) // 하트 제거
-  //       : [...prev, id] // 하트 추가
-  //   );
-  // };
-
-  // // 카테고리 변경 시 필터링
-  // const handleCategoryChange = (category) => {
-  //   setCurrentCategory(category);
-  //   if (category === "전체") {
-  //     setFilteredProducts(auctionProducts); // 전체 상품 표시
-  //   } else {
-  //     setFilteredProducts(
-  //       auctionProducts.filter((product) => product.category === category)
-  //     );
-  //   }
-  // };
-
     // 카테고리 변경
     const handleCategoryChange = (category) => {
       setCurrentCategory(category);
@@ -135,6 +115,11 @@ const AuctionMain = () => {
         );
       }
     }, [auctionProducts, currentCategory]);
+
+    const handleShowMore = () => {
+      setShownProducts((prev) => prev + 15); // 더보기 버튼 클릭 시 15개씩 추가
+    };
+  
   
 
   return (
@@ -201,7 +186,7 @@ const AuctionMain = () => {
       {/* 일반 경매 상품 */}
       <S.AuctionWrapper>
         <div className='auction-list'>
-          {filteredProducts.map((auction) => (
+          {filteredProducts.slice(0, shownProducts).map((auction) => (
             <S.Auction key={auction._id}>
               <Link to={`/shop/auction/detail/${auction._id}`}>
                 <div className="image-wrapper">
@@ -226,12 +211,15 @@ const AuctionMain = () => {
         </div>
       </S.AuctionWrapper>
 
-      <S.ButtonWrapper>
-        <button>
-          <FontAwesomeIcon icon={faChevronRight} className='icon2'/>
-          경매 더보기
-        </button>
-      </S.ButtonWrapper>
+
+      {filteredProducts.length > shownProducts && (
+        <S.ButtonWrapper>
+          <button onClick={handleShowMore}>
+            <FontAwesomeIcon icon={faChevronRight} className="icon2" />
+            경매 더보기
+          </button>
+        </S.ButtonWrapper>
+      )}
     </S.MainWrapper>
   );
 };
