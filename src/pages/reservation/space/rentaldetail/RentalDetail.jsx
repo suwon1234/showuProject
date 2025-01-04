@@ -14,8 +14,32 @@ const spaceRentals = [
     pricePerHour: 330000,
     pricePerDay: 4800000,
     img: "https://img.shareit.kr/prod/img/2022-10-12/c46f4d5e-874d-4a74-9129-dcb24b8d4411.jpg",
-    description: "시설정보 그림 논의필요.",
+    descriptions: [
+      "면적 : 399.00 ㎡ ≒ 120.7 평",
+      "가로 : 21.00 m",
+      "세로 : 19.00 m",
+      "천정높이 : 5.50m",
+      "최대인원 : 172명",
+    ],
     amenities: ["WiFi", "주차 공간", "프로젝터", "음향 시스템"],
+    icons: [
+      {
+        name: "냉방기",
+        icon: "https://img.shareit.kr/front-assets/icons/crystal_lineRegularOut_white.svg?version=1.0",
+      },
+      {
+        name: "엘레베이터",
+        icon: "https://img.shareit.kr/front-assets/icons/passengerelevator_lineRegularOut_white.svg?version=1.0",
+      },
+      {
+        name: "난방기",
+        icon: "https://img.shareit.kr/front-assets/icons/heater_lineRegularOut_white.svg?version=1.0",
+      },
+      {
+        name: "화재경보기",
+        icon: "https://img.shareit.kr/front-assets/icons/alarm_lineRegularOut_white.svg?version=1.0",
+      },
+    ],
     additionalImages: [
       "https://img.shareit.kr/prod/img/2022-09-30/312dc9ca-b0aa-4c0b-8411-f3d6a190fb74.jpg",
       "https://img.shareit.kr/prod/img/2022-09-30/4edcc5e0-51b8-4c9f-8363-4aa641cd5184.jpg",
@@ -25,6 +49,9 @@ const spaceRentals = [
   },
   // 추가 데이터...
 ];
+
+
+
 
 const RentalDetail = () => {
   const { id } = useParams();
@@ -140,43 +167,23 @@ const RentalDetail = () => {
                 <S.DetailText>
                   <S.DetailTitle>가격:</S.DetailTitle> {rental.price}
                 </S.DetailText>
-                {/* <S.HorizontalLine /> */}
                 <S.DetailIconWrapper>
-                  <S.DetailIconContent>
-                    <img
-                      src="https://img.shareit.kr/front-assets/icons/crystal_lineRegularOut_white.svg?version=1.0"
-                      alt=""
-                    />
-                    <S.DetailIconText>냉방기</S.DetailIconText>
-                  </S.DetailIconContent>
-                  <S.DetailIconContent>
-                    <img
-                      src="https://img.shareit.kr/front-assets/icons/crystal_lineRegularOut_white.svg?version=1.0"
-                      alt=""
-                    />
-                    <S.DetailIconText>냉방기</S.DetailIconText>
-                  </S.DetailIconContent>
-                  <S.DetailIconContent>
-                    <img
-                      src="https://img.shareit.kr/front-assets/icons/crystal_lineRegularOut_white.svg?version=1.0"
-                      alt=""
-                    />
-                    <S.DetailIconText>냉방기</S.DetailIconText>
-                  </S.DetailIconContent>
-                  <S.DetailIconContent>
-                    <img
-                      src="https://img.shareit.kr/front-assets/icons/crystal_lineRegularOut_white.svg?version=1.0"
-                      alt=""
-                    />
-                    <S.DetailIconText>냉방기</S.DetailIconText>
-                  </S.DetailIconContent>
+                  {rental.icons.map((icon, index) => (
+                    <S.DetailIconContent key={index}>
+                      <img src={icon.icon} alt={icon.name} />
+                      <S.DetailIconText>{icon.name}</S.DetailIconText>
+                    </S.DetailIconContent>
+                  ))}
                 </S.DetailIconWrapper>
               </S.InfoColumn>
             </S.InfoRow>
             <S.HorizontalLine />
-            <S.DetailText>{rental.description}</S.DetailText>
+            <S.SubTitle>시설 정보</S.SubTitle>
+            {rental.descriptions.map((description, index) => (
+              <S.DetailText key={index}>{description}</S.DetailText>
+            ))}
             <S.HorizontalLine />
-            <S.SubTitle>편의 시설:</S.SubTitle>
+            <S.SubTitle>편의 시설</S.SubTitle>
             <S.AmenitiesList>
               {rental.amenities.map((amenity, index) => (
                 <li key={index}>{amenity}</li>
@@ -185,8 +192,20 @@ const RentalDetail = () => {
           </div>
           <S.HorizontalLine />
           <div ref={precautionsRef} style={{ width: "800px" }}>
-            <S.SubTitle>주의사항:</S.SubTitle>
-            <S.DetailText>여기에 주의사항 내용이 들어갑니다.</S.DetailText>
+            <S.SubTitle>주의사항</S.SubTitle>
+            <S.DetailText>
+              - 대여 시간보다 적게 사용 하더라도 대관비는 환불되지 않습니다.{" "}
+              <br />
+              - 기물 파손 및 청소 등의 사유로 보증금을 호스트에게 입금하여야
+              합니다. <br />
+              - 무료 주차 가능하나, 주차 대수 제한이 있으니 미리 가능 여부 확인
+              필수 <br />
+              - 사용자 인원이나 사용 시간이 추가될 경우, 현장에서
+              추가 과금이 진행됩니다. <br />
+              - 입실은 정시, 퇴실은 5분 전에 준비해서 예약 시간 안에 이용<br />
+              - 시설 훼손 및 기물 파손 시 손해액을 호스트에게 배상하여야 합니다.<br />
+              (CCTV는 방범/분실/기물파손/인원확인등의 이유로 녹화됨)
+            </S.DetailText>
             <S.HorizontalLine />
           </div>
 
