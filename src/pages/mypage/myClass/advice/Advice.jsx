@@ -1,15 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import S from './AdviceStyle';
+import usePagination from '../../../../hooks/usePagination';
+import Advicecomponent from './Advicecomponent';
+
+const PAGINATION = {
+  pageRange: 8,
+  btnRange: 3,
+};
 
 const Advice = () => {
   const [ advice, setAdvice ] = useState([]);
+  const jwtToken = localStorage.getItem("jwtToken");
+
+  const { page, currentList, setPage, totalPost } = usePagination({
+    pageRange: PAGINATION.pageRange,
+    list: advice || [],
+  });
 
   useEffect(() => {
     const getAdvice = async () => {
       try {
-        const response = await fetch('http://localhost:4000/myClass')
-        const datas = await response.json()
-        setAdvice(datas)
+        const response = await fetch('http://localhost:8000/my/showu/reservation', {
+          method : "GET",
+          headers : {
+            "Authorization": `Bearer ${jwtToken}`
+          }
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            if(!res.LessonResevationSuccess){
+              console.log(res.message)
+            }
+            setAdvice(res.myLessonReservationList)
+            console.log(res.message)
+          })
+        
       } catch (error) {
         console.log("AdviceError", error)
       }
@@ -22,32 +47,14 @@ const Advice = () => {
   // console.log(advice)
 
   return (
-    <div>
-      <div>
-        <S.Table>
-          <S.Thead>
-            <S.Tr>
-              <th scope='col'>상담 번호</th>
-              <th scope='col'>방문 날짜</th>
-              <th scope='col'>전화 번호</th>
-              <th scope='col'>이메일</th>
-              <th scope='col'>비고</th>
-            </S.Tr>
-          </S.Thead>
-          <S.Tbody>
-            { advice && advice.map((item, i) => (
-              <S.RowTr key={i}>
-                <th scope='row' className='num'>{item.id}</th>
-                <td>{item.date}</td>
-                <td>{item.phone}</td>
-                <td>{item.email}</td>
-                <td>{item.etc}</td>
-              </S.RowTr>
-            ))}
-          </S.Tbody>
-        </S.Table>
-      </div>
-    </div>
+      <>
+        <Advicecomponent 
+          page={page} setPage={setPage} 
+          currentList={currentList} 
+          totalPost={totalPost}
+          PAGINATION={PAGINATION}
+        />
+      </>
   );
 };
 
