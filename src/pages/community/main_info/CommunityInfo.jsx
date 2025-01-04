@@ -9,7 +9,7 @@ const CommunityInfo = () => {
   const [data, setData] = useState(null); // 게시물 데이터
   const [loading, setLoading] = useState(true); // 로딩 상태
   const [error, setError] = useState(null); // 에러 메시지
-  const [likeCount, setLikeCount] = useState(0); // 좋아요 수s
+  const [likeCount, setLikeCount] = useState(0); // 좋아요 수
   const [commentText, setCommentText] = useState(""); // 댓글 텍스트
   const [comments, setComments] = useState([]); // 댓글 목록
 
