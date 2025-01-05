@@ -17,6 +17,47 @@ const S = {};
     margin-right: 140px;
   `;
 
+S.Button = styled.button`
+background-color: ${(props) =>
+  props.liked ? "#ffd400" : ({ theme }) => theme.PALLETE.gray["300"]};
+color: ${(props) => (props.liked ? "black" : "white")};
+border: none;
+border-radius: 50px;
+padding: 12px 20px;
+font-size: 16px;
+font-weight: bold;
+cursor: pointer;
+transition: background-color 0.3s, color 0.3s;
+
+&:hover {
+  background-color: ${(props) => (props.liked ? "#ffd400" : "#d6d6d6")};
+  color: ${(props) => (props.liked ? "black" : "white")};
+}
+`;
+
+
+
+S.Buttons = styled.div`
+display: flex;
+gap: 4px;
+`;
+
+S.CommentInput = styled.div`
+display: flex;
+gap: 8px;
+margin-bottom: 16px;
+
+textarea {
+  flex: 1;
+  border: 1px solid #d6d6d6;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 14px;
+  color: #000;
+  resize: none;
+}
+`;
+
   S.TopTitle = styled.h1`
     font-size: 20px;
     display: flex;
@@ -33,6 +74,8 @@ const S = {};
         display: flex;
         padding-top: 30px;
     `
+
+    
 
 S.IconWrapper = styled.div`
 display: flex;
@@ -96,6 +139,8 @@ path {
           }
       }
   `
+
+
 
 
 S.CommentWrapper = styled.div`
@@ -191,6 +236,32 @@ S.CommentItem = styled.div`
   }
 
 `;
+
+
+// S.Button = styled.button`
+//   background-color: ${({ theme }) => theme.PALLETE.gray["300"]};
+//   color: white;
+//   border: none;
+//   border-radius: 4px;
+//   padding: 8px 16px;
+//   font-size: 14px;
+//   cursor: pointer;
+//   transition: background-color 0.3s;
+//   margin: 0 4px;
+
+//   &:hover {
+//     background-color: #d6d6d6;
+//   }
+
+//   &:disabled {
+//     background-color: #d6d6d6;
+//     cursor: not-allowed;
+//   }
+// `;
+
+
+
+
 
 
 
