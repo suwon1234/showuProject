@@ -99,6 +99,9 @@ import OpenDetail from '../pages/reservation/ticket/openDetail/OpenDetail';
 import SpaceRental from '../pages/reservation/space/spaceRental/SpaceRental';
 import RentalDetail from '../pages/reservation/space/rentaldetail/RentalDetail';
 import RentalSelection from '../pages/reservation/space/rentalSelection/RentalSelection';
+import Detail from '../pages/reservation/payment/Detail';
+import Failed from '../pages/reservation/payment/Failed';
+import Success from '../pages/reservation/payment/Success';
 
 const router = createBrowserRouter([
   {
