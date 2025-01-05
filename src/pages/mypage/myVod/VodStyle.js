@@ -21,6 +21,7 @@ const S = {};
       width: 250px;
       height: 333px;
       border-radius: 8px;
+      object-fit: cover;
     }
   `
 

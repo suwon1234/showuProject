@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import SpaceComponent from './SpaceComponent';
+import LikeTeamComponent from './LikeTeamComponent.jsx';
 import usePagination from '../../../../hooks/usePagination.js';
 
 const PAGINATION = {
-  pageRange: 6,
+  pageRange: 4,
   btnRange: 3,
 };
 
-const Space = () => {
-  const [ spaces, setSpaces ] = useState([]);
+const LikeMyTeams = () => {
+  const [ teams, setTeams ] = useState([]);
   const jwtToken = localStorage.getItem("jwtToken");
 
   const { page, currentList, setPage, totalPost } = usePagination({
     pageRange: PAGINATION.pageRange,
-    list: spaces || [],
+    list: teams || [],
   });
 
   useEffect(() => {
-    const getSpace = async () => {
+    const getTeams = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/my/reservation/space`, {
+        const response = await fetch(`http://localhost:8000/my/like/team`, {
           method : "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`
@@ -30,23 +30,21 @@ const Space = () => {
             if(!res.spaecSuccess){
               console.log(res.message)
             }
-            setSpaces(res.resSpaceList)
+            setTeams(res.myLikeTeam)
             console.log(res.message)
           })
-      } catch (error) {
-        console.log("SpaceError", error)
+        }catch (error) {
+          console.log("LikeMyTeamError", error)
       }
     }
 
-    getSpace()
+    getTeams()
       
   }, [])
 
-  // console.log(spaces)
-
   return (
     <>
-      <SpaceComponent 
+      <LikeTeamComponent 
         page={page} setPage={setPage} 
         currentList={currentList} 
         totalPost={totalPost}
@@ -56,4 +54,4 @@ const Space = () => {
   );
 };
 
-export default Space;
+export default LikeMyTeams;

@@ -20,7 +20,7 @@ const TicketContainer = () => {
             <S.SubTitle className='subTitle'>
               <ul>
                 <li onClick={() => handleNavigate('/my-res/ticket')}>예매 확인</li>
-                <li onClick={() => handleNavigate('/my-res/ticket/cancele')}>예매 취소</li>
+                {/* <li onClick={() => handleNavigate('/my-res/ticket/cancele')}>예매 취소</li> */}
               </ul>
             </S.SubTitle>
           </S.Title> 

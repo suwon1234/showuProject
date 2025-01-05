@@ -24,8 +24,8 @@ const Post = () => {
       if(!userId || !jwtToken) return; 
 
       try {
-        await fetch(`http://localhost:8000/my/my-active/post/${userId}`, {
-          method: "POST",
+        await fetch(`http://localhost:8000/my/my-active/post`, {
+          method: "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`,
           }
@@ -46,8 +46,12 @@ const Post = () => {
     getPosts()
 
   }, [userId, jwtToken])
+
+  if (posts.length === 0) {
+    return <div>Loading...</div>; 
+  }
   
-  console.log(posts);
+  // console.log(posts);
 
   return (
     <>

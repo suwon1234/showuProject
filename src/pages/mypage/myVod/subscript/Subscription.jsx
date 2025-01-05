@@ -44,7 +44,7 @@ const Subscription = () => {
       
   }, []);
 
-  // const subscriptions = Array.isArray(vod) ? vod.filter((item) => item.state.includes("구독")) : [];
+  console.log(currentList)
 
   return (
     <div>
