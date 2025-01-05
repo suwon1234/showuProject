@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import S from './styleWrite';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,6 +6,13 @@ import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const Write = () => {
   const navigate = useNavigate();
+  const [isButtonActive, setIsButtonActive] = useState(false);
+
+  const handleInputChange = () => {
+    const title = document.getElementById('name').value.trim();
+    const category = document.querySelector('select').value;
+    setIsButtonActive(title && category !== 'choose');
+  };
   
   const handleFile = (e) => {
     const file = e.target.files[0];
@@ -23,67 +30,35 @@ const Write = () => {
   };
 
   const handleSubmit = async () => {
+    const token = localStorage.getItem("token");
+    
     const complete = window.confirm('작성을 완료하시겠습니까?');
     if (complete) {
-      const title = document.getElementById('name').value;
-      const content = document.getElementById('content').value;
+      const title = document.getElementById('name').value.trim();
       const category = document.querySelector('select').value;
-      const fileInput = document.getElementById('file');
-
-      if (!title || !content || category === 'choose') {
+  
+      if (!title || category === 'choose') {
         alert('모든 필드를 입력해주세요.');
         return;
       }
-
-      let imageUrl = null;
-
-       // 파일 업로드 처리
-       if (fileInput.files.length > 0) {
-        const file = fileInput.files[0];
-        const formData = new FormData();
-        formData.append('file', file);
-
-        try {
-          const fileResponse = await fetch('http://localhost:8000/upload', {
-            method: 'POST',
-            body: formData,
-          });
-          const fileData = await fileResponse.json();
-          if (fileResponse.ok) {
-            imageUrl = fileData.url; // 백에서 반환된 업로드된 파일 URL
-          } else {
-            alert('파일 업로드에 실패했습니다.');
-            return;
-          }
-        } catch (error) {
-          console.error('파일 업로드 오류:', error);
-          alert('파일 업로드에 실패했습니다.');
-          return;
-        }
-      }
-
-
-      // 전송할 데이터 객체
-      const postData = {
-        title,
-        content,
-        category,
-        imageUrl,
-      };
-
+  
+      const postData = { title, category };
+  
       try {
         const response = await fetch("http://localhost:8000/community/create", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // JWT 토큰 추가
+          },
           body: JSON.stringify(postData),
         });
-
-        const data = await response.json();
-
+  
         if (response.ok) {
           alert("작성이 완료되었습니다.");
-          navigate('/community/writing/history'); 
+          navigate('/community/writing/history');
         } else {
+          const data = await response.json();
           alert(data.message || "에러 발생");
         }
       } catch (error) {
@@ -126,7 +101,7 @@ const Write = () => {
             <div>
               <label>카테고리</label>
               <S.ReasonSelect>
-                <select>
+                <select onChange={handleInputChange} >
                   <option value="choose">카테고리를 선택하세요</option>
                   <option value="all">전체</option>
                   <option value="show">공연</option>
@@ -159,7 +134,11 @@ const Write = () => {
             {/* <NavLink to="/community/newsMain"> */}
             <button onClick={handleBack}>이전 화면으로</button>
             {/* </NavLink>  */}
-            <button onClick={handleSubmit}>작성하기</button>
+            {/* <button onClick={handleSubmit}>작성하기</button> */}
+            <button disabled={!isButtonActive} onClick={handleSubmit} className={isButtonActive ? 'activeButton' : 'inactiveButton'}>
+            작성하기
+          </button>
+
           </S.buttonWrapper>
         </S.border>
       </S.SubWrapper>
