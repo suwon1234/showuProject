@@ -5,11 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const Write = () => {
-  
   const navigate = useNavigate();
   
-  const handleFile = () => {
-    alert("파일 크기는 5MB 이하로 업로드해주세요.");
+  const handleFile = (e) => {
+    const file = e.target.files[0];
+    if (file && file.size > 5 * 1024 * 1024) {
+      alert('파일 크기는 5MB 이하로 업로드해주세요.');
+      e.target.value = ''; 
+    }
   };
 
   const handleBack = () => {
@@ -19,41 +22,72 @@ const Write = () => {
     }
   };
 
-  // 글 작성 시 데이터 전송
   const handleSubmit = async () => {
-    const complete = window.confirm("작성을 완료하시겠습니까?");
+    const complete = window.confirm('작성을 완료하시겠습니까?');
     if (complete) {
       const title = document.getElementById('name').value;
       const content = document.getElementById('content').value;
       const category = document.querySelector('select').value;
-      // const fileInput = document.getElementById('file');
+      const fileInput = document.getElementById('file');
+
+      if (!title || !content || category === 'choose') {
+        alert('모든 필드를 입력해주세요.');
+        return;
+      }
+
+      let imageUrl = null;
+
+       // 파일 업로드 처리
+       if (fileInput.files.length > 0) {
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+          const fileResponse = await fetch('http://localhost:8000/upload', {
+            method: 'POST',
+            body: formData,
+          });
+          const fileData = await fileResponse.json();
+          if (fileResponse.ok) {
+            imageUrl = fileData.url; // 백에서 반환된 업로드된 파일 URL
+          } else {
+            alert('파일 업로드에 실패했습니다.');
+            return;
+          }
+        } catch (error) {
+          console.error('파일 업로드 오류:', error);
+          alert('파일 업로드에 실패했습니다.');
+          return;
+        }
+      }
+
 
       // 전송할 데이터 객체
-      const formData = {
-        title: title,
-        content: content,
-        category: category,
+      const postData = {
+        title,
+        content,
+        category,
+        imageUrl,
       };
-      
 
       try {
-        // 서버로 POST 요청 보내기
-        const response = await fetch("http://localhost:8000/create", {
+        const response = await fetch("http://localhost:8000/community/create", {
           method: "POST",
-          headers: { "Content-Type": "application/json"},
-          body: JSON.stringify(formData),
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(postData),
         });
 
         const data = await response.json();
 
         if (response.ok) {
           alert("작성이 완료되었습니다.");
-          navigate('/community/writing/history'); // 작성 완료 후 페이지 이동
+          navigate('/community/writing/history'); 
         } else {
           alert(data.message || "에러 발생");
         }
       } catch (error) {
-        console.error("Error:", error);
+        console.error("서버 오류:", error);
         alert("서버 오류");
       }
     }
@@ -113,8 +147,10 @@ const Write = () => {
               <S.FileInput 
               id = "file"
               type='file'
-               placeholder='찾아보기' 
-               onChange={handleFile} />
+              placeholder='찾아보기' 
+              onChange={handleFile}
+              accept="image/*"
+               />
               <p>첨부 파일은 최대 5MB까지 등록할 수 있습니다.</p>
             </div>
           </S.Input>

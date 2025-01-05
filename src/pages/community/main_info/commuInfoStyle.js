@@ -25,6 +25,32 @@ const S = {};
     
   `;
 
+  S.TopTitle2 = styled.div` 
+        font-size: 30px;
+        font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
+        color: #ffd400;
+        justify-content: center;
+        display: flex;
+        padding-top: 30px;
+    `
+
+S.IconWrapper = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 5px;
+height: 100%;
+
+.icon{
+    font-size: 20px;
+    padding-bottom: 50px;
+
+path {
+    color : #ffd400;
+}
+}
+`
+
   S.Img = styled.div`
     display: flex;
     flex-direction: column;

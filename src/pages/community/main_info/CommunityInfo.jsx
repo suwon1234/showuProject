@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import S from "./commuInfoStyle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const CommunityInfo = () => {
   const { id } = useParams(); // URL에서 ID 가져오기
@@ -17,7 +19,7 @@ const CommunityInfo = () => {
   useEffect(() => {
     const fetchCommunityInfo = async () => {
       try {
-        const token = localStorage.getItem("token"); // JWT 토큰 가져오기
+        const token = localStorage.getItem("jwtToken"); // JWT 토큰 가져오기
         const response = await fetch(`http://localhost:8000/community/${id}`, {
           headers: {
             'Authorization': `Bearer ${token}`, // 헤더에 토큰 추가
@@ -48,7 +50,7 @@ const CommunityInfo = () => {
       return;
     }
 
-    const token = localStorage.getItem("token"); // JWT 토큰 가져오기
+    const token = localStorage.getItem("jwtToken"); // JWT 토큰 가져오기
 
     try {
       const response = await fetch(`http://localhost:8000/community/${id}/comments`, {
@@ -74,16 +76,34 @@ const CommunityInfo = () => {
     }
   };
 
-
-
-
-
-  // 좋아요 버튼 클릭 핸들러
-  const handleLikeButton = async () => {
-    const token = localStorage.getItem("jwtToken"); 
   
+  // 좋아요
+  // const handleLikeButton = async () => {
+  //   try {
+  //     const response = await fetch(`http://localhost:8000/community/${id}/likes`, {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         "Authorization": `Bearer ${localStorage.getItem("jwtToken")}`, // JWT 토큰은 헤더에 추가
+  //       },
+  //     });
+  
+  //     if (!response.ok) {
+  //       throw new Error("좋아요 요청 실패");
+  //     }
+  
+  //     const result = await response.json();
+  //     setLikeCount(result.likes); // 서버에서 반환된 좋아요 수로 즉시 업데이트
+  //   } catch (error) {
+  //     console.error("좋아요 요청 오류:", error);
+  //     alert("좋아요 요청 중 오류가 발생했습니다.");
+  //   }
+  // };
+
+  const handleLikeButton = async () => {
+    const token = localStorage.getItem("jwtToken"); // JWT 토큰 가져오기
     if (!token) {
-      alert("로그인이 필요합니다.");
+      alert("로그인 후 좋아요를 누를 수 있습니다.");
       return;
     }
   
@@ -92,7 +112,7 @@ const CommunityInfo = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`, // 사용자 인증
+          "Authorization": `Bearer ${token}`, // JWT 토큰 전달
         },
       });
   
@@ -101,19 +121,18 @@ const CommunityInfo = () => {
       }
   
       const result = await response.json();
-      setLikeCount(result.likes); // 좋아요 수 업데이트
+      setLikeCount(result.likes); // 서버에서 반환된 좋아요 수로 즉시 업데이트
+  
+      // 서버에서 반환된 메시지로 알림 표시
       alert(result.message);
     } catch (error) {
       console.error("좋아요 요청 오류:", error);
-      alert("좋아요 요청 중 오류 발생");
+      alert("좋아요 요청 중 오류가 발생했습니다.");
     }
   };
   
-  
 
-  
 
-  
 
   // 커뮤니티 홈으로 돌아가기
   const handleBackToList = () => {
@@ -129,6 +148,11 @@ const CommunityInfo = () => {
 
   return (
     <S.Wrapper>
+      <S.TopTitle2>커뮤니티</S.TopTitle2>
+      <S.IconWrapper>
+        <FontAwesomeIcon icon={faChevronDown} className='icon' />
+      </S.IconWrapper>
+
       <S.SubWrapper>
         <S.TopTitle>{data.title}</S.TopTitle>
         <S.Line1 />
