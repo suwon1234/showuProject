@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux'
 
 const Detail = () => {
   const { id } = useParams();
-  console.log(id)
+  // console.log(id)
   const [ ticket, setTicket ] = useState([]);
   const jwtToken = localStorage.getItem("jwtToken");
 
