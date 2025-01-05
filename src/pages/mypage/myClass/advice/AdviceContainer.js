@@ -1,5 +1,4 @@
 import React from 'react';
-import Paging from '../../_component/Paging';
 import { useNavigate } from 'react-router-dom';
 import Advice from './Advice';
 import S from './AdviceContainerStyle';
@@ -19,7 +18,7 @@ const AdviceContainer = () => {
             <p className='activeTitle'>MY CLASS</p>
             <S.SubTitle className='subTitle'>
               <ul>
-                <li onClick={() => handleNavigate('/my-class/watching')}>수강중인 레슨</li>
+                {/* <li onClick={() => handleNavigate('/my-class/watching')}>수강중인 레슨</li> */}
                 <li onClick={() => handleNavigate('/my-class/created')}>개설한 레슨</li>
                 <li onClick={() => handleNavigate('/my-class/advice')}>상담 신청 내역</li>
               </ul>
@@ -32,7 +31,6 @@ const AdviceContainer = () => {
         </S.Wapper>
       </S.Container>
 
-      <Paging />
     </>
   );
 };

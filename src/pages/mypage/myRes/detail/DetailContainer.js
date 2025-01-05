@@ -1,5 +1,4 @@
 import React from 'react';
-import Paging from '../../_component/Paging';
 import { useNavigate } from 'react-router-dom';
 import S from './DetailContainerStyle';
 import Detail from './Detail';
@@ -30,7 +29,6 @@ const CanceleContainer = () => {
         </S.Wapper>
       </S.Container>
 
-      <Paging />
     </>
   );
 };

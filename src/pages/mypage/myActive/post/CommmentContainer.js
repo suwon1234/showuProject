@@ -1,5 +1,4 @@
 import React from 'react';
-import Paging from '../../_component/Paging';
 import Comment from './Comment';
 import S from './ComContainerStyle';
 import { useNavigate } from 'react-router-dom';
@@ -18,7 +17,7 @@ const CommmentContainer = () => {
         <S.Wapper className='wapper'>
         <S.Title className='title'>
             <p className='activeTitle'>활동 정보</p>
-            <p className='like'>작성한 글ㆍ댓글 관리</p>
+            <p className='like'>작성한 글 관리</p>
             <S.SubTitle className='subTitle'>
               <ul>
                 <li onClick={() => handleNavigate('/my-active/posts')}>작성한 글</li>
@@ -33,7 +32,6 @@ const CommmentContainer = () => {
         </S.Wapper>
       </S.Container>
 
-      <Paging />
     </>
   );
 };

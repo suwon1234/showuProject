@@ -1,5 +1,4 @@
 import React from 'react';
-import Paging from '../../_component/Paging';
 import S from './ReportContainerStyle';
 import Report from './Report';
 
@@ -25,7 +24,6 @@ const ReportContainer = () => {
         </S.Wapper>
       </S.Container>
 
-      <Paging />
     </>
   );
 };

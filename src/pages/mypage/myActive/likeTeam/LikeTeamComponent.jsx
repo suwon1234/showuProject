@@ -1,48 +1,43 @@
 import React from 'react';
-import S from './MyTeamDetailStyle';
-import { useNavigate } from 'react-router-dom';
-import Paging from '../_component/Paging';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Paging from '../../_component/Paging';
+import S from './LikeTeamStyle';
 
-
-const MyTeamDetail = ({ page, currentList, setPage, totalPost, PAGINATION }) => {
-
-  const navigate = useNavigate();
-  const handleNavigate = (path) => {
-    navigate(path)
-  }
-
+const LikeTeamComponent = ({ page, currentList, setPage, totalPost, PAGINATION }) => {
   return (
-    <S.Container>
+    <>
+      <S.Container>
       <S.Wrapper>
         
         { currentList && currentList.map((item, i) => (
-          <S.OuterBox key={i} onClick={() => handleNavigate('/my-team')}>
+          <S.OuterBox key={i} >
           <S.Box>
             <img src={item.teamThumbnail} alt="팀매칭 이미지" />
-            <S.RightContent>
+            <FontAwesomeIcon icon={faHeart} className='heart'/>
+            <div>
               <S.Right>
-                {/* <p className='genre'>{item.gerne}</p> */}
+                <p className='genre'>{item.category}</p>
                 <p className='intro'>{item.teamNotice}</p>
                 <p className='name'>{item.teamName}</p>
                 {/* <p className='date'>{item.period}</p> */}
               </S.Right>
-            </S.RightContent>
-            <S.Button type='button'>{item.status}</S.Button>
+            </div>
           </S.Box>
         </S.OuterBox>
         ))}
-
         <Paging 
           page={page}
           setPage={setPage}
           totalPost={totalPost}
           btnRange={PAGINATION.btnRange}
           pageRange={PAGINATION.pageRange}
-        />
+        />  
 
       </S.Wrapper>
     </S.Container>
+    </>
   );
 };
 
-export default MyTeamDetail;
+export default LikeTeamComponent;

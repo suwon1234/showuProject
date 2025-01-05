@@ -33,6 +33,7 @@ const S = {};
       border-radius: 20px;
       filter: brightness(70%);
       z-index: 1;
+      object-fit: cover;
     }
 
     & .name {

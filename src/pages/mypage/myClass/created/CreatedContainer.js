@@ -19,7 +19,7 @@ const CreatedContainer = () => {
             <p className='activeTitle'>MY CLASS</p>
             <S.SubTitle className='subTitle'>
               <ul>
-                <li onClick={() => handleNavigate('/my-class/watching')}>수강중인 레슨</li>
+                {/* <li onClick={() => handleNavigate('/my-class/watching')}>수강중인 레슨</li> */}
                 <li onClick={() => handleNavigate('/my-class/created')}>개설한 레슨</li>
                 <li onClick={() => handleNavigate('/my-class/advice')}>상담 신청 내역</li>
               </ul>
@@ -32,7 +32,7 @@ const CreatedContainer = () => {
         </S.Wapper>
       </S.Container>
 
-      <Paging />
+      {/* <Paging /> */}
     </>
   );
 };

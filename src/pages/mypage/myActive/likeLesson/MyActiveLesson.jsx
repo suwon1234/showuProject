@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LikeLesson from './LikeLesson';
-import Paging from '../../_component/Paging';
 import S from './MyActiveLessonStyle';
 
 const MyActiveLesson = () => {
@@ -23,7 +22,7 @@ const MyActiveLesson = () => {
               <li onClick={() => handleNavigate('/my-active/like/my-team')}>팀 매칭</li>
                 <li onClick={() => handleNavigate('/my-active/like/my-class')}>레슨</li>
                 <li onClick={() => handleNavigate('/my-active/like/space')}>공간</li>
-                <li onClick={() => handleNavigate('/my-active/like/prop')}>소품</li>
+                {/* <li onClick={() => handleNavigate('/my-active/like/prop')}>소품</li> */}
                 <li onClick={() => handleNavigate('/my-active/like/tickets')}>티켓</li>
                 <li onClick={() => handleNavigate('/my-active/like/md')}>MD</li>
                 <li onClick={() => handleNavigate('/my-active/like/auction')}>경매</li>
@@ -37,7 +36,6 @@ const MyActiveLesson = () => {
         </S.Wapper>
       </S.Container>
 
-      <Paging />
     </>
   );
 };

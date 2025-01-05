@@ -1,6 +1,5 @@
 import React from 'react';
 import S from './style';
-import Paging from '../_component/Paging';
 import Pay from './Pay';
 
 const MyPay = () => {
@@ -22,7 +21,6 @@ const MyPay = () => {
         </S.Wapper>
       </S.Container>
 
-      <Paging />
     </>
   );
 };

@@ -20,8 +20,8 @@ const SpaceContainer = () => {
             <S.SubTitle className='subTitle'>
               <ul>
                 <li onClick={() => handleNavigate('/my-res/space')}>공간 대여</li>
-                <li onClick={() => handleNavigate('/my-res/props')}>소품 대여</li>
-                <li onClick={() => handleNavigate('/my-res/returns')}>반납 내역</li>
+                {/* <li onClick={() => handleNavigate('/my-res/props')}>소품 대여</li>
+                <li onClick={() => handleNavigate('/my-res/returns')}>반납 내역</li> */}
               </ul>
             </S.SubTitle>
           </S.Title> 

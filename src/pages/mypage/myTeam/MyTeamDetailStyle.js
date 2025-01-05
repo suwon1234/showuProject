@@ -38,6 +38,7 @@ const S = {};
       width: 290px;
       height: 156px;
       border-radius: 20px;
+      object-fit: cover;
     }
   `
 
