@@ -41,7 +41,7 @@ const TeamDetails = () => {
                     </div>
                     <Link to={"/showu/team/teamJoin"}>
                         <button className='SubscriptionButton'>
-                            가입 신청하기기
+                            가입 신청하기
                         </button>
                     
                     </Link>
@@ -50,7 +50,7 @@ const TeamDetails = () => {
             <div className='TeamDetailsRightContentsWrapper'>
                 <div className='TeamIntroduceContents'>
                     안녕하십니까, 분당에서 취미로 연기 연습 하고 있습니다. 
-                    현재 5먕 정도 모여서 서로 연기 봐주면서 진행하고 있습니다 .
+                    현재 5명 정도 모여서 서로 연기 봐주면서 진행하고 있습니다 .
 
                     평일은 고정적인 요일은 없으며, 오후시간대에 연습을 하고 있습니다.
 
