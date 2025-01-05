@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LikeLesson from './LikeLesson';
-import Paging from '../../_component/Paging';
 import S from './MyActiveLessonStyle';
 
 const MyActiveLesson = () => {
@@ -37,7 +36,6 @@ const MyActiveLesson = () => {
         </S.Wapper>
       </S.Container>
 
-      <Paging />
     </>
   );
 };
