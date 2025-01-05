@@ -104,6 +104,9 @@ import LessonMain from '../pages/showu/lesson/LessonMain/LessonMain';
 import TeamDetails from '../pages/showu/team/teamDetails/_component/TeamDetails';
 import TeamMain from '../pages/showu/team/teamMain/teamMain'
 import TeamMaking from '../pages/showu/team/teamMaking/TeamMaking';
+import Detail from '../pages/reservation/payment/Detail';
+import Failed from '../pages/reservation/payment/Failed';
+import Success from '../pages/reservation/payment/Success';
 
 const router = createBrowserRouter([
   {
