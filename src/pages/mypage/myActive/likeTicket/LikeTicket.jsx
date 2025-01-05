@@ -10,7 +10,7 @@ const LikeTicket = () => {
   useEffect(() => {
     const getTicket = async () => {
      try {
-      const response = await fetch(`http://localhost:4000/ticket`);
+      const response = await fetch(`http://localhost:8000/my/like/ticket`);
       const datas = await response.json();
       setTicket(datas);
      } catch (error) {
