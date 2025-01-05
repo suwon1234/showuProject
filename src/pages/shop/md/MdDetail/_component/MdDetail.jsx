@@ -130,17 +130,7 @@ const MdDetail = () => {
         body: JSON.stringify({ selectedOptions }),
       });
 
-      // 응답 실패
-  //     if (!response.ok) {
-  //       throw new Error(`장바구니 추가 실패: ${response.statusText}`);
-  //     }
-  //     navigate('/shop/md/cart'); 
-  //   } catch (error) {
-  //     console.error("장바구니 추가 실패: ", error); 
-  //     alert("장바구니 추가에 실패했습니다."); 
-  //   }
-  // };
-    
+
     if (response.ok) {
       navigate('/shop/md/cart', { state: { selectedOptions } });
     } else {
@@ -188,9 +178,13 @@ const MdDetail = () => {
   // 문의하기 
   const sendInquiry = () => {
     alert("문의 페이지로 이동하시겠습니까?");
-    // navigate('/shop/md/inquiry', { state: { productName: product.name } });
     navigate('/shop/md/inquiry', { state: { mdName: product.name } });
   };
+
+  // 문의 내역
+  const sendInquiryList = () => {
+    navigate('shop/md/inquiry/list')
+  }
 
   return (
     <S.Wrapper>
@@ -248,13 +242,28 @@ const MdDetail = () => {
                   <p>바로 구매</p>
               </S.BuyButton>
             </div>
-            
+
             {/* 문의하기 버튼 */}
+            <div className="button-wrapper1">
             <button className="button inquiry" onClick={() => { sendInquiry();
-                // navigate('/shop/md/inquiry', { state: { productName: product.name } }) }}>
+
                 navigate('/shop/md/inquiry', { state: { mdName: product.mdName } }) }}>
                   <p>문의하기</p>
             </button>
+              
+              {/* 문의 내역 버튼 */}
+              <button className="button inquiry" onClick={() => { sendInquiryList();
+                navigate('/shop/md/inquiry/list') }}>
+                  <p>문의 내역</p>
+            </button>
+            </div>
+            
+            {/* 문의하기 버튼 */}
+            {/* <button className="button inquiry" onClick={() => { sendInquiry();
+                // navigate('/shop/md/inquiry', { state: { productName: product.name } }) }}>
+                navigate('/shop/md/inquiry', { state: { mdName: product.mdName } }) }}>
+                  <p>문의하기</p>
+            </button> */}
           </S.ButtonWrapper2>
 
         </S.DetailWrapper>
@@ -278,7 +287,7 @@ const MdDetail = () => {
         <tbody>
           <tr>
             <th>품명 / 모델명</th>
-            <td>{product.name}</td>
+            <td>{product.mdName}</td>
           </tr>
           <tr>
             <th>제조자(사)</th>
