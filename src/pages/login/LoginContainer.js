@@ -36,7 +36,7 @@ const LoginContainer = () => {
             console.log(data)
 
             const { email, password } = data;
-            await fetch(`http://localhost:8000/auth/local`, {
+            const response = await fetch(`http://localhost:8000/auth/local`, {
               method : "POST",
               headers : {
                 'Content-Type' : 'application/json'
@@ -44,14 +44,17 @@ const LoginContainer = () => {
               body : JSON.stringify({
                 email : email,
                 password : password
-              })
+              })              
             })
             .then((res) => res.json())
             .then((res) => {
-              if(!res.loginSuccess){ alert(res.message) }
+              if(!res.loginSuccess){ 
+                alert(res.message)
+                console.log(res.message)
+              }
               localStorage.setItem("jwtToken", res.jwtToken);
               navigate('/main')
-              console.log(res)
+              
             })
           })}>
             <S.idLabel>
