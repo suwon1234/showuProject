@@ -483,6 +483,15 @@ const router = createBrowserRouter([
         path: "/reservation/space/rental-selection",
         element: <RentalSelection />,
       },
+      {
+        path: "/reservation/payment", // 토스 페이 api
+        element: <PaymentContainer />,
+        children: [
+          { index: true, element: <Detail /> },
+          { path: "success", element: <Success /> },
+          { path: "failed", element: <Failed /> },
+        ],
+      },
     ],
   },
   {
