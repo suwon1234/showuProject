@@ -4,7 +4,7 @@ import Paging from '../../_component/Paging';
 // import { faHeart } from '@fortawesome/free-solid-svg-icons';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const SpaceComponent = ({ page, currentList, setPage, totalPost, PAGINATION, handleNavigate }) => {
+const SpaceComponent = ({ page, currentList, setPage, totalPost, PAGINATION }) => {
   return (
     <>
       <S.Container className='container'>

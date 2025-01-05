@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LikeAction from './LikeAction';
-import Paging from '../../_component/Paging';
 import S from './MyActiveActionStyle';
 
 const MyActiveAction = () => {
@@ -10,6 +9,7 @@ const MyActiveAction = () => {
   const handleNavigate = (path) => {
     navigate(path)
   };
+
 
   return (
     <>
@@ -20,7 +20,7 @@ const MyActiveAction = () => {
             <p className='like'>찜</p>
             <S.SubTitle className='subTitle'>
               <ul>
-              <li onClick={() => handleNavigate('/my-active/like/my-team')}>팀 매칭</li>
+                <li onClick={() => handleNavigate('/my-active/like/my-team')}>팀 매칭</li>
                 <li onClick={() => handleNavigate('/my-active/like/my-class')}>레슨</li>
                 <li onClick={() => handleNavigate('/my-active/like/space')}>공간</li>
                 {/* <li onClick={() => handleNavigate('/my-active/like/prop')}>소품</li> */}

@@ -1,9 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Paging from '../../_component/Paging';
-import LikeMyTeam from './LikeMyTeam';
 import S from './MyActiveTeamStyle';
 import { Link } from 'react-router-dom';
+import LikeMyTeams from './LikeMyTeams';
 
 const MyActiveTeam = () => {
   const navigate = useNavigate();
@@ -33,7 +32,7 @@ const MyActiveTeam = () => {
           </S.Title>
 
           {/* 팀매칭 찜 목록 */}
-          <LikeMyTeam />
+          <LikeMyTeams />
 
         </S.Wapper>
       </S.Container>

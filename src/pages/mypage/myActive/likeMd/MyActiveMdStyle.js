@@ -47,7 +47,7 @@ const S = {};
         }
       }
 
-      & li:nth-child(6) {
+      & li:nth-child(5) {
         padding-bottom: 3px;
         border-bottom: 3px solid #ffd400;
         color: #fff;
