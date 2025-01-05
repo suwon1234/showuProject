@@ -5,7 +5,7 @@ import PaymentButton from './PaymentButton';
 const Detail = () => {
 
   const { email } = useSelector((state) => state.user.currentUser)
-  const name = "홍길동"
+  const name = "홍길"
 
   const productName = "고구마 맛탕";
   const productPrice = 20000;
