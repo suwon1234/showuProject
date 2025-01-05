@@ -1,8 +1,7 @@
 import React from 'react';
 import S from './style';
 import { useNavigate } from 'react-router-dom';
-import Vod from './Vod';
-import Paging from '../_component/Paging';
+import Vods from './Vods';
 
 const MyVod = () => {
   const navigate = useNavigate();
@@ -26,12 +25,11 @@ const MyVod = () => {
             </S.SubTitle>
           </S.Title>
 
-          <Vod />
+          <Vods />
 
         </S.Wapper>
       </S.Container>
 
-      {/* <Paging /> */}
     </>
   );
 };

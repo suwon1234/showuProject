@@ -1,8 +1,8 @@
 import React from 'react';
 import S from './SpaceStyle';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Paging from '../../_component/Paging';
+// import { faHeart } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SpaceComponent = ({ page, currentList, setPage, totalPost, PAGINATION, handleNavigate }) => {
   return (

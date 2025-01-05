@@ -1,25 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import SpaceComponent from './SpaceComponent';
-import usePagination from '../../../../hooks/usePagination.js';
+import MyVodComponent from './MyVodComponent.jsx';
+import usePagination from '../../../hooks/usePagination.js';
 
 const PAGINATION = {
   pageRange: 6,
   btnRange: 3,
 };
 
-const Space = () => {
-  const [ spaces, setSpaces ] = useState([]);
+const Vods = () => {
+  const [ vod, setVod ] = useState([]);
   const jwtToken = localStorage.getItem("jwtToken");
 
   const { page, currentList, setPage, totalPost } = usePagination({
     pageRange: PAGINATION.pageRange,
-    list: spaces || [],
+    list: vod || [],
   });
 
   useEffect(() => {
-    const getSpace = async () => {
+    const getVod = async () => {
+
       try {
-        const response = await fetch(`http://localhost:8000/my/reservation/space`, {
+        const response = await fetch(`http://localhost:8000/my/vod`, {
           method : "GET",
           headers : {
             "Authorization": `Bearer ${jwtToken}`
@@ -27,26 +28,27 @@ const Space = () => {
         })
           .then((res) => res.json())
           .then((res) => {
-            if(!res.spaecSuccess){
+            if(!res.myVodSuccess){
               console.log(res.message)
             }
-            setSpaces(res.resSpaceList)
+            setVod(res.myVodList)
             console.log(res.message)
           })
-      } catch (error) {
-        console.log("SpaceError", error)
+      }
+      catch (error){
+        console.log("VodError" ,error)
       }
     }
+    
+    getVod()
 
-    getSpace()
-      
-  }, [])
+  }, [jwtToken])
 
-  // console.log(spaces)
-
+  // console.log(vod);
+  
   return (
     <>
-      <SpaceComponent 
+      <MyVodComponent 
         page={page} setPage={setPage} 
         currentList={currentList} 
         totalPost={totalPost}
@@ -56,4 +58,4 @@ const Space = () => {
   );
 };
 
-export default Space;
+export default Vods;

@@ -1,5 +1,4 @@
 import React from 'react';
-import Paging from '../../_component/Paging';
 import { useNavigate } from 'react-router-dom';
 import Advice from './Advice';
 import S from './AdviceContainerStyle';
@@ -32,7 +31,6 @@ const AdviceContainer = () => {
         </S.Wapper>
       </S.Container>
 
-      <Paging />
     </>
   );
 };
