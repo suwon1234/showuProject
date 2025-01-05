@@ -62,11 +62,11 @@ S.DetailTr = styled.tr`
     }
   }
 
-  & td:nth-of-type(4),
+  /* & td:nth-of-type(4),
   td:last-of-type {
     color: #ffd400;
     text-align: left;
-  }
+  } */
 `
 
   S.Title = styled.p`

@@ -70,11 +70,11 @@ const Detail = () => {
             <th scope='row'>좌석</th>
             <td>{ticket.seat}</td>
             <th>예매일</th>
-            <td>{ticket.bookingDay}</td>
+            <td>{ticket.createdAt}</td>
           </S.Tr>
           <S.Tr>
-            <th>현재상태</th>
-            <td>{ticket.state}</td>
+            {/* <th>현재상태</th> */}
+            {/* <td>{ticket.state}</td> */}
           </S.Tr>
         </tbody>
       </S.Table>
@@ -92,8 +92,8 @@ const Detail = () => {
               <th scope='col'>좌석</th>
               {/* <th scope='col'>권종</th> */}
               <th scope='col'>가격</th>
-              <th scope='col'>취소 여부</th>
-              <th scope='col'>취소(가능)일</th>
+              {/* <th scope='col'>취소 여부</th>
+              <th scope='col'>취소(가능)일</th> */}
             </S.DetailTrTitle>
           </S.DetailThead>
 
@@ -105,9 +105,9 @@ const Detail = () => {
                 <th scope='row' className='num'>{ticket.id}</th>
                 <td>{ticket.seat}</td>
                 {/* <td>L열 20번</td> */}
-                <td>{ticket.price}</td>
-                <td>{ticket.cancellationStatus}</td>
-                <td>{ticket.cancellableDate}</td>
+                <td>{ticket.price.R}</td>
+                {/* <td>{ticket.cancellationStatus}</td>
+                <td>{ticket.cancellableDate}</td> */}
               </S.DetailTr>
             ))
             }
@@ -116,7 +116,7 @@ const Detail = () => {
         </S.DetailTable>
         
         <S.ButtonContainer className='ButtonContainer'>
-          <S.Button onClick={() => handleNavigate('/my-res/ticket/cancele')}>이전으로</S.Button>
+          <S.Button onClick={() => handleNavigate('/my-res/ticket')}>이전으로</S.Button>
           <S.Button>취소하기</S.Button>
         </S.ButtonContainer>
       </div>
