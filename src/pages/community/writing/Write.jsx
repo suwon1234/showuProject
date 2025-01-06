@@ -31,45 +31,91 @@ const Write = () => {
     }
   };
 
+  // const handleSubmit = async () => {
+  //   const token = localStorage.getItem("jwtToken");
+  //   console.log("토큰 확인:", token);
+  
+  //   if (!token) {
+  //     alert("로그인이 필요합니다.");
+  //     navigate("/login");
+  //     return;
+      
+  //   }
+  
+  //   const complete = window.confirm("작성을 완료하시겠습니까?");
+  //   if (complete) {
+  //     const title = document.getElementById("name").value.trim();
+  //     const category = document.querySelector("select").value;
+  
+  //     if (!title || category === "choose") {
+  //       alert("모든 필드를 입력해주세요.");
+  //       return;
+  //     }
+  
+  //     const postData = { title, category };
+  
+  //     try {
+  //       const response = await fetch("http://localhost:8000/community/create", {
+  //         method: "POST",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //           Authorization: `Bearer ${token}`, // JWT 토큰 추가
+  //         },
+  //         body: JSON.stringify(postData),
+  //       });
+  
+  //       if (response.ok) {
+  //         alert("작성이 완료되었습니다.");
+  //         navigate("/community/writing/history");
+  //       } else {
+  //         const data = await response.json();
+  //         alert(data.message || "에러 발생");
+  //       }
+  //     } catch (error) {
+  //       console.error("서버 오류:", error);
+  //       alert("서버 오류");
+  //     }
+  //   }
+  // };
+
   const handleSubmit = async () => {
     const token = localStorage.getItem("jwtToken");
-    console.log("토큰 확인:", token);
   
     if (!token) {
       alert("로그인이 필요합니다.");
       navigate("/login");
       return;
-      
     }
   
     const complete = window.confirm("작성을 완료하시겠습니까?");
     if (complete) {
       const title = document.getElementById("name").value.trim();
       const category = document.querySelector("select").value;
+      const content = document.getElementById("content").value.trim();
   
-      if (!title || category === "choose") {
+      if (!title || category === "choose" || !content) {
         alert("모든 필드를 입력해주세요.");
         return;
       }
   
-      const postData = { title, category };
+      const postData = { title, category, content };
   
       try {
-        const response = await fetch("http://localhost:8000/community/create", {
+        const response = await fetch("http://localhost:8000/community/write", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // JWT 토큰 추가
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(postData),
+          
         });
   
         if (response.ok) {
-          alert("작성이 완료되었습니다.");
-          navigate("/community/writing/history");
-        } else {
           const data = await response.json();
-          alert(data.message || "에러 발생");
+          navigate(`/community/write/history/edit/${data.post._id}`); // 저장된 ID로 이동
+        } else {
+          alert("임시 저장 중 오류가 발생했습니다.");
         }
       } catch (error) {
         console.error("서버 오류:", error);
@@ -77,6 +123,7 @@ const Write = () => {
       }
     }
   };
+  
 
   const handleEdit = () => {
     const complete = window.confirm("수정/삭제 페이지로 이동하시겠습니까?");
@@ -112,12 +159,12 @@ const Write = () => {
               <S.ReasonSelect>
                 <select onChange={handleInputChange}>
                   <option value="choose">카테고리를 선택하세요</option>
-                  <option value="all">전체</option>
-                  <option value="show">공연</option>
-                  <option value="musical">뮤지컬</option>
-                  <option value="movie">영화</option>
-                  <option value="theater">연극</option>
-                  <option value="band">밴드</option>
+                  <option value="전체">전체</option>
+                  <option value="공연">공연</option>
+                  <option value="뮤지컬">뮤지컬</option>
+                  <option value="영화">영화</option>
+                  <option value="연극">연극</option>
+                  <option value="밴드">밴드</option>
                 </select>
               </S.ReasonSelect>
             </div>
