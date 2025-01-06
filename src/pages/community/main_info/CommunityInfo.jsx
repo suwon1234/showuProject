@@ -1,160 +1,184 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import S from "./commuInfoStyle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown, faEdit, faTrashAlt, faSave, faHeart, faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 
 const CommunityInfo = () => {
   const { id } = useParams();
-  const navigate = useNavigate(); 
-  console.log("useParams id:", id);
+  const navigate = useNavigate();
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [likeCount, setLikeCount] = useState(0);
+  const [isLiked, setIsLiked] = useState(false);
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState([]);
-  const [user, setUser] = useState(null); // 사용자 정보
+  const [editingCommentId, setEditingCommentId] = useState(null);
+  const [editingText, setEditingText] = useState("");
 
-  // 데이터 가져오기
   useEffect(() => {
     const fetchCommunityInfo = async () => {
       try {
-        const token = localStorage.getItem("token");  // JWT 토큰 가져오기
-        const response = await fetch(`http://localhost:8000/community/communityInfo/${id}`, {
-          headers: {
-            'Authorization': `Bearer ${token}`,  // JWT 토큰을 Authorization 헤더에 추가
-          },
+        const token = localStorage.getItem("jwtToken");
+        const response = await fetch(`http://localhost:8000/community/${id}`, {
+          headers: { Authorization: `Bearer ${token}` },
         });
-        if (!response.ok) {
-          throw new Error("데이터를 가져오는 데 실패했습니다.");
-        }
+        if (!response.ok) throw new Error("데이터를 가져오는 데 실패했습니다.");
         const result = await response.json();
         setData(result);
         setLikeCount(result.likeCount || 0);
         setComments(result.comments || []);
+        setIsLiked(result.isLiked || false);
         setLoading(false);
       } catch (error) {
-        console.error("데이터 가져오기 오류:", error);
         setError(error.message);
         setLoading(false);
       }
     };
-  
+
     fetchCommunityInfo();
   }, [id]);
 
-
-
-  // 댓글 데이터 가져오기
-  useEffect(() => {
-    const fetchComments = async () => {
-      try {
-        const response = await fetch(`http://localhost:8000/community/info/${id}/comments`);
-        if (!response.ok) {
-          throw new Error("댓글 데이터를 가져오는 데 실패했습니다.");
-        }
-        const result = await response.json();
-        setComments(result);
-      } catch (error) {
-        console.error("댓글 가져오기 오류:", error);
-      }
-    };
-
-    fetchComments();
-  }, [id]);
-
-
-
   // 댓글 등록
   const handleCommentSubmit = async () => {
-  if (!commentText) {
-    alert("댓글을 입력해주세요.");
-    return;
-  }
-
-  const token = localStorage.getItem("token"); // 로컬 스토리지에서 토큰 가져오기
-
-  try {
-    const response = await fetch(`http://localhost:8000/community/comments`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`, // JWT 토큰을 Authorization 헤더에 추가
-      },
-      body: JSON.stringify({
-        postId: id,
-        content: commentText,
-      }),
-    });
-
-    if (!response.ok) {
-      throw new Error("댓글 등록에 실패했습니다.");
-    }
-
-    const newComment = await response.json();
-    console.log("등록된 댓글:", newComment);
-
-    // 댓글 목록에 새 댓글 추가
-    setComments((prevComments) => [newComment.comment, ...prevComments]);
-    setCommentText("");
-    alert("댓글이 등록되었습니다!");
-  } catch (error) {
-    console.error("댓글 등록 오류:", error);
-    alert("댓글 등록 중 오류가 발생했습니다.");
-  }
-};
-
-
-
-  // 좋아요
-  const handleLikeButton = async () => {
-    const token = localStorage.getItem("token"); // JWT 토큰 가져오기
-    if (!token) {
-      alert("로그인 상태에서만 좋아요를 누를 수 있습니다.");
+    if (!commentText) {
+      alert("댓글을 입력해주세요.");
       return;
     }
 
+    const token = localStorage.getItem("jwtToken");
+
     try {
-      const response = await fetch(`http://localhost:8000/community/info/${id}/likes`, {
+      const response = await fetch(`http://localhost:8000/community/${id}/comments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
         },
+        body: JSON.stringify({ content: commentText }),
       });
 
-      if (!response.ok) {
-        throw new Error("좋아요 요청 실패");
-      }
-
-      const result = await response.json();
-      setLikeCount(result.likes);
-      alert(result.message);
+      if (!response.ok) throw new Error("댓글 등록에 실패했습니다.");
+      const newComment = await response.json();
+      setComments((prevComments) => [newComment.comment, ...prevComments]);
+      setCommentText("");
+      alert("댓글이 등록되었습니다!");
     } catch (error) {
-      console.error('좋아요 요청 오류:', error);
-      alert('좋아요 요청 중 오류 발생');
+      alert("댓글 등록 중 오류가 발생했습니다.");
     }
   };
 
-  // 신고하기 페이지 이동
-  const handleNotifyButton = () => {
-    const confirmMove = window.confirm("신고하기 페이지로 이동하시겠습니까?");
-    if (confirmMove) {
-      navigate(`/community/communityInfo/Notify`);
+  // 댓글 수정 시작
+  const handleCommentEdit = (comment) => {
+    setEditingCommentId(comment._id);
+    setEditingText(comment.content);
+  };
+
+  // 댓글 수정 완료
+  const handleCommentEditSubmit = async (commentId) => {
+    if (!editingText) {
+      alert("수정할 내용을 입력해주세요.");
+      return;
+    }
+
+    const token = localStorage.getItem("jwtToken");
+
+    try {
+      const response = await fetch(`http://localhost:8000/community/comments/${commentId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ content: editingText }),
+      });
+
+      if (!response.ok) throw new Error("댓글 수정에 실패했습니다.");
+      const updatedComment = await response.json();
+      setComments((prevComments) =>
+        prevComments.map((comment) =>
+          comment._id === updatedComment._id ? updatedComment : comment
+        )
+      );
+      setEditingCommentId(null);
+      setEditingText("");
+      alert("댓글이 수정되었습니다!");
+    } catch (error) {
+      alert("댓글 수정 중 오류가 발생했습니다.");
     }
   };
 
-  // 커뮤니티 홈으로
-  const handleBackToList = () => {
-    navigate("/community"); 
+  // 댓글 삭제
+  const handleCommentDelete = async (commentId) => {
+    const token = localStorage.getItem("jwtToken");
+
+    try {
+      const response = await fetch(`http://localhost:8000/community/comments/${commentId}`, {
+        method: "DELETE",
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (!response.ok) throw new Error("댓글 삭제에 실패했습니다.");
+      setComments((prevComments) =>
+        prevComments.filter((comment) => comment._id !== commentId)
+      );
+      alert("댓글이 삭제되었습니다!");
+    } catch (error) {
+      alert("댓글 삭제 중 오류가 발생했습니다.");
+    }
   };
+
+  // 좋아요 로직
+  const handleLikeButton = async () => {
+    const token = localStorage.getItem("jwtToken");
+    if (!token) {
+      alert("로그인 후 좋아요를 누를 수 있습니다.");
+      return;
+    }
+  
+    try {
+      const response = await fetch(`http://localhost:8000/community/${id}/likes`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+  
+      if (!response.ok) throw new Error("좋아요 요청 실패");
+  
+      const result = await response.json();
+  
+      // 좋아요 상태 및 카운트 업데이트
+      setIsLiked(result.isLiked);
+      setLikeCount(result.likes);
+  
+      // 디버깅 로그 추가
+      console.log("좋아요 상태:", result.isLiked);
+      console.log("좋아요 수:", result.likes);
+  
+      // 적절한 알림 표시
+      alert(result.isLiked ? "좋아요가 반영되었습니다!" : "좋아요가 취소되었습니다!");
+    } catch (error) {
+      console.error("좋아요 처리 오류:", error);
+      alert("좋아요 요청 중 오류가 발생했습니다.");
+    }
+  };
+  
 
   if (loading) return <p>로딩 중...</p>;
-  if (error) return <p>오류: {error}</p>;
+  if (error) return <p>{error}</p>;
   if (!data) return <p>데이터가 없습니다.</p>;
 
   return (
     <S.Wrapper>
+      <S.TopTitle2>커뮤니티</S.TopTitle2>
+      <S.IconWrapper>
+        <FontAwesomeIcon icon={faChevronDown} className="icon" />
+      </S.IconWrapper>
+
       <S.SubWrapper>
         <S.TopTitle>{data.title}</S.TopTitle>
         <S.Line1 />
@@ -165,39 +189,60 @@ const CommunityInfo = () => {
           <p>{data.content}</p>
         </S.Img>
 
-        <S.ButtonGroup>
-          <button onClick={handleLikeButton}>좋아요 {likeCount}</button>
-          <button onClick={handleNotifyButton}>신고하기</button>
-        </S.ButtonGroup>
+        <S.Group>
+          <S.Button onClick={handleLikeButton} liked={isLiked}>
+            {isLiked ? (
+              <>
+                <FontAwesomeIcon icon={faHeart} /> 좋아요 취소 {likeCount}
+              </>
+            ) : (
+              <>
+                <FontAwesomeIcon icon={faHeartBroken} /> 좋아요 {likeCount}
+              </>
+            )}
+          </S.Button>
+        </S.Group>
 
         <S.CommentWrapper>
           <S.CommentInput>
-            <h1>댓글</h1>
             <textarea
-              placeholder="너의 의견을 자유롭게 적어줘"
+              placeholder="댓글을 입력해주세요"
               value={commentText}
               onChange={(e) => setCommentText(e.target.value)}
             />
-            <div>
-              <button onClick={handleCommentSubmit}>등록하기</button>
-            </div>
+            <S.Button onClick={handleCommentSubmit}>등록하기</S.Button>
           </S.CommentInput>
 
           <div>
-            {comments.map((comment, i) => (
-              <div key={i}>
-                <div>
-                  <p className="user">{comment.user} </p>
-                  <p className="content">{comment.content}</p>
-                </div>
-              </div>
+            {comments.map((comment) => (
+              <S.CommentItem key={comment._id}>
+                {editingCommentId === comment._id ? (
+                  <>
+                    <textarea
+                      value={editingText}
+                      onChange={(e) => setEditingText(e.target.value)}
+                    />
+                    <S.Button onClick={() => handleCommentEditSubmit(comment._id)}>
+                      저장
+                    </S.Button>
+                  </>
+                ) : (
+                  <>
+                    <p>{comment.content}</p>
+                    <S.Buttons>
+                      <S.Button onClick={() => handleCommentEdit(comment)}>
+                        수정
+                      </S.Button>
+                      <S.Button onClick={() => handleCommentDelete(comment._id)}>
+                        삭제
+                      </S.Button>
+                    </S.Buttons>
+                  </>
+                )}
+              </S.CommentItem>
             ))}
           </div>
         </S.CommentWrapper>
-
-        <S.ButtonGroup>
-          <button onClick={handleBackToList}>커뮤니티 홈으로 돌아가기</button>
-        </S.ButtonGroup>
       </S.SubWrapper>
     </S.Wrapper>
   );

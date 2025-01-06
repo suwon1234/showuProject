@@ -1,22 +1,39 @@
 // 커뮤니티 글쓰기 내역 페이지
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './styleHistory';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
 const History = () => {
+  const [historysData, setHistorysData] = useState([]);
 
-    const historysData = [
-        { id: 1, title: "타이틀1", content: "content 1", date: "2024.12.01 18:30" },
-        { id: 2, title: "타이틀2", content: "content 2", date: "2024.11.13 12:59" },
-        { id: 3, title: "타이틀3", content: "content 3", date: "2024.10.29 20:01" },
-        { id: 4, title: "타이틀4", content: "content 4", date: "2024.10.29 20:01" },
-        { id: 5, title: "타이틀5", content: "content 5", date: "2024.10.29 20:01" },
-        { id: 6, title: "타이틀6", content: "content 6", date: "2024.10.29 20:01" },
-      ];
+  useEffect(() => {
+    const fetchHistoryData = async () => {
+      const token = localStorage.getItem("jwtToken");
 
+      try {
+        const response = await fetch("http://localhost:8000/community/write", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setHistorysData(data);
+        } else {
+          console.error("데이터를 가져오는 데 실패했습니다.");
+        }
+      } catch (error) {
+        console.error("서버 오류:", error);
+      }
+    };
+
+    fetchHistoryData();
+  }, []);
     
     return (
     <S.Wrapper>
@@ -51,15 +68,16 @@ const History = () => {
           </thead>
           <tbody>
             {historysData.map((history) => (
-              <tr key={history.id}>
+              <tr key={history._id}>
                 <td>{history.title}</td>
                 <td>
-                <Link className="linkStyle" to={`/community/write/history/check${history.id}`}>
+                <Link className="linkStyle" to={`/community/write/history/edit${history._id}`}>
+                {/* <Link className="linkStyle" to={`/community/write/history/${history._id}`}> */}
                 {/* <Link className="linkStyle" to={`/community/write/history/check`}> */}
                   {history.content}
                 </Link>
                 </td>
-                <td>{history.date}</td>
+                <td>{new Date(history.createdAt).toLocaleString()}</td>
               </tr>
             ))}
           </tbody>
