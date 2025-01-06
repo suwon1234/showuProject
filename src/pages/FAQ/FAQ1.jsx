@@ -1,7 +1,8 @@
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown, faAngleUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useRef } from 'react';
 import useDropdown from '../../hooks/useDropdown';
+import S from './FAQStyle';
 
 const FAQ1 = ({ faqDatas }) => {
   const dropdownRef1 = useRef(null);
@@ -13,25 +14,34 @@ const FAQ1 = ({ faqDatas }) => {
 
   return (
     <>
-      <div ref={dropdownRef1}>
-        <button
+      <S.Container ref={dropdownRef1}>
+        <S.QueButton
           type="button"
           onClick={() => setIsOpen1(!isOpen1)}
         >
           {faqDatas.map((q, i) => (
             <p key={i}>{q.question1}</p>
-          ))}             
-          <div>
+          ))}
+          { isOpen1 ? 
+          (
+          <S.DownIcon>
+            <FontAwesomeIcon icon={faAngleUp} className="down" />
+          </S.DownIcon>
+          ) :
+          (
+          <S.DownIcon>
             <FontAwesomeIcon icon={faAngleDown} className="down" />
-          </div>
-        </button>
+          </S.DownIcon>
+          )
+          }
+        </S.QueButton>
        
-        {isOpen1 && faqDatas.map((q, i) => (
-          <div key={i} onClick={valueClick}>
-            <p>{q.answer1}</p> 
-          </div>
-        ))}
-      </div>
+          <S.Answer onClick={valueClick}>
+            {isOpen1 && faqDatas.map((q, i) => (
+              <p key={i}>{q.answer1}</p> 
+            ))}
+          </S.Answer>
+      </S.Container>
     </>
   );
 };

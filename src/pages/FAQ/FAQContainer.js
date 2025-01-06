@@ -2,6 +2,13 @@ import React from 'react';
 import FAQ1 from './FAQ1';
 import FAQ2 from './FAQ2';
 import FAQ3 from './FAQ3';
+import FAQ4 from './FAQ4';
+import FAQ5 from './FAQ5';
+import FAQ6 from './FAQ6';
+import FAQ7 from './FAQ7';
+import FAQ8 from './FAQ8';
+import FAQ9 from './FAQ9';
+import FAQ10 from './FAQ10';
 import S from './style';
 
 const FAQContainer = () => {
@@ -61,24 +68,61 @@ const FAQContainer = () => {
 
   return (
     <S.Container className='Container'>
-      <div className='fqaTitle'>
+      <S.Title className='fqaTitle'>
         <p>자주 묻는 질문(FAQ)</p>
-      </div>
-      <div>
-        <FAQ1 
-          faqDatas={faqDatas}
-        />
-      </div>
-      <div>
-        <FAQ2 
-          faqDatas={faqDatas}
-        />
-      </div>
-      <div>
-        <FAQ3 
-          faqDatas={faqDatas}
-        />
-      </div>
+      </S.Title>
+      <S.Ul>
+        <li>
+          <FAQ1
+            faqDatas={faqDatas}
+          />
+        </li>
+        <li>
+          <FAQ2
+            faqDatas={faqDatas}
+          />
+        </li>
+        <li>
+          <FAQ3
+            faqDatas={faqDatas}
+          />
+        </li>
+        <li>
+          <FAQ4
+            faqDatas={faqDatas}
+          />
+        </li>
+        <li>
+          <FAQ5
+            faqDatas={faqDatas}
+          />
+        </li>
+        <li>
+          <FAQ6
+            faqDatas={faqDatas}
+          />
+        </li>
+        <li>
+          <FAQ7
+            faqDatas={faqDatas}
+          />
+        </li>
+        <li>
+          <FAQ8
+            faqDatas={faqDatas}
+          />
+        </li>
+        <li>
+          <FAQ9
+            faqDatas={faqDatas}
+          />
+        </li>
+        <li>
+          <FAQ10
+            faqDatas={faqDatas}
+          />
+        </li>
+      </S.Ul>
     </S.Container>
   );
 };

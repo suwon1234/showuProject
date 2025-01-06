@@ -4,25 +4,25 @@ import React, { useRef } from 'react';
 import useDropdown from '../../hooks/useDropdown';
 import S from './FAQStyle';
 
-const FAQ3 = ({ faqDatas }) => {
-  const dropdownRef3 = useRef(null);
-  const [isOpen3, setIsOpen3] = useDropdown(dropdownRef3, false);
+const FAQ6 = ({ faqDatas }) => {
+  const dropdownRef6 = useRef(null);
+  const [isOpen6, setIsOpen6] = useDropdown(dropdownRef6, false);
 
   const valueClick = () => {
-    setIsOpen3(!isOpen3);
+    setIsOpen6(!isOpen6);
   };
 
   return (
     <>
-      <S.Container ref={dropdownRef3}>
+      <S.Container ref={dropdownRef6}>
         <S.QueButton
           type="button"
-          onClick={() => setIsOpen3(!isOpen3)}
+          onClick={() => setIsOpen6(!isOpen6)}
         >
           {faqDatas.map((q, i) => (
-            <p key={i}>{q.question3}</p>
+            <p key={i}>{q.question6}</p>
           ))}             
-          { isOpen3 ? 
+          { isOpen6 ? 
           (
           <S.DownIcon>
             <FontAwesomeIcon icon={faAngleUp} className="down" />
@@ -37,8 +37,8 @@ const FAQ3 = ({ faqDatas }) => {
         </S.QueButton>
        
         <S.Answer onClick={valueClick}>
-          {isOpen3 && faqDatas.map((q, i) => (
-            <p key={i}>{q.answer3}</p> 
+          {isOpen6 && faqDatas.map((q, i) => (
+            <p key={i}>{q.answer6}</p> 
           ))}
         </S.Answer>
       </S.Container>
@@ -46,4 +46,4 @@ const FAQ3 = ({ faqDatas }) => {
   );
 };
 
-export default FAQ3;
+export default FAQ6;
