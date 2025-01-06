@@ -25,7 +25,7 @@ S.SectionTitle = styled.h2`
 
 // 티켓 오픈 컨테이너
 S.TicketOpen = styled.div`
-  margin-top: 100px;
+  margin-top: 40px;
   width: 1200px;
   background-color: black;
   display: flex;
@@ -48,10 +48,10 @@ S.TicketBox = styled.div`
   flex-direction: column;
   align-items: center;
   width: 300px;
-  height: 200px;
+  height: 250px;
   margin: 5px;
   margin-bottom: 150px;
-  background-color: white;
+  /* background-color: white; */
   border-radius: 5px;
 
   h3,
@@ -117,8 +117,8 @@ S.PerformingBox = styled.div`
 
 // 티켓 오픈 이미지 스타일
 S.TicketImage = styled.img`
-  width: 300px;
-  height: 200px;
+  width: 180px;
+  height: 400px;
   border-radius: 5px;
 `;
 
