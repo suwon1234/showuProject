@@ -29,7 +29,7 @@ const Reservation = () => {
     },
     {
       id: 4,
-      name: "뮤지컬 <블랙한 편의점> - 올림픽공원",
+      name: "뮤지컬 <블랙한 편의점>",
       date: "10.29(화) 14:00",
       type: "일반예매",
       img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24017198_p.gif&w=384&q=75",
