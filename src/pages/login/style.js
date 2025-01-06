@@ -126,18 +126,17 @@ const S = {};
       font-size: 18px;
       font-weight: 400;
       margin: 5px 0 30px 0;
-
-      cursor: pointer;
     }
   `
 
 
-  S.LoginSns = styled.ul`
+  S.LoginSns = styled.div`
     ${flexCenterRow}
     
-    & li {
+    & button {
       margin: 0 20px 0 0;
-      cursor: pointer;
+      background: none;
+      border: none;
     }
 
   `

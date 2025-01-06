@@ -23,6 +23,9 @@ const LoginContainer = () => {
           formState : { isSubmitting, isSubmitted, errors }
         } = useForm({ mode : "onChange"})
 
+  const locationGoogle = () => {
+    window.location.href = "http://localhost:8000/auth/google";
+  }
 
   return (
     <S.Container>
@@ -147,15 +150,15 @@ const LoginContainer = () => {
           <S.JoinSns>
             <p className='joinP'>또는 다른 서비스 계정으로 가입</p>
             <S.LoginSns>
-              <li className='kakao'>
+              <button className='kakao'>
                 <img src={process.env.PUBLIC_URL + "/images/login/kakao.png"} alt="kakao" />
-              </li>
-              <li className='naver'>
+              </button>
+              <button className='naver'>
                 <img src={process.env.PUBLIC_URL + "/images/login/naver.png"} alt="naver" />
-              </li>
-              <li className='google'>
+              </button>
+              <button className='google' onClick={locationGoogle}>
                 <img src={process.env.PUBLIC_URL + "/images/login/google.png"} alt="google" />
-              </li>
+              </button>
             </S.LoginSns>
           </S.JoinSns>
       </S.Wapper>
