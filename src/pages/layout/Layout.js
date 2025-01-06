@@ -14,6 +14,7 @@ const Layout = () => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
+  const jwtToken = localStorage.getItem("jwtToken") || searchParams.get("jwtToken");
 
   const handleLogout = () => {
     localStorage.removeItem("jwtToken") //토큰 삭제
@@ -29,18 +30,11 @@ const Layout = () => {
   
   // console.log("jwtToken", jwtToken)
   useEffect(() => {
-    const tokenFromStorage = localStorage.getItem("jwtToken") || searchParams.get("jwtToken");
-    
-    if (tokenFromStorage) {
-      // 토큰이 있다면 로컬 스토리지에 저장
-      localStorage.setItem("jwtToken", tokenFromStorage);
 
-      if (location.pathname === "/") {
-        navigate("/", { replace: true });
-      }
+    if(searchParams.get("jwtToken")){
+      localStorage.setItem("jwtToken", jwtToken)
+      navigate("/main")
     }
-
-    const jwtToken = localStorage.getItem("jwtToken");
 
     if (jwtToken) {
       const isAuthenticate = async () => {
@@ -64,7 +58,7 @@ const Layout = () => {
         .catch(console.error);
     }
 
-  }, [searchParams, dispatch, navigate]);
+  }, [searchParams, dispatch, navigate, jwtToken]);
 
   return (
     <div>
