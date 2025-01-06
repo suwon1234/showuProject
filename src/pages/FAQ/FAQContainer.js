@@ -2,13 +2,13 @@ import React from 'react';
 import FAQ1 from './FAQ1';
 import FAQ2 from './FAQ2';
 import FAQ3 from './FAQ3';
-import FAQ4 from './FAQ4';
-import FAQ5 from './FAQ5';
-import FAQ6 from './FAQ6';
-import FAQ7 from './FAQ7';
 import FAQ8 from './FAQ8';
 import FAQ9 from './FAQ9';
 import FAQ10 from './FAQ10';
+import FAQ7 from './FAQ7';
+import FAQ6 from './FAQ6';
+import FAQ5 from './FAQ5';
+import FAQ4 from './FAQ4';
 import S from './style';
 
 const FAQContainer = () => {
