@@ -6,19 +6,29 @@ import { faCircleExclamation, faCheckCircle, faXmark } from '@fortawesome/free-s
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const MdCart = () => {
-  const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions); 
+  const { state } = useLocation(); 
+  const initialSelectedOptions = state?.selectedOptions || [];
+  const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions);
+  // const [selectedOptions, setSelectedOptions] = useState(location.state.selectedOptions || []); 
   const [checkedItems, setCheckedItems] = useState([]); // 선택된 상품들
   const [number, setNumber] = useState([]); // 각 상품의 수량
   const [totalAmount, setTotalAmount] = useState(0);
-  const { state } = useLocation(); 
-  const initialSelectedOptions = state?.selectedOptions || [];
   const navigate = useNavigate();
 
 
   useEffect(() => {
-    // selectedOptions => 배열 초기화 
-    setNumber(new Array(selectedOptions.length).fill(1));
+    setNumber(selectedOptions.map(option => option.quantity)); 
   }, [selectedOptions]);
+
+  useEffect(() => {
+    fetch('http://localhost:8000/shop/md/cart')
+      .then(response => response.json())
+      .then(data => {
+        setSelectedOptions(data);
+        setCheckedItems(new Array(data.length).fill(false)); // 초기 체크 상태 설정
+      })
+      .catch(error => console.error('장바구니 로딩 오류:', error));
+  }, []);
 
 
   // 전체 상품 체크박스
@@ -39,65 +49,90 @@ const MdCart = () => {
   const isAnyChecked = checkedItems.some(item => item);
 
 
-  // 수량 감소
-  const decrease = (index) => {
-    setNumber(prevNumber => {
-      const newNumber = [...prevNumber];
-      if (newNumber[index] > 1) newNumber[index] -= 1;
-      return newNumber;
-    });
-  };
+ // 수량 감소
+ const decrease = async (index) => {
+  setNumber(prevNumber => {
+    const newNumber = [...prevNumber];
+    if (newNumber[index] > 1) newNumber[index] -= 1;
 
+    // 서버에 수량 업데이트 요청
+    updateCartQuantity(selectedOptions[index]._id, newNumber[index]);
 
-  // 수량 증가
-  const increase = (index) => {
-    setNumber(prevNumber => {
-      const newNumber = [...prevNumber];
-      if (newNumber[index] < 5) {
-        newNumber[index] += 1;
-      } else {
-        alert("각 옵션의 수량은 5개까지 선택 가능합니다.");
+    return newNumber;
+  });
+};
+
+// 수량 증가
+const increase = async (index) => {
+  setNumber(prevNumber => {
+    const newNumber = [...prevNumber];
+    if (newNumber[index] < 5) {
+      newNumber[index] += 1;
+
+      updateCartQuantity(selectedOptions[index]._id, newNumber[index]);
+    } else {
+      alert("각 옵션의 수량은 5개까지 선택 가능합니다.");
+    }
+    return newNumber;
+  });
+};
+
+  // 장바구니 수량 업데이트트
+  const updateCartQuantity = async (productId, quantity) => {
+    try {
+      const response = await fetch('http://localhost:8000/shop/md/cart', {
+        method: "PUT",
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          productId,
+          quantity,
+        }),
+      });
+
+      if (response.status !== 200) {
+        const message = await response.text();
+        alert(`수량 업데이트 실패: ${message}`);
       }
-      return newNumber;
-    });
+    } catch (error) {
+      console.error('수량 업데이트 중 오류 발생:', error);
+      alert("수량 업데이트 실패");
+    }
   };
 
   // 장바구니 상품 삭제
   const deleteProduct = async (index) => {
     const isConfirmed = window.confirm("해당 상품을 삭제하시겠습니까?");
     if (isConfirmed) {
-      const updatedSelectedOptions = selectedOptions.filter((_, i) => i !== index);
-      const updatedCheckedItems = checkedItems.filter((_, i) => i !== index);
-      const updatedNumber = number.filter((_, i) => i !== index);
-  
-      // 장바구니에서만 삭제
-      setSelectedOptions(updatedSelectedOptions);
-      setCheckedItems(updatedCheckedItems);
-      setNumber(updatedNumber);
-  
-      // 장바구니 업데이트
+      const productId = selectedOptions[index]._id;  // 삭제할 상품의 _id
       try {
         const response = await fetch(`http://localhost:8000/shop/md/cart`, {
-          method: "PUT", 
+          method: "DELETE",
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({
-            selectedOptions: updatedSelectedOptions,
-          }),
         });
-  
+
         if (!response.ok) {
-          alert("장바구니 업데이트 실패");
+          alert("상품 삭제 실패");
+        } else {
+          const updatedSelectedOptions = selectedOptions.filter((_, i) => i !== index);
+          const updatedCheckedItems = checkedItems.filter((_, i) => i !== index);
+          const updatedNumber = number.filter((_, i) => i !== index);
+
+          setSelectedOptions(updatedSelectedOptions);
+          setCheckedItems(updatedCheckedItems);
+          setNumber(updatedNumber);
         }
       } catch (error) {
-        console.error("장바구니 업데이트 중 오류 발생:", error);
+        console.error("장바구니 삭제 중 오류 발생:", error);
+        alert("상품 삭제 실패");
       }
     }
   };
 
   useEffect(() => {
-    // 총 결제 금액 계산
     let total = 0;
     selectedOptions.forEach((item, index) => {
       if (checkedItems[index]) {
@@ -147,8 +182,8 @@ const MdCart = () => {
                 <S.ProductName className='option'>{selected.option}</S.ProductName>
                 <S.QuantityControl>
                   <S.QuantityButton onClick={() => decrease(index)}>-</S.QuantityButton>
-                  {/* <span>{number[index]}</span>  */}
-                  <span>{selected.quantity}</span> 
+                  <span>{number[index]}</span> 
+                  {/* <span>{selected.quantity}</span>  */}
                   {/* <span>{selectedOptions.quantity}</span>  */}
                   <S.QuantityButton onClick={() => increase(index)}>+</S.QuantityButton>
                 </S.QuantityControl>
