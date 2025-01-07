@@ -1,5 +1,6 @@
 import React from 'react';
-import AuctionPayment from './_component/AuctionPayment';
+import AuctionPayment from './_component/AuctionPayment'
+
 
 const PaymentContainer2 = () => {
   return (
