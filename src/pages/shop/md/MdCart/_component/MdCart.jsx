@@ -20,15 +20,15 @@ const MdCart = () => {
     setNumber(selectedOptions.map(option => option.quantity)); 
   }, [selectedOptions]);
 
-  useEffect(() => {
-    fetch('http://localhost:8000/shop/md/cart')
-      .then(response => response.json())
-      .then(data => {
-        setSelectedOptions(data);
-        setCheckedItems(new Array(data.length).fill(false)); // 초기 체크 상태 설정
-      })
-      .catch(error => console.error('장바구니 로딩 오류:', error));
-  }, []);
+  // useEffect(() => {
+  //   fetch('http://localhost:8000/shop/md/cart')
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       setSelectedOptions(data);
+  //       setCheckedItems(new Array(data.length).fill(false)); // 초기 체크 상태 설정
+  //     })
+  //     .catch(error => console.error('장바구니 로딩 오류:', error));
+  // }, []);
 
 
   // 전체 상품 체크박스
@@ -77,7 +77,7 @@ const increase = async (index) => {
   });
 };
 
-  // 장바구니 수량 업데이트트
+  // 장바구니 수량 업데이트
   const updateCartQuantity = async (productId, quantity) => {
     try {
       const response = await fetch('http://localhost:8000/shop/md/cart', {
@@ -105,7 +105,7 @@ const increase = async (index) => {
   const deleteProduct = async (index) => {
     const isConfirmed = window.confirm("해당 상품을 삭제하시겠습니까?");
     if (isConfirmed) {
-      const productId = selectedOptions[index]._id;  // 삭제할 상품의 _id
+      const productId = selectedOptions[index]._id; 
       try {
         const response = await fetch(`http://localhost:8000/shop/md/cart`, {
           method: "DELETE",

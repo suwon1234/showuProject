@@ -6,6 +6,7 @@ import Dropdown1 from './Dropdown1';
 import { faCheckCircle, faCreditCard, faMoneyBillTransfer, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PaymentButton from '../payment/PaymentButton';
 
 const MdPayment = () => {
   // const { id } = useParams();
@@ -219,7 +220,16 @@ const MdPayment = () => {
       <S.PaymentButton>
           <S.BackButton onClick={handleBackButton}>이전 페이지로</S.BackButton>
         <Link to={'/shop/md/payment/info'}>
-          <S.NextButton><p>{totalAmount.toLocaleString()}원</p>결제 진행 </S.NextButton>
+          {/* <S.NextButton><p>{totalAmount.toLocaleString()}원</p>결제 진행 </S.NextButton> */}
+          {/* <PaymentButton><p>{totalAmount.toLocaleString()}원</p>결제 진행 </PaymentButton> */}
+          <PaymentButton
+          productTotal={productTotal}
+          deliveryFee={deliveryFee}
+          discountAmount={discountAmount}
+          totalAmount={totalAmount}
+
+      
+          /><p>{totalAmount.toLocaleString()}원</p>결제 진행
         </Link>
       </S.PaymentButton>
 
