@@ -11,8 +11,12 @@ S.slider = styled.div`
   justify-content: center; /* 슬라이더 이미지를 가운데 정렬 */
   align-items: center; /* 버튼과 이미지 수직 정렬 */
   min-width: 1240px;
-  max-width: 3840px;
-  min-height: 508px;
+  max-width: 1240px;
+  min-height: 550px;
+  max-height: 550px;
+  img{
+
+  }
 
   /* 슬라이드 인디케이터 스타일 */
   & .slideindicator {

@@ -1,14 +1,37 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import S from './style';
 
 const Movie = ({ plays }) => {
-  const musicals = (plays || []).filter(item => item.genre === '영화');
-  const [selectedCategory, setSelectedCategory] = useState("장르");
+  const [selectedCategory, setSelectedCategory] = useState("영화전체");
+  const [videolist, setVideoList] = useState([]);
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
   };
+
+  useEffect(() => {
+    const vodVideo = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/vod");
+        const data = await response.json();
+        if (response.ok) {
+          setVideoList(data);  // 전체 비디오 목록을 상태로 설정
+        } else {
+          console.error('Error', data.message);
+        }
+      } catch (error) {
+        console.error('Error', error);
+      }
+    };
+    vodVideo();
+  }, []);
+
+  // 선택한 카테고리에 맞는 장르로 필터링
+  const filteredVideos = videolist.filter((video) => {
+    if (selectedCategory === "영화전체") return true;  // 모든 영화를 포함
+    return video.genre === selectedCategory;  // 선택한 장르와 일치하는 영화만 포함
+  });
 
   return (
     <div>
@@ -17,7 +40,7 @@ const Movie = ({ plays }) => {
           <S.title className="title">Movie</S.title>
           <S.DropdownWrapper>
             <S.Dropdown onChange={handleCategoryChange} value={selectedCategory}>
-              <option value="인기순" className="select">영화전체</option>
+              <option value="영화전체" className="select">영화전체</option>
               <option value="코미디" className="select">코미디</option>
               <option value="다큐멘터리" className="select">다큐멘터리</option>
               <option value="액션" className="select">액션</option>
@@ -34,16 +57,16 @@ const Movie = ({ plays }) => {
         </S.topwrapper>
 
         <S.showuRecommendationPage className="showuRecommendationPage">
-          {musicals.map(musical => (
-            <S.Card key={musical.id}>
+          {filteredVideos.map((video) => (
+            <S.Card key={video.id}>
               <Link 
-                to={`/vod/play?programid=${musical.id}`} 
+                to={`/vod/play?programid=${video.id}`} 
                 role="button" 
                 onClick={() => window.scrollTo(0, 0)}
               >
                 <img 
-                  src={musical.mainImage} 
-                  alt={`Video ${musical.title}`} 
+                  src={video.mainImage} 
+                  alt={`Video ${video.title}`} 
                 />
               </Link>
             </S.Card>
