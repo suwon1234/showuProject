@@ -25,7 +25,7 @@ S.SectionTitle = styled.h2`
 
 // 티켓 오픈 컨테이너
 S.TicketOpen = styled.div`
-  margin-top: 100px;
+  margin-top: 40px;
   width: 1200px;
   background-color: black;
   display: flex;
@@ -37,8 +37,8 @@ S.TicketOpen = styled.div`
 // 티켓 박스 컨테이너
 S.TicketBoxContainer = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr); // 3열로 설정
-  grid-gap: 20px;
+  grid-template-columns: repeat(4, 1fr); // 4열로 설정
+  grid-gap: 60px;
   justify-content: center;
   align-items: center;
   margin-bottom: 200px;
@@ -49,8 +49,8 @@ S.TicketBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px;
-  height: 200px;
+  width: 180px;
+  height: 220px;
   margin: 5px;
   margin-bottom: 150px;
   background-color: white;
@@ -73,8 +73,8 @@ S.TicketBox = styled.div`
 
 // 티켓 오픈 이미지 스타일
 S.TicketImage = styled.img`
-  width: 300px;
-  height: 200px;
+  width: 180px;
+  height: 400px;
   border-radius: 5px;
 `;
 

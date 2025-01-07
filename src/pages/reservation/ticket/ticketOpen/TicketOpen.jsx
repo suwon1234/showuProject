@@ -1,9 +1,12 @@
 import React from 'react';
 import S from './style';
+import { useNavigate } from 'react-router';
 
 const TicketOpen = () => {
   
-  const ticket = [
+  const navigate = useNavigate();
+
+  const ticketEvents = [
     {
       id: 1,
       name: "뮤지컬 <시라노>",
@@ -110,21 +113,31 @@ const TicketOpen = () => {
       img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24013928_p.gif&w=384&q=75",
     },
   ];
-  
+
+  const handleImageClick = (id) => {
+    navigate(`/reservation/ticket-open/openDetail/${id}`);
+  };
   return (
     <S.MainContainer>
       <S.TicketOpen>
         <S.SectionTitle>티켓 오픈</S.SectionTitle>
         <S.TicketBoxContainer>
-          {ticket.map((event) => (
-            <S.TicketBox key={event.id}>
-              <S.TicketImage src={event.img} alt={event.name} />
+          {ticketEvents.map((event) => (
+            <S.TicketBox
+              key={event.id}
+              onClick={() => handleImageClick(event.id)}
+            >
+              <S.TicketImage
+                src={event.img}
+                alt={event.name}
+                style={{ cursor: "pointer" }}
+              />
               <h3>{event.name}</h3> <p>{event.date}</p> <p>{event.type}</p>
             </S.TicketBox>
           ))}
         </S.TicketBoxContainer>
       </S.TicketOpen>
-    </S.MainContainer>  
+    </S.MainContainer>
   );
 };
 
