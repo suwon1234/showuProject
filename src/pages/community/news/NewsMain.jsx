@@ -1,14 +1,13 @@
 // 뉴스 메인 화면  /community/newsMain
 
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import S from './style';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
-
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import S from "./style";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const NewsMain = () => {
-  const [newsData, setNewsData] = useState([]); 
+  const [newsData, setNewsData] = useState([]);
   const [filter, setFilter] = useState("전체");
   const [error, setError] = useState(null);
 
@@ -17,7 +16,7 @@ const NewsMain = () => {
       try {
         const response = await fetch("http://localhost:8000/community/newsMain");
         const data = await response.json();
-        setNewsData(data); 
+        setNewsData(data);
       } catch (error) {
         console.error("뉴스 데이터 오류 발생:", error);
         setError("데이터를 불러오지 못했습니다.");
@@ -28,13 +27,14 @@ const NewsMain = () => {
   }, []);
 
   const filterNews = Array.isArray(newsData)
-    ? (filter === "전체" ? newsData : newsData.filter(news => news.category === filter))
+    ? filter === "전체"
+      ? newsData
+      : newsData.filter((news) => news.category === filter)
     : [];
 
   const handleScrollTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
 
   if (newsData.length === 0 && !error) {
     return <p>로딩 중입니다...</p>;
@@ -83,7 +83,7 @@ const NewsMain = () => {
   
         <S.NewsList>
           {filterNews.map((news) => (
-            <S.NewsItem key={news.id}>
+            <S.NewsItem key={news._id}>
                 <Link to={`/community/newsMain/news/${news._id}`}>
               <S.ImageWrapper>
                 {/* <Link to={`/community/news/${news.id}`}> */}
