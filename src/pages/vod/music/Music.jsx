@@ -1,45 +1,51 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import S from './style';
 
+const Music = () => {
+  const [videolist, setVideoList] = useState([]);
+  const [musicVideos, setMusicVideos] = useState([]);
 
-const Music = ({ plays }) => {
-  const musicals = (plays || []).filter(item => item.genre === '뮤지컬');
-  const [selectedCategory, setSelectedCategory] = useState("음악전체");
 
-  const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value);
-  };
+  useEffect(() => {
+    const vodVideo = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/vod");
+        const data = await response.json();
+        if (response.ok) {
+          setVideoList(data);
+        } else {
+          console.error('Error', data.message);
+        }
+      } catch (error) {
+        console.error('Error', error);
+      }
+    };
+    vodVideo();
+  }, []);
 
+  useEffect(() => {
+    const filteredVideos = videolist.filter(video => video.genre === "음악");
+    setMusicVideos(filteredVideos);
+  }, [videolist]);
   return (
     <div>
       <S.showuRecommendation>
         <S.topwrapper className="topwrapper">
-          <S.title className="title">Movie</S.title>
-          <S.DropdownWrapper>
-            <S.Dropdown onChange={handleCategoryChange} value={selectedCategory}>
-              <option value="음악전체" className="select">음악전체</option>
-              <option value="오케스트라" className="select">오케스트라</option>
-              <option value="국내음악" className="select">국내음악</option>
-              <option value="해외음악" className="select">해외음악</option>
-              <option value="랩 힙합" className="select">랩 힙합</option>
-              <option value="영화 OST" className="select">영화 OST</option>
-              <option value="만화 OST" className="select">만화 OST</option>
-            </S.Dropdown>
-          </S.DropdownWrapper>
+          <S.title className="title">Music</S.title>
         </S.topwrapper>
 
         <S.showuRecommendationPage className="showuRecommendationPage">
-          {musicals.map(musical => (
-            <S.Card key={musical.id}>
+          {musicVideos.map(video => (
+            <S.Card key={video.id}>
               <Link 
-                to={`/vod/play?programid=${musical.id}`} 
+                to={`/vod/play?programid=${video.id}`} 
                 role="button" 
                 onClick={() => window.scrollTo(0, 0)}
               >
                 <img 
-                  src={musical.mainImage} 
-                  alt={`Video ${musical.title}`} 
+                  src={video.mainImage} 
+                  alt={`Video ${video.title}`} 
                 />
               </Link>
             </S.Card>
