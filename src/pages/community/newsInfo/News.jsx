@@ -1,11 +1,10 @@
 // 뉴스 세부 화면
 
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import S from './newsStyle';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import S from "./newsStyle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const News = () => {
   const { id } = useParams();
@@ -14,9 +13,9 @@ const News = () => {
   useEffect(() => {
     const fetchNewsById = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/news/${id}`);
+        const response = await fetch(`http://localhost:8000/community/newsMain/${id}`);
         const data = await response.json();
-        setNews(data); // 가져온 데이터 
+        setNews(data);
       } catch (error) {
         console.error("뉴스 상세 데이터 오류 발생:", error);
       }
