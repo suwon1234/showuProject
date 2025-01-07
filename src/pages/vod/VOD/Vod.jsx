@@ -11,6 +11,11 @@ const Vod = () => {
   }, [location]);
 
   const [videolist,setVideoList]=useState([]);
+  const [randomVideos, setRandomVideos] = useState([]);
+  const [musicalvideos,setMusicalVideos]=useState([]);
+  const [sortedVideos, setSortedVideos] = useState([]); 
+  const [randomMusicalVideos, setRandomMusicalVideos] = useState([]);
+  const [currentSlide, setCurrentSlide] = useState(0);
   useEffect(()=>{
     const vodVideo=async()=>{
       try{
@@ -30,27 +35,49 @@ const Vod = () => {
     vodVideo();
   },[])
 
- 
+  useEffect(() => {
+    // 랜덤으로 4개의 비디오 선택
+    if (videolist.length > 0) {
+      const shuffled = [...videolist].sort(() => Math.random() - 0.5); 
+      setRandomVideos(shuffled.slice(0, 4)); 
+    }
+  }, [videolist]);
+  useEffect(()=>{
+      const filteredVideos = videolist.filter((video) => video.genre === "뮤지컬");
+      const shuffled = [...filteredVideos].sort(() => Math.random() - 0.5).slice(0, 4);
+      setMusicalVideos(shuffled);
+  },[videolist])
+  useEffect(() => {
+    const sorted = [...videolist]
+      .sort((a, b) => {
+        if (b.likes === a.likes) {
+          return a.title.localeCompare(b.title, 'ko');
+        }
+        return b.likes - a.likes;
+      })
+      .slice(0, 4); 
+    setSortedVideos(sorted); 
+  }, [videolist]);
 
-  // 슬라이드 이미지 배열
-  const images = [
-    'https://via.placeholder.com/1240x508?text=Slide+1',
-    'https://via.placeholder.com/1240x508?text=Slide+2',
-    'https://via.placeholder.com/1240x508?text=Slide+3',
-    'https://via.placeholder.com/1240x508?text=Slide+4',
-  ];
+  useEffect(() => {
+    if (videolist.length > 0) {
+      // 뮤지컬 장르의 비디오만 필터링
+      const musicalVideos = videolist.filter((video) => video.genre === "뮤지컬");
+      // 랜덤으로 4개 선택
+      const shuffled = [...musicalVideos].sort(() => Math.random() - 0.5).slice(0, 4);
+      setRandomMusicalVideos(shuffled);
+    }
+  }, [videolist]);
 
-  const totalSlides = images.length; 
-  const [currentSlide, setCurrentSlide] = useState(1); 
 
   // 오른쪽 버튼 
   const handleNext = () => {
-    setCurrentSlide((prev) => (prev < totalSlides ? prev + 1 : 1)); 
+    setCurrentSlide((prev) => (prev + 1) % randomMusicalVideos.length);
   };
 
   // 왼쪽 버튼 
   const handlePrev = () => {
-    setCurrentSlide((prev) => (prev > 1 ? prev - 1 : totalSlides)); // 첫 번째 슬라이드면 마지막으로 돌아감
+    setCurrentSlide((prev) => (prev - 1 + randomMusicalVideos.length) % randomMusicalVideos.length);
   };
 
   return (
@@ -58,15 +85,19 @@ const Vod = () => {
       <S.slider className="slider">
         <div className="slide">
           <div className="live-badge">LIVE</div>
-          <img
-            src={images[currentSlide - 1]} // 현재 슬라이드에 해당하는 이미지 URL
-            alt={`slide-${currentSlide}`}
-            className="slide-image"
-          />
+          {randomMusicalVideos.length > 0 && (
+            <Link to={`/vod/play/${randomMusicalVideos[currentSlide]._id}`} >
+              <img
+                src={randomMusicalVideos[currentSlide].mainImage} 
+                alt={`Video ${randomMusicalVideos[currentSlide].title}`}
+                className="slide-image"
+              />
+            </Link>
+          )}
         </div>
         <div className="slideindicator">
-          <span className="swiper-pagination-current">{currentSlide}</span> /
-          <span className="swiper-pagination-total">{totalSlides}</span>
+          <span className="swiper-pagination-current">{currentSlide + 1}</span> /
+          <span className="swiper-pagination-total">{randomMusicalVideos.length}</span>
         </div>
         <button className="arrowrightarrow" onClick={handleNext}>
           〉
@@ -84,13 +115,12 @@ const Vod = () => {
           <a className="more" href='/vod/more/rec'>더보기</a>
         </S.titlewrapper>
         <S.showuRecommendationPage className='showuRecommendationPage'>
-        {videolist && videolist.map((video) => (
+        {randomVideos.map((video) => (
             <S.Card key={video._id}>
               <Link to={`/vod/play/${video._id}`} role="button" onClick={() => window.scrollTo(0, 0)}>
                 {video.mainImage && (
                   <img src={video.mainImage} alt={`Video ${video.mainImage}`} />
                 )}
-             
               </Link>
             </S.Card>
         ))}
@@ -103,15 +133,12 @@ const Vod = () => {
           <a className="more" href='/vod/more/rec/pop'>더보기</a>
         </S.titlewrapper>
         <S.showuRecommendationPage className='showuRecommendationPage'>
-        {videolist && videolist.map((list) => (
-            <S.Card key={list._id}>
-
-              <Link to={`/vod/play?programid=${list.id}`} >
-                <a  role="button" >
-                  {list.mainImage && (
-                    <img src={list.mainImage} alt={`Video ${list.id}`} />
-                  )}
-                </a>
+        {sortedVideos.map((video) => (
+            <S.Card key={video._id}>
+              <Link to={`/vod/play/${video._id}`} role="button" onClick={() => window.scrollTo(0, 0)}>
+                {video.mainImage && (
+                  <img src={video.mainImage} alt={`Video ${video.mainImage}`} />
+                )}
               </Link>
             </S.Card>
         ))}
@@ -119,10 +146,10 @@ const Vod = () => {
 
       </S.showuRecommendation>
       <S.categorybutton>
-      <Link to={"/vod/musical"} > <button className='category'>Musical</button></Link>
-      <Link to={"/vod/movie"} > <button className='category'>Movie</button></Link>
-      <Link to={"/vod/music"} > <button className='category'>Music</button></Link>
-      <Link to={"/vod/my-ShowU"} > <button className='category'>ShowU</button></Link> 
+      <Link to={"/vod/musical"} > <button className='category' onClick={() => window.scrollTo(0, 0)} >Musical</button></Link>
+      <Link to={"/vod/movie"} > <button className='category' onClick={() => window.scrollTo(0, 0)}>Movie</button></Link>
+      <Link to={"/vod/music"} > <button className='category' onClick={() => window.scrollTo(0, 0)}>Music</button></Link>
+      <Link to={"/vod/my-ShowU"} > <button className='category' onClick={() => window.scrollTo(0, 0)}>ShowU</button></Link> 
       </S.categorybutton>
 
 
@@ -132,15 +159,12 @@ const Vod = () => {
           <a className="more" href='/vod/more/rec/musical'>더보기</a>
         </S.titlewrapper>
         <S.showuRecommendationPage className='showuRecommendationPage'>
-        {videolist && videolist.map((list) => (
-            <S.Card key={list._id}>
-
-              <Link to={`/vod/play?programid=${list.id}`} >
-                <a  role="button" >
-                  {list.mainImage && (
-                    <img src={list.mainImage} alt={`Video ${list.id}`} />
-                  )}
-                </a>
+        {musicalvideos.map((video) => (
+            <S.Card key={video._id}>
+              <Link to={`/vod/play/${video._id}`} role="button" onClick={() => window.scrollTo(0, 0)}>
+                {video.mainImage && (
+                  <img src={video.mainImage} alt={`Video ${video.mainImage}`} />
+                )}
               </Link>
             </S.Card>
         ))}

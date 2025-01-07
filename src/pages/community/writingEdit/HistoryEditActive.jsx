@@ -1,55 +1,90 @@
-// 커뮤니티 글쓰기 내역 수정/삭제 상세 페이지
-
-
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import S from './HistoryEditActiveStyle';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const HistoryEditActive = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const [post, setPost] = useState({ title: '', content: '', category: '' });
 
-    const navigate = useNavigate();
+  useEffect(() => {
+    const fetchPost = async () => {
+      const token = localStorage.getItem('jwtToken');
 
-    const handleEditButton = () => {
-        const isConfirmed = window.confirm("수정이 완료되었습니다.");
-        if (isConfirmed) {
-            alert("수정/삭제 메인 화면으로 이동합니다.");
-            navigate('/community/write/history/edit'); 
+      if (!token) {
+        alert('로그인이 필요합니다.');
+        navigate('/login');
+        return;
+      }
+
+      try {
+        const response = await fetch(`http://localhost:8000/community/post/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setPost(data);
+        } else {
+          alert('게시글을 가져오는 데 실패했습니다.');
         }
+      } catch (error) {
+        console.error('서버 오류:', error);
+        alert('서버 오류가 발생했습니다.');
+      }
     };
 
-    const handleCanceledButton = () => {
-        const isCanceled = window.confirm("수정을 취소하시겠습니까?");
-        if (isCanceled) {
-            alert("수정/삭제 메인 화면으로 이동합니다.");
-            navigate('/community/write/history/edit'); 
-        }
-    };
+    fetchPost();
+  }, [id, navigate]);
 
-    return (
-         <S.Wrapper>
-            <S.SubWrapper>
-                <S.TopTitle>작성 글 수정하기</S.TopTitle>
-                <S.Line1 />
-                <S.ContentWrapper>
-                    <h2>수정 내용</h2>                   
-        
-                    <S.CommentInput1>
-                        <textarea placeholder="제목" />
-                    </S.CommentInput1>
+  const handleSubmit = async () => {
+    const token = localStorage.getItem('jwtToken');
 
-                    <S.CommentInput2>
-                        <textarea placeholder="내용" />
-                    </S.CommentInput2>
-        
-                    <S.ButtonGroup>
-                        <button onClick={handleCanceledButton}>수정 취소</button>
-                        <button onClick={handleEditButton}>수정 완료</button>
-                    </S.ButtonGroup>
-        
-                </S.ContentWrapper>
-            </S.SubWrapper>
-                </S.Wrapper>
-            );
-        };
+    if (!token) {
+      alert('로그인이 필요합니다.');
+      navigate('/login');
+      return;
+    }
+
+    try {
+      const response = await fetch(`http://localhost:8000/community/update/${id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(post),
+      });
+
+      if (response.ok) {
+        alert('수정되었습니다.');
+        navigate('/community/write/history/edit');
+      } else {
+        alert('수정에 실패했습니다.');
+      }
+    } catch (error) {
+      console.error('서버 오류:', error);
+      alert('서버 오류가 발생했습니다.');
+    }
+  };
+
+  return (
+    <div>
+      <h1>게시글 수정</h1>
+      <input
+        type="text"
+        value={post.title}
+        onChange={(e) => setPost({ ...post, title: e.target.value })}
+      />
+      <textarea
+        value={post.content}
+        onChange={(e) => setPost({ ...post, content: e.target.value })}
+      />
+   
+      <button onClick={handleSubmit}>수정하기</button>
+    </div>
+  );
+};
 
 export default HistoryEditActive;

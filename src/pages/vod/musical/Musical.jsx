@@ -1,10 +1,39 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import S from './style';
 
 const Musical = ({ plays }) => {
-  const musicals = (plays || []).filter(item => item.genre === '뮤지컬');
   const [selectedCategory, setSelectedCategory] = useState("인기순");
+  const [musicalvideos,setMusicalVideos]=useState([]);
+    const [videolist,setVideoList]=useState([]);
+    useEffect(()=>{
+          const filteredVideos = videolist.filter((video) => video.genre === "뮤지컬");
+          let sortedVideos;
+          if (selectedCategory === "인기순") {
+            sortedVideos = [...filteredVideos].sort((a, b) => b.likes - a.likes); 
+          } else if (selectedCategory === "최신순") {
+            sortedVideos = [...filteredVideos].sort((a, b) => b.year - a.year);  
+          }
+          setMusicalVideos(sortedVideos);
+      },[videolist,selectedCategory])
+  useEffect(()=>{
+      const vodVideo=async()=>{
+        try{
+          const response = await fetch("http://localhost:8000/vod")
+          const data = await response.json();
+          console.log(data)
+          if(response.ok){
+            setVideoList(data);
+          }else{
+            console.error('Error',data.message);
+          }
+        }catch (error){
+          console.error('Error',error)
+        }
+  
+      };
+      vodVideo();
+    },[])
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
@@ -24,10 +53,10 @@ const Musical = ({ plays }) => {
         </S.topwrapper>
 
         <S.showuRecommendationPage className="showuRecommendationPage">
-          {musicals.map(musical => (
-            <S.Card key={musical.id}>
+          {musicalvideos.map(musical => (
+            <S.Card key={musical}>
               <Link 
-                to={`/vod/play?programid=${musical.id}`} 
+                to={`/vod/play/${musical._id}`} 
                 role="button" 
                 onClick={() => window.scrollTo(0, 0)}
               >

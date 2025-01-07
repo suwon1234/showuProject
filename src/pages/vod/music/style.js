@@ -5,12 +5,13 @@ const S={}
 S.Card = styled.div`
   min-width: 200px;
   max-width: 200px;
-  height: 300px;
+  height: 300px; 
   flex-shrink: 0;
   background: #222;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
+  margin: 10px;
 
   img {
     width: 100%;
@@ -23,18 +24,16 @@ S.Card = styled.div`
    &:hover img {
       transform: scale(1.1); 
   }
-  
 `;
 
 S.showuRecommendationPage = styled.div`
+  width: 1240px;
+  height: 100%;
   display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  padding: 10px 0;
-  scroll-behavior: smooth;
-  &::-webkit-scrollbar {
-    display: none; 
-  }
+  flex-wrap: wrap; 
+  align-items: center;
+  margin: auto;
+  padding-top: 43px;
 `;
 
 
@@ -52,7 +51,7 @@ S.showuRecommendation = styled.div`
   `;
 S.topwrapper=styled.div`
  display: flex;
- width: 1040px;
+ width: 1240px;
   justify-content: flex-start;
   align-items: center;
   background-color: black;
@@ -69,26 +68,6 @@ S.title=styled.div`
   margin: 0;
 `
 
-
-S.DropdownWrapper = styled.div`
-  position: relative; 
-  z-index: 10; 
-`;
-
-S.Dropdown = styled.select`
-  background-color: #fdde39;
-  color: black;
-  border-radius: 5px;
-  padding: 8px 10px;
-  font-size: 16px;
-  cursor: pointer;
-  outline: none;
-  width: 180px;
-  border-radius: 10px;
-  .select{
-    color: black;
-  }
-`;
 
 
 export default S;

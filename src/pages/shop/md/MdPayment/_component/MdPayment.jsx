@@ -9,10 +9,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const MdPayment = () => {
   // const { id } = useParams();
-  const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions); 
-  const options = ['옵션 1', '옵션 2', '옵션 3']; 
   const { state } = useLocation();
   const initialSelectedOptions = state?.selectedOptions || [];
+  const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions); 
+  const options = ['옵션 1', '옵션 2', '옵션 3']; 
   const navigate = useNavigate();
   
   const iconPaymentMethods = [
