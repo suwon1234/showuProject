@@ -5,12 +5,13 @@ const S={}
 S.Card = styled.div`
   min-width: 200px;
   max-width: 200px;
-  height: 300px;
+  height: 300px; 
   flex-shrink: 0;
   background: #222;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
+  margin: 10px;
 
   img {
     width: 100%;
@@ -27,14 +28,12 @@ S.Card = styled.div`
 `;
 
 S.showuRecommendationPage = styled.div`
+  width: 1240px;
+  height: 100%;
   display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  padding: 10px 0;
-  scroll-behavior: smooth;
-  &::-webkit-scrollbar {
-    display: none; 
-  }
+  flex-wrap: wrap; 
+  margin: auto;
+  padding-top: 43px;
 `;
 
 
@@ -52,7 +51,7 @@ S.showuRecommendation = styled.div`
   `;
 S.topwrapper=styled.div`
  display: flex;
- width: 1040px;
+ width: 1240px;
   justify-content: flex-start;
   align-items: center;
   background-color: black;
