@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+// MD - 문의 페이지지
+import React, { useState } from 'react';
 import S from './styleInquiry';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -18,14 +19,7 @@ const MdInquiry = () => {
   const [isAgreed, setIsAgreed] = useState(false);
   const [userName, setUserName] = useState('');
   const location = useLocation();
-  const { mdName } = location.state || {}; // 상품명
-
-  // useEffect(() => {
-  //   const user = JSON.parse(localStorage.getItem('user'));
-  //   if (user) {
-  //     setUserName(user.name);
-  //   }
-  // }, [])
+  const { mdName } = location.state || {}; // MdDetail에서 상품명 받아옴
 
   const handleSubmit = async (e) => {
     e.preventDefault();

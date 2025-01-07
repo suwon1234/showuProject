@@ -1,8 +1,8 @@
-// MD - 문의 페이지
+// 경매매 - 문의 페이지
 import React, { useState } from 'react';
 import S from './styleInquiry';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const AuctionInquiry = () => {
   const navigate = useNavigate();
@@ -70,7 +70,7 @@ const AuctionInquiry = () => {
 
       if (response.ok) {
         alert(result.message);
-        navigate('/shop/auction/inquiry/list'); // 리스트 페이지로 이동
+        navigate('/shop/auction/inquiry/list');
       } else {
         alert(result.message || "문의 등록에 실패했습니다.");
       }
