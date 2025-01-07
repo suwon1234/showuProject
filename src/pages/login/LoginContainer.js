@@ -23,6 +23,15 @@ const LoginContainer = () => {
           formState : { isSubmitting, isSubmitted, errors }
         } = useForm({ mode : "onChange"})
 
+  const locationGoogle = () => {
+    window.location.href = "http://localhost:8000/auth/google";
+  }
+  const locationKakao = () => {
+    window.location.href = "http://localhost:8000/auth/kakao";
+  }
+  const locationNaver = () => {
+    window.location.href = "http://localhost:8000/auth/naver";
+  }
 
   return (
     <S.Container>
@@ -36,7 +45,7 @@ const LoginContainer = () => {
             console.log(data)
 
             const { email, password } = data;
-            await fetch(`http://localhost:8000/auth/local`, {
+            const response = await fetch(`http://localhost:8000/auth/local`, {
               method : "POST",
               headers : {
                 'Content-Type' : 'application/json'
@@ -44,14 +53,17 @@ const LoginContainer = () => {
               body : JSON.stringify({
                 email : email,
                 password : password
-              })
+              })              
             })
             .then((res) => res.json())
             .then((res) => {
-              if(!res.loginSuccess){ alert(res.message) }
+              if(!res.loginSuccess){ 
+                alert(res.message)
+                console.log(res.message)
+              }
               localStorage.setItem("jwtToken", res.jwtToken);
               navigate('/main')
-              console.log(res)
+              
             })
           })}>
             <S.idLabel>
@@ -144,15 +156,15 @@ const LoginContainer = () => {
           <S.JoinSns>
             <p className='joinP'>또는 다른 서비스 계정으로 가입</p>
             <S.LoginSns>
-              <li className='kakao'>
+              <button className='kakao' onClick={locationKakao}>
                 <img src={process.env.PUBLIC_URL + "/images/login/kakao.png"} alt="kakao" />
-              </li>
-              <li className='naver'>
+              </button>
+              <button className='naver' onClick={locationNaver}>
                 <img src={process.env.PUBLIC_URL + "/images/login/naver.png"} alt="naver" />
-              </li>
-              <li className='google'>
+              </button>
+              <button className='google' onClick={locationGoogle}>
                 <img src={process.env.PUBLIC_URL + "/images/login/google.png"} alt="google" />
-              </li>
+              </button>
             </S.LoginSns>
           </S.JoinSns>
       </S.Wapper>
