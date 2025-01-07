@@ -1,5 +1,6 @@
 import React from 'react';
 import MdPayment from './_component/MdPayment';
+import { Outlet } from 'react-router-dom';
 
 const PaymentContainer = () => {
 
@@ -12,6 +13,7 @@ const PaymentContainer = () => {
   return (
     <div>
       <MdPayment items={payItems} />
+      {/* <Outlet /> */}
       
     </div>
   );
