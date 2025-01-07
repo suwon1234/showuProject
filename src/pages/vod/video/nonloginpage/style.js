@@ -29,7 +29,7 @@ S.VideoDetailArea = styled.div`
 
   img {
     max-width: 1240px;
-    max-height: 654px;
+    height: 654px;
     object-fit: contain;
   }
 
@@ -59,14 +59,29 @@ S.VideoDetailArea = styled.div`
       align-items: center;
       color: black;
     }
-
-    span {
-      padding: 10px;
-      max-width: 500px;
-      overflow-wrap: break-word;
-    }
   }
 `;
+S.moreclick=styled.div`
+display: inline-flex;
+span {
+  height: 50px;
+   display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding: 10px;
+  max-width: 400px;
+  overflow-wrap: break-word;
+}
+button{
+  font-size: 16px;
+  display: flex;
+  align-items: end;
+  background: transparent;  /* 배경 제거 */
+  border: none;             /* 테두리 제거 */
+  color: #ffd400;
+}
+`
 
 S.LogoBox = styled.h1`
   font-size: 2rem;
@@ -149,20 +164,25 @@ S.hert = styled.nav`
     color: #ffffff;
   }
 
-  & .icon {
+  .icon.filled {
     font-size: 24px;
     padding: 4px;
     cursor: pointer;
-
-    &:hover path {
-      fill: #ffd400;
+    path {
+      fill: red; 
+      transition: fill 0.3s ease;
     }
   }
-
-  & .icon:hover {
-    color: #ffffff;
-    box-shadow: 0 3px 0 0 #ffd400;
+  .icon.outlined {
+    font-size: 24px;
+    padding: 4px;
+    cursor: pointer;
+    path {
+      fill: white; 
+      transition: fill 0.3s ease;
+    }
   }
+  
 `;
 
 S.bottom = styled.div`
