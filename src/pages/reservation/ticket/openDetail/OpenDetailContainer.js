@@ -1,9 +1,10 @@
 import React from 'react';
+import OpenDetail from './OpenDetail';
 
 const OpenDetailContainer = () => {
   return (
     <div>
-      
+      <OpenDetail/>
     </div>
   );
 };
