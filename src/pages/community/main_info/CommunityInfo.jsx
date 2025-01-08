@@ -155,7 +155,6 @@ const CommunityInfo = () => {
       setIsLiked(result.isLiked);
       setLikeCount(result.likes);
   
-      // 디버깅 로그 추가
       console.log("좋아요 상태:", result.isLiked);
       console.log("좋아요 수:", result.likes);
   
@@ -197,7 +196,7 @@ const CommunityInfo = () => {
               </>
             ) : (
               <>
-                <FontAwesomeIcon icon={faHeartBroken} /> 좋아요 {likeCount}
+                <FontAwesomeIcon icon={faHeartBroken} />  좋아요 {likeCount}
               </>
             )}
           </S.Button>
