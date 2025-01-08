@@ -68,22 +68,41 @@ const AuctionDetail = () => {
   }, [id]);  
 
   
-  useEffect(() => {
+  // useEffect(() => {
 
-    const getInquiryList = async () => {
-      try {
-        const response = await fetch('http://localhost:8000/shop/auction/inquiry/list');
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const datas = await response.json();
-        setInquiryList(datas);
-      } catch (error) {
-        console.error("Error fetching inquiry list:", error);
-      }
-    };
+  //   const getInquiryList = async () => {
+  //     try {
+  //       const response = await fetch('http://localhost:8000/shop/auction/inquiry/list');
+  //       if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+  //       const datas = await response.json();
+  //       setInquiryList(datas);
+  //     } catch (error) {
+  //       console.error("Error fetching inquiry list:", error);
+  //     }
+  //   };
   
-    getInquiryList();
+  //   getInquiryList();
 
-  }, []); 
+  // }, []); 
+
+    useEffect(() => {
+      const getList = async () => {
+        try {
+          const response = await fetch('http://localhost:8000/shop/auction/inquiry/list');
+          if(!response.ok) {
+            throw new Error("문의 내역 목록을 가져오는데 실패했습니다.")
+          }
+  
+          const datas = await response.json();
+          setInquiryList(datas.inquiryList || []);
+        } catch (error) {
+          console.error("InquiryListError", error);
+        }
+      };
+  
+      getList();
+  
+    }, []);
 
   if(!auctionProduct) {
     return <p>상품을 찾을 수 없습니다.</p>
@@ -185,7 +204,7 @@ const AuctionDetail = () => {
         <S.Image2 className='content-image' src={auctionProduct.imageDetail} alt="경매 상품" />
       </S.ImageWrapper>
 
-      <S.Customized>
+      {/* <S.Customized>
         <p>회원 맞춤 경매</p>
         <FontAwesomeIcon className='icon' icon={faChevronDown} />
         <S.ClosingItems>
@@ -216,7 +235,7 @@ const AuctionDetail = () => {
             <FontAwesomeIcon icon={faCircleChevronRight} />
           </S.RightIconWrapper>
         </S.ClosingItems>
-      </S.Customized>
+      </S.Customized> */}
 
       <S.Inquiry>
       <S.Info>
@@ -246,12 +265,12 @@ const AuctionDetail = () => {
         </S.Right2>
       </S.Head>
       
-      {inquiryList.map((inquiry) => (
-        <Link to={`/shop/auction/inquiry/${inquiry.id}`}>
+      {inquiryList.map((inquiry, i) => (
+        <Link to={`/shop/auction/inquiry/${inquiry._id}`}>
         {/*  <Link to={`/shop/auction/inquiry/list`}> */}
-        <S.InquiryList key={inquiry.id}>
+        <S.InquiryList key={inquiry._id}>
           <S.Left1>
-            <S.ListItem>{inquiry.id}</S.ListItem>
+            <S.ListItem>{i + 1}</S.ListItem>
           </S.Left1>
           <S.Left2>
             <S.ListItem>{inquiry.type}</S.ListItem>
@@ -269,7 +288,7 @@ const AuctionDetail = () => {
             <S.ListItem>{inquiry.writer}</S.ListItem>
           </S.Right1>
           <S.Right2>
-            <S.ListItem>{inquiry.date}</S.ListItem>
+            <S.ListItem>{new Date(inquiry.createdAt).toLocaleDateString()}</S.ListItem>
           </S.Right2>
         </S.InquiryList>
         </Link>
