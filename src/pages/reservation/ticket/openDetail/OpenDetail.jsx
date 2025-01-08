@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import S from "./style";
 import { useNavigate } from "react-router-dom";
@@ -6,46 +6,32 @@ import { useNavigate } from "react-router-dom";
 const OpenDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [event, setEvent] = useState(null);
 
-  const ticketEvents = [
-    {
-      id: 1,
-      name: "뮤지컬 <시라노>",
-      type: "일반예매",
-      date: "2025-01-30",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24014885_p.gif&w=384&q=75",
-    },
-    {
-      id: 2,
-      name: "뮤지컬 <스윙 데이즈_암호명 A>",
-      type: "일반예매",
-      date: "2025-11-03",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24013619_p.gif&w=384&q=75",
-    },
-    {
-      id: 3,
-      name: "뮤지컬 <광화문 연가>",
-      type: "일반예매",
-      date: "2025-12-01",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24011935_p.gif&w=384&q=75",
-    },
-    {
-      id: 4,
-      name: "뮤지컬 <베르테르>",
-      type: "일반예매",
-      date: "2024-10-29",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24017198_p.gif&w=384&q=75",
-    },
-    {
-      id: 5,
-      name: "뮤지컬 <지킬앤하이드>",
-      type: "일반예매",
-      date: "2024-11-09",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24013928_p.gif&w=384&q=75",
-    },
-  ];
+  useEffect(() => {
+    const fetchEvent = async () => {
+      const token = localStorage.getItem("jwtToken");
+      try {
+        const response = await fetch(
+          `http://localhost:8000/reservation/ticketEvents/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        if (!response.ok) {
+          throw new Error("네트워크 응답이 실패했습니다.");
+        }
+        const fetchedData = await response.json();
+        setEvent(fetchedData);
+      } catch (error) {
+        console.error("티켓 이벤트를 가져오는 중 오류 발생:", error);
+      }
+    };
 
-  const event = ticketEvents.find((e) => e.id === parseInt(id));
+    fetchEvent();
+  }, [id]);
 
   const calculateDDay = (date) => {
     const eventDate = new Date(date);
