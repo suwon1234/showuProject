@@ -7,68 +7,32 @@ import { useSelector } from 'react-redux';
 
 const Grade = () => {
   const navigate = useNavigate();
-  const filesRef = useRef(null);
-  const [fileName, setFileName] = useState('');
   const [filesPath, setFilesPath] = useState(null);
+  const [fileName, setFileName] = useState(''); // 선택한 파일 이름
   const { currentUser } = useSelector((state) => state.user);
   const jwtToken = localStorage.getItem("jwtToken");
   const userId = currentUser ? currentUser._id : '';
 
-  console.log("filesPath", filesPath);
-  useEffect(() => {
-    console.log("filesRef.current:", filesRef.current);
-  }, []);
+  console.log("filesPath", filesPath)
+  console.log("fileName", fileName)
+
 
   const { 
     register, 
     handleSubmit, 
     setValue,
-    formState: { isSubmitting, errors }
+    formState: { isSubmitting }
   } = useForm({ mode: "onSubmit" });
 
-  // 파일 선택 시 실행되는 함수
   const handleFileChange = (e) => {
-    console.log("파일 선택 이벤트:", e);
-    const file = e.target.files[0];
-    if (file) {
-      setFileName(file.name);
+    const selectedFile = e.target.files[0];
+    console.log("selectedFile", selectedFile)
+    if (selectedFile) {
+      setFileName(selectedFile.name); // 선택된 파일 이름을 상태에 저장
     } else {
-      console.log("파일이 선택되지 않았습니다.");
-    }
-    console.log("선택된 파일:", file);
-  };
-  
-
-  const saveFiles = async () => {
-    if (filesRef.current && filesRef.current.files.length > 0) {
-      const formData = new FormData();
-      formData.append("file", filesRef.current.files[0]); // 파일 추가
-  
-      console.log("파일 선택됨:", filesRef.current.files[0]);
-  
-      const config = {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${jwtToken}`,
-        },
-        body: formData,
-      };
-  
-      await fetch("http://localhost:8000/my/up-grade/files", config)
-        .then((res) => res.json())
-        .then((res) => {
-          console.log("서버 응답:", res);
-          const newFilesPath = `http://localhost:8000${res.filePath}`;
-          setFilesPath(newFilesPath);
-        })
-        .catch((error) => {
-          console.error("파일 업로드 오류:", error);
-        });
-    } else {
-      console.log("파일이 선택되지 않았습니다.");
+      setFileName(''); // 파일이 선택되지 않은 경우 상태 초기화
     }
   };
-  
   
 
   return (
@@ -77,25 +41,31 @@ const Grade = () => {
         <S.Form onSubmit={handleSubmit(async (data) => {
           console.log("form 제출");
           console.log("data", data);
+          const formData = new FormData();
 
           const { exportName, intro, area, field, total, career, portfolio, file } = data;
 
-          await fetch(`http://localhost:8000/users/upgrade`, {
+          // 파일 추가
+          const fileInput = document.getElementById('file');
+          const selectedFile = fileInput.files[0];
+          if (selectedFile) {
+            formData.append("file", selectedFile); // 'file'은 백엔드에서 기대하는 필드 이름
+          }
+
+          formData.append("intro", data.intro);
+          formData.append("area", data.area);
+          formData.append("field", data.field);
+          formData.append("total", data.total);
+          formData.append("career", data.career);
+          formData.append("exportName", userId);
+
+          
+          await fetch(`http://localhost:8000/my/up-grade/create`, {
             method: "POST",
             headers: {
-              "Content-Type": "application/json",
               'Authorization': `Bearer ${jwtToken}`
             },
-            body: JSON.stringify({
-              exportName: userId,
-              intro: intro,
-              area: area,
-              field: field,
-              total: total,
-              career: career,
-              portfolio: portfolio,
-              file : file
-            })
+            body: formData  
           })
           .then((res) => res.json())
           .then((res) => {
@@ -104,6 +74,10 @@ const Grade = () => {
               navigate('/mypage/up-grade/update');
               return;
             }
+            console.log("res", res)
+            console.log("res.createUpgrade", res.createUpgrade)
+            const newFilesPath = `http://localhost:8000${res.filePath}`;
+            setFilesPath(newFilesPath);
             alert(res.message);
             navigate('/mypage/up-grade/update');
             console.log("등급업 신청 완료");
@@ -146,18 +120,18 @@ const Grade = () => {
               <input 
                   type="file" id='file' name='file'
                   className='file' autoComplete='off'
-                  ref={filesRef}
-                  onChange={handleFileChange}
                   {...register("file")}
+                  onChange={(e) => {
+                    handleFileChange(e);
+                  }}
               />
+              <span>{fileName ? `${fileName}` : '+자료첨부'}</span>
             </S.Label>
-            {fileName && <p>선택된 파일: {fileName}</p>}  {/* 파일 이름 표시 */}
           </S.Portfolio>
 
           <S.UpdateButton>
             <S.Button
               disabled={isSubmitting}
-              onClick={saveFiles}
             >
               작성 완료
             </S.Button>

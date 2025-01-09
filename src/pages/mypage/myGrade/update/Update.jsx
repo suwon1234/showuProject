@@ -10,6 +10,7 @@ const Update = () => {
   const { currentUser } = useSelector((state) => state.user);
   const jwtToken = localStorage.getItem("jwtToken");
   const userId = currentUser ? currentUser._id : '';
+  const [fileName, setFileName] = useState(''); // 선택한 파일 이름
 
   const [userInfo, setUserInfo] = useState({
     intro: '',
@@ -27,11 +28,21 @@ const Update = () => {
     formState: { isSubmitting, errors }
   } = useForm({ mode: "onSubmit" });
 
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    console.log("selectedFile", selectedFile)
+    if (selectedFile) {
+      setFileName(selectedFile.name); // 선택된 파일 이름을 상태에 저장
+    } else {
+      setFileName(''); // 파일이 선택되지 않은 경우 상태 초기화
+    }
+  };
+
   useEffect(() => {
     //사용자 등급업 정보 가져오기
     const fetchUserInfo = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/users/upgrade/${userId}`, {
+        const response = await fetch(`http://localhost:8000/my/up-grade/create/${userId}`, {
           headers: {
             "Authorization": `Bearer ${jwtToken}`,
           },
@@ -63,7 +74,7 @@ const Update = () => {
     const { intro, area, field, total, career, portfolio } = data;
 
     try {
-      const response = await fetch(`http://localhost:8000/users/upgrade/modify/${userId}`, {
+      const response = await fetch(`http://localhost:8000/my/up-grade/modify/${userId}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -133,7 +144,14 @@ const Update = () => {
           <S.Portfolio className="portfolio">
             <S.Label htmlFor="file">
               <p>포트폴리오</p>
-              <input type="file" id="file" className="file" autoComplete="off" />
+              <input 
+                type="file" id="file" 
+                className="file" autoComplete="off"
+                onChange={(e) => {
+                  handleFileChange(e);
+                }}
+              />
+              <span>{fileName ? `${fileName}` : '+자료첨부'}</span>
             </S.Label>
           </S.Portfolio>
 
