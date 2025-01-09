@@ -13,9 +13,8 @@ const Grade = () => {
   const jwtToken = localStorage.getItem("jwtToken");
   const userId = currentUser ? currentUser._id : '';
 
-  console.log("filesPath", filesPath)
-  console.log("fileName", fileName)
-
+  // console.log("filesPath", filesPath)
+  // console.log("fileName", fileName)
 
   const { 
     register, 

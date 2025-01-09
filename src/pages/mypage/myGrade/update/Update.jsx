@@ -163,7 +163,7 @@ const Update = () => {
                   handleFileChange(e);
                 }}
               />
-              <span>{fileName ? fileName : userInfo.file ? userInfo.file : '+자료첨부'}</span>
+              <span>{fileName ? fileName : userInfo.file.split("/").pop() ? userInfo.file.split("/").pop() : '+자료첨부'}</span>
             </S.Label>
           </S.Portfolio>
 
