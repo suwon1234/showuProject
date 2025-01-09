@@ -10,7 +10,9 @@ const Update = () => {
   const { currentUser } = useSelector((state) => state.user);
   const jwtToken = localStorage.getItem("jwtToken");
   const userId = currentUser ? currentUser._id : '';
+  const [filesPath, setFilesPath] = useState(null);
   const [fileName, setFileName] = useState(''); // 선택한 파일 이름
+
 
   const [userInfo, setUserInfo] = useState({
     intro: '',
@@ -18,7 +20,7 @@ const Update = () => {
     field: '',
     total: '',
     career: '',
-    portfolio: ''
+    file: ''
   });
 
   const { 
@@ -57,7 +59,7 @@ const Update = () => {
           setValue("field", data.field || "");
           setValue("total", data.total || "");
           setValue("career", data.career || "");
-          setValue("portfolio", data.portfolio || "");
+          setValue("file", data.file || "");
         }
       } catch (error) {
         console.error("등급업 정보 가져오기 실패", error);
@@ -71,24 +73,31 @@ const Update = () => {
   }, [userId, jwtToken, setValue]);
 
   const updateUserInfo = async (data) => {
+    const formData = new FormData();
+
     const { intro, area, field, total, career, portfolio } = data;
+
+    // 파일 추가
+    const fileInput = document.getElementById('file');
+    const selectedFile = fileInput.files[0];
+    if (selectedFile) {
+      formData.append("file", selectedFile); 
+    }
+
+    formData.append("intro", data.intro);
+    formData.append("area", data.area);
+    formData.append("field", data.field);
+    formData.append("total", data.total);
+    formData.append("career", data.career);
+    formData.append("exportName", userId);
 
     try {
       const response = await fetch(`http://localhost:8000/my/up-grade/modify/${userId}`, {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
           'Authorization': `Bearer ${jwtToken}`,
         },
-        body: JSON.stringify({
-          exportName: userId,
-          intro: intro,
-          area: area,
-          field: field,
-          total: total,
-          career: career,
-          portfolio: portfolio,
-        }),
+        body: formData
       });
 
       const result = await response.json();
@@ -96,10 +105,13 @@ const Update = () => {
       if (!result.modifySuccess) {
         return alert(result.message);
       }
-
+      
+      const updateFilesPath = `http://localhost:8000${result.filePath}`;
+      setFilesPath(updateFilesPath);
       alert(result.message);
       console.log("등급업 수정 완료");
       console.log(result.currentUser);
+
     } catch (error) {
       console.error("등급업 수정 중 오류 발생", error);
       alert("등급업 수정 중 오류가 발생했습니다.");
@@ -151,7 +163,7 @@ const Update = () => {
                   handleFileChange(e);
                 }}
               />
-              <span>{fileName ? `${fileName}` : '+자료첨부'}</span>
+              <span>{fileName ? fileName : userInfo.file ? userInfo.file : '+자료첨부'}</span>
             </S.Label>
           </S.Portfolio>
 

@@ -49,7 +49,7 @@ const Grade = () => {
           const fileInput = document.getElementById('file');
           const selectedFile = fileInput.files[0];
           if (selectedFile) {
-            formData.append("file", selectedFile); // 'file'은 백엔드에서 기대하는 필드 이름
+            formData.append("file", selectedFile); 
           }
 
           formData.append("intro", data.intro);
@@ -58,7 +58,6 @@ const Grade = () => {
           formData.append("total", data.total);
           formData.append("career", data.career);
           formData.append("exportName", userId);
-
           
           await fetch(`http://localhost:8000/my/up-grade/create`, {
             method: "POST",
@@ -74,8 +73,8 @@ const Grade = () => {
               navigate('/mypage/up-grade/update');
               return;
             }
-            console.log("res", res)
-            console.log("res.createUpgrade", res.createUpgrade)
+            // console.log("res", res)
+            // console.log("res.createUpgrade", res.createUpgrade)
             const newFilesPath = `http://localhost:8000${res.filePath}`;
             setFilesPath(newFilesPath);
             alert(res.message);
