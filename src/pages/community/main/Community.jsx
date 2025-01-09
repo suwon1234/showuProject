@@ -5,9 +5,10 @@ import S from './styleCommunity';
 import { Link } from 'react-router-dom';
 
 const Community = () => {
-  const [filterDrop, setFilterDrop] = useState(false); // 필터 드롭다운
-  const [filter, setFilter] = useState("전체"); // 현재 선택된 필터
-  const [commuData, setCommuData] = useState([]); // 커뮤니티 데이터
+  const [filterDrop, setFilterDrop] = useState(false); 
+  const [filter, setFilter] = useState("전체"); 
+  const [commuData, setCommuData] = useState([]); 
+  const [auditionData, setAuditionData] = useState([]);
 
   // 초기 데이터 
   useEffect(() => {
@@ -33,6 +34,22 @@ const Community = () => {
     fetchData();
   }, []);
 
+  // 오디션 데이터 가져오기
+  useEffect(() => {
+    const fetchAuditionData = async () => {
+      try {
+        const response = await fetch("http://localhost:8000/community/audition");
+        const fetchedData = await response.json();
+        setAuditionData(fetchedData);
+      } catch (error) {
+        console.error("오디션 데이터를 불러오는 데 실패했습니다.", error);
+        setAuditionData([]);
+      }
+    };
+
+    fetchAuditionData();
+  }, []);
+
 
   const filteredData = filter === "전체" ? commuData : commuData.filter(item => item.category === filter);
 
@@ -44,6 +61,9 @@ const Community = () => {
   return (
     <S.Wrapper>
       <S.TopTitle>커뮤니티</S.TopTitle>
+      <S.IconWrapper>
+              <FontAwesomeIcon icon={faChevronDown} className='icon' />
+      </S.IconWrapper>
 
       <S.SubWrapper>
         {/* 필터 버튼 */}
