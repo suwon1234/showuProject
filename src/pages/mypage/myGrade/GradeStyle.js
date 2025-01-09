@@ -210,7 +210,7 @@ const S = {};
   S.Portfolio = styled.div`
 
     & label::after {
-      content: '+자료첨부';
+      /* content: '+자료첨부'; */
       cursor: pointer;
       font-size: 17px;
       margin-left: 8px;
