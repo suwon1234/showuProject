@@ -80,12 +80,13 @@ const flexStyle = css`
     width: 1090px; /* 슬라이드 영역 크기 */
     margin: 0 auto;
     justify-items: center;
-    transform: translateX(${(props) => props.offset}px); /* 슬라이드 이동 */
-    transition: transform 0.5s ease-in-out; /* 부드러운 이동 효과 */
+    transform: ${({ offset }) => `translateX(${offset}px)`}; /* 슬라이드 이동 */
+    transition: transform 0.5s ease; /* 부드러운 이동 효과 */
     overflow: hidden;
   `
 
   S.Best = styled.div`
+  
 
     & img {
       width: 300px;
@@ -125,6 +126,7 @@ const flexStyle = css`
       /* transform: translate(0, 50%); */
     }
   `
+
 
   // S.CategoryButton = styled.div` // 상단 버튼들
   //   display: flex;

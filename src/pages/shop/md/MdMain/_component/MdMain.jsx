@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import S from "./styleMain";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faChevronRight, faCircleChevronLeft, faCircleChevronRight, faHeart} from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faChevronRight, faCircleChevronLeft, faCircleChevronRight, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const MdMain = () => {
   const [mdProducts, setMdProducts] = useState([]);
@@ -13,7 +13,6 @@ const MdMain = () => {
   const [currentCategory, setCurrentCategory] = useState("전체");
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [shownProducts, setShownProducts] = useState(15);
-  
 
   useEffect(() => {
     const getMdProducts = async () => {
@@ -43,35 +42,30 @@ const MdMain = () => {
 
   // Best 슬라이드 
   const handleNext = () => {
-    setCurrentSlide((prev) =>
-      prev === Math.ceil(mdProducts.length / ProductsPerSlide) - 1 ? 0 : prev + 1
-    );
+    setCurrentSlide((prev) => {
+      const newSlide = prev === Math.ceil(mdProducts.length / ProductsPerSlide) - 1 ? 0 : prev + 1;
+      const nextStartIndex = newSlide * ProductsPerSlide >= mdProducts.length ? 0 : newSlide * ProductsPerSlide;
+      const newBestProducts = mdProducts.slice(nextStartIndex, nextStartIndex + ProductsPerSlide);
 
-    const nextStartIndex =
-      (currentSlide + 1) * ProductsPerSlide >= mdProducts.length
-        ? 0
-        : (currentSlide + 1) * ProductsPerSlide;
-
-    setBestProducts(
-      mdProducts.slice(nextStartIndex, nextStartIndex + ProductsPerSlide)
-    );
+      // 애니메이션 적용을 위해 상태 업데이트
+      setBestProducts(newBestProducts);
+      return newSlide;
+    });
   };
 
   const handlePrev = () => {
-    setCurrentSlide((prev) =>
-      prev === 0 ? Math.ceil(mdProducts.length / ProductsPerSlide) - 1 : prev - 1
-    );
+    setCurrentSlide((prev) => {
+      const newSlide = prev === 0 ? Math.ceil(mdProducts.length / ProductsPerSlide) - 1 : prev - 1;
+      const prevStartIndex = newSlide * ProductsPerSlide >= mdProducts.length ? 0 : newSlide * ProductsPerSlide;
+      const newBestProducts = mdProducts.slice(prevStartIndex, prevStartIndex + ProductsPerSlide);
 
-    const prevStartIndex =
-      currentSlide === 0
-        ? (Math.ceil(mdProducts.length / ProductsPerSlide) - 1) * ProductsPerSlide
-        : (currentSlide - 1) * ProductsPerSlide;
-
-    setBestProducts(
-      mdProducts.slice(prevStartIndex, prevStartIndex + ProductsPerSlide)
-    );
+      // 애니메이션 적용을 위해 상태 업데이트
+      setBestProducts(newBestProducts);
+      return newSlide;
+    });
   };
 
+  
   // 하트 클릭 (일반MD 상품)
   const handleHeartClickMd = (e, productId) => {
     e.preventDefault();
@@ -141,8 +135,8 @@ const MdMain = () => {
 
           {/* Best 상품 */}
           <S.BestListWrapper offset={-currentSlide * slideWidth}>
-            {bestProducts.map((best) => (
-              <S.Best key={best._id}>
+            {bestProducts.slice(0, ProductsPerSlide).map((best) => (
+              <S.Best key={best._id} className={best.hidden ? 'hidden' : ''}>
                 <Link to={`/shop/md/detail/${best._id}`}>
                   <div className="image-wrapper">
                     <img src={best.image} alt={best.name} className="image" />
@@ -158,7 +152,6 @@ const MdMain = () => {
                 <div className="best-name">{best.mdName}</div>
                 <div className="best-price">
                   {best.price ? best.price.toLocaleString() : "가격 정보 없음"}원
-                  {/* {best.price.toLocaleString()}원 */}
                 </div>
               </S.Best>
             ))}
@@ -202,7 +195,6 @@ const MdMain = () => {
               <div className="md-name">{product.mdName}</div>
               <div className="md-price">
                 {product.price ? product.price.toLocaleString() : "가격 정보 없음"}원
-                {/* {product.price.toLocaleString()}원 */}
               </div>
             </S.Md>
           ))}
@@ -210,12 +202,12 @@ const MdMain = () => {
       </S.MdWrapper>
 
       {filteredProductsWithPrice.length > shownProducts && (
-      <S.ButtonWrapper>
-        <button onClick={handleShowMore}>
-          <FontAwesomeIcon icon={faChevronRight} className="icon2" />
-          MD 더보기
-        </button>
-      </S.ButtonWrapper>
+        <S.ButtonWrapper>
+          <button onClick={handleShowMore}>
+            <FontAwesomeIcon icon={faChevronRight} className="icon2" />
+            MD 더보기
+          </button>
+        </S.ButtonWrapper>
       )}
     </S.MainWrapper>
   );

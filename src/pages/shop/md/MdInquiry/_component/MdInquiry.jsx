@@ -84,7 +84,6 @@ const MdInquiry = () => {
   const handleCancel = () => {
     if (window.confirm("작성하신 내용이 사라집니다. 정말 취소하시겠습니까?")) {
       navigate(-1, { state: { mdName: mdName } });
-      // window.history.back();
     }
   };
 

@@ -1,40 +1,40 @@
-// MD - 결제 페이지
 import React, { useState } from 'react';
 import S from './stylePayment';
 import Dropdown2 from './Dropdown2';
 import Dropdown1 from './Dropdown1';
 import { faCheckCircle, faCreditCard, faMoneyBillTransfer, faXmark } from '@fortawesome/free-solid-svg-icons';
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PaymentButton from '../payment/PaymentButton';
 
 const MdPayment = () => {
-  // const { id } = useParams();
   const { state } = useLocation();
   const initialSelectedOptions = state?.selectedOptions || [];
   const [selectedOptions, setSelectedOptions] = useState(initialSelectedOptions); 
   const options = ['옵션 1', '옵션 2', '옵션 3']; 
   const navigate = useNavigate();
-  
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
+
   const iconPaymentMethods = [
     { label: "체크/신용 카드", icon: faCreditCard },
     { label: "무통장 입금", icon: faMoneyBillTransfer }
   ];
-  
+
   const imagePaymentMethods = [
     { label: "토스페이", image: `${process.env.PUBLIC_URL}/images/shop/md/toss-pay.png` },
     { label: "네이버페이", image: `${process.env.PUBLIC_URL}/images/shop/md/naver-pay.png` },
     { label: "카카오페이", image: `${process.env.PUBLIC_URL}/images/shop/md/kakao-pay.png` },
   ];
 
-  // 배송비
+  // 배송비 계산
   let productTotal = 0;
   selectedOptions.forEach(item => { productTotal += item.price * item.quantity }); 
   const deliveryFee = productTotal >= 70000 ? 0 : 3000; // 배송비 조건 (7만원 이상 무배)
   const discountAmount = 0;
   const totalAmount = productTotal + deliveryFee - discountAmount;
 
-  // 결제 상품 삭제 
+  // 결제 상품 삭제
   const deleteProduct = (index) => {
     const confirmDelete = window.confirm("해당 상품을 삭제하시겠습니까?");
     if (confirmDelete) {
@@ -48,6 +48,31 @@ const MdPayment = () => {
     if (confirmLeave) {
       navigate(`/shop/md`); 
     }
+  };
+
+  // 결제 진행 함수
+  const handlePayment = () => {
+    // 결제 진행 시 필요한 데이터 준비
+    const paymentData = {
+      productName: selectedOptions.map(item => item.name),
+      price: selectedOptions.map(item => item.price),
+      totalAmount,
+      customerName: userName,
+      customerEmail: userEmail,
+      paymentMethod: '카드', // 예시로 카드 결제
+      deliveryFee,
+    };
+
+    // 결제 API 호출 등 결제 진행
+    console.log(paymentData);
+    // 예를 들어, axios를 통해 결제 요청을 보낼 수 있습니다.
+    // axios.post('/api/payment/md', paymentData)
+    //   .then(response => {
+    //     navigate('/shop/md/payment/success');
+    //   })
+    //   .catch(error => {
+    //     console.error('결제 처리 중 오류 발생:', error);
+    //   });
   };
 
   return (
@@ -87,83 +112,81 @@ const MdPayment = () => {
         </S.PaymentList>
 
         <S.TotalAmount>총 상품 금액 ({selectedOptions.length}개)</S.TotalAmount>
-
       </S.PaymentProduct>
 
       <S.InfoWrapper>
-      <S.Info>주문 정보</S.Info>
+        <S.Info>주문 정보</S.Info>
 
-      <S.OrderInfo>
-      <p>주문자</p>
-      <S.InputName>
-      <input type='text' id='name' placeholder='이름' />
-      </S.InputName>
-      </S.OrderInfo>
+        <S.OrderInfo>
+          <p>주문자</p>
+          <S.InputName>
+            <input type='text' id='name' placeholder='이름' value={userName}
+              onChange={(e) => setUserName(e.target.value)} />
+          </S.InputName>
+        </S.OrderInfo>
 
-      <S.OrderInfo>
-      <p>이메일</p>
-      <S.InputEmail>
-      <input type="text" className="email-input" id='email' placeholder='이메일 입력' />
-      <span>@</span>
-      <S.Dropdown1>
-      <Dropdown1 options={options} /> 
-      </S.Dropdown1>
-      </S.InputEmail>
-      </S.OrderInfo>
-  
-      <S.OrderInfo>
-      <p>휴대전화</p>
-      <S.InputPhone>
-      <input type="text" maxlength="3" class="phone-input" />
-      <span>-</span>
-      <input type="text" maxlength="4" class="phone-input" />
-      <span>-</span>
-      <input type="text" maxlength="4" class="phone-input" />
-      </S.InputPhone>
-      </S.OrderInfo>
+        <S.OrderInfo>
+          <p>이메일</p>
+          <S.InputEmail>
+            <input type="text" className="email-input" id='email' placeholder='이메일 입력'
+              value={userEmail} onChange={(e) => setUserEmail(e.target.value)} />
+            <span>@</span>
+            <S.Dropdown1>
+              <Dropdown1 options={options} /> 
+            </S.Dropdown1>
+          </S.InputEmail>
+        </S.OrderInfo>
 
-      <S.Info>배송지</S.Info>
-      <S.OrderInfo>
-      <p>받는 사람</p>
-      <S.InputName>
-      <input type='text' id='name' placeholder='이름' />
-      </S.InputName>
-      </S.OrderInfo>
+        <S.OrderInfo>
+          <p>휴대전화</p>
+          <S.InputPhone>
+            <input type="text" maxLength="3" className="phone-input" />
+            <span>-</span>
+            <input type="text" maxLength="4" className="phone-input" />
+            <span>-</span>
+            <input type="text" maxLength="4" className="phone-input" />
+          </S.InputPhone>
+        </S.OrderInfo>
 
-      <S.OrderInfo>
-      <p>주소</p>
-      <S.InputAddress>
-      <S.Code>
-        <p className='code'>우편번호</p>
-      </S.Code>
-      <input type='text' placeholder='기본 주소' />
-      <input type='text' placeholder='나머지 주소(선택)' />
-      </S.InputAddress>
-      </S.OrderInfo>
+        <S.Info>배송지</S.Info>
+        <S.OrderInfo>
+          <p>받는 사람</p>
+          <S.InputName>
+            <input type='text' id='name' placeholder='이름' />
+          </S.InputName>
+        </S.OrderInfo>
 
-      <S.OrderInfo>
-      <p>휴대전화</p>
-      <S.InputPhone>
-      <input type="text" maxlength="3" class="phone-input" />
-      <span>-</span>
-      <input type="text" maxlength="4" class="phone-input" />
-      <span>-</span>
-      <input type="text" maxlength="4" class="phone-input" />
-      </S.InputPhone>
-      </S.OrderInfo>
+        <S.OrderInfo>
+          <p>주소</p>
+          <S.InputAddress>
+            <S.Code>
+              <p className='code'>우편번호</p>
+            </S.Code>
+            <input type='text' placeholder='기본 주소' />
+            <input type='text' placeholder='나머지 주소(선택)' />
+          </S.InputAddress>
+        </S.OrderInfo>
 
-      <S.Dropdown2>
-      <Dropdown2 options={options} /> 
-      </S.Dropdown2>
+        <S.OrderInfo>
+          <p>휴대전화</p>
+          <S.InputPhone>
+            <input type="text" maxLength="3" className="phone-input" />
+            <span>-</span>
+            <input type="text" maxLength="4" className="phone-input" />
+            <span>-</span>
+            <input type="text" maxLength="4" className="phone-input" />
+          </S.InputPhone>
+        </S.OrderInfo>
 
-      
-      <S.BasicAddress>
-      <S.Icon icon={faCheckCircle} />
-      <p>기본 배송지로 저장</p>
-      </S.BasicAddress>
+        <S.Dropdown2>
+          <Dropdown2 options={options} /> 
+        </S.Dropdown2>
 
+        <S.BasicAddress>
+          <S.Icon icon={faCheckCircle} />
+          <p>기본 배송지로 저장</p>
+        </S.BasicAddress>
       </S.InfoWrapper>
-
 
       <S.PayWrapper>
         <S.Info>결제 금액</S.Info>
@@ -218,21 +241,11 @@ const MdPayment = () => {
       </S.MethodWrapper>
 
       <S.PaymentButton>
-          <S.BackButton onClick={handleBackButton}>이전 페이지로</S.BackButton>
-        <Link to={'/shop/md/payment/info'}>
-          {/* <S.NextButton><p>{totalAmount.toLocaleString()}원</p>결제 진행 </S.NextButton> */}
-          {/* <PaymentButton><p>{totalAmount.toLocaleString()}원</p>결제 진행 </PaymentButton> */}
-          <PaymentButton
-          productTotal={productTotal}
-          deliveryFee={deliveryFee}
-          discountAmount={discountAmount}
-          totalAmount={totalAmount}
-
-      
-          /><p>{totalAmount.toLocaleString()}원</p>결제 진행
-        </Link>
+        <S.BackButton onClick={handleBackButton}>이전 페이지로</S.BackButton>
+        <PaymentButton onClick={handlePayment}>
+          <p>{totalAmount.toLocaleString()}원</p> 결제 진행
+        </PaymentButton>
       </S.PaymentButton>
-
     </S.PaymentWrapper>
   );
 };
