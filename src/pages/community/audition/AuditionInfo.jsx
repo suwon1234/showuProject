@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 
 const AuditionInfo = () => {
-  const { id } = useParams(); // URL에서 ID 가져오기
+  const { id } = useParams(); 
   const [audition, setAudition] = useState(null);
   const [error, setError] = useState(null);
 
@@ -32,7 +32,7 @@ const AuditionInfo = () => {
   }
 
   if (!audition) {
-    return <div>Loading...</div>; // 데이터 로딩 중
+    return <div>데이터 로딩중..</div>; 
   }
 
   return (

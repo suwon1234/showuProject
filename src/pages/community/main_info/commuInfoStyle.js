@@ -239,6 +239,10 @@ S.CommentItem = styled.div`
     color: #aaa;
   }
 
+  textarea {
+    color: black;
+  }
+
 `;
 
 
