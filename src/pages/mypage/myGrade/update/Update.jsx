@@ -10,6 +10,9 @@ const Update = () => {
   const { currentUser } = useSelector((state) => state.user);
   const jwtToken = localStorage.getItem("jwtToken");
   const userId = currentUser ? currentUser._id : '';
+  const [filesPath, setFilesPath] = useState(null);
+  const [fileName, setFileName] = useState(''); // 선택한 파일 이름
+
 
   const [userInfo, setUserInfo] = useState({
     intro: '',
@@ -17,7 +20,7 @@ const Update = () => {
     field: '',
     total: '',
     career: '',
-    portfolio: ''
+    file: ''
   });
 
   const { 
@@ -27,11 +30,21 @@ const Update = () => {
     formState: { isSubmitting, errors }
   } = useForm({ mode: "onSubmit" });
 
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    console.log("selectedFile", selectedFile)
+    if (selectedFile) {
+      setFileName(selectedFile.name); // 선택된 파일 이름을 상태에 저장
+    } else {
+      setFileName(''); // 파일이 선택되지 않은 경우 상태 초기화
+    }
+  };
+
   useEffect(() => {
     //사용자 등급업 정보 가져오기
     const fetchUserInfo = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/users/upgrade/${userId}`, {
+        const response = await fetch(`http://localhost:8000/my/up-grade/create/${userId}`, {
           headers: {
             "Authorization": `Bearer ${jwtToken}`,
           },
@@ -46,7 +59,7 @@ const Update = () => {
           setValue("field", data.field || "");
           setValue("total", data.total || "");
           setValue("career", data.career || "");
-          setValue("portfolio", data.portfolio || "");
+          setValue("file", data.file || "");
         }
       } catch (error) {
         console.error("등급업 정보 가져오기 실패", error);
@@ -60,24 +73,31 @@ const Update = () => {
   }, [userId, jwtToken, setValue]);
 
   const updateUserInfo = async (data) => {
+    const formData = new FormData();
+
     const { intro, area, field, total, career, portfolio } = data;
 
+    // 파일 추가
+    const fileInput = document.getElementById('file');
+    const selectedFile = fileInput.files[0];
+    if (selectedFile) {
+      formData.append("file", selectedFile); 
+    }
+
+    formData.append("intro", data.intro);
+    formData.append("area", data.area);
+    formData.append("field", data.field);
+    formData.append("total", data.total);
+    formData.append("career", data.career);
+    formData.append("exportName", userId);
+
     try {
-      const response = await fetch(`http://localhost:8000/users/upgrade/modify/${userId}`, {
+      const response = await fetch(`http://localhost:8000/my/up-grade/modify/${userId}`, {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
           'Authorization': `Bearer ${jwtToken}`,
         },
-        body: JSON.stringify({
-          exportName: userId,
-          intro: intro,
-          area: area,
-          field: field,
-          total: total,
-          career: career,
-          portfolio: portfolio,
-        }),
+        body: formData
       });
 
       const result = await response.json();
@@ -85,10 +105,13 @@ const Update = () => {
       if (!result.modifySuccess) {
         return alert(result.message);
       }
-
+      
+      const updateFilesPath = `http://localhost:8000${result.filePath}`;
+      setFilesPath(updateFilesPath);
       alert(result.message);
       console.log("등급업 수정 완료");
       console.log(result.currentUser);
+
     } catch (error) {
       console.error("등급업 수정 중 오류 발생", error);
       alert("등급업 수정 중 오류가 발생했습니다.");
@@ -133,7 +156,14 @@ const Update = () => {
           <S.Portfolio className="portfolio">
             <S.Label htmlFor="file">
               <p>포트폴리오</p>
-              <input type="file" id="file" className="file" autoComplete="off" />
+              <input 
+                type="file" id="file" 
+                className="file" autoComplete="off"
+                onChange={(e) => {
+                  handleFileChange(e);
+                }}
+              />
+              <span>{fileName ? fileName : userInfo.file.split("/").pop() ? userInfo.file.split("/").pop() : '+자료첨부'}</span>
             </S.Label>
           </S.Portfolio>
 
