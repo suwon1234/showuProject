@@ -52,6 +52,8 @@ const AdminContainer = () => {
           <S.Thead>
             <S.Tr>
               <th scope='col'>전문가 ID</th>
+              <th scope='col'>전문가 성함</th>
+              <th scope='col'>자기소개</th>
               <th scope='col'>전문분야</th>
               <th scope='col'>경력사항</th>
             </S.Tr>
@@ -59,7 +61,9 @@ const AdminContainer = () => {
           <S.Tbody>
             { adminList && adminList.map((item, i) => (
               <S.RowTr key={i}>
-                <th scope='row' className='num'>{item.exportName}</th>
+                <th scope='row' className='num'>{item._id}</th>
+                <td>{item.intro}</td>
+                <td>{item.exportName.name}</td>
                 <td>{item.field}</td>
                 <td>{item.career}</td>
               </S.RowTr>
