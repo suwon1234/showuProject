@@ -77,76 +77,38 @@ const CommunityInfo = () => {
   };
 
   // 댓글 수정 완료
-  // const handleCommentEditSubmit = async (commentId) => {
-  //   if (!editingText) {
-  //     alert("수정할 내용을 입력해주세요.");
-  //     return;
-  //   }
-
-  //   const token = localStorage.getItem("jwtToken");
-
-  //   try {
-  //     const response = await fetch(`http://localhost:8000/community/comments/${commentId}`, {
-  //       method: "PUT",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: `Bearer ${token}`,
-  //       },
-  //       body: JSON.stringify({ content: editingText }),
-  //     });
-
-  //     if (!response.ok) throw new Error("댓글 수정에 실패했습니다.");
-  //     const updatedComment = await response.json();
-  //     setComments((prevComments) =>
-  //       prevComments.map((comment) =>
-  //         comment._id === updatedComment._id ? updatedComment : comment
-  //       )
-  //     );
-  //     setEditingCommentId(null);
-  //     setEditingText("");
-  //     alert("댓글이 수정되었습니다!");
-  //   } catch (error) {
-  //     alert("댓글 수정 중 오류가 발생했습니다.");
-  //   }
-  // };
   const handleCommentEditSubmit = async (commentId) => {
-  if (!editingText) {
-    alert("수정할 내용을 입력해주세요.");
-    return;
-  }
+    if (!editingText) {
+      alert("수정할 내용을 입력해주세요.");
+      return;
+    }
 
-  const token = localStorage.getItem("jwtToken");
+    const token = localStorage.getItem("jwtToken");
 
-  try {
-    const response = await fetch(`http://localhost:8000/community/comments/${commentId}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({ content: editingText }),
-    });
+    try {
+      const response = await fetch(`http://localhost:8000/community/comments/${commentId}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ content: editingText }),
+      });
 
-    if (!response.ok) throw new Error("댓글 수정에 실패했습니다.");
-    const updatedComment = await response.json();
-
-    // 상태 업데이트: 수정된 댓글 반영
-    setComments((prevComments) =>
-      prevComments.map((comment) =>
-        comment._id === commentId ? { ...comment, content: updatedComment.content } : comment
-      )
-    );
-
-    setEditingCommentId(null);
-    setEditingText("");
-    alert("댓글이 수정되었습니다!");
-  } catch (error) {
-    alert("댓글 수정 중 오류가 발생했습니다.");
-    console.error("댓글 수정 오류:", error);
-  }
-};
-
-
+      if (!response.ok) throw new Error("댓글 수정에 실패했습니다.");
+      const updatedComment = await response.json();
+      setComments((prevComments) =>
+        prevComments.map((comment) =>
+          comment._id === updatedComment._id ? updatedComment : comment
+        )
+      );
+      setEditingCommentId(null);
+      setEditingText("");
+      alert("댓글이 수정되었습니다!");
+    } catch (error) {
+      alert("댓글 수정 중 오류가 발생했습니다.");
+    }
+  };
 
   // 댓글 삭제
   const handleCommentDelete = async (commentId) => {
@@ -230,11 +192,11 @@ const CommunityInfo = () => {
           <S.Button onClick={handleLikeButton} liked={isLiked}>
             {isLiked ? (
               <>
-                <FontAwesomeIcon icon={faHeartBroken} /> 좋아요 취소 {likeCount}
+                <FontAwesomeIcon icon={faHeart} /> 좋아요 취소 {likeCount}
               </>
             ) : (
               <>
-                <FontAwesomeIcon icon={faHeart} />  좋아요 {likeCount}
+                <FontAwesomeIcon icon={faHeartBroken} />  좋아요 {likeCount}
               </>
             )}
           </S.Button>
@@ -255,7 +217,7 @@ const CommunityInfo = () => {
               <S.CommentItem key={comment._id}>
                 {editingCommentId === comment._id ? (
                   <>
-                    <textarea 
+                    <textarea
                       value={editingText}
                       onChange={(e) => setEditingText(e.target.value)}
                     />

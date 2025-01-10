@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import S from './styleEditCommentsMain';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const EditCommentsMain = () => {
   const { id } = useParams();
@@ -13,39 +13,50 @@ const EditCommentsMain = () => {
   const [error, setError] = useState(null);
 
   // 댓글 데이터 가져오기
-  useEffect(() => {
-    console.log("Received ID:", id); 
-    if (!id) {
-      setError("유효한 id가 제공되지 않았습니다.");
-      setLoading(false);
-      return;
-    }
+  // useEffect(() => {
+  //   const fetchComments = async () => {
+  //     try {
+  //       const response = await fetch(`http://localhost:8000/community/comments/${id}`);
+  //       if (!response.ok) {
+  //         const errorResponse = await response.json();
+  //         throw new Error(errorResponse.message || "댓글 데이터를 가져오는 데 실패했습니다.");
+  //       }
+  //       const result = await response.json();
+  //       setComments(result);
+  //     } catch (error) {
+  //       console.error("댓글 가져오기 오류:", error);
+  //       setError(error.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
 
-    const fetchComments = async () => {
-      try {
-        const response = await fetch(`http://localhost:8000/community/comments/${id}`);
-        if (!response.ok) {
-          const errorResponse = await response.json();
-          throw new Error(errorResponse.message || "댓글 데이터를 가져오는 데 실패했습니다.");
-        }
-        const result = await response.json();
-        setComments(result);
-      } catch (error) {
-        console.error("댓글 가져오기 오류:", error);
-        setError(error.message);
-      } finally {
-        setLoading(false);
+  //   fetchComments();
+  // }, [id]);
+
+  
+
+  // 댓글 추가 (예시 추가)
+  const handleAddComment = async (newComment) => {
+    try {
+      const response = await fetch(`http://localhost:8000/community/comments/${id}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newComment),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.message || "댓글 추가에 실패했습니다.");
       }
-    };
 
-    fetchComments();
-  }, [id]);
-
-  // 댓글 수정 페이지 이동
-  const handleEdit = (commentId) => {
-    const complete = window.confirm("수정 페이지로 이동하시겠습니까?");
-    if (complete) {
-      navigate(`/community/communityInfo/editComments/${commentId}`);
+      // 댓글 상태 업데이트
+      setComments((prevComments) => [result.comment, ...prevComments]);
+      alert("댓글이 추가되었습니다!");
+    } catch (error) {
+      console.error("댓글 추가 오류:", error);
+      alert("댓글 추가 중 오류가 발생했습니다.");
     }
   };
 
@@ -106,14 +117,11 @@ const EditCommentsMain = () => {
             <tbody>
               {comments.map((comment) => (
                 <tr key={comment._id}>
-                  <td>{comment.title}</td>
-                  <td>{comment.content}</td>
-                  <td>{new Date(comment.createdAt).toLocaleString()}</td>
+                  <td>{comment.content}</td> {/* 댓글 내용 */}
+                  <td>{new Date(comment.createdAt).toLocaleString()}</td> {/* 작성 날짜 */}
                   <td>
-                    {/* 수정/삭제 버튼 */}
-                    <button onClick={() => navigate(`/community/communityInfo/editCommentsMain/${id}`)}>
-                      수정/삭제
-                    </button>
+                    <button onClick={() => navigate(`/community/communityInfo/editComments/${comment._id}`)}>수정</button>
+                    <button onClick={() => handleDelete(comment._id)}>삭제</button>
                   </td>
                 </tr>
               ))}
