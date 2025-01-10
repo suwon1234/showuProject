@@ -1,4 +1,4 @@
-// 경매 - 문의내역 페이지
+// MD - 문의내역 페이지
 import React, { useEffect, useState } from 'react';
 import S from './styleInquiryList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -63,10 +63,9 @@ const AuctionInquiryList = () => {
       
       {inquiryList.map((inquiry, i) => (
         <Link to={`/shop/auction/inquiry/${inquiry._id}`}>
-        {/* <S.InquiryList key={inquiry._id} onClick={() => handleClick(inquiry.id)}> */}
         <S.InquiryList key={inquiry._id}>
           <S.Left1>
-            {/* <S.ListItem>{inquiry.id}</S.ListItem> */}
+            {/* <S.ListItem>{inquiry._id}</S.ListItem> */}
             <S.ListItem>{i + 1}</S.ListItem>
           </S.Left1>
           <S.Left2>
@@ -91,7 +90,7 @@ const AuctionInquiryList = () => {
         </Link>
       ))}
 
-      <S.BackButton onClick={handleCancel}>이전 페이지로</S.BackButton>
+        <S.BackButton onClick={handleCancel}>이전 페이지로</S.BackButton>
     </S.ListWrapper>
   );
 };

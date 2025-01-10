@@ -17,7 +17,6 @@ const AuctionInquiry = () => {
   const [content, setContent] = useState(''); 
   const [selectedAlarm, setSelectedAlarm] = useState(null); 
   const [isAgreed, setIsAgreed] = useState(false);
-
   const location = useLocation();
   const { auctionName } = location.state || {}; // state에서 상품명 받기
   
@@ -62,7 +61,7 @@ const AuctionInquiry = () => {
           content,
           selectedAlarm,
           isAgreed,
-          mdName: auctionName || '알 수 없음',
+          auctionName: auctionName || '알 수 없음',
         }),
       });
 
@@ -82,7 +81,7 @@ const AuctionInquiry = () => {
 
   const handleCancel = () => {
     if (window.confirm("작성하신 내용이 사라집니다. 정말 취소하시겠습니까?")) {
-      navigate(-1);
+      navigate(-1, { state: { auctionName: auctionName } });
     }
   };
 
@@ -131,10 +130,10 @@ const AuctionInquiry = () => {
                 onChange={(e) => setTitle(e.target.value)} />
             </td>
           </tr>
-          <tr>
+          {/* <tr>
             <th>작성자</th>
             <td colSpan="2"></td>
-          </tr>
+          </tr> */}
           <tr>
             <th>내용</th>
             <td colSpan="2">

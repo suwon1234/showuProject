@@ -28,8 +28,12 @@ const MdInquiryList = () => {
 
   }, []);
 
-  const handleCancel = () => {
-      navigate(-1);
+  // const handleCancel = () => {
+  //     navigate(-1);
+  // };
+
+  const handleGoBack = () => {
+    navigate('/shop/md')
   };
 
   return (
@@ -90,7 +94,7 @@ const MdInquiryList = () => {
         </Link>
       ))}
 
-        <S.BackButton onClick={handleCancel}>이전 페이지로</S.BackButton>
+        <S.BackButton onClick={handleGoBack}>홈으로 돌아가기</S.BackButton>
     </S.ListWrapper>
   );
 };

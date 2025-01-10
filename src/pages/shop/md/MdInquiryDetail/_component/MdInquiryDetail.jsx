@@ -3,41 +3,61 @@ import S from './styleInquiryDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { Link, useParams, useNavigate } from 'react-router-dom';
-import useInput from '../../../_component/useInput';
+import useInput from './useInput2';
 
 const MdInquiryDetail = () => {
   const [inquiryList, setInquiryList] = useState([]);
-  const [isEditing, setIsEditing] = useState(false);
-  const [updatedContent, setUpdatedContent] = useInput(''); 
-  const [inquiryDetail, setInquiryDetail] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);  // 수정 상태
+  const [updatedContent, setUpdatedContent] = useInput('');  // 수정된 내용 저장
+  const [inquiryDetail, setInquiryDetail] = useState({ content: '' });  // 초기값 수정
 
   const { id } = useParams();
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
 
-  // 이전글, 다음글 불러오기
-  useEffect(() => {
-    const getInquiryList = async () => {
-      try {
-        const response = await fetch('http://localhost:8000/shop/md/inquiry');
-        const datas = await response.json();
-        setInquiryList(datas.inquiryList);
-      } catch (error) {
-        console.error("InquiryListError", error);
-      }
-    };
+  // 문의 목록 가져오기
+  // useEffect(() => {
+  //   const getInquiryList = async () => {
+  //     try {
+  //       const response = await fetch('http://localhost:8000/shop/md/inquiry');
+  //       const datas = await response.json();
+  //       setInquiryList(datas.inquiryList);
+  //     } catch (error) {
+  //       console.error("InquiryListError", error);
+  //     }
+  //   };
 
-    getInquiryList();
-  }, []);
+  //   getInquiryList();
+  // }, []);
 
-  // 상세글
+  // 상세 문의 내용 가져오기
+  // useEffect(() => {
+  //   const getInquiryDetail = async () => {
+  //     try {
+  //       const response = await fetch(`http://localhost:8000/shop/md/inquiry/${id}`);
+  //       const datas = await response.json();
+  //       // inquiryDetail을 초기값으로 처리
+  //       setInquiryDetail(datas.inquiry || { content: '' }); 
+  //       setUpdatedContent(datas.inquiry?.content || '');  // 수정할 때 사용할 기본값 설정
+  //     } catch (error) {
+  //       console.error("상세 문의 내역 가져오기 오류", error);
+  //     }
+  //   };
+
   useEffect(() => {
     const getInquiryDetail = async () => {
       try {
         const response = await fetch(`http://localhost:8000/shop/md/inquiry/${id}`);
         const datas = await response.json();
-        setInquiryDetail(datas.inquiry);
+  
+        if (response.ok) {
+          setInquiryDetail(datas.inquiry || { content: '' }); // 기본값 추가
+        } else {
+          console.error("문의 내역을 불러오는 데 실패했습니다.");
+          setInquiryDetail({ content: '문제를 찾을 수 없습니다.' }); // 실패 메시지 표시
+        }
       } catch (error) {
         console.error("상세 문의 내역 가져오기 오류", error);
+        setInquiryDetail({ content: '서버와 연결할 수 없습니다.' }); // 네트워크 오류 처리
       }
     };
 
@@ -51,30 +71,32 @@ const MdInquiryDetail = () => {
 
   // 수정 버튼 클릭 시 수정 여부 확인
   const handleEdit = () => {
-    const isConfirmed = window.confirm("수정하시겠습니까?");
-    if (isConfirmed) {
-      setIsEditing(true);
-      setUpdatedContent(inquiryDetail.content || '');  // 상세글 로딩 => setUpdatedContent
+    if (!inquiryDetail) {
+      console.error('수정 요청 시 inquiryDetail이 없습니다!');
+      return;
     }
+
+    setIsEditing(true);
+    setUpdatedContent(inquiryDetail.content || ''); // 기존 내용으로 설정
   };
 
   // 수정 취소 => 기존 내용 되돌리기
   const handleCancel = () => {
-    setIsEditing(false);  // 편집 취소
-    setUpdatedContent(inquiryDetail.content || '');  // 기존 내용으로 되돌리기
+    setIsEditing(false); 
+    setUpdatedContent(inquiryDetail.content || ''); // 초기 내용으로 되돌리기
   };
 
+  // 수정된 내용 저장하기
   const handleSave = async () => {
     try {
       const response = await fetch(`http://localhost:8000/shop/md/inquiry/${inquiryDetail._id}`, {
-      // const response = await fetch(`http://localhost:8000/shop/md/inquiry/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           ...inquiryDetail,
-          content: updatedContent,
+          content: updatedContent,  // 수정된 내용 저장
         }),
       });
 
@@ -82,7 +104,7 @@ const MdInquiryDetail = () => {
         setIsEditing(false);
         setInquiryDetail((prev) => ({
           ...prev,
-          content: updatedContent,
+          content: updatedContent,  // 수정된 내용 갱신
         }));
       } else {
         console.error("Failed to save inquiry...");
@@ -92,6 +114,7 @@ const MdInquiryDetail = () => {
     }
   };
 
+  // 삭제 버튼
   const handleDelete = async () => {
     const isConfirmed = window.confirm('정말로 삭제하시겠습니까?');
     if (isConfirmed) {
@@ -101,7 +124,7 @@ const MdInquiryDetail = () => {
         });
 
         if (response.ok) {
-          navigate('/shop/md/inquiry/list'); // 삭제 => 목록 페이지 이동
+          navigate('/shop/md/inquiry/list');  // 삭제 후 목록으로 돌아가기
         } else {
           console.error('Failed to delete inquiry');
         }
@@ -111,6 +134,7 @@ const MdInquiryDetail = () => {
     }
   };
 
+  // 이전글, 다음글 구하기
   const getPreviousInquiry = () => {
     const currentIndex = inquiryList.findIndex((item) => item._id === inquiryDetail._id);
     return currentIndex > 0 ? inquiryList[currentIndex - 1] : null;
@@ -138,23 +162,19 @@ const MdInquiryDetail = () => {
               <S.Th>상품명</S.Th>
               <S.Td>{inquiryDetail.mdName}</S.Td>
             </tr>
-            {/* <tr>
-              <S.Th>작성자</S.Th>
-              <S.Td>{inquiryDetail.writer}</S.Td>
-            </tr> */}
           </tbody>
         </S.Table>
 
         <S.Input>
           {isEditing ? (
-            <S.InputContent 
-              type="text" 
-              placeholder="내용을 입력하세요." 
-              value={updatedContent}  // updatedContent 없으면 => 초기화
-              onChange={(e) => setUpdatedContent(e.target.value)}  // 내용 변경 =>  업데이트트
+            <S.InputContent
+              type="text"
+              placeholder="내용을 입력하세요."
+              value={updatedContent} 
+              onChange={(e) => setUpdatedContent(e.target.value)}  // 내용 수정
             />
           ) : (
-            <S.Content>{inquiryDetail?.content || '내용'}</S.Content>
+            <S.Content>{inquiryDetail?.content || '내용'}</S.Content>  // 내용 표시
           )}
         </S.Input>
 
@@ -162,7 +182,7 @@ const MdInquiryDetail = () => {
           <S.ButtonContainer>
             <S.ButtonWrapper>
               <S.CancelButton onClick={handleCancel}>취소</S.CancelButton>
-              <S.SaveButton onClick={handleSave}>확인</S.SaveButton>
+              <S.SaveButton onClick={handleSave}>확인</S.SaveButton>  {/* 수정 저장 */}
             </S.ButtonWrapper>
           </S.ButtonContainer>
         ) : (
@@ -172,7 +192,7 @@ const MdInquiryDetail = () => {
             </Link>
             <S.ButtonWrapper>
               <S.DeleteButton onClick={handleDelete}>삭제</S.DeleteButton>
-              <S.ModifyButton onClick={handleEdit}>수정</S.ModifyButton>
+              <S.ModifyButton onClick={handleEdit}>수정</S.ModifyButton>  {/* 수정 버튼 */}
             </S.ButtonWrapper>
           </S.ButtonContainer>
         )}
