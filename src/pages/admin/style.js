@@ -1,58 +1,54 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 const S = {};
 
   S.Container = styled.div`
-    display: flex;
-    justify-content: center;
-    margin-left: 150px;
+    width: 100%;
+    height: 100%;
+    margin-top: 20px;
   `
 
-  S.Table = styled.table`
-    width: 1000px;
-    height: auto;
-    
+  S.LeftSection = styled.div`
+    width: 250px;
+    height: 100%;
   `
+  S.Title = styled.ul`
 
-  S.Thead = styled.thead`
-    font-size: 16px;
-    background-color: black;
-    font-weight: 700;
-  `
-
-  S.Tr = styled.tr`
-
-    & th {
-      color: white;
-      padding: 10px;
-      text-align: left;
+    & li:first-child {
+      font-size: 25px;
+      margin-bottom: 5px;
     }
 
-  `
-
-  S.Tbody = styled.tbody`
-    & td {
-      padding: 20px 10px;
+    & li:nth-child(2){
+      font-size: 16px;
     }
   `
 
-  S.RowTr = styled.tr`
+  S.Ul = styled.ul`
+    margin: 20px 0;
 
-    &:hover {
-      border-left: 2px solid #ffd400;
-      background-color: rgb(255, 212, 0, 0.1);
-      cursor: pointer;
-      }
-
-    & td {
-      padding: 20px 10px; 
+    & li {
+      margin-bottom: 5px;
     }
 
-    & th {
-      text-align: left;
+    & li:nth-child(1) {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
     }
 
+    & li:last-child() {
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    & hr {
+      width: 230px;
+      border: none;
+      border-bottom: 0.5px solid #ffd400;
+      text-align: center;
+      margin-top: 25px;
+    }
   `
-
 
 export default S;
