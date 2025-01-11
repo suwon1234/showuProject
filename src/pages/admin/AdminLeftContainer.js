@@ -1,6 +1,6 @@
 import React from 'react';
-import S from './style.js'
 import { Link } from 'react-router-dom';
+import S from './style'
 
 
 const AdminLeftContainer = () => {
