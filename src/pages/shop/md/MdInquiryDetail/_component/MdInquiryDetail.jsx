@@ -39,7 +39,7 @@ const MdInquiryDetail = () => {
   //       setInquiryDetail(datas.inquiry || { content: '' }); 
   //       setUpdatedContent(datas.inquiry?.content || '');  // 수정할 때 사용할 기본값 설정
   //     } catch (error) {
-  //       console.error("상세 문의 내역 가져오기 오류", error);
+  //       console.error("상세 문의 내역 가져오기 오류", error);ㄴ
   //     }
   //   };
 
