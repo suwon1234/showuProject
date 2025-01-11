@@ -1,3 +1,5 @@
+// 커뮤니티 인포 정보, 좋아요, 댓글
+
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import S from "./commuInfoStyle";
@@ -22,24 +24,25 @@ const CommunityInfo = () => {
     const fetchCommunityInfo = async () => {
       try {
         const token = localStorage.getItem("jwtToken");
-        const response = await fetch(`http://localhost:8000/community/${id}`, {
+        const response = await fetch(`http://localhost:8000/community/${id}/details`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!response.ok) throw new Error("데이터를 가져오는 데 실패했습니다.");
         const result = await response.json();
-        setData(result);
-        setLikeCount(result.likeCount || 0);
-        setComments(result.comments || []);
-        setIsLiked(result.isLiked || false);
+        setData(result.community); // 게시물 데이터 설정
+        setComments(result.comments || []); // 댓글 데이터 설정
+        setLikeCount(result.community.likeCount || 0);
+        setIsLiked(result.community.isLiked || false);
         setLoading(false);
       } catch (error) {
         setError(error.message);
         setLoading(false);
       }
     };
-
+  
     fetchCommunityInfo();
   }, [id]);
+  
 
   // 댓글 등록
   const handleCommentSubmit = async () => {
