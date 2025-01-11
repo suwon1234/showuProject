@@ -80,6 +80,30 @@ const S = {};
 
   `
 
+  S.RoleChangeButtonWrapper = styled.div`
+    display: flex;
+    gap: 10px;
+    
+    & button {
+      border: none;
+    }
+
+    & button.exportButton {
+      background-color: #000;
+      border-radius: 5px;
+      font-size: 16px;
+      border: 1px solid #ffd400;
+    }
+
+    & button.rejectButton {
+      background-color: #000;
+      border-radius: 5px;
+      font-size: 16px;
+      border: 1px solid #797979;
+    }
+
+  `
+
   S.ModalOverlay = styled.div`
     position: fixed;
     top: 0;
@@ -91,7 +115,7 @@ const S = {};
     justify-content: center;
     align-items: center;
     z-index: 1000;
-  `;
+  `
 
   S.ModalContent = styled.div`
     background-color: #000;
@@ -101,7 +125,7 @@ const S = {};
     width: 800px;
     height: 500px;
     position: relative;
-  `;
+  `
 
   S.ModalHeader = styled.div`
     display: flex;
@@ -121,17 +145,55 @@ const S = {};
       font-size: 1.2em;
       cursor: pointer;
     }
-  `;
+  `
 
   S.ModalBody = styled.div`
     margin-top: 10px;
+    /* padding: 10px; */
+    display: flex;
+    flex-direction: column;
+  `
+
+  S.ModalContent = styled.div`
+    width: 750px;
+    margin: 5px 0;
+    font-size: 16px;
+    border: 1px solid #444444;
     padding: 10px;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
-    p {
-      margin: 5px 0;
+    & div {
+      width: 730px;
     }
-  `;
 
+    & div.ContentTitle {
+      width: 100px;
+    }
 
+    & div.ContentWapperIntro {
+      display: flex;
+      height: 200px;
+    }
+
+    & div.ContentWarpper {
+      display: flex;
+    }
+
+    & a {
+      position: relative;
+    }
+
+    & span.downloadeButton {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      border-radius: 5px;
+      background-color: #797979;
+      padding: 5px;
+    }
+  `
 
 export default S;
