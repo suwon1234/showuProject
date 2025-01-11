@@ -73,23 +73,22 @@ const CommunityInfo = () => {
     }
   };
 
-  // 댓글 수정 시작
+  // 댓글 수정 
   const handleCommentEdit = (comment) => {
     setEditingCommentId(comment._id);
     setEditingText(comment.content);
   };
 
-  // 댓글 수정 완료
   const handleCommentEditSubmit = async (commentId) => {
-    if (!editingText) {
+    if (!editingText.trim()) {
       alert("수정할 내용을 입력해주세요.");
       return;
     }
-
+  
     const token = localStorage.getItem("jwtToken");
-
+  
     try {
-      const response = await fetch(`http://localhost:8000/community/comments/${commentId}`, {
+      const response = await fetch(`http://localhost:8000/community/comments/${commentId}`, { // URL 확인
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -97,14 +96,18 @@ const CommunityInfo = () => {
         },
         body: JSON.stringify({ content: editingText }),
       });
-
+  
       if (!response.ok) throw new Error("댓글 수정에 실패했습니다.");
+  
       const updatedComment = await response.json();
+  
+      // 상태 업데이트
       setComments((prevComments) =>
         prevComments.map((comment) =>
           comment._id === updatedComment._id ? updatedComment : comment
         )
       );
+  
       setEditingCommentId(null);
       setEditingText("");
       alert("댓글이 수정되었습니다!");
@@ -112,6 +115,7 @@ const CommunityInfo = () => {
       alert("댓글 수정 중 오류가 발생했습니다.");
     }
   };
+  
 
   // 댓글 삭제
   const handleCommentDelete = async (commentId) => {
