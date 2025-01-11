@@ -15,6 +15,15 @@ const MdPayment = () => {
   const navigate = useNavigate();
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
+  const [userPhone1, setUserPhone1] = useState('');
+  const [userPhone2, setUserPhone2] = useState('');
+  const [userPhone3, setUserPhone3] = useState('');
+  const [userPhone4, setUserPhone4] = useState('');
+  const [userPhone5, setUserPhone5] = useState('');
+  const [userPhone6, setUserPhone6] = useState('');
+  const [userAddress, setUserAddress] = useState('');
+  const [errors, setErrors] = useState({})
+  const [hoveredField, setHoveredField] = useState(null); // hover 상태 관리
 
   const iconPaymentMethods = [
     { label: "체크/신용 카드", icon: faCreditCard },
@@ -48,6 +57,18 @@ const MdPayment = () => {
     if (confirmLeave) {
       navigate(`/shop/md`); 
     }
+  };
+
+  // 유효성 검사 함수
+  const validateField = (field, value) => {
+    return value.trim() === '';
+  };
+
+  const handleBlur = (field, value) => {
+    setErrors((prev) => ({
+      ...prev,
+      [field]: validateField(field, value),
+    }));
   };
 
   // 결제 진행 함수
@@ -120,39 +141,63 @@ const MdPayment = () => {
         <S.OrderInfo>
           <p>주문자</p>
           <S.InputName>
-            <input type='text' id='name' placeholder='이름' value={userName}
-              onChange={(e) => setUserName(e.target.value)} />
+            <input type="text" id="name" placeholder="이름" value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              onBlur={() => handleBlur('userName', userName)} />
+              {errors.userName && <S.ErrorText>필수 항목입니다.</S.ErrorText>}
           </S.InputName>
         </S.OrderInfo>
 
         <S.OrderInfo>
           <p>이메일</p>
+          <S.EmailWrapper>
           <S.InputEmail>
-            <input type="text" className="email-input" id='email' placeholder='이메일 입력'
-              value={userEmail} onChange={(e) => setUserEmail(e.target.value)} />
+            <input type="text" className="email-input" id="email" placeholder="이메일 입력" value={userEmail}
+              onChange={(e) => setUserEmail(e.target.value)}
+              onBlur={() => handleBlur('userEmail', userEmail)} />
             <span>@</span>
             <S.Dropdown1>
-              <Dropdown1 options={options} /> 
+              <Dropdown1 options={options} />
             </S.Dropdown1>
           </S.InputEmail>
+          {errors.userEmail && <S.ErrorText>필수 항목입니다.</S.ErrorText>}
+          </S.EmailWrapper>
         </S.OrderInfo>
 
         <S.OrderInfo>
           <p>휴대전화</p>
           <S.InputPhone>
-            <input type="text" maxLength="3" className="phone-input" />
+            <S.PhoneWrapper>
+              <input type="text" maxLength="3" className="phone-input" value={userPhone1}
+                onChange={(e) => setUserPhone1(e.target.value)}
+                onBlur={() => handleBlur('userPhone1', userPhone1)} />
+            {errors.userPhone1 && <S.ErrorText>필수 항목입니다.</S.ErrorText>}
+            </S.PhoneWrapper>
             <span>-</span>
-            <input type="text" maxLength="4" className="phone-input" />
+            <S.PhoneWrapper>
+              <input type="text" maxLength="4" className="phone-input" value={userPhone2}
+                onChange={(e) => setUserPhone2(e.target.value)}
+                onBlur={() => handleBlur('userPhone2', userPhone2)} />
+                {errors.userPhone2 && <S.ErrorText>필수 항목입니다.</S.ErrorText>}
+            </S.PhoneWrapper>
             <span>-</span>
-            <input type="text" maxLength="4" className="phone-input" />
+            <S.PhoneWrapper>
+              <input type="text" maxLength="4" className="phone-input" value={userPhone3}
+                onChange={(e) => setUserPhone3(e.target.value)}
+                onBlur={() => handleBlur('userPhone3', userPhone3)} />
+                {errors.userPhone3 && <S.ErrorText>필수 항목입니다.</S.ErrorText>}
+            </S.PhoneWrapper>
           </S.InputPhone>
         </S.OrderInfo>
 
         <S.Info>배송지</S.Info>
         <S.OrderInfo>
-          <p>받는 사람</p>
+          <p>주문자</p>
           <S.InputName>
-            <input type='text' id='name' placeholder='이름' />
+            <input type="text" id="name" placeholder="이름" value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              onBlur={() => handleBlur('userName', userName)} />
+              {errors.userName && <S.ErrorText>필수 항목입니다.</S.ErrorText>}
           </S.InputName>
         </S.OrderInfo>
 
@@ -163,18 +208,36 @@ const MdPayment = () => {
               <p className='code'>우편번호</p>
             </S.Code>
             <input type='text' placeholder='기본 주소' />
-            <input type='text' placeholder='나머지 주소(선택)' />
+            <input type='text' placeholder='나머지 주소(선택)' value={userAddress}
+              onChange={(e) => setUserAddress(e.target.value)}
+              onBlur={() => handleBlur('userAddress', userAddress)} />
+              {errors.userAddress && <S.ErrorText>필수 항목입니다.</S.ErrorText>}
           </S.InputAddress>
         </S.OrderInfo>
 
         <S.OrderInfo>
           <p>휴대전화</p>
           <S.InputPhone>
-            <input type="text" maxLength="3" className="phone-input" />
+            <S.PhoneWrapper>
+              <input type="text" maxLength="3" className="phone-input" value={userPhone4}
+                onChange={(e) => setUserPhone4(e.target.value)}
+                onBlur={() => handleBlur('userPhone4', userPhone4)} />
+            {errors.userPhone4 && <S.ErrorText>필수 항목입니다.</S.ErrorText>}
+            </S.PhoneWrapper>
             <span>-</span>
-            <input type="text" maxLength="4" className="phone-input" />
+            <S.PhoneWrapper>
+              <input type="text" maxLength="4" className="phone-input" value={userPhone5}
+                onChange={(e) => setUserPhone5(e.target.value)}
+                onBlur={() => handleBlur('userPhone5', userPhone5)} />
+                {errors.userPhone5 && <S.ErrorText>필수 항목입니다.</S.ErrorText>}
+            </S.PhoneWrapper>
             <span>-</span>
-            <input type="text" maxLength="4" className="phone-input" />
+            <S.PhoneWrapper>
+              <input type="text" maxLength="4" className="phone-input" value={userPhone6}
+                onChange={(e) => setUserPhone6(e.target.value)}
+                onBlur={() => handleBlur('userPhone6', userPhone6)} />
+                {errors.userPhone6 && <S.ErrorText>필수 항목입니다.</S.ErrorText>}
+            </S.PhoneWrapper>
           </S.InputPhone>
         </S.OrderInfo>
 
@@ -221,7 +284,7 @@ const MdPayment = () => {
         </S.TotalWrapper>
       </S.OrderInfoWrapper>
 
-      <S.MethodWrapper>
+      {/* <S.MethodWrapper>
         <S.Info>결제 수단</S.Info>
         {iconPaymentMethods.map((method) => (
           <S.OrderInfo key={method.label}>
@@ -238,7 +301,7 @@ const MdPayment = () => {
             <p>{method.label}</p>
           </S.OrderInfo>
         ))}
-      </S.MethodWrapper>
+      </S.MethodWrapper> */}
 
       <S.PaymentButton>
         <S.BackButton onClick={handleBackButton}>이전 페이지로</S.BackButton>
