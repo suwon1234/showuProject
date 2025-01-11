@@ -14,34 +14,38 @@ export const setProfilePicture = createAction(SET_PROFILE_PICTURE, (picture) => 
 export const setUserRole = createAction(SET_USER_ROLE, (role) => role);
 export const setAdminStatus = createAction(SET_ADMIN_STATUS, (isAdmin) => isAdmin);
 
-
 const UserInitalValue = {
-    currentUser : {
-        role : "user", //기본값 user
-        picture : "http://localhost:8000/uploads/profiles/user.png" // 기본 프로필 이미지
+    currentUser: {
+        role: "user", // 기본값 user
+        picture: "http://localhost:8000/uploads/profiles/user.png" // 기본 프로필 이미지
     },
-    isLogin : false,
-    previousUrl : "",
-    isAdmin : false
+    isLogin: false,
+    previousUrl: "",
+    isAdmin: false
 };
- 
-const user = handleActions({
 
-    [SET_PREVIOUS_URL] : (state = UserInitalValue, action) => ({...state, previousUrl: action.payload}),
-    [SET_USER] : (state = UserInitalValue, action) => ({...state, currentUser: action.payload}),
-    [SET_USER_STATUS] : (state = UserInitalValue, action) => ({...state, isLogin: action.payload}),
-    [SET_PROFILE_PICTURE] : (state = UserInitalValue, action) => ({...state,
-        currentUser : {
-            ...state.currentUser,
-            picture : action.payload // 프로필 사진 업데이트
-        }
-    }),
-    [SET_USER_ROLE] : (state = UserInitalValue, action) => ({...state, 
-        currentUser: {
-            ...state.currentUser, // 기존 유저 유지
-            role: action.payload // role만 업데이트
-        }})
-
-}, UserInitalValue);
+const user = handleActions(
+    {
+        [SET_PREVIOUS_URL]: (state, action) => ({ ...state, previousUrl: action.payload }),
+        [SET_USER]: (state, action) => ({ ...state, currentUser: action.payload }),
+        [SET_USER_STATUS]: (state, action) => ({ ...state, isLogin: action.payload }),
+        [SET_PROFILE_PICTURE]: (state, action) => ({
+            ...state,
+            currentUser: {
+                ...state.currentUser,
+                picture: action.payload // 프로필 사진 업데이트
+            }
+        }),
+        [SET_USER_ROLE]: (state, action) => ({
+            ...state,
+            currentUser: {
+                ...state.currentUser, // 기존 유저 유지
+                role: action.payload // role만 업데이트
+            }
+        }),
+        [SET_ADMIN_STATUS]: (state, action) => ({ ...state, isAdmin: action.payload })
+    },
+    UserInitalValue
+);
 
 export default user;
