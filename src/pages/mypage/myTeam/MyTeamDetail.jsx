@@ -1,6 +1,6 @@
 import React from 'react';
 import S from './MyTeamDetailStyle';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Paging from '../_component/Paging';
 
 
@@ -10,6 +10,19 @@ const MyTeamDetail = ({ page, currentList, setPage, totalPost, PAGINATION }) => 
   const handleNavigate = (path) => {
     navigate(path)
   }
+
+  if (currentList.length === 0) {
+    return (
+      <S.NoneItem>
+        <p>아직 팀 매칭을 하지 않았네요!</p>
+        <p>새로운 팀을 만나 성장할 기회를 얻으세요.</p>
+        <Link to={"/showu/team"}>
+          <S.LinkToPath>팀 매칭 보러가기</S.LinkToPath>
+        </Link>
+      </S.NoneItem>
+    );
+  }
+
 
   return (
     <S.Container>

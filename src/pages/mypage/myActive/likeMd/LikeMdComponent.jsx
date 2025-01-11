@@ -3,10 +3,23 @@ import S from './LikeMdStyle';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Paging from '../../_component/Paging';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const LikeMdComponent = ({ page, currentList, setPage, totalPost, PAGINATION }) => {
   const navigate = useNavigate();
+
+  if (currentList.length === 0) {
+    return (
+      <S.NoneItem>
+        <p>아직 찜한 아이템이 없네요!</p>
+        <p>마음에 드는 아이템을 찜해보세요.</p>
+        <Link to={"/shop/md"}>
+          <S.LinkToPath>MD 상품보러가기</S.LinkToPath>
+        </Link>
+      </S.NoneItem>
+    );
+  }
+  
 
   return (
     <>
@@ -24,7 +37,7 @@ const LikeMdComponent = ({ page, currentList, setPage, totalPost, PAGINATION }) 
             </S.Content>
           </S.Wrapper>
         ))) : (
-          <p>찜한 md가 없습니다</p>
+          <p>아직 찜한 아이템이 없네요! 마음에 드는 아이템을 찜해보세요.</p>
         )
         }
         <Paging 

@@ -45,7 +45,7 @@ const LikeMd = () => {
 
   }, [userId, jwtToken])
 
-  console.log(mds)
+  // console.log(mds)
 
   return (
     <>

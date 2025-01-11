@@ -3,8 +3,22 @@ import S from './LikeAuctionStyle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock, faHeart } from '@fortawesome/free-solid-svg-icons';
 import Paging from '../../_component/Paging';
+import { Link } from 'react-router-dom';
 
 const LikeAuctionComponent = ({ page, currentList, setPage, totalPost, PAGINATION }) => {
+  
+  if (currentList.length === 0) {
+    return (
+      <S.NoneItem>
+        <p>아직 찜한 아이템이 없네요!</p>
+        <p>마음에 드는 아이템을 찜해보세요.</p>
+        <Link to={"/shop/auction"}>
+          <S.LinkToPath>경매 상품보러가기</S.LinkToPath>
+        </Link>
+      </S.NoneItem>
+    );
+  }
+
   return (
     <div>
       <S.Container>

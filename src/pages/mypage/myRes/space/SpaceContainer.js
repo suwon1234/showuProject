@@ -16,7 +16,7 @@ const SpaceContainer = () => {
       <S.Container className='container'>
         <S.Wapper className='wapper'>
         <S.Title className='title'>
-            <p className='activeTitle'>공간ㆍ소품 대여 내역</p>
+            <p className='activeTitle'>공간 대여 내역</p>
             <S.SubTitle className='subTitle'>
               <ul>
                 <li onClick={() => handleNavigate('/my-res/space')}>공간 대여</li>

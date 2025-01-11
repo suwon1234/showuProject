@@ -1,5 +1,4 @@
 import React from 'react';
-import Paging from '../../_component/Paging';
 import Post from './Post';
 import S from './PostContainerStyle';
 import { useNavigate } from 'react-router-dom';

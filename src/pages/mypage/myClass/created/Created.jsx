@@ -44,10 +44,6 @@ const Created = () => {
 
   }, [jwtToken])
 
-  if (lesson.length === 0) {
-    return <div>Loading...</div>; 
-  }
-
   // console.log(lesson)
 
   return (

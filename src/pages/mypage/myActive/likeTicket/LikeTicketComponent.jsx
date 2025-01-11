@@ -1,8 +1,22 @@
 import React from 'react';
 import S from './LikeTicketStyle';
 import Paging from '../../_component/Paging';
+import { Link } from 'react-router-dom';
 
 const LikeTicketComponent = ({ page, currentList, setPage, totalPost, PAGINATION, handleNavigate }) => {
+
+  if (currentList.length === 0) {
+    return (
+      <S.NoneItem>
+        <p>아직 찜한 아이템이 없네요!</p>
+        <p>마음에 드는 아이템을 찜해보세요.</p>
+        <Link to={"/reservation"}>
+          <S.LinkToPath>티켓 보러가기</S.LinkToPath>
+        </Link>
+      </S.NoneItem>
+    );
+  }
+
   return (
     <>
       <S.Container className='Container'>

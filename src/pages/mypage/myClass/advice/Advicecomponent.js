@@ -2,9 +2,22 @@ import React from 'react';
 import S from './AdviceStyle';
 import Paging from '../../_component/Paging';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Advicecomponent = ({ page, currentList, setPage, totalPost, PAGINATION }) => {
   const { currentUser } = useSelector((state) => state.user)
+
+  if (currentList.length === 0) {
+    return (
+      <S.NoneItem>
+        <p>아직 레슨 상담 신청을 안했네요!</p>
+        <p>알맞은 레슨을 찾기 위해 상담을 신청해보세요.</p>
+        <Link to={"/showu/lesson"}>
+          <S.LinkToPath>상담 신청하러 가기</S.LinkToPath>
+        </Link>
+      </S.NoneItem>
+    );
+  }
 
   return (
     <div>
