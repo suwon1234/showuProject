@@ -146,8 +146,9 @@ const UpgradeAdminComponent = () => {
                 <td>{item.exportName.role}</td>
                 <td>{item.exportName.upgradeRequestStatus}</td>
                 <td>
-                  <div>
+                  <S.RoleChangeButtonWrapper>
                     <button 
+                      className='exportButton'
                       onClick={(e) => {
                         e.stopPropagation(); // 클릭 이벤트가 부모 요소로 전달되지 않도록 함
                         handleUserRoleChange(item.exportName._id, '승인');
@@ -156,6 +157,7 @@ const UpgradeAdminComponent = () => {
                       승인
                     </button>
                     <button 
+                      className='rejectButton'
                       onClick={(e) => {
                         e.stopPropagation(); 
                         handleUserRoleChange(item.exportName._id, '거절');
@@ -163,7 +165,7 @@ const UpgradeAdminComponent = () => {
                     >
                       거절
                     </button>
-                  </div>
+                  </S.RoleChangeButtonWrapper>
                 </td>
               </S.RowTr>
             ))}
