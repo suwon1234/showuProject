@@ -33,6 +33,7 @@ const TicketOpen = () => {
   }, []);
 
   const handleImageClick = (id) => {
+    console.log("Navigating to detail with id:", id); // id 출력
     navigate(`/reservation/ticket-open/openDetail/${id}`);
   };
 
@@ -43,8 +44,8 @@ const TicketOpen = () => {
         <S.TicketBoxContainer>
           {ticketEvents.map((event) => (
             <S.TicketBox
-              key={event.id}
-              onClick={() => handleImageClick(event.id)}
+              key={event._id} // MongoDB의 ObjectId를 key로 사용
+              onClick={() => handleImageClick(event._id)} // MongoDB의 ObjectId를 사용
             >
               <S.TicketImage
                 src={event.img}
