@@ -17,7 +17,7 @@ const Community = () => {
       try {
         const response = await fetch('http://localhost:8000/community', {
           headers: {
-            'Authorization': `Bearer ${token}`, // 헤더에 토큰 추가
+            'Authorization': `Bearer ${token}`,
           },
         });
         if (!response.ok) {
@@ -91,14 +91,13 @@ const Community = () => {
           </Link>
         </S.Buttons>
 
-        {/* 필터링된 데이터 출력 */}
         <S.Info>
         {filteredData.length === 0 ? (
           <p>데이터가 없습니다.</p>
         ) : (
           filteredData.map((item) => (
             <S.Img key={item._id}>
-              {/* 상세 페이지로 이동하는 링크 */}
+              
               <Link to={`/community/communityInfo/${item._id}`}>
                 <img src={item.imageUrl || item.file} alt={item.title} />
               </Link>
@@ -113,7 +112,7 @@ const Community = () => {
         </S.Info>
       </S.SubWrapper>
 
-      {/* 스크롤 탑 버튼 */}
+     
       <S.ScrollTop onClick={handleScrollTop}>
         <FontAwesomeIcon icon={faArrowUp} className="upicon" />
       </S.ScrollTop>
