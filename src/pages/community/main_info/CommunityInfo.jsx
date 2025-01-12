@@ -88,7 +88,7 @@ const CommunityInfo = () => {
     const token = localStorage.getItem("jwtToken");
   
     try {
-      const response = await fetch(`http://localhost:8000/community/comments/${commentId}`, { // URL 확인
+      const response = await fetch(`http://localhost:8000/community/comments/${commentId}`, { 
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -101,7 +101,6 @@ const CommunityInfo = () => {
   
       const updatedComment = await response.json();
   
-      // 상태 업데이트
       setComments((prevComments) =>
         prevComments.map((comment) =>
           comment._id === updatedComment._id ? updatedComment : comment
@@ -137,7 +136,7 @@ const CommunityInfo = () => {
     }
   };
 
-  // 좋아요 로직
+  // 좋아요 
   const handleLikeButton = async () => {
     const token = localStorage.getItem("jwtToken");
     if (!token) {
@@ -158,14 +157,13 @@ const CommunityInfo = () => {
   
       const result = await response.json();
   
-      // 좋아요 상태 및 카운트 업데이트
+      // 좋아요 카운트
       setIsLiked(result.isLiked);
       setLikeCount(result.likes);
   
       console.log("좋아요 상태:", result.isLiked);
       console.log("좋아요 수:", result.likes);
   
-      // 적절한 알림 표시
       alert(result.isLiked ? "좋아요가 반영되었습니다!" : "좋아요가 취소되었습니다!");
     } catch (error) {
       console.error("좋아요 처리 오류:", error);
