@@ -10,6 +10,7 @@ const AuditionInfo = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    console.log("Received ID:", id);
     const fetchAuditionById = async () => {
       try {
         const response = await fetch(`http://localhost:8000/community/audition/${id}`);
@@ -17,6 +18,7 @@ const AuditionInfo = () => {
           throw new Error("오디션 데이터를 가져오는 데 실패했습니다.");
         }
         const data = await response.json();
+        console.log("Fetched Data:", data);
         setAudition(data); 
       } catch (error) {
         console.error("오디션 데이터 로드 오류:", error);
