@@ -269,7 +269,7 @@ S.ReserveButtonWithHeart = styled.button`
 S.CastContainer = styled.div` 
 width: 1200px;
 margin-top: 20px;
-
+/* display: flex; */
 `;
 
 S.CastTitle = styled.h2` 
@@ -282,14 +282,12 @@ color: #ffd400;
 
 S.CastList = styled.div` 
 display: flex;
-flex-wrap: wrap;
-
+justify-content: center;
 `;
 
 S.CastItem = styled.div`
-  margin: 10px;
+  margin: 30px 60px;
   text-align: center;
-  
 `;
 
 S.CastImage = styled.img` 

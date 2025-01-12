@@ -9,6 +9,7 @@ const OpenDetail = () => {
   const [event, setEvent] = useState(null);
 
   useEffect(() => {
+    console.log("Fetching event with id:", id); // id 출력
     const fetchEvent = async () => {
       const token = localStorage.getItem("jwtToken");
       try {
@@ -24,6 +25,7 @@ const OpenDetail = () => {
           throw new Error("네트워크 응답이 실패했습니다.");
         }
         const fetchedData = await response.json();
+        console.log(fetchedData); // 데이터 출력
         setEvent(fetchedData);
       } catch (error) {
         console.error("티켓 이벤트를 가져오는 중 오류 발생:", error);
