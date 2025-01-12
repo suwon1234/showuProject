@@ -76,10 +76,7 @@ const Reservation = () => {
         <S.SectionTitle>현재 공연 중</S.SectionTitle>
         <S.PerformingBoxContainer>
           {performingShows.map((show) => (
-            <S.PerformingBox
-              key={show.id}
-              onClick={() => navigate(`/reservation/showDetail/${show.id}`)}
-            >
+            <S.PerformingBox key={show.id}>
               <S.PerformingImage src={show.img} alt={show.name} />
               <h3>{show.name}</h3> <p>{show.venue}</p> <p>{show.dates}</p>
             </S.PerformingBox>

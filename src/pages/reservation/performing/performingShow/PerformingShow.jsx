@@ -8,13 +8,13 @@ const PerformingShow = () => {
 
   useEffect(() => {
     const fetchPerformingShows = async () => {
-      const token = localStorage.getItem("jwtToken"); // JWT 토큰 가져오기
+      const token = localStorage.getItem("jwtToken");
       try {
         const response = await fetch(
           "http://localhost:8000/reservation/performingShows",
           {
             headers: {
-              Authorization: `Bearer ${token}`, // 헤더에 토큰 추가
+              Authorization: `Bearer ${token}`,
             },
           }
         );
@@ -33,7 +33,7 @@ const PerformingShow = () => {
   }, []);
 
   const handleImageClick = (id) => {
-    navigate(`/reservation/performing-show/showDetail/${id}`);
+    navigate(`/reservation/Performing-show/showDetail/${id}`);
   };
 
   return (
@@ -41,11 +41,11 @@ const PerformingShow = () => {
       <S.SectionTitle>상연중</S.SectionTitle>
       <S.PerformingBoxContainer>
         {performingShows.map((show) => (
-          <S.PerformingBox key={show.id}>
+          <S.PerformingBox key={show._id}>
             <S.PerformingImage
               src={show.img}
               alt={show.name}
-              onClick={() => handleImageClick(show.id)}
+              onClick={() => handleImageClick(show._id)} // MongoDB의 ObjectId를 사용
               style={{ cursor: "pointer" }}
             />
             <h3>{show.name}</h3>
