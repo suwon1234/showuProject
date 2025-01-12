@@ -17,13 +17,13 @@ const AuditionInfo = () => {
           throw new Error("오디션 데이터를 가져오는 데 실패했습니다.");
         }
         const data = await response.json();
-        setAudition(data.data); 
+        setAudition(data); 
       } catch (error) {
         console.error("오디션 데이터 로드 오류:", error);
         setError("오디션 정보를 불러올 수 없습니다.");
       }
     };
-
+  
     fetchAuditionById();
   }, [id]);
 
