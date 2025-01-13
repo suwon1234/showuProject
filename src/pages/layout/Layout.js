@@ -89,9 +89,17 @@ const Layout = () => {
               </S.LogoBox>
 
               <S.authlinks className="authlinks">
-                <Link to="/up-grade" className="highlight">
-                {currentUser.isUpgradeRequested ? '등급업 수정' : '등급업 신청'}
-                </Link>
+                {
+                  currentUser.isUpgradeRequested ? (
+                    <Link to="/mypage/up-grade/update" className='highlight'>
+                      등급업 수정
+                    </Link>
+                  ) : (
+                    <Link to="/up-grade" className='highlight'>
+                      등급업 신청
+                    </Link>
+                  )
+                }
                 <span className="divider">|</span>
 
                 {isLogin ? (
