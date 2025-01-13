@@ -14,6 +14,7 @@ const EmailButton = () => {
   const [ newPassword, setNewPassword ] = useState('');
   const [ showPw, setShowPw ] = useState(false);
   const navigate = useNavigate();
+  
   const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/;
 
   const handleShowPw = () => {
