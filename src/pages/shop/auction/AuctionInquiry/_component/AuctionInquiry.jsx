@@ -1,8 +1,7 @@
-// MD - 문의 페이지
 import React, { useState } from 'react';
 import S from './styleInquiry';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const AuctionInquiry = () => {
   const navigate = useNavigate();
@@ -17,9 +16,8 @@ const AuctionInquiry = () => {
   const [content, setContent] = useState(''); 
   const [selectedAlarm, setSelectedAlarm] = useState(null); 
   const [isAgreed, setIsAgreed] = useState(false);
-
   const location = useLocation();
-  const { auctionName } = location.state || {}; // state에서 상품명 받기
+  const { auctionName } = location.state || {}; 
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,7 +60,7 @@ const AuctionInquiry = () => {
           content,
           selectedAlarm,
           isAgreed,
-          mdName: auctionName || '알 수 없음',
+          auctionName: auctionName || '알 수 없음',
         }),
       });
 
@@ -70,7 +68,7 @@ const AuctionInquiry = () => {
 
       if (response.ok) {
         alert(result.message);
-        navigate('/shop/auction/inquiry/list'); // 리스트 페이지로 이동
+        navigate('/shop/auction/inquiry/list');
       } else {
         alert(result.message || "문의 등록에 실패했습니다.");
       }
@@ -82,7 +80,7 @@ const AuctionInquiry = () => {
 
   const handleCancel = () => {
     if (window.confirm("작성하신 내용이 사라집니다. 정말 취소하시겠습니까?")) {
-      navigate(-1);
+      navigate(-1, { state: { auctionName: auctionName } });
     }
   };
 
@@ -103,7 +101,7 @@ const AuctionInquiry = () => {
             <td colSpan="2">
               <S.TypeWrapper>
                 {inquiryTypes.map((type) => (
-                  <S.Type key={type} onClick={() => setSelectedType(selectedType === type ? null : type)} selected={selectedType === type}>
+                  <S.Type key={type} onClick={() => setSelectedType(type)} selected={selectedType === type}>
                     <S.Icon icon={faCheckCircle} selected={selectedType === type} />
                     <p>{type}</p>
                   </S.Type>
@@ -116,7 +114,7 @@ const AuctionInquiry = () => {
             <td colSpan="2">
               <S.TypeWrapper>
               {inquiryForms.map((form) => (
-                  <S.Type key={form} onClick={() => setSelectedForm(selectedForm === form ? null : form)} selected={selectedForm === form}>
+                  <S.Type key={form} onClick={() => setSelectedForm(form)} selected={selectedForm === form}>
                     <S.Icon icon={faCheckCircle} selected={selectedForm === form} />
                     <p>{form}</p>
                   </S.Type>
@@ -131,10 +129,10 @@ const AuctionInquiry = () => {
                 onChange={(e) => setTitle(e.target.value)} />
             </td>
           </tr>
-          <tr>
+          {/* <tr>
             <th>작성자</th>
             <td colSpan="2"></td>
-          </tr>
+          </tr> */}
           <tr>
             <th>내용</th>
             <td colSpan="2">
@@ -147,7 +145,7 @@ const AuctionInquiry = () => {
             <td>
               <S.TypeWrapper>
                 {alarmTypes.map((alarm) => (
-                  <S.Type key={alarm} onClick={() => setSelectedAlarm(selectedAlarm === alarm ? null : alarm)} selected={selectedAlarm === alarm}>
+                  <S.Type key={alarm} onClick={() => setSelectedAlarm(alarm)} selected={selectedAlarm === alarm}>
                     <S.Icon icon={faCheckCircle} selected={selectedAlarm === alarm} />
                     <p>{alarm}</p>
                   </S.Type>
@@ -174,7 +172,7 @@ const AuctionInquiry = () => {
 
       <S.InquiryButton>
         <S.BackButton onClick={handleCancel}>취소</S.BackButton>
-          <S.NextButton onClick={handleSubmit}>등록</S.NextButton>
+        <S.NextButton onClick={handleSubmit}>등록</S.NextButton>
       </S.InquiryButton>
     </S.InquiryWrapper>
   );

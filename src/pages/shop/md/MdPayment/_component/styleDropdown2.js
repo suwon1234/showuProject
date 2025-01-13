@@ -61,4 +61,16 @@ const S = {};
     }
   `
 
+  S.CustomInput = styled.input`
+    width: 1165px;
+    padding: 10px;
+    border: 0.5px solid white;
+    margin-top: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: #000;
+    /* 필요한 스타일 추가 */
+  `;
+
 export default S;

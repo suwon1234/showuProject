@@ -1,4 +1,3 @@
-// MD - 문의내역 페이지
 import React, { useEffect, useState } from 'react';
 import S from './styleInquiryList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,8 +12,8 @@ const MdInquiryList = () => {
     const getList = async () => {
       try {
         const response = await fetch('http://localhost:8000/shop/md/inquiry/list');
-        if(!response.ok) {
-          throw new Error("문의 내역 목록을 가져오는데 실패했습니다.")
+        if (!response.ok) {
+          throw new Error("문의 내역 목록을 가져오는데 실패했습니다.");
         }
 
         const datas = await response.json();
@@ -25,11 +24,10 @@ const MdInquiryList = () => {
     };
 
     getList();
-
   }, []);
 
-  const handleCancel = () => {
-      navigate(-1);
+  const handleGoBack = () => {
+    navigate('/shop/md');
   };
 
   return (
@@ -37,7 +35,7 @@ const MdInquiryList = () => {
       <S.ListTitle>
         <h1>문의 내역</h1>
       </S.ListTitle>
-      
+
       <S.Head>
         <S.Left1>
           <S.HeadItem>번호</S.HeadItem>
@@ -49,7 +47,7 @@ const MdInquiryList = () => {
         <S.PrivateWrapper>
           <S.Blank></S.Blank>
         </S.PrivateWrapper>
-        
+
         <S.Center>
           <S.HeadItem>제목</S.HeadItem>
         </S.Center>
@@ -60,37 +58,39 @@ const MdInquiryList = () => {
           <S.HeadItem>작성일</S.HeadItem>
         </S.Right2>
       </S.Head>
-      
+
       {inquiryList.map((inquiry, i) => (
-        <Link to={`/shop/md/inquiry/${inquiry._id}`}>
-        <S.InquiryList key={inquiry._id}>
-          <S.Left1>
-            {/* <S.ListItem>{inquiry._id}</S.ListItem> */}
-            <S.ListItem>{i + 1}</S.ListItem>
-          </S.Left1>
-          <S.Left2>
-            <S.ListItem>{inquiry.type}</S.ListItem>
-          </S.Left2>
+        <Link to={`/shop/md/inquiry/${inquiry._id}`} key={inquiry._id}>
+          <S.InquiryList>
+            <S.Left1>
+              <S.ListItem>{i + 1}</S.ListItem>
+            </S.Left1>
+            <S.Left2>
+              <S.ListItem>{inquiry.type}</S.ListItem>
+            </S.Left2>
 
-          <S.PrivateWrapper>
-          <FontAwesomeIcon className='icon' icon={faLock} />
-          <S.Private>비공개 질문입니다.</S.Private>
-          </S.PrivateWrapper>
+            <S.PrivateWrapper>
+              <FontAwesomeIcon className="icon" icon={faLock} />
+              <S.Private>비공개 질문입니다.</S.Private>
+            </S.PrivateWrapper>
 
-          <S.Center>
-            <S.ListItem>{inquiry.title}</S.ListItem>
-          </S.Center>
-          <S.Right1>
-            <S.ListItem>{inquiry.writer}</S.ListItem>
-          </S.Right1>
-          <S.Right2>
-            <S.ListItem>{new Date(inquiry.createdAt).toLocaleDateString()}</S.ListItem>
-          </S.Right2>
-        </S.InquiryList>
+            <S.Center>
+              <S.ListItem>{inquiry.title}</S.ListItem>
+            </S.Center>
+            <S.Right1>
+              <S.ListItem>{inquiry.writer}</S.ListItem>
+            </S.Right1>
+            <S.Right2>
+              <S.ListItem>
+                {new Date(inquiry.updatedAt || inquiry.createdAt).toLocaleDateString()}
+                {/* {new Date(inquiry.createdAt).toLocaleDateString()} */}
+              </S.ListItem>
+            </S.Right2>
+          </S.InquiryList>
         </Link>
       ))}
 
-        <S.BackButton onClick={handleCancel}>이전 페이지로</S.BackButton>
+      <S.BackButton onClick={handleGoBack}>홈으로 돌아가기</S.BackButton>
     </S.ListWrapper>
   );
 };

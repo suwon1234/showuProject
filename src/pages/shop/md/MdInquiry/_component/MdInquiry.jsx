@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+// MD - 문의 페이지지
+import React, { useState } from 'react';
 import S from './styleInquiry';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { useLocation, useNavigate } from 'react-router-dom';
@@ -16,16 +17,8 @@ const MdInquiry = () => {
   const [content, setContent] = useState(''); 
   const [selectedAlarm, setSelectedAlarm] = useState(null); 
   const [isAgreed, setIsAgreed] = useState(false);
-  const [userName, setUserName] = useState('');
   const location = useLocation();
-  const { mdName } = location.state || {}; // 상품명
-
-  // useEffect(() => {
-  //   const user = JSON.parse(localStorage.getItem('user'));
-  //   if (user) {
-  //     setUserName(user.name);
-  //   }
-  // }, [])
+  const { mdName } = location.state || {}; // 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -69,7 +62,7 @@ const MdInquiry = () => {
           selectedAlarm,
           isAgreed,
           mdName: mdName || '알 수 없음',
-          writer: userName
+          // writer: userName
         }),
       });
 
@@ -77,7 +70,7 @@ const MdInquiry = () => {
 
       if (response.ok) {
         alert(result.message);
-        navigate('/shop/md/inquiry/list'); // 리스트 페이지로 이동
+        navigate('/shop/md/inquiry/list');
       } else {
         alert(result.message || "문의 등록에 실패했습니다.");
       }
@@ -90,7 +83,6 @@ const MdInquiry = () => {
   const handleCancel = () => {
     if (window.confirm("작성하신 내용이 사라집니다. 정말 취소하시겠습니까?")) {
       navigate(-1, { state: { mdName: mdName } });
-      // window.history.back();
     }
   };
 
@@ -138,10 +130,10 @@ const MdInquiry = () => {
               <S.InputTitle type="text" placeholder="제목을 입력하세요." value={title} onChange={(e) => setTitle(e.target.value)} />
             </td>
           </tr>
-          <tr>
+          {/* <tr>
             <th>작성자</th>
             <td colSpan="2">{userName}</td>
-          </tr>
+          </tr> */}
           <tr>
             <th>내용</th>
             <td colSpan="2">
