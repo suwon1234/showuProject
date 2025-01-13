@@ -27,25 +27,33 @@ const SeatSelection = () => {
     });
   }
 
-  useEffect(() => {
-    const fetchReservedSeats = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:8000/reservation/reservedSeats?showId=${showId}&date=${selectedDate}&time=${selectedTime}`
-        );
-        if (!response.ok) {
-          throw new Error("예약된 좌석을 가져오는 중 오류 발생");
-        }
-        const fetchedData = await response.json();
-        console.log("Fetched Reserved Seats:", fetchedData); // 콘솔 로그 추가
-        setReservedSeats(fetchedData);
-      } catch (error) {
-        console.error("예약된 좌석을 가져오는 중 오류 발생:", error);
+useEffect(() => {
+  const fetchReservedSeats = async () => {
+    try {
+      const formattedDate = encodeURIComponent(
+        new Date(selectedDate).toISOString()
+      ); // 날짜 형식 변환 후 URL 인코딩
+      console.log(
+        `Fetching reserved seats for showId=${showId}, date=${formattedDate}, time=${selectedTime}`
+      ); // 콘솔 로그 추가
+      const response = await fetch(
+        `http://localhost:8000/reservation/reservedSeats?showId=${showId}&date=${formattedDate}&time=${selectedTime}`
+      );
+      if (!response.ok) {
+        throw new Error("예약된 좌석을 가져오는 중 오류 발생");
       }
-    };
+      const fetchedData = await response.json();
+      console.log("Fetched Reserved Seats:", fetchedData); // 콘솔 로그 추가
+      setReservedSeats(fetchedData);
+    } catch (error) {
+      console.error("예약된 좌석을 가져오는 중 오류 발생:", error);
+    }
+  };
 
-    fetchReservedSeats();
-  }, [showId, selectedDate, selectedTime]);
+  fetchReservedSeats();
+}, [showId, selectedDate, selectedTime]);
+
+
 
 
   const handleSeatClick = (seat) => {
@@ -118,10 +126,10 @@ const SeatSelection = () => {
         <p>시간: {selectedTime || "선택되지 않음"}</p>
         <br />
         <p>
-          가격: {price ? `S석: ${price.S}, R석: ${price.R}` : "가격 정보 없음"}
+          가격: {price ? `R석: ${price.R} / S석: ${price.S}` : "가격 정보 없음"}
         </p>{" "}
         <br />
-        <p style={{color:"#ffd400"}}>1인당 최대 2매 예매 가능</p>
+        <p style={{ color: "#ffd400" }}>1인당 최대 2매 예매 가능</p>
         {/* 가격 정보 표시 */}
       </S.SelectedDateTimeInfo>
       <S.ContentWrapper>
