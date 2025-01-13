@@ -473,7 +473,7 @@ const router = createBrowserRouter([
         element: <MyShowuContainer />,
       },
       {
-        path: "/vod/my-ShowU/video",
+        path: "/vod/my-ShowU/video/:id",
         element: <ShowuVideoConatiner />,
       },
       {

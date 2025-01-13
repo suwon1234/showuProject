@@ -99,20 +99,36 @@ S.uploadOption = styled.div`
 `;
 
 S.Card = styled.div`
+  display: flex;
   min-width: 200px;
   max-width: 200px;
-  height: 300px;
+  height: 100%; 
   flex-shrink: 0;
   background: #222;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
+  margin: 10px;
+  flex-direction: column;
+
+  .videotitle{
+margin-top: 8px;
+font-size: 16px;
+font-weight: bold;
+text-align: center;
+word-wrap: break-word; 
+white-space: normal;
+color: white;
+text-overflow: ellipsis;
+
+  }
 
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease;
+    
   }
 
   &:hover img {
@@ -121,11 +137,13 @@ S.Card = styled.div`
 `;
 
 S.Videolist = styled.div`
+  width: 1240px;
+  height: 100%;
   display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  padding: 10px 0;
-  scroll-behavior: smooth;
+  flex-wrap: wrap; 
+  align-items: center;
+  margin: auto;
+  padding-top: 43px;
 
   &::-webkit-scrollbar {
     display: none;
