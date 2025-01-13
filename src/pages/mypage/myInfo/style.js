@@ -60,7 +60,7 @@ const S = {};
       border-radius: 5px;
 
       margin-top: 10px;
-      margin-left: 20px;
+      margin-left: 23px;
       font-size: 20px;
     }
   `

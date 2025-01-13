@@ -28,6 +28,13 @@ const MyInfo = () => {
     setShowPwConfirm(!showPwConfirm)
   }
 
+  useEffect(() => {
+    if (currentUser?.phone) {
+      const formatted = currentUser.phone.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+      setHyphen(formatted);
+    }
+  }, [currentUser?.phone]);
+
   const { register, handleSubmit, getValues,
           formState : { isSubmitting, errors }
         } = useForm({ mode : "onChange" });
@@ -128,11 +135,6 @@ const MyInfo = () => {
             </S.fileInputButton>
           </div>
 
-          {/* 등급업 정보 수정 버튼 */}
-          {/* <S.UpdateButton onClick={() => handleNavigate('/mypage/up-grade/update')}>
-            <button>등급업 수정</button>
-          </S.UpdateButton> */}
-
         </S.Profile>
 
         {/* 프로필 이미지 변경 완료 버튼 */}
@@ -220,7 +222,7 @@ const MyInfo = () => {
                     validate : {
                       matchPassword : (value) => {
                         const { password } = getValues();
-                        console.log(password === value, `password : ${password}, value : ${value}`)
+                        // console.log(password === value, `password : ${password}, value : ${value}`)
                         return password === value;
                       }
                     }
@@ -253,8 +255,8 @@ const MyInfo = () => {
                 <span>전화 번호</span>
                 <S.Input 
                   type="text" name='phoneNumber' 
-                  placeholder="전화번호"
-                  // defaultValue={currentUser?.phone}
+                  placeholder="전화번호를 입력하세요"
+                  defaultValue={currentUser?.phone ? currentUser.phone : ""}
                   {...register("phone", {
                     required : "전화번호를 입력해주세요.",
                     onChange: (e) => {
