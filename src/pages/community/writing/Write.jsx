@@ -75,7 +75,6 @@ const handleSubmit = async () => {
       if (fileResponse.ok) {
         const { url } = await fileResponse.json();
         imageUrl = `http://localhost:8000${url}`;
-        console.log("Uploaded Image URL:", imageUrl); 
         setImageUrl(imageUrl); 
       } else {
         throw new Error("파일 업로드 실패");
@@ -205,3 +204,7 @@ const handleSubmit = async () => {
 };
 
 export default Write;
+
+
+
+
