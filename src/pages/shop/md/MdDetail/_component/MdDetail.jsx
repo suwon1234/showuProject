@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'; 
 import S from './styleDetail';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleExclamation, faChevronUp, faXmark } from '@fortawesome/free-solid-svg-icons';
 import Dropdown from './Dropdown';
@@ -13,7 +13,7 @@ const MdDetail = () => {
   const [quantity, setQuantity] = useState(1); // 기본 수량 1개
   const navigate = useNavigate();
   const [mdProducts, setMdProducts] = useState([]);
-
+  const location = useLocation(); // 현재 위치 정보
 
   // 수량 감소
   const decrease = (i) => {
@@ -69,16 +69,7 @@ const MdDetail = () => {
   // 바로 구매 버튼 스타일 조건
   const isOptionSelected = selectedOptions.length > 0;
 
-  // // 옵션 선택 X => 카드 추가, 바로 구매 X
-  // const handleButton = (e) => {
-  //   if (!isOptionSelected) {
-  //     alert("상품을 선택하세요!");
-  //     e.preventDefault(); 
-  //   }
-  // };
-
   useEffect(() => {
-    
     const getMdProducts = async () => {
       try {
         const response = await fetch(`http://localhost:8000/shop/md`);
@@ -90,9 +81,8 @@ const MdDetail = () => {
     };
 
     getMdProducts();
+  }, []);
 
-  }, [])
-  
   useEffect(() => {
     const getMdDetail = async () => {
       try {
@@ -111,16 +101,14 @@ const MdDetail = () => {
     return <p>상품을 찾을 수 없습니다.</p>; 
   }
 
-
   // 카트 추가
   const addToCart = async (e) => {
-
     if (!isOptionSelected) {
       alert("상품을 선택하세요!");
       e.preventDefault(); 
       return;
     }  
-    
+
     try {
       const response = await fetch('http://localhost:8000/shop/md/cart', {
         method: "POST",
@@ -130,21 +118,19 @@ const MdDetail = () => {
         body: JSON.stringify({ selectedOptions }),
       });
 
-
-    if (response.ok) {
-      navigate('/shop/md/cart', { state: { selectedOptions } });
-    } else {
+      if (response.ok) {
+        navigate('/shop/md/cart', { state: { selectedOptions } });
+      } else {
+        alert("장바구니 추가에 실패했습니다.");
+      }
+    } catch (error) {
+      console.error("장바구니 추가 실패:", error);
       alert("장바구니 추가에 실패했습니다.");
     }
-  } catch (error) {
-    console.error("장바구니 추가 실패:", error);
-    alert("장바구니 추가에 실패했습니다.");
-  }
   }
 
   // 바로 구매
   const purchase = async (e) => {
-
     if (!isOptionSelected) {
       alert("상품을 선택하세요!");
       e.preventDefault(); 
@@ -177,10 +163,15 @@ const MdDetail = () => {
   
   // 문의하기 
   const sendInquiry = () => {
-    alert("문의 페이지로 이동하시겠습니까?");
-    navigate('/shop/md/inquiry', { state: { mdName: product.name } });
+    const confirmInquiry = window.confirm("문의 등록을 하시겠습니까?");
+    
+    if (confirmInquiry) {
+      navigate('/shop/md/inquiry', { state: { mdName: product.mdName } });
+    } else {
+      return; 
+    }
   };
-
+  
   // 문의 내역
   const sendInquiryList = () => {
     navigate('shop/md/inquiry/list')
@@ -230,40 +221,30 @@ const MdDetail = () => {
           {/* 카트 추가 버튼 */}
           <S.ButtonWrapper2>
             <div className="button-wrapper1">
-              <button className="button cart" onClick={(e) => { addToCart(e);
-                navigate('/shop/md/cart', { state: { selectedOptions } }) }}>
-                  <p>카트 추가</p>
+              <button className="button cart" onClick={(e) => { addToCart(e); }}>
+                <p>카트 추가</p>
               </button>
               
               {/* 바로 구매 버튼 */}
-              <S.BuyButton isOptionSelected={isOptionSelected} onClick={(e) => { purchase(e);
-              if (isOptionSelected) {
-                navigate('/shop/md/payment', { state: { selectedOptions } }) }}}>
-                  <p>바로 구매</p>
+              <S.BuyButton isOptionSelected={isOptionSelected} onClick={(e) => { purchase(e); }}>
+                <p>바로 구매</p>
               </S.BuyButton>
             </div>
 
             {/* 문의하기 버튼 */}
             <div className="button-wrapper1">
             <button className="button inquiry" onClick={() => { sendInquiry();
-
-                navigate('/shop/md/inquiry', { state: { mdName: product.mdName } }) }}>
-                  <p>문의하기</p>
+            navigate('/shop/md/inquiry', { state: { mdName: product.mdName } }) }}>
+              <p>문의하기</p>
             </button>
               
               {/* 문의 내역 버튼 */}
               <button className="button inquiry" onClick={() => { sendInquiryList();
-                navigate('/shop/md/inquiry/list') }}>
-                  <p>문의 내역</p>
-            </button>
+              navigate('/shop/md/inquiry/list')  }}>
+                <p>문의 내역</p>
+              </button>
             </div>
-            
-            {/* 문의하기 버튼 */}
-            {/* <button className="button inquiry" onClick={() => { sendInquiry();
-                // navigate('/shop/md/inquiry', { state: { productName: product.name } }) }}>
-                navigate('/shop/md/inquiry', { state: { mdName: product.mdName } }) }}>
-                  <p>문의하기</p>
-            </button> */}
+          
           </S.ButtonWrapper2>
 
         </S.DetailWrapper>

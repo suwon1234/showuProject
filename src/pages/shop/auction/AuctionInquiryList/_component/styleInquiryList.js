@@ -117,4 +117,24 @@ const flexStyle = css`
   S.Blank = styled.div`
     width: 168px;
   `
+
+  const buttonStyles = `
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 55px;
+  border-radius: 50px;
+  border: none;
+  font-weight: bold;
+  font-size: 17px;
+  cursor: pointer;
+  `;
+
+  S.BackButton = styled.button`
+    ${buttonStyles}
+    background-color: #797979;
+    color: #fff;
+    margin-top: 50px;
+  `
 export default S;

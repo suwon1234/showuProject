@@ -4,7 +4,7 @@ import S from './styleDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faCircleChevronLeft, faCircleChevronRight, faCircleExclamation, faClock, faHeart, faLock, faPencil } from '@fortawesome/free-solid-svg-icons';
 import DeliveryPopup from './DeliveryPopup';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import BidPopup from './BidPopup';
 
 // const AuctionDetail = ({auctionItems, auctionInfo}) => {
@@ -12,12 +12,13 @@ const AuctionDetail = () => {
   const { id } = useParams();
   const [PopupVisible1, setPopupVisible1] = useState(false);
   const [PopupVisible2, setPopupVisible2] = useState(false);
-  const [HeartClicked, setHeartClicked] = useState(false);
   const [auctionProduct, setAuctionProduct] = useState(null);
   const [auctionProducts, setAuctionProducts] = useState([]);
   const [inquiryList, setInquiryList] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0); // 현재 슬라이드 상태
   const ProductsPerSlide = 3; // 한 번에 3개씩 보여줌
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const openPopup1 = () => setPopupVisible1(true);
   const closePopup1 = () => setPopupVisible1(false);
@@ -30,11 +31,6 @@ const AuctionDetail = () => {
     (currentSlide + 1) * ProductsPerSlide
   );
 
-  // 관심 물품 하트
-  const toggleHeart = () => {
-    setHeartClicked(!HeartClicked); 
-  };
-  
   useEffect(() => {
     
     const getAuctionProducts = async () => {
@@ -68,22 +64,24 @@ const AuctionDetail = () => {
   }, [id]);  
 
   
-  useEffect(() => {
-
-    const getInquiryList = async () => {
-      try {
-        const response = await fetch('http://localhost:8000/shop/auction/inquiry/list');
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const datas = await response.json();
-        setInquiryList(datas);
-      } catch (error) {
-        console.error("Error fetching inquiry list:", error);
-      }
-    };
+    // useEffect(() => {
+    //   const getList = async () => {
+    //     try {
+    //       const response = await fetch('http://localhost:8000/shop/auction/inquiry/list');
+    //       if(!response.ok) {
+    //         throw new Error("문의 내역 목록을 가져오는데 실패했습니다.")
+    //       }
   
-    getInquiryList();
-
-  }, []); 
+    //       const datas = await response.json();
+    //       setInquiryList(datas.inquiryList || []);
+    //     } catch (error) {
+    //       console.error("InquiryListError", error);
+    //     }
+    //   };
+  
+    //   getList();
+  
+    // }, []);
 
   if(!auctionProduct) {
     return <p>상품을 찾을 수 없습니다.</p>
@@ -97,7 +95,31 @@ const AuctionDetail = () => {
   if (currentSlide > maxSlideIndex) {
     setCurrentSlide(maxSlideIndex);
   }
-  
+
+  // 문의하기 
+  const sendInquiry = () => {
+    const confirmInquiry = window.confirm("문의 등록을 하시겠습니까?");
+    
+    if (confirmInquiry) {
+      navigate('/shop/md/inquiry', { state: { auctionName: auctionProduct.auctionName } });
+    } else {
+      return; 
+    }
+  };
+
+  // 문의 내역
+  const sendInquiryList = () => {
+    navigate('shop/auction/inquiry/list')
+  }
+
+  const handleBid = () => {
+    if (auctionProduct) {
+      navigate('/shop/auction/payment', { state: { auctionProduct } });
+    } else {
+      console.log('상품 정보가 없습니다.');
+    }
+  };
+
   return (
     <S.DetailWrapper>
       <S.Title>
@@ -134,24 +156,28 @@ const AuctionDetail = () => {
               <S.AuctionInfo>{Number(auctionProduct.finalPrice).toLocaleString()}원</S.AuctionInfo>
             </S.InfoWrapper>
           </S.InfoContainer>
+
           
           <S.ButtonContainer>
-            <button className='button button1' onClick={openPopup1}><p>입찰하기</p></button>
-            <button className='button button2'><p>즉시 구매 불가</p></button>
             <div className='button-wrapper1'>
+              <button className='button delivery' onClick={openPopup1}><p>입찰하기</p></button>
               <button className='button delivery' onClick={openPopup2}><p>배송 정보</p></button>
-              <button className='button heart' onClick={toggleHeart}>
-              <S.HeartIconWrapper clicked={HeartClicked} onClick={toggleHeart}>
-              <FontAwesomeIcon icon={faHeart} className="heart-icon"/>
-              <p>관심 물품</p>
-            </S.HeartIconWrapper>
-              </button>
+            </div>
+            <div className='button-wrapper1'>
+              <button className='button delivery' onClick={() => { sendInquiry();
+                navigate('/shop/auction/inquiry', { state: { auctionName: auctionProduct.auctionName } }) }}>
+                  <p>문의하기</p>
+                  </button>
+              <button className='button delivery' onClick={() => { sendInquiryList();
+                navigate('/shop/auction/inquiry/list') }}>
+                  <p>문의 내역</p>
+                </button>
             </div>
           </S.ButtonContainer>
 
           {PopupVisible1 && (
             <BidPopup
-              title="입찰하기" onClose={closePopup1}>
+              title="입찰하기" onClose={closePopup1} handleBid={handleBid} auctionProduct={auctionProduct}>
             </BidPopup>
           )}
 
@@ -185,7 +211,7 @@ const AuctionDetail = () => {
         <S.Image2 className='content-image' src={auctionProduct.imageDetail} alt="경매 상품" />
       </S.ImageWrapper>
 
-      <S.Customized>
+      {/* <S.Customized>
         <p>회원 맞춤 경매</p>
         <FontAwesomeIcon className='icon' icon={faChevronDown} />
         <S.ClosingItems>
@@ -216,9 +242,9 @@ const AuctionDetail = () => {
             <FontAwesomeIcon icon={faCircleChevronRight} />
           </S.RightIconWrapper>
         </S.ClosingItems>
-      </S.Customized>
+      </S.Customized> */}
 
-      <S.Inquiry>
+      {/* <S.Inquiry>
       <S.Info>
         <p>물품 문의</p>
       </S.Info>
@@ -246,12 +272,11 @@ const AuctionDetail = () => {
         </S.Right2>
       </S.Head>
       
-      {inquiryList.map((inquiry) => (
-        <Link to={`/shop/auction/inquiry/${inquiry.id}`}>
-        {/*  <Link to={`/shop/auction/inquiry/list`}> */}
-        <S.InquiryList key={inquiry.id}>
+      {inquiryList.map((inquiry, i) => (
+        <Link to={`/shop/auction/inquiry/${inquiry._id}`}>
+        <S.InquiryList key={inquiry._id}>
           <S.Left1>
-            <S.ListItem>{inquiry.id}</S.ListItem>
+            <S.ListItem>{i + 1}</S.ListItem>
           </S.Left1>
           <S.Left2>
             <S.ListItem>{inquiry.type}</S.ListItem>
@@ -269,7 +294,7 @@ const AuctionDetail = () => {
             <S.ListItem>{inquiry.writer}</S.ListItem>
           </S.Right1>
           <S.Right2>
-            <S.ListItem>{inquiry.date}</S.ListItem>
+            <S.ListItem>{new Date(inquiry.createdAt).toLocaleDateString()}</S.ListItem>
           </S.Right2>
         </S.InquiryList>
         </Link>
@@ -278,13 +303,13 @@ const AuctionDetail = () => {
 
       <S.ButtonWrapper>
         {/* <Link to={"/shop/auction/inquiry"} state={{ productName : auctionProduct.name }}> */}
-        <Link to={"/shop/auction/inquiry"} state={{ auctionName : auctionProduct.auctionName }}>
+        {/* <Link to={"/shop/auction/inquiry"} state={{ auctionName : auctionProduct.auctionName }}>
       <S.InquiryButton>
         <p>문의하기</p>
         <FontAwesomeIcon className='icon' icon={faPencil} />
       </S.InquiryButton>
       </Link>
-      </S.ButtonWrapper>
+      </S.ButtonWrapper> */} 
 
       
       <S.Info>
