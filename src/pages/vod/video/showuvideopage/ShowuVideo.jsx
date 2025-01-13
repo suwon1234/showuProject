@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import S from './style';
+import { useParams } from 'react-router-dom';
 
-const ShowuVideo = ({ play, videoList }) => {
-  const { id, title, videoUrl, thumbnail } = play;
+const ShowuVideo = () => {
 
+
+  const jwtToken = localStorage.getItem("jwtToken");
   const [comment, setComment] = useState('');
   const [comments, setComments] = useState([
     { id: 1, user: '사용자1', text: '멋진 영상이네요!', replies: [], showOptions: false },
@@ -16,6 +18,52 @@ const ShowuVideo = ({ play, videoList }) => {
   const [selectedItem, setSelectedItem] = useState(null);
   const [isCommentFocused, setIsCommentFocused] = useState(false);
   const [focusedReplyId, setFocusedReplyId] = useState(false);
+  const [showuvideoinfo,setShowuVideoInfo]=useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+    const [showuvideolist,setShowuVideoList]=useState([]);
+
+  const { id } = useParams();
+  console.log("useParams id:", id);
+  useEffect(()=>{
+      const vodVideo=async()=>{
+        try{
+          const response = await fetch("http://localhost:8000/vod/showuvideo")
+          const data = await response.json();
+          console.log(data)
+          if(response.ok){
+            setShowuVideoList(data);
+          }else{
+            console.error('Error',data.message);
+          }
+        }catch (error){
+          console.error('Error',error)
+        }
+  
+      };
+      vodVideo();
+    },[])
+   useEffect(() => {
+      const fetchVodInfo = async () => {
+        setLoading(true);
+        try {
+          const response = await fetch(`http://localhost:8000/vod/showuinfo/${id}/showu`);
+          if (!response.ok) {
+            throw new Error("VOD 정보를 가져오는데 실패했습니다.");
+          }
+          const data = await response.json();
+          setShowuVideoInfo(data);
+          console.log(data)
+        } catch (error) {
+          setError(error.message);
+          console.error("VOD 정보 가져오기 오류:", error);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchVodInfo();
+    }, [id]);
 
   const handleRegisterButton = () => {
     if (comment.trim()) {
@@ -145,11 +193,18 @@ const ShowuVideo = ({ play, videoList }) => {
         <S.mainContent className="main-content">
           <S.videoSection className="video-section">
             <S.videoPlaceholder className="video-placeholder">
-              {videoUrl || 'Main Video Placeholder'}
+            {showuvideoinfo.videoUrl ? (
+             <video controls width="100%" height="100%">
+               <source src={showuvideoinfo.videoUrl} type="video/mp4" />
+                      동영상을 재생할 수 없습니다.
+             </video>
+                           ) : (
+            'Main Video Placeholder'
+                             )}
             </S.videoPlaceholder>
             <div className="video-details">
               <S.videoTitle className="video-title">
-                영상 제목: {title || '제목 없음'}
+                영상 제목: {showuvideoinfo.title || '제목 없음'}
               </S.videoTitle>
               <S.videoMeta className="video-meta">
                 <S.profile className="profile"></S.profile>
@@ -157,7 +212,7 @@ const ShowuVideo = ({ play, videoList }) => {
               </S.videoMeta>
             </div>
             <S.detail className="detail">
-              <span>{thumbnail}</span>
+              <span>{showuvideoinfo.detail}</span>
               <S.more className="more">
                 <p>자세히보기</p>
               </S.more>
@@ -255,18 +310,22 @@ const ShowuVideo = ({ play, videoList }) => {
           <S.sidebar className="sidebar">
             <h3>추천 영상</h3>
             <S.suggestedVideos className="suggested-videos">
-              {videoList?.length > 0 ? (
-                videoList.map((item, index) => (
-                  <S.videoPoster className="video-poster" key={index}>
-                    <div className="poster-placeholder">
-                      {item.mainImage || `Poster ${index + 1}`}
-                    </div>
-                    <p>{item.title || `Video Title ${index + 1}`}</p>
-                  </S.videoPoster>
-                ))
-              ) : (
-                <div>추천 영상을 불러오는 중입니다...</div>
-              )}
+            {showuvideolist?.length > 0 ? (
+    showuvideolist.map((item, index) => (
+      <S.videoPoster className="video-poster" key={index}>
+        <div className="poster-placeholder">
+          {item.themnail ? (
+            <img src={item.themnail} alt={`Poster ${index + 1}`} style={{ width: '100%', height: 'auto' }} />
+          ) : (
+            `Poster ${index + 1}`
+          )}
+        </div>
+        <p>{item.title || `Video Title ${index + 1}`}</p>
+      </S.videoPoster>
+    ))
+  ) : (
+    <div>추천 영상을 불러오는 중입니다...</div>
+  )}
             </S.suggestedVideos>
           </S.sidebar>
         </S.mainContent>
