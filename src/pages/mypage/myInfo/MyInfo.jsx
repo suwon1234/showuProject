@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useForm } from 'react-hook-form';
 import DeleteAccount from './_component/DeleteAccount';
 import { setProfilePicture } from '../../../modules/user';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 
 const MyInfo = () => {
 
@@ -13,7 +15,18 @@ const MyInfo = () => {
   const jwtToken = localStorage.getItem("jwtToken");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { currentUser } = useSelector((state) => state.user)
+  const { currentUser } = useSelector((state) => state.user);
+  const [ showPw, setShowPw ] = useState(false);
+  const [ showPwConfirm, setShowPwConfirm ] = useState(false);
+  const [ hyphen, setHyphen ] = useState("");
+
+  const handleShowPw = () => {
+    setShowPw(!showPw)
+  }
+
+  const handleShowPwConfirm = () => {
+    setShowPwConfirm(!showPwConfirm)
+  }
 
   const { register, handleSubmit, getValues,
           formState : { isSubmitting, errors }
@@ -76,6 +89,7 @@ const MyInfo = () => {
         // const newPicturePath = res.filePath;
         dispatch(setProfilePicture(newPicturePath)) // 리덕스 상태 업데이트
         setPicturePath(newPicturePath)
+        alert(res.message)
 
         console.log("dispatch", dispatch(setProfilePicture(`${newPicturePath}`)))
       })
@@ -84,15 +98,14 @@ const MyInfo = () => {
 
   useEffect(() => {
     if (currentUser.picture) {
-      // currentUser.picture : uploads/profiles/cat(5).jpg
       const newPicturePath = currentUser.picture.startsWith('http') 
       ? currentUser.picture 
       : `http://localhost:8000/${currentUser.picture}`;
     setPicturePath(newPicturePath);
     }
-  }, [currentUser.picture]);  // currentUser.picture가 바뀔 때마다 실행
+  }, [currentUser.picture]); 
 
-  console.log("currentUser", currentUser.picture)
+  // console.log("currentUser.picture", currentUser.picture)
 
   return (
       <S.RightSection>
@@ -103,7 +116,7 @@ const MyInfo = () => {
           <img src={picturePath} alt='프로필 사진' name='picture' />
           <p>{currentUser.name}님</p>
 
-          {/* 프로필 사진 변경 버튼 */}
+          {/* 프로필 이미지 변경 버튼 */}
           <div className='buttonWapper'>
             <S.fileInputButton className='fileInput' >
               <label>
@@ -116,23 +129,28 @@ const MyInfo = () => {
           </div>
 
           {/* 등급업 정보 수정 버튼 */}
-          <S.UpdateButton onClick={() => handleNavigate('/mypage/up-grade/update')}>
+          {/* <S.UpdateButton onClick={() => handleNavigate('/mypage/up-grade/update')}>
             <button>등급업 수정</button>
-          </S.UpdateButton>
+          </S.UpdateButton> */}
 
         </S.Profile>
+
+        {/* 프로필 이미지 변경 완료 버튼 */}
+        <S.ProfileImgChangeButton>
+          <button onClick={savePicture} >프로필 변경</button>
+        </S.ProfileImgChangeButton>
 
         {/* 회원정보 변경 */}
         <fieldset>
           <S.Form 
             onSubmit={handleSubmit( async (data) => {
-              // console.log(data);
+              console.log("data", data);
 
               const { email , password, phone } = data;
               await fetch("http://localhost:8000/users/modify", {
                 method : "PUT",
                 headers : {
-                  "Content-Type" : "application/json",
+                  'Content-Type': 'application/json',
                   'Authorization': `Bearer ${jwtToken}`
                 },
                 body : JSON.stringify({
@@ -154,7 +172,10 @@ const MyInfo = () => {
 
               <label>
                 <span>새 비밀번호</span>
-                <S.Input type="password" name='password' placeholder='변경할 비밀번호를 입력하세요'
+                <S.Input 
+                  type={ showPw ? "text" : "password"} 
+                  name='password' 
+                  placeholder='변경할 비밀번호를 입력하세요'
                   {...register("password", {
                     required : true,
                     pattern : {
@@ -162,18 +183,38 @@ const MyInfo = () => {
                     }
                   })}
                 />
-                <div></div>
-                {errors?.password?.type === 'required' && (
-                  <S.ConfirmMessage>비밀번호를 입력해주세요</S.ConfirmMessage>
-                )}
-                {errors?.password?.type === 'pattern' && (
-                  <S.ConfirmMessage>소문자, 숫자, 특수문자를 각 하나씩 포함한 8자리 이상</S.ConfirmMessage>
-                )}
+                {
+                  showPw ?
+                  (
+                  <FontAwesomeIcon 
+                    icon={faLockOpen} 
+                    onClick={() => handleShowPw()}
+                    className='lockImage' 
+                  />
+                  )
+                   : 
+                  (
+                  <FontAwesomeIcon 
+                    icon={faLock}
+                    onClick={() => handleShowPw()}
+                    className='lockImage'
+                  />
+                  )
+                }
               </label>
+              {errors?.password?.type === 'required' && (
+                  <S.ConfirmMessage>비밀번호를 입력해주세요</S.ConfirmMessage>
+              )}
+              {errors?.password?.type === 'pattern' && (
+                <S.ConfirmMessage>소문자, 숫자, 특수문자를 각 하나씩 포함한 8자리 이상</S.ConfirmMessage>
+              )}
 
               <label>
                 <span>새 비밀번호 확인</span>
-                <S.Input type="password" name='password' placeholder='소문자, 숫자, 특수문자를 각 하나씩 포함한 8자리 이상'
+                <S.Input 
+                  type={ showPwConfirm ? "text" : "password"} 
+                  name='password' 
+                  placeholder='소문자, 숫자, 특수문자를 각 하나씩 포함한 8자리 이상'
                   {...register("passwordConfirm", {
                     required : true,
                     validate : {
@@ -185,29 +226,53 @@ const MyInfo = () => {
                     }
                   })}
                 />
-                <div></div>
-                {errors.passwordConfirm && (
+                {
+                  showPwConfirm ?
+                  (
+                  <FontAwesomeIcon 
+                    icon={faLockOpen} 
+                    onClick={() => handleShowPwConfirm()}
+                    className='lockImage' 
+                  />
+                  )
+                   : 
+                  (
+                  <FontAwesomeIcon 
+                    icon={faLock}
+                    onClick={() => handleShowPwConfirm()}
+                    className='lockImage'
+                  />
+                  )
+                }
+              </label>
+              {errors.passwordConfirm && (
                   <S.ConfirmMessage>비밀번호를 확인해주세요</S.ConfirmMessage>
                 )}
-              </label>
               
               <S.Label>
                 <span>전화 번호</span>
                 <S.Input 
                   type="text" name='phoneNumber' 
-                  placeholder={currentUser.phone}
+                  placeholder="전화번호"
+                  // defaultValue={currentUser?.phone}
                   {...register("phone", {
-                    required : true
+                    required : "전화번호를 입력해주세요.",
+                    onChange: (e) => {
+                      const value = e.target.value.replace(/[^0-9]/g, ""); // 숫자만 남김
+                      if (value.length <= 11) {
+                        const formatted = value.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+                        setHyphen(formatted);
+                      }
+                    },
                   })} 
+                  value={hyphen}
                 />
-                <div></div>
               </S.Label>
 
               <S.ButtonBox className='buttonBox'>
                 <S.ChangeButton 
                   type="submit" 
                   disabled={isSubmitting}
-                  onClick={savePicture} 
                 >
                   변경 완료
                 </S.ChangeButton>

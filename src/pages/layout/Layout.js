@@ -90,7 +90,7 @@ const Layout = () => {
 
               <S.authlinks className="authlinks">
                 <Link to="/up-grade" className="highlight">
-                  등급업 신청
+                {currentUser.isUpgradeRequested ? '등급업 수정' : '등급업 신청'}
                 </Link>
                 <span className="divider">|</span>
 

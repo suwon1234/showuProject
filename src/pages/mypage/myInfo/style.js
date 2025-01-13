@@ -17,7 +17,7 @@ const S = {};
     align-items: center;
     /* gap : 40px; */
 
-    margin: 40px 0 50px 0;
+    margin: 40px 0 0 0;
 
     position: relative;
 
@@ -49,6 +49,19 @@ const S = {};
 
         background-color: #ffd400;
       }
+    }
+  `
+
+  S.ProfileImgChangeButton = styled.div`
+    & button{
+      background-color: #000;
+      border: none;
+      border: 1px solid #444444;
+      border-radius: 5px;
+
+      margin-top: 10px;
+      margin-left: 20px;
+      font-size: 20px;
     }
   `
 
@@ -107,11 +120,13 @@ const S = {};
   S.Form = styled.form`
     display: flex;
     flex-direction: column;
+    margin-top: 50px;
 
     & label {
-      display: grid;
-      grid-template-columns: 400px 400px;
+      display: flex;
+      /* grid-template-columns: 400px 400px; */
       align-items: center;
+      justify-content: space-between;
       border-top: 0.5px solid #444444;
       padding: 15px 0;
 
