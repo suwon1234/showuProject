@@ -1,10 +1,12 @@
 import React from 'react';
+import S from './style';
+
 
 const MainTeam = () => {
   return (
-    <div>
-      
-    </div>
+    <S.Wrapper>
+      모집중인 팀
+    </S.Wrapper>
   );
 };
 
