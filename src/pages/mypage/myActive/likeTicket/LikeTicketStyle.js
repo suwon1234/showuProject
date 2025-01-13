@@ -38,8 +38,6 @@ const S = {};
 
     display: flex;
 
-    cursor: pointer;
-
     /* border: 1px solid #444444; */
     border-radius: 5px;
     background-color: #fff;
@@ -87,6 +85,8 @@ const S = {};
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    gap: 10px;
 
     position: relative;
 
@@ -98,7 +98,7 @@ const S = {};
     /* border-bottom: 1px solid #444444; */
     & p {
       font-size: 17px;
-      margin: 10px 0 0 10px;
+      margin-left: 10px;
 
       color: black;
     }

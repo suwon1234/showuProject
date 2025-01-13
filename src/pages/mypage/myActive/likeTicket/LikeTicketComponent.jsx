@@ -21,10 +21,10 @@ const LikeTicketComponent = ({ page, currentList, setPage, totalPost, PAGINATION
     <>
       <S.Container className='Container'>
         { currentList && currentList.map((item, i) => (
-          <S.Wrapper key={i} className='Wrapper' onClick={() => handleNavigate(`/my-res/ticket/detail/${item.id}`)}>
+          <S.Wrapper key={i} className='Wrapper'>
             <S.RightContent className='rightContent'>
               <p className='date'>{item.dates}</p>
-              <p className='id'>예매번호 {item.id}</p>
+              {/* <p className='id'>예매번호 {item.id}</p> */}
               <p className='ticketName'>{item.name}</p>
               {/* <p className='qty'>{item.qty}매</p> */}
               {/* <p className='cancellableDate'>취소 가능일 {item.cancellableDate}</p> */}
