@@ -9,7 +9,7 @@ const MdInquiryDetail = () => {
   const [inquiryList, setInquiryList] = useState([]);
   const [isEditing, setIsEditing] = useState(false);  // 수정 상태
   const [updatedContent, setUpdatedContent] = useInput('');  // 수정된 내용 저장
-  const [inquiryDetail, setInquiryDetail] = useState({ content: '' });  // 초기값 수정
+  const [inquiryDetail, setInquiryDetail] = useState({ content: '' });  
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -50,14 +50,14 @@ const MdInquiryDetail = () => {
         const datas = await response.json();
   
         if (response.ok) {
-          setInquiryDetail(datas.inquiry || { content: '' }); // 기본값 추가
+          setInquiryDetail(datas.inquiry || { content: '' }); 
         } else {
           console.error("문의 내역을 불러오는 데 실패했습니다.");
-          setInquiryDetail({ content: '문제를 찾을 수 없습니다.' }); // 실패 메시지 표시
+          setInquiryDetail({ content: '문제를 찾을 수 없습니다.' }); 
         }
       } catch (error) {
-        console.error("상세 문의 내역 가져오기 오류", error);
-        setInquiryDetail({ content: '서버와 연결할 수 없습니다.' }); // 네트워크 오류 처리
+        console.error("상세 문의 내역 가져오기 실패", error);
+        setInquiryDetail({ content: '서버 오류' }); 
       }
     };
 
@@ -66,24 +66,24 @@ const MdInquiryDetail = () => {
     }
   }, [id]);
 
-  // 상세글 로딩중
+ 
   if (!inquiryDetail) return <div>로딩 중...</div>;
 
-  // 수정 버튼 클릭 시 수정 여부 확인
+  // 수정 버튼 클릭
   const handleEdit = () => {
-    if (!inquiryDetail) {
-      console.error('수정 요청 시 inquiryDetail이 없습니다!');
-      return;
-    }
+    // if (!inquiryDetail) {
+    //   console.error('수정할 문의 내역이 없습니다!');
+    //   return;
+    // }
 
     setIsEditing(true);
-    setUpdatedContent(inquiryDetail.content || ''); // 기존 내용으로 설정
+    setUpdatedContent(inquiryDetail.content || ''); // 기존 내용으로 되돌리기
   };
 
   // 수정 취소 => 기존 내용 되돌리기
   const handleCancel = () => {
     setIsEditing(false); 
-    setUpdatedContent(inquiryDetail.content || ''); // 초기 내용으로 되돌리기
+    setUpdatedContent(inquiryDetail.content || ''); 
   };
 
   // 수정된 내용 저장하기
@@ -96,7 +96,7 @@ const MdInquiryDetail = () => {
         },
         body: JSON.stringify({
           ...inquiryDetail,
-          content: updatedContent,  // 수정된 내용 저장
+          content: updatedContent,  
         }),
       });
 
@@ -104,7 +104,7 @@ const MdInquiryDetail = () => {
         setIsEditing(false);
         setInquiryDetail((prev) => ({
           ...prev,
-          content: updatedContent,  // 수정된 내용 갱신
+          content: updatedContent,  
         }));
       } else {
         console.error("Failed to save inquiry...");
@@ -124,7 +124,7 @@ const MdInquiryDetail = () => {
         });
 
         if (response.ok) {
-          navigate('/shop/md/inquiry/list');  // 삭제 후 목록으로 돌아가기
+          navigate('/shop/md/inquiry/list');  
         } else {
           console.error('Failed to delete inquiry');
         }
@@ -167,10 +167,7 @@ const MdInquiryDetail = () => {
 
         <S.Input>
           {isEditing ? (
-            <S.InputContent
-              type="text"
-              placeholder="내용을 입력하세요."
-              value={updatedContent} 
+            <S.InputContent type="text" placeholder="내용을 입력하세요." value={updatedContent} 
               onChange={(e) => setUpdatedContent(e.target.value)}  // 내용 수정
             />
           ) : (
@@ -182,7 +179,7 @@ const MdInquiryDetail = () => {
           <S.ButtonContainer>
             <S.ButtonWrapper>
               <S.CancelButton onClick={handleCancel}>취소</S.CancelButton>
-              <S.SaveButton onClick={handleSave}>확인</S.SaveButton>  {/* 수정 저장 */}
+              <S.SaveButton onClick={handleSave}>확인</S.SaveButton>  
             </S.ButtonWrapper>
           </S.ButtonContainer>
         ) : (
@@ -192,7 +189,7 @@ const MdInquiryDetail = () => {
             </Link>
             <S.ButtonWrapper>
               <S.DeleteButton onClick={handleDelete}>삭제</S.DeleteButton>
-              <S.ModifyButton onClick={handleEdit}>수정</S.ModifyButton>  {/* 수정 버튼 */}
+              <S.ModifyButton onClick={handleEdit}>수정</S.ModifyButton>  
             </S.ButtonWrapper>
           </S.ButtonContainer>
         )}
