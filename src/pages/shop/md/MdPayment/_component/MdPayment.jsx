@@ -23,7 +23,7 @@ const MdPayment = () => {
   const [userPhone6, setUserPhone6] = useState('');
   const [userAddress, setUserAddress] = useState('');
   const [errors, setErrors] = useState({})
-  const [hoveredField, setHoveredField] = useState(null); // hover 상태 관리
+  const [hoveredField, setHoveredField] = useState(null); 
 
   const iconPaymentMethods = [
     { label: "체크/신용 카드", icon: faCreditCard },
@@ -59,7 +59,6 @@ const MdPayment = () => {
     }
   };
 
-  // 유효성 검사 함수
   const validateField = (field, value) => {
     return value.trim() === '';
   };
@@ -126,8 +125,7 @@ const MdPayment = () => {
               <S.Center>{item.quantity}</S.Center>
               <S.Right>{(item.price * item.quantity).toLocaleString()} 원</S.Right>
               <FontAwesomeIcon className='icon' icon={faXmark} 
-                onClick={() => deleteProduct(i)} 
-              />
+                onClick={() => deleteProduct(i)} />
             </S.PaymentItem>
           ))}
         </S.PaymentList>

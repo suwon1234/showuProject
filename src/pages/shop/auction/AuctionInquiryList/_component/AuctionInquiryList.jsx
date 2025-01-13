@@ -1,4 +1,3 @@
-// MD - 문의내역 페이지
 import React, { useEffect, useState } from 'react';
 import S from './styleInquiryList';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,8 +27,8 @@ const AuctionInquiryList = () => {
 
   }, []);
 
-  const handleCancel = () => {
-      navigate(-1);
+  const handleGoBack = () => {
+    navigate('/shop/auction');
   };
 
   return (
@@ -62,7 +61,7 @@ const AuctionInquiryList = () => {
       </S.Head>
       
       {inquiryList.map((inquiry, i) => (
-        <Link to={`/shop/auction/inquiry/${inquiry._id}`}>
+        <Link to={`/shop/auction/inquiry/${inquiry._id}`} key={inquiry._id}>
         <S.InquiryList key={inquiry._id}>
           <S.Left1>
             {/* <S.ListItem>{inquiry._id}</S.ListItem> */}
@@ -84,13 +83,15 @@ const AuctionInquiryList = () => {
             <S.ListItem>{inquiry.writer}</S.ListItem>
           </S.Right1>
           <S.Right2>
-            <S.ListItem>{new Date(inquiry.createdAt).toLocaleDateString()}</S.ListItem>
+            <S.ListItem>
+              {new Date(inquiry.updatedAt || inquiry.createdAt).toLocaleDateString()}
+            </S.ListItem>
           </S.Right2>
         </S.InquiryList>
         </Link>
       ))}
 
-        <S.BackButton onClick={handleCancel}>이전 페이지로</S.BackButton>
+        <S.BackButton onClick={handleGoBack}>홈으로 돌아가기</S.BackButton>
     </S.ListWrapper>
   );
 };

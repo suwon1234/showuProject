@@ -4,27 +4,26 @@ import S from './styleDropdown2';
 const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState('--메시지 선택(선택 사항)--');
-  const [customMessage, setCustomMessage] = useState(''); // 직접 입력할 메시지 상태
+  const [customMessage, setCustomMessage] = useState(''); 
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option); // 선택된 옵션 상태 업데이트
+    setSelectedOption(option); 
     if (option !== '직접 입력') {
-      setCustomMessage(''); // '직접 입력'이 아니면 기존 입력값 초기화
+      setCustomMessage(''); 
     }
-    setIsOpen(false); // 옵션 선택 후 드롭다운 닫기
+    setIsOpen(false); 
   };
 
   const handleCustomMessageChange = (e) => {
-    setCustomMessage(e.target.value); // 직접 입력 필드 값 상태 업데이트
+    setCustomMessage(e.target.value); 
   };
 
   return (
     <S.DropdownContainer>
-      {/* '직접 입력'일 경우, 드롭다운 버튼 대신 input 필드로 바꿔서 사용자 입력 받기 */}
       {selectedOption === '직접 입력' ? (
         <S.CustomInput
           type="text"

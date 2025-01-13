@@ -4,7 +4,7 @@ import S from './styleDetail';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faCircleChevronLeft, faCircleChevronRight, faCircleExclamation, faClock, faHeart, faLock, faPencil } from '@fortawesome/free-solid-svg-icons';
 import DeliveryPopup from './DeliveryPopup';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import BidPopup from './BidPopup';
 
 // const AuctionDetail = ({auctionItems, auctionInfo}) => {
@@ -18,6 +18,7 @@ const AuctionDetail = () => {
   const [currentSlide, setCurrentSlide] = useState(0); // 현재 슬라이드 상태
   const ProductsPerSlide = 3; // 한 번에 3개씩 보여줌
   const navigate = useNavigate();
+  const location = useLocation();
 
   const openPopup1 = () => setPopupVisible1(true);
   const closePopup1 = () => setPopupVisible1(false);
@@ -111,6 +112,14 @@ const AuctionDetail = () => {
     navigate('shop/auction/inquiry/list')
   }
 
+  const handleBid = () => {
+    if (auctionProduct) {
+      navigate('/shop/auction/payment', { state: { auctionProduct } });
+    } else {
+      console.log('상품 정보가 없습니다.');
+    }
+  };
+
   return (
     <S.DetailWrapper>
       <S.Title>
@@ -168,7 +177,7 @@ const AuctionDetail = () => {
 
           {PopupVisible1 && (
             <BidPopup
-              title="입찰하기" onClose={closePopup1}>
+              title="입찰하기" onClose={closePopup1} handleBid={handleBid} auctionProduct={auctionProduct}>
             </BidPopup>
           )}
 

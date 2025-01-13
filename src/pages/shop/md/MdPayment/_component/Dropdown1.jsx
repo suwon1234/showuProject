@@ -10,14 +10,14 @@ const Dropdown = () => {
   };
 
   const handleOptionClick = (option) => {
-    setSelectedOption(option); // 선택된 옵션 상태 업데이트
+    setSelectedOption(option); 
     setIsOpen(false); // 옵션 선택 후 드롭다운 닫기
   };
 
   return (
     <S.DropdownContainer>
       <S.DropdownButton onClick={toggleDropdown}>
-        <p>{selectedOption}</p> {/* 선택된 옵션 표시 */}
+        <p>{selectedOption}</p> 
       </S.DropdownButton>
       {isOpen && (
         <S.DropdownContent>

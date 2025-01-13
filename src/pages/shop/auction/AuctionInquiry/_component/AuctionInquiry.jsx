@@ -1,4 +1,3 @@
-// 경매매 - 문의 페이지
 import React, { useState } from 'react';
 import S from './styleInquiry';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +17,7 @@ const AuctionInquiry = () => {
   const [selectedAlarm, setSelectedAlarm] = useState(null); 
   const [isAgreed, setIsAgreed] = useState(false);
   const location = useLocation();
-  const { auctionName } = location.state || {}; // state에서 상품명 받기
+  const { auctionName } = location.state || {}; 
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -102,7 +101,7 @@ const AuctionInquiry = () => {
             <td colSpan="2">
               <S.TypeWrapper>
                 {inquiryTypes.map((type) => (
-                  <S.Type key={type} onClick={() => setSelectedType(selectedType === type ? null : type)} selected={selectedType === type}>
+                  <S.Type key={type} onClick={() => setSelectedType(type)} selected={selectedType === type}>
                     <S.Icon icon={faCheckCircle} selected={selectedType === type} />
                     <p>{type}</p>
                   </S.Type>
@@ -115,7 +114,7 @@ const AuctionInquiry = () => {
             <td colSpan="2">
               <S.TypeWrapper>
               {inquiryForms.map((form) => (
-                  <S.Type key={form} onClick={() => setSelectedForm(selectedForm === form ? null : form)} selected={selectedForm === form}>
+                  <S.Type key={form} onClick={() => setSelectedForm(form)} selected={selectedForm === form}>
                     <S.Icon icon={faCheckCircle} selected={selectedForm === form} />
                     <p>{form}</p>
                   </S.Type>
@@ -146,7 +145,7 @@ const AuctionInquiry = () => {
             <td>
               <S.TypeWrapper>
                 {alarmTypes.map((alarm) => (
-                  <S.Type key={alarm} onClick={() => setSelectedAlarm(selectedAlarm === alarm ? null : alarm)} selected={selectedAlarm === alarm}>
+                  <S.Type key={alarm} onClick={() => setSelectedAlarm(alarm)} selected={selectedAlarm === alarm}>
                     <S.Icon icon={faCheckCircle} selected={selectedAlarm === alarm} />
                     <p>{alarm}</p>
                   </S.Type>
@@ -173,7 +172,7 @@ const AuctionInquiry = () => {
 
       <S.InquiryButton>
         <S.BackButton onClick={handleCancel}>취소</S.BackButton>
-          <S.NextButton onClick={handleSubmit}>등록</S.NextButton>
+        <S.NextButton onClick={handleSubmit}>등록</S.NextButton>
       </S.InquiryButton>
     </S.InquiryWrapper>
   );

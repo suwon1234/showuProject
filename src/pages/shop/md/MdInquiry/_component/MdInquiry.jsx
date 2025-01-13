@@ -17,9 +17,8 @@ const MdInquiry = () => {
   const [content, setContent] = useState(''); 
   const [selectedAlarm, setSelectedAlarm] = useState(null); 
   const [isAgreed, setIsAgreed] = useState(false);
-  const [userName, setUserName] = useState('');
   const location = useLocation();
-  const { mdName } = location.state || {}; // MdDetail에서 상품명 받아옴
+  const { mdName } = location.state || {}; // 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -71,7 +70,7 @@ const MdInquiry = () => {
 
       if (response.ok) {
         alert(result.message);
-        navigate('/shop/md/inquiry/list'); // 리스트 페이지로 이동
+        navigate('/shop/md/inquiry/list');
       } else {
         alert(result.message || "문의 등록에 실패했습니다.");
       }
