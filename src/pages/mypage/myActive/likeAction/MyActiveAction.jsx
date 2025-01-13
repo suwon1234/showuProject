@@ -2,12 +2,18 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LikeAction from './LikeAction';
 import S from './MyActiveActionStyle';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const MyActiveAction = () => {
   const navigate = useNavigate();
 
   const handleNavigate = (path) => {
     navigate(path)
+  };
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
 
@@ -36,7 +42,9 @@ const MyActiveAction = () => {
         </S.Wapper>
       </S.Container>
 
-      {/* <Paging /> */}
+      <S.ScrollTop onClick={handleScrollTop}>
+        <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+      </S.ScrollTop>
     </>
   );
 };

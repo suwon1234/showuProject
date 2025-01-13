@@ -2,12 +2,18 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LikeLesson from './LikeLesson';
 import S from './MyActiveLessonStyle';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const MyActiveLesson = () => {
   const navigate = useNavigate();
 
   const handleNavigate = (path) => {
     navigate(path)
+  };
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -36,6 +42,9 @@ const MyActiveLesson = () => {
         </S.Wapper>
       </S.Container>
 
+      <S.ScrollTop onClick={handleScrollTop}>
+        <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+      </S.ScrollTop>
     </>
   );
 };

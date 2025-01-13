@@ -2,6 +2,8 @@ import React from 'react';
 import Post from './Post';
 import S from './PostContainerStyle';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 
 const PostContainer = () => {
@@ -10,6 +12,10 @@ const PostContainer = () => {
   const handleNavigate = (path) => {
     navigate(path)
   }
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <>
@@ -31,6 +37,10 @@ const PostContainer = () => {
 
         </S.Wapper>
       </S.Container>
+
+      <S.ScrollTop onClick={handleScrollTop}>
+        <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+      </S.ScrollTop>
 
     </>
   );

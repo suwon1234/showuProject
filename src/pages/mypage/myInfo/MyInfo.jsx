@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import DeleteAccount from './_component/DeleteAccount';
 import { setProfilePicture } from '../../../modules/user';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 
 const MyInfo = () => {
 
@@ -27,6 +27,10 @@ const MyInfo = () => {
   const handleShowPwConfirm = () => {
     setShowPwConfirm(!showPwConfirm)
   }
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   useEffect(() => {
     if (currentUser?.phone) {
@@ -289,6 +293,9 @@ const MyInfo = () => {
         </fieldset>
 
 
+        <S.ScrollTop onClick={handleScrollTop}>
+          <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+        </S.ScrollTop>
 
       </S.RightSection>
   );

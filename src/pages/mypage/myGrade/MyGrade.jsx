@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import S from './style';
 import Grade from './Grade';
 import { useNavigate } from 'react-router';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const MyGrade = () => {
   const jwtToken = localStorage.getItem("jwtToken");
@@ -12,6 +14,10 @@ const MyGrade = () => {
       navigate("/login", { replace : true })
     }
   }, [jwtToken, navigate])
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <>
@@ -30,6 +36,10 @@ const MyGrade = () => {
 
         </S.Wapper>
       </S.Container>
+
+      <S.ScrollTop onClick={handleScrollTop}>
+        <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+      </S.ScrollTop>
     </>
   );
 };

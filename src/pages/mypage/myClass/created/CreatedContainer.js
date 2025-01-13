@@ -1,8 +1,9 @@
 import React from 'react';
-import Paging from '../../_component/Paging';
 import { useNavigate } from 'react-router-dom';
 import Created from './Created';
 import S from './CreatedContainerStyle';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const CreatedContainer = () => {
   const navigate = useNavigate();
@@ -10,6 +11,10 @@ const CreatedContainer = () => {
   const handleNavigate = (path) => {
     navigate(path)
   }
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <>
@@ -32,7 +37,9 @@ const CreatedContainer = () => {
         </S.Wapper>
       </S.Container>
 
-      {/* <Paging /> */}
+      <S.ScrollTop onClick={handleScrollTop}>
+        <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+      </S.ScrollTop>
     </>
   );
 };
