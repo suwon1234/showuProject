@@ -100,7 +100,7 @@ import RentalSelection from '../pages/reservation/space/rentalSelection/RentalSe
 import LessonMake from '../pages/showu/lesson/LessonMain/LessonMake/_component/LessonMake';
 import LessonMain from '../pages/showu/lesson/LessonMain/LessonMain';
 import TeamDetails from '../pages/showu/team/teamDetails/_component/TeamDetails';
-import TeamMain from '../pages/showu/team/teamMain/teamMain'
+import TeamMainPage from '../pages/showu/team/teamMain/TeamMainPage'
 import TeamMaking from '../pages/showu/team/teamMaking/TeamMaking';
 import Detail from '../pages/reservation/payment/Detail';
 import Failed from '../pages/reservation/payment/Failed';
@@ -321,7 +321,7 @@ const router = createBrowserRouter([
         element: <MainContainer />, // MD 메인
       },
       {
-        path: "/shop/md/detail/:id",
+        path: "/shop/md/detail/id",
         element: <DetailContainer />, // MD 상세
       },
       {
@@ -399,7 +399,7 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/showu/lesson/details",
+        path: "/showu/lesson/details/:id",
         element: <LessonDetails />,
       },
       {
@@ -408,7 +408,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/showu/team",
-        element: <TeamMain />,
+        element: <TeamMainPage />,
       },
       {
         path: "/showu/team/teamDetails",

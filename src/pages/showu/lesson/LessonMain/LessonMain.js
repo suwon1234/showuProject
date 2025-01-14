@@ -12,7 +12,7 @@ const LessonMain = () => {
             <S.LessonMainTop>
                 <S.LessonCategoryWrapper>
                     <select className='lessonCategory' name='lessonClass'>
-                        <option disabled selected>
+                        <option >
                             과목
                         </option>
                         <option value={"music"}>음악</option>
