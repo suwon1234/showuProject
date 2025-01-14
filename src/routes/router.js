@@ -100,7 +100,7 @@ import RentalSelection from '../pages/reservation/space/rentalSelection/RentalSe
 import LessonMake from '../pages/showu/lesson/LessonMain/LessonMake/_component/LessonMake';
 import LessonMain from '../pages/showu/lesson/LessonMain/LessonMain';
 import TeamDetails from '../pages/showu/team/teamDetails/_component/TeamDetails';
-import TeamMain from '../pages/showu/team/teamMain/TeamMain'
+import TeamMainPage from '../pages/showu/team/teamMain/TeamMainPage'
 import TeamMaking from '../pages/showu/team/teamMaking/TeamMaking';
 import Detail from '../pages/reservation/payment/Detail';
 import Failed from '../pages/reservation/payment/Failed';
@@ -408,7 +408,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/showu/team",
-        element: <TeamMain />,
+        element: <TeamMainPage />,
       },
       {
         path: "/showu/team/teamDetails",

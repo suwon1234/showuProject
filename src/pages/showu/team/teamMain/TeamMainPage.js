@@ -4,7 +4,7 @@ import S from '../style';
 import SelectSido from './_component/SelectSido';
 import { Link } from 'react-router-dom';
 
-const TeamMain = () => {
+const TeamMainPage = () => {
     return (
         <S.TeamMainWrapper>
             <S.TeamMainTitle>팀 매칭하기</S.TeamMainTitle>
@@ -75,4 +75,4 @@ const TeamMain = () => {
     );
 };
 
-export default TeamMain;
+export default TeamMainPage;
