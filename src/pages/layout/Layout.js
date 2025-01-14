@@ -15,6 +15,10 @@ const Layout = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const jwtToken = localStorage.getItem("jwtToken") || searchParams.get("jwtToken");
+  const [ loginID, setLoginID ] = useState("");
+  const [ saveIDFlag, setSaveIDFlag ] = useState(false);
+  const LS_KEY_ID = "LS_KEY_ID";
+
 
   const handleLogout = () => {
     localStorage.removeItem("jwtToken") //토큰 삭제
