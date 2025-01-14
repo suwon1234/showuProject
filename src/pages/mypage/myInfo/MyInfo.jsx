@@ -59,11 +59,18 @@ const MyInfo = () => {
 
   useEffect(() => {
     if (currentUser.picture) {
-      setPicturePath(`http://localhost:8000/${currentUser.picture}`);
+      // currentUser.picture 앞 확인, http 추가
+      const pictureUrl = currentUser.picture.startsWith('uploads/profiles')
+        ? `http://localhost:8000/${currentUser.picture}`
+        : currentUser.picture;
+  
+      setPicturePath(pictureUrl);
     } else {
       setPicturePath('http://localhost:8000/uploads/profiles/user.png'); // 기본 프로필 이미지
     }
   }, [currentUser.picture]);
+  
+  
 
   const handleFileChange = (e) => {
     const file = e.target.files[0]
@@ -95,6 +102,12 @@ const MyInfo = () => {
       })
       .catch(console.error)
   }
+
+
+
+  // console.log("picturePath", picturePath)
+  // console.log("currentUser.picture", currentUser.picture)
+  
 
   return (
     <S.RightSection>
