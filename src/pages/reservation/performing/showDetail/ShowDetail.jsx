@@ -1,100 +1,175 @@
-import React, { useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import { format, addDays, startOfMonth, endOfMonth, getDay, addMonths, isSameDay } from 'date-fns';
-import S from './style';
-
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  format,
+  addDays,
+  startOfMonth,
+  endOfMonth,
+  getDay,
+  addMonths,
+  isSameDay,
+} from "date-fns";
+import { useSelector } from "react-redux";
+import S from "./style";
 
 const ShowDetail = () => {
   const { id } = useParams();
+  const { currentUser } = useSelector((state) => state.user); // Redux에서 현재 유저 정보 가져오기
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState("");
   const [availableSeats, setAvailableSeats] = useState({ R: null, S: null });
   const [activeTab, setActiveTab] = useState("상세정보");
-  const [comments, setComments] = useState([]);
+  const [comments, setComments] = useState([]); // 빈 배열로 초기화
   const [newComment, setNewComment] = useState("");
-  const [userName] = useState("사용자1");
   const [editingIndex, setEditingIndex] = useState(null);
   const [editingComment, setEditingComment] = useState("");
   const navigate = useNavigate();
   const [isFavorite, setIsFavorite] = useState(false);
+  const [show, setShow] = useState(null); // 쇼 데이터를 상태로 관리
 
+ useEffect(() => {
+   const fetchShow = async () => {
+     const token = localStorage.getItem("jwtToken");
+     try {
+       const response = await fetch(
+         `http://localhost:8000/reservation/performingShows/${id}`,
+         {
+           headers: {
+             Authorization: `Bearer ${token}`,
+           },
+         }
+       );
+       if (!response.ok) {
+         throw new Error("네트워크 응답이 실패했습니다.");
+       }
+       const fetchedData = await response.json();
+       console.log("Fetched Show Data:", fetchedData); // 콘솔 로그 추가
+       setShow(fetchedData);
+       setIsFavorite(
+         fetchedData.hearts && fetchedData.hearts.includes(currentUser._id)
+       ); // 초기 좋아요 상태 설정
+       setComments(
+         Array.isArray(fetchedData.comments) ? fetchedData.comments : []
+       ); // 초기 댓글 설정
+       console.log("Fetched Comments:", fetchedData.comments); // 콘솔 로그 추가
+     } catch (error) {
+       console.error("공연 데이터를 가져오는 중 오류 발생:", error);
+       setComments([]); // 오류 발생 시 빈 배열로 초기화
+     }
+   };
 
-  const performingShows = [
-    {
-      id: 1,
-      name: "뮤지컬 <시라노>",
-      venue: "디큐브 링크 아트센터",
-      dates: "2024.10.15 - 2025.1.5",
-      duration: "120분",
-      grade: "13세 이상",
-      price: {
-        R: "77,000원",
-        S: "55,000원",
-      },
-      discounts: [
-        "PAYCO VIP 회원 할인 10% 할인",
-        "5차 조기예매 할인 25% 할인",
-        "마티네 공연 할인 30% 할인",
-        "재관람(1인1매, 본인 기준으로 티켓소지시) 25% 할인",
-        "S석 청소년할인(본인, 생년월일 증명서류 지참) 30% 할인",
-      ],
-      img: "https://ticketimage.interpark.com/Play/image/large/24/24014885_p.gif",
-      detailImage:
-        "https://ticketimage.interpark.com/Play/image/etc/24/24014885-18.jpg",
-      cast: [
-        { name: "박정원", img: "path/to/image1.jpg" },
-        { name: "손유동", img: "path/to/image2.jpg" },
-        { name: "박준희", img: "path/to/image3.jpg" },
-        { name: "김리현", img: "path/to/image4.jpg" },
-        { name: "김재범", img: "path/to/image5.jpg" },
-        { name: "김종구", img: "path/to/image6.jpg" },
-        { name: "김경수", img: "path/to/image7.jpg" },
-        { name: "김지철", img: "path/to/image8.jpg" },
-      ],
-    },
-    // 추가 데이터
-  ];
+   fetchShow();
+ }, [id, currentUser._id]);
 
-  const show = performingShows.find((show) => show.id === parseInt(id));
   if (!show) {
     return <p>해당 공연 정보를 찾을 수 없습니다.</p>;
   }
 
-const handleFavoriteClick = () => {
-  setIsFavorite(!isFavorite);
-  // 백엔드 호출로 선호 목록에 추가/제거 처리
-};
+  const handleFavoriteClick = async () => {
+    const token = localStorage.getItem("jwtToken");
+    try {
+      const response = await fetch(
+        `http://localhost:8000/reservation/performingShows/${id}/likes`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ userId: currentUser._id }), // 유저 ID 포함
+        }
+      );
+      if (!response.ok) {
+        throw new Error("좋아요 토글 중 오류 발생");
+      }
+      const result = await response.json();
+      setIsFavorite(!isFavorite);
+      console.log(result.message); // 서버에서 받은 메시지를 콘솔에 출력
+      if (!isFavorite) {
+        alert("마이페이지 나의 찜 목록에서 확인할 수 있습니다!");
+      } else {
+        alert("찜이 취소되었습니다.");
+      }
+    } catch (error) {
+      console.error("좋아요 토글 중 오류 발생:", error);
+    }
+  };
 
- const handleAddComment = () => {
-   if (newComment.trim() && newComment.length <= 1000) {
-     const comment = {
-       text: newComment,
-       user: userName,
-       time: new Date().toLocaleString(),
-     };
-     setComments([...comments, comment]);
-     setNewComment("");
-   }
+
+  const handleAddComment = async () => {
+    const token = localStorage.getItem("jwtToken");
+    if (newComment.trim() && newComment.length <= 1000) {
+      try {
+        const response = await fetch(
+          `http://localhost:8000/reservation/performingShows/${id}/comments`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ userId: currentUser._id, text: newComment }), // 유저 ID 포함
+          }
+        );
+        if (!response.ok) {
+          throw new Error("댓글 추가 중 오류 발생");
+        }
+        const result = await response.json();
+        setComments(result); // 응답으로 받은 댓글 목록 업데이트
+        setNewComment(""); // 입력 필드 초기화
+      } catch (error) {
+        console.error("댓글 추가 중 오류 발생:", error);
+      }
+    }
   };
-  
-  const handleEditComment = (index) => {
-    setEditingIndex(index);
-    setEditingComment(comments[index].text);
+
+  const handleSaveEdit = async () => {
+    const token = localStorage.getItem("jwtToken");
+    try {
+      const response = await fetch(
+        `http://localhost:8000/reservation/performingShows/${id}/comments/${comments[editingIndex]._id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ text: editingComment }),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("댓글 수정 중 오류 발생");
+      }
+      const result = await response.json();
+      setComments(result);
+      setEditingIndex(null);
+      setEditingComment("");
+    } catch (error) {
+      console.error("댓글 수정 중 오류 발생:", error);
+    }
   };
-  
-  const handleSaveEdit = () => {
-    const updatedComments = [...comments];
-    updatedComments[editingIndex].text = editingComment;
-    updatedComments[editingIndex].time = new Date().toLocaleString(); // 수정 시간 업데이트 
-    setComments(updatedComments);
-    setEditingIndex(null);
-    setEditingComment("");
-  };
-  
-  const handleDeleteComment = (index) => {
-    const updatedComments = comments.filter((_, i) => i !== index);
-    setComments(updatedComments);
+
+  const handleDeleteComment = async (commentId) => {
+    const token = localStorage.getItem("jwtToken");
+    try {
+      const response = await fetch(
+        `http://localhost:8000/reservation/performingShows/${id}/comments/${commentId}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error("댓글 삭제 중 오류 발생");
+      }
+      const result = await response.json();
+      setComments(result);
+    } catch (error) {
+      console.error("댓글 삭제 중 오류 발생:", error);
+    }
   };
 
   const handleDateChange = (date) => {
@@ -103,19 +178,37 @@ const handleFavoriteClick = () => {
     setAvailableSeats({ R: null, S: null }); // 날짜 변경 시 좌석 정보 초기화
   };
 
-  const handleTimeChange = (time) => {
+  const handleTimeChange = async (time) => {
     setSelectedTime(time);
-    if (time === "16:00") {
-      setAvailableSeats({ R: "매진", S: "15석" });
-    } else if (time === "20:00") {
-      setAvailableSeats({ R: "10석", S: "매진" });
-    }
-  };
+    setAvailableSeats({ R: null, S: null }); // 초기화
 
-  const handleBooking = () => {
-    navigate("/reservation/performing-show/seat-selection", {
-      state: { selectedDate, selectedTime, showName: show.name },
-    });
+    try {
+      const formattedDate = encodeURIComponent(
+        new Date(selectedDate).toISOString()
+      ); // 날짜 형식 변환 후 URL 인코딩
+      const response = await fetch(
+        `http://localhost:8000/reservation/availableSeats?showId=${show._id}&date=${formattedDate}&time=${time}`
+      );
+      if (!response.ok) {
+        throw new Error("잔여 좌석 조회 중 오류 발생");
+      }
+      const availableSeatsData = await response.json();
+      console.log("Available Seats Data:", availableSeatsData); // 콘솔 로그 추가
+
+      const RSeats = availableSeatsData.filter(
+        (seat) => parseInt(seat.split("-")[0]) > 3
+      ).length; // R석 예시 (row가 4 이상)
+      const SSeats = availableSeatsData.filter(
+        (seat) => parseInt(seat.split("-")[0]) <= 3
+      ).length; // S석 예시 (row가 3 이하)
+
+      setAvailableSeats({
+        R: RSeats > 0 ? `${RSeats}석` : "매진",
+        S: SSeats > 0 ? `${SSeats}석` : "매진",
+      });
+    } catch (error) {
+      console.error("잔여 좌석 조회 중 오류 발생:", error);
+    }
   };
 
   const previousMonth = () => {
@@ -140,8 +233,6 @@ const handleFavoriteClick = () => {
     const daysInWeek = ["일", "월", "화", "수", "목", "금", "토"];
     const firstDayOfMonth = getDay(start);
 
-    
-    
     return (
       <S.CalendarGrid>
         {daysInWeek.map((day) => (
@@ -163,6 +254,39 @@ const handleFavoriteClick = () => {
         ))}
       </S.CalendarGrid>
     );
+  };
+
+  const renderTimeSlots = () => (
+    <S.StepContainerTwo>
+      <S.StepTitle>STEP2 회차 선택</S.StepTitle>
+      {show.times.map((time, index) => (
+        <S.TimeSlot
+          key={time}
+          onClick={() => handleTimeChange(time)}
+          selected={selectedTime === time}
+        >
+          {time}
+          <br />
+          출연진 :{" "}
+          {show.cast
+            .slice(index * 3, index * 3 + 3)
+            .map((actor) => actor.name)
+            .join(", ")}
+        </S.TimeSlot>
+      ))}
+    </S.StepContainerTwo>
+  );
+
+  const handleBooking = () => {
+    navigate("/reservation/performing-show/seat-selection", {
+      state: {
+        selectedDate,
+        selectedTime,
+        showId: show._id,
+        showName: show.name,
+        price: show.price,
+      },
+    });
   };
 
   const renderTabs = () => (
@@ -208,7 +332,7 @@ const handleFavoriteClick = () => {
           <S.HorizontalLine />
           <S.InfoRow>
             <S.InfoColumn>
-              <S.SubTitle>가격:</S.SubTitle>
+              <S.SubTitle>가격</S.SubTitle>
               <S.DetailText>
                 <S.DetailTitle>R석:</S.DetailTitle> {show.price.R}
               </S.DetailText>
@@ -217,7 +341,7 @@ const handleFavoriteClick = () => {
               </S.DetailText>
             </S.InfoColumn>
             <S.InfoColumn>
-              <S.SubTitle>할인:</S.SubTitle>
+              <S.SubTitle>할인 정보</S.SubTitle>
               <S.DiscountList>
                 {show.discounts.map((discount, index) => (
                   <li key={index}>{discount}</li>
@@ -239,31 +363,9 @@ const handleFavoriteClick = () => {
           </S.MonthNavigation>
           <S.CalendarContainer>{renderCalendar()}</S.CalendarContainer>
         </S.StepContainer>
-
         <S.VerticalLine />
-
-        <S.StepContainerTwo>
-          <S.StepTitle>STEP2 회차 선택</S.StepTitle>
-          <S.TimeSlot
-            onClick={() => handleTimeChange("16:00")}
-            selected={selectedTime === "16:00"}
-          >
-            16:00분
-            <br></br>
-            출연진 : 홍길동, 동길홍, 이순신
-          </S.TimeSlot>
-          <S.TimeSlot
-            onClick={() => handleTimeChange("20:00")}
-            selected={selectedTime === "20:00"}
-          >
-            20:00분
-            <br></br>
-            출연진 : 홍길동, 동길홍, 이순신
-          </S.TimeSlot>
-        </S.StepContainerTwo>
-
+        {renderTimeSlots()} {/* 공연 시간 및 출연진 선택 */}
         <S.VerticalLine />
-
         <S.StepContainer>
           <S.StepTitle>잔여 좌석:</S.StepTitle>
           {availableSeats.R !== null && availableSeats.S !== null && (
@@ -276,7 +378,10 @@ const handleFavoriteClick = () => {
       </S.DateTimeContainer>
 
       <S.ReserveButtonContainer>
-        <S.FavoriteButton onClick={handleFavoriteClick} isFavorite={isFavorite}>
+        <S.FavoriteButton
+          onClick={handleFavoriteClick}
+          $isFavorite={isFavorite}
+        >
           ♥
         </S.FavoriteButton>
         <S.ReserveButtonWithHeart
@@ -307,11 +412,14 @@ const handleFavoriteClick = () => {
             <S.TimeInfoContainer>
               <S.TimeInfoTitle>공연시간 정보</S.TimeInfoTitle>
               <S.TimeInfo>{show.dates}</S.TimeInfo>
-              <S.TimeInfoContent> 평일 14시, 20시 주말 및 공휴일 14시, 20시 </S.TimeInfoContent>
+              <S.TimeInfoContent>
+                평일 14시, 20시 주말 및 공휴일 14시, 20시
+              </S.TimeInfoContent>
             </S.TimeInfoContainer>
             <S.NoticeContainer>
               <S.NoticeTitle>공지사항: 코로나19 방역 지침 준수</S.NoticeTitle>
-              <S.NoticeContent> *예매마감: 공연 전일 17시 <br />
+              <S.NoticeContent>
+                *예매마감: 공연 전일 17시 <br />
                 *취소마감: 공연 전일 17시 <br />
                 *관람연령: 13세 이상
               </S.NoticeContent>
@@ -322,12 +430,18 @@ const handleFavoriteClick = () => {
         {activeTab === "관람후기" && (
           <S.TabContent>
             <S.CommentSection>
+              {/* <S.NoticeContainer>
+                <S.NoticeTitle>관람후기</S.NoticeTitle>
+                <S.NoticeContent>
+                  showU 운영규정에 맞지 않는 글은 사전 통보없이 삭제될 수 있습니다
+                </S.NoticeContent>
+              </S.NoticeContainer> */}
               <S.CommentInputContainer>
                 <S.CommentInput
                   type="text"
                   value={newComment}
                   onChange={(e) => setNewComment(e.target.value)}
-                  placeholder="댓글을 입력하세요..."
+                  placeholder="관람후기를 입력해주세요!"
                   maxLength={1000}
                 />
                 <S.CharacterCount>{newComment.length}/1000</S.CharacterCount>
@@ -335,49 +449,59 @@ const handleFavoriteClick = () => {
               <S.CommentButton onClick={handleAddComment}>등록</S.CommentButton>
             </S.CommentSection>
             <S.CommentList>
-              {comments.map((comment, index) => (
-                <S.CommentItem key={index}>
-                  {index === editingIndex ? (
-                    <>
-                      <S.EditCommentInput
-                        type="text"
-                        value={editingComment}
-                        onChange={(e) => setEditingComment(e.target.value)}
-                        maxLength={1000}
-                      />
-                      <S.CharacterCount>
-                        {editingComment.length}/1000
-                      </S.CharacterCount>
-                      <S.CommentButton onClick={handleSaveEdit}>
-                        저장
-                      </S.CommentButton>
-                    </>
-                  ) : (
-                    <>
-                      {comment.text}
-                      <S.CommentDetails>
-                        작성한 자: {comment.user} | {comment.time}
-                      </S.CommentDetails>
-                      <S.EditDeleteContainer>
-                        <S.CommentButton
-                          onClick={() => handleEditComment(index)}
-                        >
-                          수정
+              {comments.length > 0 ? (
+                comments.map((comment, index) => (
+                  <S.CommentItem key={index}>
+                    {index === editingIndex ? (
+                      <>
+                        <S.EditCommentInput
+                          type="text"
+                          value={editingComment}
+                          onChange={(e) => setEditingComment(e.target.value)}
+                          maxLength={1000}
+                        />
+                        <S.CharacterCount>
+                          {editingComment.length}/1000
+                        </S.CharacterCount>
+                        <S.CommentButton onClick={handleSaveEdit}>
+                          저장
                         </S.CommentButton>
-                        <S.CommentButton
-                          onClick={() => handleDeleteComment(index)}
-                        >
-                          삭제
-                        </S.CommentButton>
-                      </S.EditDeleteContainer>
-                    </>
-                  )}
-                </S.CommentItem>
-              ))}
+                      </>
+                    ) : (
+                      <>
+                        {comment.text}
+                        <S.CommentDetails>
+                          작성자: {comment.user.name} / {comment.createdAt}
+                        </S.CommentDetails>
+                        <S.EditDeleteContainer>
+                          {comment.user._id === currentUser._id && (
+                            <>
+                              <S.CommentButton
+                                onClick={() => {
+                                  setEditingIndex(index);
+                                  setEditingComment(comment.text);
+                                }}
+                              >
+                                수정
+                              </S.CommentButton>
+                              <S.CommentButton
+                                onClick={() => handleDeleteComment(comment._id)}
+                              >
+                                삭제
+                              </S.CommentButton>
+                            </>
+                          )}
+                        </S.EditDeleteContainer>
+                      </>
+                    )}
+                  </S.CommentItem>
+                ))
+              ) : (
+                <p>관람후기가 없습니다</p>
+              )}
             </S.CommentList>
           </S.TabContent>
         )}
-
         {activeTab === "기대평" && (
           <S.TabContent>관람후기와 동일한 댓글 입력 페이지</S.TabContent>
         )}

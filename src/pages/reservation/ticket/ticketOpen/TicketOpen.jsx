@@ -1,130 +1,63 @@
-import React from 'react';
-import S from './style';
+import React, { useEffect, useState } from "react";
+import S from "./style";
+import { useNavigate } from "react-router";
 
 const TicketOpen = () => {
-  
-  const ticket = [
-    {
-      id: 1,
-      name: "뮤지컬 <시라노>",
-      type: "일반예매",
-      date: "오늘 12:00",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24014885_p.gif&w=384&q=75",
-    },
-    {
-      id: 2,
-      name: "뮤지컬 <스윙 데이즈_암호명 A>",
-      type: "일반예매",
-      date: "오늘 12:00",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24013619_p.gif&w=384&q=75",
-    },
-    {
-      id: 3,
-      name: "뮤지컬 <광화문 연가>",
-      type: "일반예매",
-      date: "오늘 19:00",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24011935_p.gif&w=384&q=75",
-    },
-    {
-      id: 4,
-      name: "뮤지컬 <베르테르>",
-      type: "일반예매",
-      date: "오늘 12:00",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24017198_p.gif&w=384&q=75",
-    },
-    {
-      id: 5,
-      name: "뮤지컬 <지킬앤하이드>",
-      type: "일반예매",
-      date: "오늘 13:00",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24013928_p.gif&w=384&q=75",
-    },
-    {
-      id: 6,
-      name: "뮤지컬 <시라노>",
-      type: "일반예매",
-      date: "오늘 12:00",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24014885_p.gif&w=384&q=75",
-    },
-    {
-      id: 7,
-      name: "뮤지컬 <스윙 데이즈_암호명 A>",
-      type: "일반예매",
-      date: "오늘 12:00",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24013619_p.gif&w=384&q=75",
-    },
-    {
-      id: 8,
-      name: "뮤지컬 <광화문 연가>",
-      type: "일반예매",
-      date: "오늘 12:00",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24011935_p.gif&w=384&q=75",
-    },
-    {
-      id: 9,
-      name: "뮤지컬 <베르테르>",
-      type: "일반예매",
-      date: "오늘 12:00",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24017198_p.gif&w=384&q=75",
-    },
-    {
-      id: 10,
-      name: "뮤지컬 <지킬앤하이드>",
-      type: "일반예매",
-      date: "오늘 12:00",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24013928_p.gif&w=384&q=75",
-    },
-    {
-      id: 11,
-      name: "뮤지컬 <시라노>",
-      type: "일반예매",
-      date: "오늘 12:00",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24014885_p.gif&w=384&q=75",
-    },
-    {
-      id: 12,
-      name: "뮤지컬 <스윙 데이즈_암호명 A>",
-      type: "일반예매",
-      date: "오늘 12:00",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24013619_p.gif&w=384&q=75",
-    },
-    {
-      id: 13,
-      name: "뮤지컬 <광화문 연가>",
-      type: "일반예매",
-      date: "오늘 12:00",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24011935_p.gif&w=384&q=75",
-    },
-    {
-      id: 14,
-      name: "뮤지컬 <베르테르>",
-      type: "일반예매",
-      date: "오늘 12:00",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24017198_p.gif&w=384&q=75",
-    },
-    {
-      id: 15,
-      name: "뮤지컬 <지킬앤하이드>",
-      type: "일반예매",
-      date: "오늘 12:00",
-      img: "https://tickets.interpark.com/_next/image?url=https%3A%2F%2Fticketimage.interpark.com%2FPlay%2Fimage%2Flarge%2F24%2F24013928_p.gif&w=384&q=75",
-    },
-  ];
-  
+  const navigate = useNavigate();
+  const [ticketEvents, setTicketEvents] = useState([]);
+
+  useEffect(() => {
+    const fetchTicketEvents = async () => {
+      const token = localStorage.getItem("jwtToken");
+      try {
+        const response = await fetch(
+          "http://localhost:8000/reservation/ticketEvents",
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        if (!response.ok) {
+          throw new Error("네트워크 응답이 실패했습니다.");
+        }
+        const fetchedData = await response.json();
+        setTicketEvents(fetchedData); // 모든 티켓 이벤트를 보여줌
+      } catch (error) {
+        console.error("티켓 이벤트를 가져오는 중 오류 발생:", error);
+        setTicketEvents([]);
+      }
+    };
+
+    fetchTicketEvents();
+  }, []);
+
+  const handleImageClick = (id) => {
+    console.log("Navigating to detail with id:", id); // id 출력
+    navigate(`/reservation/ticket-open/openDetail/${id}`);
+  };
+
   return (
     <S.MainContainer>
       <S.TicketOpen>
         <S.SectionTitle>티켓 오픈</S.SectionTitle>
         <S.TicketBoxContainer>
-          {ticket.map((event) => (
-            <S.TicketBox key={event.id}>
-              <S.TicketImage src={event.img} alt={event.name} />
+          {ticketEvents.map((event) => (
+            <S.TicketBox
+              key={event._id} // MongoDB의 ObjectId를 key로 사용
+              onClick={() => handleImageClick(event._id)} // MongoDB의 ObjectId를 사용
+            >
+              <S.TicketImage
+                src={event.img}
+                alt={event.name}
+                style={{ cursor: "pointer" }}
+              />
               <h3>{event.name}</h3> <p>{event.date}</p> <p>{event.type}</p>
             </S.TicketBox>
           ))}
         </S.TicketBoxContainer>
       </S.TicketOpen>
-    </S.MainContainer>  
+    </S.MainContainer>
   );
 };
 

@@ -1,7 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import Layout from '../pages/layout/Layout';
 import Main from '../pages/main/Main';
-import AdminContainer from '../pages/admin/AdminContainer';
 import IndexContainer from '../pages/index/IndexContainer';
 import LoginContainer from '../pages/login/LoginContainer';
 import ReservationContainer from '../pages/reservation/ReservationContainer';
@@ -30,7 +29,6 @@ import HistoryEditActiveContainer from '../pages/community/writingEdit/HistoryEd
 import NewsContainer from '../pages/community/newsInfo/NewsContainer';
 import ReportContainer from '../pages/community/report/ReportContainer';
 import ReportsContainer from '../pages/community/reports/ReportsContainer';
-import PopularityContainer from '../pages/community/newspopularity/PopularityContainer';
 import AuditionContainer from '../pages/community/audition/AuditionContainer';
 import AuditionInfoContainer from '../pages/community/audition/AuditionInfoContainer';
 import WriteContainer from '../pages/community/writing/WriteContainer';
@@ -107,6 +105,7 @@ import TeamMaking from '../pages/showu/team/teamMaking/TeamMaking';
 import Detail from '../pages/reservation/payment/Detail';
 import Failed from '../pages/reservation/payment/Failed';
 import Success from '../pages/reservation/payment/Success';
+import AdminUpgradContainer from '../pages/admin/AdminUpgradContainer';
 
 const router = createBrowserRouter([
   {
@@ -123,7 +122,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/admin",
-        element: <AdminContainer />,
+        element: <AdminUpgradContainer />, //관리자 페이지 등급업 관리
       },
       {
         path: "/community",
@@ -474,7 +473,7 @@ const router = createBrowserRouter([
         element: <MyShowuContainer />,
       },
       {
-        path: "/vod/my-ShowU/video",
+        path: "/vod/my-ShowU/video/:id",
         element: <ShowuVideoConatiner />,
       },
       {

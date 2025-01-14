@@ -24,7 +24,6 @@ const MyInfo = () => {
   }
 
   const pictureRef = useRef(null);
-  const [selectedFile, setSelectedFile] = useState(null);
   const [picturePath, setPicturePath] = useState(null);
 
   console.log("picturePath", picturePath)
@@ -78,7 +77,7 @@ const MyInfo = () => {
         dispatch(setProfilePicture(newPicturePath)) // 리덕스 상태 업데이트
         setPicturePath(newPicturePath)
 
-        // console.log("dispatch", dispatch(setProfilePicture(`http://localhost:8000${newPicturePath}`)))
+        console.log("dispatch", dispatch(setProfilePicture(`${newPicturePath}`)))
       })
       .catch(console.error)
   }

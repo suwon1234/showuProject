@@ -46,6 +46,7 @@ S.SubTitle = styled.h2`
   font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
   color: #ffd400;
   margin-top: 20px;
+  margin-bottom: 10px;
 `;
 
 S.DetailTitle = styled.span`
@@ -79,8 +80,6 @@ S.InfoColumn = styled.div`
 `;
 
 S.DiscountList = styled.ul`
-  padding-left: 20px;
-
   li {
     font-size: ${({ theme }) => theme.FONT_SIZE.body};
     color: #fff;
@@ -259,17 +258,21 @@ S.ReserveButtonWithHeart = styled.button`
   border-radius: 5px;
   cursor: pointer;
   font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
+  transition: 0.3s ease;
+  &:hover {
+    background-color: #ffaf00;
+  }
   &:disabled {
     background-color: #ccc;
     cursor: not-allowed;
   }
-`;
+  `;
 
 // 출연진 섹션 스타일 
 S.CastContainer = styled.div` 
 width: 1200px;
 margin-top: 20px;
-
+/* display: flex; */
 `;
 
 S.CastTitle = styled.h2` 
@@ -282,14 +285,12 @@ color: #ffd400;
 
 S.CastList = styled.div` 
 display: flex;
-flex-wrap: wrap;
-
+justify-content: center;
 `;
 
 S.CastItem = styled.div`
-  margin: 10px;
+  margin: 30px 60px;
   text-align: center;
-  
 `;
 
 S.CastImage = styled.img` 
@@ -323,8 +324,10 @@ S.Tab = styled.button`
   border-bottom: none;
   cursor: pointer;
   background-color: ${({ active }) => (active ? "#ffd400" : "transparent")};
+  transition: 0.3s ease;
+
   &:hover {
-    background-color: white;
+    background-color: #ffaf00;
   }
 `;
 
@@ -408,17 +411,6 @@ S.CommentSection = styled.div`
 
 S.CommentInputContainer = styled.div`
   display: flex;
-  align-items: center;
-  width: 100%;
-`;
-
-S.CharacterCount = styled.span`
-  font-size: ${({ theme }) => theme.FONT_SIZE.body};
-  color: ${({ theme }) => theme.PALLETE.text};
-`;
-
-S.CommentInputContainer = styled.div`
-  display: flex;
   flex-direction: column;
   align-items: flex-end;
   width: 100%;
@@ -466,7 +458,7 @@ S.CommentItem = styled.p`
   border: 1px solid ${({ theme }) => theme.PALLETE.primary.main};
   border-radius: 5px;
   padding: 5px;
-  margin-bottom: 10px;
+  margin-bottom: 70px;
   font-size: ${({ theme }) => theme.FONT_SIZE.body};
   background-color: #000;
   color: ${({ theme }) => theme.PALLETE.text};
@@ -497,7 +489,7 @@ S.EditDeleteContainer = styled.div`
 
 S.FavoriteButton = styled.button`
   background-color: lightgray;
-  color: ${(props) => (props.isFavorite ? "red" : "grey")};
+  color: ${(props) => (props.$isFavorite ? "red" : "grey")};
   border: none;
   border-radius: 5px;
   font-size: 2rem;

@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVideo } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router-dom';
 
-const ShowuInsert = ({ plays }) => {
+const ShowuInsert = () => {
+  const [showuvideolist,setShowuVideoList]=useState([]);
   const [showCreateOption, setShowCreateOption] = useState(false);
   const [showUploadVideoModal, setShowUploadVideoModal] = useState(false);
   const [showUploadVideoModal2, setShowUploadVideoModal2] = useState(false);
@@ -15,6 +16,25 @@ const ShowuInsert = ({ plays }) => {
   const [videoCategory, setVideoCategory] = useState('카테고리');
   const [thumbnail, setThumbnail] = useState(null);
   const [selectedCircle, setSelectedCircle] = useState(null);
+
+ useEffect(()=>{
+    const vodVideo=async()=>{
+      try{
+        const response = await fetch("http://localhost:8000/vod/showuvideo")
+        const data = await response.json();
+        console.log(data)
+        if(response.ok){
+          setShowuVideoList(data);
+        }else{
+          console.error('Error',data.message);
+        }
+      }catch (error){
+        console.error('Error',error)
+      }
+
+    };
+    vodVideo();
+  },[])
   
   const containerRef = useRef(null);
 
@@ -73,10 +93,10 @@ const ShowuInsert = ({ plays }) => {
 
   const goToNextPage = () => {
     if (activePage === 3) {
-      // Show confirmation before closing modal
+    
       const confirmUpload = window.confirm('영상을 업로드 하겠습니까?');
       if (confirmUpload) {
-        closeModal();  // Close modal if confirmed
+        closeModal();  
       }
     } else if (activePage < 3) {
       setActivePage((prev) => prev + 1);
@@ -108,16 +128,17 @@ const ShowuInsert = ({ plays }) => {
         </S.DropdownWrapper>
 
         <S.Videolist>
-          {plays && plays.length > 0 ? (
-            plays.map((play) => (
-              <S.Card key={play.id}>
-                <Link to={`/vod/my-ShowU/video?programid=${play.id}`} role="button">
-                  {play.mainImage ? (
-                    <img src={play.mainImage} alt={`Video ${play.id}`} />
+          {showuvideolist && showuvideolist.length > 0 ? (
+            showuvideolist.map((video) => (
+              <S.Card key={video.id}>
+                <Link to={`/vod/my-ShowU/video/${video._id}`} role="button">
+                  {video.themnail ? (
+                    <img src={video.themnail} alt={`Video ${video._id}`} />
                   ) : (
                     <div>이미지를 불러올 수 없습니다.</div>
                   )}
                 </Link>
+                <div className='videotitle'>{video.title}</div>
               </S.Card>
             ))
           ) : (

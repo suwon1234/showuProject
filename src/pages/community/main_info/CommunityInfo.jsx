@@ -1,3 +1,5 @@
+// 커뮤니티 인포 정보, 좋아요, 댓글
+
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import S from "./commuInfoStyle";
@@ -22,24 +24,25 @@ const CommunityInfo = () => {
     const fetchCommunityInfo = async () => {
       try {
         const token = localStorage.getItem("jwtToken");
-        const response = await fetch(`http://localhost:8000/community/${id}`, {
+        const response = await fetch(`http://localhost:8000/community/${id}/details`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         if (!response.ok) throw new Error("데이터를 가져오는 데 실패했습니다.");
         const result = await response.json();
-        setData(result);
-        setLikeCount(result.likeCount || 0);
-        setComments(result.comments || []);
-        setIsLiked(result.isLiked || false);
+        setData(result.community); // 게시물 데이터 설정
+        setComments(result.comments || []); // 댓글 데이터 설정
+        setLikeCount(result.community.likeCount || 0);
+        setIsLiked(result.community.isLiked || false);
         setLoading(false);
       } catch (error) {
         setError(error.message);
         setLoading(false);
       }
     };
-
+  
     fetchCommunityInfo();
   }, [id]);
+  
 
   // 댓글 등록
   const handleCommentSubmit = async () => {
@@ -70,23 +73,22 @@ const CommunityInfo = () => {
     }
   };
 
-  // 댓글 수정 시작
+  // 댓글 수정 
   const handleCommentEdit = (comment) => {
     setEditingCommentId(comment._id);
     setEditingText(comment.content);
   };
 
-  // 댓글 수정 완료
   const handleCommentEditSubmit = async (commentId) => {
-    if (!editingText) {
+    if (!editingText.trim()) {
       alert("수정할 내용을 입력해주세요.");
       return;
     }
-
+  
     const token = localStorage.getItem("jwtToken");
-
+  
     try {
-      const response = await fetch(`http://localhost:8000/community/comments/${commentId}`, {
+      const response = await fetch(`http://localhost:8000/community/comments/${commentId}`, { 
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -94,14 +96,17 @@ const CommunityInfo = () => {
         },
         body: JSON.stringify({ content: editingText }),
       });
-
+  
       if (!response.ok) throw new Error("댓글 수정에 실패했습니다.");
+  
       const updatedComment = await response.json();
+  
       setComments((prevComments) =>
         prevComments.map((comment) =>
           comment._id === updatedComment._id ? updatedComment : comment
         )
       );
+  
       setEditingCommentId(null);
       setEditingText("");
       alert("댓글이 수정되었습니다!");
@@ -109,6 +114,7 @@ const CommunityInfo = () => {
       alert("댓글 수정 중 오류가 발생했습니다.");
     }
   };
+  
 
   // 댓글 삭제
   const handleCommentDelete = async (commentId) => {
@@ -130,7 +136,7 @@ const CommunityInfo = () => {
     }
   };
 
-  // 좋아요 로직
+  // 좋아요 
   const handleLikeButton = async () => {
     const token = localStorage.getItem("jwtToken");
     if (!token) {
@@ -151,15 +157,13 @@ const CommunityInfo = () => {
   
       const result = await response.json();
   
-      // 좋아요 상태 및 카운트 업데이트
+      // 좋아요 카운트
       setIsLiked(result.isLiked);
       setLikeCount(result.likes);
   
-      // 디버깅 로그 추가
       console.log("좋아요 상태:", result.isLiked);
       console.log("좋아요 수:", result.likes);
   
-      // 적절한 알림 표시
       alert(result.isLiked ? "좋아요가 반영되었습니다!" : "좋아요가 취소되었습니다!");
     } catch (error) {
       console.error("좋아요 처리 오류:", error);
@@ -197,7 +201,7 @@ const CommunityInfo = () => {
               </>
             ) : (
               <>
-                <FontAwesomeIcon icon={faHeartBroken} /> 좋아요 {likeCount}
+                <FontAwesomeIcon icon={faHeartBroken} />  좋아요 {likeCount}
               </>
             )}
           </S.Button>

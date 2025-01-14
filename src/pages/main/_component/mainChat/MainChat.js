@@ -73,26 +73,7 @@ const MainChat = () => {
 
 
 
-  
-  // useEffect(() => {
-  //   var intersectionObserver = new IntersectionObserver(function (entries) {
-     
-  //     if (entries[0].intersectionRatio <= 0) return;
     
-  //     loadItems(10);
-  //     console.log("새 항목 불러옴");
-  //   });
-    
-  //   intersectionObserver.observe(document.querySelector(".scrollerFooter"));
-  // })
-
-  // const chatRef1 = useRef();
-  // const chatRef2 = useRef();
-
-  
-
-    
-  
 
   return (
     <S.Wrapper>

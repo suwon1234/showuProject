@@ -1,5 +1,4 @@
 import React from 'react';
-import users from './_component/users';
 import S from './style';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';

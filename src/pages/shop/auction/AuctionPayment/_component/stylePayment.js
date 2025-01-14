@@ -110,6 +110,20 @@ const flexStyle = css`
     margin: 20px 0;
   `
 
+  S.ErrorText = styled.div`
+    color: #ffd400;
+    font-size: 13px;
+    margin-top: 6px;
+
+  `;
+
+  S.EmailWrapper = styled.div`
+    flex-direction: column;
+    display: flex;
+    justify-content: space-between; 
+    width: 1165px;
+  `
+
   S.InputName = styled.div`
     
     & input {
@@ -125,9 +139,9 @@ const flexStyle = css`
   `
 
   S.InputEmail = styled.div`
-    ${flexStyle}
-    justify-content: space-between; 
-    width: 1165px;
+    // ${flexStyle}
+    // justify-content: space-between; 
+    // width: 1165px;
       
     .email-input{
       width: 500px; 
@@ -146,6 +160,13 @@ const flexStyle = css`
       color: #fff; 
     }
   `
+
+  // S.PhoneWrapper = styled.div`
+  //   flex-direction: column;
+  //   display: flex;
+  //   justify-content: space-between; 
+  //   width: 1165px;
+  // `
 
   S.InputPhone = styled.div`
     ${flexStyle}
@@ -169,6 +190,9 @@ const flexStyle = css`
     }
   `
 
+  S.PhoneWrapper = styled.div`
+  `
+
   S.InputAddress = styled.div`
   display: flex;
   flex-direction: column;
@@ -185,6 +209,7 @@ const flexStyle = css`
       ${inputHover}
     }
   `
+
 
   S.Code = styled.div`
     display: flex;
