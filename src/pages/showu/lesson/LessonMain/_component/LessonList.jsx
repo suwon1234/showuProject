@@ -4,7 +4,6 @@ import { faStar } from'@fortawesome/free-solid-svg-icons';
 import S from './style';
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect } from 'react';
-import { get } from 'react-hook-form';
 
 
 
@@ -17,7 +16,7 @@ const LessonList = () => {
     useEffect(()=> {
         const getLessonList = async () =>{
             
-                const response = await fetch('http://localhost:8000/showu')
+                const response = await fetch('http://localhost:8000/showu/lesson')
 
                 const data = await response.json();
                 return data; 
@@ -29,9 +28,9 @@ const LessonList = () => {
 
     return (
         <>
-        {lessonList && lessonList.map((list, i)=>(
-            <Link to={`/showu/lesson/details/:${list.id}`}>
-                <S.LessonList key={i}>
+        {lessonList && lessonList.map((list)=>(
+            <Link to={`/showu/lesson/details/${list._id}`}>
+                <S.LessonList key={list.id}>
                     <S.LessonWrapper>
                         <div>
                             <S.LessonName>{list.lessonName}</S.LessonName>

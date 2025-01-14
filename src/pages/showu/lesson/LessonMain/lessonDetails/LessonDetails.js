@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { faClock, faCreditCard, faUser, faUsers  } from'@fortawesome/free-solid-svg-icons';
+import { faClock, faCreditCard, faUser } from'@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import S from './style';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -7,27 +7,33 @@ import LessonReview from './LessonReview';
 
 
 
-const LessonDetails = () => {
-    const navigate = useNavigate();
+const LessonDetails = (req, res) => {
+    // const navigate = useNavigate();
     const jwtToken = localStorage.getItem("jwtToken");
     const {id} = useParams();
-    const [lessonDetails , setLessonDetails] = useState([]);
+    const [lessonList , setLessonList] = useState([]);
 
-    // useEffect(()=> {
-    //     const getLessonList = async () =>{
-    //         try {
-    //             const response = await fetch('http://localhost:8000/showu')
-    //         }
-    //     }
-    // })
+    useEffect(()=> {
+        if(id){
+            const getLessonList = async () =>{
+                const response = await fetch(`http://localhost:8000/showu/lesson/details/:${id}`)
+                const data = await response.json();
+                setLessonList(data);
+            }
+            getLessonList().catch(console.error)
+// 의존성 배열 문제 
+        }
+    },[id])
+    console.log(lessonList.lessonThumbnail)
 
     return (
     <>
         <S.LessonDetailsWrapper>
             <S.LessonDetailsTopBg ></S.LessonDetailsTopBg>
             <S.LessonDetailContentsWrapper>
-                <S.LessonDetailsThunbnail />
+                <img className='lessonDetailsThunbnail' src={lessonList.lessonThumbnail} />
                 <S.LessonName>
+
                     씬앤컷 SCENE & CUT : 설대봉 디렉터
                     
                 </S.LessonName>
@@ -178,7 +184,7 @@ const LessonDetails = () => {
                         <S.Media><span>IMG</span></S.Media>
                     </S.MediaWrapper>
                 </div>
-                <LessonReview/>
+                {/* <LessonReview/> */}
                 <div className='LessonQNAWrapper'>
                     <S.Title>질문/답변</S.Title>
                     <S.LessonQNA className='active'>

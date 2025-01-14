@@ -12,6 +12,17 @@ S.LessonDetailContentsWrapper = styled.div`
     position: relative;
     margin:  0 auto;
     padding-left: 20px;
+
+    .lessonDetailsThunbnail {
+        display:block;
+        position: absolute;
+        top: -100px;
+        /* background-color: #fff; */
+        border: none;
+        border-radius: 20px;
+        width: 150px;
+        height: 150px;
+    }
 `
 
 
@@ -21,13 +32,7 @@ S.LessonDetailsTopBg = styled.div`
     height: 150px;
 `
 S.LessonDetailsThunbnail = styled.img`
-    display:block;
-    position: absolute;
-    top: -100px;
-    background-color: #fff;
-    border-radius: 20px;
-    width: 150px;
-    height: 150px;
+
 `
 S.LessonName = styled.h2`
     display: block;
@@ -205,7 +210,7 @@ S.PortfolioTitle =styled.p`
     /* margin-bottom: 10px; */
     position: absolute;
 `
-S.LessonType = styled.p`
+S.LessonType = styled.div`
    
     font-size: 12px;
     font-weight: 400;
@@ -290,7 +295,7 @@ S.ReviewerName = styled.p`
     font-weight: 700;
     margin-bottom: 20px;
 `
-S.LessonTypeAndScore = styled.p`
+S.LessonTypeAndScore = styled.div`
     display: flex;
     gap: 10px;
     position: relative;
@@ -303,7 +308,7 @@ S.LessonType = styled.span`
     font-weight: 500;
 
 `
-S.LessonScoreWrapper = styled.span`
+S.LessonScoreWrapper = styled.div`
     display: flex;
     gap: 5px;
     .reviewStarIcon {
