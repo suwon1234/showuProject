@@ -73,6 +73,11 @@ S.LessonThumbnailWrapper = styled.div`
     height: 73px;
     background-color: #555;
     border-radius: 10px;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
 `
 
 export default S;
