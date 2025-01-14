@@ -25,7 +25,6 @@ const AuditionInfo = () => {
         setError("오디션 정보를 불러올 수 없습니다.");
       }
     };
-  
     fetchAuditionById();
   }, [id]);
 
