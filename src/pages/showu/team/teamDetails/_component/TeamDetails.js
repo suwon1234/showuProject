@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import S from './style';
 
 const TeamDetails = () => {
     return (
         <>
-            <div className='TeamDetailsWrapper'>
-                <div className='TeamDetailsLeftContentsWrapper'>
+            <S.TeamDetailsWrapper>
+                <S.TeamDetailsLeftContentsWrapper>
                     <div className='TeamDetails'>
-                        <img className='TeamThumbnail' />
+                        <img className='TeamThumbnail'/>
                         <div className='TeamTitleWrapper'>
                             <h2 className='TeamTitle'>
                                 연기 연습 (분당) 
@@ -45,9 +46,8 @@ const TeamDetails = () => {
                         </button>
                     
                     </Link>
-                </div>
-            </div>
-            <div className='TeamDetailsRightContentsWrapper'>
+                </S.TeamDetailsLeftContentsWrapper>
+            <S.TeamDetailsRightContentsWrapper>
                 <div className='TeamIntroduceContents'>
                     안녕하십니까, 분당에서 취미로 연기 연습 하고 있습니다. 
                     현재 5명 정도 모여서 서로 연기 봐주면서 진행하고 있습니다 .
@@ -81,7 +81,8 @@ const TeamDetails = () => {
                 <div className='Updatetme'>
                     업데이트 15일 전
                 </div>
-            </div>
+            </S.TeamDetailsRightContentsWrapper>
+        </S.TeamDetailsWrapper>
         </>
     );
 };
