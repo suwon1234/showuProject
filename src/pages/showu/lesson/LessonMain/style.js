@@ -44,10 +44,21 @@ S.ProfileRegistration = styled.div`
     display: flex;
     gap: 78px;
     margin-bottom: 70px;
+    label {
+        display: block;
+        width: 180px;
+        height: 180px;
+        border: none;
+
+        #tumbnailImage {
+            display: none;
+        }
+    }
 `
 S.ProfileThumbnail = styled.img`
-    width: 180px;
-    height: 180px;
+    display: block;
+    width: 100%;
+    height: 100%;
     border-radius: 20px;
     background-color: #ccc;
 `
@@ -75,21 +86,36 @@ S.ProfileInputWrapper = styled.div`
 S.LessonCategoryWrapper =styled.div`
     display: flex;
     gap: 30px;
-`
-S.LessonCategory = styled.button`
-    width: 200px;
-    height: 55px;
-    border: none;
-    border-radius: 5px;
-    font-size: 17px;
-    font-weight: 600;
-    background-color: #797979;
 
-    &.active {
-        background-color: #ffd400;
-        color: #000;
+    button {
+        width: 200px;
+        height: 55px;
+        border: none;
+        border-radius: 5px;
+        font-size: 17px;
+        font-weight: 600;
+        background-color: #797979;
+
+        &.active {
+            background-color: #ffd400;
+            color: #000;
+        }
     }
 `
+// S.LessonCategory = styled.button`
+//     width: 200px;
+//     height: 55px;
+//     border: none;
+//     border-radius: 5px;
+//     font-size: 17px;
+//     font-weight: 600;
+//     background-color: #797979;
+
+//     &.active {
+//         background-color: #ffd400;
+//         color: #000;
+//     }
+// `
 
 S.LocationRegistation =styled.div`
     margin-bottom: 65px;
@@ -113,7 +139,7 @@ S.DetailsRegistration = styled.div`
 `
 S.LessonDetails = styled.textarea`
     width: 862px;
-    height: 450px;
+    height: 50px;
     border: 1px solid #fff;
     padding: 13px;
     background-color: transparent;
@@ -131,17 +157,55 @@ S.EtcWrapper = styled.div`
     gap: 30px;
 `
 
-S.EtcDetails = styled.textarea`
+S.LessonRecord = styled.div`
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+
+    .recordHistoryinput {
+        width: 100%;
+        height: 50px;
+        border: 1px solid #fff;
+        padding: 13px;
+        background-color: transparent;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+`
+S.Educations = styled.div`
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+
+    .educationsInput {
+        width: 100%;
+        height: 50px;
+        border: 1px solid #fff;
+        padding: 13px;
+        background-color: transparent;
+        border-radius: 5px;
+        font-size: 20px;
+        font-weight: 500;
+    }
+
+`
+
+S.EtcDetails = styled.input`
     border: 1px solid #fff;
-    width: 862px;
-    height: 150px;
+    width: 600px;
+    height: 50px;
     border: 1px solid #fff;
     padding: 13px;
     background-color: transparent;
     border-radius: 5px;
     font-size: 20px;
     font-weight: 500;
-    line-height: 27px;
 `
 
 S.PortfoilosRegistration =styled.div`

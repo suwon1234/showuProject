@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 const LessonReview = () => {
     return (
         <S.StudentReview>
-        <S.Title>리뷰</S.Title>
+        <S.Title id='lessonReviews'>리뷰</S.Title>
         <S.ReviewButton>리뷰 쓰기</S.ReviewButton>
         <S.ReviewScoreWrapper>
             <S.ReviewScore>5.0</S.ReviewScore>
