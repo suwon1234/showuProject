@@ -13,7 +13,7 @@ S.LessonDetailContentsWrapper = styled.div`
     margin:  0 auto;
     padding-left: 20px;
 
-    .lessonDetailsThunbnail {
+    .lessonDetailsThumbnail {
         display:block;
         position: absolute;
         top: -100px;
