@@ -321,7 +321,7 @@ const router = createBrowserRouter([
         element: <MainContainer />, // MD 메인
       },
       {
-        path: "/shop/md/detail/id",
+        path: "/shop/md/detail/:id",
         element: <DetailContainer />, // MD 상세
       },
       {
