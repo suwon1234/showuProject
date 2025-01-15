@@ -9,7 +9,6 @@ const MainLesson = () => {
   const [lessons, setLessons] = useState([]);
   const [randomLessons, setRandomLessons] = useState([]);
 
-  // 레슨 데이터를 가져오는 useEffect
   useEffect(() => {
     const getLesson = async () => {
       try {
@@ -23,7 +22,7 @@ const MainLesson = () => {
         if (!res.mainLessonSuccess) {
           console.log(res.message);
         } else {
-          setLessons(res.LessonList); // lessons 상태 업데이트
+          setLessons(res.LessonList); 
         }
       } catch (error) {
         console.error("main getLesson error", error);
@@ -75,7 +74,7 @@ const MainLesson = () => {
                 <li className='category'>{lesson.category}</li>
               </S.category>
               <S.UserInfo>
-                <img src={lesson.lessonThumbnail}></img>
+                <img src={`http://localhost:8000/${lesson.userName.picture}` || `http://localhost:8000/uploads/profiles/user.png`}></img>
                 <div>
                   <li className='userName'>{lesson.userName.name}</li>
                   <S.Address>
