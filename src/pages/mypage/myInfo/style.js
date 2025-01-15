@@ -17,7 +17,7 @@ const S = {};
     align-items: center;
     /* gap : 40px; */
 
-    margin: 40px 0 50px 0;
+    margin: 40px 0 0 0;
 
     position: relative;
 
@@ -49,6 +49,19 @@ const S = {};
 
         background-color: #ffd400;
       }
+    }
+  `
+
+  S.ProfileImgChangeButton = styled.div`
+    & button{
+      background-color: #000;
+      border: none;
+      border: 1px solid #444444;
+      border-radius: 5px;
+
+      margin-top: 10px;
+      margin-left: 23px;
+      font-size: 20px;
     }
   `
 
@@ -107,11 +120,13 @@ const S = {};
   S.Form = styled.form`
     display: flex;
     flex-direction: column;
+    margin-top: 50px;
 
     & label {
-      display: grid;
-      grid-template-columns: 400px 400px;
+      display: flex;
+      /* grid-template-columns: 400px 400px; */
       align-items: center;
+      justify-content: space-between;
       border-top: 0.5px solid #444444;
       padding: 15px 0;
 
@@ -216,6 +231,31 @@ const S = {};
     & span.currentEmail{
       text-align: right;
       padding: 4px 15px;
+    }
+  `
+
+  S.ScrollTop = styled.div`
+    position: fixed;
+    bottom: 30px;
+    right: 40px;
+    width: 40px;
+    height: 40px;
+    background-color: black; 
+    border-radius: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 0 12px rgba(255, 255, 255, 0.3); 
+
+    .upicon {
+      font-size: 20px;
+      color: #ffd400 !important; 
+    }
+
+    &:hover {
+      background-color: #ffb800;
     }
   `
 

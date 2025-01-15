@@ -2,6 +2,23 @@ import styled from 'styled-components';
 
 const S = {};
 
+  S.NoneItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  `
+
+  S.LinkToPath = styled.p`
+    cursor: pointer;
+    border: 1px solid #ffd400;
+    background-color: #ffd400;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+  `
+
   S.Container = styled.div`
     width: 100%;
     height: 110%;
@@ -20,8 +37,6 @@ const S = {};
     height: 200px;
 
     display: flex;
-
-    cursor: pointer;
 
     /* border: 1px solid #444444; */
     border-radius: 5px;
@@ -70,6 +85,8 @@ const S = {};
 
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    gap: 10px;
 
     position: relative;
 
@@ -81,7 +98,7 @@ const S = {};
     /* border-bottom: 1px solid #444444; */
     & p {
       font-size: 17px;
-      margin: 10px 0 0 10px;
+      margin-left: 10px;
 
       color: black;
     }

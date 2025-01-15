@@ -15,6 +15,10 @@ const Layout = () => {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const jwtToken = localStorage.getItem("jwtToken") || searchParams.get("jwtToken");
+  const [ loginID, setLoginID ] = useState("");
+  const [ saveIDFlag, setSaveIDFlag ] = useState(false);
+  const LS_KEY_ID = "LS_KEY_ID";
+
 
   const handleLogout = () => {
     localStorage.removeItem("jwtToken") //토큰 삭제
@@ -89,9 +93,17 @@ const Layout = () => {
               </S.LogoBox>
 
               <S.authlinks className="authlinks">
-                <Link to="/up-grade" className="highlight">
-                  등급업 신청
-                </Link>
+                {
+                  currentUser.isUpgradeRequested ? (
+                    <Link to="/mypage/up-grade/update" className='highlight'>
+                      등급업 수정
+                    </Link>
+                  ) : (
+                    <Link to="/up-grade" className='highlight'>
+                      등급업 신청
+                    </Link>
+                  )
+                }
                 <span className="divider">|</span>
 
                 {isLogin ? (

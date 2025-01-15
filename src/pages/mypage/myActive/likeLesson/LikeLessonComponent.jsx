@@ -3,8 +3,22 @@ import S from './LikeLessonStyle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import Paging from '../../_component/Paging';
+import { Link } from 'react-router-dom';
 
 const LikeLessonComponent = ({ page, currentList, setPage, totalPost, PAGINATION }) => {
+
+  if (currentList.length === 0) {
+    return (
+      <S.NoneItem>
+        <p>아직 찜한 아이템이 없네요!</p>
+        <p>마음에 드는 아이템을 찜해보세요.</p>
+        <Link to={"/showu/lesson"}>
+          <S.LinkToPath>레슨 보러가기</S.LinkToPath>
+        </Link>
+      </S.NoneItem>
+    );
+  }
+
   return (
     <>
       <S.Outer className='outer'>

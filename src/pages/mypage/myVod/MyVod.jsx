@@ -2,6 +2,8 @@ import React from 'react';
 import S from './style';
 import { useNavigate } from 'react-router-dom';
 import Vods from './Vods';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const MyVod = () => {
   const navigate = useNavigate();
@@ -9,6 +11,10 @@ const MyVod = () => {
   const handleNavigate = (path) => {
     navigate(path)
   }
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <>
@@ -29,6 +35,10 @@ const MyVod = () => {
 
         </S.Wapper>
       </S.Container>
+
+      <S.ScrollTop onClick={handleScrollTop}>
+        <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+      </S.ScrollTop>
 
     </>
   );

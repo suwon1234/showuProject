@@ -69,9 +69,17 @@ const MypageContainer = () => {
         </S.Ul>
         <S.Ul>
             <li>등급업 정보</li>
-            <Link to={"/up-grade"}>
-              <li>신청서 작성</li>
-            </Link>
+            {
+              currentUser.isUpgradeRequested ? (
+                <Link to="/mypage/up-grade/update" className='highlight'>
+                  <li>등급업 수정</li>
+                </Link>
+              ) : (
+                <Link to="/up-grade" className='highlight'>
+                  <li>등급업 신청</li>
+                </Link>
+               )
+            }
             <hr />
         </S.Ul>
         <S.Ul>

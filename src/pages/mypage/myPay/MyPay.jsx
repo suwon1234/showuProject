@@ -1,8 +1,15 @@
 import React from 'react';
 import S from './style';
 import Pay from './Pay';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const MyPay = () => {
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <>
       <S.Container className='container'>
@@ -20,6 +27,10 @@ const MyPay = () => {
 
         </S.Wapper>
       </S.Container>
+
+      <S.ScrollTop onClick={handleScrollTop}>
+        <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+      </S.ScrollTop>
 
     </>
   );

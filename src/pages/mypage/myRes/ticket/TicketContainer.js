@@ -1,8 +1,9 @@
 import React from 'react';
-import Paging from '../../_component/Paging';
 import Ticket from './Ticket';
 import S from './TicketContainerStyle';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const TicketContainer = () => {
   const navigate = useNavigate();
@@ -10,6 +11,10 @@ const TicketContainer = () => {
   const handleNavigate = (path) => {
     navigate(path)
   }
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <>
@@ -31,7 +36,9 @@ const TicketContainer = () => {
         </S.Wapper>
       </S.Container>
 
-      {/* <Paging /> */}
+      <S.ScrollTop onClick={handleScrollTop}>
+        <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+      </S.ScrollTop>
     </>
   );
 };

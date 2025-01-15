@@ -1,14 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LikeSpace from './LikeSpace';
-import Paging from '../../_component/Paging';
 import S from './MyActiveSpaceStyle';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const MyActiveSpace = () => {
   const navigate = useNavigate();
 
   const handleNavigate = (path) => {
     navigate(path)
+  };
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
@@ -37,7 +42,9 @@ const MyActiveSpace = () => {
         </S.Wapper>
       </S.Container>
 
-      {/* <Paging /> */}
+      <S.ScrollTop onClick={handleScrollTop}>
+        <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+      </S.ScrollTop>
     </>
   );
 };
