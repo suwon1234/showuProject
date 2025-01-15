@@ -20,7 +20,7 @@ const hangjungdong = {sido:[{sido:'11', codeNm:'서울특별시'},
     }
 
 const SelectSido = () => {
-    const {val1, setVal1} = useState("");
+    const [val1, setVal1] = useState("");
     const { sido } = hangjungdong;
     return (
         <select onChange={(e) => setVal1(e.target.value)} className='lessonCategory' style={{
