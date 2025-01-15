@@ -16,7 +16,8 @@ const LessonList = () => {
     useEffect(()=> {
         const getLessonList = async () =>{
             
-                const response = await fetch('http://localhost:8000/showu/lesson')
+                const response = await fetch('http://localhost:8000/showu/lesson');
+                console.log("response :" + response)
 
                 const data = await response.json();
                 return data; 

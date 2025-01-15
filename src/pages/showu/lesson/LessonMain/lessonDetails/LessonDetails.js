@@ -24,14 +24,13 @@ const LessonDetails = (req, res) => {
 // 의존성 배열 문제 
         }
     },[id])
-    console.log(lessonList.lessonThumbnail)
 
     return (
     <>
         <S.LessonDetailsWrapper>
             <S.LessonDetailsTopBg ></S.LessonDetailsTopBg>
             <S.LessonDetailContentsWrapper>
-                <img className='lessonDetailsThunbnail' src={lessonList.lessonThumbnail} />
+                <img className='lessonDetailsThumbnail' src={lessonList.lessonThumbnail} />
                 <S.LessonName>
 
                     씬앤컷 SCENE & CUT : 설대봉 디렉터
@@ -51,25 +50,25 @@ const LessonDetails = (req, res) => {
                     </S.LessonSummary>
                 </S.LessonDetailsSummary>
                 <S.LessonDetailsLink>
-                    <a className='LessonDetails'>
+                    <a className='LessonDetails' href='#lessonInfo'>
                         <span className='LessonInfo'>정보</span>
                     </a>
-                    <a className='LessonDetails'>
+                    <a className='LessonDetails' href='#lessonPortfolio'>
                         <span className='LessonPortfolio'>포트폴리오</span>
                     </a>
-                    <a className='LessonDetails'>
+                    <a className='LessonDetails' href='#lessonPhotoAndVideo'>
                         <span className='LessonPhotoAndVideo'>사진/동영상</span>
                     </a>
-                    <a className='LessonDetails'>
+                    <a className='LessonDetails' href='#lessonReviews'>
                         <span className='LessonReviews'>리뷰 90</span>
                     </a>
-                    <a className='LessonDetails'>
+                    <a className='LessonDetails' href='#lessonQnA'>
                         <span className='LessonQnA'>질문 답변</span>
                     </a>
                 </S.LessonDetailsLink>
 
                 <S.Infomation>
-                    <S.Title>정보</S.Title>
+                    <S.Title id='lessonInfo'>정보</S.Title>
 
                     <p>
                         <FontAwesomeIcon icon={faUser} className='infoIcon'/>
@@ -100,9 +99,9 @@ const LessonDetails = (req, res) => {
                         <p>
                             1개월 마다, 배우 포트폴리오 준비를 위한 단편영화 제작을 함께합니다.
                         </p>
-                        <S.MoreDetails>
+                        {/* <S.MoreDetails>
                             상세설명 더보기<span>icon</span>
-                        </S.MoreDetails>
+                        </S.MoreDetails> */}
 
                     </S.Details>
                 </S.ServiceDetails>
@@ -137,20 +136,20 @@ const LessonDetails = (req, res) => {
                         <S.PersonalHistorySummary>前) 기획사 제이티코리아 엔터테인먼트 : 신인개발부</S.PersonalHistorySummary>
                     </S.PersonalHistoryTextWrapper>
 
-                    <S.MoreDetails>
+                    {/* <S.MoreDetails>
                             경력 더보기<span>icon</span>
-                    </S.MoreDetails>
+                    </S.MoreDetails> */}
                 </S.PersonalHistory>
                 <S.Education>
                     <S.Title>학력</S.Title>
                     <S.EducationsDetailBox>
-                        <S.EducationDetailSpace></S.EducationDetailSpace>
-                        <S.EducationDetailPeriod></S.EducationDetailPeriod>
-                        <S.EducationDetailSubjects></S.EducationDetailSubjects>
+                        <S.EducationDetailSpace>중앙대학교 첨단영상대학원</S.EducationDetailSpace>
+                        <S.EducationDetailPeriod>2022년 3월 - 현재</S.EducationDetailPeriod>
+                        <S.EducationDetailSubjects>영화제작</S.EducationDetailSubjects>
                     </S.EducationsDetailBox>
                 </S.Education>
                 <div className='InstructorPortfolio'>
-                    <S.Title>포트폴리오</S.Title>
+                    <S.Title id='lessonPortfolio'>포트폴리오</S.Title>
                     <S.PortfolioWrapper>
                         <S.Portfolio>
                             <img ></img>
@@ -173,7 +172,7 @@ const LessonDetails = (req, res) => {
                 </div> 
 
                 <div className='InstructorMedia'>
-                    <S.Title>사진 및 동영상</S.Title>
+                    <S.Title id='lessonPhotoAndVideo'>사진 및 동영상</S.Title>
                     <S.MediaWrapper>
                         <S.Media><span>IMG</span></S.Media>
                         <S.Media><span>IMG</span></S.Media>
@@ -186,7 +185,7 @@ const LessonDetails = (req, res) => {
                 </div>
                 {/* <LessonReview/> */}
                 <div className='LessonQNAWrapper'>
-                    <S.Title>질문/답변</S.Title>
+                    <S.Title id='lessonQnA'>질문/답변</S.Title>
                     <S.LessonQNA className='active'>
                         <S.LessonQuestion>
                             Q. 서비스가 시작되기 전 어떤 절차고 진행하나요?
@@ -197,7 +196,7 @@ const LessonDetails = (req, res) => {
                         저 또한 레슨을 받았던 시절에 워낙 까다로운 성격 탓인지 선생님을 수도 없이 바꿔왔습니다. 선생님에 
                         대한 중요성과 고민을 너무 잘 알고 있기에, 수강생 또한 편하게 선생님에 대해 고민해 볼 필요성과 중
                         요성을 알고 있습니다. 
-                            <span>접기</span>
+                            {/* <span>접기</span> */}
                         </S.LessonAnswer>
                     </S.LessonQNA>
                     <S.LessonQNA>
@@ -211,7 +210,7 @@ const LessonDetails = (req, res) => {
                         저 또한 레슨을 받았던 시절에 워낙 까다로운 성격 탓인지 선생님을 수도 없이 바꿔왔습니다. 선생님에 
                         대한 중요성과 고민을 너무 잘 알고 있기에, 수강생 또한 편하게 선생님에 대해 고민해 볼 필요성과 중
                         요성을 알고 있습니다. 그렇기에 수강생만큼 열심히 참여할 것입니다.
-                            <span>더보기</span>
+                            {/* <span>더보기</span> */}
                         </S.LessonAnswer>
                     </S.LessonQNA>
 
