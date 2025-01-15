@@ -24,11 +24,16 @@ S.TeamMakingWrapper = styled.div`
 S.WrapperClosedButton = styled.button`
     width: 40px;
     height: 40px;
-    border: 1px solid #fff;
+    border: none;
     background-color: transparent;
     position: absolute;
     top: 30px;
     right: 30px;
+    .closeButtonIcon {
+       width: 30px;
+       height: 30px;
+    }
+
 
 `
 

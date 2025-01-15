@@ -106,6 +106,8 @@ import Detail from '../pages/reservation/payment/Detail';
 import Failed from '../pages/reservation/payment/Failed';
 import Success from '../pages/reservation/payment/Success';
 import AdminUpgradContainer from '../pages/admin/AdminUpgradContainer';
+import LessonReservation from '../pages/showu/lesson/LessonMain/lessonReservate/LessonReservation';
+import TeamMakingProfile from '../pages/showu/team/teamMaking/_component/TeamMakingProfile';
 
 const router = createBrowserRouter([
   {
@@ -403,6 +405,11 @@ const router = createBrowserRouter([
         element: <LessonDetails />,
       },
       {
+        path: "/showu/lesson/details/reservation",
+        element: <LessonReservation />,
+      },
+
+      {
         path: "/showu/lesson/lessonMake",
         element: <LessonMake />,
       },
@@ -418,7 +425,11 @@ const router = createBrowserRouter([
         path: "/showu/team/teamMake",
         element: <TeamMaking />,
       },
-   
+      
+      {
+        path: "/showu/team/teamMake/profile",
+        element: <TeamMakingProfile />,
+      },
 
       {
         path: "/vod",
