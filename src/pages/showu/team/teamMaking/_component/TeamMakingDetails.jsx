@@ -6,11 +6,12 @@ import TeamMakingDate from './TeamMakingDate';
 import TeamMakingMember from './TeamMakingMember';
 import TeamMakingSkill from './TeamMakingSkill';
 import TeamMakeAnnouncement from './TeamMakeAnnouncement';
+import { Link } from 'react-router-dom';
 
 const TeamMakingDetails = () => {
     return (
         <div className='TeamMakingDetailsWrapper' >
-           <TeamMakingName />
+                <TeamMakingName />
 
             {/* <TeamMakingProfile /> */}
 

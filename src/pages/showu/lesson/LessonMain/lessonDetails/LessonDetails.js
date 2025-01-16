@@ -184,7 +184,7 @@ const LessonDetails = (req, res) => {
                         <S.Media><span>IMG</span></S.Media>
                     </S.MediaWrapper>
                 </div>
-                {/* <LessonReview/> */}
+                <LessonReview/>
                 <div className='LessonQNAWrapper'>
                     <S.Title id='lessonQnA'>질문/답변</S.Title>
                     <S.LessonQNA className='active'>

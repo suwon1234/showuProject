@@ -138,8 +138,25 @@ S.TeamLikeButtonWrapper = styled.div`
         font-size: 16px;
         color: #595959;    
     }
+ 
 `
+S.ButtonContents = styled.div`
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
 
+    .detailsETC {
+        display: flex;
+        gap: 10px;
+        font-weight: 400;
+    }
+
+    .updateTime {
+        color: #595959;
+    }
+
+
+`
 
 
 export default S; 

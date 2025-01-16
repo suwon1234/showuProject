@@ -50,7 +50,7 @@ const TeamDetails = () => {
                         </S.TeamCharactersWrapper>
                     </S.TeamDetails>
                     <S.ButtonWrapper>
-                        <Link to={"/showu/team/teamJoin"}>
+                        <Link to={"/showu/team/teamDetails/teamJoin"}>
                             <S.SubscriptionButton>
                                 가입 신청하기
                             </S.SubscriptionButton>
@@ -99,15 +99,15 @@ const TeamDetails = () => {
                     <FontAwesomeIcon  icon={faHeart} className='likeButtonIcon'/>
                     <span>100</span>
                 </S.TeamLikeButtonWrapper>
-                <div>
-                    <div className='DetailsETC'>
+                <S.ButtonContents>
+                    <div className='detailsETC'>
                         <span>조회 9,534</span>
                         <span>신청 34</span>
                     </div>
-                    <div className='Updatetme'>
+                    <div className='updateTime'>
                         업데이트 15일 전
                     </div>
-                </div>
+                </S.ButtonContents>
             </S.TeamDetailsRightContentsWrapper>
         </S.TeamDetailsWrapper>
         </>

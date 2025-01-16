@@ -108,6 +108,11 @@ import Success from '../pages/reservation/payment/Success';
 import AdminUpgradContainer from '../pages/admin/AdminUpgradContainer';
 import LessonReservation from '../pages/showu/lesson/LessonMain/lessonReservate/LessonReservation';
 import TeamMakingProfile from '../pages/showu/team/teamMaking/_component/TeamMakingProfile';
+import LessonModify from '../pages/showu/lesson/LessonMain/lessonModify/_component/LessonModify';
+import WriteLessonReviews from '../pages/showu/lesson/LessonMain/lessonDetails/writeReview/WriteLessonReviews';
+import TeamJoin from '../pages/showu/team/teamJoin/TeamJoin';
+
+
 
 const router = createBrowserRouter([
   {
@@ -404,15 +409,29 @@ const router = createBrowserRouter([
         path: "/showu/lesson/details/:id",
         element: <LessonDetails />,
       },
+
       {
         path: "/showu/lesson/details/reservation",
         element: <LessonReservation />,
       },
 
       {
+        path: "/showu/lesson/details/writeReviews",
+        element: <WriteLessonReviews />,
+      },
+
+      {
+        path: "/showu/lesson/details/lessonModify",
+        element: <LessonModify />,
+      },
+
+      {
         path: "/showu/lesson/lessonMake",
         element: <LessonMake />,
       },
+
+   
+
       {
         path: "/showu/team",
         element: <TeamMainPage />,
@@ -421,6 +440,14 @@ const router = createBrowserRouter([
         path: "/showu/team/teamDetails",
         element: <TeamDetails />,
       },
+
+      {
+        path: "/showu/team/teamDetails/teamJoin",
+        element: <TeamJoin />,
+      },
+      
+
+
       {
         path: "/showu/team/teamMake",
         element: <TeamMaking />,

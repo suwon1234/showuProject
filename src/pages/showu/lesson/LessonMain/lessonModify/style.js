@@ -95,13 +95,12 @@ S.LessonCategoryWrapper =styled.div`
         font-size: 17px;
         font-weight: 600;
         background-color: #797979;
-    }
 
-    button:hover {
-        color: #000;
-        background-color: #ffd400;
+        &.active {
+            background-color: #ffd400;
+            color: #000;
+        }
     }
-
 `
 // S.LessonCategory = styled.button`
 //     width: 200px;
@@ -231,10 +230,6 @@ S.PortfoilosRegistrationButton = styled.button`
     text-align: center;
     font-size: 17px;
     font-weight: 600;
-
-    /* button:hover {
-        border: 1px solid black;
-    } */
 `
 S.PortfolioThumbnailWrapper = styled.div`
     display: flex;
@@ -313,7 +308,7 @@ S.CancleButton = styled.button`
     font-weight: 600;
 `
 
-S.SubmitButton =styled.button`
+S.ModifyButton =styled.button`
     width: 300px;
     height: 100px;
     border-radius: 50px;

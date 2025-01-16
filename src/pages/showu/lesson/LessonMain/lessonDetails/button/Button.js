@@ -9,7 +9,7 @@ const Button = () => {
     const [modalOpen, setModalOpen] = useState(false);
   const modalBackground = useRef();
 
-    if("user" === "user"){
+    if("user.role.enum" === "user"){
         return (
                  <S.RightButtonWrapper>
                     <S.RightTextWrapper>
@@ -27,17 +27,17 @@ const Button = () => {
                             if (e.target === modalBackground.current) {
                                 setModalOpen(false);
                             }
-                        }}>
-                        <S.ModalContent>
-                            <h3>상담 예약하기</h3>
-                            <FontAwesomeIcon className='closeIcon' onClick={() => setModalOpen(false)} icon={faX} 
+                            }}>
+                            <S.ModalContent>
+                                <h3>상담 예약하기</h3>
+                                <FontAwesomeIcon className='closeIcon' onClick={() => setModalOpen(false)} icon={faX} 
                                 style={{
                                
                                 }}/>
-                            <LessonReservation />
-                        </S.ModalContent>
-        </S.ModalContainer>
-      }
+                                <LessonReservation />
+                            </S.ModalContent>
+                        </S.ModalContainer>
+                        }
                 </S.RightButtonWrapper>
         );
     }else if ("user.role.enum" === "admin"){
@@ -60,7 +60,7 @@ const Button = () => {
                    <p className='lessonTitle'></p>
                    <p className='lessonSummary'>레슨을 수정해 주세요</p>
                </S.RightTextWrapper> 
-                   <Link>
+                   <Link to={'/showu/lesson/details/lessonModify'}>
                        <button> 수정하기 </button>
                    </Link>
                    

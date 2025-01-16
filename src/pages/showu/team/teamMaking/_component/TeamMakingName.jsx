@@ -3,11 +3,6 @@ import S from './style';
 import { Link } from 'react-router-dom';
 import TeamMakingProfile from './TeamMakingProfile';
 
-const nextStepButton = ()=> {
-    return (
-        <TeamMakingProfile />
-    )
-}
 
 const TeamMakingName = () => {
     return (
