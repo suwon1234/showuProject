@@ -63,25 +63,7 @@ const AuctionDetail = () => {
 
   }, [id]);  
 
-  
-    // useEffect(() => {
-    //   const getList = async () => {
-    //     try {
-    //       const response = await fetch('http://localhost:8000/shop/auction/inquiry/list');
-    //       if(!response.ok) {
-    //         throw new Error("문의 내역 목록을 가져오는데 실패했습니다.")
-    //       }
-  
-    //       const datas = await response.json();
-    //       setInquiryList(datas.inquiryList || []);
-    //     } catch (error) {
-    //       console.error("InquiryListError", error);
-    //     }
-    //   };
-  
-    //   getList();
-  
-    // }, []);
+
 
   if(!auctionProduct) {
     return <p>상품을 찾을 수 없습니다.</p>
@@ -160,7 +142,7 @@ const AuctionDetail = () => {
           
           <S.ButtonContainer>
             <div className='button-wrapper1'>
-              <button className='button delivery' onClick={openPopup1}><p>입찰하기</p></button>
+              <button className='button bid' onClick={openPopup1}><p>입찰하기</p></button>
               <button className='button delivery' onClick={openPopup2}><p>배송 정보</p></button>
             </div>
             <div className='button-wrapper1'>
