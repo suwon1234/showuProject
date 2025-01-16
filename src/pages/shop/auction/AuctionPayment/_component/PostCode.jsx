@@ -16,7 +16,7 @@ const Postcode = ({ onComplete }) => {
       fullAddress += extraAddress ? ` (${extraAddress})` : '';
     }
 
-    onComplete(data.zonecode, fullAddress); // 우편번호와 주소 전달
+    onComplete(data.zonecode, fullAddress); 
   };
 
   return (
