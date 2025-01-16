@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import S from './DetailContainerStyle';
 import Detail from './Detail';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const CanceleContainer = () => {
   const navigate = useNavigate();
@@ -9,6 +11,10 @@ const CanceleContainer = () => {
   const handleNavigate = (path) => {
     navigate(path)
   }
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <>
@@ -28,6 +34,10 @@ const CanceleContainer = () => {
 
         </S.Wapper>
       </S.Container>
+
+      <S.ScrollTop onClick={handleScrollTop}>
+        <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+      </S.ScrollTop>
 
     </>
   );

@@ -10,8 +10,14 @@ import FAQ6 from './FAQ6';
 import FAQ5 from './FAQ5';
 import FAQ4 from './FAQ4';
 import S from './style';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const FAQContainer = () => {
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const faqDatas = [
     {
@@ -67,63 +73,68 @@ const FAQContainer = () => {
   ]
 
   return (
-    <S.Container className='Container'>
-      <S.Title className='fqaTitle'>
-        <p>자주 묻는 질문(FAQ)</p>
-      </S.Title>
-      <S.Ul>
-        <li>
-          <FAQ1
-            faqDatas={faqDatas}
-          />
-        </li>
-        <li>
-          <FAQ2
-            faqDatas={faqDatas}
-          />
-        </li>
-        <li>
-          <FAQ3
-            faqDatas={faqDatas}
-          />
-        </li>
-        <li>
-          <FAQ4
-            faqDatas={faqDatas}
-          />
-        </li>
-        <li>
-          <FAQ5
-            faqDatas={faqDatas}
-          />
-        </li>
-        <li>
-          <FAQ6
-            faqDatas={faqDatas}
-          />
-        </li>
-        <li>
-          <FAQ7
-            faqDatas={faqDatas}
-          />
-        </li>
-        <li>
-          <FAQ8
-            faqDatas={faqDatas}
-          />
-        </li>
-        <li>
-          <FAQ9
-            faqDatas={faqDatas}
-          />
-        </li>
-        <li>
-          <FAQ10
-            faqDatas={faqDatas}
-          />
-        </li>
-      </S.Ul>
-    </S.Container>
+    <>
+      <S.Container className='Container'>
+        <S.Title className='fqaTitle'>
+          <p>자주 묻는 질문(FAQ)</p>
+        </S.Title>
+        <S.Ul>
+          <li>
+            <FAQ1
+              faqDatas={faqDatas}
+            />
+          </li>
+          <li>
+            <FAQ2
+              faqDatas={faqDatas}
+            />
+          </li>
+          <li>
+            <FAQ3
+              faqDatas={faqDatas}
+            />
+          </li>
+          <li>
+            <FAQ4
+              faqDatas={faqDatas}
+            />
+          </li>
+          <li>
+            <FAQ5
+              faqDatas={faqDatas}
+            />
+          </li>
+          <li>
+            <FAQ6
+              faqDatas={faqDatas}
+            />
+          </li>
+          <li>
+            <FAQ7
+              faqDatas={faqDatas}
+            />
+          </li>
+          <li>
+            <FAQ8
+              faqDatas={faqDatas}
+            />
+          </li>
+          <li>
+            <FAQ9
+              faqDatas={faqDatas}
+            />
+          </li>
+          <li>
+            <FAQ10
+              faqDatas={faqDatas}
+            />
+          </li>
+        </S.Ul>
+      </S.Container>
+      <S.ScrollTop onClick={handleScrollTop}>
+        <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+      </S.ScrollTop>
+    </>  
   );
 };
 

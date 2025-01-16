@@ -7,11 +7,11 @@ import { useForm } from 'react-hook-form';
 const FindIdContainer = () => {
   const [ step, setStep ] = useState(1);
   const [ currentUser, setCurrentUser ] = useState(null);  // 찾은 아이디
+  const [ hyphen, setHyphen ] = useState("");
+
   const { register, handleSubmit,
     formState : { isSubmitting, errors }
   } = useForm({ mode : "onSubmit"})
-
-  // const phoneRegex = /^[0-9-]+$/;
 
 
   return (
@@ -75,11 +75,16 @@ const FindIdContainer = () => {
                       placeholder='전화 번호'
                       autoComplete="off"
                       {...register("phone", {
-                        required : '전화 번호를 입력하세요',
-                        // pattern : {
-                        //   value : phoneRegex
-                        // }
+                        required: "전화번호를 입력해주세요.",
+                        onChange: (e) => {
+                          const value = e.target.value.replace(/[^0-9]/g, ""); // 숫자만 남김
+                          if (value.length <= 11) {
+                            const formatted = value.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+                            setHyphen(formatted);
+                          }
+                        },
                       })}
+                      value={hyphen}
                     />
                     {/* { errors?.password?.type === 'pattern' && (
                       <p>전화번호 형식이 올바르지 않습니다 010-0000-0000</p>

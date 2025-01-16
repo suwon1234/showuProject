@@ -68,7 +68,7 @@ const Detail = () => {
           </S.Tr>
           <S.Tr>
             <th scope='row'>좌석</th>
-            <td>{ticket.seat}</td>
+            <td>{ticket.seatNumbers.map((seatNumbers) => (seatNumbers)).join(", ")}</td>
             <th>예매일</th>
             <td>{ticket.createdAt}</td>
           </S.Tr>
@@ -103,7 +103,7 @@ const Detail = () => {
               <S.DetailTr key={i} >
                 {/* <Checkbox /> */}
                 <th scope='row' className='num'>{ticket.id}</th>
-                <td>{ticket.seat}</td>
+                <td>{ticket.seatNumbers.map((seatNumbers) => (seatNumbers)).join(", ")}</td>
                 {/* <td>L열 20번</td> */}
                 <td>{ticket.price.R}</td>
                 {/* <td>{ticket.cancellationStatus}</td>

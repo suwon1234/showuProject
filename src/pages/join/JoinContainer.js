@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import S from './style';
 import LoginHeader from '../login/_component/LoginHeader';
 import { Link, useNavigate } from 'react-router-dom';
@@ -11,7 +11,8 @@ const JoinContainer = () => {
   const [ buttonColor, setButtonColor ] = useState(false);
   const [ showPw, setShowPw ] = useState(false);
   const [ showPwConfirm, setShowPwConfirm ] = useState(false);
-
+  const [ hyphen, setHyphen ] = useState("");
+  
   const handleShowPw = () => {
     setShowPw(!showPw)
   }
@@ -31,7 +32,6 @@ const JoinContainer = () => {
     formState : { isSubmitting, errors }
   } = useForm({ mode : "onChange"});
 
-  
 
   return (
     <S.Container>
@@ -178,18 +178,31 @@ const JoinContainer = () => {
               <S.idLabel>
                 <S.input type="text" id='name' placeholder='이름'
                   {...register("name", {
-                    required : true
+                    required : true,
                   })}
                 />
               </S.idLabel>
 
               <S.idLabel>
-                <S.input type="text" id='phone' placeholder='전화번호(ex.010-1234-5678)'
+                <S.input
+                  type="text"
+                  id="phone"
+                  placeholder="전화번호"
                   {...register("phone", {
-                    required : true
+                    required: "전화번호를 입력해주세요.",
+                    onChange: (e) => {
+                      const value = e.target.value.replace(/[^0-9]/g, ""); // 숫자만 남김
+                      if (value.length <= 11) {
+                        const formatted = value.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+                        setHyphen(formatted);
+                      }
+                    },
                   })}
+                  value={hyphen} // 하이픈 처리된 값 표시
                 />
+                {errors?.phone && <p>{errors.phone.message}</p>}
               </S.idLabel>
+
 
             <Checkbox setButtonColor={setButtonColor}/>
           

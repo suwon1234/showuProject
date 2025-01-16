@@ -2,6 +2,8 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Advice from './Advice';
 import S from './AdviceContainerStyle';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 
 const AdviceContainer = () => {
   const navigate = useNavigate();
@@ -9,6 +11,10 @@ const AdviceContainer = () => {
   const handleNavigate = (path) => {
     navigate(path)
   }
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <>
@@ -31,6 +37,9 @@ const AdviceContainer = () => {
         </S.Wapper>
       </S.Container>
 
+      <S.ScrollTop onClick={handleScrollTop}>
+        <FontAwesomeIcon icon={faArrowUp} className="upicon" />
+      </S.ScrollTop>
     </>
   );
 };

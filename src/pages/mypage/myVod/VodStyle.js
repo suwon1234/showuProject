@@ -2,6 +2,23 @@ import styled from 'styled-components';
 
 const S = {};
 
+  S.NoneItem = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  `
+
+  S.LinkToPath = styled.p`
+    cursor: pointer;
+    border: 1px solid #ffd400;
+    background-color: #ffd400;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+  `
+
   S.Container = styled.div`
     width: 900px;
     height: 100vh;
