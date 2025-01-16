@@ -1,5 +1,7 @@
 import React from "react";
 import S from "./style";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
@@ -99,7 +101,10 @@ const Hot = () => {
 
   return (
     <S.Wrapper>
-      {/* <S.TopTitle>🔥 HOT</S.TopTitle> */}
+      <S.TopTitle>🔥 HOT 🔥</S.TopTitle>
+      <S.IconWrapper>
+                    <FontAwesomeIcon icon={faChevronDown} className='icon' />
+            </S.IconWrapper>
       <S.CategoryWrapper>
         {[ "VOD", "레슨", "팀", "ShowU 공연"].map(
           (category) => (

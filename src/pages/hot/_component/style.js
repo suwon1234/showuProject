@@ -12,11 +12,30 @@ S.Wrapper = styled.div`
 `;
 
 S.TopTitle = styled.div`
-  font-size: 24px;
+  font-size: 30px;
   font-weight: bold;
   color: #ffd400;
+  text-align: center;
+  margin-top: 10px;
   margin-bottom: 20px;
 `;
+
+S.IconWrapper = styled.div`
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5px;
+        height: 100%;
+        padding-bottom: 50px;
+
+        .icon{
+            font-size: 20px;
+
+        path {
+            color : #ffd400;
+        }
+    }
+    `
 
 S.CategoryWrapper = styled.div`
   display: flex;
