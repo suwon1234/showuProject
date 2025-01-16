@@ -192,8 +192,12 @@ const router = createBrowserRouter([
         path: "/community/audition",
         element: <AuditionContainer />, // 오디션 메인 페이지
       },
+      // {
+      //   path: "/community/audition/auditionInfo/:id",
+      //   element: <AuditionInfoContainer />, // 오디션 세부 페이지
+      // },
       {
-        path: "/community/audition/auditionInfo/:id",
+        path: "/community/audition/:id",
         element: <AuditionInfoContainer />, // 오디션 세부 페이지
       },
       {
