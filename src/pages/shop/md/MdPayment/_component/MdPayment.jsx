@@ -6,6 +6,7 @@ import { faCheckCircle, faCreditCard, faMoneyBillTransfer, faXmark } from '@fort
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PaymentButton from '../payment/PaymentButton';
+import Postcode from './PostCode';
 
 const MdPayment = () => {
   const { state } = useLocation();
@@ -24,17 +25,16 @@ const MdPayment = () => {
   const [userAddress, setUserAddress] = useState('');
   const [errors, setErrors] = useState({})
   const [hoveredField, setHoveredField] = useState(null); 
+  const [userDetailAddress, setUserDetailAddress] = useState(''); // 나머지 주소 (선택)
+  const [userPostcode, setUserPostcode] = useState('');
+  const [isPostcodeOpen, setIsPostcodeOpen] = useState(false); 
 
-  const iconPaymentMethods = [
-    { label: "체크/신용 카드", icon: faCreditCard },
-    { label: "무통장 입금", icon: faMoneyBillTransfer }
-  ];
+  const handleAddressSelect = (zonecode, address) => {
+    setUserPostcode(zonecode);
+    setUserAddress(address);
+    setIsPostcodeOpen(false); 
+  };
 
-  const imagePaymentMethods = [
-    { label: "토스페이", image: `${process.env.PUBLIC_URL}/images/shop/md/toss-pay.png` },
-    { label: "네이버페이", image: `${process.env.PUBLIC_URL}/images/shop/md/naver-pay.png` },
-    { label: "카카오페이", image: `${process.env.PUBLIC_URL}/images/shop/md/kakao-pay.png` },
-  ];
 
   // 배송비 계산
   let productTotal = 0;
@@ -199,19 +199,36 @@ const MdPayment = () => {
           </S.InputName>
         </S.OrderInfo>
 
+
         <S.OrderInfo>
           <p>주소</p>
           <S.InputAddress>
-            <S.Code>
-              <p className='code'>우편번호</p>
-            </S.Code>
-            <input type='text' placeholder='기본 주소' />
-            <input type='text' placeholder='나머지 주소(선택)' value={userAddress}
-              onChange={(e) => setUserAddress(e.target.value)}
-              onBlur={() => handleBlur('userAddress', userAddress)} />
-              {errors.userAddress && <S.ErrorText>필수 항목입니다.</S.ErrorText>}
+            {/* <S.Code> */}
+              {/* <p className="code">우편번호</p> */}
+              <input
+                type="text"
+                value={userPostcode}
+                placeholder="우편번호"
+                readOnly
+                onClick={() => setIsPostcodeOpen(true)} 
+              />
+            {/* </S.Code> */}
+            <input type="text" value={userAddress} placeholder="기본 주소" readOnly />
+            <input
+              type="text"
+              placeholder="나머지 주소(선택)"
+              value={userDetailAddress}
+              onChange={(e) => setUserDetailAddress(e.target.value)}
+            />
           </S.InputAddress>
         </S.OrderInfo>
+
+        {isPostcodeOpen && (
+          <S.PostcodePopup>
+            <Postcode onComplete={handleAddressSelect} />
+            <S.CloseButton onClick={() => setIsPostcodeOpen(false)}>닫기</S.CloseButton>
+          </S.PostcodePopup>
+        )}
 
         <S.OrderInfo>
           <p>휴대전화</p>
@@ -281,25 +298,6 @@ const MdPayment = () => {
           </S.TotalAmount2>
         </S.TotalWrapper>
       </S.OrderInfoWrapper>
-
-      {/* <S.MethodWrapper>
-        <S.Info>결제 수단</S.Info>
-        {iconPaymentMethods.map((method) => (
-          <S.OrderInfo key={method.label}>
-            <S.Icon icon={faCheckCircle} />
-            <S.Icon2 icon={method.icon} />
-            <p>{method.label}</p>
-          </S.OrderInfo>
-        ))}
-
-        {imagePaymentMethods.map((method) => (
-          <S.OrderInfo key={method.label}>
-            <S.Icon icon={faCheckCircle} />
-            <S.Image img src={method.image} alt={method.label} />
-            <p>{method.label}</p>
-          </S.OrderInfo>
-        ))}
-      </S.MethodWrapper> */}
 
       <S.PaymentButton>
         <S.BackButton onClick={handleBackButton}>이전 페이지로</S.BackButton>

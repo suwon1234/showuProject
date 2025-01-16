@@ -39,7 +39,7 @@ const flexStyle = css`
 
   S.Image = styled.img`
     width: 400px;
-    height: 700px;
+    height: 650px;
     flex: 1;
   `
 
@@ -63,7 +63,7 @@ const flexStyle = css`
       background-color: #ffd400;
       border-radius: 8px;
       display: flex;
-      height: 700px;
+      height: 650px;
     flex-direction: column;
     /* justify-content: space-between; */
 
@@ -91,7 +91,7 @@ const flexStyle = css`
 
     .button-wrapper1 {
       display: flex;
-      gap: 5px;
+      gap: 10px;
     }
     
     .button {
@@ -102,26 +102,26 @@ const flexStyle = css`
       border-radius: 50px;
       border: none;
       cursor: pointer;
+      font-weight: bold;
+    }
+    
+    .bid, .delivery {
+      background-color: #ffd400;
+      border: 1.5px solid #000;
 
+      p {
+        color: #000;
+      }
+
+      // &:hover {
+      //   background-color: #797979;
+
+      //   p {
+      //     color: #000;
+      //   }
+      // }
     }
-    
-    .button1 { // 입찰하기
-      background-color: #444444;
-      width: 505px;
-    }
-    
-    .button2 { // 즉시구매 불가
-      background-color: #444444;
-      width: 505px;
-    }
-    
-    .delivery { // 배송정보
-      background-color: #797979;
-    }
-    
-    .heart { // 관심물품 
-      background-color: #797979;
-    }
+
       
   `
 
