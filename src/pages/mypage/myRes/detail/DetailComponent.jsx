@@ -2,6 +2,32 @@ import React from 'react';
 import S from './DetailStyle';
 
 const DetailComponent = () => {
+  const jwtToken = localStorage.getItem("jwtToken");
+
+  const handleDeleteTicket = async (data) => {
+    const { userId } = data;
+
+    if(window.confirm("티켓을 취소하시겠습니까?")){
+      await fetch(`http://localhost:8000/my/reservation/ticket/delete`, {
+        method : "DELETE",
+        headers : {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${jwtToken}`
+        },
+        body : JSON.stringify({
+          userId : userId
+        })
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          if(!res.deleteTicketSuccess){
+            console.log(res.message)
+          }
+
+        })
+    }
+  }
+
   return (
     <>
       <S.Table>
@@ -65,7 +91,7 @@ const DetailComponent = () => {
         </S.DetailTable>
 
         <S.ButtonContainer className='ButtonContainer'>
-          <S.Button onClick={() => handleNavigate('/my-res/ticket/cancele')}>이전으로</S.Button>
+          <S.Button onClick={() => handleNavigate(-1)}>이전으로</S.Button>
           <S.Button>취소하기</S.Button>
         </S.ButtonContainer>
 
