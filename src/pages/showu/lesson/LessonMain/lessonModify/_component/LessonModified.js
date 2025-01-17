@@ -174,7 +174,7 @@ const LessonModified = () => {
                             </S.LessonNoticeRegistration>
                             <S.ButtonWrapper>
                                 <S.CancleButton>취소하기</S.CancleButton>
-                                <S.ModiftButton>수정 하기</S.ModiftButton>
+                                <S.ModifyButton>수정 하기</S.ModifyButton>
         
                             </S.ButtonWrapper>
                         </form>
