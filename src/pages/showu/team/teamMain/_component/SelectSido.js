@@ -1,13 +1,13 @@
 import React from 'react';
 import { useState } from 'react'; 
-const hangjungdong = {sido:[{sido:'11', codeNm:'서울특별시'},
-    {sido:'26', codeNm:'부산광역시'},
-    {sido:'27', codeNm:'대구광역시'},
-    {sido:'28', codeNm:'인천광역시'},
-    {sido:'29', codeNm:'광주광역시'},
-    {sido:'30', codeNm:'대전광역시'},
-    {sido:'31', codeNm:'울산광역시'},
-    {sido:'36', codeNm:'세종특별자치시'},
+const hangjungdong = {sido:[{sido:'11', codeNm:'서울시'},
+    {sido:'26', codeNm:'부산시'},
+    {sido:'27', codeNm:'대구시'},
+    {sido:'28', codeNm:'인천시'},
+    {sido:'29', codeNm:'광주시'},
+    {sido:'30', codeNm:'대전시'},
+    {sido:'31', codeNm:'울산시'},
+    {sido:'36', codeNm:'세종시'},
     {sido:'41', codeNm:'경기도'},
     {sido:'42', codeNm:'강원도'},
     {sido:'43', codeNm:'충청북도'},
@@ -16,7 +16,7 @@ const hangjungdong = {sido:[{sido:'11', codeNm:'서울특별시'},
     {sido:'46', codeNm:'전라남도'},
     {sido:'47', codeNm:'경상북도'},
     {sido:'48', codeNm:'경상남도'},
-    {sido:'50', codeNm:'제주특별자치도'}],
+    {sido:'50', codeNm:'제주도'}],
     }
 
 const SelectSido = () => {

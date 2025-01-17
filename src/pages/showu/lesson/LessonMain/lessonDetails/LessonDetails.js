@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import S from './style';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import LessonReview from './LessonReview';
+import Button from './button/Button';
 
 
 
@@ -183,7 +184,7 @@ const LessonDetails = (req, res) => {
                         <S.Media><span>IMG</span></S.Media>
                     </S.MediaWrapper>
                 </div>
-                {/* <LessonReview/> */}
+                <LessonReview/>
                 <div className='LessonQNAWrapper'>
                     <S.Title id='lessonQnA'>질문/답변</S.Title>
                     <S.LessonQNA className='active'>
@@ -217,15 +218,7 @@ const LessonDetails = (req, res) => {
                 </div>
             </S.LessonDetailContentsWrapper>  
 
-            <S.RightButtonWrapper>
-                <S.RightTextWrapper>
-                    <p className='lessonTitle'></p>
-                    <p className='lessonSummary'>원하는 내용을 상담해 보세요</p>
-                </S.RightTextWrapper>
-                <Link>
-                    <button> 수정하기 </button>
-                </Link>
-            </S.RightButtonWrapper>
+           <Button/>
 
         </S.LessonDetailsWrapper>
     </>

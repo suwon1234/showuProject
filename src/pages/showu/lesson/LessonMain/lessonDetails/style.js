@@ -448,5 +448,69 @@ S.RightTextWrapper = styled.div`
 
 `
 
+// 모달 창 CSS 
+
+S.ModalOpenButton = styled.button`
+    cursor: pointer;
+`
+S.ModalContainer = styled.div`
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5 );
+`
+S.ModalContent = styled.div`
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 150px;
+    background-color: #000;
+    width: 985px;
+    height: 925px;
+    padding: 60px 30px;
+    border-radius: 20px;
+    h3 {
+        font-size: 30px;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 70px;
+    }
+
+    .closeIcon {
+        cursor: pointer;
+        position: absolute;
+        top: 60px;
+        right: 30px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .example-custom-input {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #fff;
+    cursor: pointer;
+    width: 300px;
+    margin: auto;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    }
+
+`
+
+// S.FontAwesomeIcon = styled.button`
+//     cursor: pointer;
+//     position: absolute;
+//     top: 60px;
+//     right: 30px;
+//     background-color: transparent;
+//     width: 40px;
+//     height: 40px;
+// `
+
 
 export default S; 
