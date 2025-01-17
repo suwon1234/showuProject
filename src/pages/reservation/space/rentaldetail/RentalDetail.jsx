@@ -1,70 +1,63 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Modal from "react-modal";
+import { useSelector } from "react-redux";
 import { S, modalStyles } from "./style";
 
-Modal.setAppElement("#root"); // 모달을 사용할 앱 요소 설정
-
-const spaceRentals = [
-  {
-    id: 1,
-    name: "ShowU 대강당",
-    location: "서울 선릉/삼성",
-    price: "330,000원~/1시간",
-    pricePerHour: 330000,
-    pricePerDay: 4800000,
-    img: "https://img.shareit.kr/prod/img/2022-10-12/c46f4d5e-874d-4a74-9129-dcb24b8d4411.jpg",
-    descriptions: [
-      "면적 : 399.00 ㎡ ≒ 120.7 평",
-      "가로 : 21.00 m",
-      "세로 : 19.00 m",
-      "천정높이 : 5.50m",
-      "최대인원 : 172명",
-    ],
-    amenities: ["WiFi", "주차 공간", "프로젝터", "음향 시스템"],
-    icons: [
-      {
-        name: "냉방기",
-        icon: "https://img.shareit.kr/front-assets/icons/crystal_lineRegularOut_white.svg?version=1.0",
-      },
-      {
-        name: "엘레베이터",
-        icon: "https://img.shareit.kr/front-assets/icons/passengerelevator_lineRegularOut_white.svg?version=1.0",
-      },
-      {
-        name: "난방기",
-        icon: "https://img.shareit.kr/front-assets/icons/heater_lineRegularOut_white.svg?version=1.0",
-      },
-      {
-        name: "화재경보기",
-        icon: "https://img.shareit.kr/front-assets/icons/alarm_lineRegularOut_white.svg?version=1.0",
-      },
-    ],
-    additionalImages: [
-      "https://img.shareit.kr/prod/img/2022-09-30/312dc9ca-b0aa-4c0b-8411-f3d6a190fb74.jpg",
-      "https://img.shareit.kr/prod/img/2022-09-30/4edcc5e0-51b8-4c9f-8363-4aa641cd5184.jpg",
-      "https://img.shareit.kr/prod/img/2022-09-30/9f11d616-d0d5-4d23-8201-9fa82de51ab1.jpg",
-      "https://img.shareit.kr/prod/img/2022-09-30/8cc7d4a7-7245-4991-a1d1-1eaf449b6b06.jpg",
-    ],
-  },
-  // 추가 데이터...
-];
-
-
-
+Modal.setAppElement("#root");
 
 const RentalDetail = () => {
   const { id } = useParams();
-  const rental = spaceRentals.find((r) => r.id === parseInt(id));
+  const { currentUser } = useSelector((state) => state.user);
+  const [rental, setRental] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false); // 기본 상태는 하트가 눌리지 않은 상태
   const navigate = useNavigate();
 
   const infoRef = useRef(null);
   const precautionsRef = useRef(null);
   const locationRef = useRef(null);
   const refundRef = useRef(null);
+
+  useEffect(() => {
+    const fetchRental = async () => {
+      const token = localStorage.getItem("jwtToken");
+      try {
+        const response = await fetch(
+          `http://localhost:8000/reservation/spaces/${id}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        if (!response.ok) {
+          throw new Error("대여 정보를 불러오는 중 오류 발생");
+        }
+        const data = await response.json();
+        setRental(data);
+
+        const likeStatusResponse = await fetch(
+          `http://localhost:8000/reservation/spaces/${id}/likeStatus?userId=${currentUser._id}&type=space`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        if (!likeStatusResponse.ok) {
+          throw new Error("좋아요 상태를 확인하는 중 오류 발생");
+        }
+        const likeStatusData = await likeStatusResponse.json();
+        setIsFavorite(likeStatusData.isFavorite);
+      } catch (error) {
+        console.error("대여 정보를 불러오는 중 오류 발생:", error);
+      }
+    };
+
+    fetchRental();
+  }, [id, currentUser._id]);
 
   if (!rental) {
     return <p>해당 대여 정보를 찾을 수 없습니다.</p>;
@@ -83,6 +76,37 @@ const RentalDetail = () => {
       },
     });
   };
+
+  const handleFavoriteClick = async () => {
+    const token = localStorage.getItem("jwtToken");
+    try {
+      const response = await fetch(
+        `http://localhost:8000/reservation/spaces/${id}/likes`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ userId: currentUser._id, type: "space" }),
+        }
+      );
+      if (!response.ok) {
+        throw new Error("좋아요 토글 중 오류 발생");
+      }
+      const result = await response.json();
+      setIsFavorite(!isFavorite);
+      console.log(result.message);
+      if (!isFavorite) {
+        alert("마이페이지 나의 찜 목록에서 확인할 수 있습니다!");
+      } else {
+        alert("찜이 취소되었습니다.");
+      }
+    } catch (error) {
+      console.error("좋아요 토글 중 오류 발생:", error);
+    }
+  };
+
   const handleImageClick = (index) => {
     setSelectedImageIndex(index);
     setIsModalOpen(true);
@@ -109,11 +133,6 @@ const RentalDetail = () => {
       top: ref.current.offsetTop,
       behavior: "smooth",
     });
-  };
-
-  const handleFavoriteClick = () => {
-    setIsFavorite(!isFavorite);
-    // 백엔드 호출로 선호 목록에 추가/제거 처리 
   };
   return (
     <S.Container>
@@ -165,7 +184,7 @@ const RentalDetail = () => {
                   <S.DetailTitle>위치:</S.DetailTitle> {rental.location}
                 </S.DetailText>
                 <S.DetailText>
-                  <S.DetailTitle>가격:</S.DetailTitle> {rental.price}
+                  <S.DetailTitle>가격:</S.DetailTitle> {rental.price}~ / 1시간
                 </S.DetailText>
                 <S.DetailIconWrapper>
                   {rental.icons.map((icon, index) => (
@@ -194,17 +213,19 @@ const RentalDetail = () => {
           <div ref={precautionsRef} style={{ width: "800px" }}>
             <S.SubTitle>주의사항</S.SubTitle>
             <S.DetailText>
-              - 대여 시간보다 적게 사용 하더라도 대관비는 환불되지 않습니다.{" "}
+              - 대여 시간보다 적게 사용하더라도 대관비는 환불되지 않습니다.{" "}
               <br />
               - 기물 파손 및 청소 등의 사유로 보증금을 호스트에게 입금하여야
               합니다. <br />
               - 무료 주차 가능하나, 주차 대수 제한이 있으니 미리 가능 여부 확인
               필수 <br />
-              - 사용자 인원이나 사용 시간이 추가될 경우, 현장에서
-              추가 과금이 진행됩니다. <br />
-              - 입실은 정시, 퇴실은 5분 전에 준비해서 예약 시간 안에 이용<br />
-              - 시설 훼손 및 기물 파손 시 손해액을 호스트에게 배상하여야 합니다.<br />
-              (CCTV는 방범/분실/기물파손/인원확인등의 이유로 녹화됨)
+              - 사용자 인원이나 사용 시간이 추가될 경우, 현장에서 추가 과금이
+              진행됩니다. <br />
+              - 입실은 정시, 퇴실은 5분 전에 준비해서 예약 시간 안에 이용
+              <br />
+              - 시설 훼손 및 기물 파손 시 손해액을 호스트에게 배상하여야 합니다.
+              <br />
+              (CCTV는 방범/분실/기물파손/인원확인 등의 이유로 녹화됨)
             </S.DetailText>
             <S.HorizontalLine />
           </div>
@@ -227,24 +248,20 @@ const RentalDetail = () => {
 
         {/* 가격 및 예약하기 */}
         <div>
-          {spaceRentals.map((rental) => (
-            <div key={rental.id}>
-              <S.PriceContainer>
-                <S.Price>{rental.price}</S.Price>
-                <div style={{ display: "flex", alignItems: "center" }}>
-                  <S.FavoriteButton
-                    onClick={handleFavoriteClick}
-                    isFavorite={isFavorite}
-                  >
-                    ♥
-                  </S.FavoriteButton>
-                  <S.ReserveButton onClick={() => handleReserveClick(rental)}>
-                    예약하기
-                  </S.ReserveButton>
-                </div>
-              </S.PriceContainer>
+          <S.PriceContainer>
+            <S.Price>{rental.price}~ / 1시간</S.Price>
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <S.FavoriteButton
+                onClick={handleFavoriteClick}
+                isFavorite={isFavorite}
+              >
+                ♥
+              </S.FavoriteButton>
+              <S.ReserveButton onClick={() => handleReserveClick(rental)}>
+                예약하기
+              </S.ReserveButton>
             </div>
-          ))}
+          </S.PriceContainer>
         </div>
       </S.InfoWrapper>
 
