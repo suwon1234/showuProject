@@ -343,6 +343,8 @@ S.ImageCounter = styled.div`
 S.FavoriteButton = styled.button`
   background-color: lightgray;
   color: ${(props) => (props.isFavorite ? "red" : "grey")};
+  width: 45.5px;
+  height: 45.5px;
   border: none;
   border-radius: 5px;
   font-size: 2rem;
