@@ -22,10 +22,9 @@ const AuditionInfo = () => {
         setAudition(data); 
       } catch (error) {
         console.error("오디션 데이터 로드 오류:", error);
-        setError("오디션 정보를 불러올 수 없습니다.");
+        setError("기간이 마감된 오디션 정보입니다.");
       }
     };
-  
     fetchAuditionById();
   }, [id]);
 
@@ -64,3 +63,10 @@ const AuditionInfo = () => {
 };
 
 export default AuditionInfo;
+
+
+
+
+
+
+

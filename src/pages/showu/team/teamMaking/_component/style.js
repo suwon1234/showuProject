@@ -4,8 +4,12 @@ const S = {};
 
 S.TeamMakingNameWrapper =styled.div`
 
-    /* display: none; */
-    
+/* display: none; */
+    border: 1px solid #ffd400;
+    width: 585px;
+    border-radius: 20px;
+    margin: 80px auto; 
+    padding: 35px 30px;
 `
 
 S.MakingDetailsTitle = styled.h3`
@@ -72,7 +76,25 @@ S.TeamMakingSubmibuttonWrapper = styled.div`
 `
 
 S.TeamMakingProfileWrapper = styled.div`
-    /* display: none; */
+/* display: none; */
+    border: 1px solid #ffd400;
+    width: 585px;
+    border-radius: 20px;
+    margin: 80px auto;  
+    padding: 35px 30px;
+
+    label {
+        display: block;
+        width: 525px;
+        height: 55px;
+        border-radius: 5px;
+        border: 1px solid #fff;
+        margin-bottom: 30px;
+        #teamProfileImg {
+            display: none;
+        }
+    }
+
 
 `
 
@@ -88,7 +110,7 @@ S.TeamCategoryWrapper = styled.div`
     width: 525px;
     display: flex;
     gap: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 
     button {
         width: 165px;
@@ -100,10 +122,15 @@ S.TeamCategoryWrapper = styled.div`
 
     }
 
-    .active {
+    button:hover {
+        background-color: #ffd400;
+        color:#000;
+    }
+
+    /* .active {
         background-color: #ffd400;
         color: #000;
-    }
+    } */
 
 `
 S.TeamMakingSubmibuttonWrapperTwo = styled.div`
@@ -128,7 +155,13 @@ S.TeamMakingSubmibuttonWrapperTwo = styled.div`
 `
 
 S.TeamMakingDateWrapper = styled.div`
-/* display: none; */
+    /* display: none; */
+    border: 1px solid #ffd400;
+    width: 585px;
+    border-radius: 20px;
+    margin: 80px auto; 
+    padding: 35px 30px;
+
     p {
         font-size: 16px;
         font-weight: 400;
@@ -156,10 +189,16 @@ S.TeamDateWrapper = styled.div`
         color: #fff;
     }
 
-    .active {
+
+    button:hover {
+        background-color: #ffd400;
+        color:#000;
+    }
+
+    /* .active {
         background-color: #ffd400;
         color: #000;
-    }
+    } */
 
 `
 
@@ -196,14 +235,25 @@ S.TeamTimeWrapper =styled.div`
             font-weight: 300;
         }
     }
-    .active {
+
+    button:hover {
+        background-color: #ffd400;
+        color:#000;
+    }
+
+    /* .active {
         background-color: #ffd400;
         color: #000;
-    }
+    } */
 `
 
 S.TeamMakingMemberWrapper = styled.div`
 /* display: none; */
+    border: 1px solid #ffd400;
+    width: 585px;
+    border-radius: 20px;
+    margin: 80px auto;  
+    padding: 35px 30px;
 
     p {
         font-size: 16px;
@@ -236,10 +286,15 @@ S.TeamAgeWrapper =styled.div`
         font-weight: 600;
     }
 
-    .active {
+    button:hover {
+        background-color: #ffd400;
+        color:#000;
+    }
+
+    /* .active {
         background-color: #ffd400;
         color: #000;
-    }
+    } */
 `
 
 S.TeamMakingGender = styled.div`
@@ -269,14 +324,24 @@ S.TeamGenderWrapper = styled.div`
         font-weight: 600;
     }
 
-    .active {
+    button:hover {
+        background-color: #ffd400;
+        color:#000;
+    }
+
+    /* .active {
         background-color: #ffd400;
         color: #000;
-    }
+    } */
 `
 
 S.TeamMakingSkillWrapper =styled.div`
 /* display: none; */
+    border: 1px solid #ffd400;
+    width: 585px;
+    border-radius: 20px;
+    margin: 80px auto;  
+    padding: 35px 30px;
     p {
             font-size: 16px;
             font-weight: 400;
@@ -312,14 +377,25 @@ S.TeamSkillWrapper = styled.div`
         font-weight: 600;
     }
 
-    .active {
+    button:hover {
+        background-color: #ffd400;
+        color:#000;
+    }
+
+    /* .active {
         background-color: #ffd400;
         color: #000;
-    }
+    } */
 
 `
 
 S.TeamMaKingAnnouncementWrapper = styled.div`
+    border: 1px solid #ffd400;
+    width: 585px;
+    border-radius: 20px;
+    margin: 80px auto;  
+    padding: 35px 30px;
+
     textarea {
         width: 525px;
         height: 325px;

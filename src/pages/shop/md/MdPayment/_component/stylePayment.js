@@ -411,5 +411,28 @@ const flexStyle = css`
       padding-right: 5px;
     }
   `
+  S.PostcodePopup = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+`;
+
+S.CloseButton = styled.button`
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background: #ff4d4f;
+  color: white;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  font-size: 16px;
+`;
 
   export default S;

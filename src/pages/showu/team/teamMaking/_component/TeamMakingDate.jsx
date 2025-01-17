@@ -1,5 +1,6 @@
 import React from 'react';
 import S from './style';
+import { Link } from 'react-router-dom';
 
 const TeamMakingDate = () => {
     return (
@@ -45,9 +46,13 @@ const TeamMakingDate = () => {
                     </S.TeamTimeWrapper>
                 </S.TeamMakingTime>
                 <S.TeamMakingSubmibuttonWrapperTwo>
-                    <button type='button' className='backButton'>뒤로</button>
-                    <button type='button' className='nextButton'>다음</button>
-                </S.TeamMakingSubmibuttonWrapperTwo> 
+                    <Link to={'/showu/team/teamMake/address'}>
+                        <button type='button' className='backButton'>뒤로</button>
+                    </Link>
+                    <Link to={'/showu/team/teamMake/member'}>
+                        <button type='button' className='nextButton'>다음</button>
+                    </Link>
+                </S.TeamMakingSubmibuttonWrapperTwo>  
             </S.TeamMakingDateWrapper>
     );
 };

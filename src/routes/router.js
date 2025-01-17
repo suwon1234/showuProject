@@ -108,9 +108,17 @@ import Success from '../pages/reservation/payment/Success';
 import AdminUpgradContainer from '../pages/admin/AdminUpgradContainer';
 import LessonReservation from '../pages/showu/lesson/LessonMain/lessonReservate/LessonReservation';
 import TeamMakingProfile from '../pages/showu/team/teamMaking/_component/TeamMakingProfile';
-import LessonModify from '../pages/showu/lesson/LessonMain/lessonModify/_component/LessonModify';
+
 import WriteLessonReviews from '../pages/showu/lesson/LessonMain/lessonDetails/writeReview/WriteLessonReviews';
 import TeamJoin from '../pages/showu/team/teamJoin/TeamJoin';
+import TeamMakingDetails from '../pages/showu/team/teamMaking/_component/TeamMakingDetails';
+import TeamMakingName from '../pages/showu/team/teamMaking/_component/TeamMakingName';
+import TeamMakingMember from '../pages/showu/team/teamMaking/_component/TeamMakingMember';
+import TeamMakingDate from '../pages/showu/team/teamMaking/_component/TeamMakingDate';
+import TeamMakingSkill from '../pages/showu/team/teamMaking/_component/TeamMakingSkill';
+import TeamMakeAnnouncement from '../pages/showu/team/teamMaking/_component/TeamMakeAnnouncement';
+import TeamMakingAdress from '../pages/showu/team/teamMaking/_component/TeamMakingAdress';
+import LessonModified from '../pages/showu/lesson/LessonMain/lessonModify/_component/LessonModified';
 
 
 
@@ -200,7 +208,7 @@ const router = createBrowserRouter([
         element: <AuditionContainer />, // 오디션 메인 페이지
       },
       {
-        path: "/community/audition/auditionInfo/:id",
+        path: "/community/audition/:id",
         element: <AuditionInfoContainer />, // 오디션 세부 페이지
       },
       {
@@ -422,7 +430,7 @@ const router = createBrowserRouter([
 
       {
         path: "/showu/lesson/details/lessonModify",
-        element: <LessonModify />,
+        element: <LessonModified />,
       },
 
       {
@@ -451,11 +459,68 @@ const router = createBrowserRouter([
       {
         path: "/showu/team/teamMake",
         element: <TeamMaking />,
+        // children : [
+        //   {
+        //     index: true,
+        //     path:"name",
+        //     element : <TeamMakingName />,
+        //   },
+        //   {
+        //     path: "profile",
+        //     element : <TeamMakingProfile />,
+        //   },
+        //   {
+        //     path: "date",
+        //     element : <TeamMakingDate />,
+        //   },
+        //   {
+        //     path: "member",
+        //     element : <TeamMakingMember />,
+        //   },
+        //   {
+        //     path: "skill",
+        //     element : <TeamMakingSkill />,
+        //   },
+        //   {
+        //     path: "announce",
+        //     element : <TeamMakeAnnouncement />,
+        //   },
+        // ]
+    
       },
-      
+      {
+        path: "/showu/team/teamMake/name",
+        element: <TeamMakingName />,
+      },
+
       {
         path: "/showu/team/teamMake/profile",
         element: <TeamMakingProfile />,
+      },
+
+      {
+        path: "/showu/team/teamMake/address",
+        element: <TeamMakingAdress />,
+      },
+
+
+      {
+        path: "/showu/team/teamMake/date",
+        element: <TeamMakingDate />,
+      },
+
+      {
+        path: "/showu/team/teamMake/member",
+        element: <TeamMakingMember />,
+      },
+
+      {
+        path: "/showu/team/teamMake/skill",
+        element: <TeamMakingSkill />,
+      },
+      {
+        path: "/showu/team/teamMake/announce",
+        element: <TeamMakeAnnouncement />,
       },
 
       {
