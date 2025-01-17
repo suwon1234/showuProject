@@ -61,6 +61,10 @@ S.videoMeta = styled.div`
   display: flex;
   align-items: center;
   margin-top: 0.5rem;
+
+  p{
+    margin-right : 16px;
+  }
 `;
 
 S.profile = styled.div`
@@ -101,6 +105,18 @@ S.commentInput = styled.input`
 
 S.commentsList = styled.ul`
   margin-top: 1rem;
+  border-top: 2px solid gray;
+  .comment-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid gray;
+}
+
+.comment-buttons {
+  display: flex;
+
+}
 `;
 
 S.comment = styled.li`
@@ -109,6 +125,7 @@ S.comment = styled.li`
 
 S.commentText = styled.p`
   margin: 0.5rem 0;
+  width: 100%;
 
 
 `;
@@ -154,6 +171,26 @@ S.buttonstyle=styled.div`
 display: inline-flex;
 width: 100%;
 justify-content: flex-end;
+
+.comment-options {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.comment-options button {
+  font-size: 0.8rem;
+  color: #555;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.comment-options button:hover {
+  color: #000;
+}
+
 
 .point{
   background-color: black;
@@ -253,9 +290,11 @@ S.ModalContent = styled.div`
   }
 
   .finishbutton{
+    display: flex;
     width: 100%;
     margin-top: 50px;
     text-align: right;
+    justify-content: space-between;
   }
 
 `;
