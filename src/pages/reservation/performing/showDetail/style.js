@@ -87,6 +87,20 @@ S.DiscountList = styled.ul`
   }
 `;
 
+S.DateTimeInfoContainer = styled.div`
+  display: flex;
+  width: 1200px;
+  height: 20px;
+  flex-direction: column;
+  max-width: 1200px;
+`
+
+S.DateTimeInfo = styled.h3`
+  font-size: ${({ theme }) => theme.FONT_SIZE.h5};
+  font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
+  color: red;
+`;
+
 S.DateTimeContainer = styled.div`
   display: flex;
   flex-direction: row; /* 가로 정렬 */
@@ -181,7 +195,7 @@ S.CalendarDay = styled.div`
   background-color: ${({ selected }) => (selected ? "#ffd400" : "transparent")};
   cursor: pointer;
   &:hover {
-    background-color: ${({ selected }) => (selected ? "#ffd400" : "#f0f0f0")};
+    background-color: ${({ selected }) => (selected ? "#ffd400" : "#ffd400")};
   }
 `;
 
@@ -226,32 +240,12 @@ S.ReserveButtonContainer = styled.div`
   margin-top: 20px;
 `;
 
-S.BookingButton = styled.button`
-  display: flex;
-  align-items: center;
-  width: 300px;
-  height: 50px;
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #ffd400;
-  color: #000;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: ${({ theme }) => theme.FONT_WEIGHT.bold};
-
-  &:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-`;
-
 S.ReserveButtonWithHeart = styled.button`
   text-align: center;
-  width: 300px;
-  height: 50px;
+  width: 280px;
+  height: 45px;
   padding: 10px 20px;
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.FONT_SIZE.h5};
   background-color: #ffd400;
   color: #000;
   border: none;
@@ -266,7 +260,7 @@ S.ReserveButtonWithHeart = styled.button`
     background-color: #ccc;
     cursor: not-allowed;
   }
-  `;
+`;
 
 // 출연진 섹션 스타일 
 S.CastContainer = styled.div` 
@@ -406,7 +400,6 @@ S.CommentSection = styled.div`
   align-items: flex-end;
   width: 1200px;
   margin-bottom: 20px;
-
 `;
 
 S.CommentInputContainer = styled.div`
@@ -421,14 +414,22 @@ S.CharacterCount = styled.span`
   color: ${({ theme }) => theme.PALLETE.text};
 `;
 
-S.CommentInput = styled.input`
+S.CommentInput = styled.textarea`
   width: 1200px;
   height: 200px;
-  font-size: ${({ theme }) => theme.FONT_SIZE.body};
+  font-size: ${({ theme }) => theme.FONT_SIZE.h4};
   border: 1px solid ${({ theme }) => theme.PALLETE.primary.main};
   border-radius: 5px;
   background-color: #000;
+  padding: 10px;
   margin-bottom: 10px;
+  resize: none; // 크기 조절 비활성화
+
+  &::placeholder { font-size: ${({ theme }) =>theme.FONT_SIZE.body}; 
+  color: #aaa; 
+  text-align: left; // 텍스트 위치 조정 (left, right, center) 
+  line-height: 1.5; // 줄 높이 조정     
+  }
 `;
 
 S.CommentButton = styled.button` 
@@ -454,24 +455,25 @@ S.CommentList = styled.div`
   width: 1200px;
 `;
 
-S.CommentItem = styled.p`
+S.CommentItem = styled.div`
   border: 1px solid ${({ theme }) => theme.PALLETE.primary.main};
   border-radius: 5px;
-  padding: 5px;
+  padding: 10px;
   margin-bottom: 70px;
   font-size: ${({ theme }) => theme.FONT_SIZE.body};
   background-color: #000;
   color: ${({ theme }) => theme.PALLETE.text};
-  height: 60px;
+  word-wrap: break-word; // 텍스트가 컨테이너를 넘지 않도록 설정
 `;
 
 S.CommentDetails = styled.div`
   font-size: ${({ theme }) => theme.FONT_SIZE.small};
   color: #5a5a5a;
   margin-top: 5px;
+  /* margin-bottom: 10px; */
 `;
 
-S.EditCommentInput = styled.input`
+S.EditCommentInput = styled.textarea`
   width: 1100px;
   margin-right: 5px;
   padding: 5px;
@@ -479,7 +481,9 @@ S.EditCommentInput = styled.input`
   margin-bottom: 20px;
   border: none;
   background-color: #000;
+  resize: none; // 크기 조절 비활성화
 `;
+
 S.EditDeleteContainer = styled.div`
   display: flex;
   justify-content: flex-end;
@@ -489,7 +493,9 @@ S.EditDeleteContainer = styled.div`
 
 S.FavoriteButton = styled.button`
   background-color: lightgray;
-  color: ${(props) => (props.$isFavorite ? "red" : "grey")};
+  color: ${(props) => (props.isFavorite ? "red" : "grey")};
+  width: 45px;
+  height: 45px;
   border: none;
   border-radius: 5px;
   font-size: 2rem;

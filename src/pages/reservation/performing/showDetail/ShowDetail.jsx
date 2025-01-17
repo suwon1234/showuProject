@@ -8,6 +8,7 @@ import {
   getDay,
   addMonths,
   isSameDay,
+  isBefore,
 } from "date-fns";
 import { useSelector } from "react-redux";
 import S from "./style";
@@ -16,7 +17,7 @@ const ShowDetail = () => {
   const { id } = useParams();
   const { currentUser } = useSelector((state) => state.user); // Redux에서 현재 유저 정보 가져오기
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(addDays(new Date(), 1)); // 다음날로 기본 설정
   const [selectedTime, setSelectedTime] = useState("");
   const [availableSeats, setAvailableSeats] = useState({ R: null, S: null });
   const [activeTab, setActiveTab] = useState("상세정보");
@@ -31,36 +32,37 @@ const ShowDetail = () => {
  useEffect(() => {
    const fetchShow = async () => {
      const token = localStorage.getItem("jwtToken");
+     if (!currentUser || !currentUser._id) {
+       console.error("유효한 사용자 정보를 찾을 수 없습니다.");
+       return;
+     }
      try {
        const response = await fetch(
          `http://localhost:8000/reservation/performingShows/${id}`,
-         {
-           headers: {
-             Authorization: `Bearer ${token}`,
-           },
-         }
+         { headers: { Authorization: `Bearer ${token}` } }
        );
        if (!response.ok) {
          throw new Error("네트워크 응답이 실패했습니다.");
        }
        const fetchedData = await response.json();
-       console.log("Fetched Show Data:", fetchedData); // 콘솔 로그 추가
        setShow(fetchedData);
-       setIsFavorite(
-         fetchedData.hearts && fetchedData.hearts.includes(currentUser._id)
-       ); // 초기 좋아요 상태 설정
-       setComments(
-         Array.isArray(fetchedData.comments) ? fetchedData.comments : []
-       ); // 초기 댓글 설정
-       console.log("Fetched Comments:", fetchedData.comments); // 콘솔 로그 추가
+
+       // 좋아요 상태 확인
+       const likeStatusResponse = await fetch(
+         `http://localhost:8000/reservation/performingShows/${id}/likeStatus?userId=${currentUser._id}&type=show`,
+         { headers: { Authorization: `Bearer ${token}` } }
+       );
+       if (!likeStatusResponse.ok) {
+         throw new Error("좋아요 상태를 확인하는 중 오류 발생");
+       }
+       const likeStatusData = await likeStatusResponse.json();
+       setIsFavorite(likeStatusData.isFavorite);
      } catch (error) {
        console.error("공연 데이터를 가져오는 중 오류 발생:", error);
-       setComments([]); // 오류 발생 시 빈 배열로 초기화
      }
    };
-
    fetchShow();
- }, [id, currentUser._id]);
+ }, [id, currentUser]);
 
   if (!show) {
     return <p>해당 공연 정보를 찾을 수 없습니다.</p>;
@@ -77,7 +79,7 @@ const ShowDetail = () => {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify({ userId: currentUser._id }), // 유저 ID 포함
+          body: JSON.stringify({ userId: currentUser._id, type: "show" }), // 유저 ID와 타입 포함
         }
       );
       if (!response.ok) {
@@ -232,6 +234,7 @@ const ShowDetail = () => {
 
     const daysInWeek = ["일", "월", "화", "수", "목", "금", "토"];
     const firstDayOfMonth = getDay(start);
+    const today = new Date(); // 현재 날짜
 
     return (
       <S.CalendarGrid>
@@ -246,7 +249,7 @@ const ShowDetail = () => {
         {dateArray.map((date) => (
           <S.CalendarDay
             key={date}
-            onClick={() => handleDateChange(date)}
+            onClick={() => !isBefore(date, today) && handleDateChange(date)} // 현재 날짜 이전의 날짜는 선택 불가
             selected={isSameDay(date, selectedDate)}
           >
             {format(date, "d")}
@@ -255,6 +258,7 @@ const ShowDetail = () => {
       </S.CalendarGrid>
     );
   };
+
 
   const renderTimeSlots = () => (
     <S.StepContainerTwo>
@@ -351,8 +355,9 @@ const ShowDetail = () => {
           </S.InfoRow>
         </S.InfoContainer>
       </S.DetailContainer>
-
-      <S.HorizontalLine />
+      <S.DateTimeInfoContainer>
+        <S.DateTimeInfo>공연 당일에 관한 예매는 불가능합니다</S.DateTimeInfo>
+      </S.DateTimeInfoContainer>
       <S.DateTimeContainer>
         <S.StepContainer>
           <S.StepTitle>STEP1 날짜 선택</S.StepTitle>
@@ -380,7 +385,7 @@ const ShowDetail = () => {
       <S.ReserveButtonContainer>
         <S.FavoriteButton
           onClick={handleFavoriteClick}
-          $isFavorite={isFavorite}
+          isFavorite={isFavorite}
         >
           ♥
         </S.FavoriteButton>
@@ -430,15 +435,8 @@ const ShowDetail = () => {
         {activeTab === "관람후기" && (
           <S.TabContent>
             <S.CommentSection>
-              {/* <S.NoticeContainer>
-                <S.NoticeTitle>관람후기</S.NoticeTitle>
-                <S.NoticeContent>
-                  showU 운영규정에 맞지 않는 글은 사전 통보없이 삭제될 수 있습니다
-                </S.NoticeContent>
-              </S.NoticeContainer> */}
               <S.CommentInputContainer>
                 <S.CommentInput
-                  type="text"
                   value={newComment}
                   onChange={(e) => setNewComment(e.target.value)}
                   placeholder="관람후기를 입력해주세요!"
@@ -455,7 +453,6 @@ const ShowDetail = () => {
                     {index === editingIndex ? (
                       <>
                         <S.EditCommentInput
-                          type="text"
                           value={editingComment}
                           onChange={(e) => setEditingComment(e.target.value)}
                           maxLength={1000}
