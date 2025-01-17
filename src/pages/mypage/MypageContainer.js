@@ -62,9 +62,9 @@ const MypageContainer = () => {
             <Link to={"/my-active/posts"}>
               <li>작성한 글</li>
             </Link>
-            <Link to={"/my-active/reports"}>
+            {/* <Link to={"/my-active/reports"}>
               <li>제보 관리</li>
-            </Link>
+            </Link> */}
             <hr />
         </S.Ul>
         <S.Ul>

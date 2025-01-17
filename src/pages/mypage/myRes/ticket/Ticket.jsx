@@ -50,7 +50,7 @@ const Ticket = () => {
   }, [])
 
 
-  // console.log(ticket)
+  console.log(ticket)
 
   return (
     <>

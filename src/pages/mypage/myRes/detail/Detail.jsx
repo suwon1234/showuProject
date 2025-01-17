@@ -45,7 +45,39 @@ const Detail = () => {
     navigate(path);
   }
 
-  console.log("ticket", ticket)
+  const handleDeleteTicket = async (ticketId) => {
+    console.log("전달받은 ticketId:", ticketId);
+    if (!ticketId) return alert("티켓 정보를 확인할 수 없습니다.");
+    
+    if (window.confirm("티켓을 취소하시겠습니까?")) {
+      try {
+        const response = await fetch(`http://localhost:8000/my/reservation/ticket/delete`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${jwtToken}`
+          },
+          body: JSON.stringify({
+            ticketId: ticketId
+          })
+        });
+  
+        const result = await response.json();
+        if (result.deleteTicketSuccess) {
+          alert(result.message);
+          setTicket((prevTickets) => prevTickets.filter(ticket => ticket.id !== ticketId));
+          navigate(-1)
+        } else {
+          alert(result.message || "티켓 취소 실패했습니다.");
+        }
+      } catch (error) {
+        console.error("Ticket delete error:", error);
+        alert("티켓 취소 중 오류가 발생했습니다.");
+      }
+    }
+  };
+
+  // console.log("ticket", ticket)
 
   return (
     <>
@@ -115,10 +147,18 @@ const Detail = () => {
           </S.DetailTbody>
         </S.DetailTable>
         
-        <S.ButtonContainer className='ButtonContainer'>
-          <S.Button onClick={() => handleNavigate('/my-res/ticket')}>이전으로</S.Button>
-          <S.Button>취소하기</S.Button>
-        </S.ButtonContainer>
+        { ticket && ticket.map((ticket, i) => (
+          <S.ButtonContainer key={i}>
+            <S.Button onClick={() => handleNavigate('/my-res/ticket')}>이전으로</S.Button>
+            <S.Button onClick={() => {
+              handleDeleteTicket(ticket.id)
+              console.log("ticket.id", ticket)
+            }}
+            >
+            취소하기</S.Button>
+          </S.ButtonContainer>
+        ))
+        }
       </div>
     </>
   );
