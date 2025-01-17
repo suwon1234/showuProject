@@ -1,14 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-const Play = ({ play }) => {
-  const {id,title,thumbnail,videoUrl,mainImage}=play;
-
+const Play = () => {
+  const containerStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: '700px',
+    textAlign: 'center',
+  };
 
   return (
-    <div>
-      <video src={videoUrl} controls width="600px">
-      </video>
-      <h1>{title}</h1>
+    <div style={containerStyle}>
+      <video src={`/video/testplay.mp4`} controls width="700px"></video>
+      <h1>Play Video</h1>
     </div>
   );
 };

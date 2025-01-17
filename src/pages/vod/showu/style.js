@@ -125,8 +125,9 @@ text-overflow: ellipsis;
 
   img {
     width: 100%;
-    height: 100%;
+    height: 200px;
     object-fit: cover;
+    position: relative;
     transition: transform 0.5s ease;
     
   }
@@ -442,7 +443,7 @@ button {
       background-color: #FFD400;
       border: none;
       color: black;
-      width: 60px;
+      width: 80px;
       height: 35px;
       border-radius: 5px;
       padding: 8px 16px;
