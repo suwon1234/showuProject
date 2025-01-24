@@ -82,6 +82,22 @@ S.subscribeButton = styled.button`
   padding: 0.5rem 1rem;
   cursor: pointer;
   border-radius: 5px;
+  .icon.filled {
+    padding:  0.5rem 1rem;
+    cursor: pointer;
+    path {
+      fill: gray; 
+      transition: fill 0.3s ease;
+    }
+  }
+  .icon.outlined {
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    path {
+      fill: #FFD400; 
+      transition: fill 0.3s ease;
+    }
+  }
 `;
 
 S.commentsSection = styled.div`

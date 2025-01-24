@@ -67,6 +67,8 @@ const S = {}
       border: 1px solid #444444;
       padding: 10px 8px 8px 15px;
       position: relative;
+      color: black;
+      font-size: 20px;
 
       &::placeholder {
         font-size: 20px;
@@ -83,6 +85,9 @@ const S = {}
       & path {
         color: #000;
       }
+    }
+    .search{
+      cursor: pointer;
     }
   `
 

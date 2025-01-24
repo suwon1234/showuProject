@@ -25,6 +25,7 @@ const ShowuVideo = () => {
   const [random,setRandom]=useState([]);
   
 
+  
 
   useEffect(()=>{
     setRandom(showuvideolist
@@ -63,7 +64,7 @@ const ShowuVideo = () => {
     };
     fetchUserData();
   },[jwtToken]);
-  
+
   //댓글 조회
   const fetchComments = async () => {
     try {
@@ -80,9 +81,8 @@ const ShowuVideo = () => {
   };
   
   useEffect(() => {
-    // 댓글 데이터를 가져오는 useEffect
     fetchComments();
-  }, [id]);  // id가 변경될 때마다 댓글을 가져옵니다.
+  }, [id]);  
 
 
   useEffect(() => {
@@ -110,47 +110,61 @@ const ShowuVideo = () => {
 
     fetchuploaduser();
   }, [id]);
+  const [refresh, setRefresh] = useState(false);  // 리렌더링을 트리거할 상태 추가
 
+  // 비디오 목록 가져오기
   useEffect(() => {
     const vodVideo = async () => {
       try {
-        const response = await fetch("http://localhost:8000/vod/showuvideo")
+        const response = await fetch("http://localhost:8000/vod/showuvideo");
         const data = await response.json();
         if (response.ok) {
           setShowuVideoList(data);
-          console.log(data)
+          console.log(data);
         } else {
           console.error('Error', data.message);
         }
       } catch (error) {
-        console.error('Error', error)
+        console.error('Error', error);
       }
     };
     vodVideo();
-  }, []);
+  }, [id]);  // `refresh` 값이 변경될 때마다 실행
 
-  useEffect(() => {
-    const fetchVodInfo = async () => {
-      setLoading(true);
-      try {
-        const response = await fetch(`http://localhost:8000/vod/showuinfo/${id}/showu`);
-        if (!response.ok) {
-          throw new Error("VOD 정보를 가져오는데 실패했습니다.");
-        }
-        const data = await response.json();
-        setShowuVideoInfo(data);
-        console.log(data)
-      } catch (error) {
-        setError(error.message);
-        console.error("VOD 정보 가져오기 오류:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    
+  // 버튼 클릭 시 호출되는 함수
+// 비디오 정보 가져오는 함수
 
+
+const fetchVodInfo = async () => {
+  setLoading(true);
+  try {
+    const response = await fetch(`http://localhost:8000/vod/showuinfo/${id}/showu`);
+    if (!response.ok) {
+      throw new Error("VOD 정보를 가져오는데 실패했습니다.");
+    }
+    const data = await response.json();
+    setShowuVideoInfo(data);
+    console.log(data);
+  } catch (error) {
+    setError(error.message);
+    console.error("VOD 정보 가져오기 오류:", error);
+  } finally {
+    setLoading(false);
+  }
+};
+
+// 버튼 클릭 시 호출되는 함수
+const handleClick = (videoId) => {
+  navigate(`/vod/my-ShowU/video/${videoId}`); 
+  window.location.reload();  // 새로고침 // URL을 변경하여 해당 videoId로 이동
+};
+
+// useEffect는 id가 변경될 때마다 실행되도록 설정
+useEffect(() => {
+  if (id) {
     fetchVodInfo();
-  }, [id]);
+  }
+}, [id]);  // id가 변경될 때마다 실행 // id가 변경될 때마다 실행
 
   const handleRegisterButton = async () => {
     if (!jwtToken) {
@@ -392,7 +406,6 @@ const ShowuVideo = () => {
               <S.videoMeta className="video-meta">
                 <S.profile className="profile"></S.profile>
                 <p>{uploaduser}</p>
-                <S.subscribeButton className="subscribe-button">관심</S.subscribeButton>
               </S.videoMeta>
             </div>
             <S.detail className="detail">
@@ -533,6 +546,7 @@ const ShowuVideo = () => {
                   src={`http://localhost:8000${item.thumbnail}`}
                   alt={`Poster ${index + 1}`}
                   style={{ width: '100%', height: '200px' }}
+                  onClick={() => handleClick(item._id)}  
                 />
               ) : (
                 `Poster ${index + 1}`

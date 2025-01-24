@@ -149,18 +149,20 @@ const VideoDetail = () => {
           <p>{`${vodinfo.year} • ${vodinfo.time} • ${vodinfo.genre}`}</p>
         </S.MetadataList>
         <S.buttonstyle>
-          {!jwtToken ? (
-            <button className="button" onClick={handleLoginAlert}>로그인</button>
-          ) : (
-            <Link to={`/vod/play/start?programid=${vodinfo._id}`}>
-              <button className="button">재생</button>
-            </Link>
-          )}
-          <S.hert className='hert'>
-            <FontAwesomeIcon icon={faHeart} className={`icon ${likesicon ? 'filled' : 'outlined'}`} onClick={handLikeClick}/>
-            <p>관심</p>
-          </S.hert>
-        </S.buttonstyle>
+  {!jwtToken ? (
+    <>
+      <button className="button" onClick={handleLoginAlert}>로그인</button>
+    </>
+  ) : (
+    <Link to={`/vod/play/start?programid=${vodinfo._id}`}>
+      <button className="button">재생</button>
+    </Link>
+  )}
+  <S.hert className='hert'>
+    <FontAwesomeIcon icon={faHeart} className={`icon ${likesicon ? 'filled' : 'outlined'}`} onClick={handLikeClick} />
+    <p>관심</p>
+  </S.hert>
+</S.buttonstyle>
         {showLoginAlert && <p style={{ color: 'red' }}>로그인이 필요합니다!</p>}
         <S.moreclick className='moreclick'>
           <span>{vodinfo.description}</span>

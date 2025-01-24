@@ -119,6 +119,7 @@ import TeamMakingSkill from '../pages/showu/team/teamMaking/_component/TeamMakin
 import TeamMakeAnnouncement from '../pages/showu/team/teamMaking/_component/TeamMakeAnnouncement';
 import TeamMakingAdress from '../pages/showu/team/teamMaking/_component/TeamMakingAdress';
 import LessonModified from '../pages/showu/lesson/LessonMain/lessonModify/_component/LessonModified';
+import SearchContainer from '../pages/search/SearchContainer';
 
 
 
@@ -614,6 +615,10 @@ const router = createBrowserRouter([
       {
         path: "/reservation/space/rental-selection",
         element: <RentalSelection />,
+      },
+      {
+        path : "/search",
+        element : <SearchContainer/>
       },
       {
         path: "/reservation/payment", // 토스 페이 api

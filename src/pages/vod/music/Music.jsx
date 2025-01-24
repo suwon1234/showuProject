@@ -39,7 +39,7 @@ const Music = () => {
           {musicVideos.map(video => (
             <S.Card key={video.id}>
               <Link 
-                to={`/vod/play?programid=${video.id}`} 
+                to={`/vod/play/${video._id}`} 
                 role="button" 
                 onClick={() => window.scrollTo(0, 0)}
               >

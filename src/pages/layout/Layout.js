@@ -9,35 +9,46 @@ import { setUser, setUserStatus } from '../../modules/user';
 import HoverMenu from './_component/HoverMenu';
 
 const Layout = () => {
-
-  const { isLogin, currentUser } = useSelector((state) => state.user)
+  const { isLogin, currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
   const jwtToken = localStorage.getItem("jwtToken") || searchParams.get("jwtToken");
-  const [ loginID, setLoginID ] = useState("");
-  const [ saveIDFlag, setSaveIDFlag ] = useState(false);
-  const LS_KEY_ID = "LS_KEY_ID";
 
+  const handleSearchClick = () => {
+    const searchInput = document.querySelector('.searchinput').value; // 입력 값 가져오기
+    if (!searchInput.trim()) {
+      return; // 입력 값이 없으면 함수 종료
+    }
+    navigate(`/search?query=${encodeURIComponent(searchInput)}`); // 검색어를 쿼리 매개변수로 전달
+  };
+  
+  const handleSearchKeyPress = (e) => {
+    if (e.key === 'Enter') {
+      const searchInput = document.querySelector('.searchinput').value; // 입력 값 가져오기
+      if (!searchInput.trim()) {
+        return; // 입력 값이 없으면 함수 종료
+      }
+      handleSearchClick(); // 엔터 키를 누르면 검색 실행
+    }
+  };
 
   const handleLogout = () => {
-    localStorage.removeItem("jwtToken") //토큰 삭제
-    dispatch(setUser({})) //리덕스 초기화
-    dispatch(setUserStatus(false))
-    console.log("로그아웃")
-  }
+    localStorage.removeItem("jwtToken"); // 토큰 삭제
+    dispatch(setUser({})); // 리덕스 초기화
+    dispatch(setUserStatus(false));
+    console.log("로그아웃");
+  };
 
   const location = useLocation();
 
-  //index 페이지에서 헤더 숨김
-  const hideHeaderPage = ['/']
-  
-  // console.log("jwtToken", jwtToken)
-  useEffect(() => {
+  // index 페이지에서 헤더 숨김
+  const hideHeaderPage = ['/'];
 
-    if(searchParams.get("jwtToken")){
-      localStorage.setItem("jwtToken", jwtToken)
-      navigate("/main")
+  useEffect(() => {
+    if (searchParams.get("jwtToken")) {
+      localStorage.setItem("jwtToken", jwtToken);
+      navigate("/main");
     }
 
     if (jwtToken) {
@@ -61,7 +72,6 @@ const Layout = () => {
         })
         .catch(console.error);
     }
-
   }, [searchParams, dispatch, navigate, jwtToken]);
 
   return (
@@ -84,26 +94,26 @@ const Layout = () => {
                     type="text"
                     placeholder="너의 재능을 보여줘"
                     className="searchinput"
+                    onKeyDown={handleSearchKeyPress} // 엔터 키 이벤트 핸들러 추가
                   />
                   <FontAwesomeIcon
                     icon={faMagnifyingGlass}
                     className="search"
+                    onClick={handleSearchClick} // 아이콘 클릭 이벤트 핸들러
                   />
                 </S.SearchBox>
               </S.LogoBox>
 
               <S.authlinks className="authlinks">
-                {
-                  currentUser.isUpgradeRequested ? (
-                    <Link to="/mypage/up-grade/update" className='highlight'>
-                      등급업 수정
-                    </Link>
-                  ) : (
-                    <Link to="/up-grade" className='highlight'>
-                      등급업 신청
-                    </Link>
-                  )
-                }
+                {currentUser.isUpgradeRequested ? (
+                  <Link to="/mypage/up-grade/update" className="highlight">
+                    등급업 수정
+                  </Link>
+                ) : (
+                  <Link to="/up-grade" className="highlight">
+                    등급업 신청
+                  </Link>
+                )}
                 <span className="divider">|</span>
 
                 {isLogin ? (
@@ -125,7 +135,7 @@ const Layout = () => {
             </S.navbar>
 
             <S.menubar className="menubar">
-              {/* showU  */}
+              {/* showU */}
               <HoverMenu
                 menuLabel="showU"
                 to="/showu"
